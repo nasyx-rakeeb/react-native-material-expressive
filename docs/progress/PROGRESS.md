@@ -164,7 +164,8 @@ A day closes only when its exit criteria are met with evidence. Slippage is reco
 - `docs/evidence/day3/captures/` and `diffs/` — content-addressed PNGs (7 unique captures for 168 renders) and per-scene diff images.
 - `tools/pixel/` — harness code and README; `apps/reference-compose/README.md` — Compose harness pins and run commands.
 - Local gates on the committed tree: `format:check` clean, `lint` 3 tasks + `eslint tools` clean, `typecheck` 4/4, `test` 8/8, `build` ESM+CJS+types, `scenes:check` clean.
-- Commit and CI: recorded in the Day 3 evidence follow-up (this entry is committed before CI runs).
+- Commit and CI: `1f704197f3997ec61aaad6c5916f3c53588298cb`; run [`45670820451`](https://github.com/nasyx-rakeeb/react-native-material-expressive/actions/runs/45670820451) — **success**, all steps green including **Verify scenes**.
+- Day 3 exit: same-harness determinism met (20 repeats × 3 cold boots, 0 px). Cross-stack exact text parity is **not** met; `U-23` is the open decision.
 
 **Deviations**
 
