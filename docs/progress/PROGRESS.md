@@ -31,7 +31,7 @@ A day closes only when its exit criteria are met with evidence. Slippage is reco
 - `docs/DECISIONS.md` — ADR-000, ADR-004, ADR-005 (proposed), ADR-006 (proposed), ADR-007.
 - `docs/UNVERIFIED.md` — U-1..U-6 resolved, U-7..U-18 open with owners.
 - Raw downloads under `docs/research/raw/` (git-ignored; hashes in `DAY0_SOURCES.md`).
-- Commit: `docs: add Day 0 research, competitor and component matrices` (hash in git log; no remote yet).
+- Commit: `7b92983ac1ffa65e1048bef86a2dbd0bcef675d2` — `docs: add Day 0 research, competitor and component matrices` (no remote yet).
 
 **Deviations**
 
