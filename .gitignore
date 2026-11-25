@@ -1,0 +1,5 @@
+# Research downloads (large; sources are recorded in docs/research/DAY0_SOURCES.md)
+docs/research/raw/
+
+# OS noise
+.DS_Store
