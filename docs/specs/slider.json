@@ -1,0 +1,470 @@
+{
+  "generatedBy": "tools/extract-tokens",
+  "artifact": "material3:1.5.0",
+  "jarSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6",
+  "tokenFile": "commonMain/androidx/compose/material3/tokens/SliderTokens.kt",
+  "declaration": "SliderTokens",
+  "declarationKind": "object",
+  "tokenVersion": null,
+  "tokens": [
+    {
+      "token": "Slider.ActiveContainerOpacity",
+      "value": 1,
+      "unit": "number",
+      "expression": "1.0f",
+      "source": "commonMain/androidx/compose/material3/tokens/SliderTokens.kt:24",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Slider.ActiveHandleHeight",
+      "value": 44,
+      "unit": "dp",
+      "expression": "44.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/SliderTokens.kt:25",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Slider.ActiveHandleLeadingSpace",
+      "value": 6,
+      "unit": "dp",
+      "expression": "6.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/SliderTokens.kt:28",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Slider.ActiveHandlePadding",
+      "value": 6,
+      "unit": "dp",
+      "expression": "6.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/SliderTokens.kt:31",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Slider.ActiveHandleShape",
+      "value": "CornerFull",
+      "unit": "shape-role",
+      "expression": "ShapeKeyTokens.CornerFull",
+      "source": "commonMain/androidx/compose/material3/tokens/SliderTokens.kt:34",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Slider.ActiveHandleTrailingSpace",
+      "value": 6,
+      "unit": "dp",
+      "expression": "6.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/SliderTokens.kt:37",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Slider.ActiveHandleWidth",
+      "value": 4,
+      "unit": "dp",
+      "expression": "4.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/SliderTokens.kt:40",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Slider.ActiveTrackColor",
+      "value": "Primary",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Primary",
+      "source": "commonMain/androidx/compose/material3/tokens/SliderTokens.kt:43",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Slider.ActiveTrackHeight",
+      "value": 16,
+      "unit": "dp",
+      "expression": "16.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/SliderTokens.kt:46",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Slider.ActiveTrackShape",
+      "value": "CornerFull",
+      "unit": "shape-role",
+      "expression": "ShapeKeyTokens.CornerFull",
+      "source": "commonMain/androidx/compose/material3/tokens/SliderTokens.kt:49",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Slider.ActiveTrackShapeLeading",
+      "value": "CornerFull",
+      "unit": "shape-role",
+      "expression": "ShapeKeyTokens.CornerFull",
+      "source": "commonMain/androidx/compose/material3/tokens/SliderTokens.kt:52",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Slider.DisabledActiveTrackColor",
+      "value": "OnSurface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurface",
+      "source": "commonMain/androidx/compose/material3/tokens/SliderTokens.kt:55",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Slider.DisabledActiveTrackOpacity",
+      "value": 0.38,
+      "unit": "number",
+      "expression": "0.38f",
+      "source": "commonMain/androidx/compose/material3/tokens/SliderTokens.kt:58",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Slider.DisabledHandleColor",
+      "value": "OnSurface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurface",
+      "source": "commonMain/androidx/compose/material3/tokens/SliderTokens.kt:59",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Slider.DisabledHandleOpacity",
+      "value": 0.38,
+      "unit": "number",
+      "expression": "0.38f",
+      "source": "commonMain/androidx/compose/material3/tokens/SliderTokens.kt:62",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Slider.DisabledHandleWidth",
+      "value": 4,
+      "unit": "dp",
+      "expression": "4.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/SliderTokens.kt:63",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Slider.DisabledInactiveTrackColor",
+      "value": "OnSurface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurface",
+      "source": "commonMain/androidx/compose/material3/tokens/SliderTokens.kt:66",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Slider.DisabledInactiveTrackOpacity",
+      "value": 0.12,
+      "unit": "number",
+      "expression": "0.12f",
+      "source": "commonMain/androidx/compose/material3/tokens/SliderTokens.kt:69",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Slider.DisabledStopColor",
+      "value": "OnSurface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurface",
+      "source": "commonMain/androidx/compose/material3/tokens/SliderTokens.kt:70",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Slider.FocusActiveTrackColor",
+      "value": "Primary",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Primary",
+      "source": "commonMain/androidx/compose/material3/tokens/SliderTokens.kt:73",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Slider.FocusHandleWidth",
+      "value": 2,
+      "unit": "dp",
+      "expression": "2.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/SliderTokens.kt:76",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Slider.FocusInactiveTrackColor",
+      "value": "SecondaryContainer",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.SecondaryContainer",
+      "source": "commonMain/androidx/compose/material3/tokens/SliderTokens.kt:79",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Slider.FocusStopColor",
+      "value": "Primary",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Primary",
+      "source": "commonMain/androidx/compose/material3/tokens/SliderTokens.kt:82",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Slider.HandleColor",
+      "value": "Primary",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Primary",
+      "source": "commonMain/androidx/compose/material3/tokens/SliderTokens.kt:85",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Slider.HandleHeight",
+      "value": 44,
+      "unit": "dp",
+      "expression": "44.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/SliderTokens.kt:88",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Slider.HandleShape",
+      "value": "CornerFull",
+      "unit": "shape-role",
+      "expression": "ShapeKeyTokens.CornerFull",
+      "source": "commonMain/androidx/compose/material3/tokens/SliderTokens.kt:91",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Slider.HandleWidth",
+      "value": 4,
+      "unit": "dp",
+      "expression": "4.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/SliderTokens.kt:94",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Slider.HoverHandleColor",
+      "value": "Primary",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Primary",
+      "source": "commonMain/androidx/compose/material3/tokens/SliderTokens.kt:97",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Slider.HoverHandleWidth",
+      "value": 4,
+      "unit": "dp",
+      "expression": "4.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/SliderTokens.kt:100",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Slider.HoverStopColor",
+      "value": "Primary",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Primary",
+      "source": "commonMain/androidx/compose/material3/tokens/SliderTokens.kt:103",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Slider.InactiveContainerOpacity",
+      "value": 1,
+      "unit": "number",
+      "expression": "1.0f",
+      "source": "commonMain/androidx/compose/material3/tokens/SliderTokens.kt:106",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Slider.InactiveTrackColor",
+      "value": "SecondaryContainer",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.SecondaryContainer",
+      "source": "commonMain/androidx/compose/material3/tokens/SliderTokens.kt:107",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Slider.InactiveTrackHeight",
+      "value": 16,
+      "unit": "dp",
+      "expression": "16.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/SliderTokens.kt:110",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Slider.InactiveTrackShape",
+      "value": "CornerFull",
+      "unit": "shape-role",
+      "expression": "ShapeKeyTokens.CornerFull",
+      "source": "commonMain/androidx/compose/material3/tokens/SliderTokens.kt:113",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Slider.LabelContainerColor",
+      "value": "Primary",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Primary",
+      "source": "commonMain/androidx/compose/material3/tokens/SliderTokens.kt:116",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Slider.LabelTextColor",
+      "value": "InverseOnSurface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.InverseOnSurface",
+      "source": "commonMain/androidx/compose/material3/tokens/SliderTokens.kt:119",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Slider.PressedActiveTrackColor",
+      "value": "Primary",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Primary",
+      "source": "commonMain/androidx/compose/material3/tokens/SliderTokens.kt:122",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Slider.PressedHandleColor",
+      "value": "Primary",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Primary",
+      "source": "commonMain/androidx/compose/material3/tokens/SliderTokens.kt:125",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Slider.PressedHandleWidth",
+      "value": 2,
+      "unit": "dp",
+      "expression": "2.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/SliderTokens.kt:128",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Slider.PressedInactiveTrackColor",
+      "value": "SecondaryContainer",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.SecondaryContainer",
+      "source": "commonMain/androidx/compose/material3/tokens/SliderTokens.kt:131",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Slider.PressedStopColor",
+      "value": "Primary",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Primary",
+      "source": "commonMain/androidx/compose/material3/tokens/SliderTokens.kt:134",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Slider.SliderActiveHandleColor",
+      "value": "Primary",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Primary",
+      "source": "commonMain/androidx/compose/material3/tokens/SliderTokens.kt:137",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Slider.StopIndicatorColor",
+      "value": "SecondaryContainer",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.SecondaryContainer",
+      "source": "commonMain/androidx/compose/material3/tokens/SliderTokens.kt:140",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Slider.StopIndicatorColorSelected",
+      "value": "SecondaryContainer",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.SecondaryContainer",
+      "source": "commonMain/androidx/compose/material3/tokens/SliderTokens.kt:143",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Slider.StopIndicatorShape",
+      "value": "CornerFull",
+      "unit": "shape-role",
+      "expression": "ShapeKeyTokens.CornerFull",
+      "source": "commonMain/androidx/compose/material3/tokens/SliderTokens.kt:146",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Slider.StopIndicatorSize",
+      "value": 4,
+      "unit": "dp",
+      "expression": "4.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/SliderTokens.kt:149",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Slider.StopIndicatorTrailingSpace",
+      "value": 6,
+      "unit": "dp",
+      "expression": "6.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/SliderTokens.kt:152",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Slider.ValueIndicatorActiveBottomSpace",
+      "value": 12,
+      "unit": "dp",
+      "expression": "12.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/SliderTokens.kt:155",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Slider.ValueIndicatorContainerColor",
+      "value": "InverseSurface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.InverseSurface",
+      "source": "commonMain/androidx/compose/material3/tokens/SliderTokens.kt:158",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Slider.ValueIndicatorLabelTextColor",
+      "value": "InverseOnSurface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.InverseOnSurface",
+      "source": "commonMain/androidx/compose/material3/tokens/SliderTokens.kt:161",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Slider.ValueIndicatorLabelTextFont",
+      "value": "LabelLarge",
+      "unit": "typography-role",
+      "expression": "TypographyKeyTokens.LabelLarge",
+      "source": "commonMain/androidx/compose/material3/tokens/SliderTokens.kt:164",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    }
+  ]
+}

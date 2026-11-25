@@ -1,0 +1,65 @@
+{
+  "generatedBy": "tools/extract-tokens",
+  "artifact": "material3:1.5.0",
+  "jarSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6",
+  "tokenFile": "commonMain/androidx/compose/material3/tokens/ExtendedFabSmallTokens.kt",
+  "declaration": "ExtendedFabSmallTokens",
+  "declarationKind": "object",
+  "tokenVersion": "v0_14_0",
+  "tokens": [
+    {
+      "token": "ExtendedFabSmall.ContainerHeight",
+      "value": 56,
+      "unit": "dp",
+      "expression": "56.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/ExtendedFabSmallTokens.kt:24",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ExtendedFabSmall.ContainerShape",
+      "value": "CornerLarge",
+      "unit": "shape-role",
+      "expression": "ShapeKeyTokens.CornerLarge",
+      "source": "commonMain/androidx/compose/material3/tokens/ExtendedFabSmallTokens.kt:27",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ExtendedFabSmall.IconLabelSpace",
+      "value": 8,
+      "unit": "dp",
+      "expression": "8.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/ExtendedFabSmallTokens.kt:30",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ExtendedFabSmall.IconSize",
+      "value": 24,
+      "unit": "dp",
+      "expression": "24.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/ExtendedFabSmallTokens.kt:33",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ExtendedFabSmall.LeadingSpace",
+      "value": 16,
+      "unit": "dp",
+      "expression": "16.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/ExtendedFabSmallTokens.kt:36",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ExtendedFabSmall.TrailingSpace",
+      "value": 16,
+      "unit": "dp",
+      "expression": "16.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/ExtendedFabSmallTokens.kt:39",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "generatedBy": "tools/extract-tokens",
+  "artifact": "material3:1.5.0",
+  "jarSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6",
+  "tokenFile": "commonMain/androidx/compose/material3/tokens/DockedToolbarTokens.kt",
+  "declaration": "DockedToolbarTokens",
+  "declarationKind": "object",
+  "tokenVersion": "14_0_0",
+  "tokens": [
+    {
+      "token": "DockedToolbar.ContainerColor",
+      "value": "SurfaceContainer",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.SurfaceContainer",
+      "source": "commonMain/androidx/compose/material3/tokens/DockedToolbarTokens.kt:25",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "DockedToolbar.ContainerHeight",
+      "value": 64,
+      "unit": "dp",
+      "expression": "64.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/DockedToolbarTokens.kt:28",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "DockedToolbar.ContainerLeadingSpace",
+      "value": 16,
+      "unit": "dp",
+      "expression": "16.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/DockedToolbarTokens.kt:31",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "DockedToolbar.ContainerMaxSpacing",
+      "value": 32,
+      "unit": "dp",
+      "expression": "32.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/DockedToolbarTokens.kt:34",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "DockedToolbar.ContainerMinSpacing",
+      "value": 4,
+      "unit": "dp",
+      "expression": "4.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/DockedToolbarTokens.kt:37",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "DockedToolbar.ContainerShape",
+      "value": "CornerNone",
+      "unit": "shape-role",
+      "expression": "ShapeKeyTokens.CornerNone",
+      "source": "commonMain/androidx/compose/material3/tokens/DockedToolbarTokens.kt:40",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "DockedToolbar.ContainerTrailingSpace",
+      "value": 16,
+      "unit": "dp",
+      "expression": "16.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/DockedToolbarTokens.kt:43",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    }
+  ]
+}

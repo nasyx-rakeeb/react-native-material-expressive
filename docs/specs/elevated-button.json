@@ -1,0 +1,353 @@
+{
+  "generatedBy": "tools/extract-tokens",
+  "artifact": "material3:1.5.0",
+  "jarSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6",
+  "tokenFile": "commonMain/androidx/compose/material3/tokens/ElevatedButtonTokens.kt",
+  "declaration": "ElevatedButtonTokens",
+  "declarationKind": "object",
+  "tokenVersion": "v0_11_0",
+  "tokens": [
+    {
+      "token": "ElevatedButton.ContainerColor",
+      "value": "SurfaceContainerLow",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.SurfaceContainerLow",
+      "source": "commonMain/androidx/compose/material3/tokens/ElevatedButtonTokens.kt:22",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ElevatedButton.ContainerElevation",
+      "value": 1,
+      "unit": "dp",
+      "expression": "ElevationTokens.Level1",
+      "source": "commonMain/androidx/compose/material3/tokens/ElevatedButtonTokens.kt:25",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ElevatedButton.DisabledContainerColor",
+      "value": "OnSurface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurface",
+      "source": "commonMain/androidx/compose/material3/tokens/ElevatedButtonTokens.kt:28",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ElevatedButton.DisabledContainerElevation",
+      "value": 0,
+      "unit": "dp",
+      "expression": "ElevationTokens.Level0",
+      "source": "commonMain/androidx/compose/material3/tokens/ElevatedButtonTokens.kt:31",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ElevatedButton.DisabledContainerOpacity",
+      "value": 0.1,
+      "unit": "number",
+      "expression": "0.1f",
+      "source": "commonMain/androidx/compose/material3/tokens/ElevatedButtonTokens.kt:34",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ElevatedButton.DisabledIconColor",
+      "value": "OnSurfaceVariant",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurfaceVariant",
+      "source": "commonMain/androidx/compose/material3/tokens/ElevatedButtonTokens.kt:35",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ElevatedButton.DisabledIconOpacity",
+      "value": 0.38,
+      "unit": "number",
+      "expression": "0.38f",
+      "source": "commonMain/androidx/compose/material3/tokens/ElevatedButtonTokens.kt:38",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ElevatedButton.DisabledLabelTextColor",
+      "value": "OnSurfaceVariant",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurfaceVariant",
+      "source": "commonMain/androidx/compose/material3/tokens/ElevatedButtonTokens.kt:39",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ElevatedButton.DisabledLabelTextOpacity",
+      "value": 0.38,
+      "unit": "number",
+      "expression": "0.38f",
+      "source": "commonMain/androidx/compose/material3/tokens/ElevatedButtonTokens.kt:42",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ElevatedButton.FocusedContainerElevation",
+      "value": 1,
+      "unit": "dp",
+      "expression": "ElevationTokens.Level1",
+      "source": "commonMain/androidx/compose/material3/tokens/ElevatedButtonTokens.kt:43",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ElevatedButton.FocusedIconColor",
+      "value": "Primary",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Primary",
+      "source": "commonMain/androidx/compose/material3/tokens/ElevatedButtonTokens.kt:46",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ElevatedButton.FocusedLabelTextColor",
+      "value": "Primary",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Primary",
+      "source": "commonMain/androidx/compose/material3/tokens/ElevatedButtonTokens.kt:49",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ElevatedButton.HoveredContainerElevation",
+      "value": 3,
+      "unit": "dp",
+      "expression": "ElevationTokens.Level2",
+      "source": "commonMain/androidx/compose/material3/tokens/ElevatedButtonTokens.kt:52",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ElevatedButton.HoveredIconColor",
+      "value": "Primary",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Primary",
+      "source": "commonMain/androidx/compose/material3/tokens/ElevatedButtonTokens.kt:55",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ElevatedButton.HoveredLabelTextColor",
+      "value": "Primary",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Primary",
+      "source": "commonMain/androidx/compose/material3/tokens/ElevatedButtonTokens.kt:58",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ElevatedButton.IconColor",
+      "value": "Primary",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Primary",
+      "source": "commonMain/androidx/compose/material3/tokens/ElevatedButtonTokens.kt:61",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ElevatedButton.LabelTextColor",
+      "value": "Primary",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Primary",
+      "source": "commonMain/androidx/compose/material3/tokens/ElevatedButtonTokens.kt:64",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ElevatedButton.LabelTextSelectedColor",
+      "value": "OnPrimary",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnPrimary",
+      "source": "commonMain/androidx/compose/material3/tokens/ElevatedButtonTokens.kt:67",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ElevatedButton.LabelTextUnselectedColor",
+      "value": "Primary",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Primary",
+      "source": "commonMain/androidx/compose/material3/tokens/ElevatedButtonTokens.kt:70",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ElevatedButton.PressedContainerElevation",
+      "value": 1,
+      "unit": "dp",
+      "expression": "ElevationTokens.Level1",
+      "source": "commonMain/androidx/compose/material3/tokens/ElevatedButtonTokens.kt:73",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ElevatedButton.PressedIconColor",
+      "value": "Primary",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Primary",
+      "source": "commonMain/androidx/compose/material3/tokens/ElevatedButtonTokens.kt:76",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ElevatedButton.PressedLabelTextColor",
+      "value": "Primary",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Primary",
+      "source": "commonMain/androidx/compose/material3/tokens/ElevatedButtonTokens.kt:79",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ElevatedButton.SelectedContainerColor",
+      "value": "Primary",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Primary",
+      "source": "commonMain/androidx/compose/material3/tokens/ElevatedButtonTokens.kt:82",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ElevatedButton.SelectedFocusedIconColor",
+      "value": "OnPrimary",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnPrimary",
+      "source": "commonMain/androidx/compose/material3/tokens/ElevatedButtonTokens.kt:85",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ElevatedButton.SelectedFocusedLabelTextColor",
+      "value": "OnPrimary",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnPrimary",
+      "source": "commonMain/androidx/compose/material3/tokens/ElevatedButtonTokens.kt:88",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ElevatedButton.SelectedHoveredIconColor",
+      "value": "OnPrimary",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnPrimary",
+      "source": "commonMain/androidx/compose/material3/tokens/ElevatedButtonTokens.kt:91",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ElevatedButton.SelectedHoveredLabelTextColor",
+      "value": "OnPrimary",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnPrimary",
+      "source": "commonMain/androidx/compose/material3/tokens/ElevatedButtonTokens.kt:94",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ElevatedButton.SelectedIconColor",
+      "value": "OnPrimary",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnPrimary",
+      "source": "commonMain/androidx/compose/material3/tokens/ElevatedButtonTokens.kt:97",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ElevatedButton.SelectedPressedIconColor",
+      "value": "OnPrimary",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnPrimary",
+      "source": "commonMain/androidx/compose/material3/tokens/ElevatedButtonTokens.kt:100",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ElevatedButton.SelectedPressedLabelTextColor",
+      "value": "OnPrimary",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnPrimary",
+      "source": "commonMain/androidx/compose/material3/tokens/ElevatedButtonTokens.kt:103",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ElevatedButton.UnselectedContainerColor",
+      "value": "SurfaceContainerLow",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.SurfaceContainerLow",
+      "source": "commonMain/androidx/compose/material3/tokens/ElevatedButtonTokens.kt:106",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ElevatedButton.UnselectedFocusedIconColor",
+      "value": "Primary",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Primary",
+      "source": "commonMain/androidx/compose/material3/tokens/ElevatedButtonTokens.kt:109",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ElevatedButton.UnselectedFocusedLabelTextColor",
+      "value": "Primary",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Primary",
+      "source": "commonMain/androidx/compose/material3/tokens/ElevatedButtonTokens.kt:112",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ElevatedButton.UnselectedHoveredIconColor",
+      "value": "Primary",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Primary",
+      "source": "commonMain/androidx/compose/material3/tokens/ElevatedButtonTokens.kt:115",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ElevatedButton.UnselectedHoveredLabelTextColor",
+      "value": "Primary",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Primary",
+      "source": "commonMain/androidx/compose/material3/tokens/ElevatedButtonTokens.kt:118",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ElevatedButton.UnselectedIconColor",
+      "value": "OnPrimary",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnPrimary",
+      "source": "commonMain/androidx/compose/material3/tokens/ElevatedButtonTokens.kt:121",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ElevatedButton.UnselectedPressedIconColor",
+      "value": "Primary",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Primary",
+      "source": "commonMain/androidx/compose/material3/tokens/ElevatedButtonTokens.kt:124",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ElevatedButton.UnselectedPressedLabelTextColor",
+      "value": "Primary",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Primary",
+      "source": "commonMain/androidx/compose/material3/tokens/ElevatedButtonTokens.kt:127",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    }
+  ]
+}

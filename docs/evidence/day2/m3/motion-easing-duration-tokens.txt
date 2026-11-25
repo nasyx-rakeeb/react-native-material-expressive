@@ -1,0 +1,244 @@
+Skip to main content
+menu
+material_design
+Material Design 3
+search
+Easing and duration
+Easing and duration create responsive and expressive motion
+Applying easing and duration
+Tokens & specs
+On this page
+Tokens
+Easing
+Duration
+star
+Note:In the expressive update, components and motion now use the motion physics system, which uses springs. Products should migrate to the new system. The easing and duration system is still used for transitions and can be used by teams that haven't yet updated to GM3 Expressive, but is no longer maintained.
+Tokens
+
+Motion easing and duration can be implemented using easing and duration tokens. Learn more about design tokens
+
+Motion
+arrow_drop_down
+search
+collapse_all
+Standard, Android
+arrow_drop_down
+grid_3x3
+Custom composite with 2 properties
+grid_3x3
+Custom composite with 2 properties
+grid_3x3
+Custom composite with 2 properties
+grid_3x3
+Custom composite with 2 properties
+grid_3x3
+Custom composite with 2 properties
+grid_3x3
+Custom composite with 2 properties
+folder_open
+Spring
+keyboard_arrow_down
+0.9
+Motion spring fast spatial damping
+1400
+Motion spring fast spatial stiffness
+1
+Motion spring fast effects damping
+3800
+Motion spring fast effects stiffness
+0.9
+Motion spring default spatial damping
+700
+Motion spring default spatial stiffness
+1
+Motion spring default effects damping
+1600
+Motion spring default effects stiffness
+0.9
+Motion spring slow spatial damping
+300
+Motion spring slow spatial stiffness
+1
+Motion spring slow effects damping
+800
+Motion spring slow effects stiffness
+folder_open
+Easing
+keyboard_arrow_down
+Emphasized
+Emphasized accelerate
+Emphasized decelerate
+Standard
+Standard accelerate
+Standard decelerate
+Legacy
+Legacy accelerate
+Legacy decelerate
+Linear
+folder_open
+Duration
+keyboard_arrow_down
+Short 1
+Short 2
+Short 3
+Short 4
+Medium 1
+Medium 2
+Medium 3
+Medium 4
+Long 1
+Long 2
+Long 3
+Long 4
+Extra long 1
+Extra long 2
+Extra long 3
+Extra long 4
+folder_open
+Style
+keyboard_arrow_down
+Motion path
+Easing
+Emphasized easing set
+
+This set is the most common because it captures the expressive style of M3.
+
+pause
+
+Emphasized
+
+pause
+
+Emphasized decelerate
+
+pause
+
+Emphasized accelerate
+
+Info/Platform	Emphasized	Emphasized decelerate
+	Emphasized accelerate
+
+Token	md.sys.motion.easing.emphasized	md.sys.motion.easing.emphasized.decelerate	md.sys.motion.easing.emphasized.accelerate
+Android	pathInterpolator(M 0,0 C 0.05, 0, 0.133333, 0.06, 0.166666, 0.4 C 0.208333, 0.82, 0.25, 1, 1, 1)	PathInterpolator(0.05f, 0.7f, 0.1f, 1f)	PathInterpolator(0.3f, 0f, 0.8f, 0.15f)
+CSS	N/A (Use Standard as a fallback)	cubic-bezier(0.05, 0.7, 0.1, 1.0)	cubic-bezier(0.3, 0.0, 0.8, 0.15)
+Flutter	easeInOutCubicEmphasized	Cubic(0.05, 0.7, 0.1, 1.0);	Cubic(0.3, 0.0, 0.8, 0.15);
+iOS	N/A (Use Standard as a fallback)	ControlPoints:0.05f:0.7f:0.1f:1.0f];	ControlPoints:0.3f:0.0f:0.8f:0.15f];
+After Effects	Use After Effects Easing Panel (download)
+Standard easing set
+
+This set is used for simple, small, or utility-focused transitions.
+
+pause
+
+Standard
+
+pause
+
+Standard decelerate
+
+pause
+
+Standard accelerate
+
+
+	Standard	Standard decelerate	Standard accelerate
+Token	md.sys.motion.easing.standard	md.sys.motion.easing.standard.decelerate	md.sys.motion.easing.standard.accelerate
+Android	PathInterpolator(0.2f, 0f, 0f, 1f)	PathInterpolator(0f, 0f, 0f, 1f)	PathInterpolator(0.3f, 0f, 1f, 1f)
+CSS	cubic-bezier(0.2, 0.0, 0, 1.0);	cubic-bezier(0, 0, 0, 1);	cubic-bezier(0.3, 0, 1, 1);
+Flutter	Cubic(0.2, 0.0, 0, 1.0);	Cubic(0, 0, 0, 1);	Cubic(0.3, 0, 1, 1);
+iOS	ControlPoints:0.2f:0.0f:0.0f:1.0f	ControlPoints:0.0f:0.0f:0.0f:1.0f	ControlPoints:0.3f:0.0f:1.0f:1.0f];
+After Effects	Use After Effects Easing Panel (download)
+Duration
+Short durations
+
+These are used for small utility-focused transitions.
+
+Token	Value
+md.sys.motion.duration.short1	50ms
+md.sys.motion.duration.short2	100ms
+md.sys.motion.duration.short3	150ms
+md.sys.motion.duration.short4	200ms
+pause
+
+Selection controls have a short duration of 200ms with Standard easing
+
+Medium durations
+
+These are used for transitions that traverse a medium area of the screen.
+
+Token	Value
+md.sys.motion.duration.medium1	250ms
+md.sys.motion.duration.medium2	300ms
+md.sys.motion.duration.medium3	350ms
+md.sys.motion.duration.medium4	400ms
+pause
+
+A FAB expanding into a Sheet uses a 400ms duration with Emphasized easing
+
+Long durations
+
+These durations are often paired with Emphasized easing. They're used for large expressive transitions.
+
+Token	Value
+md.sys.motion.duration.long1	450ms
+md.sys.motion.duration.long2	500ms
+md.sys.motion.duration.long3	550ms
+md.sys.motion.duration.long4	600ms
+pause
+
+A Card expanding to full screen uses a long 500ms duration with Emphasized easing
+
+Extra long durations
+
+Though rare, some transitions use durations above 600ms. These are usually used for ambient transitions that don't involve user input.
+
+Token	Value
+md.sys.motion.duration.extra-long1	700ms
+md.sys.motion.duration.extra-long2	800ms
+md.sys.motion.duration.extra-long3	900ms
+md.sys.motion.duration.extra-long4	1000ms
+pause
+
+An ambient carousel auto-advance transition uses an extra long 1000ms duration with emphasized easing
+
+arrow_left_alt
+Previous
+Easing and duration: Applying easing and duration
+Up next
+arrow_right_alt
+Transitions: Transition patterns
+vertical_align_top
+material_design
+
+Material Design is an adaptable system of guidelines, components, and tools that support the best practices of user interface design. Backed by open-source code, Material Design streamlines collaboration between designers and developers, and helps teams quickly build beautiful products.
+
+Social
+
+GitHub
+X
+YouTube
+Blog RSS
+
+Libraries
+
+Android
+Compose
+Flutter
+Web
+
+More Google sites
+
+Google Design
+
+Archived versions
+
+Material Design 1
+Material Design 2
+Privacy Policy
+Terms of Service
+Join research studies
+Feedback
+
+This site uses cookies from Google to deliver its services and to analyze traffic. Learn more
+
+Okay, got it

@@ -18,3 +18,4 @@ allowBuilds:
 
 minimumReleaseAgeExclude:
   - '@types/react@19.3.2'
+  - '@types/node@26.6.10'

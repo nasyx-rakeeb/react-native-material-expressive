@@ -1,0 +1,29 @@
+{
+  "generatedBy": "tools/extract-tokens",
+  "artifact": "material3:1.5.0",
+  "jarSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6",
+  "tokenFile": "commonMain/androidx/compose/material3/tokens/DividerTokens.kt",
+  "declaration": "DividerTokens",
+  "declarationKind": "object",
+  "tokenVersion": "v0_117",
+  "tokens": [
+    {
+      "token": "Divider.Color",
+      "value": "OutlineVariant",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OutlineVariant",
+      "source": "commonMain/androidx/compose/material3/tokens/DividerTokens.kt:24",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Divider.Thickness",
+      "value": 1,
+      "unit": "dp",
+      "expression": "1.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/DividerTokens.kt:27",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    }
+  ]
+}

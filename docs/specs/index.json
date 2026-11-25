@@ -1,0 +1,1014 @@
+{
+  "generatedBy": "tools/extract-tokens",
+  "artifact": "material3:1.5.0",
+  "jarSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6",
+  "sources": [
+    {
+      "artifact": "androidx.compose.material3:material3:1.5.0",
+      "sha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "artifact": "androidx.compose.material3:material3-ripple:1.5.0",
+      "sha256": "1f57e1b16ca4558977d3b4b94beefc8693dd1cb49634cf90dc8aa5ef74704efd"
+    },
+    {
+      "artifact": "androidx.compose.material3:material3-window-size-class:1.5.0",
+      "sha256": "2bca45d9e3ec62e52e53a7a580838ab89a46fa1ae0750311a5604ffa00e4c521"
+    },
+    {
+      "artifact": "androidx.compose.material3:material3-adaptive-navigation-suite:1.5.0",
+      "sha256": "fdbc86bff0c7f9f4ca8fdf9097515297af39200f65a82129d269f4a4fe11de64"
+    },
+    {
+      "artifact": "androidx.compose.material3.adaptive:adaptive:1.3.0",
+      "sha256": "557c3abf86a3b2659aafbb0db8441295aae6a1f90e701033a218003ba545541c"
+    },
+    {
+      "artifact": "androidx.compose.material3.adaptive:adaptive-layout:1.3.0",
+      "sha256": "bd87db4bdbf51d7df02872b0c7e95ae82a3b7c61b7f2e021c407d30a899c22ca"
+    },
+    {
+      "artifact": "androidx.compose.material3.adaptive:adaptive-navigation:1.3.0",
+      "sha256": "c64c0ddec14fed5daae373c535c8e81e1f0ef1922aa258b624828448de18346d"
+    },
+    {
+      "artifact": "androidx.graphics:graphics-shapes:1.1.0",
+      "sha256": "50586aa6c7b3a542a51b2abaf659f7a6c33d8c5d637d8f1a57aaf518dcb74f3d"
+    }
+  ],
+  "counts": {
+    "tokenFiles": 120,
+    "tokens": 2671,
+    "resolved": 2641,
+    "raw": 0,
+    "composite": 30
+  },
+  "tokenFiles": [
+    {
+      "file": "AppBarLargeFlexible",
+      "declaration": "AppBarLargeFlexibleTokens",
+      "kind": "component",
+      "spec": "app-bar-large-flexible.json",
+      "version": "14_0_0",
+      "tokens": 4
+    },
+    {
+      "file": "AppBarLarge",
+      "declaration": "AppBarLargeTokens",
+      "kind": "component",
+      "spec": "app-bar-large.json",
+      "version": "14_0_0",
+      "tokens": 2
+    },
+    {
+      "file": "AppBarMediumFlexible",
+      "declaration": "AppBarMediumFlexibleTokens",
+      "kind": "component",
+      "spec": "app-bar-medium-flexible.json",
+      "version": "14_0_0",
+      "tokens": 4
+    },
+    {
+      "file": "AppBarMedium",
+      "declaration": "AppBarMediumTokens",
+      "kind": "component",
+      "spec": "app-bar-medium.json",
+      "version": "14_0_0",
+      "tokens": 2
+    },
+    {
+      "file": "AppBarSmall",
+      "declaration": "AppBarSmallTokens",
+      "kind": "component",
+      "spec": "app-bar-small.json",
+      "version": "14_0_0",
+      "tokens": 3
+    },
+    {
+      "file": "AppBar",
+      "declaration": "AppBarTokens",
+      "kind": "component",
+      "spec": "app-bar.json",
+      "version": "14_0_0",
+      "tokens": 14
+    },
+    {
+      "file": "AssistChip",
+      "declaration": "AssistChipTokens",
+      "kind": "component",
+      "spec": "assist-chip.json",
+      "version": "7_0_1",
+      "tokens": 34
+    },
+    {
+      "file": "Badge",
+      "declaration": "BadgeTokens",
+      "kind": "component",
+      "spec": "badge.json",
+      "version": "v0_103",
+      "tokens": 8
+    },
+    {
+      "file": "BaselineButton",
+      "declaration": "BaselineButtonTokens",
+      "kind": "component",
+      "spec": "baseline-button.json",
+      "version": "v0_11_0",
+      "tokens": 48
+    },
+    {
+      "file": "BottomAppBar",
+      "declaration": "BottomAppBarTokens",
+      "kind": "component",
+      "spec": "bottom-app-bar.json",
+      "version": "v0_210",
+      "tokens": 4
+    },
+    {
+      "file": "ButtonGroupSmall",
+      "declaration": "ButtonGroupSmallTokens",
+      "kind": "component",
+      "spec": "button-group-small.json",
+      "version": "v0_11_0",
+      "tokens": 2
+    },
+    {
+      "file": "ButtonLarge",
+      "declaration": "ButtonLargeTokens",
+      "kind": "component",
+      "spec": "button-large.json",
+      "version": "v0_11_0",
+      "tokens": 11
+    },
+    {
+      "file": "ButtonMedium",
+      "declaration": "ButtonMediumTokens",
+      "kind": "component",
+      "spec": "button-medium.json",
+      "version": "v0_11_0",
+      "tokens": 11
+    },
+    {
+      "file": "ButtonSmall",
+      "declaration": "ButtonSmallTokens",
+      "kind": "component",
+      "spec": "button-small.json",
+      "version": "v0_11_0",
+      "tokens": 11
+    },
+    {
+      "file": "ButtonXLarge",
+      "declaration": "ButtonXLargeTokens",
+      "kind": "component",
+      "spec": "button-x-large.json",
+      "version": "v0_11_0",
+      "tokens": 11
+    },
+    {
+      "file": "ButtonXSmall",
+      "declaration": "ButtonXSmallTokens",
+      "kind": "component",
+      "spec": "button-x-small.json",
+      "version": "v0_11_0",
+      "tokens": 11
+    },
+    {
+      "file": "Checkbox",
+      "declaration": "CheckboxTokens",
+      "kind": "component",
+      "spec": "checkbox.json",
+      "version": "14_1_0",
+      "tokens": 45
+    },
+    {
+      "file": "Chips",
+      "declaration": "ChipsTokens",
+      "kind": "component",
+      "spec": "chips.json",
+      "version": "37.2.1",
+      "tokens": 29
+    },
+    {
+      "file": "CircularProgressIndicator",
+      "declaration": "CircularProgressIndicatorTokens",
+      "kind": "component",
+      "spec": "circular-progress-indicator.json",
+      "version": "v0_7_0",
+      "tokens": 7
+    },
+    {
+      "file": "ColorDark",
+      "declaration": "ColorDarkTokens",
+      "kind": "global",
+      "spec": "tokens.json",
+      "version": "v0_210",
+      "tokens": 48
+    },
+    {
+      "file": "ColorLight",
+      "declaration": "ColorLightTokens",
+      "kind": "global",
+      "spec": "tokens.json",
+      "version": "v0_210",
+      "tokens": 48
+    },
+    {
+      "file": "ColorSchemeKey",
+      "declaration": "ColorSchemeKeyTokens",
+      "kind": "global",
+      "spec": "tokens.json",
+      "version": "v0_162",
+      "tokens": 48
+    },
+    {
+      "file": "ConnectedButtonGroupSmall",
+      "declaration": "ConnectedButtonGroupSmallTokens",
+      "kind": "component",
+      "spec": "connected-button-group-small.json",
+      "version": "14_1_0",
+      "tokens": 6
+    },
+    {
+      "file": "DateInputModal",
+      "declaration": "DateInputModalTokens",
+      "kind": "component",
+      "spec": "date-input-modal.json",
+      "version": "v0_161",
+      "tokens": 12
+    },
+    {
+      "file": "DatePickerModal",
+      "declaration": "DatePickerModalTokens",
+      "kind": "component",
+      "spec": "date-picker-modal.json",
+      "version": "v0_210",
+      "tokens": 45
+    },
+    {
+      "file": "Dialog",
+      "declaration": "DialogTokens",
+      "kind": "component",
+      "spec": "dialog.json",
+      "version": "v0_210",
+      "tokens": 14
+    },
+    {
+      "file": "Divider",
+      "declaration": "DividerTokens",
+      "kind": "component",
+      "spec": "divider.json",
+      "version": "v0_117",
+      "tokens": 2
+    },
+    {
+      "file": "DockedToolbar",
+      "declaration": "DockedToolbarTokens",
+      "kind": "component",
+      "spec": "docked-toolbar.json",
+      "version": "14_0_0",
+      "tokens": 7
+    },
+    {
+      "file": "DragHandle",
+      "declaration": "DragHandleTokens",
+      "kind": "component",
+      "spec": "drag-handle.json",
+      "version": "7_0_1",
+      "tokens": 16
+    },
+    {
+      "file": "ElevatedButton",
+      "declaration": "ElevatedButtonTokens",
+      "kind": "component",
+      "spec": "elevated-button.json",
+      "version": "v0_11_0",
+      "tokens": 38
+    },
+    {
+      "file": "ElevatedCard",
+      "declaration": "ElevatedCardTokens",
+      "kind": "component",
+      "spec": "elevated-card.json",
+      "version": "v0_210",
+      "tokens": 13
+    },
+    {
+      "file": "Elevation",
+      "declaration": "ElevationTokens",
+      "kind": "global",
+      "spec": "tokens.json",
+      "version": "v0_103",
+      "tokens": 6
+    },
+    {
+      "file": "ExpandedList",
+      "declaration": "ExpandedListTokens",
+      "kind": "component",
+      "spec": "expanded-list.json",
+      "version": "29.0.0",
+      "tokens": 8
+    },
+    {
+      "file": "ExpressiveMotion",
+      "declaration": "ExpressiveMotionTokens",
+      "kind": "global",
+      "spec": "tokens.json",
+      "version": "v0_14_0",
+      "tokens": 12
+    },
+    {
+      "file": "ExtendedFabLarge",
+      "declaration": "ExtendedFabLargeTokens",
+      "kind": "component",
+      "spec": "extended-fab-large.json",
+      "version": "v0_14_0",
+      "tokens": 6
+    },
+    {
+      "file": "ExtendedFabMedium",
+      "declaration": "ExtendedFabMediumTokens",
+      "kind": "component",
+      "spec": "extended-fab-medium.json",
+      "version": "v0_14_0",
+      "tokens": 5
+    },
+    {
+      "file": "ExtendedFabPrimary",
+      "declaration": "ExtendedFabPrimaryTokens",
+      "kind": "component",
+      "spec": "extended-fab-primary.json",
+      "version": "v0_103",
+      "tokens": 21
+    },
+    {
+      "file": "ExtendedFabSmall",
+      "declaration": "ExtendedFabSmallTokens",
+      "kind": "component",
+      "spec": "extended-fab-small.json",
+      "version": "v0_14_0",
+      "tokens": 6
+    },
+    {
+      "file": "FabBaseline",
+      "declaration": "FabBaselineTokens",
+      "kind": "component",
+      "spec": "fab-baseline.json",
+      "version": "v0_14_0",
+      "tokens": 4
+    },
+    {
+      "file": "FabLarge",
+      "declaration": "FabLargeTokens",
+      "kind": "component",
+      "spec": "fab-large.json",
+      "version": "v0_14_0",
+      "tokens": 4
+    },
+    {
+      "file": "FabMedium",
+      "declaration": "FabMediumTokens",
+      "kind": "component",
+      "spec": "fab-medium.json",
+      "version": "v0_14_0",
+      "tokens": 3
+    },
+    {
+      "file": "FabMenuBaseline",
+      "declaration": "FabMenuBaselineTokens",
+      "kind": "component",
+      "spec": "fab-menu-baseline.json",
+      "version": "v0_14_0",
+      "tokens": 14
+    },
+    {
+      "file": "FabPrimaryContainer",
+      "declaration": "FabPrimaryContainerTokens",
+      "kind": "component",
+      "spec": "fab-primary-container.json",
+      "version": "v0_14_0",
+      "tokens": 9
+    },
+    {
+      "file": "FabSecondaryContainer",
+      "declaration": "FabSecondaryContainerTokens",
+      "kind": "component",
+      "spec": "fab-secondary-container.json",
+      "version": "v0_14_0",
+      "tokens": 9
+    },
+    {
+      "file": "FabSmall",
+      "declaration": "FabSmallTokens",
+      "kind": "component",
+      "spec": "fab-small.json",
+      "version": "v0_14_0",
+      "tokens": 4
+    },
+    {
+      "file": "FilledAutocomplete",
+      "declaration": "FilledAutocompleteTokens",
+      "kind": "component",
+      "spec": "filled-autocomplete.json",
+      "version": "v0_210",
+      "tokens": 66
+    },
+    {
+      "file": "FilledButton",
+      "declaration": "FilledButtonTokens",
+      "kind": "component",
+      "spec": "filled-button.json",
+      "version": "v0_11_0",
+      "tokens": 38
+    },
+    {
+      "file": "FilledCard",
+      "declaration": "FilledCardTokens",
+      "kind": "component",
+      "spec": "filled-card.json",
+      "version": "v0_210",
+      "tokens": 13
+    },
+    {
+      "file": "FilledIconButton",
+      "declaration": "FilledIconButtonTokens",
+      "kind": "component",
+      "spec": "filled-icon-button.json",
+      "version": "14_1_0",
+      "tokens": 19
+    },
+    {
+      "file": "FilledTextField",
+      "declaration": "FilledTextFieldTokens",
+      "kind": "component",
+      "spec": "filled-text-field.json",
+      "version": "v0_210",
+      "tokens": 66
+    },
+    {
+      "file": "FilledTonalButton",
+      "declaration": "FilledTonalButtonTokens",
+      "kind": "component",
+      "spec": "filled-tonal-button.json",
+      "version": "v0_103",
+      "tokens": 24
+    },
+    {
+      "file": "FilledTonalIconButton",
+      "declaration": "FilledTonalIconButtonTokens",
+      "kind": "component",
+      "spec": "filled-tonal-icon-button.json",
+      "version": "14_1_0",
+      "tokens": 19
+    },
+    {
+      "file": "FilterChip",
+      "declaration": "FilterChipTokens",
+      "kind": "component",
+      "spec": "filter-chip.json",
+      "version": "7_0_1",
+      "tokens": 67
+    },
+    {
+      "file": "FloatingToolbar",
+      "declaration": "FloatingToolbarTokens",
+      "kind": "component",
+      "spec": "floating-toolbar.json",
+      "version": "12_0_0",
+      "tokens": 13
+    },
+    {
+      "file": "StandardIconButton",
+      "declaration": "StandardIconButtonTokens",
+      "kind": "component",
+      "spec": "standard-icon-button.json",
+      "version": "14_1_0",
+      "tokens": 14
+    },
+    {
+      "file": "InputChip",
+      "declaration": "InputChipTokens",
+      "kind": "component",
+      "spec": "input-chip.json",
+      "version": "7_0_1",
+      "tokens": 56
+    },
+    {
+      "file": "LargeIconButton",
+      "declaration": "LargeIconButtonTokens",
+      "kind": "component",
+      "spec": "large-icon-button.json",
+      "version": "v0_11_0",
+      "tokens": 14
+    },
+    {
+      "file": "LinearProgressIndicator",
+      "declaration": "LinearProgressIndicatorTokens",
+      "kind": "component",
+      "spec": "linear-progress-indicator.json",
+      "version": "v0_7_0",
+      "tokens": 10
+    },
+    {
+      "file": "List",
+      "declaration": "ListTokens",
+      "kind": "component",
+      "spec": "list.json",
+      "version": "29.0.0",
+      "tokens": 120
+    },
+    {
+      "file": "LoadingIndicator",
+      "declaration": "LoadingIndicatorTokens",
+      "kind": "component",
+      "spec": "loading-indicator.json",
+      "version": "v0_7_0",
+      "tokens": 7
+    },
+    {
+      "file": "MediumIconButton",
+      "declaration": "MediumIconButtonTokens",
+      "kind": "component",
+      "spec": "medium-icon-button.json",
+      "version": "14_1_0",
+      "tokens": 14
+    },
+    {
+      "file": "Menu",
+      "declaration": "MenuTokens",
+      "kind": "component",
+      "spec": "menu.json",
+      "version": "v0_210",
+      "tokens": 8
+    },
+    {
+      "file": "MotionSchemeKey",
+      "declaration": "MotionSchemeKeyTokens",
+      "kind": "global",
+      "spec": "tokens.json",
+      "version": null,
+      "tokens": 6
+    },
+    {
+      "file": "Motion",
+      "declaration": "MotionTokens",
+      "kind": "global",
+      "spec": "tokens.json",
+      "version": "v0_103",
+      "tokens": 26
+    },
+    {
+      "file": "NavigationBarHorizontalItem",
+      "declaration": "NavigationBarHorizontalItemTokens",
+      "kind": "component",
+      "spec": "navigation-bar-horizontal-item.json",
+      "version": "v0_11_0",
+      "tokens": 4
+    },
+    {
+      "file": "NavigationBar",
+      "declaration": "NavigationBarTokens",
+      "kind": "component",
+      "spec": "navigation-bar.json",
+      "version": "v0_11_0",
+      "tokens": 14
+    },
+    {
+      "file": "NavigationBarVerticalItem",
+      "declaration": "NavigationBarVerticalItemTokens",
+      "kind": "component",
+      "spec": "navigation-bar-vertical-item.json",
+      "version": "v0_11_0",
+      "tokens": 4
+    },
+    {
+      "file": "NavigationDrawer",
+      "declaration": "NavigationDrawerTokens",
+      "kind": "component",
+      "spec": "navigation-drawer.json",
+      "version": "v0_210",
+      "tokens": 35
+    },
+    {
+      "file": "NavigationRailBaselineItem",
+      "declaration": "NavigationRailBaselineItemTokens",
+      "kind": "component",
+      "spec": "navigation-rail-baseline-item.json",
+      "version": "v0_11_0",
+      "tokens": 9
+    },
+    {
+      "file": "NavigationRailCollapsed",
+      "declaration": "NavigationRailCollapsedTokens",
+      "kind": "component",
+      "spec": "navigation-rail-collapsed.json",
+      "version": "v0_11_0",
+      "tokens": 7
+    },
+    {
+      "file": "NavigationRailColor",
+      "declaration": "NavigationRailColorTokens",
+      "kind": "component",
+      "spec": "navigation-rail-color.json",
+      "version": "v0_11_0",
+      "tokens": 11
+    },
+    {
+      "file": "NavigationRailExpanded",
+      "declaration": "NavigationRailExpandedTokens",
+      "kind": "component",
+      "spec": "navigation-rail-expanded.json",
+      "version": "v0_11_0",
+      "tokens": 8
+    },
+    {
+      "file": "NavigationRailHorizontalItem",
+      "declaration": "NavigationRailHorizontalItemTokens",
+      "kind": "component",
+      "spec": "navigation-rail-horizontal-item.json",
+      "version": "v0_11_0",
+      "tokens": 6
+    },
+    {
+      "file": "NavigationRailVerticalItem",
+      "declaration": "NavigationRailVerticalItemTokens",
+      "kind": "component",
+      "spec": "navigation-rail-vertical-item.json",
+      "version": "v0_11_0",
+      "tokens": 6
+    },
+    {
+      "file": "OutlinedAutocomplete",
+      "declaration": "OutlinedAutocompleteTokens",
+      "kind": "component",
+      "spec": "outlined-autocomplete.json",
+      "version": "v0_210",
+      "tokens": 64
+    },
+    {
+      "file": "OutlinedButton",
+      "declaration": "OutlinedButtonTokens",
+      "kind": "component",
+      "spec": "outlined-button.json",
+      "version": "v0_11_0",
+      "tokens": 40
+    },
+    {
+      "file": "OutlinedCard",
+      "declaration": "OutlinedCardTokens",
+      "kind": "component",
+      "spec": "outlined-card.json",
+      "version": "v0_192",
+      "tokens": 18
+    },
+    {
+      "file": "OutlinedIconButton",
+      "declaration": "OutlinedIconButtonTokens",
+      "kind": "component",
+      "spec": "outlined-icon-button.json",
+      "version": "14_1_0",
+      "tokens": 21
+    },
+    {
+      "file": "OutlinedSegmentedButton",
+      "declaration": "OutlinedSegmentedButtonTokens",
+      "kind": "component",
+      "spec": "outlined-segmented-button.json",
+      "version": "v0_162",
+      "tokens": 29
+    },
+    {
+      "file": "OutlinedTextField",
+      "declaration": "OutlinedTextFieldTokens",
+      "kind": "component",
+      "spec": "outlined-text-field.json",
+      "version": "v0_103",
+      "tokens": 64
+    },
+    {
+      "file": "Palette",
+      "declaration": "PaletteTokens",
+      "kind": "global",
+      "spec": "tokens.json",
+      "version": "v0_210",
+      "tokens": 91
+    },
+    {
+      "file": "PlainTooltip",
+      "declaration": "PlainTooltipTokens",
+      "kind": "component",
+      "spec": "plain-tooltip.json",
+      "version": null,
+      "tokens": 4
+    },
+    {
+      "file": "PrimaryNavigationTab",
+      "declaration": "PrimaryNavigationTabTokens",
+      "kind": "component",
+      "spec": "primary-navigation-tab.json",
+      "version": "v0_162",
+      "tokens": 26
+    },
+    {
+      "file": "ProgressIndicator",
+      "declaration": "ProgressIndicatorTokens",
+      "kind": "component",
+      "spec": "progress-indicator.json",
+      "version": "v0_4_0",
+      "tokens": 6
+    },
+    {
+      "file": "RadioButton",
+      "declaration": "RadioButtonTokens",
+      "kind": "component",
+      "spec": "radio-button.json",
+      "version": "v0_117",
+      "tokens": 14
+    },
+    {
+      "file": "ReorderList",
+      "declaration": "ReorderListTokens",
+      "kind": "component",
+      "spec": "reorder-list.json",
+      "version": "29.0.0",
+      "tokens": 9
+    },
+    {
+      "file": "RevealList",
+      "declaration": "RevealListTokens",
+      "kind": "component",
+      "spec": "reveal-list.json",
+      "version": "29.0.0",
+      "tokens": 9
+    },
+    {
+      "file": "RichTooltip",
+      "declaration": "RichTooltipTokens",
+      "kind": "component",
+      "spec": "rich-tooltip.json",
+      "version": "v0_210",
+      "tokens": 12
+    },
+    {
+      "file": "Scrim",
+      "declaration": "ScrimTokens",
+      "kind": "component",
+      "spec": "scrim.json",
+      "version": "v0_117",
+      "tokens": 2
+    },
+    {
+      "file": "SearchBar",
+      "declaration": "SearchBarTokens",
+      "kind": "component",
+      "spec": "search-bar.json",
+      "version": "v0_210",
+      "tokens": 15
+    },
+    {
+      "file": "SearchView",
+      "declaration": "SearchViewTokens",
+      "kind": "component",
+      "spec": "search-view.json",
+      "version": "v0_210",
+      "tokens": 13
+    },
+    {
+      "file": "SecondaryNavigationTab",
+      "declaration": "SecondaryNavigationTabTokens",
+      "kind": "component",
+      "spec": "secondary-navigation-tab.json",
+      "version": "v0_162",
+      "tokens": 18
+    },
+    {
+      "file": "SegmentedMenu",
+      "declaration": "SegmentedMenuTokens",
+      "kind": "component",
+      "spec": "segmented-menu.json",
+      "version": "24.1.2",
+      "tokens": 46
+    },
+    {
+      "file": "ShapeKey",
+      "declaration": "ShapeKeyTokens",
+      "kind": "global",
+      "spec": "tokens.json",
+      "version": "14_1_0",
+      "tokens": 15
+    },
+    {
+      "file": "Shape",
+      "declaration": "ShapeTokens",
+      "kind": "global",
+      "spec": "tokens.json",
+      "version": "14_1_0",
+      "tokens": 24
+    },
+    {
+      "file": "SheetBottom",
+      "declaration": "SheetBottomTokens",
+      "kind": "component",
+      "spec": "sheet-bottom.json",
+      "version": "v0_210",
+      "tokens": 9
+    },
+    {
+      "file": "Slider",
+      "declaration": "SliderTokens",
+      "kind": "component",
+      "spec": "slider.json",
+      "version": null,
+      "tokens": 51
+    },
+    {
+      "file": "SmallIconButton",
+      "declaration": "SmallIconButtonTokens",
+      "kind": "component",
+      "spec": "small-icon-button.json",
+      "version": "14_1_0",
+      "tokens": 14
+    },
+    {
+      "file": "Snackbar",
+      "declaration": "SnackbarTokens",
+      "kind": "component",
+      "spec": "snackbar.json",
+      "version": "v0_103",
+      "tokens": 17
+    },
+    {
+      "file": "SplitButtonLarge",
+      "declaration": "SplitButtonLargeTokens",
+      "kind": "component",
+      "spec": "split-button-large.json",
+      "version": "18_0_18",
+      "tokens": 12
+    },
+    {
+      "file": "SplitButtonMedium",
+      "declaration": "SplitButtonMediumTokens",
+      "kind": "component",
+      "spec": "split-button-medium.json",
+      "version": "18_0_18",
+      "tokens": 12
+    },
+    {
+      "file": "SplitButtonSmall",
+      "declaration": "SplitButtonSmallTokens",
+      "kind": "component",
+      "spec": "split-button-small.json",
+      "version": "18_0_18",
+      "tokens": 12
+    },
+    {
+      "file": "SplitButtonXLarge",
+      "declaration": "SplitButtonXLargeTokens",
+      "kind": "component",
+      "spec": "split-button-x-large.json",
+      "version": "18_0_18",
+      "tokens": 12
+    },
+    {
+      "file": "SplitButtonXSmall",
+      "declaration": "SplitButtonXSmallTokens",
+      "kind": "component",
+      "spec": "split-button-x-small.json",
+      "version": "18_0_18",
+      "tokens": 13
+    },
+    {
+      "file": "StandardMenu",
+      "declaration": "StandardMenuTokens",
+      "kind": "component",
+      "spec": "standard-menu.json",
+      "version": "24.1.2",
+      "tokens": 62
+    },
+    {
+      "file": "StandardMotion",
+      "declaration": "StandardMotionTokens",
+      "kind": "global",
+      "spec": "tokens.json",
+      "version": "v0_14_0",
+      "tokens": 12
+    },
+    {
+      "file": "State",
+      "declaration": "StateTokens",
+      "kind": "global",
+      "spec": "tokens.json",
+      "version": "v0_210",
+      "tokens": 4
+    },
+    {
+      "file": "SuggestionChip",
+      "declaration": "SuggestionChipTokens",
+      "kind": "component",
+      "spec": "suggestion-chip.json",
+      "version": "7_0_1",
+      "tokens": 34
+    },
+    {
+      "file": "Switch",
+      "declaration": "SwitchTokens",
+      "kind": "component",
+      "spec": "switch.json",
+      "version": "v0_210",
+      "tokens": 58
+    },
+    {
+      "file": "TextButton",
+      "declaration": "TextButtonTokens",
+      "kind": "component",
+      "spec": "text-button.json",
+      "version": "v0_11_0",
+      "tokens": 14
+    },
+    {
+      "file": "TimeInput",
+      "declaration": "TimeInputTokens",
+      "kind": "component",
+      "spec": "time-input.json",
+      "version": "v0_210",
+      "tokens": 36
+    },
+    {
+      "file": "TimePicker",
+      "declaration": "TimePickerTokens",
+      "kind": "component",
+      "spec": "time-picker.json",
+      "version": "v0_210",
+      "tokens": 53
+    },
+    {
+      "file": "TonalButton",
+      "declaration": "TonalButtonTokens",
+      "kind": "component",
+      "spec": "tonal-button.json",
+      "version": "v0_11_0",
+      "tokens": 38
+    },
+    {
+      "file": "Typeface",
+      "declaration": "TypefaceTokens",
+      "kind": "global",
+      "spec": "tokens.json",
+      "version": "v0_103",
+      "tokens": 5
+    },
+    {
+      "file": "TypeScale",
+      "declaration": "TypeScaleTokens",
+      "kind": "global",
+      "spec": "tokens.json",
+      "version": "v0_103",
+      "tokens": 150
+    },
+    {
+      "file": "TypographyKey",
+      "declaration": "TypographyKeyTokens",
+      "kind": "global",
+      "spec": "tokens.json",
+      "version": "v0_103",
+      "tokens": 30
+    },
+    {
+      "file": "Typography",
+      "declaration": "TypographyTokens",
+      "kind": "composite",
+      "spec": "typography.json",
+      "version": "31.0.11",
+      "tokens": 30
+    },
+    {
+      "file": "VibrantMenu",
+      "declaration": "VibrantMenuTokens",
+      "kind": "component",
+      "spec": "vibrant-menu.json",
+      "version": "24.1.2",
+      "tokens": 52
+    },
+    {
+      "file": "XLargeIconButton",
+      "declaration": "XLargeIconButtonTokens",
+      "kind": "component",
+      "spec": "x-large-icon-button.json",
+      "version": "14_1_0",
+      "tokens": 14
+    },
+    {
+      "file": "XSmallIconButton",
+      "declaration": "XSmallIconButtonTokens",
+      "kind": "component",
+      "spec": "x-small-icon-button.json",
+      "version": "14_1_0",
+      "tokens": 14
+    }
+  ],
+  "totals": {
+    "componentSpecs": 104,
+    "typographyRoles": 30,
+    "colorRolesLight": 48,
+    "colorRolesDark": 48
+  }
+}

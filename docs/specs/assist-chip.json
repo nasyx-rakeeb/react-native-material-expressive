@@ -1,0 +1,317 @@
+{
+  "generatedBy": "tools/extract-tokens",
+  "artifact": "material3:1.5.0",
+  "jarSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6",
+  "tokenFile": "commonMain/androidx/compose/material3/tokens/AssistChipTokens.kt",
+  "declaration": "AssistChipTokens",
+  "declarationKind": "object",
+  "tokenVersion": "7_0_1",
+  "tokens": [
+    {
+      "token": "AssistChip.ContainerHeight",
+      "value": 32,
+      "unit": "dp",
+      "expression": "32.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/AssistChipTokens.kt:24",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "AssistChip.ContainerShape",
+      "value": "CornerSmall",
+      "unit": "shape-role",
+      "expression": "ShapeKeyTokens.CornerSmall",
+      "source": "commonMain/androidx/compose/material3/tokens/AssistChipTokens.kt:27",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "AssistChip.DisabledLabelTextColor",
+      "value": "OnSurface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurface",
+      "source": "commonMain/androidx/compose/material3/tokens/AssistChipTokens.kt:30",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "AssistChip.DisabledLabelTextOpacity",
+      "value": 0.38,
+      "unit": "number",
+      "expression": "0.38f",
+      "source": "commonMain/androidx/compose/material3/tokens/AssistChipTokens.kt:33",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "AssistChip.DraggedContainerElevation",
+      "value": 8,
+      "unit": "dp",
+      "expression": "ElevationTokens.Level4",
+      "source": "commonMain/androidx/compose/material3/tokens/AssistChipTokens.kt:34",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "AssistChip.DraggedLabelTextColor",
+      "value": "OnSurface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurface",
+      "source": "commonMain/androidx/compose/material3/tokens/AssistChipTokens.kt:37",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "AssistChip.ElevatedContainerColor",
+      "value": "SurfaceContainerLow",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.SurfaceContainerLow",
+      "source": "commonMain/androidx/compose/material3/tokens/AssistChipTokens.kt:40",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "AssistChip.ElevatedContainerElevation",
+      "value": 1,
+      "unit": "dp",
+      "expression": "ElevationTokens.Level1",
+      "source": "commonMain/androidx/compose/material3/tokens/AssistChipTokens.kt:43",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "AssistChip.ElevatedDisabledContainerColor",
+      "value": "OnSurface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurface",
+      "source": "commonMain/androidx/compose/material3/tokens/AssistChipTokens.kt:46",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "AssistChip.ElevatedDisabledContainerElevation",
+      "value": 0,
+      "unit": "dp",
+      "expression": "ElevationTokens.Level0",
+      "source": "commonMain/androidx/compose/material3/tokens/AssistChipTokens.kt:49",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "AssistChip.ElevatedDisabledContainerOpacity",
+      "value": 0.12,
+      "unit": "number",
+      "expression": "0.12f",
+      "source": "commonMain/androidx/compose/material3/tokens/AssistChipTokens.kt:52",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "AssistChip.ElevatedFocusContainerElevation",
+      "value": 1,
+      "unit": "dp",
+      "expression": "ElevationTokens.Level1",
+      "source": "commonMain/androidx/compose/material3/tokens/AssistChipTokens.kt:53",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "AssistChip.ElevatedHoverContainerElevation",
+      "value": 3,
+      "unit": "dp",
+      "expression": "ElevationTokens.Level2",
+      "source": "commonMain/androidx/compose/material3/tokens/AssistChipTokens.kt:56",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "AssistChip.ElevatedPressedContainerElevation",
+      "value": 1,
+      "unit": "dp",
+      "expression": "ElevationTokens.Level1",
+      "source": "commonMain/androidx/compose/material3/tokens/AssistChipTokens.kt:59",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "AssistChip.FlatContainerElevation",
+      "value": 0,
+      "unit": "dp",
+      "expression": "ElevationTokens.Level0",
+      "source": "commonMain/androidx/compose/material3/tokens/AssistChipTokens.kt:62",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "AssistChip.FlatDisabledOutlineColor",
+      "value": "OnSurface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurface",
+      "source": "commonMain/androidx/compose/material3/tokens/AssistChipTokens.kt:65",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "AssistChip.FlatDisabledOutlineOpacity",
+      "value": 0.12,
+      "unit": "number",
+      "expression": "0.12f",
+      "source": "commonMain/androidx/compose/material3/tokens/AssistChipTokens.kt:68",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "AssistChip.FlatFocusOutlineColor",
+      "value": "OnSurface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurface",
+      "source": "commonMain/androidx/compose/material3/tokens/AssistChipTokens.kt:69",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "AssistChip.FlatOutlineColor",
+      "value": "OutlineVariant",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OutlineVariant",
+      "source": "commonMain/androidx/compose/material3/tokens/AssistChipTokens.kt:72",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "AssistChip.FlatOutlineWidth",
+      "value": 1,
+      "unit": "dp",
+      "expression": "1.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/AssistChipTokens.kt:75",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "AssistChip.FocusIndicatorColor",
+      "value": "Secondary",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Secondary",
+      "source": "commonMain/androidx/compose/material3/tokens/AssistChipTokens.kt:78",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "AssistChip.FocusLabelTextColor",
+      "value": "OnSurface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurface",
+      "source": "commonMain/androidx/compose/material3/tokens/AssistChipTokens.kt:81",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "AssistChip.HoverLabelTextColor",
+      "value": "OnSurface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurface",
+      "source": "commonMain/androidx/compose/material3/tokens/AssistChipTokens.kt:84",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "AssistChip.LabelTextColor",
+      "value": "OnSurface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurface",
+      "source": "commonMain/androidx/compose/material3/tokens/AssistChipTokens.kt:87",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "AssistChip.LabelTextFont",
+      "value": "LabelLarge",
+      "unit": "typography-role",
+      "expression": "TypographyKeyTokens.LabelLarge",
+      "source": "commonMain/androidx/compose/material3/tokens/AssistChipTokens.kt:90",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "AssistChip.PressedLabelTextColor",
+      "value": "OnSurface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurface",
+      "source": "commonMain/androidx/compose/material3/tokens/AssistChipTokens.kt:93",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "AssistChip.DisabledIconColor",
+      "value": "OnSurface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurface",
+      "source": "commonMain/androidx/compose/material3/tokens/AssistChipTokens.kt:96",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "AssistChip.DisabledIconOpacity",
+      "value": 0.38,
+      "unit": "number",
+      "expression": "0.38f",
+      "source": "commonMain/androidx/compose/material3/tokens/AssistChipTokens.kt:99",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "AssistChip.DraggedIconColor",
+      "value": "Primary",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Primary",
+      "source": "commonMain/androidx/compose/material3/tokens/AssistChipTokens.kt:100",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "AssistChip.FocusIconColor",
+      "value": "Primary",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Primary",
+      "source": "commonMain/androidx/compose/material3/tokens/AssistChipTokens.kt:103",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "AssistChip.HoverIconColor",
+      "value": "Primary",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Primary",
+      "source": "commonMain/androidx/compose/material3/tokens/AssistChipTokens.kt:106",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "AssistChip.IconColor",
+      "value": "Primary",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Primary",
+      "source": "commonMain/androidx/compose/material3/tokens/AssistChipTokens.kt:109",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "AssistChip.IconSize",
+      "value": 18,
+      "unit": "dp",
+      "expression": "18.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/AssistChipTokens.kt:112",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "AssistChip.PressedIconColor",
+      "value": "Primary",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Primary",
+      "source": "commonMain/androidx/compose/material3/tokens/AssistChipTokens.kt:115",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    }
+  ]
+}

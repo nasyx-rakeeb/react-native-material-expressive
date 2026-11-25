@@ -2,7 +2,7 @@
 
 A component cannot be marked DONE while it has an open entry here. Day 0 resolved the six original `UNVERIFIED-1..6`; new open items are listed below with an owner and a resolution day.
 
-**Last updated:** 2026-11-25 (Day 1)
+**Last updated:** 2026-11-25 (Day 2)
 
 ---
 
@@ -154,3 +154,10 @@ Paper `6.0.0-alpha.4` (2026-11-23); 34 public component exports; signature-set s
 - **Impact:** Roboto Flex weight/optical-size fidelity on the supported floor.
 - **Resolution:** Day 5: build a capability probe and a static-weight fallback, then record measured differences on API 24/25 vs 26+ in `docs/specs/typography.json`. Never silently claim variable-font parity below the capability line.
 - **Blocks:** Typography DONE (Day 5).
+
+### U-20 — Compose's emphasized cubic-bezier is m3's standard fallback, not the Android emphasized path
+
+- **Evidence (Day 2 spot-check):** m3's Easing & Duration token page defines Android emphasized easing as a multi-segment `pathInterpolator(M 0,0 C 0.05,0 … )`, with the CSS column marked “N/A (Use Standard as a fallback)”. Compose 1.5.0 `MotionTokens.kt:39` exposes `EasingEmphasizedCubicBezier = CubicBezierEasing(0.2, 0, 0, 1)`, which is numerically the same as `EasingStandardCubicBezier` (`MotionTokens.kt:64`).
+- **Impact:** A cubic-bezier-only motion foundation cannot reproduce m3's Android emphasized curve. Components driven by the expressive motion scheme use springs, so this affects the legacy duration/easing path rather than spring-driven morphs.
+- **Resolution:** Day 8: implement the m3 multi-segment emphasized path as a sampled/keyframe easing (or document a deliberate fallback), keep the Compose cubic value for API compatibility, and record the decision in `docs/specs/motion.behavior.md`. Do not claim the cubic value is the m3 Android emphasized curve.
+- **Blocks:** Motion DONE (Day 8).

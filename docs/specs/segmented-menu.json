@@ -1,0 +1,425 @@
+{
+  "generatedBy": "tools/extract-tokens",
+  "artifact": "material3:1.5.0",
+  "jarSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6",
+  "tokenFile": "commonMain/androidx/compose/material3/tokens/SegmentedMenuTokens.kt",
+  "declaration": "SegmentedMenuTokens",
+  "declarationKind": "object",
+  "tokenVersion": "24.1.2",
+  "tokens": [
+    {
+      "token": "SegmentedMenu.ActiveContainerShape",
+      "value": 24,
+      "unit": "dp",
+      "expression": "24.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/SegmentedMenuTokens.kt:24",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "SegmentedMenu.ContainerElevation",
+      "value": 3,
+      "unit": "dp",
+      "expression": "ElevationTokens.Level2",
+      "source": "commonMain/androidx/compose/material3/tokens/SegmentedMenuTokens.kt:27",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "SegmentedMenu.ContainerShape",
+      "value": "CornerLarge",
+      "unit": "shape-role",
+      "expression": "ShapeKeyTokens.CornerLarge",
+      "source": "commonMain/androidx/compose/material3/tokens/SegmentedMenuTokens.kt:30",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "SegmentedMenu.GroupContainerColor",
+      "value": "SurfaceContainerLow",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.SurfaceContainerLow",
+      "source": "commonMain/androidx/compose/material3/tokens/SegmentedMenuTokens.kt:33",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "SegmentedMenu.GroupPadding",
+      "value": 4,
+      "unit": "dp",
+      "expression": "4.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/SegmentedMenuTokens.kt:36",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "SegmentedMenu.GroupShape",
+      "value": "CornerSmall",
+      "unit": "shape-role",
+      "expression": "ShapeKeyTokens.CornerSmall",
+      "source": "commonMain/androidx/compose/material3/tokens/SegmentedMenuTokens.kt:39",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "SegmentedMenu.HorizontalContainerBottomSpace",
+      "value": 8,
+      "unit": "dp",
+      "expression": "8.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/SegmentedMenuTokens.kt:42",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "SegmentedMenu.HorizontalContainerTopSpace",
+      "value": 8,
+      "unit": "dp",
+      "expression": "8.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/SegmentedMenuTokens.kt:45",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "SegmentedMenu.HorizontalIconOnlyItemBottomSpace",
+      "value": 16,
+      "unit": "dp",
+      "expression": "16.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/SegmentedMenuTokens.kt:48",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "SegmentedMenu.HorizontalIconOnlyItemLeadingSpace",
+      "value": 16,
+      "unit": "dp",
+      "expression": "16.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/SegmentedMenuTokens.kt:51",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "SegmentedMenu.HorizontalIconOnlyItemSelectedShape",
+      "value": "CornerFull",
+      "unit": "shape-role",
+      "expression": "ShapeKeyTokens.CornerFull",
+      "source": "commonMain/androidx/compose/material3/tokens/SegmentedMenuTokens.kt:54",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "SegmentedMenu.HorizontalIconOnlyItemTopSpace",
+      "value": 16,
+      "unit": "dp",
+      "expression": "16.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/SegmentedMenuTokens.kt:57",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "SegmentedMenu.HorizontalIconOnlyItemTrailingSpace",
+      "value": 16,
+      "unit": "dp",
+      "expression": "16.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/SegmentedMenuTokens.kt:60",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "SegmentedMenu.HorizontalIconOnlySegmentedGap",
+      "value": 4,
+      "unit": "dp",
+      "expression": "4.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/SegmentedMenuTokens.kt:63",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "SegmentedMenu.HorizontalItemBetweenSpace",
+      "value": 12,
+      "unit": "dp",
+      "expression": "12.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/SegmentedMenuTokens.kt:66",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "SegmentedMenu.HorizontalItemBottomSpace",
+      "value": 6,
+      "unit": "dp",
+      "expression": "6.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/SegmentedMenuTokens.kt:69",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "SegmentedMenu.HorizontalItemFocusedShape",
+      "value": "CornerMedium",
+      "unit": "shape-role",
+      "expression": "ShapeKeyTokens.CornerMedium",
+      "source": "commonMain/androidx/compose/material3/tokens/SegmentedMenuTokens.kt:72",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "SegmentedMenu.HorizontalItemHoveredShape",
+      "value": "CornerMedium",
+      "unit": "shape-role",
+      "expression": "ShapeKeyTokens.CornerMedium",
+      "source": "commonMain/androidx/compose/material3/tokens/SegmentedMenuTokens.kt:75",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "SegmentedMenu.HorizontalItemLeadingSpace",
+      "value": 12,
+      "unit": "dp",
+      "expression": "12.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/SegmentedMenuTokens.kt:78",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "SegmentedMenu.HorizontalItemPressedShape",
+      "value": "CornerMedium",
+      "unit": "shape-role",
+      "expression": "ShapeKeyTokens.CornerMedium",
+      "source": "commonMain/androidx/compose/material3/tokens/SegmentedMenuTokens.kt:81",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "SegmentedMenu.HorizontalItemSelectedFocusedShape",
+      "value": "CornerFull",
+      "unit": "shape-role",
+      "expression": "ShapeKeyTokens.CornerFull",
+      "source": "commonMain/androidx/compose/material3/tokens/SegmentedMenuTokens.kt:84",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "SegmentedMenu.HorizontalItemSelectedHoveredShape",
+      "value": "CornerFull",
+      "unit": "shape-role",
+      "expression": "ShapeKeyTokens.CornerFull",
+      "source": "commonMain/androidx/compose/material3/tokens/SegmentedMenuTokens.kt:87",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "SegmentedMenu.HorizontalItemSelectedPressedShape",
+      "value": "CornerFull",
+      "unit": "shape-role",
+      "expression": "ShapeKeyTokens.CornerFull",
+      "source": "commonMain/androidx/compose/material3/tokens/SegmentedMenuTokens.kt:90",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "SegmentedMenu.HorizontalItemTopSpace",
+      "value": 6,
+      "unit": "dp",
+      "expression": "6.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/SegmentedMenuTokens.kt:93",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "SegmentedMenu.HorizontalItemTrailingSpace",
+      "value": 12,
+      "unit": "dp",
+      "expression": "12.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/SegmentedMenuTokens.kt:96",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "SegmentedMenu.HorizontalSegmentedGap",
+      "value": 2,
+      "unit": "dp",
+      "expression": "2.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/SegmentedMenuTokens.kt:99",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "SegmentedMenu.InactiveContainerShape",
+      "value": "CornerSmall",
+      "unit": "shape-role",
+      "expression": "ShapeKeyTokens.CornerSmall",
+      "source": "commonMain/androidx/compose/material3/tokens/SegmentedMenuTokens.kt:102",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "SegmentedMenu.Item",
+      "value": 44,
+      "unit": "dp",
+      "expression": "44.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/SegmentedMenuTokens.kt:105",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "SegmentedMenu.ItemBetweenSpace",
+      "value": 12,
+      "unit": "dp",
+      "expression": "12.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/SegmentedMenuTokens.kt:108",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "SegmentedMenu.ItemBottomSpace",
+      "value": 8,
+      "unit": "dp",
+      "expression": "8.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/SegmentedMenuTokens.kt:111",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "SegmentedMenu.ItemFirstChildInnerCornerCornerSize",
+      "value": "CornerExtraSmall",
+      "unit": "shape-role",
+      "expression": "ShapeKeyTokens.CornerExtraSmall",
+      "source": "commonMain/androidx/compose/material3/tokens/SegmentedMenuTokens.kt:114",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "SegmentedMenu.ItemFirstChildShape",
+      "value": "CornerMedium",
+      "unit": "shape-role",
+      "expression": "ShapeKeyTokens.CornerMedium",
+      "source": "commonMain/androidx/compose/material3/tokens/SegmentedMenuTokens.kt:117",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "SegmentedMenu.ItemFocusIndicatorColor",
+      "value": "Secondary",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Secondary",
+      "source": "commonMain/androidx/compose/material3/tokens/SegmentedMenuTokens.kt:120",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "SegmentedMenu.ItemLabelTextFont",
+      "value": "BodyLarge",
+      "unit": "typography-role",
+      "expression": "TypographyKeyTokens.BodyLarge",
+      "source": "commonMain/androidx/compose/material3/tokens/SegmentedMenuTokens.kt:123",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "SegmentedMenu.ItemLastChildInnerCornerCornerSize",
+      "value": "CornerExtraSmall",
+      "unit": "shape-role",
+      "expression": "ShapeKeyTokens.CornerExtraSmall",
+      "source": "commonMain/androidx/compose/material3/tokens/SegmentedMenuTokens.kt:126",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "SegmentedMenu.ItemLastChildShape",
+      "value": "CornerMedium",
+      "unit": "shape-role",
+      "expression": "ShapeKeyTokens.CornerMedium",
+      "source": "commonMain/androidx/compose/material3/tokens/SegmentedMenuTokens.kt:129",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "SegmentedMenu.ItemLeadingIconSize",
+      "value": 20,
+      "unit": "dp",
+      "expression": "20.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/SegmentedMenuTokens.kt:132",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "SegmentedMenu.ItemLeadingSpace",
+      "value": 16,
+      "unit": "dp",
+      "expression": "16.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/SegmentedMenuTokens.kt:135",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "SegmentedMenu.ItemSelectedShape",
+      "value": "CornerMedium",
+      "unit": "shape-role",
+      "expression": "ShapeKeyTokens.CornerMedium",
+      "source": "commonMain/androidx/compose/material3/tokens/SegmentedMenuTokens.kt:138",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "SegmentedMenu.ItemShape",
+      "value": "CornerExtraSmall",
+      "unit": "shape-role",
+      "expression": "ShapeKeyTokens.CornerExtraSmall",
+      "source": "commonMain/androidx/compose/material3/tokens/SegmentedMenuTokens.kt:141",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "SegmentedMenu.ItemSupportingTextFont",
+      "value": "BodyMedium",
+      "unit": "typography-role",
+      "expression": "TypographyKeyTokens.BodyMedium",
+      "source": "commonMain/androidx/compose/material3/tokens/SegmentedMenuTokens.kt:144",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "SegmentedMenu.ItemTopSpace",
+      "value": 8,
+      "unit": "dp",
+      "expression": "8.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/SegmentedMenuTokens.kt:147",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "SegmentedMenu.ItemTrailingIconSize",
+      "value": 20,
+      "unit": "dp",
+      "expression": "20.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/SegmentedMenuTokens.kt:150",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "SegmentedMenu.ItemTrailingSpace",
+      "value": 16,
+      "unit": "dp",
+      "expression": "16.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/SegmentedMenuTokens.kt:153",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "SegmentedMenu.ItemTrailingSupportingTextFont",
+      "value": "LabelSmall",
+      "unit": "typography-role",
+      "expression": "TypographyKeyTokens.LabelSmall",
+      "source": "commonMain/androidx/compose/material3/tokens/SegmentedMenuTokens.kt:156",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "SegmentedMenu.SegmentedGap",
+      "value": 2,
+      "unit": "dp",
+      "expression": "2.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/SegmentedMenuTokens.kt:159",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    }
+  ]
+}

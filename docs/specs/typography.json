@@ -1,0 +1,518 @@
+{
+  "generatedBy": "tools/extract-tokens",
+  "artifact": "material3:1.5.0",
+  "jarSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6",
+  "description": "All TextStyles resolved from TypeScaleTokens + TypefaceTokens.",
+  "roles": [
+    {
+      "role": "bodyLarge",
+      "fontFamily": "sans-serif",
+      "fontWeight": 400,
+      "fontSize": 16,
+      "lineHeight": 24,
+      "letterSpacing": 0.5,
+      "sources": {
+        "fontFamily": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:24",
+        "fontWeight": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:36",
+        "fontSize": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:30",
+        "lineHeight": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:27",
+        "letterSpacing": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:33"
+      },
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "role": "bodyMedium",
+      "fontFamily": "sans-serif",
+      "fontWeight": 400,
+      "fontSize": 14,
+      "lineHeight": 20,
+      "letterSpacing": 0.2,
+      "sources": {
+        "fontFamily": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:39",
+        "fontWeight": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:51",
+        "fontSize": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:45",
+        "lineHeight": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:42",
+        "letterSpacing": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:48"
+      },
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "role": "bodySmall",
+      "fontFamily": "sans-serif",
+      "fontWeight": 400,
+      "fontSize": 12,
+      "lineHeight": 16,
+      "letterSpacing": 0.4,
+      "sources": {
+        "fontFamily": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:54",
+        "fontWeight": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:66",
+        "fontSize": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:60",
+        "lineHeight": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:57",
+        "letterSpacing": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:63"
+      },
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "role": "displayLarge",
+      "fontFamily": "sans-serif",
+      "fontWeight": 400,
+      "fontSize": 57,
+      "lineHeight": 64,
+      "letterSpacing": -0.2,
+      "sources": {
+        "fontFamily": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:69",
+        "fontWeight": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:81",
+        "fontSize": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:75",
+        "lineHeight": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:72",
+        "letterSpacing": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:78"
+      },
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "role": "displayMedium",
+      "fontFamily": "sans-serif",
+      "fontWeight": 400,
+      "fontSize": 45,
+      "lineHeight": 52,
+      "letterSpacing": 0,
+      "sources": {
+        "fontFamily": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:84",
+        "fontWeight": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:96",
+        "fontSize": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:90",
+        "lineHeight": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:87",
+        "letterSpacing": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:93"
+      },
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "role": "displaySmall",
+      "fontFamily": "sans-serif",
+      "fontWeight": 400,
+      "fontSize": 36,
+      "lineHeight": 44,
+      "letterSpacing": 0,
+      "sources": {
+        "fontFamily": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:99",
+        "fontWeight": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:111",
+        "fontSize": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:105",
+        "lineHeight": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:102",
+        "letterSpacing": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:108"
+      },
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "role": "headlineLarge",
+      "fontFamily": "sans-serif",
+      "fontWeight": 400,
+      "fontSize": 32,
+      "lineHeight": 40,
+      "letterSpacing": 0,
+      "sources": {
+        "fontFamily": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:114",
+        "fontWeight": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:126",
+        "fontSize": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:120",
+        "lineHeight": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:117",
+        "letterSpacing": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:123"
+      },
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "role": "headlineMedium",
+      "fontFamily": "sans-serif",
+      "fontWeight": 400,
+      "fontSize": 28,
+      "lineHeight": 36,
+      "letterSpacing": 0,
+      "sources": {
+        "fontFamily": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:129",
+        "fontWeight": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:141",
+        "fontSize": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:135",
+        "lineHeight": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:132",
+        "letterSpacing": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:138"
+      },
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "role": "headlineSmall",
+      "fontFamily": "sans-serif",
+      "fontWeight": 400,
+      "fontSize": 24,
+      "lineHeight": 32,
+      "letterSpacing": 0,
+      "sources": {
+        "fontFamily": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:144",
+        "fontWeight": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:156",
+        "fontSize": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:150",
+        "lineHeight": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:147",
+        "letterSpacing": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:153"
+      },
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "role": "labelLarge",
+      "fontFamily": "sans-serif",
+      "fontWeight": 500,
+      "fontSize": 14,
+      "lineHeight": 20,
+      "letterSpacing": 0.1,
+      "sources": {
+        "fontFamily": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:159",
+        "fontWeight": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:171",
+        "fontSize": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:165",
+        "lineHeight": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:162",
+        "letterSpacing": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:168"
+      },
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "role": "labelMedium",
+      "fontFamily": "sans-serif",
+      "fontWeight": 500,
+      "fontSize": 12,
+      "lineHeight": 16,
+      "letterSpacing": 0.5,
+      "sources": {
+        "fontFamily": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:174",
+        "fontWeight": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:186",
+        "fontSize": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:180",
+        "lineHeight": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:177",
+        "letterSpacing": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:183"
+      },
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "role": "labelSmall",
+      "fontFamily": "sans-serif",
+      "fontWeight": 500,
+      "fontSize": 11,
+      "lineHeight": 16,
+      "letterSpacing": 0.5,
+      "sources": {
+        "fontFamily": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:189",
+        "fontWeight": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:201",
+        "fontSize": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:195",
+        "lineHeight": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:192",
+        "letterSpacing": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:198"
+      },
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "role": "titleLarge",
+      "fontFamily": "sans-serif",
+      "fontWeight": 400,
+      "fontSize": 22,
+      "lineHeight": 28,
+      "letterSpacing": 0,
+      "sources": {
+        "fontFamily": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:204",
+        "fontWeight": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:216",
+        "fontSize": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:210",
+        "lineHeight": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:207",
+        "letterSpacing": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:213"
+      },
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "role": "titleMedium",
+      "fontFamily": "sans-serif",
+      "fontWeight": 500,
+      "fontSize": 16,
+      "lineHeight": 24,
+      "letterSpacing": 0.2,
+      "sources": {
+        "fontFamily": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:219",
+        "fontWeight": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:231",
+        "fontSize": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:225",
+        "lineHeight": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:222",
+        "letterSpacing": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:228"
+      },
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "role": "titleSmall",
+      "fontFamily": "sans-serif",
+      "fontWeight": 500,
+      "fontSize": 14,
+      "lineHeight": 20,
+      "letterSpacing": 0.1,
+      "sources": {
+        "fontFamily": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:234",
+        "fontWeight": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:246",
+        "fontSize": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:240",
+        "lineHeight": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:237",
+        "letterSpacing": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:243"
+      },
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "role": "bodyLargeEmphasized",
+      "fontFamily": "sans-serif",
+      "fontWeight": 500,
+      "fontSize": 16,
+      "lineHeight": 24,
+      "letterSpacing": 0.15,
+      "sources": {
+        "fontFamily": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:250",
+        "fontWeight": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:262",
+        "fontSize": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:256",
+        "lineHeight": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:253",
+        "letterSpacing": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:259"
+      },
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "role": "bodyMediumEmphasized",
+      "fontFamily": "sans-serif",
+      "fontWeight": 500,
+      "fontSize": 14,
+      "lineHeight": 20,
+      "letterSpacing": 0.25,
+      "sources": {
+        "fontFamily": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:265",
+        "fontWeight": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:277",
+        "fontSize": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:271",
+        "lineHeight": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:268",
+        "letterSpacing": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:274"
+      },
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "role": "bodySmallEmphasized",
+      "fontFamily": "sans-serif",
+      "fontWeight": 500,
+      "fontSize": 12,
+      "lineHeight": 16,
+      "letterSpacing": 0.4,
+      "sources": {
+        "fontFamily": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:280",
+        "fontWeight": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:292",
+        "fontSize": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:286",
+        "lineHeight": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:283",
+        "letterSpacing": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:289"
+      },
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "role": "displayLargeEmphasized",
+      "fontFamily": "sans-serif",
+      "fontWeight": 500,
+      "fontSize": 57,
+      "lineHeight": 64,
+      "letterSpacing": 0,
+      "sources": {
+        "fontFamily": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:295",
+        "fontWeight": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:307",
+        "fontSize": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:301",
+        "lineHeight": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:298",
+        "letterSpacing": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:304"
+      },
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "role": "displayMediumEmphasized",
+      "fontFamily": "sans-serif",
+      "fontWeight": 500,
+      "fontSize": 45,
+      "lineHeight": 52,
+      "letterSpacing": 0,
+      "sources": {
+        "fontFamily": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:310",
+        "fontWeight": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:322",
+        "fontSize": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:316",
+        "lineHeight": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:313",
+        "letterSpacing": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:319"
+      },
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "role": "displaySmallEmphasized",
+      "fontFamily": "sans-serif",
+      "fontWeight": 500,
+      "fontSize": 36,
+      "lineHeight": 44,
+      "letterSpacing": 0,
+      "sources": {
+        "fontFamily": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:325",
+        "fontWeight": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:337",
+        "fontSize": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:331",
+        "lineHeight": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:328",
+        "letterSpacing": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:334"
+      },
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "role": "headlineLargeEmphasized",
+      "fontFamily": "sans-serif",
+      "fontWeight": 500,
+      "fontSize": 32,
+      "lineHeight": 40,
+      "letterSpacing": 0,
+      "sources": {
+        "fontFamily": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:340",
+        "fontWeight": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:352",
+        "fontSize": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:346",
+        "lineHeight": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:343",
+        "letterSpacing": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:349"
+      },
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "role": "headlineMediumEmphasized",
+      "fontFamily": "sans-serif",
+      "fontWeight": 500,
+      "fontSize": 28,
+      "lineHeight": 36,
+      "letterSpacing": 0,
+      "sources": {
+        "fontFamily": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:355",
+        "fontWeight": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:367",
+        "fontSize": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:361",
+        "lineHeight": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:358",
+        "letterSpacing": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:364"
+      },
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "role": "headlineSmallEmphasized",
+      "fontFamily": "sans-serif",
+      "fontWeight": 500,
+      "fontSize": 24,
+      "lineHeight": 32,
+      "letterSpacing": 0,
+      "sources": {
+        "fontFamily": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:370",
+        "fontWeight": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:382",
+        "fontSize": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:376",
+        "lineHeight": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:373",
+        "letterSpacing": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:379"
+      },
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "role": "labelLargeEmphasized",
+      "fontFamily": "sans-serif",
+      "fontWeight": 700,
+      "fontSize": 14,
+      "lineHeight": 20,
+      "letterSpacing": 0.1,
+      "sources": {
+        "fontFamily": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:385",
+        "fontWeight": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:397",
+        "fontSize": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:391",
+        "lineHeight": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:388",
+        "letterSpacing": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:394"
+      },
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "role": "labelMediumEmphasized",
+      "fontFamily": "sans-serif",
+      "fontWeight": 700,
+      "fontSize": 12,
+      "lineHeight": 16,
+      "letterSpacing": 0.5,
+      "sources": {
+        "fontFamily": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:400",
+        "fontWeight": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:412",
+        "fontSize": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:406",
+        "lineHeight": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:403",
+        "letterSpacing": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:409"
+      },
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "role": "labelSmallEmphasized",
+      "fontFamily": "sans-serif",
+      "fontWeight": 700,
+      "fontSize": 11,
+      "lineHeight": 16,
+      "letterSpacing": 0.5,
+      "sources": {
+        "fontFamily": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:415",
+        "fontWeight": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:427",
+        "fontSize": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:421",
+        "lineHeight": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:418",
+        "letterSpacing": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:424"
+      },
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "role": "titleLargeEmphasized",
+      "fontFamily": "sans-serif",
+      "fontWeight": 500,
+      "fontSize": 22,
+      "lineHeight": 28,
+      "letterSpacing": 0,
+      "sources": {
+        "fontFamily": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:430",
+        "fontWeight": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:442",
+        "fontSize": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:436",
+        "lineHeight": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:433",
+        "letterSpacing": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:439"
+      },
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "role": "titleMediumEmphasized",
+      "fontFamily": "sans-serif",
+      "fontWeight": 700,
+      "fontSize": 16,
+      "lineHeight": 24,
+      "letterSpacing": 0.15,
+      "sources": {
+        "fontFamily": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:445",
+        "fontWeight": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:457",
+        "fontSize": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:451",
+        "lineHeight": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:448",
+        "letterSpacing": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:454"
+      },
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "role": "titleSmallEmphasized",
+      "fontFamily": "sans-serif",
+      "fontWeight": 700,
+      "fontSize": 14,
+      "lineHeight": 20,
+      "letterSpacing": 0.1,
+      "sources": {
+        "fontFamily": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:460",
+        "fontWeight": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:472",
+        "fontSize": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:466",
+        "lineHeight": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:463",
+        "letterSpacing": "commonMain/androidx/compose/material3/tokens/TypeScaleTokens.kt:469"
+      },
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    }
+  ]
+}

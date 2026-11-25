@@ -1,0 +1,110 @@
+{
+  "generatedBy": "tools/extract-tokens",
+  "artifact": "material3:1.5.0",
+  "jarSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6",
+  "tokenFile": "commonMain/androidx/compose/material3/tokens/NavigationRailColorTokens.kt",
+  "declaration": "NavigationRailColorTokens",
+  "declarationKind": "object",
+  "tokenVersion": "v0_11_0",
+  "tokens": [
+    {
+      "token": "NavigationRailColor.ItemActiveFocusedStateLayer",
+      "value": "OnSecondaryContainer",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSecondaryContainer",
+      "source": "commonMain/androidx/compose/material3/tokens/NavigationRailColorTokens.kt:22",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "NavigationRailColor.ItemActiveHoveredStateLayer",
+      "value": "OnSecondaryContainer",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSecondaryContainer",
+      "source": "commonMain/androidx/compose/material3/tokens/NavigationRailColorTokens.kt:25",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "NavigationRailColor.ItemActiveIcon",
+      "value": "OnSecondaryContainer",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSecondaryContainer",
+      "source": "commonMain/androidx/compose/material3/tokens/NavigationRailColorTokens.kt:28",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "NavigationRailColor.ItemActiveIndicator",
+      "value": "SecondaryContainer",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.SecondaryContainer",
+      "source": "commonMain/androidx/compose/material3/tokens/NavigationRailColorTokens.kt:31",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "NavigationRailColor.ItemActiveLabelText",
+      "value": "Secondary",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Secondary",
+      "source": "commonMain/androidx/compose/material3/tokens/NavigationRailColorTokens.kt:34",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "NavigationRailColor.ItemActivePressedStateLayer",
+      "value": "OnSecondaryContainer",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSecondaryContainer",
+      "source": "commonMain/androidx/compose/material3/tokens/NavigationRailColorTokens.kt:37",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "NavigationRailColor.ItemInactiveFocusedStateLayer",
+      "value": "OnSecondaryContainer",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSecondaryContainer",
+      "source": "commonMain/androidx/compose/material3/tokens/NavigationRailColorTokens.kt:40",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "NavigationRailColor.ItemInactiveHoveredStateLayer",
+      "value": "OnSecondaryContainer",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSecondaryContainer",
+      "source": "commonMain/androidx/compose/material3/tokens/NavigationRailColorTokens.kt:43",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "NavigationRailColor.ItemInactiveIcon",
+      "value": "OnSurfaceVariant",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurfaceVariant",
+      "source": "commonMain/androidx/compose/material3/tokens/NavigationRailColorTokens.kt:46",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "NavigationRailColor.ItemInactiveLabelText",
+      "value": "OnSurfaceVariant",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurfaceVariant",
+      "source": "commonMain/androidx/compose/material3/tokens/NavigationRailColorTokens.kt:49",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "NavigationRailColor.ItemInactivePressedStateLayer",
+      "value": "OnSecondaryContainer",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSecondaryContainer",
+      "source": "commonMain/androidx/compose/material3/tokens/NavigationRailColorTokens.kt:52",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    }
+  ]
+}

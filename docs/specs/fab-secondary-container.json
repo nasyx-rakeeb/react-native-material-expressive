@@ -1,0 +1,92 @@
+{
+  "generatedBy": "tools/extract-tokens",
+  "artifact": "material3:1.5.0",
+  "jarSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6",
+  "tokenFile": "commonMain/androidx/compose/material3/tokens/FabSecondaryContainerTokens.kt",
+  "declaration": "FabSecondaryContainerTokens",
+  "declarationKind": "object",
+  "tokenVersion": "v0_14_0",
+  "tokens": [
+    {
+      "token": "FabSecondaryContainer.ContainerColor",
+      "value": "SecondaryContainer",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.SecondaryContainer",
+      "source": "commonMain/androidx/compose/material3/tokens/FabSecondaryContainerTokens.kt:22",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "FabSecondaryContainer.ContainerElevation",
+      "value": 6,
+      "unit": "dp",
+      "expression": "ElevationTokens.Level3",
+      "source": "commonMain/androidx/compose/material3/tokens/FabSecondaryContainerTokens.kt:25",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "FabSecondaryContainer.FocusedContainerElevation",
+      "value": 6,
+      "unit": "dp",
+      "expression": "ElevationTokens.Level3",
+      "source": "commonMain/androidx/compose/material3/tokens/FabSecondaryContainerTokens.kt:28",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "FabSecondaryContainer.FocusedIconColor",
+      "value": "OnSecondaryContainer",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSecondaryContainer",
+      "source": "commonMain/androidx/compose/material3/tokens/FabSecondaryContainerTokens.kt:31",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "FabSecondaryContainer.HoveredContainerElevation",
+      "value": 8,
+      "unit": "dp",
+      "expression": "ElevationTokens.Level4",
+      "source": "commonMain/androidx/compose/material3/tokens/FabSecondaryContainerTokens.kt:34",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "FabSecondaryContainer.HoveredIconColor",
+      "value": "OnSecondaryContainer",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSecondaryContainer",
+      "source": "commonMain/androidx/compose/material3/tokens/FabSecondaryContainerTokens.kt:37",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "FabSecondaryContainer.IconColor",
+      "value": "OnSecondaryContainer",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSecondaryContainer",
+      "source": "commonMain/androidx/compose/material3/tokens/FabSecondaryContainerTokens.kt:40",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "FabSecondaryContainer.PressedContainerElevation",
+      "value": 6,
+      "unit": "dp",
+      "expression": "ElevationTokens.Level3",
+      "source": "commonMain/androidx/compose/material3/tokens/FabSecondaryContainerTokens.kt:43",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "FabSecondaryContainer.PressedIconColor",
+      "value": "OnSecondaryContainer",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSecondaryContainer",
+      "source": "commonMain/androidx/compose/material3/tokens/FabSecondaryContainerTokens.kt:46",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    }
+  ]
+}

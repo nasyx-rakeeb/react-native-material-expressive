@@ -1,0 +1,92 @@
+{
+  "generatedBy": "tools/extract-tokens",
+  "artifact": "material3:1.5.0",
+  "jarSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6",
+  "tokenFile": "commonMain/androidx/compose/material3/tokens/SheetBottomTokens.kt",
+  "declaration": "SheetBottomTokens",
+  "declarationKind": "object",
+  "tokenVersion": "v0_210",
+  "tokens": [
+    {
+      "token": "SheetBottom.DockedContainerColor",
+      "value": "SurfaceContainerLow",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.SurfaceContainerLow",
+      "source": "commonMain/androidx/compose/material3/tokens/SheetBottomTokens.kt:24",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "SheetBottom.DockedContainerShape",
+      "value": "CornerExtraLargeTop",
+      "unit": "shape-role",
+      "expression": "ShapeKeyTokens.CornerExtraLargeTop",
+      "source": "commonMain/androidx/compose/material3/tokens/SheetBottomTokens.kt:27",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "SheetBottom.DockedDragHandleColor",
+      "value": "OnSurfaceVariant",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurfaceVariant",
+      "source": "commonMain/androidx/compose/material3/tokens/SheetBottomTokens.kt:30",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "SheetBottom.DockedDragHandleHeight",
+      "value": 4,
+      "unit": "dp",
+      "expression": "4.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/SheetBottomTokens.kt:33",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "SheetBottom.DockedDragHandleWidth",
+      "value": 32,
+      "unit": "dp",
+      "expression": "32.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/SheetBottomTokens.kt:36",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "SheetBottom.DockedMinimizedContainerShape",
+      "value": "CornerNone",
+      "unit": "shape-role",
+      "expression": "ShapeKeyTokens.CornerNone",
+      "source": "commonMain/androidx/compose/material3/tokens/SheetBottomTokens.kt:39",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "SheetBottom.DockedModalContainerElevation",
+      "value": 1,
+      "unit": "dp",
+      "expression": "ElevationTokens.Level1",
+      "source": "commonMain/androidx/compose/material3/tokens/SheetBottomTokens.kt:42",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "SheetBottom.DockedStandardContainerElevation",
+      "value": 1,
+      "unit": "dp",
+      "expression": "ElevationTokens.Level1",
+      "source": "commonMain/androidx/compose/material3/tokens/SheetBottomTokens.kt:45",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "SheetBottom.FocusIndicatorColor",
+      "value": "Secondary",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Secondary",
+      "source": "commonMain/androidx/compose/material3/tokens/SheetBottomTokens.kt:48",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "generatedBy": "tools/extract-tokens",
+  "artifact": "material3:1.5.0",
+  "jarSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6",
+  "tokenFile": "commonMain/androidx/compose/material3/tokens/ButtonMediumTokens.kt",
+  "declaration": "ButtonMediumTokens",
+  "declarationKind": "object",
+  "tokenVersion": "v0_11_0",
+  "tokens": [
+    {
+      "token": "ButtonMedium.ContainerHeight",
+      "value": 56,
+      "unit": "dp",
+      "expression": "56.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/ButtonMediumTokens.kt:24",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ButtonMedium.ContainerShapeRound",
+      "value": "CornerFull",
+      "unit": "shape-role",
+      "expression": "ShapeKeyTokens.CornerFull",
+      "source": "commonMain/androidx/compose/material3/tokens/ButtonMediumTokens.kt:27",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ButtonMedium.ContainerShapeSquare",
+      "value": "CornerLarge",
+      "unit": "shape-role",
+      "expression": "ShapeKeyTokens.CornerLarge",
+      "source": "commonMain/androidx/compose/material3/tokens/ButtonMediumTokens.kt:30",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ButtonMedium.IconLabelSpace",
+      "value": 8,
+      "unit": "dp",
+      "expression": "8.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/ButtonMediumTokens.kt:33",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ButtonMedium.IconSize",
+      "value": 24,
+      "unit": "dp",
+      "expression": "24.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/ButtonMediumTokens.kt:36",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ButtonMedium.LeadingSpace",
+      "value": 24,
+      "unit": "dp",
+      "expression": "24.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/ButtonMediumTokens.kt:39",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ButtonMedium.OutlinedOutlineWidth",
+      "value": 1,
+      "unit": "dp",
+      "expression": "1.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/ButtonMediumTokens.kt:42",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ButtonMedium.PressedContainerShape",
+      "value": "CornerMedium",
+      "unit": "shape-role",
+      "expression": "ShapeKeyTokens.CornerMedium",
+      "source": "commonMain/androidx/compose/material3/tokens/ButtonMediumTokens.kt:45",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ButtonMedium.SelectedContainerShapeRound",
+      "value": "CornerFull",
+      "unit": "shape-role",
+      "expression": "ShapeKeyTokens.CornerFull",
+      "source": "commonMain/androidx/compose/material3/tokens/ButtonMediumTokens.kt:48",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ButtonMedium.SelectedContainerShapeSquare",
+      "value": "CornerLarge",
+      "unit": "shape-role",
+      "expression": "ShapeKeyTokens.CornerLarge",
+      "source": "commonMain/androidx/compose/material3/tokens/ButtonMediumTokens.kt:51",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ButtonMedium.TrailingSpace",
+      "value": 24,
+      "unit": "dp",
+      "expression": "24.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/ButtonMediumTokens.kt:54",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    }
+  ]
+}

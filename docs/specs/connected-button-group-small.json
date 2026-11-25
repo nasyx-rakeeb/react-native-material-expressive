@@ -1,0 +1,65 @@
+{
+  "generatedBy": "tools/extract-tokens",
+  "artifact": "material3:1.5.0",
+  "jarSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6",
+  "tokenFile": "commonMain/androidx/compose/material3/tokens/ConnectedButtonGroupSmallTokens.kt",
+  "declaration": "ConnectedButtonGroupSmallTokens",
+  "declarationKind": "object",
+  "tokenVersion": "14_1_0",
+  "tokens": [
+    {
+      "token": "ConnectedButtonGroupSmall.BetweenSpace",
+      "value": 2,
+      "unit": "dp",
+      "expression": "2.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/ConnectedButtonGroupSmallTokens.kt:25",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ConnectedButtonGroupSmall.ContainerHeight",
+      "value": 40,
+      "unit": "dp",
+      "expression": "40.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/ConnectedButtonGroupSmallTokens.kt:28",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ConnectedButtonGroupSmall.ContainerShape",
+      "value": "CornerFull",
+      "unit": "shape-role",
+      "expression": "ShapeKeyTokens.CornerFull",
+      "source": "commonMain/androidx/compose/material3/tokens/ConnectedButtonGroupSmallTokens.kt:31",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ConnectedButtonGroupSmall.InnerCornerCornerSize",
+      "value": 8,
+      "unit": "corner-size",
+      "expression": "ShapeTokens.CornerValueSmall",
+      "source": "commonMain/androidx/compose/material3/tokens/ConnectedButtonGroupSmallTokens.kt:34",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ConnectedButtonGroupSmall.PressedInnerCornerCornerSize",
+      "value": 4,
+      "unit": "corner-size",
+      "expression": "ShapeTokens.CornerValueExtraSmall",
+      "source": "commonMain/androidx/compose/material3/tokens/ConnectedButtonGroupSmallTokens.kt:35",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ConnectedButtonGroupSmall.SelectedInnerCornerCornerSizePercent",
+      "value": 50,
+      "unit": "number",
+      "expression": "50.0f",
+      "source": "commonMain/androidx/compose/material3/tokens/ConnectedButtonGroupSmallTokens.kt:36",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    }
+  ]
+}

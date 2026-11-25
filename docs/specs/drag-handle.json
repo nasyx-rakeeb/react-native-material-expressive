@@ -1,0 +1,155 @@
+{
+  "generatedBy": "tools/extract-tokens",
+  "artifact": "material3:1.5.0",
+  "jarSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6",
+  "tokenFile": "commonMain/androidx/compose/material3/tokens/DragHandleTokens.kt",
+  "declaration": "DragHandleTokens",
+  "declarationKind": "object",
+  "tokenVersion": "7_0_1",
+  "tokens": [
+    {
+      "token": "DragHandle.Color",
+      "value": "Outline",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Outline",
+      "source": "commonMain/androidx/compose/material3/tokens/DragHandleTokens.kt:24",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "DragHandle.ContainerWidth",
+      "value": 24,
+      "unit": "dp",
+      "expression": "24.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/DragHandleTokens.kt:27",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "DragHandle.DraggedColor",
+      "value": "OnSurface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurface",
+      "source": "commonMain/androidx/compose/material3/tokens/DragHandleTokens.kt:30",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "DragHandle.DraggedElevation",
+      "value": 0,
+      "unit": "dp",
+      "expression": "ElevationTokens.Level0",
+      "source": "commonMain/androidx/compose/material3/tokens/DragHandleTokens.kt:33",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "DragHandle.DraggedHeight",
+      "value": 52,
+      "unit": "dp",
+      "expression": "52.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/DragHandleTokens.kt:36",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "DragHandle.DraggedShape",
+      "value": "CornerMedium",
+      "unit": "shape-role",
+      "expression": "ShapeKeyTokens.CornerMedium",
+      "source": "commonMain/androidx/compose/material3/tokens/DragHandleTokens.kt:39",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "DragHandle.DraggedWidth",
+      "value": 12,
+      "unit": "dp",
+      "expression": "12.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/DragHandleTokens.kt:42",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "DragHandle.Elevation",
+      "value": 0,
+      "unit": "dp",
+      "expression": "ElevationTokens.Level0",
+      "source": "commonMain/androidx/compose/material3/tokens/DragHandleTokens.kt:45",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "DragHandle.Height",
+      "value": 48,
+      "unit": "dp",
+      "expression": "48.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/DragHandleTokens.kt:46",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "DragHandle.PressedColor",
+      "value": "OnSurface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurface",
+      "source": "commonMain/androidx/compose/material3/tokens/DragHandleTokens.kt:49",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "DragHandle.PressedElevation",
+      "value": 0,
+      "unit": "dp",
+      "expression": "ElevationTokens.Level0",
+      "source": "commonMain/androidx/compose/material3/tokens/DragHandleTokens.kt:52",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "DragHandle.PressedHeight",
+      "value": 52,
+      "unit": "dp",
+      "expression": "52.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/DragHandleTokens.kt:55",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "DragHandle.PressedShape",
+      "value": "CornerMedium",
+      "unit": "shape-role",
+      "expression": "ShapeKeyTokens.CornerMedium",
+      "source": "commonMain/androidx/compose/material3/tokens/DragHandleTokens.kt:58",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "DragHandle.PressedWidth",
+      "value": 12,
+      "unit": "dp",
+      "expression": "12.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/DragHandleTokens.kt:61",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "DragHandle.Shape",
+      "value": "CornerFull",
+      "unit": "shape-role",
+      "expression": "ShapeKeyTokens.CornerFull",
+      "source": "commonMain/androidx/compose/material3/tokens/DragHandleTokens.kt:64",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "DragHandle.Width",
+      "value": 4,
+      "unit": "dp",
+      "expression": "4.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/DragHandleTokens.kt:67",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    }
+  ]
+}

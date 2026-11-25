@@ -1,0 +1,92 @@
+{
+  "generatedBy": "tools/extract-tokens",
+  "artifact": "material3:1.5.0",
+  "jarSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6",
+  "tokenFile": "commonMain/androidx/compose/material3/tokens/ReorderListTokens.kt",
+  "declaration": "ReorderListTokens",
+  "declarationKind": "object",
+  "tokenVersion": "29.0.0",
+  "tokens": [
+    {
+      "token": "ReorderList.ItemContainerColor",
+      "value": "TertiaryContainer",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.TertiaryContainer",
+      "source": "commonMain/androidx/compose/material3/tokens/ReorderListTokens.kt:22",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ReorderList.ItemDropZoneColor",
+      "value": "SurfaceContainerLow",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.SurfaceContainerLow",
+      "source": "commonMain/androidx/compose/material3/tokens/ReorderListTokens.kt:25",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ReorderList.ItemLabelTextColor",
+      "value": "OnTertiaryContainer",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnTertiaryContainer",
+      "source": "commonMain/androidx/compose/material3/tokens/ReorderListTokens.kt:28",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ReorderList.ItemLeadingIconColor",
+      "value": "OnTertiaryContainer",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnTertiaryContainer",
+      "source": "commonMain/androidx/compose/material3/tokens/ReorderListTokens.kt:31",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ReorderList.ItemOverlineColor",
+      "value": "OnTertiaryContainer",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnTertiaryContainer",
+      "source": "commonMain/androidx/compose/material3/tokens/ReorderListTokens.kt:34",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ReorderList.ItemShape",
+      "value": "CornerLarge",
+      "unit": "shape-role",
+      "expression": "ShapeKeyTokens.CornerLarge",
+      "source": "commonMain/androidx/compose/material3/tokens/ReorderListTokens.kt:37",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ReorderList.ItemSupportingTextColor",
+      "value": "OnTertiaryContainer",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnTertiaryContainer",
+      "source": "commonMain/androidx/compose/material3/tokens/ReorderListTokens.kt:40",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ReorderList.ItemTrailingIconColor",
+      "value": "OnTertiaryContainer",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnTertiaryContainer",
+      "source": "commonMain/androidx/compose/material3/tokens/ReorderListTokens.kt:43",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ReorderList.ItemTrailingSupportingTextColor",
+      "value": "OnTertiaryContainer",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnTertiaryContainer",
+      "source": "commonMain/androidx/compose/material3/tokens/ReorderListTokens.kt:46",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    }
+  ]
+}

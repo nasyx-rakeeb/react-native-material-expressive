@@ -1,0 +1,200 @@
+{
+  "generatedBy": "tools/extract-tokens",
+  "artifact": "material3:1.5.0",
+  "jarSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6",
+  "tokenFile": "commonMain/androidx/compose/material3/tokens/ExtendedFabPrimaryTokens.kt",
+  "declaration": "ExtendedFabPrimaryTokens",
+  "declarationKind": "object",
+  "tokenVersion": "v0_103",
+  "tokens": [
+    {
+      "token": "ExtendedFabPrimary.ContainerColor",
+      "value": "PrimaryContainer",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.PrimaryContainer",
+      "source": "commonMain/androidx/compose/material3/tokens/ExtendedFabPrimaryTokens.kt:24",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ExtendedFabPrimary.ContainerElevation",
+      "value": 6,
+      "unit": "dp",
+      "expression": "ElevationTokens.Level3",
+      "source": "commonMain/androidx/compose/material3/tokens/ExtendedFabPrimaryTokens.kt:27",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ExtendedFabPrimary.ContainerHeight",
+      "value": 56,
+      "unit": "dp",
+      "expression": "56.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/ExtendedFabPrimaryTokens.kt:30",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ExtendedFabPrimary.ContainerShape",
+      "value": "CornerLarge",
+      "unit": "shape-role",
+      "expression": "ShapeKeyTokens.CornerLarge",
+      "source": "commonMain/androidx/compose/material3/tokens/ExtendedFabPrimaryTokens.kt:33",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ExtendedFabPrimary.FocusContainerElevation",
+      "value": 6,
+      "unit": "dp",
+      "expression": "ElevationTokens.Level3",
+      "source": "commonMain/androidx/compose/material3/tokens/ExtendedFabPrimaryTokens.kt:36",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ExtendedFabPrimary.FocusIconColor",
+      "value": "OnPrimaryContainer",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnPrimaryContainer",
+      "source": "commonMain/androidx/compose/material3/tokens/ExtendedFabPrimaryTokens.kt:39",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ExtendedFabPrimary.FocusLabelTextColor",
+      "value": "OnPrimaryContainer",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnPrimaryContainer",
+      "source": "commonMain/androidx/compose/material3/tokens/ExtendedFabPrimaryTokens.kt:42",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ExtendedFabPrimary.HoverContainerElevation",
+      "value": 8,
+      "unit": "dp",
+      "expression": "ElevationTokens.Level4",
+      "source": "commonMain/androidx/compose/material3/tokens/ExtendedFabPrimaryTokens.kt:45",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ExtendedFabPrimary.HoverIconColor",
+      "value": "OnPrimaryContainer",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnPrimaryContainer",
+      "source": "commonMain/androidx/compose/material3/tokens/ExtendedFabPrimaryTokens.kt:48",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ExtendedFabPrimary.HoverLabelTextColor",
+      "value": "OnPrimaryContainer",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnPrimaryContainer",
+      "source": "commonMain/androidx/compose/material3/tokens/ExtendedFabPrimaryTokens.kt:51",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ExtendedFabPrimary.IconColor",
+      "value": "OnPrimaryContainer",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnPrimaryContainer",
+      "source": "commonMain/androidx/compose/material3/tokens/ExtendedFabPrimaryTokens.kt:54",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ExtendedFabPrimary.IconSize",
+      "value": 24,
+      "unit": "dp",
+      "expression": "24.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/ExtendedFabPrimaryTokens.kt:57",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ExtendedFabPrimary.LabelTextColor",
+      "value": "OnPrimaryContainer",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnPrimaryContainer",
+      "source": "commonMain/androidx/compose/material3/tokens/ExtendedFabPrimaryTokens.kt:60",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ExtendedFabPrimary.LabelTextFont",
+      "value": "LabelLarge",
+      "unit": "typography-role",
+      "expression": "TypographyKeyTokens.LabelLarge",
+      "source": "commonMain/androidx/compose/material3/tokens/ExtendedFabPrimaryTokens.kt:63",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ExtendedFabPrimary.LoweredContainerElevation",
+      "value": 1,
+      "unit": "dp",
+      "expression": "ElevationTokens.Level1",
+      "source": "commonMain/androidx/compose/material3/tokens/ExtendedFabPrimaryTokens.kt:66",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ExtendedFabPrimary.LoweredFocusContainerElevation",
+      "value": 1,
+      "unit": "dp",
+      "expression": "ElevationTokens.Level1",
+      "source": "commonMain/androidx/compose/material3/tokens/ExtendedFabPrimaryTokens.kt:69",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ExtendedFabPrimary.LoweredHoverContainerElevation",
+      "value": 3,
+      "unit": "dp",
+      "expression": "ElevationTokens.Level2",
+      "source": "commonMain/androidx/compose/material3/tokens/ExtendedFabPrimaryTokens.kt:72",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ExtendedFabPrimary.LoweredPressedContainerElevation",
+      "value": 1,
+      "unit": "dp",
+      "expression": "ElevationTokens.Level1",
+      "source": "commonMain/androidx/compose/material3/tokens/ExtendedFabPrimaryTokens.kt:75",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ExtendedFabPrimary.PressedContainerElevation",
+      "value": 6,
+      "unit": "dp",
+      "expression": "ElevationTokens.Level3",
+      "source": "commonMain/androidx/compose/material3/tokens/ExtendedFabPrimaryTokens.kt:78",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ExtendedFabPrimary.PressedIconColor",
+      "value": "OnPrimaryContainer",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnPrimaryContainer",
+      "source": "commonMain/androidx/compose/material3/tokens/ExtendedFabPrimaryTokens.kt:81",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "ExtendedFabPrimary.PressedLabelTextColor",
+      "value": "OnPrimaryContainer",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnPrimaryContainer",
+      "source": "commonMain/androidx/compose/material3/tokens/ExtendedFabPrimaryTokens.kt:84",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "generatedBy": "tools/extract-tokens",
+  "artifact": "material3:1.5.0",
+  "jarSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6",
+  "tokenFile": "commonMain/androidx/compose/material3/tokens/SplitButtonXLargeTokens.kt",
+  "declaration": "SplitButtonXLargeTokens",
+  "declarationKind": "object",
+  "tokenVersion": "18_0_18",
+  "tokens": [
+    {
+      "token": "SplitButtonXLarge.BetweenSpace",
+      "value": 2,
+      "unit": "dp",
+      "expression": "2.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/SplitButtonXLargeTokens.kt:25",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "SplitButtonXLarge.ContainerHeight",
+      "value": 136,
+      "unit": "dp",
+      "expression": "136.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/SplitButtonXLargeTokens.kt:28",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "SplitButtonXLarge.ContainerShape",
+      "value": "CornerFull",
+      "unit": "shape-role",
+      "expression": "ShapeKeyTokens.CornerFull",
+      "source": "commonMain/androidx/compose/material3/tokens/SplitButtonXLargeTokens.kt:31",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "SplitButtonXLarge.InnerCornerCornerSize",
+      "value": 12,
+      "unit": "corner-size",
+      "expression": "ShapeTokens.CornerValueMedium",
+      "source": "commonMain/androidx/compose/material3/tokens/SplitButtonXLargeTokens.kt:34",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "SplitButtonXLarge.InnerHoveredCornerCornerSize",
+      "value": 20,
+      "unit": "corner-size",
+      "expression": "ShapeTokens.CornerValueLargeIncreased",
+      "source": "commonMain/androidx/compose/material3/tokens/SplitButtonXLargeTokens.kt:35",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "SplitButtonXLarge.InnerPressedCornerCornerSize",
+      "value": 20,
+      "unit": "corner-size",
+      "expression": "ShapeTokens.CornerValueLargeIncreased",
+      "source": "commonMain/androidx/compose/material3/tokens/SplitButtonXLargeTokens.kt:36",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "SplitButtonXLarge.LeadingButtonLeadingSpace",
+      "value": 64,
+      "unit": "dp",
+      "expression": "64.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/SplitButtonXLargeTokens.kt:37",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "SplitButtonXLarge.LeadingButtonTrailingSpace",
+      "value": 64,
+      "unit": "dp",
+      "expression": "64.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/SplitButtonXLargeTokens.kt:40",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "SplitButtonXLarge.TrailingIconSize",
+      "value": 50,
+      "unit": "dp",
+      "expression": "50.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/SplitButtonXLargeTokens.kt:43",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "SplitButtonXLarge.TrailingInnerSelectedCornerCornerSizePercent",
+      "value": 50,
+      "unit": "number",
+      "expression": "50.0f",
+      "source": "commonMain/androidx/compose/material3/tokens/SplitButtonXLargeTokens.kt:46",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "SplitButtonXLarge.TrailingButtonLeadingSpace",
+      "value": 43,
+      "unit": "dp",
+      "expression": "43.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/SplitButtonXLargeTokens.kt:47",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "SplitButtonXLarge.TrailingButtonTrailingSpace",
+      "value": 43,
+      "unit": "dp",
+      "expression": "43.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/SplitButtonXLargeTokens.kt:50",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    }
+  ]
+}

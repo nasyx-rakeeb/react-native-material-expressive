@@ -1,0 +1,587 @@
+{
+  "generatedBy": "tools/extract-tokens",
+  "artifact": "material3:1.5.0",
+  "jarSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6",
+  "tokenFile": "commonMain/androidx/compose/material3/tokens/OutlinedAutocompleteTokens.kt",
+  "declaration": "OutlinedAutocompleteTokens",
+  "declarationKind": "object",
+  "tokenVersion": "v0_210",
+  "tokens": [
+    {
+      "token": "OutlinedAutocomplete.MenuContainerColor",
+      "value": "SurfaceContainer",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.SurfaceContainer",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedAutocompleteTokens.kt:24",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedAutocomplete.MenuContainerElevation",
+      "value": 3,
+      "unit": "dp",
+      "expression": "ElevationTokens.Level2",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedAutocompleteTokens.kt:27",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedAutocomplete.MenuContainerShape",
+      "value": "CornerExtraSmall",
+      "unit": "shape-role",
+      "expression": "ShapeKeyTokens.CornerExtraSmall",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedAutocompleteTokens.kt:30",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedAutocomplete.TextFieldCaretColor",
+      "value": "Primary",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Primary",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedAutocompleteTokens.kt:33",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedAutocomplete.TextFieldContainerColor",
+      "value": "SurfaceContainerHighest",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.SurfaceContainerHighest",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedAutocompleteTokens.kt:36",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedAutocomplete.TextFieldContainerShape",
+      "value": "CornerExtraSmall",
+      "unit": "shape-role",
+      "expression": "ShapeKeyTokens.CornerExtraSmall",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedAutocompleteTokens.kt:39",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedAutocomplete.FieldDisabledInputTextColor",
+      "value": "OnSurface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurface",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedAutocompleteTokens.kt:42",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedAutocomplete.FieldDisabledInputTextOpacity",
+      "value": 0.38,
+      "unit": "number",
+      "expression": "0.38f",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedAutocompleteTokens.kt:45",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedAutocomplete.FieldDisabledLabelTextColor",
+      "value": "OnSurface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurface",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedAutocompleteTokens.kt:46",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedAutocomplete.FieldDisabledLabelTextOpacity",
+      "value": 0.38,
+      "unit": "number",
+      "expression": "0.38f",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedAutocompleteTokens.kt:49",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedAutocomplete.TextFieldDisabledLeadingIconColor",
+      "value": "OnSurface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurface",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedAutocompleteTokens.kt:50",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedAutocomplete.TextFieldDisabledLeadingIconOpacity",
+      "value": 0.38,
+      "unit": "number",
+      "expression": "0.38f",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedAutocompleteTokens.kt:53",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedAutocomplete.TextFieldDisabledOutlineColor",
+      "value": "OnSurface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurface",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedAutocompleteTokens.kt:54",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedAutocomplete.TextFieldDisabledOutlineOpacity",
+      "value": 0.12,
+      "unit": "number",
+      "expression": "0.12f",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedAutocompleteTokens.kt:57",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedAutocomplete.TextFieldDisabledOutlineWidth",
+      "value": 1,
+      "unit": "dp",
+      "expression": "1.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedAutocompleteTokens.kt:58",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedAutocomplete.FieldDisabledSupportingTextColor",
+      "value": "OnSurface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurface",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedAutocompleteTokens.kt:61",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedAutocomplete.FieldDisabledSupportingTextOpacity",
+      "value": 0.38,
+      "unit": "number",
+      "expression": "0.38f",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedAutocompleteTokens.kt:64",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedAutocomplete.TextFieldDisabledTrailingIconColor",
+      "value": "OnSurface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurface",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedAutocompleteTokens.kt:65",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedAutocomplete.TextFieldDisabledTrailingIconOpacity",
+      "value": 0.38,
+      "unit": "number",
+      "expression": "0.38f",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedAutocompleteTokens.kt:68",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedAutocomplete.TextFieldErrorFocusCaretColor",
+      "value": "Error",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Error",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedAutocompleteTokens.kt:69",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedAutocomplete.FieldErrorFocusInputTextColor",
+      "value": "OnSurface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurface",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedAutocompleteTokens.kt:72",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedAutocomplete.FieldErrorFocusLabelTextColor",
+      "value": "Error",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Error",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedAutocompleteTokens.kt:75",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedAutocomplete.TextFieldErrorFocusLeadingIconColor",
+      "value": "OnSurfaceVariant",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurfaceVariant",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedAutocompleteTokens.kt:78",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedAutocomplete.TextFieldErrorFocusOutlineColor",
+      "value": "Error",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Error",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedAutocompleteTokens.kt:81",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedAutocomplete.FieldErrorFocusSupportingTextColor",
+      "value": "Error",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Error",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedAutocompleteTokens.kt:84",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedAutocomplete.TextFieldErrorFocusTrailingIconColor",
+      "value": "Error",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Error",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedAutocompleteTokens.kt:87",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedAutocomplete.FieldErrorHoverInputTextColor",
+      "value": "OnSurface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurface",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedAutocompleteTokens.kt:90",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedAutocomplete.FieldErrorHoverLabelTextColor",
+      "value": "OnErrorContainer",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnErrorContainer",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedAutocompleteTokens.kt:93",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedAutocomplete.TextFieldErrorHoverLeadingIconColor",
+      "value": "OnSurfaceVariant",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurfaceVariant",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedAutocompleteTokens.kt:96",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedAutocomplete.TextFieldErrorHoverOutlineColor",
+      "value": "OnErrorContainer",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnErrorContainer",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedAutocompleteTokens.kt:99",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedAutocomplete.FieldErrorHoverSupportingTextColor",
+      "value": "Error",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Error",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedAutocompleteTokens.kt:102",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedAutocomplete.TextFieldErrorHoverTrailingIconColor",
+      "value": "OnErrorContainer",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnErrorContainer",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedAutocompleteTokens.kt:105",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedAutocomplete.FieldErrorInputTextColor",
+      "value": "OnSurface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurface",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedAutocompleteTokens.kt:108",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedAutocomplete.FieldErrorLabelTextColor",
+      "value": "Error",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Error",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedAutocompleteTokens.kt:111",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedAutocomplete.TextFieldErrorLeadingIconColor",
+      "value": "OnSurfaceVariant",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurfaceVariant",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedAutocompleteTokens.kt:114",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedAutocomplete.TextFieldErrorOutlineColor",
+      "value": "Error",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Error",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedAutocompleteTokens.kt:117",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedAutocomplete.FieldErrorSupportingTextColor",
+      "value": "Error",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Error",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedAutocompleteTokens.kt:120",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedAutocomplete.TextFieldErrorTrailingIconColor",
+      "value": "Error",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Error",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedAutocompleteTokens.kt:123",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedAutocomplete.FieldFocusInputTextColor",
+      "value": "OnSurface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurface",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedAutocompleteTokens.kt:126",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedAutocomplete.FieldFocusLabelTextColor",
+      "value": "Primary",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Primary",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedAutocompleteTokens.kt:129",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedAutocomplete.TextFieldFocusLeadingIconColor",
+      "value": "OnSurfaceVariant",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurfaceVariant",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedAutocompleteTokens.kt:132",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedAutocomplete.TextFieldFocusOutlineColor",
+      "value": "Primary",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Primary",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedAutocompleteTokens.kt:135",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedAutocomplete.TextFieldFocusOutlineWidth",
+      "value": 2,
+      "unit": "dp",
+      "expression": "2.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedAutocompleteTokens.kt:138",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedAutocomplete.FieldFocusSupportingTextColor",
+      "value": "OnSurfaceVariant",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurfaceVariant",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedAutocompleteTokens.kt:141",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedAutocomplete.TextFieldFocusTrailingIconColor",
+      "value": "OnSurfaceVariant",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurfaceVariant",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedAutocompleteTokens.kt:144",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedAutocomplete.FieldHoverInputTextColor",
+      "value": "OnSurface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurface",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedAutocompleteTokens.kt:147",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedAutocomplete.FieldHoverLabelTextColor",
+      "value": "OnSurfaceVariant",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurfaceVariant",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedAutocompleteTokens.kt:150",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedAutocomplete.TextFieldHoverLeadingIconColor",
+      "value": "OnSurfaceVariant",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurfaceVariant",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedAutocompleteTokens.kt:153",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedAutocomplete.TextFieldHoverOutlineColor",
+      "value": "OnSurface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurface",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedAutocompleteTokens.kt:156",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedAutocomplete.TextFieldHoverOutlineWidth",
+      "value": 1,
+      "unit": "dp",
+      "expression": "1.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedAutocompleteTokens.kt:159",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedAutocomplete.FieldHoverSupportingTextColor",
+      "value": "OnSurfaceVariant",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurfaceVariant",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedAutocompleteTokens.kt:162",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedAutocomplete.TextFieldHoverTrailingIconColor",
+      "value": "OnSurfaceVariant",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurfaceVariant",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedAutocompleteTokens.kt:165",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedAutocomplete.FieldInputTextColor",
+      "value": "OnSurface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurface",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedAutocompleteTokens.kt:168",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedAutocomplete.FieldInputTextFont",
+      "value": "BodyLarge",
+      "unit": "typography-role",
+      "expression": "TypographyKeyTokens.BodyLarge",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedAutocompleteTokens.kt:171",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedAutocomplete.FieldLabelTextColor",
+      "value": "OnSurfaceVariant",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurfaceVariant",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedAutocompleteTokens.kt:174",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedAutocomplete.FieldLabelTextFont",
+      "value": "BodyLarge",
+      "unit": "typography-role",
+      "expression": "TypographyKeyTokens.BodyLarge",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedAutocompleteTokens.kt:177",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedAutocomplete.TextFieldLeadingIconColor",
+      "value": "OnSurfaceVariant",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurfaceVariant",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedAutocompleteTokens.kt:180",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedAutocomplete.TextFieldLeadingIconSize",
+      "value": 24,
+      "unit": "dp",
+      "expression": "24.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedAutocompleteTokens.kt:183",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedAutocomplete.TextFieldOutlineColor",
+      "value": "Outline",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Outline",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedAutocompleteTokens.kt:186",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedAutocomplete.TextFieldOutlineWidth",
+      "value": 1,
+      "unit": "dp",
+      "expression": "1.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedAutocompleteTokens.kt:189",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedAutocomplete.FieldSupportingTextColor",
+      "value": "OnSurfaceVariant",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurfaceVariant",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedAutocompleteTokens.kt:192",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedAutocomplete.FieldSupportingTextFont",
+      "value": "BodySmall",
+      "unit": "typography-role",
+      "expression": "TypographyKeyTokens.BodySmall",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedAutocompleteTokens.kt:195",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedAutocomplete.TextFieldTrailingIconColor",
+      "value": "OnSurfaceVariant",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurfaceVariant",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedAutocompleteTokens.kt:198",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedAutocomplete.TextFieldTrailingIconSize",
+      "value": 24,
+      "unit": "dp",
+      "expression": "24.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedAutocompleteTokens.kt:201",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    }
+  ]
+}

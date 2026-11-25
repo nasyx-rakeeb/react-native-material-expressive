@@ -1,0 +1,272 @@
+{
+  "generatedBy": "tools/extract-tokens",
+  "artifact": "material3:1.5.0",
+  "jarSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6",
+  "tokenFile": "commonMain/androidx/compose/material3/tokens/OutlinedSegmentedButtonTokens.kt",
+  "declaration": "OutlinedSegmentedButtonTokens",
+  "declarationKind": "object",
+  "tokenVersion": "v0_162",
+  "tokens": [
+    {
+      "token": "OutlinedSegmentedButton.ContainerHeight",
+      "value": 40,
+      "unit": "dp",
+      "expression": "40.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedSegmentedButtonTokens.kt:25",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedSegmentedButton.DisabledIconColor",
+      "value": "OnSurface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurface",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedSegmentedButtonTokens.kt:28",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedSegmentedButton.DisabledIconOpacity",
+      "value": 0.38,
+      "unit": "number",
+      "expression": "0.38f",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedSegmentedButtonTokens.kt:31",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedSegmentedButton.DisabledLabelTextColor",
+      "value": "OnSurface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurface",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedSegmentedButtonTokens.kt:32",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedSegmentedButton.DisabledLabelTextOpacity",
+      "value": 0.38,
+      "unit": "number",
+      "expression": "0.38f",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedSegmentedButtonTokens.kt:35",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedSegmentedButton.DisabledOutlineColor",
+      "value": "OnSurface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurface",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedSegmentedButtonTokens.kt:36",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedSegmentedButton.DisabledOutlineOpacity",
+      "value": 0.12,
+      "unit": "number",
+      "expression": "0.12f",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedSegmentedButtonTokens.kt:39",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedSegmentedButton.LabelTextFont",
+      "value": "LabelLarge",
+      "unit": "typography-role",
+      "expression": "TypographyKeyTokens.LabelLarge",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedSegmentedButtonTokens.kt:40",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedSegmentedButton.OutlineColor",
+      "value": "Outline",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Outline",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedSegmentedButtonTokens.kt:43",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedSegmentedButton.OutlineWidth",
+      "value": 1,
+      "unit": "dp",
+      "expression": "1.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedSegmentedButtonTokens.kt:46",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedSegmentedButton.SelectedContainerColor",
+      "value": "SecondaryContainer",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.SecondaryContainer",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedSegmentedButtonTokens.kt:49",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedSegmentedButton.SelectedFocusIconColor",
+      "value": "OnSecondaryContainer",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSecondaryContainer",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedSegmentedButtonTokens.kt:52",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedSegmentedButton.SelectedFocusLabelTextColor",
+      "value": "OnSecondaryContainer",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSecondaryContainer",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedSegmentedButtonTokens.kt:55",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedSegmentedButton.SelectedHoverIconColor",
+      "value": "OnSecondaryContainer",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSecondaryContainer",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedSegmentedButtonTokens.kt:58",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedSegmentedButton.SelectedHoverLabelTextColor",
+      "value": "OnSecondaryContainer",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSecondaryContainer",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedSegmentedButtonTokens.kt:61",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedSegmentedButton.SelectedLabelTextColor",
+      "value": "OnSecondaryContainer",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSecondaryContainer",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedSegmentedButtonTokens.kt:64",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedSegmentedButton.SelectedPressedIconColor",
+      "value": "OnSecondaryContainer",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSecondaryContainer",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedSegmentedButtonTokens.kt:67",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedSegmentedButton.SelectedPressedLabelTextColor",
+      "value": "OnSecondaryContainer",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSecondaryContainer",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedSegmentedButtonTokens.kt:70",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedSegmentedButton.SelectedIconColor",
+      "value": "OnSecondaryContainer",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSecondaryContainer",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedSegmentedButtonTokens.kt:73",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedSegmentedButton.Shape",
+      "value": "CornerFull",
+      "unit": "shape-role",
+      "expression": "ShapeKeyTokens.CornerFull",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedSegmentedButtonTokens.kt:76",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedSegmentedButton.UnselectedFocusIconColor",
+      "value": "OnSurface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurface",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedSegmentedButtonTokens.kt:79",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedSegmentedButton.UnselectedFocusLabelTextColor",
+      "value": "OnSurface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurface",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedSegmentedButtonTokens.kt:82",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedSegmentedButton.UnselectedHoverIconColor",
+      "value": "OnSurface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurface",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedSegmentedButtonTokens.kt:85",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedSegmentedButton.UnselectedHoverLabelTextColor",
+      "value": "OnSurface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurface",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedSegmentedButtonTokens.kt:88",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedSegmentedButton.UnselectedLabelTextColor",
+      "value": "OnSurface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurface",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedSegmentedButtonTokens.kt:91",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedSegmentedButton.UnselectedPressedIconColor",
+      "value": "OnSurface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurface",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedSegmentedButtonTokens.kt:94",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedSegmentedButton.UnselectedPressedLabelTextColor",
+      "value": "OnSurface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurface",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedSegmentedButtonTokens.kt:97",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedSegmentedButton.UnselectedIconColor",
+      "value": "OnSurface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurface",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedSegmentedButtonTokens.kt:100",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedSegmentedButton.IconSize",
+      "value": 18,
+      "unit": "dp",
+      "expression": "18.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedSegmentedButtonTokens.kt:103",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    }
+  ]
+}

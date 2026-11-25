@@ -1,0 +1,47 @@
+{
+  "generatedBy": "tools/extract-tokens",
+  "artifact": "material3:1.5.0",
+  "jarSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6",
+  "tokenFile": "commonMain/androidx/compose/material3/tokens/NavigationBarVerticalItemTokens.kt",
+  "declaration": "NavigationBarVerticalItemTokens",
+  "declarationKind": "object",
+  "tokenVersion": "v0_11_0",
+  "tokens": [
+    {
+      "token": "NavigationBarVerticalItem.ActiveIndicatorHeight",
+      "value": 32,
+      "unit": "dp",
+      "expression": "32.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/NavigationBarVerticalItemTokens.kt:24",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "NavigationBarVerticalItem.ActiveIndicatorWidth",
+      "value": 56,
+      "unit": "dp",
+      "expression": "56.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/NavigationBarVerticalItemTokens.kt:27",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "NavigationBarVerticalItem.ContainerBetweenSpace",
+      "value": 6,
+      "unit": "dp",
+      "expression": "6.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/NavigationBarVerticalItemTokens.kt:30",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "NavigationBarVerticalItem.IconSize",
+      "value": 24,
+      "unit": "dp",
+      "expression": "24.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/NavigationBarVerticalItemTokens.kt:33",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    }
+  ]
+}

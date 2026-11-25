@@ -1,0 +1,83 @@
+{
+  "generatedBy": "tools/extract-tokens",
+  "artifact": "material3:1.5.0",
+  "jarSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6",
+  "tokenFile": "commonMain/androidx/compose/material3/tokens/MenuTokens.kt",
+  "declaration": "MenuTokens",
+  "declarationKind": "object",
+  "tokenVersion": "v0_210",
+  "tokens": [
+    {
+      "token": "Menu.ContainerColor",
+      "value": "SurfaceContainer",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.SurfaceContainer",
+      "source": "commonMain/androidx/compose/material3/tokens/MenuTokens.kt:22",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Menu.ContainerElevation",
+      "value": 3,
+      "unit": "dp",
+      "expression": "ElevationTokens.Level2",
+      "source": "commonMain/androidx/compose/material3/tokens/MenuTokens.kt:25",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Menu.ContainerShape",
+      "value": "CornerExtraSmall",
+      "unit": "shape-role",
+      "expression": "ShapeKeyTokens.CornerExtraSmall",
+      "source": "commonMain/androidx/compose/material3/tokens/MenuTokens.kt:28",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Menu.FocusIndicatorColor",
+      "value": "Secondary",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Secondary",
+      "source": "commonMain/androidx/compose/material3/tokens/MenuTokens.kt:31",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Menu.ListItemSelectedContainerColor",
+      "value": "SecondaryContainer",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.SecondaryContainer",
+      "source": "commonMain/androidx/compose/material3/tokens/MenuTokens.kt:34",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Menu.ListItemSelectedLabelTextColor",
+      "value": "OnSecondaryContainer",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSecondaryContainer",
+      "source": "commonMain/androidx/compose/material3/tokens/MenuTokens.kt:37",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Menu.ListItemSelectedLeadingTrailingIconColor",
+      "value": "OnSecondaryContainer",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSecondaryContainer",
+      "source": "commonMain/androidx/compose/material3/tokens/MenuTokens.kt:40",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Menu.MenuListItemLeadingIconColor",
+      "value": "OnSecondaryContainer",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSecondaryContainer",
+      "source": "commonMain/androidx/compose/material3/tokens/MenuTokens.kt:43",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    }
+  ]
+}

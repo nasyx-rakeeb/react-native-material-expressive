@@ -1,0 +1,29 @@
+{
+  "generatedBy": "tools/extract-tokens",
+  "artifact": "material3:1.5.0",
+  "jarSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6",
+  "tokenFile": "commonMain/androidx/compose/material3/tokens/AppBarLargeTokens.kt",
+  "declaration": "AppBarLargeTokens",
+  "declarationKind": "object",
+  "tokenVersion": "14_0_0",
+  "tokens": [
+    {
+      "token": "AppBarLarge.ContainerHeight",
+      "value": 152,
+      "unit": "dp",
+      "expression": "152.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/AppBarLargeTokens.kt:25",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "AppBarLarge.TitleFont",
+      "value": "HeadlineMedium",
+      "unit": "typography-role",
+      "expression": "TypographyKeyTokens.HeadlineMedium",
+      "source": "commonMain/androidx/compose/material3/tokens/AppBarLargeTokens.kt:28",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    }
+  ]
+}

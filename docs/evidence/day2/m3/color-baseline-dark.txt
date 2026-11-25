@@ -1,0 +1,260 @@
+Skip to main content
+menu
+material_design
+Material Design 3
+search
+Static color schemes
+Static color schemes are ideal for branded products that should have a consistent, uniform design
+Baseline
+Custom brand
+On this page
+Baseline colors
+Baseline color tokens
+Design with baseline
+
+Baseline is the default static color scheme. It uses accessible color pairings and includes colors for both light and dark themes.
+
+With the baseline color scheme, end-users see
+
+An accessible UI with static colors 
+
+Music app with the static baseline color scheme
+
+News app with the static baseline color scheme
+
+Baseline colors
+
+Get baseline colors in Figma using the Material Theme Builder.
+
+Baseline scheme colors in light theme
+
+Baseline scheme colors in dark theme
+
+Baseline color tokens
+Color schemes
+arrow_drop_down
+search
+collapse_all
+Default, Dark
+arrow_drop_down
+folder_open
+Primary colors
+keyboard_arrow_down
+#D0BCFF
+Primary
+#381E72
+On primary
+#4F378B
+Primary container
+#EADDFF
+On primary container
+folder_open
+Secondary colors
+keyboard_arrow_down
+#CCC2DC
+Secondary
+#332D41
+On secondary
+#4A4458
+Secondary container
+#E8DEF8
+On secondary container
+folder_open
+Tertiary colors
+keyboard_arrow_down
+#EFB8C8
+Tertiary
+#492532
+On tertiary
+#633B48
+Tertiary container
+#FFD8E4
+On tertiary container
+folder_open
+Error colors
+keyboard_arrow_down
+#F2B8B5
+Error
+#601410
+On error
+#8C1D18
+Error container
+#F9DEDC
+On error container
+folder_open
+Surface colors
+keyboard_arrow_down
+#141218
+Surface
+#E6E0E9
+On surface
+#49454F
+Surface Variant
+#CAC4D0
+On surface variant
+#36343B
+Surface Container Highest
+#2B2930
+Surface Container High
+#211F26
+Surface Container
+#1D1B20
+Surface Container Low
+#0F0D13
+Surface Container Lowest
+#E6E0E9
+Inverse surface
+#322F35
+Inverse on surface
+#D0BCFF
+Surface tint
+#D0BCFF
+Surface tint color
+folder_open
+Outline colors
+keyboard_arrow_down
+#938F99
+Outline
+#49454F
+Outline Variant
+folder_open
+Add-ons
+keyboard_arrow_down
+folder_open
+Add-ons / Add-on primary colors
+keyboard_arrow_down
+#EADDFF
+Primary fixed
+#21005D
+On primary fixed
+#D0BCFF
+Primary fixed dim
+#4F378B
+On primary fixed variant
+#6750A4
+Inverse primary
+folder_open
+Add-ons / Add-on secondary colors
+keyboard_arrow_down
+#E8DEF8
+Secondary fixed
+#1D192B
+On secondary fixed
+#CCC2DC
+Secondary fixed dim
+#4A4458
+On secondary fixed variant
+folder_open
+Add-ons / Add-on tertiary colors
+keyboard_arrow_down
+#FFD8E4
+Tertiary fixed
+#31111D
+On tertiary fixed
+#EFB8C8
+Tertiary fixed dim
+#633B48
+On tertiary fixed variant
+folder_open
+Add-ons / Add-on surface colors
+keyboard_arrow_down
+#141218
+Background
+#E6E0E9
+On background
+#3B383E
+Surface Bright
+#141218
+Surface Dim
+#000000
+Scrim
+#000000
+Shadow
+Design with baseline
+Use the Design Kit and M3 baseline colors in new design files
+
+Create your Figma file. Enable the M3 Design Kit in your Assets panel.
+
+Compose screens and layouts using Material Components from the design kit
+
+Apply M3 baseline color roles to custom components and UI elements by hovering on the element's color property in the Design panel on the right of the screen and selecting the Style icon (four dots). This opens a selection dialog.
+
+Search for "M3" to see the baseline color roles
+
+Select the baseline color role that most closely matches the use case and intent (see Color roles for more information on what color to use where)
+
+Repeat until all custom elements are using M3 baseline color roles
+
+Apply baseline colors to an existing file
+
+First, get the M3 baseline colors into your file
+
+Open your Figma design file. Select the Actions menu (or Ctrl/Command+K).
+
+Find the Material Theme Builder plugin and select Run. This will open a plugin dialog showing the default color scheme, including Core colors and Extended colors.
+
+Open the plugin's Settings (gear icon at lower right of dialog) and select the checkbox for Generate State Layers. This makes sure there are color for the state layers needed to design interactions. Learn more about state layers
+
+Navigate out of settings.
+
+With the Current Theme dropdown at the top of the dialog, select Baseline.
+
+Select the frames or components in your file and then hit Swap in the bottom right of the dialog. This will automatically update the colors for any M3 Design Kit components.
+
+Then, update any remaining non-M3 color styles
+
+Manually change any hex values or non-M3 color styles by selecting all and looking through the Selection colors in the Design panel on the right of the screen.
+
+Any colors that don't start with "M3" need to be replaced with a corresponding baseline color.
+
+Hover on a non-M3 color row in the Design panel and select the Style icon (four dots). This opens a selection dialog.
+
+Search for "M3" to see the baseline color roles.
+
+Select the baseline color role that most closely matches that color's use case (see Color roles for more information on what color to use where) and select Use style to apply it to the selected objects.
+
+Repeat until all non-M3 colors in the file have been replaced with M3 baseline color roles.
+
+Need to make adjustments to the scheme? Check out Advanced customizations
+
+arrow_left_alt
+Previous
+Choosing a scheme
+Up next
+arrow_right_alt
+Static: Custom brand
+vertical_align_top
+material_design
+
+Material Design is an adaptable system of guidelines, components, and tools that support the best practices of user interface design. Backed by open-source code, Material Design streamlines collaboration between designers and developers, and helps teams quickly build beautiful products.
+
+Social
+
+GitHub
+X
+YouTube
+Blog RSS
+
+Libraries
+
+Android
+Compose
+Flutter
+Web
+
+More Google sites
+
+Google Design
+
+Archived versions
+
+Material Design 1
+Material Design 2
+Privacy Policy
+Terms of Service
+Join research studies
+Feedback
+
+This site uses cookies from Google to deliver its services and to analyze traffic. Learn more
+
+Okay, got it

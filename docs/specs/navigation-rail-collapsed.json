@@ -1,0 +1,74 @@
+{
+  "generatedBy": "tools/extract-tokens",
+  "artifact": "material3:1.5.0",
+  "jarSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6",
+  "tokenFile": "commonMain/androidx/compose/material3/tokens/NavigationRailCollapsedTokens.kt",
+  "declaration": "NavigationRailCollapsedTokens",
+  "declarationKind": "object",
+  "tokenVersion": "v0_11_0",
+  "tokens": [
+    {
+      "token": "NavigationRailCollapsed.ContainerElevation",
+      "value": 0,
+      "unit": "dp",
+      "expression": "ElevationTokens.Level0",
+      "source": "commonMain/androidx/compose/material3/tokens/NavigationRailCollapsedTokens.kt:24",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "NavigationRailCollapsed.ContainerShape",
+      "value": "CornerNone",
+      "unit": "shape-role",
+      "expression": "ShapeKeyTokens.CornerNone",
+      "source": "commonMain/androidx/compose/material3/tokens/NavigationRailCollapsedTokens.kt:27",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "NavigationRailCollapsed.ContainerWidth",
+      "value": 96,
+      "unit": "dp",
+      "expression": "96.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/NavigationRailCollapsedTokens.kt:30",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "NavigationRailCollapsed.ItemVerticalSpace",
+      "value": 4,
+      "unit": "dp",
+      "expression": "4.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/NavigationRailCollapsedTokens.kt:33",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "NavigationRailCollapsed.TopSpace",
+      "value": 44,
+      "unit": "dp",
+      "expression": "44.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/NavigationRailCollapsedTokens.kt:36",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "NavigationRailCollapsed.ContainerColor",
+      "value": "Surface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Surface",
+      "source": "commonMain/androidx/compose/material3/tokens/NavigationRailCollapsedTokens.kt:40",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "NavigationRailCollapsed.NarrowContainerWidth",
+      "value": 80,
+      "unit": "dp",
+      "expression": "80.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/NavigationRailCollapsedTokens.kt:43",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    }
+  ]
+}

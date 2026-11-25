@@ -1,0 +1,47 @@
+{
+  "generatedBy": "tools/extract-tokens",
+  "artifact": "material3:1.5.0",
+  "jarSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6",
+  "tokenFile": "commonMain/androidx/compose/material3/tokens/AppBarLargeFlexibleTokens.kt",
+  "declaration": "AppBarLargeFlexibleTokens",
+  "declarationKind": "object",
+  "tokenVersion": "14_0_0",
+  "tokens": [
+    {
+      "token": "AppBarLargeFlexible.ContainerHeight",
+      "value": 120,
+      "unit": "dp",
+      "expression": "120.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/AppBarLargeFlexibleTokens.kt:25",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "AppBarLargeFlexible.SubtitleFont",
+      "value": "TitleMedium",
+      "unit": "typography-role",
+      "expression": "TypographyKeyTokens.TitleMedium",
+      "source": "commonMain/androidx/compose/material3/tokens/AppBarLargeFlexibleTokens.kt:28",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "AppBarLargeFlexible.TitleFont",
+      "value": "DisplaySmall",
+      "unit": "typography-role",
+      "expression": "TypographyKeyTokens.DisplaySmall",
+      "source": "commonMain/androidx/compose/material3/tokens/AppBarLargeFlexibleTokens.kt:31",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "AppBarLargeFlexible.LargeContainerHeight",
+      "value": 152,
+      "unit": "dp",
+      "expression": "152.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/AppBarLargeFlexibleTokens.kt:34",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "@react-native-material-expressive/extract-tokens",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Extracts Compose Material3 design tokens into docs/specs and generated TypeScript.",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "fetch": "bash fetch-sources.sh",
+    "extract": "bash fetch-sources.sh && tsx src/main.ts",
+    "test": "tsx --test src/__tests__/*.test.ts",
+    "lint": "eslint src",
+    "typecheck": "tsc --noEmit",
+    "check": "bash fetch-sources.sh && tsx src/main.ts --check",
+    "spotcheck": "tsx src/spotcheck.ts"
+  },
+  "devDependencies": {
+    "@types/node": "26.6.10",
+    "prettier": "3.10.1",
+    "tsx": "4.23.15",
+    "typescript": "6.0.3"
+  }
+}

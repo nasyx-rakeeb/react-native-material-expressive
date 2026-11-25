@@ -1,0 +1,47 @@
+{
+  "generatedBy": "tools/extract-tokens",
+  "artifact": "material3:1.5.0",
+  "jarSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6",
+  "tokenFile": "commonMain/androidx/compose/material3/tokens/PlainTooltipTokens.kt",
+  "declaration": "PlainTooltipTokens",
+  "declarationKind": "object",
+  "tokenVersion": null,
+  "tokens": [
+    {
+      "token": "PlainTooltip.ContainerColor",
+      "value": "InverseSurface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.InverseSurface",
+      "source": "commonMain/androidx/compose/material3/tokens/PlainTooltipTokens.kt:20",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "PlainTooltip.ContainerShape",
+      "value": "CornerExtraSmall",
+      "unit": "shape-role",
+      "expression": "ShapeKeyTokens.CornerExtraSmall",
+      "source": "commonMain/androidx/compose/material3/tokens/PlainTooltipTokens.kt:23",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "PlainTooltip.SupportingTextColor",
+      "value": "InverseOnSurface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.InverseOnSurface",
+      "source": "commonMain/androidx/compose/material3/tokens/PlainTooltipTokens.kt:26",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "PlainTooltip.SupportingTextFont",
+      "value": "BodySmall",
+      "unit": "typography-role",
+      "expression": "TypographyKeyTokens.BodySmall",
+      "source": "commonMain/androidx/compose/material3/tokens/PlainTooltipTokens.kt:29",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    }
+  ]
+}

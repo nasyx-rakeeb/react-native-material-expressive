@@ -1,0 +1,371 @@
+{
+  "generatedBy": "tools/extract-tokens",
+  "artifact": "material3:1.5.0",
+  "jarSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6",
+  "tokenFile": "commonMain/androidx/compose/material3/tokens/OutlinedButtonTokens.kt",
+  "declaration": "OutlinedButtonTokens",
+  "declarationKind": "object",
+  "tokenVersion": "v0_11_0",
+  "tokens": [
+    {
+      "token": "OutlinedButton.DisabledContainerOpacity",
+      "value": 0.1,
+      "unit": "number",
+      "expression": "0.1f",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedButtonTokens.kt:22",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedButton.DisabledIconColor",
+      "value": "OnSurfaceVariant",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurfaceVariant",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedButtonTokens.kt:23",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedButton.DisabledIconOpacity",
+      "value": 0.38,
+      "unit": "number",
+      "expression": "0.38f",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedButtonTokens.kt:26",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedButton.DisabledLabelTextColor",
+      "value": "OnSurfaceVariant",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurfaceVariant",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedButtonTokens.kt:27",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedButton.DisabledLabelTextOpacity",
+      "value": 0.38,
+      "unit": "number",
+      "expression": "0.38f",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedButtonTokens.kt:30",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedButton.DisabledOutlineColor",
+      "value": "OutlineVariant",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OutlineVariant",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedButtonTokens.kt:31",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedButton.FocusedIconColor",
+      "value": "OnSurfaceVariant",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurfaceVariant",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedButtonTokens.kt:34",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedButton.FocusedLabelTextColor",
+      "value": "OnSurfaceVariant",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurfaceVariant",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedButtonTokens.kt:37",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedButton.FocusedOutlineColor",
+      "value": "OutlineVariant",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OutlineVariant",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedButtonTokens.kt:40",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedButton.HoveredIconColor",
+      "value": "OnSurfaceVariant",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurfaceVariant",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedButtonTokens.kt:43",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedButton.HoveredLabelTextColor",
+      "value": "OnSurfaceVariant",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurfaceVariant",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedButtonTokens.kt:46",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedButton.HoveredOutlineColor",
+      "value": "OutlineVariant",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OutlineVariant",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedButtonTokens.kt:49",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedButton.IconColor",
+      "value": "OnSurfaceVariant",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurfaceVariant",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedButtonTokens.kt:52",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedButton.LabelTextColor",
+      "value": "OnSurfaceVariant",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurfaceVariant",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedButtonTokens.kt:55",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedButton.OutlineColor",
+      "value": "OutlineVariant",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OutlineVariant",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedButtonTokens.kt:58",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedButton.PressedIconColor",
+      "value": "OnSurfaceVariant",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurfaceVariant",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedButtonTokens.kt:61",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedButton.PressedLabelTextColor",
+      "value": "OnSurfaceVariant",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurfaceVariant",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedButtonTokens.kt:64",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedButton.PressedOutlineColor",
+      "value": "OutlineVariant",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OutlineVariant",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedButtonTokens.kt:67",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedButton.SelectedContainerColor",
+      "value": "InverseSurface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.InverseSurface",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedButtonTokens.kt:70",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedButton.SelectedDisabledContainerColor",
+      "value": "OnSurface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurface",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedButtonTokens.kt:73",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedButton.SelectedFocusedIconColor",
+      "value": "InverseOnSurface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.InverseOnSurface",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedButtonTokens.kt:76",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedButton.SelectedFocusedLabelTextColor",
+      "value": "InverseOnSurface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.InverseOnSurface",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedButtonTokens.kt:79",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedButton.SelectedHoveredIconColor",
+      "value": "InverseOnSurface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.InverseOnSurface",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedButtonTokens.kt:82",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedButton.SelectedHoveredLabelTextColor",
+      "value": "InverseOnSurface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.InverseOnSurface",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedButtonTokens.kt:85",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedButton.SelectedIconColor",
+      "value": "InverseOnSurface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.InverseOnSurface",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedButtonTokens.kt:88",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedButton.SelectedLabelTextColor",
+      "value": "InverseOnSurface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.InverseOnSurface",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedButtonTokens.kt:91",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedButton.SelectedPressedIconColor",
+      "value": "InverseOnSurface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.InverseOnSurface",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedButtonTokens.kt:94",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedButton.SelectedPressedLabelTextColor",
+      "value": "InverseOnSurface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.InverseOnSurface",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedButtonTokens.kt:97",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedButton.UnselectedDisabledOutlineColor",
+      "value": "OutlineVariant",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OutlineVariant",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedButtonTokens.kt:100",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedButton.UnselectedFocusedIconColor",
+      "value": "OnSurfaceVariant",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurfaceVariant",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedButtonTokens.kt:103",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedButton.UnselectedFocusedLabelTextColor",
+      "value": "OnSurfaceVariant",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurfaceVariant",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedButtonTokens.kt:106",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedButton.UnselectedFocusedOutlineColor",
+      "value": "OutlineVariant",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OutlineVariant",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedButtonTokens.kt:109",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedButton.UnselectedHoveredIconColor",
+      "value": "OnSurfaceVariant",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurfaceVariant",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedButtonTokens.kt:112",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedButton.UnselectedHoveredLabelTextColor",
+      "value": "OnSurfaceVariant",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurfaceVariant",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedButtonTokens.kt:115",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedButton.UnselectedHoveredOutlineColor",
+      "value": "OutlineVariant",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OutlineVariant",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedButtonTokens.kt:118",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedButton.UnselectedIconColor",
+      "value": "OnSurfaceVariant",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurfaceVariant",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedButtonTokens.kt:121",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedButton.UnselectedLabelTextColor",
+      "value": "OnSurfaceVariant",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurfaceVariant",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedButtonTokens.kt:124",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedButton.UnselectedPressedIconColor",
+      "value": "OnSurfaceVariant",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurfaceVariant",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedButtonTokens.kt:127",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedButton.UnselectedPressedLabelTextColor",
+      "value": "OnSurfaceVariant",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurfaceVariant",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedButtonTokens.kt:130",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "OutlinedButton.UnselectedPressedOutlineColor",
+      "value": "OutlineVariant",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OutlineVariant",
+      "source": "commonMain/androidx/compose/material3/tokens/OutlinedButtonTokens.kt:133",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    }
+  ]
+}

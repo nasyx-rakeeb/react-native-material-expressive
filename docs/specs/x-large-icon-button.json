@@ -1,0 +1,137 @@
+{
+  "generatedBy": "tools/extract-tokens",
+  "artifact": "material3:1.5.0",
+  "jarSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6",
+  "tokenFile": "commonMain/androidx/compose/material3/tokens/XLargeIconButtonTokens.kt",
+  "declaration": "XLargeIconButtonTokens",
+  "declarationKind": "object",
+  "tokenVersion": "14_1_0",
+  "tokens": [
+    {
+      "token": "XLargeIconButton.ContainerHeight",
+      "value": 136,
+      "unit": "dp",
+      "expression": "136.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/XLargeIconButtonTokens.kt:24",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "XLargeIconButton.ContainerShapeRound",
+      "value": "CornerFull",
+      "unit": "shape-role",
+      "expression": "ShapeKeyTokens.CornerFull",
+      "source": "commonMain/androidx/compose/material3/tokens/XLargeIconButtonTokens.kt:27",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "XLargeIconButton.ContainerShapeSquare",
+      "value": "CornerExtraLarge",
+      "unit": "shape-role",
+      "expression": "ShapeKeyTokens.CornerExtraLarge",
+      "source": "commonMain/androidx/compose/material3/tokens/XLargeIconButtonTokens.kt:30",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "XLargeIconButton.DefaultLeadingSpace",
+      "value": 48,
+      "unit": "dp",
+      "expression": "48.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/XLargeIconButtonTokens.kt:33",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "XLargeIconButton.DefaultTrailingSpace",
+      "value": 48,
+      "unit": "dp",
+      "expression": "48.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/XLargeIconButtonTokens.kt:36",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "XLargeIconButton.IconSize",
+      "value": 40,
+      "unit": "dp",
+      "expression": "40.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/XLargeIconButtonTokens.kt:39",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "XLargeIconButton.NarrowLeadingSpace",
+      "value": 32,
+      "unit": "dp",
+      "expression": "32.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/XLargeIconButtonTokens.kt:42",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "XLargeIconButton.NarrowTrailingSpace",
+      "value": 32,
+      "unit": "dp",
+      "expression": "32.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/XLargeIconButtonTokens.kt:45",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "XLargeIconButton.OutlinedOutlineWidth",
+      "value": 3,
+      "unit": "dp",
+      "expression": "3.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/XLargeIconButtonTokens.kt:48",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "XLargeIconButton.PressedContainerShape",
+      "value": "CornerLarge",
+      "unit": "shape-role",
+      "expression": "ShapeKeyTokens.CornerLarge",
+      "source": "commonMain/androidx/compose/material3/tokens/XLargeIconButtonTokens.kt:51",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "XLargeIconButton.SelectedContainerShapeRound",
+      "value": "CornerExtraLarge",
+      "unit": "shape-role",
+      "expression": "ShapeKeyTokens.CornerExtraLarge",
+      "source": "commonMain/androidx/compose/material3/tokens/XLargeIconButtonTokens.kt:54",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "XLargeIconButton.SelectedContainerShapeSquare",
+      "value": "CornerFull",
+      "unit": "shape-role",
+      "expression": "ShapeKeyTokens.CornerFull",
+      "source": "commonMain/androidx/compose/material3/tokens/XLargeIconButtonTokens.kt:57",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "XLargeIconButton.WideLeadingSpace",
+      "value": 72,
+      "unit": "dp",
+      "expression": "72.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/XLargeIconButtonTokens.kt:60",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "XLargeIconButton.WideTrailingSpace",
+      "value": 72,
+      "unit": "dp",
+      "expression": "72.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/XLargeIconButtonTokens.kt:63",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    }
+  ]
+}

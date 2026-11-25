@@ -1,0 +1,92 @@
+{
+  "generatedBy": "tools/extract-tokens",
+  "artifact": "material3:1.5.0",
+  "jarSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6",
+  "tokenFile": "commonMain/androidx/compose/material3/tokens/FabPrimaryContainerTokens.kt",
+  "declaration": "FabPrimaryContainerTokens",
+  "declarationKind": "object",
+  "tokenVersion": "v0_14_0",
+  "tokens": [
+    {
+      "token": "FabPrimaryContainer.ContainerColor",
+      "value": "PrimaryContainer",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.PrimaryContainer",
+      "source": "commonMain/androidx/compose/material3/tokens/FabPrimaryContainerTokens.kt:22",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "FabPrimaryContainer.ContainerElevation",
+      "value": 6,
+      "unit": "dp",
+      "expression": "ElevationTokens.Level3",
+      "source": "commonMain/androidx/compose/material3/tokens/FabPrimaryContainerTokens.kt:25",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "FabPrimaryContainer.FocusedContainerElevation",
+      "value": 6,
+      "unit": "dp",
+      "expression": "ElevationTokens.Level3",
+      "source": "commonMain/androidx/compose/material3/tokens/FabPrimaryContainerTokens.kt:28",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "FabPrimaryContainer.FocusedIconColor",
+      "value": "OnPrimaryContainer",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnPrimaryContainer",
+      "source": "commonMain/androidx/compose/material3/tokens/FabPrimaryContainerTokens.kt:31",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "FabPrimaryContainer.HoveredContainerElevation",
+      "value": 8,
+      "unit": "dp",
+      "expression": "ElevationTokens.Level4",
+      "source": "commonMain/androidx/compose/material3/tokens/FabPrimaryContainerTokens.kt:34",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "FabPrimaryContainer.HoveredIconColor",
+      "value": "OnPrimaryContainer",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnPrimaryContainer",
+      "source": "commonMain/androidx/compose/material3/tokens/FabPrimaryContainerTokens.kt:37",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "FabPrimaryContainer.IconColor",
+      "value": "OnPrimaryContainer",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnPrimaryContainer",
+      "source": "commonMain/androidx/compose/material3/tokens/FabPrimaryContainerTokens.kt:40",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "FabPrimaryContainer.PressedContainerElevation",
+      "value": 6,
+      "unit": "dp",
+      "expression": "ElevationTokens.Level3",
+      "source": "commonMain/androidx/compose/material3/tokens/FabPrimaryContainerTokens.kt:43",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "FabPrimaryContainer.PressedIconColor",
+      "value": "OnPrimaryContainer",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnPrimaryContainer",
+      "source": "commonMain/androidx/compose/material3/tokens/FabPrimaryContainerTokens.kt:46",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    }
+  ]
+}

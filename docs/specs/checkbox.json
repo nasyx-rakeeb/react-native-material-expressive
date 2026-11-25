@@ -1,0 +1,422 @@
+{
+  "generatedBy": "tools/extract-tokens",
+  "artifact": "material3:1.5.0",
+  "jarSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6",
+  "tokenFile": "commonMain/androidx/compose/material3/tokens/CheckboxTokens.kt",
+  "declaration": "CheckboxTokens",
+  "declarationKind": "object",
+  "tokenVersion": "14_1_0",
+  "tokens": [
+    {
+      "token": "Checkbox.ContainerShape",
+      "value": {
+        "type": "rounded",
+        "topStart": 2,
+        "topEnd": 2,
+        "bottomEnd": 2,
+        "bottomStart": 2
+      },
+      "unit": "shape",
+      "expression": "RoundedCornerShape(2.0.dp)",
+      "source": "commonMain/androidx/compose/material3/tokens/CheckboxTokens.kt:26",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Checkbox.ContainerSize",
+      "value": 18,
+      "unit": "dp",
+      "expression": "18.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/CheckboxTokens.kt:27",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Checkbox.FocusIndicatorColor",
+      "value": "Secondary",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Secondary",
+      "source": "commonMain/androidx/compose/material3/tokens/CheckboxTokens.kt:30",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Checkbox.IconSize",
+      "value": 18,
+      "unit": "dp",
+      "expression": "18.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/CheckboxTokens.kt:33",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Checkbox.SelectedContainerColor",
+      "value": "Primary",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Primary",
+      "source": "commonMain/androidx/compose/material3/tokens/CheckboxTokens.kt:36",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Checkbox.SelectedDisabledContainerColor",
+      "value": "OnSurface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurface",
+      "source": "commonMain/androidx/compose/material3/tokens/CheckboxTokens.kt:39",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Checkbox.SelectedDisabledContainerOpacity",
+      "value": 0.38,
+      "unit": "number",
+      "expression": "0.38f",
+      "source": "commonMain/androidx/compose/material3/tokens/CheckboxTokens.kt:42",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Checkbox.SelectedDisabledContainerOutlineWidth",
+      "value": 0,
+      "unit": "dp",
+      "expression": "0.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/CheckboxTokens.kt:43",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Checkbox.SelectedDisabledIconColor",
+      "value": "Surface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Surface",
+      "source": "commonMain/androidx/compose/material3/tokens/CheckboxTokens.kt:46",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Checkbox.SelectedErrorContainerColor",
+      "value": "Error",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Error",
+      "source": "commonMain/androidx/compose/material3/tokens/CheckboxTokens.kt:49",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Checkbox.SelectedErrorFocusContainerColor",
+      "value": "Error",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Error",
+      "source": "commonMain/androidx/compose/material3/tokens/CheckboxTokens.kt:52",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Checkbox.SelectedErrorFocusIconColor",
+      "value": "OnError",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnError",
+      "source": "commonMain/androidx/compose/material3/tokens/CheckboxTokens.kt:55",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Checkbox.SelectedErrorHoverContainerColor",
+      "value": "Error",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Error",
+      "source": "commonMain/androidx/compose/material3/tokens/CheckboxTokens.kt:58",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Checkbox.SelectedErrorHoverIconColor",
+      "value": "OnError",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnError",
+      "source": "commonMain/androidx/compose/material3/tokens/CheckboxTokens.kt:61",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Checkbox.SelectedErrorIconColor",
+      "value": "OnError",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnError",
+      "source": "commonMain/androidx/compose/material3/tokens/CheckboxTokens.kt:64",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Checkbox.SelectedErrorPressedContainerColor",
+      "value": "Error",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Error",
+      "source": "commonMain/androidx/compose/material3/tokens/CheckboxTokens.kt:67",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Checkbox.SelectedErrorPressedIconColor",
+      "value": "OnError",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnError",
+      "source": "commonMain/androidx/compose/material3/tokens/CheckboxTokens.kt:70",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Checkbox.SelectedFocusContainerColor",
+      "value": "Primary",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Primary",
+      "source": "commonMain/androidx/compose/material3/tokens/CheckboxTokens.kt:73",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Checkbox.SelectedFocusIconColor",
+      "value": "OnPrimary",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnPrimary",
+      "source": "commonMain/androidx/compose/material3/tokens/CheckboxTokens.kt:76",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Checkbox.SelectedFocusOutlineWidth",
+      "value": 0,
+      "unit": "dp",
+      "expression": "0.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/CheckboxTokens.kt:79",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Checkbox.SelectedHoverContainerColor",
+      "value": "Primary",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Primary",
+      "source": "commonMain/androidx/compose/material3/tokens/CheckboxTokens.kt:82",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Checkbox.SelectedHoverIconColor",
+      "value": "OnPrimary",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnPrimary",
+      "source": "commonMain/androidx/compose/material3/tokens/CheckboxTokens.kt:85",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Checkbox.SelectedHoverOutlineWidth",
+      "value": 0,
+      "unit": "dp",
+      "expression": "0.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/CheckboxTokens.kt:88",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Checkbox.SelectedIconColor",
+      "value": "OnPrimary",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnPrimary",
+      "source": "commonMain/androidx/compose/material3/tokens/CheckboxTokens.kt:91",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Checkbox.SelectedOutlineWidth",
+      "value": 0,
+      "unit": "dp",
+      "expression": "0.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/CheckboxTokens.kt:94",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Checkbox.SelectedPressedContainerColor",
+      "value": "Primary",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Primary",
+      "source": "commonMain/androidx/compose/material3/tokens/CheckboxTokens.kt:97",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Checkbox.SelectedPressedIconColor",
+      "value": "OnPrimary",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnPrimary",
+      "source": "commonMain/androidx/compose/material3/tokens/CheckboxTokens.kt:100",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Checkbox.SelectedPressedOutlineWidth",
+      "value": 0,
+      "unit": "dp",
+      "expression": "0.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/CheckboxTokens.kt:103",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Checkbox.StateLayerShape",
+      "value": "CornerFull",
+      "unit": "shape-role",
+      "expression": "ShapeKeyTokens.CornerFull",
+      "source": "commonMain/androidx/compose/material3/tokens/CheckboxTokens.kt:106",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Checkbox.StateLayerSize",
+      "value": 40,
+      "unit": "dp",
+      "expression": "40.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/CheckboxTokens.kt:109",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Checkbox.UnselectedDisabledContainerOpacity",
+      "value": 0.38,
+      "unit": "number",
+      "expression": "0.38f",
+      "source": "commonMain/androidx/compose/material3/tokens/CheckboxTokens.kt:112",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Checkbox.UnselectedDisabledOutlineColor",
+      "value": "OnSurface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurface",
+      "source": "commonMain/androidx/compose/material3/tokens/CheckboxTokens.kt:113",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Checkbox.UnselectedDisabledOutlineWidth",
+      "value": 2,
+      "unit": "dp",
+      "expression": "2.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/CheckboxTokens.kt:116",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Checkbox.UnselectedErrorFocusOutlineColor",
+      "value": "Error",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Error",
+      "source": "commonMain/androidx/compose/material3/tokens/CheckboxTokens.kt:119",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Checkbox.UnselectedErrorHoverOutlineColor",
+      "value": "Error",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Error",
+      "source": "commonMain/androidx/compose/material3/tokens/CheckboxTokens.kt:122",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Checkbox.UnselectedErrorOutlineColor",
+      "value": "Error",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Error",
+      "source": "commonMain/androidx/compose/material3/tokens/CheckboxTokens.kt:125",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Checkbox.UnselectedErrorPressedOutlineColor",
+      "value": "Error",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Error",
+      "source": "commonMain/androidx/compose/material3/tokens/CheckboxTokens.kt:128",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Checkbox.UnselectedFocusOutlineColor",
+      "value": "OnSurface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurface",
+      "source": "commonMain/androidx/compose/material3/tokens/CheckboxTokens.kt:131",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Checkbox.UnselectedFocusOutlineWidth",
+      "value": 2,
+      "unit": "dp",
+      "expression": "2.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/CheckboxTokens.kt:134",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Checkbox.UnselectedHoverOutlineColor",
+      "value": "OnSurface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurface",
+      "source": "commonMain/androidx/compose/material3/tokens/CheckboxTokens.kt:137",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Checkbox.UnselectedHoverOutlineWidth",
+      "value": 2,
+      "unit": "dp",
+      "expression": "2.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/CheckboxTokens.kt:140",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Checkbox.UnselectedOutlineColor",
+      "value": "OnSurfaceVariant",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurfaceVariant",
+      "source": "commonMain/androidx/compose/material3/tokens/CheckboxTokens.kt:143",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Checkbox.UnselectedOutlineWidth",
+      "value": 2,
+      "unit": "dp",
+      "expression": "2.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/CheckboxTokens.kt:146",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Checkbox.UnselectedPressedOutlineColor",
+      "value": "OnSurface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.OnSurface",
+      "source": "commonMain/androidx/compose/material3/tokens/CheckboxTokens.kt:149",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Checkbox.UnselectedPressedOutlineWidth",
+      "value": 2,
+      "unit": "dp",
+      "expression": "2.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/CheckboxTokens.kt:152",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    }
+  ]
+}

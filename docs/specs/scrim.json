@@ -1,0 +1,29 @@
+{
+  "generatedBy": "tools/extract-tokens",
+  "artifact": "material3:1.5.0",
+  "jarSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6",
+  "tokenFile": "commonMain/androidx/compose/material3/tokens/ScrimTokens.kt",
+  "declaration": "ScrimTokens",
+  "declarationKind": "object",
+  "tokenVersion": "v0_117",
+  "tokens": [
+    {
+      "token": "Scrim.ContainerColor",
+      "value": "Scrim",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.Scrim",
+      "source": "commonMain/androidx/compose/material3/tokens/ScrimTokens.kt:22",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Scrim.ContainerOpacity",
+      "value": 0.32,
+      "unit": "number",
+      "expression": "0.32f",
+      "source": "commonMain/androidx/compose/material3/tokens/ScrimTokens.kt:25",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    }
+  ]
+}

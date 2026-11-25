@@ -1,0 +1,164 @@
+{
+  "generatedBy": "tools/extract-tokens",
+  "artifact": "material3:1.5.0",
+  "jarSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6",
+  "tokenFile": "commonMain/androidx/compose/material3/tokens/SnackbarTokens.kt",
+  "declaration": "SnackbarTokens",
+  "declarationKind": "object",
+  "tokenVersion": "v0_103",
+  "tokens": [
+    {
+      "token": "Snackbar.ActionFocusLabelTextColor",
+      "value": "InversePrimary",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.InversePrimary",
+      "source": "commonMain/androidx/compose/material3/tokens/SnackbarTokens.kt:24",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Snackbar.ActionHoverLabelTextColor",
+      "value": "InversePrimary",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.InversePrimary",
+      "source": "commonMain/androidx/compose/material3/tokens/SnackbarTokens.kt:27",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Snackbar.ActionLabelTextColor",
+      "value": "InversePrimary",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.InversePrimary",
+      "source": "commonMain/androidx/compose/material3/tokens/SnackbarTokens.kt:30",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Snackbar.ActionLabelTextFont",
+      "value": "LabelLarge",
+      "unit": "typography-role",
+      "expression": "TypographyKeyTokens.LabelLarge",
+      "source": "commonMain/androidx/compose/material3/tokens/SnackbarTokens.kt:33",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Snackbar.ActionPressedLabelTextColor",
+      "value": "InversePrimary",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.InversePrimary",
+      "source": "commonMain/androidx/compose/material3/tokens/SnackbarTokens.kt:36",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Snackbar.ContainerColor",
+      "value": "InverseSurface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.InverseSurface",
+      "source": "commonMain/androidx/compose/material3/tokens/SnackbarTokens.kt:39",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Snackbar.ContainerElevation",
+      "value": 6,
+      "unit": "dp",
+      "expression": "ElevationTokens.Level3",
+      "source": "commonMain/androidx/compose/material3/tokens/SnackbarTokens.kt:42",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Snackbar.ContainerShape",
+      "value": "CornerExtraSmall",
+      "unit": "shape-role",
+      "expression": "ShapeKeyTokens.CornerExtraSmall",
+      "source": "commonMain/androidx/compose/material3/tokens/SnackbarTokens.kt:45",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Snackbar.IconColor",
+      "value": "InverseOnSurface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.InverseOnSurface",
+      "source": "commonMain/androidx/compose/material3/tokens/SnackbarTokens.kt:48",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Snackbar.FocusIconColor",
+      "value": "InverseOnSurface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.InverseOnSurface",
+      "source": "commonMain/androidx/compose/material3/tokens/SnackbarTokens.kt:51",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Snackbar.HoverIconColor",
+      "value": "InverseOnSurface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.InverseOnSurface",
+      "source": "commonMain/androidx/compose/material3/tokens/SnackbarTokens.kt:54",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Snackbar.PressedIconColor",
+      "value": "InverseOnSurface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.InverseOnSurface",
+      "source": "commonMain/androidx/compose/material3/tokens/SnackbarTokens.kt:57",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Snackbar.IconSize",
+      "value": 24,
+      "unit": "dp",
+      "expression": "24.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/SnackbarTokens.kt:60",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Snackbar.SupportingTextColor",
+      "value": "InverseOnSurface",
+      "unit": "color-role",
+      "expression": "ColorSchemeKeyTokens.InverseOnSurface",
+      "source": "commonMain/androidx/compose/material3/tokens/SnackbarTokens.kt:63",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Snackbar.SupportingTextFont",
+      "value": "BodyMedium",
+      "unit": "typography-role",
+      "expression": "TypographyKeyTokens.BodyMedium",
+      "source": "commonMain/androidx/compose/material3/tokens/SnackbarTokens.kt:66",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Snackbar.SingleLineContainerHeight",
+      "value": 48,
+      "unit": "dp",
+      "expression": "48.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/SnackbarTokens.kt:69",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    },
+    {
+      "token": "Snackbar.TwoLinesContainerHeight",
+      "value": 68,
+      "unit": "dp",
+      "expression": "68.0.dp",
+      "source": "commonMain/androidx/compose/material3/tokens/SnackbarTokens.kt:72",
+      "sourceVersion": "material3:1.5.0",
+      "sourceSha256": "d389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6"
+    }
+  ]
+}

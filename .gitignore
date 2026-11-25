@@ -32,3 +32,6 @@ docs/research/raw/
 
 # OS noise
 .DS_Store
+
+# Vendored sources for token extraction (versions + hashes in docs/research/DAY2_SOURCES.md)
+tools/extract-tokens/vendor/
