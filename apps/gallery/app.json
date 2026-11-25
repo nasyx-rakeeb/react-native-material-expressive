@@ -1,0 +1,22 @@
+{
+  "expo": {
+    "name": "M3E Gallery",
+    "slug": "m3e-gallery",
+    "version": "0.0.0",
+    "orientation": "portrait",
+    "scheme": "m3egallery",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.nasyxrakeeb.m3egallery"
+    },
+    "android": {
+      "package": "com.nasyxrakeeb.m3egallery",
+      "edgeToEdgeEnabled": true
+    },
+    "web": {
+      "bundler": "metro"
+    }
+  }
+}
