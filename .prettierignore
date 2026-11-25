@@ -7,6 +7,10 @@ coverage
 .turbo
 ios
 android
+apps/gallery/src/scenes.generated.ts
+apps/reference-compose/.gradle
+apps/reference-compose/.kotlin
+apps/reference-compose/app/build
 docs
 pnpm-lock.yaml
 *.tgz

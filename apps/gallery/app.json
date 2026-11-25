@@ -17,6 +17,7 @@
     },
     "web": {
       "bundler": "metro"
-    }
+    },
+    "plugins": ["./plugins/with-roboto-flex"]
   }
 }

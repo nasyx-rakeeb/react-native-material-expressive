@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "id": "trivial",
+  "description": "The Day 3 exit scene: one colored rounded rectangle plus one line of Roboto Flex text.",
+  "widthDp": 320,
+  "heightDp": 200,
+  "background": "#FFFBFE",
+  "layers": [
+    {
+      "type": "rect",
+      "x": 24,
+      "y": 24,
+      "width": 160,
+      "height": 96,
+      "radius": 16,
+      "color": "#6750A4",
+      "elevationDp": 0
+    },
+    {
+      "type": "text",
+      "x": 24,
+      "y": 136,
+      "text": "M3 Expressive",
+      "sizeSp": 24,
+      "weight": 400,
+      "color": "#1D1B20",
+      "letterSpacingSp": 0
+    }
+  ]
+}

@@ -2,7 +2,7 @@
 
 A component cannot be marked DONE while it has an open entry here. Day 0 resolved the six original `UNVERIFIED-1..6`; new open items are listed below with an owner and a resolution day.
 
-**Last updated:** 2026-11-25 (Day 2)
+**Last updated:** 2026-11-25 (Day 3)
 
 ---
 
@@ -168,3 +168,11 @@ Paper `6.0.0-alpha.4` (2026-11-23); 34 public component exports; signature-set s
 - **Impact:** XS button width, label/icon gap, and hit-area padding. It does not affect S–XL.
 - **Resolution:** Day 11, before Button's DONE cell: decide whether 1.0 follows Compose 1.5.0 (the pinned authority) or exposes an m3-XS-parity option. Record the decision in `docs/specs/button.behavior.md`; do not silently change either source. Until resolved, use Compose 16/16/8 and do not claim m3 XS parity.
 - **Blocks:** Button DONE (Day 11) for the XS variant only.
+
+### U-23 — Cross-stack text rasterization is not byte-identical on the Day 3 trivial scene
+
+- **Evidence (Day 3):** Both harnesses load the same Roboto Flex file (SHA-256 `9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281`), the measured text layout is identical (402.0×73.0 px), and the strict content bbox is identical (68,75 395×59). The trivial and text scenes nevertheless differ by **1,745 px (0.3957%)** exact RGB; pixelmatch AA detection reduces this to **4 non-AA px (0.0009%)** at max channel Δ 162. Solid, rect, and shadow are exact-zero across 3 cold boots. Evidence: `docs/evidence/day3/README.md`, `results.json`, `report.html`.
+- **Impact:** The trivial scene does not meet a literal cross-stack exact-zero test, although it meets the existing PLAYBOOK §7 AA-aware gate (4 px, below the 220.5 px / 0.05% budget). Future text components inherit the same rasterization difference.
+- **Resolution:** Nasyx decision: accept the existing AA-aware gate for cross-stack text and close Day 3, or treat the 4 pixels as a defect and investigate text rendering. Do not tune the scene or the threshold; do not claim byte-exact cross-stack text parity either way.
+- **Blocks:** Day 3 close (pending decision); any future “0-diff text” claim.
+

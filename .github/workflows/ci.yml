@@ -39,6 +39,9 @@ jobs:
       - name: Verify generated specs
         run: pnpm --filter @react-native-material-expressive/extract-tokens check
 
+      - name: Verify scenes
+        run: pnpm scenes:check
+
       - name: Format check
         run: pnpm format:check
 

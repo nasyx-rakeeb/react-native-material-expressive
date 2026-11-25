@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "generatedBy": "tools/scenes/build.mjs",
+  "scenes": [
+    {
+      "id": "rect",
+      "source": "tools/scenes/rect.json",
+      "sourceSha256": "0fa4d1c3706ae5f5a8087da2c0b38c2a8d657a752a3a8c6aeea03bc3d7a04991",
+      "widthDp": 320,
+      "heightDp": 200
+    },
+    {
+      "id": "shadow",
+      "source": "tools/scenes/shadow.json",
+      "sourceSha256": "98c9bccf700e3ea6f2a646639f2253e8d4fbb00dc7872baa41b53c35bb0b435e",
+      "widthDp": 320,
+      "heightDp": 200
+    },
+    {
+      "id": "solid",
+      "source": "tools/scenes/solid.json",
+      "sourceSha256": "39cbf6072b416854ad59a15e13f1742469c72593460d567856a76244ce4bac69",
+      "widthDp": 320,
+      "heightDp": 200
+    },
+    {
+      "id": "text",
+      "source": "tools/scenes/text.json",
+      "sourceSha256": "d3e5006d16050bfb0755ed94591c1eb5957b204cd80e6adf91b5782ecf6d1de4",
+      "widthDp": 320,
+      "heightDp": 200
+    },
+    {
+      "id": "trivial",
+      "source": "tools/scenes/trivial.json",
+      "sourceSha256": "3b4cbec14782b2c3fd5c520bf69b3a20b80e2ebacad5be6ae6c035094f936fc7",
+      "widthDp": 320,
+      "heightDp": 200
+    }
+  ]
+}

@@ -14,6 +14,9 @@ coverage/
 .expo-shared/
 apps/gallery/ios/
 apps/gallery/android/
+apps/reference-compose/.gradle/
+apps/reference-compose/.kotlin/
+apps/reference-compose/**/build/
 *.jks
 *.p8
 *.p12

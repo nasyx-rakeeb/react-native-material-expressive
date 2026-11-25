@@ -135,3 +135,49 @@ A day closes only when its exit criteria are met with evidence. Slippage is reco
 **Next step**
 
 - Day 3: build `apps/reference-compose` (Compose M3 1.5.0), the scene manifest, the RN scene renderer, capture/compare scripts, and the HTML diff report. Freeze the emulator profile, bundle identical fonts, prove a trivial scene renders 0-diff 20×, and measure the pixel-noise floor before proposing any threshold change (ADR required).
+
+---
+
+## Day 3 | 2026-11-25 | Reference harness, frozen emulator, measured noise floor
+
+**Status:** measurement complete; one decision pending. Same-harness determinism passes (20 repeats per app per boot, 3 cold boots, 0 diff px). The cross-stack trivial scene is **not byte-identical** because of text rasterization: 1,745 exact px (0.3957%), 4 AA-aware px (0.0009%). The scene, font, and threshold were not tuned; the decision is `U-23`.
+
+**Done**
+
+- Built `apps/reference-compose` against Compose Material3 **1.5.0** (AGP 9.1.0, Gradle 9.3.1, Kotlin Compose plugin 2.2.10, compileSdk 37, minSdk 31, targetSdk 36). It renders the same scene manifests as the RN gallery, hides the system bars, keeps the screen on, and exposes a broadcast rerender path.
+- Built the RN gallery scene harness on Expo SDK 58.0.26 / RN 0.88.1: `m3egallery://scene?name=<id>` routing, the same rect/text renderer, a 20× rerender path, and a 320×24 dp readiness band. The font plugin copies the pinned TTF and OFL into Android assets.
+- Made `tools/scenes/*.json` the single source of truth. `tools/scenes/build.mjs` validates the five Day 3 scenes and generates `tools/scenes/index.json` plus `apps/gallery/src/scenes.generated.ts`; `pnpm scenes:check` is now a CI step.
+- Froze the Pixel 2 AVD `M3E_API31`: 1080×1920, 420 dpi (2.625×), API 31, no cutout, SwiftShader/ANGLE, font scale 1.0, locale en-US, animation scales 0, rotation 0, night mode off, immersive confirmation suppressed. Cold boot is `adb emu kill` + `-no-snapshot`. The Pixel 5 AVD was rejected because its cutout shifted the window to y=145 px.
+- Bundled byte-identical Roboto Flex in both APKs. Source and both `assets/fonts/RobotoFlex.ttf` entries hash to `9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281`. Both runtime probes applied the `wdth` axis (Compose 356 vs 402 px; RN 376.00 vs 411.43 dp); the pipeline fails on an orange band, a missing marker, or `ok=false`.
+- Added `tools/pixel`: cold boot/freeze scripts, readiness polling, corner/window checks, scene crop, content-addressed captures, exact + pixelmatch AA-aware diff, per-region counts, shadow-presence measurement, layout-edge bboxes, profile verification, APK font verification, and generated HTML/Markdown/JSON reports.
+- Ran **3 cold boots × 2 apps × (20 trivial repeats + 2 repeats of solid/rect/text/shadow)** = 168 renders / 30 app-scene-boot combinations. All within-harness and cross-boot comparisons are 0 exact px; the tiny 4-px residual is cross-stack text rasterization, not run-to-run noise.
+- Cross-stack results, stable in every boot: solid 0 px, rect 0 px, shadow 0 px; text and trivial 1,745 exact px (0.3957%), 4 AA-aware px (0.0009%), max channel Δ 162. Text layout is 402.0×73.0 px in both; content bbox is `68,75 395×59` in both; max layout-edge delta 0 px. Shadow presence is 46,050 non-background px outside the rect in both (max Δ 31).
+- The existing PLAYBOOK §7 AA-aware gate evaluates to 4 px vs a 220.5 px (0.05%) budget, i.e. below the gate. **No threshold is proposed or changed.** A literal cross-stack exact-zero test is not met on text; that is recorded as `U-23` and escalated rather than hidden.
+
+**Evidence**
+
+- `docs/evidence/day3/README.md` — generated summary with all measured numbers and the decision point.
+- `docs/evidence/day3/report.html` — side-by-side captures, diff heatmaps, per-run determinism, cross-boot repeatability, profile checks, layout edges, shadow measurement.
+- `docs/evidence/day3/results.json` — 168 capture records with hashes, render counters, font/text-layout markers, per-scene metrics, and the gate evaluation.
+- `docs/evidence/day3/FROZEN_PROFILE.md` — device, GPU, system image, settings, scene hashes, cold-boot commands, and what is not frozen.
+- `docs/evidence/day3/run.log` — raw three-boot log, including all three `cold boot complete` lines and every capture.
+- `docs/evidence/day3/captures/` and `diffs/` — content-addressed PNGs (7 unique captures for 168 renders) and per-scene diff images.
+- `tools/pixel/` — harness code and README; `apps/reference-compose/README.md` — Compose harness pins and run commands.
+- Local gates on the committed tree: `format:check` clean, `lint` 3 tasks + `eslint tools` clean, `typecheck` 4/4, `test` 8/8, `build` ESM+CJS+types, `scenes:check` clean.
+- Commit and CI: recorded in the Day 3 evidence follow-up (this entry is committed before CI runs).
+
+**Deviations**
+
+- Cross-stack text is not byte-identical (U-23). Solid/rect/shadow are exact-zero; text layout and content bbox are identical. No scene or threshold adjustment was made.
+- Reports live in `docs/evidence/day3/` instead of PLAYBOOK §7's `docs/diff-reports/<date>/`. Evidence bundles are kept per day; the report contains the same side-by-side/diff content. CI artifact upload is not wired for these Android-only reports; the bundle is committed instead.
+- `expo prebuild` changed the gallery `android`/`ios` scripts to `expo run:*` and warned that `edgeToEdgeEnabled` is obsolete and `userInterfaceStyle` needs `expo-system-ui`. The frozen profile forces night mode off and the harness is edge-to-edge, so Day 3 pixels are unaffected; clean up before the dev-client work.
+
+**Risks**
+
+- U-23: accepting the AA-aware gate is a product decision. Any future claim of byte-exact cross-stack text is false on this evidence.
+- The 4 non-AA pixels are glyph-edge placement, not a font-axis failure: layout size and content bbox match exactly and both probes applied `wdth`. Investigating them means changing text rendering, not the scene.
+- The Compose harness is pinned to AndroidX 1.5.0 and API 31; a baseline or API bump invalidates these numbers and requires a new run.
+
+**Next step**
+
+- Nasyx decides U-23: accept the existing AA-aware gate for text and close Day 3, or treat the 4 pixels as a defect and investigate text rendering. Do not proceed by tuning the scene or threshold.

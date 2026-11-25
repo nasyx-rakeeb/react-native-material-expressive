@@ -1,0 +1,5119 @@
+{
+  "generatedAt": "2026-11-25T17:50:02.249Z",
+  "profile": {
+    "avd": "M3E_API31",
+    "api": 31,
+    "width": 1080,
+    "height": 1920,
+    "density": 420,
+    "densityScale": 2.625,
+    "gpu": "swiftshader_indirect",
+    "gpuDriverIncludes": "SwiftShader",
+    "fontScale": "1.0",
+    "locale": "en-US",
+    "animations": 0,
+    "coldBoots": 3,
+    "repeats": 20,
+    "fontFile": "apps/reference-compose/app/src/main/assets/fonts/RobotoFlex.ttf",
+    "fontSha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+    "statusBar": "hidden by both harnesses; scene starts at 0,0",
+    "navigationBar": "visible at the bottom, outside the scene crop",
+    "notes": [
+      "Pixel 2 AVD, no display cutout, no rounded-corner mask in screencap.",
+      "Cold boot means: emulator process stopped and restarted with -no-snapshot.",
+      "Both harnesses are installed from the exact APKs hashed by the run."
+    ]
+  },
+  "config": {
+    "boots": 3,
+    "repeats": 20,
+    "sceneRepeats": 2,
+    "scenes": [
+      "solid",
+      "rect",
+      "text",
+      "shadow",
+      "trivial"
+    ],
+    "outDir": "docs/evidence/day3"
+  },
+  "fonts": {
+    "sourceHash": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+    "galleryHash": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+    "apks": {
+      "compose": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+      "rn": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281"
+    }
+  },
+  "boots": [
+    {
+      "index": 0,
+      "startedAt": "2026-11-25T17:50:52.768Z",
+      "checks": [
+        {
+          "name": "avd",
+          "expected": "M3E_API31",
+          "actual": "M3E_API31",
+          "ok": true
+        },
+        {
+          "name": "api",
+          "expected": 31,
+          "actual": 31,
+          "ok": true
+        },
+        {
+          "name": "locale",
+          "expected": "en-US",
+          "actual": "en-US",
+          "ok": true
+        },
+        {
+          "name": "fontScale",
+          "expected": "1.0",
+          "actual": "1.0",
+          "ok": true
+        },
+        {
+          "name": "animatorDurationScale",
+          "expected": "0",
+          "actual": "0",
+          "ok": true
+        },
+        {
+          "name": "transitionAnimationScale",
+          "expected": "0",
+          "actual": "0",
+          "ok": true
+        },
+        {
+          "name": "windowAnimationScale",
+          "expected": "0",
+          "actual": "0",
+          "ok": true
+        },
+        {
+          "name": "userRotation",
+          "expected": "0",
+          "actual": "0",
+          "ok": true
+        },
+        {
+          "name": "immersiveConfirmation",
+          "expected": "confirmed",
+          "actual": "confirmed",
+          "ok": true
+        },
+        {
+          "name": "nightMode",
+          "expected": "Night mode: no",
+          "actual": "Night mode: no",
+          "ok": true
+        },
+        {
+          "name": "wmSize",
+          "expected": "Physical size: 1080x1920",
+          "actual": "Physical size: 1080x1920",
+          "ok": true
+        },
+        {
+          "name": "wmDensity",
+          "expected": "Physical density: 420",
+          "actual": "Physical density: 420",
+          "ok": true
+        },
+        {
+          "name": "gpu",
+          "expected": "SwiftShader",
+          "actual": "GLES: Google (Google Inc. (Google)), Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver-5.0.0)), OpenGL ES 3.1 (OpenGL ES 3.1.0 (ANGLE 2.1.2 git hash: 1f0534893540))",
+          "ok": true
+        }
+      ],
+      "captures": {
+        "compose": {
+          "solid": [
+            {
+              "path": "captures/769c75f7390f26c2c0a16ed770f3582dbfc2bd615753e5892a1f9d00e64fc639.png",
+              "sha256": "769c75f7390f26c2c0a16ed770f3582dbfc2bd615753e5892a1f9d00e64fc639",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "solid",
+                "render": 0
+              },
+              "textLayout": null,
+              "capturedAt": "2026-11-25T17:50:56.215Z"
+            },
+            {
+              "path": "captures/769c75f7390f26c2c0a16ed770f3582dbfc2bd615753e5892a1f9d00e64fc639.png",
+              "sha256": "769c75f7390f26c2c0a16ed770f3582dbfc2bd615753e5892a1f9d00e64fc639",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "solid",
+                "render": 1
+              },
+              "textLayout": null,
+              "capturedAt": "2026-11-25T17:51:10.127Z"
+            }
+          ],
+          "rect": [
+            {
+              "path": "captures/62e8d31bac18416ce19bb20fcf052985b770560167df7cbd0091fb74b76f5a59.png",
+              "sha256": "62e8d31bac18416ce19bb20fcf052985b770560167df7cbd0091fb74b76f5a59",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "rect",
+                "render": 0
+              },
+              "textLayout": null,
+              "capturedAt": "2026-11-25T17:51:16.513Z"
+            },
+            {
+              "path": "captures/62e8d31bac18416ce19bb20fcf052985b770560167df7cbd0091fb74b76f5a59.png",
+              "sha256": "62e8d31bac18416ce19bb20fcf052985b770560167df7cbd0091fb74b76f5a59",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "rect",
+                "render": 1
+              },
+              "textLayout": null,
+              "capturedAt": "2026-11-25T17:51:17.593Z"
+            }
+          ],
+          "text": [
+            {
+              "path": "captures/102c974b9576f7304a7a22e518fc8a2901a6679aa2562fdf8e3a651d3d8d8bd6.png",
+              "sha256": "102c974b9576f7304a7a22e518fc8a2901a6679aa2562fdf8e3a651d3d8d8bd6",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "text",
+                "render": 0
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "text"
+              },
+              "capturedAt": "2026-11-25T17:51:23.644Z"
+            },
+            {
+              "path": "captures/102c974b9576f7304a7a22e518fc8a2901a6679aa2562fdf8e3a651d3d8d8bd6.png",
+              "sha256": "102c974b9576f7304a7a22e518fc8a2901a6679aa2562fdf8e3a651d3d8d8bd6",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "text",
+                "render": 1
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "text"
+              },
+              "capturedAt": "2026-11-25T17:51:24.622Z"
+            }
+          ],
+          "shadow": [
+            {
+              "path": "captures/517d03a32a001dc104371bbe58430336afd4eb92bc04439676d4eca245e32ef6.png",
+              "sha256": "517d03a32a001dc104371bbe58430336afd4eb92bc04439676d4eca245e32ef6",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "shadow",
+                "render": 0
+              },
+              "textLayout": null,
+              "capturedAt": "2026-11-25T17:51:30.856Z"
+            },
+            {
+              "path": "captures/517d03a32a001dc104371bbe58430336afd4eb92bc04439676d4eca245e32ef6.png",
+              "sha256": "517d03a32a001dc104371bbe58430336afd4eb92bc04439676d4eca245e32ef6",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "shadow",
+                "render": 1
+              },
+              "textLayout": null,
+              "capturedAt": "2026-11-25T17:51:31.875Z"
+            }
+          ],
+          "trivial": [
+            {
+              "path": "captures/e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a.png",
+              "sha256": "e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 0
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:51:37.180Z"
+            },
+            {
+              "path": "captures/e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a.png",
+              "sha256": "e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 1
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:51:38.185Z"
+            },
+            {
+              "path": "captures/e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a.png",
+              "sha256": "e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 2
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:51:39.160Z"
+            },
+            {
+              "path": "captures/e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a.png",
+              "sha256": "e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 3
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:51:40.175Z"
+            },
+            {
+              "path": "captures/e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a.png",
+              "sha256": "e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 4
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:51:41.169Z"
+            },
+            {
+              "path": "captures/e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a.png",
+              "sha256": "e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 5
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:51:42.147Z"
+            },
+            {
+              "path": "captures/e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a.png",
+              "sha256": "e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 6
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:51:43.119Z"
+            },
+            {
+              "path": "captures/e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a.png",
+              "sha256": "e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 7
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:51:44.128Z"
+            },
+            {
+              "path": "captures/e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a.png",
+              "sha256": "e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 8
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:51:45.261Z"
+            },
+            {
+              "path": "captures/e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a.png",
+              "sha256": "e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 9
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:51:46.756Z"
+            },
+            {
+              "path": "captures/e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a.png",
+              "sha256": "e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 10
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:51:48.060Z"
+            },
+            {
+              "path": "captures/e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a.png",
+              "sha256": "e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 11
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:51:49.334Z"
+            },
+            {
+              "path": "captures/e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a.png",
+              "sha256": "e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 12
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:51:50.626Z"
+            },
+            {
+              "path": "captures/e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a.png",
+              "sha256": "e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 13
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:51:51.921Z"
+            },
+            {
+              "path": "captures/e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a.png",
+              "sha256": "e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 14
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:51:53.280Z"
+            },
+            {
+              "path": "captures/e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a.png",
+              "sha256": "e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 15
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:51:54.510Z"
+            },
+            {
+              "path": "captures/e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a.png",
+              "sha256": "e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 16
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:51:55.780Z"
+            },
+            {
+              "path": "captures/e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a.png",
+              "sha256": "e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 17
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:51:57.098Z"
+            },
+            {
+              "path": "captures/e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a.png",
+              "sha256": "e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 18
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:51:58.440Z"
+            },
+            {
+              "path": "captures/e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a.png",
+              "sha256": "e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 19
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:51:59.709Z"
+            }
+          ]
+        },
+        "rn": {
+          "solid": [
+            {
+              "path": "captures/769c75f7390f26c2c0a16ed770f3582dbfc2bd615753e5892a1f9d00e64fc639.png",
+              "sha256": "769c75f7390f26c2c0a16ed770f3582dbfc2bd615753e5892a1f9d00e64fc639",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "solid",
+                "render": 0
+              },
+              "textLayout": null,
+              "capturedAt": "2026-11-25T17:51:12.803Z"
+            },
+            {
+              "path": "captures/769c75f7390f26c2c0a16ed770f3582dbfc2bd615753e5892a1f9d00e64fc639.png",
+              "sha256": "769c75f7390f26c2c0a16ed770f3582dbfc2bd615753e5892a1f9d00e64fc639",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "solid",
+                "render": 1
+              },
+              "textLayout": null,
+              "capturedAt": "2026-11-25T17:51:13.871Z"
+            }
+          ],
+          "rect": [
+            {
+              "path": "captures/62e8d31bac18416ce19bb20fcf052985b770560167df7cbd0091fb74b76f5a59.png",
+              "sha256": "62e8d31bac18416ce19bb20fcf052985b770560167df7cbd0091fb74b76f5a59",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "rect",
+                "render": 0
+              },
+              "textLayout": null,
+              "capturedAt": "2026-11-25T17:51:19.671Z"
+            },
+            {
+              "path": "captures/62e8d31bac18416ce19bb20fcf052985b770560167df7cbd0091fb74b76f5a59.png",
+              "sha256": "62e8d31bac18416ce19bb20fcf052985b770560167df7cbd0091fb74b76f5a59",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "rect",
+                "render": 1
+              },
+              "textLayout": null,
+              "capturedAt": "2026-11-25T17:51:20.934Z"
+            }
+          ],
+          "text": [
+            {
+              "path": "captures/88fdb5439ab2fec365a6924ee894fcd0c2112a0faa5bae5c1d82a2f9651e6893.png",
+              "sha256": "88fdb5439ab2fec365a6924ee894fcd0c2112a0faa5bae5c1d82a2f9651e6893",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "text",
+                "render": 0
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "text"
+              },
+              "capturedAt": "2026-11-25T17:51:27.233Z"
+            },
+            {
+              "path": "captures/88fdb5439ab2fec365a6924ee894fcd0c2112a0faa5bae5c1d82a2f9651e6893.png",
+              "sha256": "88fdb5439ab2fec365a6924ee894fcd0c2112a0faa5bae5c1d82a2f9651e6893",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "text",
+                "render": 1
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "text"
+              },
+              "capturedAt": "2026-11-25T17:51:28.307Z"
+            }
+          ],
+          "shadow": [
+            {
+              "path": "captures/517d03a32a001dc104371bbe58430336afd4eb92bc04439676d4eca245e32ef6.png",
+              "sha256": "517d03a32a001dc104371bbe58430336afd4eb92bc04439676d4eca245e32ef6",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "shadow",
+                "render": 0
+              },
+              "textLayout": null,
+              "capturedAt": "2026-11-25T17:51:33.809Z"
+            },
+            {
+              "path": "captures/517d03a32a001dc104371bbe58430336afd4eb92bc04439676d4eca245e32ef6.png",
+              "sha256": "517d03a32a001dc104371bbe58430336afd4eb92bc04439676d4eca245e32ef6",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "shadow",
+                "render": 1
+              },
+              "textLayout": null,
+              "capturedAt": "2026-11-25T17:51:34.816Z"
+            }
+          ],
+          "trivial": [
+            {
+              "path": "captures/aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec.png",
+              "sha256": "aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 0
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:52:03.132Z"
+            },
+            {
+              "path": "captures/aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec.png",
+              "sha256": "aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 1
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:52:04.427Z"
+            },
+            {
+              "path": "captures/aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec.png",
+              "sha256": "aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 2
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:52:05.780Z"
+            },
+            {
+              "path": "captures/aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec.png",
+              "sha256": "aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 3
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:52:07.067Z"
+            },
+            {
+              "path": "captures/aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec.png",
+              "sha256": "aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 4
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:52:08.394Z"
+            },
+            {
+              "path": "captures/aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec.png",
+              "sha256": "aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 5
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:52:09.764Z"
+            },
+            {
+              "path": "captures/aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec.png",
+              "sha256": "aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 6
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:52:11.179Z"
+            },
+            {
+              "path": "captures/aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec.png",
+              "sha256": "aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 7
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:52:12.583Z"
+            },
+            {
+              "path": "captures/aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec.png",
+              "sha256": "aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 8
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:52:13.928Z"
+            },
+            {
+              "path": "captures/aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec.png",
+              "sha256": "aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 9
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:52:15.203Z"
+            },
+            {
+              "path": "captures/aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec.png",
+              "sha256": "aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 10
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:52:16.560Z"
+            },
+            {
+              "path": "captures/aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec.png",
+              "sha256": "aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 11
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:52:17.956Z"
+            },
+            {
+              "path": "captures/aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec.png",
+              "sha256": "aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 12
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:52:19.388Z"
+            },
+            {
+              "path": "captures/aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec.png",
+              "sha256": "aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 13
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:52:20.782Z"
+            },
+            {
+              "path": "captures/aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec.png",
+              "sha256": "aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 14
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:52:22.152Z"
+            },
+            {
+              "path": "captures/aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec.png",
+              "sha256": "aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 15
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:52:23.503Z"
+            },
+            {
+              "path": "captures/aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec.png",
+              "sha256": "aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 16
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:52:24.843Z"
+            },
+            {
+              "path": "captures/aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec.png",
+              "sha256": "aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 17
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:52:26.239Z"
+            },
+            {
+              "path": "captures/aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec.png",
+              "sha256": "aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 18
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:52:27.614Z"
+            },
+            {
+              "path": "captures/aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec.png",
+              "sha256": "aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 19
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:52:29.010Z"
+            }
+          ]
+        }
+      },
+      "determinism": {
+        "compose": {
+          "solid": {
+            "runs": 2,
+            "maxExact": 0,
+            "maxAa": 0,
+            "ok": true
+          },
+          "rect": {
+            "runs": 2,
+            "maxExact": 0,
+            "maxAa": 0,
+            "ok": true
+          },
+          "text": {
+            "runs": 2,
+            "maxExact": 0,
+            "maxAa": 0,
+            "ok": true
+          },
+          "shadow": {
+            "runs": 2,
+            "maxExact": 0,
+            "maxAa": 0,
+            "ok": true
+          },
+          "trivial": {
+            "runs": 20,
+            "maxExact": 0,
+            "maxAa": 0,
+            "ok": true
+          }
+        },
+        "rn": {
+          "solid": {
+            "runs": 2,
+            "maxExact": 0,
+            "maxAa": 0,
+            "ok": true
+          },
+          "rect": {
+            "runs": 2,
+            "maxExact": 0,
+            "maxAa": 0,
+            "ok": true
+          },
+          "text": {
+            "runs": 2,
+            "maxExact": 0,
+            "maxAa": 0,
+            "ok": true
+          },
+          "shadow": {
+            "runs": 2,
+            "maxExact": 0,
+            "maxAa": 0,
+            "ok": true
+          },
+          "trivial": {
+            "runs": 20,
+            "maxExact": 0,
+            "maxAa": 0,
+            "ok": true
+          }
+        }
+      },
+      "crossStack": {
+        "solid": {
+          "width": 840,
+          "height": 525,
+          "pixels": 441000,
+          "exactDiffPixels": 0,
+          "exactDiffPercent": 0,
+          "aaAwareDiffPixels": 0,
+          "aaAwareDiffPercent": 0,
+          "maxChannelDelta": 0,
+          "meanAbsoluteDelta": 0,
+          "bbox": null,
+          "aaAwareBbox": null,
+          "aaAwareCoordinates": [],
+          "regionCounts": {},
+          "diff": "diffs/boot-1-solid.png"
+        },
+        "rect": {
+          "width": 840,
+          "height": 525,
+          "pixels": 441000,
+          "exactDiffPixels": 0,
+          "exactDiffPercent": 0,
+          "aaAwareDiffPixels": 0,
+          "aaAwareDiffPercent": 0,
+          "maxChannelDelta": 0,
+          "meanAbsoluteDelta": 0,
+          "bbox": null,
+          "aaAwareBbox": null,
+          "aaAwareCoordinates": [],
+          "regionCounts": {},
+          "diff": "diffs/boot-1-rect.png"
+        },
+        "text": {
+          "width": 840,
+          "height": 525,
+          "pixels": 441000,
+          "exactDiffPixels": 1745,
+          "exactDiffPercent": 0.39569160997732433,
+          "aaAwareDiffPixels": 4,
+          "aaAwareDiffPercent": 0.0009070294784580498,
+          "maxChannelDelta": 162,
+          "meanAbsoluteDelta": 0.1422910052910053,
+          "bbox": {
+            "x": 205,
+            "y": 75,
+            "width": 258,
+            "height": 59
+          },
+          "aaAwareBbox": {
+            "x": 416,
+            "y": 111,
+            "width": 2,
+            "height": 4
+          },
+          "aaAwareCoordinates": [
+            {
+              "x": 416,
+              "y": 111
+            },
+            {
+              "x": 417,
+              "y": 111
+            },
+            {
+              "x": 417,
+              "y": 113
+            },
+            {
+              "x": 417,
+              "y": 114
+            }
+          ],
+          "regionCounts": {
+            "text-0": 1745
+          },
+          "diff": "diffs/boot-1-text.png"
+        },
+        "shadow": {
+          "width": 840,
+          "height": 525,
+          "pixels": 441000,
+          "exactDiffPixels": 0,
+          "exactDiffPercent": 0,
+          "aaAwareDiffPixels": 0,
+          "aaAwareDiffPercent": 0,
+          "maxChannelDelta": 0,
+          "meanAbsoluteDelta": 0,
+          "bbox": null,
+          "aaAwareBbox": null,
+          "aaAwareCoordinates": [],
+          "regionCounts": {
+            "shadow-0": 0
+          },
+          "diff": "diffs/boot-1-shadow.png"
+        },
+        "trivial": {
+          "width": 840,
+          "height": 525,
+          "pixels": 441000,
+          "exactDiffPixels": 1745,
+          "exactDiffPercent": 0.39569160997732433,
+          "aaAwareDiffPixels": 4,
+          "aaAwareDiffPercent": 0.0009070294784580498,
+          "maxChannelDelta": 162,
+          "meanAbsoluteDelta": 0.1422910052910053,
+          "bbox": {
+            "x": 205,
+            "y": 369,
+            "width": 258,
+            "height": 59
+          },
+          "aaAwareBbox": {
+            "x": 416,
+            "y": 405,
+            "width": 2,
+            "height": 4
+          },
+          "aaAwareCoordinates": [
+            {
+              "x": 416,
+              "y": 405
+            },
+            {
+              "x": 417,
+              "y": 405
+            },
+            {
+              "x": 417,
+              "y": 407
+            },
+            {
+              "x": 417,
+              "y": 408
+            }
+          ],
+          "regionCounts": {
+            "text-1": 1745
+          },
+          "diff": "diffs/boot-1-trivial.png"
+        }
+      },
+      "shadow": {
+        "compose": {
+          "rect": {
+            "x": 105,
+            "y": 105,
+            "width": 525,
+            "height": 315
+          },
+          "outsidePixels": 46050,
+          "maxDeviation": 31,
+          "minDeviation": 1
+        },
+        "rn": {
+          "rect": {
+            "x": 105,
+            "y": 105,
+            "width": 525,
+            "height": 315
+          },
+          "outsidePixels": 46050,
+          "maxDeviation": 31,
+          "minDeviation": 1
+        }
+      },
+      "finishedAt": "2026-11-25T17:52:29.900Z"
+    },
+    {
+      "index": 1,
+      "startedAt": "2026-11-25T17:53:30.600Z",
+      "checks": [
+        {
+          "name": "avd",
+          "expected": "M3E_API31",
+          "actual": "M3E_API31",
+          "ok": true
+        },
+        {
+          "name": "api",
+          "expected": 31,
+          "actual": 31,
+          "ok": true
+        },
+        {
+          "name": "locale",
+          "expected": "en-US",
+          "actual": "en-US",
+          "ok": true
+        },
+        {
+          "name": "fontScale",
+          "expected": "1.0",
+          "actual": "1.0",
+          "ok": true
+        },
+        {
+          "name": "animatorDurationScale",
+          "expected": "0",
+          "actual": "0",
+          "ok": true
+        },
+        {
+          "name": "transitionAnimationScale",
+          "expected": "0",
+          "actual": "0",
+          "ok": true
+        },
+        {
+          "name": "windowAnimationScale",
+          "expected": "0",
+          "actual": "0",
+          "ok": true
+        },
+        {
+          "name": "userRotation",
+          "expected": "0",
+          "actual": "0",
+          "ok": true
+        },
+        {
+          "name": "immersiveConfirmation",
+          "expected": "confirmed",
+          "actual": "confirmed",
+          "ok": true
+        },
+        {
+          "name": "nightMode",
+          "expected": "Night mode: no",
+          "actual": "Night mode: no",
+          "ok": true
+        },
+        {
+          "name": "wmSize",
+          "expected": "Physical size: 1080x1920",
+          "actual": "Physical size: 1080x1920",
+          "ok": true
+        },
+        {
+          "name": "wmDensity",
+          "expected": "Physical density: 420",
+          "actual": "Physical density: 420",
+          "ok": true
+        },
+        {
+          "name": "gpu",
+          "expected": "SwiftShader",
+          "actual": "GLES: Google (Google Inc. (Google)), Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver-5.0.0)), OpenGL ES 3.1 (OpenGL ES 3.1.0 (ANGLE 2.1.2 git hash: 1f0534893540))",
+          "ok": true
+        }
+      ],
+      "captures": {
+        "compose": {
+          "solid": [
+            {
+              "path": "captures/769c75f7390f26c2c0a16ed770f3582dbfc2bd615753e5892a1f9d00e64fc639.png",
+              "sha256": "769c75f7390f26c2c0a16ed770f3582dbfc2bd615753e5892a1f9d00e64fc639",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "solid",
+                "render": 0
+              },
+              "textLayout": null,
+              "capturedAt": "2026-11-25T17:53:35.083Z"
+            },
+            {
+              "path": "captures/769c75f7390f26c2c0a16ed770f3582dbfc2bd615753e5892a1f9d00e64fc639.png",
+              "sha256": "769c75f7390f26c2c0a16ed770f3582dbfc2bd615753e5892a1f9d00e64fc639",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "solid",
+                "render": 1
+              },
+              "textLayout": null,
+              "capturedAt": "2026-11-25T17:53:52.651Z"
+            }
+          ],
+          "rect": [
+            {
+              "path": "captures/62e8d31bac18416ce19bb20fcf052985b770560167df7cbd0091fb74b76f5a59.png",
+              "sha256": "62e8d31bac18416ce19bb20fcf052985b770560167df7cbd0091fb74b76f5a59",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "rect",
+                "render": 0
+              },
+              "textLayout": null,
+              "capturedAt": "2026-11-25T17:53:59.928Z"
+            },
+            {
+              "path": "captures/62e8d31bac18416ce19bb20fcf052985b770560167df7cbd0091fb74b76f5a59.png",
+              "sha256": "62e8d31bac18416ce19bb20fcf052985b770560167df7cbd0091fb74b76f5a59",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "rect",
+                "render": 1
+              },
+              "textLayout": null,
+              "capturedAt": "2026-11-25T17:54:01.080Z"
+            }
+          ],
+          "text": [
+            {
+              "path": "captures/102c974b9576f7304a7a22e518fc8a2901a6679aa2562fdf8e3a651d3d8d8bd6.png",
+              "sha256": "102c974b9576f7304a7a22e518fc8a2901a6679aa2562fdf8e3a651d3d8d8bd6",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "text",
+                "render": 0
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "text"
+              },
+              "capturedAt": "2026-11-25T17:54:07.462Z"
+            },
+            {
+              "path": "captures/102c974b9576f7304a7a22e518fc8a2901a6679aa2562fdf8e3a651d3d8d8bd6.png",
+              "sha256": "102c974b9576f7304a7a22e518fc8a2901a6679aa2562fdf8e3a651d3d8d8bd6",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "text",
+                "render": 1
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "text"
+              },
+              "capturedAt": "2026-11-25T17:54:08.667Z"
+            }
+          ],
+          "shadow": [
+            {
+              "path": "captures/517d03a32a001dc104371bbe58430336afd4eb92bc04439676d4eca245e32ef6.png",
+              "sha256": "517d03a32a001dc104371bbe58430336afd4eb92bc04439676d4eca245e32ef6",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "shadow",
+                "render": 0
+              },
+              "textLayout": null,
+              "capturedAt": "2026-11-25T17:54:16.573Z"
+            },
+            {
+              "path": "captures/517d03a32a001dc104371bbe58430336afd4eb92bc04439676d4eca245e32ef6.png",
+              "sha256": "517d03a32a001dc104371bbe58430336afd4eb92bc04439676d4eca245e32ef6",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "shadow",
+                "render": 1
+              },
+              "textLayout": null,
+              "capturedAt": "2026-11-25T17:54:17.871Z"
+            }
+          ],
+          "trivial": [
+            {
+              "path": "captures/e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a.png",
+              "sha256": "e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 0
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:54:24.692Z"
+            },
+            {
+              "path": "captures/e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a.png",
+              "sha256": "e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 1
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:54:25.996Z"
+            },
+            {
+              "path": "captures/e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a.png",
+              "sha256": "e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 2
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:54:27.223Z"
+            },
+            {
+              "path": "captures/e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a.png",
+              "sha256": "e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 3
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:54:28.502Z"
+            },
+            {
+              "path": "captures/e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a.png",
+              "sha256": "e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 4
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:54:29.751Z"
+            },
+            {
+              "path": "captures/e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a.png",
+              "sha256": "e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 5
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:54:31.046Z"
+            },
+            {
+              "path": "captures/e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a.png",
+              "sha256": "e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 6
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:54:32.263Z"
+            },
+            {
+              "path": "captures/e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a.png",
+              "sha256": "e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 7
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:54:33.549Z"
+            },
+            {
+              "path": "captures/e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a.png",
+              "sha256": "e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 8
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:54:34.839Z"
+            },
+            {
+              "path": "captures/e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a.png",
+              "sha256": "e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 9
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:54:36.119Z"
+            },
+            {
+              "path": "captures/e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a.png",
+              "sha256": "e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 10
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:54:37.425Z"
+            },
+            {
+              "path": "captures/e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a.png",
+              "sha256": "e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 11
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:54:38.713Z"
+            },
+            {
+              "path": "captures/e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a.png",
+              "sha256": "e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 12
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:54:40.031Z"
+            },
+            {
+              "path": "captures/e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a.png",
+              "sha256": "e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 13
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:54:41.290Z"
+            },
+            {
+              "path": "captures/e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a.png",
+              "sha256": "e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 14
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:54:42.554Z"
+            },
+            {
+              "path": "captures/e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a.png",
+              "sha256": "e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 15
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:54:43.836Z"
+            },
+            {
+              "path": "captures/e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a.png",
+              "sha256": "e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 16
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:54:45.142Z"
+            },
+            {
+              "path": "captures/e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a.png",
+              "sha256": "e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 17
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:54:46.379Z"
+            },
+            {
+              "path": "captures/e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a.png",
+              "sha256": "e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 18
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:54:47.697Z"
+            },
+            {
+              "path": "captures/e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a.png",
+              "sha256": "e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 19
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:54:48.959Z"
+            }
+          ]
+        },
+        "rn": {
+          "solid": [
+            {
+              "path": "captures/769c75f7390f26c2c0a16ed770f3582dbfc2bd615753e5892a1f9d00e64fc639.png",
+              "sha256": "769c75f7390f26c2c0a16ed770f3582dbfc2bd615753e5892a1f9d00e64fc639",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "solid",
+                "render": 0
+              },
+              "textLayout": null,
+              "capturedAt": "2026-11-25T17:53:55.552Z"
+            },
+            {
+              "path": "captures/769c75f7390f26c2c0a16ed770f3582dbfc2bd615753e5892a1f9d00e64fc639.png",
+              "sha256": "769c75f7390f26c2c0a16ed770f3582dbfc2bd615753e5892a1f9d00e64fc639",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "solid",
+                "render": 1
+              },
+              "textLayout": null,
+              "capturedAt": "2026-11-25T17:53:56.850Z"
+            }
+          ],
+          "rect": [
+            {
+              "path": "captures/62e8d31bac18416ce19bb20fcf052985b770560167df7cbd0091fb74b76f5a59.png",
+              "sha256": "62e8d31bac18416ce19bb20fcf052985b770560167df7cbd0091fb74b76f5a59",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "rect",
+                "render": 0
+              },
+              "textLayout": null,
+              "capturedAt": "2026-11-25T17:54:03.492Z"
+            },
+            {
+              "path": "captures/62e8d31bac18416ce19bb20fcf052985b770560167df7cbd0091fb74b76f5a59.png",
+              "sha256": "62e8d31bac18416ce19bb20fcf052985b770560167df7cbd0091fb74b76f5a59",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "rect",
+                "render": 1
+              },
+              "textLayout": null,
+              "capturedAt": "2026-11-25T17:54:04.723Z"
+            }
+          ],
+          "text": [
+            {
+              "path": "captures/88fdb5439ab2fec365a6924ee894fcd0c2112a0faa5bae5c1d82a2f9651e6893.png",
+              "sha256": "88fdb5439ab2fec365a6924ee894fcd0c2112a0faa5bae5c1d82a2f9651e6893",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "text",
+                "render": 0
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "text"
+              },
+              "capturedAt": "2026-11-25T17:54:12.259Z"
+            },
+            {
+              "path": "captures/88fdb5439ab2fec365a6924ee894fcd0c2112a0faa5bae5c1d82a2f9651e6893.png",
+              "sha256": "88fdb5439ab2fec365a6924ee894fcd0c2112a0faa5bae5c1d82a2f9651e6893",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "text",
+                "render": 1
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "text"
+              },
+              "capturedAt": "2026-11-25T17:54:13.568Z"
+            }
+          ],
+          "shadow": [
+            {
+              "path": "captures/517d03a32a001dc104371bbe58430336afd4eb92bc04439676d4eca245e32ef6.png",
+              "sha256": "517d03a32a001dc104371bbe58430336afd4eb92bc04439676d4eca245e32ef6",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "shadow",
+                "render": 0
+              },
+              "textLayout": null,
+              "capturedAt": "2026-11-25T17:54:20.371Z"
+            },
+            {
+              "path": "captures/517d03a32a001dc104371bbe58430336afd4eb92bc04439676d4eca245e32ef6.png",
+              "sha256": "517d03a32a001dc104371bbe58430336afd4eb92bc04439676d4eca245e32ef6",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "shadow",
+                "render": 1
+              },
+              "textLayout": null,
+              "capturedAt": "2026-11-25T17:54:21.726Z"
+            }
+          ],
+          "trivial": [
+            {
+              "path": "captures/aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec.png",
+              "sha256": "aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 0
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:54:52.229Z"
+            },
+            {
+              "path": "captures/aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec.png",
+              "sha256": "aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 1
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:54:53.560Z"
+            },
+            {
+              "path": "captures/aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec.png",
+              "sha256": "aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 2
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:54:55.178Z"
+            },
+            {
+              "path": "captures/aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec.png",
+              "sha256": "aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 3
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:54:56.777Z"
+            },
+            {
+              "path": "captures/aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec.png",
+              "sha256": "aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 4
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:54:58.382Z"
+            },
+            {
+              "path": "captures/aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec.png",
+              "sha256": "aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 5
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:54:59.723Z"
+            },
+            {
+              "path": "captures/aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec.png",
+              "sha256": "aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 6
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:55:00.989Z"
+            },
+            {
+              "path": "captures/aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec.png",
+              "sha256": "aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 7
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:55:02.266Z"
+            },
+            {
+              "path": "captures/aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec.png",
+              "sha256": "aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 8
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:55:03.515Z"
+            },
+            {
+              "path": "captures/aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec.png",
+              "sha256": "aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 9
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:55:04.712Z"
+            },
+            {
+              "path": "captures/aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec.png",
+              "sha256": "aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 10
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:55:06.065Z"
+            },
+            {
+              "path": "captures/aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec.png",
+              "sha256": "aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 11
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:55:07.370Z"
+            },
+            {
+              "path": "captures/aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec.png",
+              "sha256": "aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 12
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:55:08.774Z"
+            },
+            {
+              "path": "captures/aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec.png",
+              "sha256": "aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 13
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:55:10.123Z"
+            },
+            {
+              "path": "captures/aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec.png",
+              "sha256": "aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 14
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:55:11.515Z"
+            },
+            {
+              "path": "captures/aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec.png",
+              "sha256": "aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 15
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:55:12.961Z"
+            },
+            {
+              "path": "captures/aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec.png",
+              "sha256": "aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 16
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:55:14.413Z"
+            },
+            {
+              "path": "captures/aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec.png",
+              "sha256": "aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 17
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:55:15.763Z"
+            },
+            {
+              "path": "captures/aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec.png",
+              "sha256": "aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 18
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:55:17.139Z"
+            },
+            {
+              "path": "captures/aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec.png",
+              "sha256": "aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 19
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:55:18.524Z"
+            }
+          ]
+        }
+      },
+      "determinism": {
+        "compose": {
+          "solid": {
+            "runs": 2,
+            "maxExact": 0,
+            "maxAa": 0,
+            "ok": true
+          },
+          "rect": {
+            "runs": 2,
+            "maxExact": 0,
+            "maxAa": 0,
+            "ok": true
+          },
+          "text": {
+            "runs": 2,
+            "maxExact": 0,
+            "maxAa": 0,
+            "ok": true
+          },
+          "shadow": {
+            "runs": 2,
+            "maxExact": 0,
+            "maxAa": 0,
+            "ok": true
+          },
+          "trivial": {
+            "runs": 20,
+            "maxExact": 0,
+            "maxAa": 0,
+            "ok": true
+          }
+        },
+        "rn": {
+          "solid": {
+            "runs": 2,
+            "maxExact": 0,
+            "maxAa": 0,
+            "ok": true
+          },
+          "rect": {
+            "runs": 2,
+            "maxExact": 0,
+            "maxAa": 0,
+            "ok": true
+          },
+          "text": {
+            "runs": 2,
+            "maxExact": 0,
+            "maxAa": 0,
+            "ok": true
+          },
+          "shadow": {
+            "runs": 2,
+            "maxExact": 0,
+            "maxAa": 0,
+            "ok": true
+          },
+          "trivial": {
+            "runs": 20,
+            "maxExact": 0,
+            "maxAa": 0,
+            "ok": true
+          }
+        }
+      },
+      "crossStack": {
+        "solid": {
+          "width": 840,
+          "height": 525,
+          "pixels": 441000,
+          "exactDiffPixels": 0,
+          "exactDiffPercent": 0,
+          "aaAwareDiffPixels": 0,
+          "aaAwareDiffPercent": 0,
+          "maxChannelDelta": 0,
+          "meanAbsoluteDelta": 0,
+          "bbox": null,
+          "aaAwareBbox": null,
+          "aaAwareCoordinates": [],
+          "regionCounts": {},
+          "diff": "diffs/boot-2-solid.png"
+        },
+        "rect": {
+          "width": 840,
+          "height": 525,
+          "pixels": 441000,
+          "exactDiffPixels": 0,
+          "exactDiffPercent": 0,
+          "aaAwareDiffPixels": 0,
+          "aaAwareDiffPercent": 0,
+          "maxChannelDelta": 0,
+          "meanAbsoluteDelta": 0,
+          "bbox": null,
+          "aaAwareBbox": null,
+          "aaAwareCoordinates": [],
+          "regionCounts": {},
+          "diff": "diffs/boot-2-rect.png"
+        },
+        "text": {
+          "width": 840,
+          "height": 525,
+          "pixels": 441000,
+          "exactDiffPixels": 1745,
+          "exactDiffPercent": 0.39569160997732433,
+          "aaAwareDiffPixels": 4,
+          "aaAwareDiffPercent": 0.0009070294784580498,
+          "maxChannelDelta": 162,
+          "meanAbsoluteDelta": 0.1422910052910053,
+          "bbox": {
+            "x": 205,
+            "y": 75,
+            "width": 258,
+            "height": 59
+          },
+          "aaAwareBbox": {
+            "x": 416,
+            "y": 111,
+            "width": 2,
+            "height": 4
+          },
+          "aaAwareCoordinates": [
+            {
+              "x": 416,
+              "y": 111
+            },
+            {
+              "x": 417,
+              "y": 111
+            },
+            {
+              "x": 417,
+              "y": 113
+            },
+            {
+              "x": 417,
+              "y": 114
+            }
+          ],
+          "regionCounts": {
+            "text-0": 1745
+          },
+          "diff": "diffs/boot-2-text.png"
+        },
+        "shadow": {
+          "width": 840,
+          "height": 525,
+          "pixels": 441000,
+          "exactDiffPixels": 0,
+          "exactDiffPercent": 0,
+          "aaAwareDiffPixels": 0,
+          "aaAwareDiffPercent": 0,
+          "maxChannelDelta": 0,
+          "meanAbsoluteDelta": 0,
+          "bbox": null,
+          "aaAwareBbox": null,
+          "aaAwareCoordinates": [],
+          "regionCounts": {
+            "shadow-0": 0
+          },
+          "diff": "diffs/boot-2-shadow.png"
+        },
+        "trivial": {
+          "width": 840,
+          "height": 525,
+          "pixels": 441000,
+          "exactDiffPixels": 1745,
+          "exactDiffPercent": 0.39569160997732433,
+          "aaAwareDiffPixels": 4,
+          "aaAwareDiffPercent": 0.0009070294784580498,
+          "maxChannelDelta": 162,
+          "meanAbsoluteDelta": 0.1422910052910053,
+          "bbox": {
+            "x": 205,
+            "y": 369,
+            "width": 258,
+            "height": 59
+          },
+          "aaAwareBbox": {
+            "x": 416,
+            "y": 405,
+            "width": 2,
+            "height": 4
+          },
+          "aaAwareCoordinates": [
+            {
+              "x": 416,
+              "y": 405
+            },
+            {
+              "x": 417,
+              "y": 405
+            },
+            {
+              "x": 417,
+              "y": 407
+            },
+            {
+              "x": 417,
+              "y": 408
+            }
+          ],
+          "regionCounts": {
+            "text-1": 1745
+          },
+          "diff": "diffs/boot-2-trivial.png"
+        }
+      },
+      "shadow": {
+        "compose": {
+          "rect": {
+            "x": 105,
+            "y": 105,
+            "width": 525,
+            "height": 315
+          },
+          "outsidePixels": 46050,
+          "maxDeviation": 31,
+          "minDeviation": 1
+        },
+        "rn": {
+          "rect": {
+            "x": 105,
+            "y": 105,
+            "width": 525,
+            "height": 315
+          },
+          "outsidePixels": 46050,
+          "maxDeviation": 31,
+          "minDeviation": 1
+        }
+      },
+      "finishedAt": "2026-11-25T17:55:19.783Z"
+    },
+    {
+      "index": 2,
+      "startedAt": "2026-11-25T17:56:25.030Z",
+      "checks": [
+        {
+          "name": "avd",
+          "expected": "M3E_API31",
+          "actual": "M3E_API31",
+          "ok": true
+        },
+        {
+          "name": "api",
+          "expected": 31,
+          "actual": 31,
+          "ok": true
+        },
+        {
+          "name": "locale",
+          "expected": "en-US",
+          "actual": "en-US",
+          "ok": true
+        },
+        {
+          "name": "fontScale",
+          "expected": "1.0",
+          "actual": "1.0",
+          "ok": true
+        },
+        {
+          "name": "animatorDurationScale",
+          "expected": "0",
+          "actual": "0",
+          "ok": true
+        },
+        {
+          "name": "transitionAnimationScale",
+          "expected": "0",
+          "actual": "0",
+          "ok": true
+        },
+        {
+          "name": "windowAnimationScale",
+          "expected": "0",
+          "actual": "0",
+          "ok": true
+        },
+        {
+          "name": "userRotation",
+          "expected": "0",
+          "actual": "0",
+          "ok": true
+        },
+        {
+          "name": "immersiveConfirmation",
+          "expected": "confirmed",
+          "actual": "confirmed",
+          "ok": true
+        },
+        {
+          "name": "nightMode",
+          "expected": "Night mode: no",
+          "actual": "Night mode: no",
+          "ok": true
+        },
+        {
+          "name": "wmSize",
+          "expected": "Physical size: 1080x1920",
+          "actual": "Physical size: 1080x1920",
+          "ok": true
+        },
+        {
+          "name": "wmDensity",
+          "expected": "Physical density: 420",
+          "actual": "Physical density: 420",
+          "ok": true
+        },
+        {
+          "name": "gpu",
+          "expected": "SwiftShader",
+          "actual": "GLES: Google (Google Inc. (Google)), Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver-5.0.0)), OpenGL ES 3.1 (OpenGL ES 3.1.0 (ANGLE 2.1.2 git hash: 1f0534893540))",
+          "ok": true
+        }
+      ],
+      "captures": {
+        "compose": {
+          "solid": [
+            {
+              "path": "captures/769c75f7390f26c2c0a16ed770f3582dbfc2bd615753e5892a1f9d00e64fc639.png",
+              "sha256": "769c75f7390f26c2c0a16ed770f3582dbfc2bd615753e5892a1f9d00e64fc639",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "solid",
+                "render": 0
+              },
+              "textLayout": null,
+              "capturedAt": "2026-11-25T17:56:30.631Z"
+            },
+            {
+              "path": "captures/769c75f7390f26c2c0a16ed770f3582dbfc2bd615753e5892a1f9d00e64fc639.png",
+              "sha256": "769c75f7390f26c2c0a16ed770f3582dbfc2bd615753e5892a1f9d00e64fc639",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "solid",
+                "render": 1
+              },
+              "textLayout": null,
+              "capturedAt": "2026-11-25T17:56:52.479Z"
+            }
+          ],
+          "rect": [
+            {
+              "path": "captures/62e8d31bac18416ce19bb20fcf052985b770560167df7cbd0091fb74b76f5a59.png",
+              "sha256": "62e8d31bac18416ce19bb20fcf052985b770560167df7cbd0091fb74b76f5a59",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "rect",
+                "render": 0
+              },
+              "textLayout": null,
+              "capturedAt": "2026-11-25T17:57:00.504Z"
+            },
+            {
+              "path": "captures/62e8d31bac18416ce19bb20fcf052985b770560167df7cbd0091fb74b76f5a59.png",
+              "sha256": "62e8d31bac18416ce19bb20fcf052985b770560167df7cbd0091fb74b76f5a59",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "rect",
+                "render": 1
+              },
+              "textLayout": null,
+              "capturedAt": "2026-11-25T17:57:01.969Z"
+            }
+          ],
+          "text": [
+            {
+              "path": "captures/102c974b9576f7304a7a22e518fc8a2901a6679aa2562fdf8e3a651d3d8d8bd6.png",
+              "sha256": "102c974b9576f7304a7a22e518fc8a2901a6679aa2562fdf8e3a651d3d8d8bd6",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "text",
+                "render": 0
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "text"
+              },
+              "capturedAt": "2026-11-25T17:57:09.351Z"
+            },
+            {
+              "path": "captures/102c974b9576f7304a7a22e518fc8a2901a6679aa2562fdf8e3a651d3d8d8bd6.png",
+              "sha256": "102c974b9576f7304a7a22e518fc8a2901a6679aa2562fdf8e3a651d3d8d8bd6",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "text",
+                "render": 1
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "text"
+              },
+              "capturedAt": "2026-11-25T17:57:10.558Z"
+            }
+          ],
+          "shadow": [
+            {
+              "path": "captures/517d03a32a001dc104371bbe58430336afd4eb92bc04439676d4eca245e32ef6.png",
+              "sha256": "517d03a32a001dc104371bbe58430336afd4eb92bc04439676d4eca245e32ef6",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "shadow",
+                "render": 0
+              },
+              "textLayout": null,
+              "capturedAt": "2026-11-25T17:57:17.805Z"
+            },
+            {
+              "path": "captures/517d03a32a001dc104371bbe58430336afd4eb92bc04439676d4eca245e32ef6.png",
+              "sha256": "517d03a32a001dc104371bbe58430336afd4eb92bc04439676d4eca245e32ef6",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "shadow",
+                "render": 1
+              },
+              "textLayout": null,
+              "capturedAt": "2026-11-25T17:57:19.051Z"
+            }
+          ],
+          "trivial": [
+            {
+              "path": "captures/e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a.png",
+              "sha256": "e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 0
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:57:25.356Z"
+            },
+            {
+              "path": "captures/e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a.png",
+              "sha256": "e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 1
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:57:26.814Z"
+            },
+            {
+              "path": "captures/e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a.png",
+              "sha256": "e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 2
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:57:28.182Z"
+            },
+            {
+              "path": "captures/e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a.png",
+              "sha256": "e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 3
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:57:29.446Z"
+            },
+            {
+              "path": "captures/e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a.png",
+              "sha256": "e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 4
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:57:30.534Z"
+            },
+            {
+              "path": "captures/e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a.png",
+              "sha256": "e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 5
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:57:31.583Z"
+            },
+            {
+              "path": "captures/e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a.png",
+              "sha256": "e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 6
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:57:32.649Z"
+            },
+            {
+              "path": "captures/e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a.png",
+              "sha256": "e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 7
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:57:33.715Z"
+            },
+            {
+              "path": "captures/e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a.png",
+              "sha256": "e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 8
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:57:34.809Z"
+            },
+            {
+              "path": "captures/e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a.png",
+              "sha256": "e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 9
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:57:35.838Z"
+            },
+            {
+              "path": "captures/e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a.png",
+              "sha256": "e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 10
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:57:36.860Z"
+            },
+            {
+              "path": "captures/e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a.png",
+              "sha256": "e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 11
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:57:37.897Z"
+            },
+            {
+              "path": "captures/e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a.png",
+              "sha256": "e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 12
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:57:38.883Z"
+            },
+            {
+              "path": "captures/e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a.png",
+              "sha256": "e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 13
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:57:39.974Z"
+            },
+            {
+              "path": "captures/e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a.png",
+              "sha256": "e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 14
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:57:41.091Z"
+            },
+            {
+              "path": "captures/e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a.png",
+              "sha256": "e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 15
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:57:42.227Z"
+            },
+            {
+              "path": "captures/e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a.png",
+              "sha256": "e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 16
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:57:43.290Z"
+            },
+            {
+              "path": "captures/e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a.png",
+              "sha256": "e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 17
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:57:44.322Z"
+            },
+            {
+              "path": "captures/e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a.png",
+              "sha256": "e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 18
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:57:45.373Z"
+            },
+            {
+              "path": "captures/e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a.png",
+              "sha256": "e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 19
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:57:46.482Z"
+            }
+          ]
+        },
+        "rn": {
+          "solid": [
+            {
+              "path": "captures/769c75f7390f26c2c0a16ed770f3582dbfc2bd615753e5892a1f9d00e64fc639.png",
+              "sha256": "769c75f7390f26c2c0a16ed770f3582dbfc2bd615753e5892a1f9d00e64fc639",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "solid",
+                "render": 0
+              },
+              "textLayout": null,
+              "capturedAt": "2026-11-25T17:56:55.490Z"
+            },
+            {
+              "path": "captures/769c75f7390f26c2c0a16ed770f3582dbfc2bd615753e5892a1f9d00e64fc639.png",
+              "sha256": "769c75f7390f26c2c0a16ed770f3582dbfc2bd615753e5892a1f9d00e64fc639",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "solid",
+                "render": 1
+              },
+              "textLayout": null,
+              "capturedAt": "2026-11-25T17:56:56.834Z"
+            }
+          ],
+          "rect": [
+            {
+              "path": "captures/62e8d31bac18416ce19bb20fcf052985b770560167df7cbd0091fb74b76f5a59.png",
+              "sha256": "62e8d31bac18416ce19bb20fcf052985b770560167df7cbd0091fb74b76f5a59",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "rect",
+                "render": 0
+              },
+              "textLayout": null,
+              "capturedAt": "2026-11-25T17:57:04.826Z"
+            },
+            {
+              "path": "captures/62e8d31bac18416ce19bb20fcf052985b770560167df7cbd0091fb74b76f5a59.png",
+              "sha256": "62e8d31bac18416ce19bb20fcf052985b770560167df7cbd0091fb74b76f5a59",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "rect",
+                "render": 1
+              },
+              "textLayout": null,
+              "capturedAt": "2026-11-25T17:57:06.335Z"
+            }
+          ],
+          "text": [
+            {
+              "path": "captures/88fdb5439ab2fec365a6924ee894fcd0c2112a0faa5bae5c1d82a2f9651e6893.png",
+              "sha256": "88fdb5439ab2fec365a6924ee894fcd0c2112a0faa5bae5c1d82a2f9651e6893",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "text",
+                "render": 0
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "text"
+              },
+              "capturedAt": "2026-11-25T17:57:13.711Z"
+            },
+            {
+              "path": "captures/88fdb5439ab2fec365a6924ee894fcd0c2112a0faa5bae5c1d82a2f9651e6893.png",
+              "sha256": "88fdb5439ab2fec365a6924ee894fcd0c2112a0faa5bae5c1d82a2f9651e6893",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "text",
+                "render": 1
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "text"
+              },
+              "capturedAt": "2026-11-25T17:57:14.969Z"
+            }
+          ],
+          "shadow": [
+            {
+              "path": "captures/517d03a32a001dc104371bbe58430336afd4eb92bc04439676d4eca245e32ef6.png",
+              "sha256": "517d03a32a001dc104371bbe58430336afd4eb92bc04439676d4eca245e32ef6",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "shadow",
+                "render": 0
+              },
+              "textLayout": null,
+              "capturedAt": "2026-11-25T17:57:21.213Z"
+            },
+            {
+              "path": "captures/517d03a32a001dc104371bbe58430336afd4eb92bc04439676d4eca245e32ef6.png",
+              "sha256": "517d03a32a001dc104371bbe58430336afd4eb92bc04439676d4eca245e32ef6",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "shadow",
+                "render": 1
+              },
+              "textLayout": null,
+              "capturedAt": "2026-11-25T17:57:22.499Z"
+            }
+          ],
+          "trivial": [
+            {
+              "path": "captures/aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec.png",
+              "sha256": "aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 0
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:57:49.943Z"
+            },
+            {
+              "path": "captures/aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec.png",
+              "sha256": "aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 1
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:57:51.179Z"
+            },
+            {
+              "path": "captures/aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec.png",
+              "sha256": "aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 2
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:57:52.358Z"
+            },
+            {
+              "path": "captures/aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec.png",
+              "sha256": "aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 3
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:57:53.635Z"
+            },
+            {
+              "path": "captures/aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec.png",
+              "sha256": "aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 4
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:57:54.898Z"
+            },
+            {
+              "path": "captures/aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec.png",
+              "sha256": "aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 5
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:57:56.137Z"
+            },
+            {
+              "path": "captures/aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec.png",
+              "sha256": "aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 6
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:57:57.385Z"
+            },
+            {
+              "path": "captures/aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec.png",
+              "sha256": "aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 7
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:57:58.643Z"
+            },
+            {
+              "path": "captures/aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec.png",
+              "sha256": "aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 8
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:57:59.892Z"
+            },
+            {
+              "path": "captures/aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec.png",
+              "sha256": "aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 9
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:58:01.229Z"
+            },
+            {
+              "path": "captures/aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec.png",
+              "sha256": "aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 10
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:58:02.560Z"
+            },
+            {
+              "path": "captures/aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec.png",
+              "sha256": "aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 11
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:58:03.811Z"
+            },
+            {
+              "path": "captures/aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec.png",
+              "sha256": "aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 12
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:58:04.992Z"
+            },
+            {
+              "path": "captures/aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec.png",
+              "sha256": "aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 13
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:58:06.258Z"
+            },
+            {
+              "path": "captures/aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec.png",
+              "sha256": "aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 14
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:58:07.542Z"
+            },
+            {
+              "path": "captures/aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec.png",
+              "sha256": "aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 15
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:58:08.786Z"
+            },
+            {
+              "path": "captures/aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec.png",
+              "sha256": "aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 16
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:58:10.002Z"
+            },
+            {
+              "path": "captures/aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec.png",
+              "sha256": "aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 17
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:58:11.275Z"
+            },
+            {
+              "path": "captures/aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec.png",
+              "sha256": "aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 18
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:58:12.544Z"
+            },
+            {
+              "path": "captures/aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec.png",
+              "sha256": "aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 19
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T17:58:13.895Z"
+            }
+          ]
+        }
+      },
+      "determinism": {
+        "compose": {
+          "solid": {
+            "runs": 2,
+            "maxExact": 0,
+            "maxAa": 0,
+            "ok": true
+          },
+          "rect": {
+            "runs": 2,
+            "maxExact": 0,
+            "maxAa": 0,
+            "ok": true
+          },
+          "text": {
+            "runs": 2,
+            "maxExact": 0,
+            "maxAa": 0,
+            "ok": true
+          },
+          "shadow": {
+            "runs": 2,
+            "maxExact": 0,
+            "maxAa": 0,
+            "ok": true
+          },
+          "trivial": {
+            "runs": 20,
+            "maxExact": 0,
+            "maxAa": 0,
+            "ok": true
+          }
+        },
+        "rn": {
+          "solid": {
+            "runs": 2,
+            "maxExact": 0,
+            "maxAa": 0,
+            "ok": true
+          },
+          "rect": {
+            "runs": 2,
+            "maxExact": 0,
+            "maxAa": 0,
+            "ok": true
+          },
+          "text": {
+            "runs": 2,
+            "maxExact": 0,
+            "maxAa": 0,
+            "ok": true
+          },
+          "shadow": {
+            "runs": 2,
+            "maxExact": 0,
+            "maxAa": 0,
+            "ok": true
+          },
+          "trivial": {
+            "runs": 20,
+            "maxExact": 0,
+            "maxAa": 0,
+            "ok": true
+          }
+        }
+      },
+      "crossStack": {
+        "solid": {
+          "width": 840,
+          "height": 525,
+          "pixels": 441000,
+          "exactDiffPixels": 0,
+          "exactDiffPercent": 0,
+          "aaAwareDiffPixels": 0,
+          "aaAwareDiffPercent": 0,
+          "maxChannelDelta": 0,
+          "meanAbsoluteDelta": 0,
+          "bbox": null,
+          "aaAwareBbox": null,
+          "aaAwareCoordinates": [],
+          "regionCounts": {},
+          "diff": "diffs/boot-3-solid.png"
+        },
+        "rect": {
+          "width": 840,
+          "height": 525,
+          "pixels": 441000,
+          "exactDiffPixels": 0,
+          "exactDiffPercent": 0,
+          "aaAwareDiffPixels": 0,
+          "aaAwareDiffPercent": 0,
+          "maxChannelDelta": 0,
+          "meanAbsoluteDelta": 0,
+          "bbox": null,
+          "aaAwareBbox": null,
+          "aaAwareCoordinates": [],
+          "regionCounts": {},
+          "diff": "diffs/boot-3-rect.png"
+        },
+        "text": {
+          "width": 840,
+          "height": 525,
+          "pixels": 441000,
+          "exactDiffPixels": 1745,
+          "exactDiffPercent": 0.39569160997732433,
+          "aaAwareDiffPixels": 4,
+          "aaAwareDiffPercent": 0.0009070294784580498,
+          "maxChannelDelta": 162,
+          "meanAbsoluteDelta": 0.1422910052910053,
+          "bbox": {
+            "x": 205,
+            "y": 75,
+            "width": 258,
+            "height": 59
+          },
+          "aaAwareBbox": {
+            "x": 416,
+            "y": 111,
+            "width": 2,
+            "height": 4
+          },
+          "aaAwareCoordinates": [
+            {
+              "x": 416,
+              "y": 111
+            },
+            {
+              "x": 417,
+              "y": 111
+            },
+            {
+              "x": 417,
+              "y": 113
+            },
+            {
+              "x": 417,
+              "y": 114
+            }
+          ],
+          "regionCounts": {
+            "text-0": 1745
+          },
+          "diff": "diffs/boot-3-text.png"
+        },
+        "shadow": {
+          "width": 840,
+          "height": 525,
+          "pixels": 441000,
+          "exactDiffPixels": 0,
+          "exactDiffPercent": 0,
+          "aaAwareDiffPixels": 0,
+          "aaAwareDiffPercent": 0,
+          "maxChannelDelta": 0,
+          "meanAbsoluteDelta": 0,
+          "bbox": null,
+          "aaAwareBbox": null,
+          "aaAwareCoordinates": [],
+          "regionCounts": {
+            "shadow-0": 0
+          },
+          "diff": "diffs/boot-3-shadow.png"
+        },
+        "trivial": {
+          "width": 840,
+          "height": 525,
+          "pixels": 441000,
+          "exactDiffPixels": 1745,
+          "exactDiffPercent": 0.39569160997732433,
+          "aaAwareDiffPixels": 4,
+          "aaAwareDiffPercent": 0.0009070294784580498,
+          "maxChannelDelta": 162,
+          "meanAbsoluteDelta": 0.1422910052910053,
+          "bbox": {
+            "x": 205,
+            "y": 369,
+            "width": 258,
+            "height": 59
+          },
+          "aaAwareBbox": {
+            "x": 416,
+            "y": 405,
+            "width": 2,
+            "height": 4
+          },
+          "aaAwareCoordinates": [
+            {
+              "x": 416,
+              "y": 405
+            },
+            {
+              "x": 417,
+              "y": 405
+            },
+            {
+              "x": 417,
+              "y": 407
+            },
+            {
+              "x": 417,
+              "y": 408
+            }
+          ],
+          "regionCounts": {
+            "text-1": 1745
+          },
+          "diff": "diffs/boot-3-trivial.png"
+        }
+      },
+      "shadow": {
+        "compose": {
+          "rect": {
+            "x": 105,
+            "y": 105,
+            "width": 525,
+            "height": 315
+          },
+          "outsidePixels": 46050,
+          "maxDeviation": 31,
+          "minDeviation": 1
+        },
+        "rn": {
+          "rect": {
+            "x": 105,
+            "y": 105,
+            "width": 525,
+            "height": 315
+          },
+          "outsidePixels": 46050,
+          "maxDeviation": 31,
+          "minDeviation": 1
+        }
+      },
+      "finishedAt": "2026-11-25T17:58:15.088Z"
+    }
+  ],
+  "crossBoot": {
+    "compose:solid:1": {
+      "width": 840,
+      "height": 525,
+      "pixels": 441000,
+      "exactDiffPixels": 0,
+      "exactDiffPercent": 0,
+      "aaAwareDiffPixels": 0,
+      "aaAwareDiffPercent": 0,
+      "maxChannelDelta": 0,
+      "meanAbsoluteDelta": 0,
+      "bbox": null,
+      "aaAwareBbox": null,
+      "aaAwareCoordinates": [],
+      "regionCounts": {}
+    },
+    "compose:rect:1": {
+      "width": 840,
+      "height": 525,
+      "pixels": 441000,
+      "exactDiffPixels": 0,
+      "exactDiffPercent": 0,
+      "aaAwareDiffPixels": 0,
+      "aaAwareDiffPercent": 0,
+      "maxChannelDelta": 0,
+      "meanAbsoluteDelta": 0,
+      "bbox": null,
+      "aaAwareBbox": null,
+      "aaAwareCoordinates": [],
+      "regionCounts": {}
+    },
+    "compose:text:1": {
+      "width": 840,
+      "height": 525,
+      "pixels": 441000,
+      "exactDiffPixels": 0,
+      "exactDiffPercent": 0,
+      "aaAwareDiffPixels": 0,
+      "aaAwareDiffPercent": 0,
+      "maxChannelDelta": 0,
+      "meanAbsoluteDelta": 0,
+      "bbox": null,
+      "aaAwareBbox": null,
+      "aaAwareCoordinates": [],
+      "regionCounts": {}
+    },
+    "compose:shadow:1": {
+      "width": 840,
+      "height": 525,
+      "pixels": 441000,
+      "exactDiffPixels": 0,
+      "exactDiffPercent": 0,
+      "aaAwareDiffPixels": 0,
+      "aaAwareDiffPercent": 0,
+      "maxChannelDelta": 0,
+      "meanAbsoluteDelta": 0,
+      "bbox": null,
+      "aaAwareBbox": null,
+      "aaAwareCoordinates": [],
+      "regionCounts": {}
+    },
+    "compose:trivial:1": {
+      "width": 840,
+      "height": 525,
+      "pixels": 441000,
+      "exactDiffPixels": 0,
+      "exactDiffPercent": 0,
+      "aaAwareDiffPixels": 0,
+      "aaAwareDiffPercent": 0,
+      "maxChannelDelta": 0,
+      "meanAbsoluteDelta": 0,
+      "bbox": null,
+      "aaAwareBbox": null,
+      "aaAwareCoordinates": [],
+      "regionCounts": {}
+    },
+    "rn:solid:1": {
+      "width": 840,
+      "height": 525,
+      "pixels": 441000,
+      "exactDiffPixels": 0,
+      "exactDiffPercent": 0,
+      "aaAwareDiffPixels": 0,
+      "aaAwareDiffPercent": 0,
+      "maxChannelDelta": 0,
+      "meanAbsoluteDelta": 0,
+      "bbox": null,
+      "aaAwareBbox": null,
+      "aaAwareCoordinates": [],
+      "regionCounts": {}
+    },
+    "rn:rect:1": {
+      "width": 840,
+      "height": 525,
+      "pixels": 441000,
+      "exactDiffPixels": 0,
+      "exactDiffPercent": 0,
+      "aaAwareDiffPixels": 0,
+      "aaAwareDiffPercent": 0,
+      "maxChannelDelta": 0,
+      "meanAbsoluteDelta": 0,
+      "bbox": null,
+      "aaAwareBbox": null,
+      "aaAwareCoordinates": [],
+      "regionCounts": {}
+    },
+    "rn:text:1": {
+      "width": 840,
+      "height": 525,
+      "pixels": 441000,
+      "exactDiffPixels": 0,
+      "exactDiffPercent": 0,
+      "aaAwareDiffPixels": 0,
+      "aaAwareDiffPercent": 0,
+      "maxChannelDelta": 0,
+      "meanAbsoluteDelta": 0,
+      "bbox": null,
+      "aaAwareBbox": null,
+      "aaAwareCoordinates": [],
+      "regionCounts": {}
+    },
+    "rn:shadow:1": {
+      "width": 840,
+      "height": 525,
+      "pixels": 441000,
+      "exactDiffPixels": 0,
+      "exactDiffPercent": 0,
+      "aaAwareDiffPixels": 0,
+      "aaAwareDiffPercent": 0,
+      "maxChannelDelta": 0,
+      "meanAbsoluteDelta": 0,
+      "bbox": null,
+      "aaAwareBbox": null,
+      "aaAwareCoordinates": [],
+      "regionCounts": {}
+    },
+    "rn:trivial:1": {
+      "width": 840,
+      "height": 525,
+      "pixels": 441000,
+      "exactDiffPixels": 0,
+      "exactDiffPercent": 0,
+      "aaAwareDiffPixels": 0,
+      "aaAwareDiffPercent": 0,
+      "maxChannelDelta": 0,
+      "meanAbsoluteDelta": 0,
+      "bbox": null,
+      "aaAwareBbox": null,
+      "aaAwareCoordinates": [],
+      "regionCounts": {}
+    },
+    "compose:solid:2": {
+      "width": 840,
+      "height": 525,
+      "pixels": 441000,
+      "exactDiffPixels": 0,
+      "exactDiffPercent": 0,
+      "aaAwareDiffPixels": 0,
+      "aaAwareDiffPercent": 0,
+      "maxChannelDelta": 0,
+      "meanAbsoluteDelta": 0,
+      "bbox": null,
+      "aaAwareBbox": null,
+      "aaAwareCoordinates": [],
+      "regionCounts": {}
+    },
+    "compose:rect:2": {
+      "width": 840,
+      "height": 525,
+      "pixels": 441000,
+      "exactDiffPixels": 0,
+      "exactDiffPercent": 0,
+      "aaAwareDiffPixels": 0,
+      "aaAwareDiffPercent": 0,
+      "maxChannelDelta": 0,
+      "meanAbsoluteDelta": 0,
+      "bbox": null,
+      "aaAwareBbox": null,
+      "aaAwareCoordinates": [],
+      "regionCounts": {}
+    },
+    "compose:text:2": {
+      "width": 840,
+      "height": 525,
+      "pixels": 441000,
+      "exactDiffPixels": 0,
+      "exactDiffPercent": 0,
+      "aaAwareDiffPixels": 0,
+      "aaAwareDiffPercent": 0,
+      "maxChannelDelta": 0,
+      "meanAbsoluteDelta": 0,
+      "bbox": null,
+      "aaAwareBbox": null,
+      "aaAwareCoordinates": [],
+      "regionCounts": {}
+    },
+    "compose:shadow:2": {
+      "width": 840,
+      "height": 525,
+      "pixels": 441000,
+      "exactDiffPixels": 0,
+      "exactDiffPercent": 0,
+      "aaAwareDiffPixels": 0,
+      "aaAwareDiffPercent": 0,
+      "maxChannelDelta": 0,
+      "meanAbsoluteDelta": 0,
+      "bbox": null,
+      "aaAwareBbox": null,
+      "aaAwareCoordinates": [],
+      "regionCounts": {}
+    },
+    "compose:trivial:2": {
+      "width": 840,
+      "height": 525,
+      "pixels": 441000,
+      "exactDiffPixels": 0,
+      "exactDiffPercent": 0,
+      "aaAwareDiffPixels": 0,
+      "aaAwareDiffPercent": 0,
+      "maxChannelDelta": 0,
+      "meanAbsoluteDelta": 0,
+      "bbox": null,
+      "aaAwareBbox": null,
+      "aaAwareCoordinates": [],
+      "regionCounts": {}
+    },
+    "rn:solid:2": {
+      "width": 840,
+      "height": 525,
+      "pixels": 441000,
+      "exactDiffPixels": 0,
+      "exactDiffPercent": 0,
+      "aaAwareDiffPixels": 0,
+      "aaAwareDiffPercent": 0,
+      "maxChannelDelta": 0,
+      "meanAbsoluteDelta": 0,
+      "bbox": null,
+      "aaAwareBbox": null,
+      "aaAwareCoordinates": [],
+      "regionCounts": {}
+    },
+    "rn:rect:2": {
+      "width": 840,
+      "height": 525,
+      "pixels": 441000,
+      "exactDiffPixels": 0,
+      "exactDiffPercent": 0,
+      "aaAwareDiffPixels": 0,
+      "aaAwareDiffPercent": 0,
+      "maxChannelDelta": 0,
+      "meanAbsoluteDelta": 0,
+      "bbox": null,
+      "aaAwareBbox": null,
+      "aaAwareCoordinates": [],
+      "regionCounts": {}
+    },
+    "rn:text:2": {
+      "width": 840,
+      "height": 525,
+      "pixels": 441000,
+      "exactDiffPixels": 0,
+      "exactDiffPercent": 0,
+      "aaAwareDiffPixels": 0,
+      "aaAwareDiffPercent": 0,
+      "maxChannelDelta": 0,
+      "meanAbsoluteDelta": 0,
+      "bbox": null,
+      "aaAwareBbox": null,
+      "aaAwareCoordinates": [],
+      "regionCounts": {}
+    },
+    "rn:shadow:2": {
+      "width": 840,
+      "height": 525,
+      "pixels": 441000,
+      "exactDiffPixels": 0,
+      "exactDiffPercent": 0,
+      "aaAwareDiffPixels": 0,
+      "aaAwareDiffPercent": 0,
+      "maxChannelDelta": 0,
+      "meanAbsoluteDelta": 0,
+      "bbox": null,
+      "aaAwareBbox": null,
+      "aaAwareCoordinates": [],
+      "regionCounts": {}
+    },
+    "rn:trivial:2": {
+      "width": 840,
+      "height": 525,
+      "pixels": 441000,
+      "exactDiffPixels": 0,
+      "exactDiffPercent": 0,
+      "aaAwareDiffPixels": 0,
+      "aaAwareDiffPercent": 0,
+      "maxChannelDelta": 0,
+      "meanAbsoluteDelta": 0,
+      "bbox": null,
+      "aaAwareBbox": null,
+      "aaAwareCoordinates": [],
+      "regionCounts": {}
+    }
+  },
+  "gate": {
+    "determinismOk": true,
+    "crossStackExactZero": false,
+    "crossStackAaAwareBelowPlaybookGate": true,
+    "note": "No new pixel threshold is proposed. The 0.05% figure is the existing PLAYBOOK §7 gate."
+  }
+}

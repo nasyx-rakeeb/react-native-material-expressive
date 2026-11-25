@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "id": "shadow",
+  "description": "One elevated rounded rectangle. Shadow spread, color, and edge stability only.",
+  "widthDp": 320,
+  "heightDp": 200,
+  "background": "#FFFBFE",
+  "layers": [
+    {
+      "type": "rect",
+      "x": 40,
+      "y": 40,
+      "width": 200,
+      "height": 120,
+      "radius": 16,
+      "color": "#6750A4",
+      "elevationDp": 8
+    }
+  ]
+}

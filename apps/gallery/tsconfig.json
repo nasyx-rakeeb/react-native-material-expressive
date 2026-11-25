@@ -7,5 +7,5 @@
       "react-native-material-expressive": ["../../packages/react-native-material-expressive/src"]
     }
   },
-  "include": ["App.tsx", "index.js"]
+  "include": ["App.tsx", "index.js", "src/**/*.ts", "src/**/*.tsx"]
 }

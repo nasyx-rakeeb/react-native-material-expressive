@@ -3,7 +3,23 @@ import { Platform, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { PACKAGE_NAME } from 'react-native-material-expressive';
 
+import SceneHarness, { useHarnessScene } from './src/harness/SceneHarness';
+
 export default function App() {
+  const sceneId = useHarnessScene();
+
+  if (sceneId === undefined) {
+    return <View style={styles.boot} />;
+  }
+
+  if (sceneId !== null) {
+    return <SceneHarness sceneId={sceneId} />;
+  }
+
+  return <Home />;
+}
+
+function Home() {
   return (
     <SafeAreaProvider>
       <SafeAreaView style={styles.root}>
@@ -31,6 +47,10 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
+  boot: {
+    flex: 1,
+    backgroundColor: '#000000',
+  },
   root: {
     flex: 1,
     backgroundColor: '#F5F1EA',

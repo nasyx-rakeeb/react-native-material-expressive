@@ -1,0 +1,24 @@
+{
+  "avd": "M3E_API31",
+  "api": 31,
+  "width": 1080,
+  "height": 1920,
+  "density": 420,
+  "densityScale": 2.625,
+  "gpu": "swiftshader_indirect",
+  "gpuDriverIncludes": "SwiftShader",
+  "fontScale": "1.0",
+  "locale": "en-US",
+  "animations": 0,
+  "coldBoots": 3,
+  "repeats": 20,
+  "fontFile": "apps/reference-compose/app/src/main/assets/fonts/RobotoFlex.ttf",
+  "fontSha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+  "statusBar": "hidden by both harnesses; scene starts at 0,0",
+  "navigationBar": "visible at the bottom, outside the scene crop",
+  "notes": [
+    "Pixel 2 AVD, no display cutout, no rounded-corner mask in screencap.",
+    "Cold boot means: emulator process stopped and restarted with -no-snapshot.",
+    "Both harnesses are installed from the exact APKs hashed by the run."
+  ]
+}
