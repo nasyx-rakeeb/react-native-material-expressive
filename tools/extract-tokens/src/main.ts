@@ -6,7 +6,7 @@ import path from 'node:path';
 import { parseTokenSource } from './kotlinParser.js';
 import { buildModel } from './values.js';
 import { check, emit, summarize } from './generate.js';
-import { SOURCES } from './sources.js';
+import { SOURCES, TYPOGRAPHY_DEFAULTS } from './sources.js';
 import type { TokenFileSpec } from './types.js';
 
 const root = path.resolve(fileURLToPath(new URL('../../..', import.meta.url)));
@@ -22,6 +22,8 @@ const checkMode = process.argv.includes('--check');
 const EXPECTED = {
   tokenFiles: 120,
   tokens: 2671,
+  resolvedScalar: 2641,
+  composite: 30,
   componentObjects: 104,
   typographyRoles: 30,
   colorRoles: 48,
@@ -58,6 +60,28 @@ async function extractSources(): Promise<void> {
     await mkdir(target, { recursive: true });
     execFileSync('unzip', ['-oq', jarPath, '-d', target], { stdio: 'ignore' });
   }
+
+  // The Android actual for defaultPlatformTextStyle() is not in the common
+  // sources JAR. It lives in the multiplatform sources JAR; extract it so the
+  // typography defaults are generated from source, not from memory.
+  const defaultsJar = path.join(vendor, TYPOGRAPHY_DEFAULTS.fileName);
+  let defaultsActual: string;
+  try {
+    defaultsActual = await sha256(defaultsJar);
+  } catch {
+    throw new Error(
+      `missing ${TYPOGRAPHY_DEFAULTS.fileName}. Run pnpm --filter @react-native-material-expressive/extract-tokens fetch.`,
+    );
+  }
+  if (defaultsActual !== TYPOGRAPHY_DEFAULTS.sha256) {
+    throw new Error(
+      `${TYPOGRAPHY_DEFAULTS.fileName}: sha256 mismatch (expected ${TYPOGRAPHY_DEFAULTS.sha256}, got ${defaultsActual}).`,
+    );
+  }
+  const defaultsTarget = path.join(extracted, TYPOGRAPHY_DEFAULTS.targetName);
+  await rm(defaultsTarget, { recursive: true, force: true });
+  await mkdir(defaultsTarget, { recursive: true });
+  execFileSync('unzip', ['-oq', defaultsJar, '-d', defaultsTarget], { stdio: 'ignore' });
 }
 
 async function loadTokenFiles(): Promise<TokenFileSpec[]> {
@@ -100,6 +124,8 @@ function assertExpected(model: ReturnType<typeof buildModel>): void {
   const actual = {
     tokenFiles: model.counts.tokenFiles,
     tokens: model.counts.tokens,
+    resolvedScalar: model.counts.resolvedScalar,
+    composite: model.counts.composite,
     componentObjects: Object.keys(model.componentTokens).length,
     typographyRoles: Object.keys(model.global.typography).length,
     colorRoles: Object.keys(model.global.colorLight).length,
@@ -115,6 +141,17 @@ function assertExpected(model: ReturnType<typeof buildModel>): void {
   }
   if (Object.keys(model.global.colorDark).length !== EXPECTED.colorRoles) {
     throw new Error('light and dark color role counts diverged');
+  }
+  if (model.counts.resolved + model.counts.raw !== model.counts.tokens) {
+    throw new Error(
+      `resolved + raw must equal tokens: ${model.counts.resolved} + ${model.counts.raw} != ${model.counts.tokens}`,
+    );
+  }
+  if (
+    model.counts.resolvedScalar + model.counts.composite + model.counts.raw !==
+    model.counts.tokens
+  ) {
+    throw new Error('resolvedScalar + composite + raw must equal tokens');
   }
 }
 

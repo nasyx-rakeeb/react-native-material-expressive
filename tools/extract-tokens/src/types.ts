@@ -79,7 +79,10 @@ export interface ExtractedModel {
   counts: {
     tokenFiles: number;
     tokens: number;
+    /** All declarations, including composite typography styles. */
     resolved: number;
+    /** Scalar declarations resolved to a typed value. */
+    resolvedScalar: number;
     raw: number;
     composite: number;
   };

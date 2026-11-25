@@ -1,0 +1,213 @@
+{
+  "generatedBy": "tools/extract-tokens/src/behavior-spotcheck.ts",
+  "date": "2026-11-25",
+  "seed": null,
+  "note": "Coverage sample, not random: every expressive button size plus all three shared behavior categories.",
+  "picks": [
+    {
+      "category": "component-size",
+      "token": "ButtonSmall.ContainerHeight",
+      "composeValue": 40,
+      "m3Label": "md.comp.button.small.container.height",
+      "m3Value": 40,
+      "match": true,
+      "composeSource": "commonMain/androidx/compose/material3/tokens/ButtonSmallTokens.kt:24",
+      "m3Evidence": "m3/buttons-token-values.json (https://m3.material.io/components/buttons/specs)"
+    },
+    {
+      "category": "component-padding",
+      "token": "ButtonSmall.LeadingSpace",
+      "composeValue": 16,
+      "m3Label": "md.comp.button.small.leading-space",
+      "m3Value": 16,
+      "match": true,
+      "composeSource": "commonMain/androidx/compose/material3/tokens/ButtonSmallTokens.kt:39",
+      "m3Evidence": "m3/buttons-token-values.json (https://m3.material.io/components/buttons/specs)"
+    },
+    {
+      "category": "component-padding",
+      "token": "ButtonSmall.IconLabelSpace",
+      "composeValue": 8,
+      "m3Label": "md.comp.button.small.icon-label-space",
+      "m3Value": 8,
+      "match": true,
+      "composeSource": "commonMain/androidx/compose/material3/tokens/ButtonSmallTokens.kt:33",
+      "m3Evidence": "m3/buttons-token-values.json (https://m3.material.io/components/buttons/specs)"
+    },
+    {
+      "category": "component-size",
+      "token": "ButtonMedium.ContainerHeight",
+      "composeValue": 56,
+      "m3Label": "md.comp.button.medium.container.height",
+      "m3Value": 56,
+      "match": true,
+      "composeSource": "commonMain/androidx/compose/material3/tokens/ButtonMediumTokens.kt:24",
+      "m3Evidence": "m3/buttons-token-values.json (https://m3.material.io/components/buttons/specs)"
+    },
+    {
+      "category": "component-padding",
+      "token": "ButtonMedium.LeadingSpace",
+      "composeValue": 24,
+      "m3Label": "md.comp.button.medium.leading-space",
+      "m3Value": 24,
+      "match": true,
+      "composeSource": "commonMain/androidx/compose/material3/tokens/ButtonMediumTokens.kt:39",
+      "m3Evidence": "m3/buttons-token-values.json (https://m3.material.io/components/buttons/specs)"
+    },
+    {
+      "category": "component-size",
+      "token": "ButtonMedium.IconSize",
+      "composeValue": 24,
+      "m3Label": "md.comp.button.medium.icon.size",
+      "m3Value": 24,
+      "match": true,
+      "composeSource": "commonMain/androidx/compose/material3/tokens/ButtonMediumTokens.kt:36",
+      "m3Evidence": "m3/buttons-token-values.json (https://m3.material.io/components/buttons/specs)"
+    },
+    {
+      "category": "component-size",
+      "token": "ButtonLarge.ContainerHeight",
+      "composeValue": 96,
+      "m3Label": "md.comp.button.large.container.height",
+      "m3Value": 96,
+      "match": true,
+      "composeSource": "commonMain/androidx/compose/material3/tokens/ButtonLargeTokens.kt:24",
+      "m3Evidence": "m3/buttons-token-values.json (https://m3.material.io/components/buttons/specs)"
+    },
+    {
+      "category": "component-padding",
+      "token": "ButtonLarge.LeadingSpace",
+      "composeValue": 48,
+      "m3Label": "md.comp.button.large.leading-space",
+      "m3Value": 48,
+      "match": true,
+      "composeSource": "commonMain/androidx/compose/material3/tokens/ButtonLargeTokens.kt:39",
+      "m3Evidence": "m3/buttons-token-values.json (https://m3.material.io/components/buttons/specs)"
+    },
+    {
+      "category": "component-padding",
+      "token": "ButtonLarge.IconLabelSpace",
+      "composeValue": 12,
+      "m3Label": "md.comp.button.large.icon-label-space",
+      "m3Value": 12,
+      "match": true,
+      "composeSource": "commonMain/androidx/compose/material3/tokens/ButtonLargeTokens.kt:33",
+      "m3Evidence": "m3/buttons-token-values.json (https://m3.material.io/components/buttons/specs)"
+    },
+    {
+      "category": "component-size",
+      "token": "ButtonXLarge.ContainerHeight",
+      "composeValue": 136,
+      "m3Label": "md.comp.button.xlarge.container.height",
+      "m3Value": 136,
+      "match": true,
+      "composeSource": "commonMain/androidx/compose/material3/tokens/ButtonXLargeTokens.kt:24",
+      "m3Evidence": "m3/buttons-token-values.json (https://m3.material.io/components/buttons/specs)"
+    },
+    {
+      "category": "component-padding",
+      "token": "ButtonXLarge.LeadingSpace",
+      "composeValue": 64,
+      "m3Label": "md.comp.button.xlarge.leading-space",
+      "m3Value": 64,
+      "match": true,
+      "composeSource": "commonMain/androidx/compose/material3/tokens/ButtonXLargeTokens.kt:39",
+      "m3Evidence": "m3/buttons-token-values.json (https://m3.material.io/components/buttons/specs)"
+    },
+    {
+      "category": "component-size",
+      "token": "ButtonXSmall.ContainerHeight",
+      "composeValue": 32,
+      "m3Label": "md.comp.button.xsmall.container.height",
+      "m3Value": 32,
+      "match": true,
+      "composeSource": "commonMain/androidx/compose/material3/tokens/ButtonXSmallTokens.kt:24",
+      "m3Evidence": "m3/buttons-token-values.json (https://m3.material.io/components/buttons/specs)"
+    },
+    {
+      "category": "component-padding",
+      "token": "ButtonXSmall.LeadingSpace",
+      "composeValue": 16,
+      "m3Label": "md.comp.button.xsmall.leading-space",
+      "m3Value": 12,
+      "match": false,
+      "composeSource": "commonMain/androidx/compose/material3/tokens/ButtonXSmallTokens.kt:39",
+      "m3Evidence": "m3/buttons-token-values.json (https://m3.material.io/components/buttons/specs)"
+    },
+    {
+      "category": "component-padding",
+      "token": "ButtonXSmall.TrailingSpace",
+      "composeValue": 16,
+      "m3Label": "md.comp.button.xsmall.trailing-space",
+      "m3Value": 12,
+      "match": false,
+      "composeSource": "commonMain/androidx/compose/material3/tokens/ButtonXSmallTokens.kt:54",
+      "m3Evidence": "m3/buttons-token-values.json (https://m3.material.io/components/buttons/specs)"
+    },
+    {
+      "category": "component-padding",
+      "token": "ButtonXSmall.IconLabelSpace",
+      "composeValue": 8,
+      "m3Label": "md.comp.button.xsmall.icon-label-space",
+      "m3Value": 4,
+      "match": false,
+      "composeSource": "commonMain/androidx/compose/material3/tokens/ButtonXSmallTokens.kt:33",
+      "m3Evidence": "m3/buttons-token-values.json (https://m3.material.io/components/buttons/specs)"
+    },
+    {
+      "category": "shape",
+      "token": "Shape.CornerExtraSmall",
+      "composeValue": 4,
+      "m3Label": "Extra small corner value",
+      "m3Value": 4,
+      "match": true,
+      "composeSource": "commonMain/androidx/compose/material3/tokens/ShapeTokens.kt:38",
+      "m3Evidence": "m3/shape-corner-radius-scale.txt"
+    },
+    {
+      "category": "shape",
+      "token": "Shape.CornerMedium",
+      "composeValue": 12,
+      "m3Label": "Medium corner value",
+      "m3Value": 12,
+      "match": true,
+      "composeSource": "commonMain/androidx/compose/material3/tokens/ShapeTokens.kt:70",
+      "m3Evidence": "m3/shape-corner-radius-scale.txt"
+    },
+    {
+      "category": "shape",
+      "token": "Shape.CornerLarge",
+      "composeValue": 16,
+      "m3Label": "Large corner value",
+      "m3Value": 16,
+      "match": true,
+      "composeSource": "commonMain/androidx/compose/material3/tokens/ShapeTokens.kt:47",
+      "m3Evidence": "m3/shape-corner-radius-scale.txt"
+    },
+    {
+      "category": "spring",
+      "token": "StandardMotion.SpringFastSpatialDamping",
+      "composeValue": 0.9,
+      "m3Label": "Motion spring fast spatial damping",
+      "m3Value": 0.9,
+      "match": true,
+      "composeSource": "commonMain/androidx/compose/material3/tokens/StandardMotionTokens.kt:24",
+      "m3Evidence": "m3/motion-easing-duration-tokens.txt"
+    },
+    {
+      "category": "spring",
+      "token": "StandardMotion.SpringDefaultEffectsStiffness",
+      "composeValue": 1600,
+      "m3Label": "Motion spring default effects stiffness",
+      "m3Value": 1600,
+      "match": true,
+      "composeSource": "commonMain/androidx/compose/material3/tokens/StandardMotionTokens.kt:23",
+      "m3Evidence": "m3/motion-easing-duration-tokens.txt"
+    }
+  ],
+  "totals": {
+    "checked": 20,
+    "matched": 17,
+    "diverged": 3
+  }
+}

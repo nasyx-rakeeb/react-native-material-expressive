@@ -12,7 +12,9 @@
     "lint": "eslint src",
     "typecheck": "tsc --noEmit",
     "check": "bash fetch-sources.sh && tsx src/main.ts --check",
-    "spotcheck": "tsx src/spotcheck.ts"
+    "ledger": "tsx src/ledger.ts",
+    "spotcheck": "tsx src/spotcheck.ts",
+    "spotcheck:behavior": "tsx src/behavior-spotcheck.ts"
   },
   "devDependencies": {
     "@types/node": "26.6.10",

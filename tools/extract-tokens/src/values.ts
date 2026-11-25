@@ -578,7 +578,7 @@ export function buildModel(files: TokenFileSpec[]): ExtractedModel {
   const allTokens: Record<string, Record<string, ResolvedValue>> = {};
   const componentTokens: Record<string, Record<string, ResolvedValue>> = {};
   let tokenCount = 0;
-  let resolvedCount = 0;
+  let resolvedScalarCount = 0;
   let rawCount = 0;
   let compositeCount = 0;
 
@@ -594,7 +594,7 @@ export function buildModel(files: TokenFileSpec[]): ExtractedModel {
       } else if (value.kind === 'raw') {
         rawCount += 1;
       } else {
-        resolvedCount += 1;
+        resolvedScalarCount += 1;
       }
     }
     allTokens[file.declarationName] = tokens;
@@ -633,7 +633,10 @@ export function buildModel(files: TokenFileSpec[]): ExtractedModel {
     counts: {
       tokenFiles: files.length,
       tokens: tokenCount,
-      resolved: resolvedCount,
+      // `resolved` counts every declaration. The 30 TypographyTokens entries
+      // are resolved as composite TextStyles, so they are not "raw".
+      resolved: resolvedScalarCount + compositeCount,
+      resolvedScalar: resolvedScalarCount,
       raw: rawCount,
       composite: compositeCount,
     },

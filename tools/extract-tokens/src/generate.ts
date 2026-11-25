@@ -2,7 +2,7 @@ import { mkdir, readdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import * as prettier from 'prettier';
 import type { ExtractedModel, ResolvedValue, TokenFileSpec } from './types.js';
-import { MATERIAL3, SOURCES } from './sources.js';
+import { MATERIAL3, SOURCES, TYPOGRAPHY_DEFAULTS } from './sources.js';
 
 export interface EmitOptions {
   root: string;
@@ -160,7 +160,7 @@ function generatedHeader(): string {
   ].join('\n');
 }
 
-function buildGlobalTs(model: ExtractedModel): string {
+function buildGlobalTs(model: ExtractedModel, typographyDefaults: TypographyDefaults): string {
   const lines: string[] = [];
   lines.push(`export const specVersion = ${JSON.stringify(MATERIAL3.version)} as const;`);
   lines.push('');
@@ -177,6 +177,8 @@ function buildGlobalTs(model: ExtractedModel): string {
   lines.push(`export const elevation = ${serializeTs(model.global.elevation)} as const;`);
   lines.push('');
   lines.push(`export const typography = ${serializeTs(model.global.typography)} as const;`);
+  lines.push('');
+  lines.push(`export const typographyDefaults = ${serializeTs(typographyDefaults)} as const;`);
   lines.push('');
   lines.push(`export const motion = ${serializeTs(model.global.motion)} as const;`);
   lines.push('');
@@ -281,6 +283,91 @@ function typographyRecords(model: ExtractedModel): Record<string, unknown>[] {
   });
 }
 
+export interface TypographyDefaults {
+  lineHeightStyle: {
+    alignment: 'center';
+    trim: 'none';
+    source: string;
+    sourceVersion: string;
+    sourceSha256: string;
+  };
+  platformStyle: {
+    includeFontPadding: boolean;
+    expression: string;
+    source: string;
+    sourceVersion: string;
+    sourceSha256: string;
+  };
+}
+
+function lineAt(source: string, index: number): number {
+  return source.slice(0, index).split(/\r?\n/).length;
+}
+
+/**
+ * `TypographyTokens` entries are `DefaultTextStyle.copy(...)` composites.
+ * The five scalar fields come from TypeScaleTokens; two shared attributes come
+ * from `DefaultTextStyle` and its Android `defaultPlatformTextStyle()` actual.
+ * Both are parsed here so the composite is fully resolved in typography.json.
+ */
+async function readTypographyDefaults(root: string): Promise<TypographyDefaults> {
+  const commonPath = path.join(
+    root,
+    'tools/extract-tokens/vendor/extracted/material3-1.5.0/commonMain/androidx/compose/material3/tokens/TypographyTokens.kt',
+  );
+  const androidPath = path.join(
+    root,
+    `tools/extract-tokens/vendor/extracted/${TYPOGRAPHY_DEFAULTS.targetName}/${TYPOGRAPHY_DEFAULTS.androidPlatformTextStyle}`,
+  );
+  const common = await readFile(commonPath, 'utf8');
+  const android = await readFile(androidPath, 'utf8');
+
+  const lineHeight =
+    /val\s+DefaultLineHeightStyle\s*=\s*LineHeightStyle\(\s*alignment\s*=\s*LineHeightStyle\.Alignment\.(\w+)\s*,\s*trim\s*=\s*LineHeightStyle\.Trim\.(\w+)\s*\)/s.exec(
+      common,
+    );
+  if (!lineHeight?.[1] || !lineHeight[2]) {
+    throw new Error('could not parse DefaultLineHeightStyle from TypographyTokens.kt');
+  }
+  if (lineHeight[1] !== 'Center' || lineHeight[2] !== 'None') {
+    throw new Error(
+      `unexpected DefaultLineHeightStyle (${lineHeight[1]}/${lineHeight[2]}); update the extractor deliberately.`,
+    );
+  }
+
+  if (
+    !/val\s+DefaultTextStyle\s*=\s*TextStyle\.Default\.copy\([\s\S]*?platformStyle\s*=\s*defaultPlatformTextStyle\(\)/.test(
+      common,
+    )
+  ) {
+    throw new Error('DefaultTextStyle no longer uses defaultPlatformTextStyle()');
+  }
+
+  const includeFontPadding =
+    /private\s+const\s+val\s+DefaultIncludeFontPadding\s*=\s*(true|false)/.exec(android);
+  if (!includeFontPadding?.[1]) {
+    throw new Error('could not parse DefaultIncludeFontPadding from the Android actual');
+  }
+  const include = includeFontPadding[1] === 'true';
+
+  return {
+    lineHeightStyle: {
+      alignment: 'center',
+      trim: 'none',
+      source: `commonMain/androidx/compose/material3/tokens/TypographyTokens.kt:${lineAt(common, lineHeight.index)}`,
+      sourceVersion: `${MATERIAL3.artifact}:${MATERIAL3.version}`,
+      sourceSha256: MATERIAL3.sha256,
+    },
+    platformStyle: {
+      includeFontPadding: include,
+      expression: `PlatformTextStyle(includeFontPadding = ${include})`,
+      source: `${TYPOGRAPHY_DEFAULTS.androidPlatformTextStyle}:${lineAt(android, includeFontPadding.index)}`,
+      sourceVersion: `${TYPOGRAPHY_DEFAULTS.artifact}:${TYPOGRAPHY_DEFAULTS.version}`,
+      sourceSha256: TYPOGRAPHY_DEFAULTS.sha256,
+    },
+  };
+}
+
 function assertNoCollisions(fileNames: string[]): void {
   const seen = new Map<string, string>();
   for (const fileName of fileNames) {
@@ -306,6 +393,7 @@ async function buildOutputs({ root, model }: EmitOptions): Promise<OutputSet> {
     'packages/react-native-material-expressive/src/tokens/generated',
   );
   const files = new Map<string, string>();
+  const typographyDefaults = await readTypographyDefaults(root);
 
   const componentNames = Object.keys(model.componentTokens).sort((a, b) => a.localeCompare(b));
   const specFileNames = componentNames.map((name) => `${toKebabCase(objectLabel(name))}.json`);
@@ -372,7 +460,9 @@ async function buildOutputs({ root, model }: EmitOptions): Promise<OutputSet> {
     `${JSON.stringify(
       {
         ...meta,
-        description: 'All TextStyles resolved from TypeScaleTokens + TypefaceTokens.',
+        description:
+          'All TextStyles resolved from TypeScaleTokens + TypefaceTokens. defaults apply to every role.',
+        defaults: typographyDefaults,
         roles: typographyRecords(model),
       },
       null,
@@ -417,7 +507,11 @@ async function buildOutputs({ root, model }: EmitOptions): Promise<OutputSet> {
   };
   await add(path.join(specDir, 'index.json'), `${JSON.stringify(index, null, 2)}\n`, 'json');
 
-  await add(path.join(generatedDir, 'global.ts'), buildGlobalTs(model), 'typescript');
+  await add(
+    path.join(generatedDir, 'global.ts'),
+    buildGlobalTs(model, typographyDefaults),
+    'typescript',
+  );
   await add(path.join(generatedDir, 'components.ts'), buildComponentsTs(model), 'typescript');
   await add(path.join(generatedDir, 'key-tokens.ts'), buildKeyTokensTs(model), 'typescript');
   await add(
@@ -512,7 +606,7 @@ export function summarize(model: ExtractedModel): string {
   return [
     `token files: ${model.counts.tokenFiles}`,
     `tokens: ${model.counts.tokens}`,
-    `resolved: ${model.counts.resolved}`,
+    `resolved: ${model.counts.resolved} (${model.counts.resolvedScalar} scalar + ${model.counts.composite} composite)`,
     `raw: ${model.counts.raw}`,
     `composite: ${model.counts.composite}`,
     `component objects: ${Object.keys(model.componentTokens).length}`,

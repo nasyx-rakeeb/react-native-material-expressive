@@ -25,7 +25,31 @@ fetch() {
   fi
 
   echo "fetch   $file"
-  curl -fsSL --retry 3 --retry-delay 2 -o "$dest/$file.tmp" "$url"
+  curl --http1.1 -fsSL --retry 3 --retry-delay 2 -o "$dest/$file.tmp" "$url"
+  local actual
+  actual="$(sha256 "$dest/$file.tmp")"
+  if [[ "$actual" != "$expected" ]]; then
+    rm -f "$dest/$file.tmp"
+    echo "sha256 mismatch for $file: expected $expected, got $actual" >&2
+    exit 1
+  fi
+  mv "$dest/$file.tmp" "$dest/$file"
+}
+
+# The Android actual for defaultPlatformTextStyle() is in the multiplatform
+# sources JAR, which has a classifier instead of the -sources.jar suffix.
+fetch_classifier() {
+  local group_path="$1" artifact="$2" version="$3" classifier="$4" expected="$5"
+  local file="$artifact-$version-$classifier.jar"
+  local url="https://dl.google.com/dl/android/maven2/$group_path/$artifact/$version/$file"
+
+  if [[ -f "$dest/$file" ]] && [[ "$(sha256 "$dest/$file")" == "$expected" ]]; then
+    echo "ok      $file"
+    return
+  fi
+
+  echo "fetch   $file"
+  curl --http1.1 -fsSL --retry 3 --retry-delay 2 -o "$dest/$file.tmp" "$url"
   local actual
   actual="$(sha256 "$dest/$file.tmp")"
   if [[ "$actual" != "$expected" ]]; then
@@ -52,5 +76,7 @@ fetch androidx/compose/material3/adaptive adaptive-navigation 1.3.0 \
   c64c0ddec14fed5daae373c535c8e81e1f0ef1922aa258b624828448de18346d
 fetch androidx/graphics graphics-shapes 1.1.0 \
   50586aa6c7b3a542a51b2abaf659f7a6c33d8c5d637d8f1a57aaf518dcb74f3d
+fetch_classifier androidx/compose/material3 material3 1.5.0 multiplatform-sources \
+  0fb7c8186c7beb33027aa953baf9bddb131ed765548709b84aa0fb73df10c79c
 
 echo "all sources verified in $dest"

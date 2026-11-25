@@ -33,6 +33,10 @@ The m3 values below were read from rendered pages captured in `m3/` (see `m3/REA
 | 19 | State | `State.PressedStateLayerOpacity` | 0.1 | 0.1 (Pressed state layer opacity) | match | `StateTokens.kt:25` | `m3/state-layers.txt` |
 | 20 | State | `State.FocusStateLayerOpacity` | 0.1 | 0.1 (Focus state layer opacity) | match | `StateTokens.kt:23` | `m3/state-layers.txt` |
 
+## Behavior-critical extension
+
+The original sample included **2 shape** and **3 motion** values (2 of them standard springs), but it did **not** include component sizes or paddings. A second 20-value coverage check was run on 2026-11-25: 15 button size/padding values across XS–XL, 3 shape corner values, and 2 standard spring values. Result: **17/20 matched, 3 diverged**. The three divergences are Compose 1.5.0 XS button paddings vs m3, recorded as `U-22`; see `SPOTCHECK-BEHAVIOR.md`.
+
 ## Notes and divergences observed while sampling
 
 - **Typography units.** The m3 table prints `pt`, Compose prints `sp`. The numeric values are identical for all sampled rows; the unit names are platform typography conventions, not a value difference.

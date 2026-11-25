@@ -16,10 +16,11 @@
 | `androidx.compose.material3.adaptive` | `adaptive-layout` | 1.3.0 | `bd87db4bdbf51d7df02872b0c7e95ae82a3b7c61b7f2e021c407d30a899c22ca` | 100,383 |
 | `androidx.compose.material3.adaptive` | `adaptive-navigation` | 1.3.0 | `c64c0ddec14fed5daae373c535c8e81e1f0ef1922aa258b624828448de18346d` | 11,638 |
 | `androidx.graphics` | `graphics-shapes` | 1.1.0 | `50586aa6c7b3a542a51b2abaf659f7a6c33d8c5d637d8f1a57aaf518dcb74f3d` | 63,807 |
+| `androidx.compose.material3` | `material3` (`multiplatform-sources` classifier) | 1.5.0 | `0fb7c8186c7beb33027aa953baf9bddb131ed765548709b84aa0fb73df10c79c` | 897,200 |
 
-URL pattern: `https://dl.google.com/dl/android/maven2/<group path>/<artifact>/<version>/<artifact>-<version>-sources.jar`.
+URL pattern: `https://dl.google.com/dl/android/maven2/<group path>/<artifact>/<version>/<artifact>-<version>-sources.jar`, except the last row: `<artifact>-<version>-multiplatform-sources.jar`.
 
-`material3:1.5.0` is the only artifact in this set containing `*Tokens.kt` (120 files under `commonMain/androidx/compose/material3/tokens`). The other seven are vendored and hash-pinned because Day 2 scope names them and later work needs them: ripple/focus ring, window size classes, adaptive scaffolds/navigation, and the `graphics-shapes` polygon engine behind `MaterialShapes`.
+`material3:1.5.0` is the only artifact in this set containing `*Tokens.kt` (120 files under `commonMain/androidx/compose/material3/tokens`). The other artifacts are vendored and hash-pinned because Day 2 scope names them and later work needs them: ripple/focus ring, window size classes, adaptive scaffolds/navigation, and the `graphics-shapes` polygon engine behind `MaterialShapes`. The `multiplatform-sources` JAR is the only place the Android `actual` for `defaultPlatformTextStyle()` appears; it is used to resolve `typography.json.defaults.platformStyle` (`includeFontPadding = false`).
 
 ## 2. Toolchain
 
@@ -39,6 +40,8 @@ pnpm --filter @react-native-material-expressive/extract-tokens extract   # fetch
 pnpm --filter @react-native-material-expressive/extract-tokens check     # drift check (CI)
 pnpm --filter @react-native-material-expressive/extract-tokens test      # parser/resolver unit tests
 pnpm --filter @react-native-material-expressive/extract-tokens spotcheck # seeded 20-value plan
+pnpm --filter @react-native-material-expressive/extract-tokens spotcheck:behavior # 20 behavior-critical values
+pnpm --filter @react-native-material-expressive/extract-tokens ledger    # 30 composite typography declarations
 ```
 
 ## 3. Extraction results
@@ -49,7 +52,8 @@ From `material3:1.5.0-sources.jar`:
 |---|---:|
 | Token files (`*Tokens.kt`) | 120 |
 | Token declarations | 2,671 |
-| Resolved declarations | 2,641 |
+| Resolved declarations | 2,671 (2,641 scalar + 30 composite) |
+| Scalar resolved declarations | 2,641 |
 | Composite `TypographyTokens` declarations | 30 |
 | Component spec files (`docs/specs/*.json`, excluding manifest/global) | 104 |
 | Typography roles (baseline + emphasized) | 30 |
@@ -60,7 +64,7 @@ From `material3:1.5.0-sources.jar`:
 | Standard / expressive springs | 6 / 6 |
 | State layer opacities | 4 |
 
-Every non-composite declaration resolves to a typed value (`dp`, `sp`, `number`, `color`, `color-role`, `shape`, `shape-role`, `typography-role`, `motion-role`, `font-family`, `font-weight`, `cubic-bezier`, `corner-size`, `enum`); there are **0 raw** records. The 30 `TypographyTokens` entries are composite `TextStyle.copy(...)` expressions and are expanded in `docs/specs/typography.json` into all 30 roles with per-field source lines.
+Every non-composite declaration resolves to a typed value (`dp`, `sp`, `number`, `color`, `color-role`, `shape`, `shape-role`, `typography-role`, `motion-role`, `font-family`, `font-weight`, `cubic-bezier`, `corner-size`, `enum`); there are **0 raw** records. The 30 `TypographyTokens` entries are real composite `TextStyle.copy(...)` tokens, not unresolved constants; they are expanded in `docs/specs/typography.json` into all 30 roles with per-field source lines, and their shared `lineHeightStyle` / `platformStyle` attributes are resolved in `typography.json.defaults`. The full declaration-by-declaration list is `docs/research/DAY2_COMPOSITES.md`.
 
 ### File layout
 
@@ -94,7 +98,8 @@ Each record is:
 
 - `kotlinParser.ts` parses the machine-generated subset used by these files: `object`/`class`, `val`/`inline val`/`const val`, getter form (`val X: T` + `get() = …`), and multi-line constructor calls. Abstract declarations are skipped.
 - `main.ts` re-reads each declaration's source line and asserts it contains `val <Name>` before any spec is written. This catches continuation-line/line-number drift.
-- `EXPECTED` pins 120 files / 2,671 declarations / 104 component objects / 30 typography roles / 48 color roles for `material3:1.5.0`. A Compose bump must update those numbers deliberately.
+- `EXPECTED` pins 120 files / 2,671 declarations / 2,641 scalar / 30 composite / 104 component objects / 30 typography roles / 48 color roles for `material3:1.5.0`. A Compose bump must update those numbers deliberately.
+- `resolved + raw === tokens` and `resolvedScalar + composite + raw === tokens` are asserted on every extraction, so a declaration cannot disappear into an unlabelled bucket.
 - Output ordering is deterministic (files and tokens sorted; prettier-formatted). `check` rebuilds in memory and compares exact bytes, reporting missing, changed, and stale files.
 
 ### Generated TypeScript
@@ -103,7 +108,7 @@ Each record is:
 
 | Module | Exports |
 |---|---|
-| `global.ts` | `specVersion`, `colorLight`, `colorDark`, `palette`, `shapes`, `cornerSizes`, `elevation`, `typography`, `motion`, `state`, plus key-derived types |
+| `global.ts` | `specVersion`, `colorLight`, `colorDark`, `palette`, `shapes`, `cornerSizes`, `elevation`, `typography`, `typographyDefaults`, `motion`, `state`, plus key-derived types |
 | `components.ts` | `componentTokens` (104 objects) and `ComponentTokenValue` |
 | `key-tokens.ts` | `colorSchemeKeyTokens`, `shapeKeyTokens`, `typographyKeyTokens`, `motionSchemeKeyTokens` |
 | `index.ts` | re-exports |
@@ -117,9 +122,10 @@ All modules carry the Apache-2.0 banner and the sources-JAR SHA-256. `src/tokens
 - Result: **20/20 matched**. Table, URLs, and method: `docs/evidence/day2/SPOTCHECK.md`.
 - Rendered page text is retained in `docs/evidence/day2/m3/` (captured with headless Chrome 158 over CDP).
 - One methodological caveat: legacy easing is rendered as a cubic-bezier swatch without printed numbers; that row was verified against the page's embedded resolved token JSON. Recorded in the spot-check.
+- **Behavior extension:** the original 20 included shape (2) and standard-spring (2) values but no component sizes or paddings. `tools/extract-tokens/src/behavior-spotcheck.ts` adds 20 more: 15 button size/padding values across XS–XL, 3 corner values, and 2 standard springs. Result: **17/20 matched, 3 diverged** — all three are Compose XS button paddings vs m3 (`U-22`). Report: `docs/evidence/day2/SPOTCHECK-BEHAVIOR.md`; plan: `docs/evidence/day2/behavior-spotcheck-plan.json`; m3 button token values: `docs/evidence/day2/m3/buttons-token-values.json`.
 
 ## 5. Limits
 
 - Only the Compose token files are parsed. Compose implementation behavior (layout formulas, state transitions, spring routing, a11y semantics) is **not** in these JSON records; it is captured per component in sibling `*.behavior.md` files as each component's build day starts. The Day 2 exit gate does not require those files, and no component's `spec` cell is ticked by token extraction alone.
-- The extractor does not treat m3.material.io as truth. It cross-checks; Compose wins on conflict (Core Rule 1). The one Day 2 divergence found (emphasized easing fallback) is `U-20` in `docs/UNVERIFIED.md`.
+- The extractor does not treat m3.material.io as truth. It cross-checks; Compose wins on conflict (Core Rule 1). The Day 2 divergences found are `U-20` (emphasized easing fallback) and `U-22` (Compose XS button padding vs m3) in `docs/UNVERIFIED.md`.
 - The specs describe `material3:1.5.0`. `1.6.0-alpha01` is not adopted; a future diff must be reviewed through an ADR (U-13).

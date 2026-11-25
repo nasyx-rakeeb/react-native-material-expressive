@@ -61,3 +61,21 @@ export const SOURCES: readonly SourceArtifact[] = [
 ];
 
 export const MATERIAL3 = SOURCES[0] as SourceArtifact;
+
+/**
+ * The common sources JAR contains the `expect` declaration for
+ * `defaultPlatformTextStyle()`, but the Android `actual` lives in the
+ * multiplatform sources JAR. It is fetched separately because its filename
+ * uses a classifier and it is not one of the token-bearing artifacts.
+ */
+export const TYPOGRAPHY_DEFAULTS = {
+  group: 'androidx.compose.material3',
+  artifact: 'material3',
+  version: '1.5.0',
+  classifier: 'multiplatform-sources',
+  fileName: 'material3-1.5.0-multiplatform-sources.jar',
+  targetName: 'material3-1.5.0-multiplatform',
+  sha256: '0fb7c8186c7beb33027aa953baf9bddb131ed765548709b84aa0fb73df10c79c',
+  androidPlatformTextStyle:
+    'androidMain/androidx/compose/material3/internal/DefaultPlatformTextStyle.android.kt',
+} as const;

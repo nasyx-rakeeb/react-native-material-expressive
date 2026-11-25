@@ -1,0 +1,342 @@
+{
+  "source": "https://m3.material.io/components/buttons/specs",
+  "capturedAt": "2026-11-25",
+  "captureMethod": "Chrome 158.0.8127.38 headless --dump-dom --virtual-time-budget=20000; values read from the rendered page embedded resolved token JSON",
+  "tokens": {
+    "md.comp.button.container.height": {
+      "kind": "length",
+      "value": 40,
+      "unit": "dp"
+    },
+    "md.comp.button.container.shape.square": {
+      "kind": "shape",
+      "value": 12,
+      "unit": "dp"
+    },
+    "md.comp.button.focus.indicator.outline.offset": {
+      "kind": "length",
+      "value": 2,
+      "unit": "dp"
+    },
+    "md.comp.button.focus.indicator.thickness": {
+      "kind": "length",
+      "value": 3,
+      "unit": "dp"
+    },
+    "md.comp.button.icon-label-space": {
+      "kind": "length",
+      "value": 8,
+      "unit": "dp"
+    },
+    "md.comp.button.icon.size": {
+      "kind": "length",
+      "value": 20,
+      "unit": "dp"
+    },
+    "md.comp.button.large.container.height": {
+      "kind": "length",
+      "value": 96,
+      "unit": "dp"
+    },
+    "md.comp.button.large.container.shape.square": {
+      "kind": "shape",
+      "value": 28,
+      "unit": "dp"
+    },
+    "md.comp.button.large.icon-label-space": {
+      "kind": "length",
+      "value": 12,
+      "unit": "dp"
+    },
+    "md.comp.button.large.icon.size": {
+      "kind": "length",
+      "value": 32,
+      "unit": "dp"
+    },
+    "md.comp.button.large.leading-space": {
+      "kind": "length",
+      "value": 48,
+      "unit": "dp"
+    },
+    "md.comp.button.large.outlined.outline.width": {
+      "kind": "length",
+      "value": 2,
+      "unit": "dp"
+    },
+    "md.comp.button.large.pressed.container.corner-size.motion.spring.damping": {
+      "kind": "number",
+      "value": 0.9,
+      "unit": "number"
+    },
+    "md.comp.button.large.pressed.container.corner-size.motion.spring.stiffness": {
+      "kind": "number",
+      "value": 1400,
+      "unit": "number"
+    },
+    "md.comp.button.large.pressed.container.shape": {
+      "kind": "shape",
+      "value": 16,
+      "unit": "dp"
+    },
+    "md.comp.button.large.selected.container.shape.round": {
+      "kind": "shape",
+      "value": 28,
+      "unit": "dp"
+    },
+    "md.comp.button.large.trailing-space": {
+      "kind": "length",
+      "value": 48,
+      "unit": "dp"
+    },
+    "md.comp.button.leading-space": {
+      "kind": "length",
+      "value": 24,
+      "unit": "dp"
+    },
+    "md.comp.button.medium.container.height": {
+      "kind": "length",
+      "value": 56,
+      "unit": "dp"
+    },
+    "md.comp.button.medium.container.shape.square": {
+      "kind": "shape",
+      "value": 16,
+      "unit": "dp"
+    },
+    "md.comp.button.medium.icon-label-space": {
+      "kind": "length",
+      "value": 8,
+      "unit": "dp"
+    },
+    "md.comp.button.medium.icon.size": {
+      "kind": "length",
+      "value": 24,
+      "unit": "dp"
+    },
+    "md.comp.button.medium.leading-space": {
+      "kind": "length",
+      "value": 24,
+      "unit": "dp"
+    },
+    "md.comp.button.medium.outlined.outline.width": {
+      "kind": "length",
+      "value": 1,
+      "unit": "dp"
+    },
+    "md.comp.button.medium.pressed.container.corner-size.motion.spring.damping": {
+      "kind": "number",
+      "value": 0.9,
+      "unit": "number"
+    },
+    "md.comp.button.medium.pressed.container.corner-size.motion.spring.stiffness": {
+      "kind": "number",
+      "value": 1400,
+      "unit": "number"
+    },
+    "md.comp.button.medium.pressed.container.shape": {
+      "kind": "shape",
+      "value": 12,
+      "unit": "dp"
+    },
+    "md.comp.button.medium.selected.container.shape.round": {
+      "kind": "shape",
+      "value": 16,
+      "unit": "dp"
+    },
+    "md.comp.button.medium.trailing-space": {
+      "kind": "length",
+      "value": 24,
+      "unit": "dp"
+    },
+    "md.comp.button.pressed.container.corner-size.motion.spring.damping": {
+      "kind": "number",
+      "value": 0.9,
+      "unit": "number"
+    },
+    "md.comp.button.pressed.container.corner-size.motion.spring.stiffness": {
+      "kind": "number",
+      "value": 1400,
+      "unit": "number"
+    },
+    "md.comp.button.pressed.container.shape": {
+      "kind": "shape",
+      "value": 8,
+      "unit": "dp"
+    },
+    "md.comp.button.selected.container.shape.round": {
+      "kind": "shape",
+      "value": 12,
+      "unit": "dp"
+    },
+    "md.comp.button.small.container.height": {
+      "kind": "length",
+      "value": 40,
+      "unit": "dp"
+    },
+    "md.comp.button.small.container.shape.square": {
+      "kind": "shape",
+      "value": 12,
+      "unit": "dp"
+    },
+    "md.comp.button.small.icon-label-space": {
+      "kind": "length",
+      "value": 8,
+      "unit": "dp"
+    },
+    "md.comp.button.small.icon.size": {
+      "kind": "length",
+      "value": 20,
+      "unit": "dp"
+    },
+    "md.comp.button.small.leading-space": {
+      "kind": "length",
+      "value": 16,
+      "unit": "dp"
+    },
+    "md.comp.button.small.outlined.outline.width": {
+      "kind": "length",
+      "value": 1,
+      "unit": "dp"
+    },
+    "md.comp.button.small.pressed.container.corner-size.motion.spring.damping": {
+      "kind": "number",
+      "value": 0.9,
+      "unit": "number"
+    },
+    "md.comp.button.small.pressed.container.corner-size.motion.spring.stiffness": {
+      "kind": "number",
+      "value": 1400,
+      "unit": "number"
+    },
+    "md.comp.button.small.pressed.container.shape": {
+      "kind": "shape",
+      "value": 8,
+      "unit": "dp"
+    },
+    "md.comp.button.small.selected.container.shape.round": {
+      "kind": "shape",
+      "value": 12,
+      "unit": "dp"
+    },
+    "md.comp.button.small.trailing-space": {
+      "kind": "length",
+      "value": 16,
+      "unit": "dp"
+    },
+    "md.comp.button.trailing-space": {
+      "kind": "length",
+      "value": 24,
+      "unit": "dp"
+    },
+    "md.comp.button.xlarge.container.height": {
+      "kind": "length",
+      "value": 136,
+      "unit": "dp"
+    },
+    "md.comp.button.xlarge.container.shape.square": {
+      "kind": "shape",
+      "value": 28,
+      "unit": "dp"
+    },
+    "md.comp.button.xlarge.icon-label-space": {
+      "kind": "length",
+      "value": 16,
+      "unit": "dp"
+    },
+    "md.comp.button.xlarge.icon.size": {
+      "kind": "length",
+      "value": 40,
+      "unit": "dp"
+    },
+    "md.comp.button.xlarge.leading-space": {
+      "kind": "length",
+      "value": 64,
+      "unit": "dp"
+    },
+    "md.comp.button.xlarge.outlined.outline.width": {
+      "kind": "length",
+      "value": 3,
+      "unit": "dp"
+    },
+    "md.comp.button.xlarge.pressed.container.corner-size.motion.spring.damping": {
+      "kind": "number",
+      "value": 0.9,
+      "unit": "number"
+    },
+    "md.comp.button.xlarge.pressed.container.corner-size.motion.spring.stiffness": {
+      "kind": "number",
+      "value": 1400,
+      "unit": "number"
+    },
+    "md.comp.button.xlarge.pressed.container.shape": {
+      "kind": "shape",
+      "value": 16,
+      "unit": "dp"
+    },
+    "md.comp.button.xlarge.selected.container.shape.round": {
+      "kind": "shape",
+      "value": 28,
+      "unit": "dp"
+    },
+    "md.comp.button.xlarge.trailing-space": {
+      "kind": "length",
+      "value": 64,
+      "unit": "dp"
+    },
+    "md.comp.button.xsmall.container.height": {
+      "kind": "length",
+      "value": 32,
+      "unit": "dp"
+    },
+    "md.comp.button.xsmall.container.shape.square": {
+      "kind": "shape",
+      "value": 12,
+      "unit": "dp"
+    },
+    "md.comp.button.xsmall.icon-label-space": {
+      "kind": "length",
+      "value": 4,
+      "unit": "dp"
+    },
+    "md.comp.button.xsmall.icon.size": {
+      "kind": "length",
+      "value": 20,
+      "unit": "dp"
+    },
+    "md.comp.button.xsmall.leading-space": {
+      "kind": "length",
+      "value": 12,
+      "unit": "dp"
+    },
+    "md.comp.button.xsmall.outlined.outline.width": {
+      "kind": "length",
+      "value": 1,
+      "unit": "dp"
+    },
+    "md.comp.button.xsmall.pressed.container.corner-size.motion.spring.damping": {
+      "kind": "number",
+      "value": 0.9,
+      "unit": "number"
+    },
+    "md.comp.button.xsmall.pressed.container.corner-size.motion.spring.stiffness": {
+      "kind": "number",
+      "value": 1400,
+      "unit": "number"
+    },
+    "md.comp.button.xsmall.pressed.container.shape": {
+      "kind": "shape",
+      "value": 8,
+      "unit": "dp"
+    },
+    "md.comp.button.xsmall.selected.container.shape.round": {
+      "kind": "shape",
+      "value": 12,
+      "unit": "dp"
+    },
+    "md.comp.button.xsmall.trailing-space": {
+      "kind": "length",
+      "value": 12,
+      "unit": "dp"
+    }
+  }
+}

@@ -100,12 +100,13 @@ A day closes only when its exit criteria are met with evidence. Slippage is reco
 
 - Built `tools/extract-tokens`, a private workspace package that turns the pinned Compose sources JARs into committed specs and TypeScript. `fetch-sources.sh` downloads 8 artifacts from Google Maven and verifies every SHA-256 before extraction; the vendor directory is git-ignored and documented in `docs/research/DAY2_SOURCES.md`.
 - Parser handles the machine-generated token subset (`object`/`class`, `val`/`inline val`/`const val`, getter form, multi-line constructor calls) and skips abstract declarations. Before writing anything, `main.ts` re-reads each declaration's source line and asserts it contains `val <Name>`, so continuation-line drift cannot silently mis-cite a token.
-- Extracted `material3:1.5.0`: **120** token files, **2,671** declarations, **2,641** resolved, **0 raw**, **30** composite `TypographyTokens`. Expanded those into **30** typography roles (baseline + emphasized) with per-field sources; **48** light + **48** dark color roles; **15** shape tokens and **9** corner sizes; **6** elevation levels; **16** durations, **10** cubic beziers, **6** standard + **6** expressive springs; **4** state-layer opacities.
+- Extracted `material3:1.5.0`: **120** token files, **2,671** declarations, all resolved (**2,641** scalar + **30** composite `TypographyTokens`), **0 raw**. Expanded the composites into **30** typography roles (baseline + emphasized) with per-field sources; **48** light + **48** dark color roles; **15** shape tokens and **9** corner sizes; **6** elevation levels; **16** durations, **10** cubic beziers, **6** standard + **6** expressive springs; **4** state-layer opacities.
 - Emitted **104** component spec files plus `tokens.json`, `typography.json`, and `index.json` (107 JSON, 1.3 MB) under `docs/specs/`. Every record carries `token`, `value`, `unit`, `expression`, `source` (file:line), `sourceVersion`, and `sourceSha256`.
 - Emitted `src/tokens/generated/{global,components,key-tokens,index}.ts` (Apache-2.0 banner + source hash). Library typecheck and `bob build` pass; declarations are produced.
 - Added deterministic `--check` mode: it rebuilds in memory and compares exact bytes, reporting missing/changed/stale files. CI now runs `pnpm --filter @react-native-material-expressive/extract-tokens check` after install, so a spec or generated-TS drift fails the build.
-- Added `EXPECTED` count pins (120 files / 2,671 declarations / 104 component objects / 30 typography roles / 48 color roles) so a Compose bump cannot quietly change the surface.
+- Added `EXPECTED` count pins (120 files / 2,671 declarations / 2,641 scalar / 30 composite / 104 component objects / 30 typography roles / 48 color roles) so a Compose bump cannot quietly change the surface; `resolved + raw === tokens` is asserted.
 - Spot-checked **20/20** values against m3.material.io using a seeded, stratified plan (`m3e-day2-2026-11-25`), not hand-picked rows. Rendered page text is retained for audit.
+- Follow-up after review: listed all 30 composite declarations in `docs/research/DAY2_COMPOSITES.md`, resolved their shared `lineHeightStyle` (`center`/`none`) and `platformStyle` (`includeFontPadding = false`) into `typography.json.defaults` and generated `typographyDefaults`, and added a 20-value behavior-critical spot-check. The behavior check covered 15 button size/padding values, 3 shapes, and 2 springs: **17/20 matched, 3 diverged** (Compose XS button paddings vs m3; `U-22`).
 - Recorded **U-20**: m3's emphasized easing is a multi-segment Android `pathInterpolator`, while the CSS column is the standard cubic-bezier fallback. Compose wins; resolve the RN path on Day 8.
 
 **Evidence**
@@ -115,7 +116,7 @@ A day closes only when its exit criteria are met with evidence. Slippage is reco
 - Local gate on the committed tree: `format:check` clean, `lint` 3/3 packages, `typecheck` 4/4 tasks, `test` library 1 suite / 8 tests + extractor 4 suites / 10 tests, `build` 7 files ESM+CJS+types. `extract-tokens check` reports “specs and generated TypeScript are up to date”.
 - Spot-check: `docs/evidence/day2/SPOTCHECK.md`, plan `docs/evidence/day2/spotcheck-plan.json`, m3 captures `docs/evidence/day2/m3/`.
 - Pins, URLs, hashes, commands, limits: `docs/research/DAY2_SOURCES.md`.
-- Day 2 exit gate: a spec exists for every token file, generated TS compiles, 20/20 spot-check matched.
+- Day 2 exit gate: a spec exists for every token file, generated TS compiles, 20/20 spot-check matched. Follow-up closed the composite-count ambiguity and extended behavior-critical coverage; no unresolved declaration remains.
 
 **Deviations**
 

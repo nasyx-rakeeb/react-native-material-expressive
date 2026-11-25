@@ -161,3 +161,10 @@ Paper `6.0.0-alpha.4` (2026-11-23); 34 public component exports; signature-set s
 - **Impact:** A cubic-bezier-only motion foundation cannot reproduce m3's Android emphasized curve. Components driven by the expressive motion scheme use springs, so this affects the legacy duration/easing path rather than spring-driven morphs.
 - **Resolution:** Day 8: implement the m3 multi-segment emphasized path as a sampled/keyframe easing (or document a deliberate fallback), keep the Compose cubic value for API compatibility, and record the decision in `docs/specs/motion.behavior.md`. Do not claim the cubic value is the m3 Android emphasized curve.
 - **Blocks:** Motion DONE (Day 8).
+
+### U-22 — Compose 1.5.0 XS button padding diverges from m3.material.io
+
+- **Evidence (Day 2 behavior spot-check):** Compose `ButtonXSmallTokens.kt` uses `LeadingSpace = 16dp`, `TrailingSpace = 16dp`, `IconLabelSpace = 8dp`. The rendered m3 buttons specs page (captured 2026-11-25) resolves `md.comp.button.xsmall.leading-space = 12dp`, `trailing-space = 12dp`, and `icon-label-space = 4dp`. Container height (32dp), S/M/L/XL heights, and all other sampled button sizes/paddings match.
+- **Impact:** XS button width, label/icon gap, and hit-area padding. It does not affect S–XL.
+- **Resolution:** Day 11, before Button's DONE cell: decide whether 1.0 follows Compose 1.5.0 (the pinned authority) or exposes an m3-XS-parity option. Record the decision in `docs/specs/button.behavior.md`; do not silently change either source. Until resolved, use Compose 16/16/8 and do not claim m3 XS parity.
+- **Blocks:** Button DONE (Day 11) for the XS variant only.

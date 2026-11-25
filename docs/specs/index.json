@@ -39,7 +39,8 @@
   "counts": {
     "tokenFiles": 120,
     "tokens": 2671,
-    "resolved": 2641,
+    "resolved": 2671,
+    "resolvedScalar": 2641,
     "raw": 0,
     "composite": 30
   },

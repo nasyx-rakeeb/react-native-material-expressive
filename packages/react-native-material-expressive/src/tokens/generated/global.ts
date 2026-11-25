@@ -550,6 +550,24 @@ export const typography = {
   },
 } as const;
 
+export const typographyDefaults = {
+  lineHeightStyle: {
+    alignment: 'center',
+    trim: 'none',
+    source: 'commonMain/androidx/compose/material3/tokens/TypographyTokens.kt:329',
+    sourceVersion: 'material3:1.5.0',
+    sourceSha256: 'd389bb542a1637dc202e715b279a178be1b0d51886234fe2810a92427c07b2a6',
+  },
+  platformStyle: {
+    includeFontPadding: false,
+    expression: 'PlatformTextStyle(includeFontPadding = false)',
+    source:
+      'androidMain/androidx/compose/material3/internal/DefaultPlatformTextStyle.android.kt:21',
+    sourceVersion: 'material3:1.5.0',
+    sourceSha256: '0fb7c8186c7beb33027aa953baf9bddb131ed765548709b84aa0fb73df10c79c',
+  },
+} as const;
+
 export const motion = {
   durations: {
     extraLong1: 700,

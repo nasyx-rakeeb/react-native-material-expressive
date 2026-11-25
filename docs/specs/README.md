@@ -15,6 +15,8 @@ Machine-readable spec extracts live here: one JSON file per component (plus `tok
 }
 ```
 
+`typography.json` also carries `defaults` for the shared `TextStyle` attributes (`lineHeightStyle` alignment/trim and Android `platformStyle.includeFontPadding`), because the 30 `TypographyTokens` entries are `DefaultTextStyle.copy(...)` composites. The declaration-by-declaration ledger is `../research/DAY2_COMPOSITES.md`.
+
 Behavioral facts that tokens cannot express (layout rules, state transitions, spring routing, content-padding formulas, min sizes, a11y semantics) belong in a sibling `*.behavior.md` with Compose file:line citations.
 
 Anything unsourced is recorded in `../UNVERIFIED.md` and blocks the component's DONE cell. Generated token TypeScript must come from these files; CI fails on drift.
