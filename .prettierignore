@@ -1,0 +1,14 @@
+node_modules
+.pnpm-store
+lib
+dist
+coverage
+.expo
+.turbo
+ios
+android
+docs
+pnpm-lock.yaml
+*.tgz
+
+RN_M3E_BUILD_PLAN.md

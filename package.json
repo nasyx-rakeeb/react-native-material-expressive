@@ -1,0 +1,33 @@
+{
+  "name": "react-native-material-expressive-monorepo",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Monorepo for react-native-material-expressive",
+  "license": "MIT",
+  "packageManager": "pnpm@12.23.0",
+  "engines": {
+    "node": ">=22.14.0"
+  },
+  "scripts": {
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck",
+    "test": "turbo run test",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "changeset": "changeset",
+    "version-packages": "changeset version"
+  },
+  "devDependencies": {
+    "@changesets/cli": "3.0.3",
+    "@eslint/js": "9.39.5",
+    "eslint": "9.39.5",
+    "eslint-config-prettier": "10.1.8",
+    "eslint-plugin-react-hooks": "7.1.1",
+    "globals": "17.14.0",
+    "prettier": "3.10.1",
+    "turbo": "2.11.13",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.74.0"
+  }
+}

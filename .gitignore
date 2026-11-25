@@ -1,5 +1,34 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build output
+lib/
+dist/
+coverage/
+.turbo/
+*.tsbuildinfo
+
+# Expo / native generated
+.expo/
+.expo-shared/
+apps/gallery/ios/
+apps/gallery/android/
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+
 # Research downloads (large; sources are recorded in docs/research/DAY0_SOURCES.md)
 docs/research/raw/
+
+# Local env / secrets
+.env
+.env.*
+!.env.example
+*.tgz
 
 # OS noise
 .DS_Store

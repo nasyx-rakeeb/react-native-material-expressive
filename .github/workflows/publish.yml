@@ -1,0 +1,63 @@
+name: Publish
+
+# Requires an npm trusted publisher configured for this repo + this workflow
+# filename, and `npm stage publish` permission. Configure it only after the
+# package exists (the first 1.0.0 publish is manual, with 2FA).
+# See docs/DECISIONS.md ADR-008.
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: publish-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  stage:
+    name: Stage package on npm
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    environment: npm-release
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Enable pnpm
+        uses: pnpm/action-setup@v6
+        with:
+          version: 12.23.0
+          run_install: false
+
+      - name: Set up Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          registry-url: 'https://registry.npmjs.org'
+          package-manager-cache: false
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Verify
+        run: |
+          pnpm format:check
+          pnpm lint
+          pnpm typecheck
+          pnpm test
+          pnpm build
+
+      - name: Stage publish (OIDC, no token)
+        working-directory: packages/react-native-material-expressive
+        run: npm stage publish
+
+      # A maintainer approves the staged release with 2FA:
+      #   npm stage list
+      #   npm stage view <stage-id>
+      #   npm stage approve <stage-id>

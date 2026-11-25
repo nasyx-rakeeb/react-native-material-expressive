@@ -1,0 +1,29 @@
+react-native-material-expressive
+Copyright (c) 2026 Nasyx Rakeeb
+
+Portions of this software are derived from AndroidX and are licensed under the
+Apache License, Version 2.0. Derived files retain their original copyright and
+license headers.
+
+Upstream projects that may be partially ported:
+
+- androidx.graphics:graphics-shapes 1.1.0
+  https://cs.android.com/androidx/platform/frameworks/support
+- androidx.compose.material3:material3 1.5.0 (token definitions and behavior)
+  https://cs.android.com/androidx/platform/frameworks/support
+
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use
+those derived files except in compliance with the License. You may obtain a copy
+of the License at:
+
+  https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software distributed
+under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+CONDITIONS OF ANY KIND, either express or implied. See the License for the
+specific language governing permissions and limitations under the License.
+
+Fonts and icon fonts, when bundled, carry their own licenses:
+
+- Roboto Flex: SIL Open Font License 1.1
+- Material Symbols: Apache License 2.0
