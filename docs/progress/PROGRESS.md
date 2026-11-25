@@ -117,6 +117,7 @@ A day closes only when its exit criteria are met with evidence. Slippage is reco
 - Spot-check: `docs/evidence/day2/SPOTCHECK.md`, plan `docs/evidence/day2/spotcheck-plan.json`, m3 captures `docs/evidence/day2/m3/`.
 - Pins, URLs, hashes, commands, limits: `docs/research/DAY2_SOURCES.md`.
 - Day 2 exit gate: a spec exists for every token file, generated TS compiles, 20/20 spot-check matched. Follow-up closed the composite-count ambiguity and extended behavior-critical coverage; no unresolved declaration remains.
+- Follow-up evidence: commit `556003d`; CI run [`45654081158`](https://github.com/nasyx-rakeeb/react-native-material-expressive/actions/runs/45654081158) — success, all steps green. Ledger: `docs/research/DAY2_COMPOSITES.md`. Behavior report: `docs/evidence/day2/SPOTCHECK-BEHAVIOR.md` (17/20 matched, 3 XS divergences → `U-22`).
 
 **Deviations**
 
