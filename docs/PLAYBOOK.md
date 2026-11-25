@@ -344,7 +344,7 @@ Everything below is **in scope for 1.0**. Names are indicative; the Compose publ
 
 ## 11. RELEASE GATES (all must be true on the release commit)
 
-1. **Fidelity:** 100% of in-scope scenes pass the Android diff gate (§7); `KNOWN_DEVIATIONS.md` empty or Nasyx-signed.
+1. **Fidelity:** 100% of Compose-backed scenes pass the Android diff gate (§7); 100% of spec-verified scenes pass their measured m3.material.io spec assertions and have a frozen self-regression baseline; `KNOWN_DEVIATIONS.md` empty or Nasyx-signed.
 2. **Completeness:** every row of `COMPONENT_MATRIX.md` is DONE; every Paper v6 component has an equivalent or documented omission.
 3. **Accessibility:** `A11Y_REPORT.md` zero P0/P1; keyboard + screen reader + 200% font + reduce-motion + RTL verified.
 4. **Performance (targets; adjust only via ADR with measured evidence):** gallery stress scenes hold 60fps (120fps on capable devices) on the reference mid-range Android; no JS-thread animation work; button press → visual response within 1 frame; bundle cost per-component tree-shaken and published in docs.

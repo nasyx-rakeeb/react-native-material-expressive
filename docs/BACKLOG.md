@@ -17,7 +17,7 @@ Do not work on these until the current day's exit criteria are met. Add findings
 - **Paper alpha regression watch**: automate weekly npm/GitHub diff for Paper 6.0/6.1 and `@expressive-ui/native`; feed COMPETITOR_MATRIX.
 - **Compose 1.6/1.7 token drift bot**: run extractor monthly, open a PR with the token diff.
 - **iOS CMP stable upgrade**: move reference harness from 1.13.0-rc01 to 1.13.0 stable, re-run source-identity check.
-- **SideSheet**: if Compose ships a public implementation, replace the NCR path and add it to the diff gate.
+- **SideSheet**: if Compose ships a public implementation, replace the spec-verified path with a Compose diff scene and keep the self-regression baseline.
 - **Accessibility scanner automation**: Accessibility Scanner/TalkBack scripted checks in CI (Day 40).
 - **Release provenance/SBOM**: automate npm provenance + CycloneDX SBOM (Day 55).
 

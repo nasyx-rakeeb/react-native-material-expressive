@@ -19,7 +19,7 @@
 - `[ ]` — not done. A box is only ticked with an artifact (commit, report path, test run).
 - `—` — not applicable for this row.
 - `REF` — iOS is checked against a Compose Multiplatform reference render; iOS diffs are **structural/reference only**, never the release gate (Core Rule 3, ADR-004).
-- `NCR` — **no Compose reference implementation exists** for this surface. Cannot use the Android diff gate as written. Exception proposed in ADR-005; **blocked on Nasyx approval**.
+- `spec` **spec-verified** — no Compose reference implementation exists for this surface. It is verified against measured m3.material.io spec assertions (`docs/specs/<component>.json`) plus a frozen self-regression baseline, and is **never** called Compose-verified (ADR-005). The Android diff column reads `n/a spec`.
 
 **Column key:** spec = `docs/specs/*.json` + implementation read; diff = Android screenshot report; motion = numeric + frame-sampled; iOS = CMP structural diff / inspection; a11y = TalkBack + VoiceOver + keyboard + 200% + reduce motion + RTL; tests = unit + RNTL + a11y; DONE = all evidence present.
 
@@ -91,7 +91,7 @@
 | Carousel (multi-browse, uncontained, hero, center-hero) | `Carousel.kt`, `CarouselState.kt`, `CarouselItemScope.kt` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
 | Dialog (basic, alert, full-screen) | `AlertDialog.kt`, `BasicEdgeToEdgeDialog.kt`, `DialogTokens` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
 | BottomSheet (standard + modal) | `BottomSheet.kt`, `ModalBottomSheet.kt`, `BottomSheetScaffold.kt` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
-| SideSheet | **m3 spec only; no public Compose 1.5.0 API** | [ ] | [ ] | n/a NCR | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| SideSheet | **m3 spec only; no public Compose 1.5.0 API** | [ ] | [ ] | n/a spec | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
 | ListItem (standard) | `ListItem.kt`, `ListItemDefaults.kt`, `ListTokens` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
 | SegmentedListItem | `ListItem.kt` (`SegmentedListItem`), `ListTokens` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
 | SwipeToDismissBox | `SwipeToDismissBox.kt` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
@@ -100,7 +100,7 @@
 | Tooltip (plain/rich) | `Tooltip.kt`, `BasicTooltip.kt`, `*TooltipTokens` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
 | Badge / BadgedBox | `Badge.kt`, `BadgeTokens` | [ ] | [ ] | [ ] | — | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
 | Snackbar + host/queue | `Snackbar.kt`, `SnackbarHost.kt`, `SnackbarTokens` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
-| Banner (Paper parity extra) | **No Compose M3 API**; Paper v6 alpha.4 as cross-check | [ ] | [ ] | n/a NCR | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| Banner (Paper parity extra) | **No Compose M3 API**; Paper v6 alpha.4 as cross-check | [ ] | [ ] | n/a spec | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
 
 ## Navigation & structure
 
@@ -131,12 +131,12 @@
 
 | Component | Authority / source | spec | impl | diff | motion | iOS | a11y | tests | docs | gallery | DONE |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| Avatar | **No Compose M3 API**; Paper v6 cross-check | [ ] | [ ] | n/a NCR | — | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| Avatar | **No Compose M3 API**; Paper v6 cross-check | [ ] | [ ] | n/a spec | — | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
 | Portal API | Internal `OverlayHost`; Paper API shape | [ ] | [ ] | — | — | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
-| DataTable (expressive styling) | **No Compose M3 API**; Paper v6 cross-check | [ ] | [ ] | n/a NCR | — | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| DataTable (expressive styling) | **No Compose M3 API**; Paper v6 cross-check | [ ] | [ ] | n/a spec | — | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
 | HelperText | TextField supporting-text semantics; no distinct Compose component | [ ] | [ ] | [ ] | — | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
 | Drawer sections | M3 Drawer + Paper section API shape | [ ] | [ ] | [ ] | — | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
-| Accordion / expandable list | **No Compose M3 API**; Paper v6 cross-check | [ ] | [ ] | n/a NCR | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| Accordion / expandable list | **No Compose M3 API**; Paper v6 cross-check | [ ] | [ ] | n/a spec | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
 | Appbar legacy wrappers | Maps to TopAppBar / AppBar API | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
 | Text variants | Maps to `Text` + typography scale | [ ] | [ ] | [ ] | — | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
 | Surface elevation API | Maps to `Surface` | [ ] | [ ] | [ ] | — | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
@@ -171,14 +171,14 @@ These are **in Compose Material3 1.5.0 and/or the m3 catalog but missing or misn
 | `SwipeToDismissBox` | **Add** | `SwipeToDismissBox.kt` | Public 1.5.0 API; §8 mentioned swipeable ListItem only. |
 | `VerticalSlider`, `VerticalDragHandle` | **Add** | `Slider.kt`, `DragHandle.kt` | §8 said vertical slider; drag handle is a public primitive. |
 | `Scrim`, `Label`, `BadgedBox`, `SnackbarHost` | **Add** | Public 1.5.0 primitives | Support surfaces for overlays/feedback. |
-| `SideSheet` | **Keep, but NCR** | m3 side-sheets spec only | No public Compose 1.5.0 implementation. Requires ADR-005 exception. |
+| `SideSheet` | **Keep as spec-verified** | m3 side-sheets spec only | No public Compose 1.5.0 implementation. Verified against measured m3 spec + self-regression baseline (ADR-005). |
 | `SegmentedButton` | **Keep as legacy** | `SegmentedButton.kt`; m3 says deprecated in Expressive | m3: use connected button group. Keep for Paper migration; do not position as primary API. |
 | `ToggleButton` (legacy) | **Keep as legacy** | `ToggleButton.kt` | Migration/parity surface. |
 | Docked toolbar | **Map to `FlexibleBottomAppBar`** | `AppBar.kt`, `DockedToolbarTokens` | Do not invent a `DockedToolbar` API that Compose does not have. |
 | Full-screen carousel | **Variant, not separate component** | `Carousel.kt` | Horizontal uncontained with full-screen page size; verify exact defaults Day 30. |
 | `ReorderListTokens`, `RevealListTokens`, `ExpandedListTokens` | **Defer** | Token files only | No public 1.5.0 component found; track in BACKLOG until API exists. |
 | XR components (`nav-bar`, `nav-rail`, XR app bars/dialogs/toolbars) | **Defer** | m3 foundations/xr | Out of 1.0 scope; not in §8. BACKLOG. |
-| Banner, Avatar, DataTable, Accordion | **Keep as Paper parity extras** | Paper only; no Compose reference | NCR; ADR-005 exception required. |
+| Banner, Avatar, DataTable, Accordion | **Keep as Paper parity extras** | Paper only; no Compose reference | Spec-verified against m3/Paper measurements + self-regression baseline; never Compose-verified (ADR-005). |
 
 ## Matrix counts (Day 0)
 

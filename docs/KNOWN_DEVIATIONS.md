@@ -8,7 +8,7 @@ Intentional or unavoidable differences from the Compose Material3 1.5.0 referenc
 |---|---|---|---|---|---|---|---|---|
 | — | — | — | — | — | — | — | — | — |
 
-No implementation exists yet, so there are no deviations. The `NCR` surfaces in `COMPONENT_MATRIX.md` are **scope exceptions**, not deviations; they are blocked on ADR-005.
+No implementation exists yet, so there are no deviations. The **spec-verified** surfaces in `COMPONENT_MATRIX.md` (SideSheet, Banner, Avatar, DataTable, Accordion) have no Compose reference; they are verified against measured m3 spec assertions and a self-regression baseline under ADR-005, and are not deviations by themselves. Any measured miss against their spec file becomes a deviation here.
 
 ## Policy
 

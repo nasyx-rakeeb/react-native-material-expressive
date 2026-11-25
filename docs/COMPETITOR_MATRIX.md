@@ -1,4 +1,6 @@
-# Competitor Matrix — Day 0 snapshot (2026-11-25)
+# Competitor Matrix — Day 1 snapshot (2026-11-25)
+
+> Day 1 adds a deep teardown of `@expressive-ui/native@0.3.0` (§3.1) and corrects two Day 0 claims: it has 35 static MaterialShapes paths and a generated light+dark scheme. No other section changed except the conclusions.
 
 **Scope:** React Native Paper v6 alpha (primary competitor), other RN M3E efforts found on npm/GitHub, and the relevant Google reference surface (Compose Material3 1.5.0 / m3.material.io).
 
@@ -10,6 +12,7 @@
 - Paper source tarball `v6.0.0-alpha.4` (47,565 LOC in `src`), inspected locally.
 - Compose Material3 1.5.0 sources JAR + m3.material.io sitemap/catalog (see `docs/research/DAY0_SOURCES.md`).
 - npm search + GitHub search for RN M3E libraries.
+- Day 1: npm tarballs for `@expressive-ui/{native,core,schema,tokens}@0.3.0`; registry history/downloads; source inspection of 6,516 + 3,762 LOC.
 
 **Status vocabulary:** `FULL` = same component/feature present and positioned as M3 Expressive; `PARTIAL` = present but missing key Expressive behavior; `LEGACY` = present but not the Expressive design; `NO` = absent. “Expressive status” is about behavior, not just Material 3 baseline colors.
 
@@ -117,13 +120,57 @@ Even if every partial is counted as full (Button, FAB menu, menus, lists), the m
 
 | Package / repo | Version / date | Scope | Maturity signals | Threat |
 |---|---|---|---|---|
-| `@expressive-ui/native` | **0.3.0**, published 2026-11-24 | React Native/Expo renderer for ExpressiveUI; M3E components: Button, Chips, FAB, Carousel, Progress, LoadingIndicator, SplitButton, ButtonGroup, Toolbar, FabMenu, Navigation, Pickers, RangeSlider, Menu, Sheets, Snackbar, Search, Select/Autocomplete, etc. | 6,516 LOC `src`; 153 package files; MIT; peer `react-native-svg`; no Reanimated (21 files use RN `Animated`); no `MaterialShapes`/`RoundedPolygon`; no `repository` field; no tests in package; 0.x API explicitly unstable; RN 0.86.3 dev target | **Direct, broad, early.** Watch closely. No evidence of Compose diff verification. |
+| `@expressive-ui/native` | **0.3.0**, published 2026-11-24 | React Native/Expo renderer for ExpressiveUI; M3E components: Button, Chips, FAB, Carousel, Progress, LoadingIndicator, SplitButton, ButtonGroup, Toolbar, FabMenu, Navigation, Pickers, RangeSlider, Menu, Sheets, Snackbar, Search, Select/Autocomplete, SideSheet, Avatar, RenderUI, etc. | 6,516 LOC `src`; 153 package files; MIT; 60 exported component/provider functions; `react-native-svg` peer; **no Reanimated**, RN `Animated` (20 files); morph springs run on the **JS driver** (`useNativeDriver: false`); 35 static MaterialShapes SVG paths (not a general morph engine); generated light+dark scheme via MCU; no `repository` field; **no tests in package**; 0.x API explicitly unstable; RN 0.86.3 dev target; 172 npm downloads in the last week | **Direct, broad, early.** Watch closely. No Compose diff evidence and no published fidelity report. |
 | `react-native-platform-components` | 1.12.0, 2026-11-24 | Native platform widgets (TextField, DatePicker, ContextMenu, etc.), includes M3 Expressive on Android | Not a design-system library; platform components only | Adjacent, not a full substitute |
 | `kamp0010/react-native-m3` | repo, last push 2026-02-06 | “Premium RN M3 Expressive component library built with Nitro Modules” | 2 stars, no npm release found, MIT | Low today; verify again Day 53 |
 | `@isoline-ui/react-native` | 2.1.3, 2026-11-24 | “Expressive shared UI with platform-aware interaction”, NativeWind-based | Not M3-specific; design system | Adjacent |
 | `flaut-org/react-md3e` | repo, 2026-11-25 | Server-first **React (web)** M3/M3E components | Not React Native | No |
 
-**No RN library found with:** a published Compose-reference diff suite, the full 35 `MaterialShapes` + `Morph` port, or full Expressive component coverage verified against 1.5.0. That remains the moat. But the plan’s absolute statement “No RN library with shape morphing / wavy progress / loading indicator / split button / button groups / FAB menu / toolbars was found” is **no longer true**: `@expressive-ui/native` exposes most of those names. We must compete on fidelity and production readiness, not claim absence.
+**No RN library found with:** a published Compose-reference diff suite, a true `RoundedPolygon`/cubic morph engine, or full Expressive component coverage verified against 1.5.0. That remains the moat. But the plan’s absolute statement “No RN library with shape morphing / wavy progress / loading indicator / split button / button groups / FAB menu / toolbars was found” is **no longer true**: `@expressive-ui/native` exposes most of those names. We must compete on fidelity and production readiness, not claim absence.
+
+### 3.1 Deep teardown — `@expressive-ui/native@0.3.0` (Day 1, 2026-11-25)
+
+**Method:** downloaded the published tarballs for `@expressive-ui/native`, `core`, `schema`, and `tokens` (0.3.0) and inspected source, package metadata, and npm registry history. Raw files are git-ignored under `docs/research/raw/expui-native/`; hashes/paths in `docs/research/DAY0_SOURCES.md`.
+
+**What it is.** The React Native renderer for ExpressiveUI, a Brazilian web design system. Its README promises “mesma API e mesmos tokens do `@expressive-ui/react`” (same API and tokens as the web package) plus native animations and RN accessibility. The provider defaults to `mode="system"`, `motion="expressive"`, and locale `pt-BR`; labels are localizable to English.
+
+**Breadth — real and unusually wide for an RN M3E package.**
+- 60 exported component/provider functions, including `SideSheet`, `Avatar`, `Select`/`Autocomplete`, `DatePicker`/`DateRangePicker`, `FileUpload`, `Skeleton`, `Tabs`, `TimePicker`, `RenderUI`, `ConnectedButtonGroup`, and `SplitButton`.
+- 6,516 LOC in the native `src`; the shared `core` adds 3,762 LOC. Split as `core` (behavior/spec math), `schema` (component data contracts), `tokens` (color/motion tokens), `native` (renderer).
+- `SideSheet` and `Avatar` ship despite having no Compose 1.5.0 reference — the same surfaces we treat as spec-verified (ADR-005).
+
+**Shape support — better than the Day 0 note, still not a morph engine.**
+- `core/src/material-shape-paths.ts` contains all **35** MaterialShapes as static SVG paths, generated from `material-shapes-ts@0.3.0` with an Apache-2.0 header. This corrects the Day 0 claim that it had “no MaterialShapes”.
+- There is **no `RoundedPolygon` equivalent and no general cubic path interpolation**. `Shape`/`ShapeIcon` render a fixed path. The only shape animation is `LoadingIndicator`, which computes a radial “radius as a function of angle” sequence (pill → sunny → cookie4 → oval) in JS — visually a morph, but not MaterialShapes interpolation and not reusable as a shape-morph primitive.
+- Button press morph animates `borderRadius`/width/padding between two radii; chips/segments animate radius similarly. That is M3 Expressive corner morphing, but it cannot morph arbitrary MaterialShapes.
+
+**Animation approach — the most important finding.**
+- No Reanimated dependency at all (`react-native-reanimated` references: 0). 20 files use RN `Animated`.
+- The shared spring helper explicitly uses **`useNativeDriver: false`**: “driver JS: borderRadius e cores não rodam no driver nativo”. Any radius/width/padding/color spring — i.e. the signature Expressive morphs — runs on the JS thread.
+- `LoadingIndicator` re-renders React state every frame via `requestAnimationFrame` + `setState`; it does not use the native driver.
+- Wavy progress and a few opacity/transform animations do use `useNativeDriver: true` (8 call sites).
+- Consequence: on a mid-range Android device with JS work in flight, their morphs are the most likely to drop frames. Our Reanimated/Worklets path is a defensible UI-thread differentiator, and the eventual frame-time benchmark (Day 7/Day 14) should be run against this package, not just Paper.
+
+**Color and theming.**
+- `tokens/src/dynamic.ts` uses `@material/material-color-utilities` (`SchemeExpressive`, `SchemeTonalSpot`, `SchemeVibrant`, `Hct`) and `createScheme(seed, { variant, contrast })` generates **light and dark from the same seed** with the 2025 spec. That is the same approach ADR-006 now mandates for our expressive dark.
+- It is **JS-computed dynamic color**, not Android 12+ system dynamic color; there is no native module.
+- The generated scheme adds non-M3 roles (`success`, `warning`, `tone1–4`, `heroStart/End`, `shapeTint`). Useful product extension, not Compose-parity.
+
+**Accessibility and i18n — a genuine strength.**
+- 171 accessibility prop references (`accessibilityRole`, `accessibilityState`, `accessibilityLabel`, `accessible`), including `progressbar`, `radiogroup`, and header roles.
+- `useReduceMotion()` subscribes to `AccessibilityInfo`; animations shorten or jump when reduce-motion is on.
+- Built-in labels are localized (pt-BR default, English fallback) and overridable; `dir="rtl"` wraps the tree.
+- No tests ship in the package, so none of this is regression-protected.
+
+**Maturity and maintenance signals.**
+- First publish **2026-10-28**; six releases in 27 days (`0.1.0` → `0.3.0`); latest `0.3.0` on **2026-11-24**; `0.3.0` tarball 833 KB unpacked, 153 files.
+- npm downloads last week: **172**. Single maintainer (`cunhamurilo`). No `repository` field in `package.json`, so there is no public source/issues trail from the package itself.
+- README explicitly warns the API is `0.x` and may change between minor versions.
+- Peer range `react-native >=0.79`, `react >=19`, `react-native-svg >=15`; dev-tested on RN 0.86.3, not 0.88.
+- No tests, no CI badge, no published a11y report, no published fidelity/diff evidence.
+
+**Positioning impact.** No change to the core positioning: fidelity-verified against Compose remains unclaimed by anyone. Two claims must be corrected in our own docs: (1) they *do* ship 35 static MaterialShapes; (2) they do generate a light+dark expressive scheme from a seed. Our remaining differentiators are precise: Compose-reference diff evidence, UI-thread motion via Reanimated/Worklets, true `RoundedPolygon`/cubic shape interpolation, native Android dynamic color, Paper-migration parity, and a release gate with measured spec assertions. Their advantage is a unified web+native design system and a broader pre-built product surface (pickers, file upload, RenderUI) — we should not try to out-breadth them on non-M3 extras before the core gate.
+
 
 ---
 
@@ -160,5 +207,5 @@ The playbook asks to reconcile against Flutter's M3E work. The leading port is `
 1. **Gate passed.** Paper covers 17.9% of the signature set (max 28.6% with generous partials), far below 60%.
 2. **Paper’s real advantage is breadth of commodity components and migration familiarity**, not Expressive components. Parity floor remains mandatory.
 3. **The fidelity moat is still unclaimed.** No RN competitor publishes Compose-reference diffs.
-4. **The new competitor is `@expressive-ui/native`**, not Paper, for breadth. It is 0.x, RN `Animated`-based, no shape-morph engine, no diff evidence. Monitor weekly; re-run this matrix Day 53.
+4. **The new competitor is `@expressive-ui/native`**, not Paper, for breadth. It ships 60 component functions, 35 static MaterialShapes, generated light+dark color, and credible a11y, but is 0.x, JS-driver-based for morphs, has no tests/repository field, and publishes no fidelity evidence. Monitor weekly; re-run this matrix Day 53.
 5. **Segmented buttons are legacy.** m3 explicitly deprecates them in favor of connected button groups. Our public API should lead with `ButtonGroup`, keep `SegmentedButton` only for migration.

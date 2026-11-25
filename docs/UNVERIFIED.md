@@ -2,7 +2,7 @@
 
 A component cannot be marked DONE while it has an open entry here. Day 0 resolved the six original `UNVERIFIED-1..6`; new open items are listed below with an owner and a resolution day.
 
-**Last updated:** 2026-11-25 (Day 0)
+**Last updated:** 2026-11-25 (Day 1)
 
 ---
 
@@ -38,7 +38,8 @@ Details and threat assessment: `docs/COMPETITOR_MATRIX.md`.
 - Latest standalone: `react-native-reanimated@4.8.0` (2026-11-19) peer range `react-native: 0.87 - 0.89`, `react-native-worklets: 0.14.x`; `react-native-worklets@0.14.0`.
 - Latest RN: `0.88.1` (2026-10-27).
 - Latest `react-native-skia`: **`react-native-skia@3.13.0`** (2026-11-25, unscoped), peer `react-native-reanimated >=4.0.0`, `react-native-worklets >=0.7.0`.
-- Decision: use the Expo SDK 58 pair in the gallery/dev-client app (4.7.0/0.13.0); use 4.8.0/0.14.0 only in the bare RN 0.88 compatibility job. Final pin is ADR-003 (Day 7).
+- **Day 1 re-pin:** Expo SDK **58.0.26** bundles RN **0.88.1**, Reanimated **4.7.1**, Worklets **0.13.0**, safe-area-context **5.11.1**, gesture-handler **3.3.0**, svg **15.16.0**, React **19.3.0**. These supersede the `58.0.0` snapshot above.
+- Decision: use the Expo SDK 58 pair in the gallery app; use Reanimated 4.8/Worklets 0.14 only in a bare RN compatibility job. Draft peers in ADR-003; final pin Day 7.
 
 ### U-4 (was UNVERIFIED-4) — Paper component coverage in latest alpha — **RESOLVED**
 
@@ -58,26 +59,24 @@ Paper `6.0.0-alpha.4` (2026-11-23); 34 public component exports; signature-set s
 - Deltas to §8 are enumerated in `docs/COMPONENT_MATRIX.md` §“Scope deltas vs §8”.
 - m3 says segmented buttons are **no longer recommended** in the Expressive update (use connected button group); Compose still ships them. ADR-007.
 - m3 toolbars: **docked + floating**. Compose has no `DockedToolbar` composable; the docked behavior is implemented by `FlexibleBottomAppBar` using `DockedToolbarTokens`. Mapping decision is in the matrix.
-- m3 side sheets: spec exists, **no public Compose 1.5.0 implementation**. NCR.
+- m3 side sheets: spec exists, **no public Compose 1.5.0 implementation**. Spec-verified path (ADR-005).
 
 ---
 
 ## Open items (block DONE)
 
-### U-7 — Expressive dark color scheme is absent in Compose 1.5.0
+### U-7 — Expressive dark color scheme is absent in Compose 1.5.0 — **RESOLVED (ADR-006)**
 
 - **Claim:** The plan says “expressive color schemes” (plural). Compose 1.5.0 ships only `expressiveLightColorScheme()`; its KDoc says to use `darkColorScheme()` for dark mode.
-- **Impact:** Public provider API and dark-mode appearance.
-- **Resolution:** ADR-006 (proposed): mirror Compose (light expressive, dark standard). Revisit if Compose ships a dark scheme.
-- **Blocks:** Color system DONE (Day 4).
+- **Resolution:** ADR-006 accepted. Defaults mirror Compose (expressive light, standard dark). A generated `expressiveDarkColorScheme(seed)` ships at full quality via `material-color-utilities`, documented as non-reference. Dark roles with Compose counterparts are checked against `darkColorScheme()` and recorded in `docs/specs/color-dark.json`.
+- **Blocks:** Nothing; color system still due Day 4.
 
-### U-8 — Expressive/emphasized typography is not wired into the default theme
+### U-8 — Expressive/emphasized typography is not wired into the default theme — **RESOLVED (ADR-006)**
 
 - **Claim:** The plan says “custom brand font across the entire type scale” and “baseline + emphasized scales”.
 - **Evidence:** `TypographyTokens.kt`/`TypeScaleTokens.kt` contain 15 emphasized styles, but `MaterialExpressiveTheme` passes `Typography()` and contains `// TODO: replace with calls to Expressive typography default` (`MaterialTheme.kt` ~line 264).
-- **Impact:** Default type scale vs opt-in emphasized styles.
-- **Resolution:** ADR-006: expose emphasized styles, do not make them default. Confirm with Nasyx.
-- **Blocks:** Typography DONE (Day 5).
+- **Resolution:** ADR-006 accepted. Emphasized styles ship as opt-in tokens; the default theme stays on standard `Typography()` so Compose renders match.
+- **Blocks:** Nothing; typography still due Day 5.
 
 ### U-9 — m3 chips page does not mark an Expressive update, but Compose Chip supports shape morph
 
@@ -86,19 +85,19 @@ Paper `6.0.0-alpha.4` (2026-11-23); 34 public component exports; signature-set s
 - **Resolution:** Treat Compose as truth (Core Rule 1); document the m3 page lag. Verify the exact `ChipShapes` defaults on Day 17.
 - **Blocks:** Chips DONE (Day 17).
 
-### U-10 — `SideSheet` has no Compose 1.5.0 reference
+### U-10 — `SideSheet` has no Compose 1.5.0 reference — **RESOLVED (ADR-005)**
 
 - **Evidence:** No `SideSheet` symbol in the 1.5.0 sources; m3 side-sheets spec exists.
 - **Impact:** Cannot produce a Compose diff for this row.
-- **Resolution:** ADR-005 (proposed NCR exception). If approved, implement to m3 spec + own regression baseline.
-- **Blocks:** SideSheet DONE (Day 29).
+- **Resolution:** ADR-005 accepted. Implement as **spec-verified** against measured m3 assertions + own regression baseline; never call it Compose-verified.
+- **Blocks:** Nothing; SideSheet still due Day 29.
 
-### U-11 — Paper-only parity components have no Compose reference
+### U-11 — Paper-only parity components have no Compose reference — **RESOLVED (ADR-005)**
 
 - **Components:** Banner, Avatar, DataTable, HelperText (as a distinct component), Accordion/expandable list.
 - **Impact:** Release Gate #1 cannot apply as written.
-- **Resolution:** ADR-005. Do not implement until approved (Day 38).
-- **Blocks:** Day 38 parity extras.
+- **Resolution:** ADR-005 accepted: **spec-verified** against measured m3/Paper assertions + self-regression baseline. Not Compose-verified.
+- **Blocks:** Nothing; Day 38 parity extras remain in scope.
 
 ### U-12 — CMP iOS runtime coverage for 10 source-differing files
 
@@ -148,3 +147,10 @@ Paper `6.0.0-alpha.4` (2026-11-23); 34 public component exports; signature-set s
 - **Impact:** Competitive threat assessment.
 - **Resolution:** Day 53: install and test a sample; check a11y, motion, and fidelity. Do not cite it as production-ready until then.
 - **Blocks:** None.
+
+### U-19 — `fontVariationSettings` support below RN 0.88 / Android API 26
+
+- **Evidence:** RN 0.88 exposes `fontVariationSettings` as an object or CSS string; older RN versions and Android API <26 handle variable fonts inconsistently. ADR-001 sets the peer floor at RN 0.81 and Android minSdk 24.
+- **Impact:** Roboto Flex weight/optical-size fidelity on the supported floor.
+- **Resolution:** Day 5: build a capability probe and a static-weight fallback, then record measured differences on API 24/25 vs 26+ in `docs/specs/typography.json`. Never silently claim variable-font parity below the capability line.
+- **Blocks:** Typography DONE (Day 5).
