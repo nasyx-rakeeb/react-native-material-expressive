@@ -91,3 +91,45 @@ A day closes only when its exit criteria are met with evidence. Slippage is reco
 **Next step**
 
 - Day 2: source-of-truth pipeline (sources JARs → `docs/specs/*.json` → generated TS, drift check in CI).
+
+---
+
+## Day 2 | 2026-11-25 | Source-of-truth token pipeline and drift gate
+
+**Done**
+
+- Built `tools/extract-tokens`, a private workspace package that turns the pinned Compose sources JARs into committed specs and TypeScript. `fetch-sources.sh` downloads 8 artifacts from Google Maven and verifies every SHA-256 before extraction; the vendor directory is git-ignored and documented in `docs/research/DAY2_SOURCES.md`.
+- Parser handles the machine-generated token subset (`object`/`class`, `val`/`inline val`/`const val`, getter form, multi-line constructor calls) and skips abstract declarations. Before writing anything, `main.ts` re-reads each declaration's source line and asserts it contains `val <Name>`, so continuation-line drift cannot silently mis-cite a token.
+- Extracted `material3:1.5.0`: **120** token files, **2,671** declarations, **2,641** resolved, **0 raw**, **30** composite `TypographyTokens`. Expanded those into **30** typography roles (baseline + emphasized) with per-field sources; **48** light + **48** dark color roles; **15** shape tokens and **9** corner sizes; **6** elevation levels; **16** durations, **10** cubic beziers, **6** standard + **6** expressive springs; **4** state-layer opacities.
+- Emitted **104** component spec files plus `tokens.json`, `typography.json`, and `index.json` (107 JSON, 1.3 MB) under `docs/specs/`. Every record carries `token`, `value`, `unit`, `expression`, `source` (file:line), `sourceVersion`, and `sourceSha256`.
+- Emitted `src/tokens/generated/{global,components,key-tokens,index}.ts` (Apache-2.0 banner + source hash). Library typecheck and `bob build` pass; declarations are produced.
+- Added deterministic `--check` mode: it rebuilds in memory and compares exact bytes, reporting missing/changed/stale files. CI now runs `pnpm --filter @react-native-material-expressive/extract-tokens check` after install, so a spec or generated-TS drift fails the build.
+- Added `EXPECTED` count pins (120 files / 2,671 declarations / 104 component objects / 30 typography roles / 48 color roles) so a Compose bump cannot quietly change the surface.
+- Spot-checked **20/20** values against m3.material.io using a seeded, stratified plan (`m3e-day2-2026-11-25`), not hand-picked rows. Rendered page text is retained for audit.
+- Recorded **U-20**: m3's emphasized easing is a multi-segment Android `pathInterpolator`, while the CSS column is the standard cubic-bezier fallback. Compose wins; resolve the RN path on Day 8.
+
+**Evidence**
+
+- Commit: `191a3a1` (extractor, 107 specs, generated TS, evidence, CI drift gate, sources log).
+- CI: run [`45648898485`](https://github.com/nasyx-rakeeb/react-native-material-expressive/actions/runs/45648898485) on `191a3a1` — **success**, 36 s, all steps green including **Verify generated specs**.
+- Local gate on the committed tree: `format:check` clean, `lint` 3/3 packages, `typecheck` 4/4 tasks, `test` library 1 suite / 8 tests + extractor 4 suites / 10 tests, `build` 7 files ESM+CJS+types. `extract-tokens check` reports “specs and generated TypeScript are up to date”.
+- Spot-check: `docs/evidence/day2/SPOTCHECK.md`, plan `docs/evidence/day2/spotcheck-plan.json`, m3 captures `docs/evidence/day2/m3/`.
+- Pins, URLs, hashes, commands, limits: `docs/research/DAY2_SOURCES.md`.
+- Day 2 exit gate: a spec exists for every token file, generated TS compiles, 20/20 spot-check matched.
+
+**Deviations**
+
+- Only `material3:1.5.0` contains `*Tokens.kt`; the other 7 JARs are vendored and hash-pinned because Day 2 scope names them and later days need them (ripple/focus ring, window size classes, adaptive scaffolds/navigation, `graphics-shapes`). No token facts were invented for artifacts that contain none.
+- Component behavior specs (`*.behavior.md`) were not part of the Day 2 exit gate and were not generated. They remain a per-component requirement before that component's DONE day (PLAYBOOK §6 step 4); token extraction alone never ticks a component's `spec` cell.
+- `m3.material.io` is a cross-check, not truth. The site's `--mio-theme-v2-*` CSS variables disagree with its printed token tables and are excluded as evidence; only the token tables (and, for the unprinted legacy easing row, the page's embedded resolved token JSON) were used.
+
+**Risks**
+
+- Generated files must never be hand-edited; CI will reject drift. Intentional changes go through the extractor and its `EXPECTED` pins.
+- CI now depends on `dl.google.com` availability for the 8 small JARs. Hashes make the download safe to retry; a transient failure is not a spec failure.
+- `material3:1.6.0-alpha01` exists and is not adopted. Any bump must be reviewed through an ADR, and the `EXPECTED` counts and spot-check must be rerun.
+- The specs describe tokens, not Compose layout/state/spring-routing behavior. Fidelity still depends on the Day 3 diff harness and per-component behavior specs.
+
+**Next step**
+
+- Day 3: build `apps/reference-compose` (Compose M3 1.5.0), the scene manifest, the RN scene renderer, capture/compare scripts, and the HTML diff report. Freeze the emulator profile, bundle identical fonts, prove a trivial scene renders 0-diff 20×, and measure the pixel-noise floor before proposing any threshold change (ADR required).
