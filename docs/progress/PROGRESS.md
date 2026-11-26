@@ -311,7 +311,7 @@ A day closes only when its exit criteria are met with evidence. Slippage is reco
 - `apps/reference-compose/app/src/test/java/com/nasyxrakeeb/m3ereference/ShapeGoldenTest.kt` — JVM golden generator; `tools/shapes/generate-goldens.sh` reproduces and copies it.
 - Focused suite: `pnpm exec jest src/shapes/__tests__/shapes.test.ts --runInBand` — **5/5 tests**.
 - Local gates: `format:check` clean; `lint` 3/3 + `eslint tools`; `typecheck` 4/4; `test` **9 suites / 92 tests**; `build` ESM + CJS + declarations; `scenes:check` 30 typography roles / 37 scenes.
-- Commit: pending at the time of this entry; CI recorded in the follow-up.
+- Commit: `21ab303` (`feat(shapes): add MaterialShapes, RoundedPolygon, and Morph with JVM goldens`). CI run `45819313412` failed at `Verify generated specs` because the golden sat at top-level `docs/specs/shapes-goldens.json`, which the token extractor owns. Fix `9bb532e` moved it to `docs/specs/shapes/goldens.json`; CI run `45820381554` **success**.
 
 **Deviations**
 
@@ -329,3 +329,39 @@ A day closes only when its exit criteria are met with evidence. Slippage is reco
 
 - Day 7: implement `PathCanvas` on Skia and SVG+Reanimated, benchmark the 35-shape cycle / 10 concurrent morphs / clipping, write ADR-002 and finalize ADR-003, and build `Shape`, `MorphingShape`, `ShapeContainer` plus the shape gallery.
 - Before the Day 7 report: complete the `U-25` follow-ups (D-001 pipeline explanation, compensation experiments for the 21 faithful failures, four 1 px baseline scenes, and a proposed text-category ADR metric) and add the docs wording rule to `docs/PLAYBOOK.md`.
+
+---
+
+## Day 6 follow-up | 2026-11-26 | U-25 text follow-up: D-001 pipeline, compensation, baseline, ADR-010
+
+**Status:** Follow-up complete. No gate, threshold, token, or scene changed. **ADR-010 is proposed and awaits Nasyx’s approval before Day 11.**
+
+**Done**
+
+- **U-25.1 — D-001 pipeline.** Traced the three RN quantization points with source/line citations: `TextAttributes.effectiveFontSize` (`ceil` to integer px), `CustomLineHeightSpan` (`ceil` line height + integer `ceil`/`floor` half-leading), and `TextAttributeProps.letterSpacing` (em against the integer font size). A fourth, separate mismatch is rasterization: RN `CustomStyleSpan` sets `isSubpixelText`/`isLinearText`, while Compose `TextMotion.Static` hints with subpixel positioning off. Compose keeps font size, line box, and half-leading fractional.
+- **U-25.1 — compensation experiment.** Added a harness-only `M3E_RN_TEXT_COMP` switch and generated C1–C4 overrides; Compose stayed token-exact. On the 21 faithful failures: baseline **17,445** AA px (0/21); C1 font-size snap **14,121** (2/21); C2 + per-role tracking **1,690** (20/21); C3 + line-height snap **1,492** (20/21, but +1 px layout height and `titleLarge` regression); C4 + ink-bbox width **994** (21/21, zero width-bbox delta, but several per-role regressions). All are per-string/per-density fits; none is shippable.
+- **U-25.2 — four matched-grid 1 px baselines.** `displaySmall` and `headlineSmall` (± emphasized) are layout-exact but shift the ink top by +1 px. Predicted baseline offsets from exact device metrics: **+0.779 px** (displaySmall: Compose 90.2207 vs RN 91) and **+0.467 px** (headlineSmall: Compose 63.5332 vs RN 64). Both stacks use linear+subpixel text in the matched grid, so the integer half-leading baseline offset alone rasterizes as +1 px; `lineHeight` cannot fix it without a 1 px layout-height change.
+- **U-25.3 — ADR-010.** Proposed a text-category metric: layout-box height exact; width ≤5 px faithful / ≤1 px matched; ink-bbox vertical ±1 px baseline rule; AA budget normalized by text ink and glyph count (faithful ≤450 AA px / 1,000 ink px and ≤250 px/glyph; matched ≤15 / 1,000 and ≤15/glyph; compensated tier ≤150 / 1,000 and ≤25/glyph if separately approved). Includes all 30 roles and dialog/list projections. **Not applied.**
+- **U-25.4 — wording rule.** Added PLAYBOOK §9.1: never claim “pixel-perfect text”; state the mode, layout deltas, ink px, glyphs, AA/1,000 ink, and AA/glyph.
+
+**Evidence**
+
+- `docs/evidence/day5/typography/compensation/README.md` — pipeline citations, C1–C4 definitions, 21-scene table, bbox deltas, conclusions, reproduction.
+- `docs/evidence/day5/typography/compensation.json` — generated C1–C4 overrides.
+- `docs/evidence/day5/typography/baseline/README.md` — four-scene arithmetic, observed bboxes, why `lineHeight` cannot fix it.
+- `docs/evidence/day5/typography/baseline/font-metrics.log` — on-device `FontMetricsInt`/`FontMetrics` probe for 18 sizes.
+- `docs/DECISIONS.md` ADR-010 — proposed metric, 30-role table, dialog/list projections, alternatives.
+- `docs/PLAYBOOK.md` §9.1 — documentation wording rule.
+- `docs/KNOWN_DEVIATIONS.md` D-001 and `docs/UNVERIFIED.md` U-25 updated with the corrected rasterization-mode cause and the follow-up numbers.
+- Diagnostic runs: `/private/var/folders/_n/mz9_62997j5c7cy66p0bn5mw0000gn/T/opencode/m3e-u25-{c1,c2,c3,c4}` (raw captures not committed).
+- Harness: `apps/gallery/src/harness/text-compensation.generated.ts`, `SceneHarness.tsx` (`textComp` route), `tools/pixel/lib.mjs` (`M3E_RN_TEXT_COMP`).
+
+**Open**
+
+- Nasyx approval of ADR-010 before Day 11. The faithful/matched budgets and the ±1 px baseline rule are proposals; the current five-scene gate and 0.05% threshold remain in force.
+- The C4 tier is unused unless a compensation layer is separately approved; it is not recommended for 1.0.0.
+- Commit: pending at the time of this entry; CI recorded in the follow-up.
+
+**Next step**
+
+- Day 7: `PathCanvas` Skia-vs-SVG spike, ADR-002/ADR-003, `Shape`/`MorphingShape`/`ShapeContainer`, and the shape gallery.

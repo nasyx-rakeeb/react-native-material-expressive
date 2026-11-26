@@ -1,0 +1,21 @@
+# Android Paint FontMetrics probe — Roboto Flex, wght 500, API 31 emulator (420 dpi)
+# Captured 2026-11-26T13:22:20Z from com.nasyxrakeeb.m3ereference (debug).
+# Fields: size=<px> ascent/descent/top/bottom/leading = FontMetricsInt; f* = float FontMetrics.
+M3E_FM size=28.875 ascent=-27 descent=7 top=-35 bottom=9 leading=0 fascent=-26.78833 fdescent=7.0495605 ftop=-34.697937 fbottom=8.459473 fleading=0.0
+M3E_FM size=29.0 ascent=-27 descent=7 top=-35 bottom=9 leading=0 fascent=-26.904297 fdescent=7.080078 ftop=-34.848145 fbottom=8.496094 fleading=0.0
+M3E_FM size=31.5 ascent=-29 descent=8 top=-38 bottom=10 leading=0 fascent=-29.223633 fdescent=7.6904297 ftop=-37.852295 fbottom=9.228516 fleading=0.0
+M3E_FM size=32.0 ascent=-30 descent=8 top=-39 bottom=10 leading=0 fascent=-29.6875 fdescent=7.8125 ftop=-38.453125 fbottom=9.375 fleading=0.0
+M3E_FM size=36.75 ascent=-34 descent=9 top=-45 bottom=11 leading=0 fascent=-34.09424 fdescent=8.972168 ftop=-44.16101 fbottom=10.766602 fleading=0.0
+M3E_FM size=37.0 ascent=-34 descent=9 top=-45 bottom=11 leading=0 fascent=-34.32617 fdescent=9.033203 ftop=-44.461426 fbottom=10.839844 fleading=0.0
+M3E_FM size=57.75 ascent=-54 descent=14 top=-70 bottom=17 leading=0 fascent=-53.57666 fdescent=14.099121 ftop=-69.395874 fbottom=16.918945 fleading=0.0
+M3E_FM size=58.0 ascent=-54 descent=14 top=-70 bottom=17 leading=0 fascent=-53.808594 fdescent=14.160156 ftop=-69.69629 fbottom=16.992188 fleading=0.0
+M3E_FM size=63.0 ascent=-58 descent=15 top=-76 bottom=19 leading=0 fascent=-58.447266 fdescent=15.380859 ftop=-75.70459 fbottom=18.457031 fleading=0.0
+M3E_FM size=73.5 ascent=-68 descent=18 top=-89 bottom=22 leading=0 fascent=-68.18848 fdescent=17.944336 ftop=-88.32202 fbottom=21.533203 fleading=0.0
+M3E_FM size=74.0 ascent=-69 descent=18 top=-89 bottom=22 leading=0 fascent=-68.65234 fdescent=18.066406 ftop=-88.92285 fbottom=21.679688 fleading=0.0
+M3E_FM size=84.0 ascent=-78 descent=21 top=-101 bottom=25 leading=0 fascent=-77.92969 fdescent=20.507812 ftop=-100.93945 fbottom=24.609375 fleading=0.0
+M3E_FM size=94.5 ascent=-88 descent=23 top=-114 bottom=28 leading=0 fascent=-87.6709 fdescent=23.07129 ftop=-113.556885 fbottom=27.685547 fleading=0.0
+M3E_FM size=95.0 ascent=-88 descent=23 top=-115 bottom=28 leading=0 fascent=-88.134766 fdescent=23.19336 ftop=-114.157715 fbottom=27.832031 fleading=0.0
+M3E_FM size=118.125 ascent=-110 descent=29 top=-142 bottom=35 leading=0 fascent=-109.58862 fdescent=28.839111 ftop=-141.9461 fbottom=34.606934 fleading=0.0
+M3E_FM size=119.0 ascent=-110 descent=29 top=-143 bottom=35 leading=0 fascent=-110.40039 fdescent=29.052734 ftop=-142.99756 fbottom=34.86328 fleading=0.0
+M3E_FM size=149.625 ascent=-139 descent=37 top=-180 bottom=44 leading=0 fascent=-138.81226 fdescent=36.52954 ftop=-179.7984 fbottom=43.83545 fleading=0.0
+M3E_FM size=150.0 ascent=-139 descent=37 top=-181 bottom=44 leading=0 fascent=-139.16016 fdescent=36.621094 ftop=-180.24902 fbottom=43.945312 fleading=0.0

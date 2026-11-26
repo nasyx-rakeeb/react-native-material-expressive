@@ -191,3 +191,84 @@ Every accepted decision has a date and evidence. Day 0 decisions are research-on
   - Generated expressive dark remains opt-in (ADR-006); it is now explicitly MCU-2021-spec-verified.
   - `KNOWN_DEVIATIONS.md` D-002 records the on-container tone drift so no later doc can accidentally claim full Compose parity for generated variants.
   - The default provider still ships expressive light + standard dark; `mode="expressive"` switches only the dark side to the generated expressive scheme. A seed-generated light scheme requires `createColorScheme()` + `lightScheme`.
+
+---
+
+## ADR-010 — Text-category metric: ink-normalized AA plus a documented baseline rule
+
+- **Date:** 2026-11-26
+- **Status:** **Proposed — do not apply until Nasyx approves.** No gate, threshold, scene, or token is changed by this ADR.
+- **Context:**
+  - The PLAYBOOK §7 gate is `≤0.05%` AA-aware differing pixels of the **whole image** plus **zero** differing content-bbox edges. That is appropriate for solid/rect/shadow scenes, where the content fills a large part of the image.
+  - For text it is the wrong denominator. On the 30 one-line type scenes (`840×525 = 441,000 px`, budget `220.5 px`), the faithful run has **17,798 AA px** — **10.64% of the text ink** but only **0.040% of the image**. The 0.05% image budget is smaller than the AA difference of a single 14sp label (`labelLarge` alone is 397 AA px), so any Day 11 component with a text label would fail even when its geometry is exact.
+  - The matched-grid run (Compose `TextMotion.Animated`, integer physical font sizes, floored offsets) shows the achievable parity: **269 AA px**, **0.16% of ink**, 26/30 byte-identical, four scenes with a **+1 px** baseline (explained in U-25.2).
+  - The faithful residual is inherent to RN's integer text pipeline: font size is `ceil`ed, line height and half-leading are integer, letter spacing is converted to em against the integer size; the faithful run also differs in rasterization mode (Compose `TextMotion.Static` hints with subpixel positioning off, RN is linear with subpixel on). U-25.1 measured four compensation strategies; none is a shippable, string- and density-independent fix.
+- **Decision (proposed):**
+  1. **Separate category.** Text scenes and components with text are gated in a **text category** with the metric below. Non-text pixels in the same render keep the existing `≤0.05%` image-area gate. The standard five-scene gate is unchanged.
+  2. **Geometry.**
+     - Component layout box: **±0 px**, unchanged.
+     - Text layout box: **height Δ = 0 px**; **width Δ ≤ 5 px faithful / ≤ 1 px matched**. Measured: faithful max **4.57 px** (24/30 > 1 px, 18/30 > 2 px, 0/30 > 5 px); matched max **1.97 px** (17/30 > 1 px, 0/30 > 2 px); height max **0.00001 px**.
+     - Ink bbox: vertical edges **±1 px** (the documented baseline rule; cause and arithmetic in U-25.2). Horizontal edges are reported and bounded by the layout-width rule above. A strict ±0 px ink bbox is not achievable in faithful mode without per-role compensation; if Nasyx requires it, the only path is the C4-style lookup table, which this ADR does **not** recommend.
+  3. **AA budget, normalized by text ink and glyph count.** `AA_px` is the AA-aware differing pixel count inside the union of text ink (pixels that are not exactly the scene background). The budget is the **tighter** of an ink ratio and a per-glyph cap:
+     - **Faithful (shipped styles):** `AA_px ≤ 450 per 1,000 ink px` **and** `AA_px ≤ 250 per glyph`. Measured maxima: **410 per 1,000** (`labelMediumEmphasized`, 41.00%) and **229.9 per glyph** (`displaySmallEmphasized`). Headroom ≈ 9%.
+     - **Matched (diagnostic parity reference):** `AA_px ≤ 15 per 1,000 ink px` **and** `AA_px ≤ 15 per glyph`. Measured maxima: **12.7 per 1,000** (`headlineSmall`, 1.27%) and **13.1 per glyph** (`displaySmallEmphasized`).
+     - **Compensated (only if a compensation layer is separately approved):** `AA_px ≤ 150 per 1,000 ink px` **and** `AA_px ≤ 25 per glyph`. The measured C4 run is **21/21**, **994 AA px**, maxima **131.9 per 1,000** (`bodySmall`, 13.19%) and **22.3 per glyph** (`displaySmallEmphasized`). C4 is a per-string fit and is **not** proposed for shipping by this ADR.
+  4. **Reporting.** Every text report states the mode (faithful/matched/compensated), the ink pixel count, the glyph count, `AA_px`, `AA_px / 1,000 ink`, `AA_px / glyph`, the layout width/height deltas, and the ink-bbox deltas. It never says "pixel-perfect text"; it says, for example, "layout-exact; AA differs by 28.1% of text ink (6,682 px) on this dialog".
+- **Measured roles (all 30, 8-glyph `"Material"` sample):**
+
+| Role | sp / line / weight | Faithful AA px | Faithful AA / ink | Faithful AA / glyph | Matched AA px | Matched AA / ink | Matched AA / glyph |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| bodyLarge | 16 / 24 / 400 | 5 | 0.25% | 0.6 | 0 | 0.00% | 0.0 |
+| bodyMedium | 14 / 20 / 400 | 676 | 40.58% | 84.5 | 0 | 0.00% | 0.0 |
+| bodySmall | 12 / 16 / 400 | 334 | 26.38% | 41.8 | 0 | 0.00% | 0.0 |
+| displayLarge | 57 / 64 / 400 | 2745 | 12.79% | 343.1 | 0 | 0.00% | 0.0 |
+| displayMedium | 45 / 52 / 400 | 1629 | 11.98% | 203.6 | 0 | 0.00% | 0.0 |
+| displaySmall | 36 / 44 / 400 | 949 | 10.60% | 118.6 | 63 | 0.70% | 7.9 |
+| headlineLarge | 32 / 40 / 400 | 3 | 0.04% | 0.4 | 0 | 0.00% | 0.0 |
+| headlineMedium | 28 / 36 / 400 | 993 | 17.56% | 124.1 | 0 | 0.00% | 0.0 |
+| headlineSmall | 24 / 32 / 400 | 58 | 1.39% | 7.3 | 53 | 1.27% | 6.6 |
+| labelLarge | 14 / 20 / 500 | 397 | 21.83% | 49.6 | 0 | 0.00% | 0.0 |
+| labelMedium | 12 / 16 / 500 | 375 | 27.57% | 46.9 | 0 | 0.00% | 0.0 |
+| labelSmall | 11 / 16 / 500 | 219 | 18.58% | 27.4 | 0 | 0.00% | 0.0 |
+| titleLarge | 22 / 28 / 400 | 598 | 16.86% | 74.8 | 0 | 0.00% | 0.0 |
+| titleMedium | 16 / 24 / 500 | 2 | 0.09% | 0.3 | 0 | 0.00% | 0.0 |
+| titleSmall | 14 / 20 / 500 | 397 | 21.83% | 49.6 | 0 | 0.00% | 0.0 |
+| bodyLargeEmphasized | 16 / 24 / 500 | 5 | 0.22% | 0.6 | 0 | 0.00% | 0.0 |
+| bodyMediumEmphasized | 14 / 20 / 500 | 326 | 17.92% | 40.8 | 0 | 0.00% | 0.0 |
+| bodySmallEmphasized | 12 / 16 / 500 | 311 | 22.87% | 38.9 | 0 | 0.00% | 0.0 |
+| displayLargeEmphasized | 57 / 64 / 500 | 1236 | 5.01% | 154.5 | 0 | 0.00% | 0.0 |
+| displayMediumEmphasized | 45 / 52 / 500 | 1696 | 10.95% | 212.0 | 0 | 0.00% | 0.0 |
+| displaySmallEmphasized | 36 / 44 / 500 | 1839 | 17.90% | 229.9 | 105 | 1.03% | 13.1 |
+| headlineLargeEmphasized | 32 / 40 / 500 | 1 | 0.01% | 0.1 | 0 | 0.00% | 0.0 |
+| headlineMediumEmphasized | 28 / 36 / 500 | 714 | 11.19% | 89.3 | 0 | 0.00% | 0.0 |
+| headlineSmallEmphasized | 24 / 32 / 500 | 51 | 1.08% | 6.4 | 48 | 1.01% | 6.0 |
+| labelLargeEmphasized | 14 / 20 / 700 | 474 | 21.65% | 59.3 | 0 | 0.00% | 0.0 |
+| labelMediumEmphasized | 12 / 16 / 700 | 663 | 41.00% | 82.9 | 0 | 0.00% | 0.0 |
+| labelSmallEmphasized | 11 / 16 / 700 | 397 | 27.65% | 49.6 | 0 | 0.00% | 0.0 |
+| titleLargeEmphasized | 22 / 28 / 500 | 222 | 5.51% | 27.8 | 0 | 0.00% | 0.0 |
+| titleMediumEmphasized | 16 / 24 / 700 | 9 | 0.33% | 1.1 | 0 | 0.00% | 0.0 |
+| titleSmallEmphasized | 14 / 20 / 700 | 474 | 21.65% | 59.3 | 0 | 0.00% | 0.0 |
+| **Total (240 glyphs)** | — | **17,798** | **10.64%** | **74.2** | **269** | **0.16%** | **1.1** |
+
+  Ink is the Compose non-background pixel count for the 8-glyph sample; matched ink totals 167,475 px. Per-role layout deltas are in `docs/evidence/day5/typography/README.md`.
+- **Projections (at 420 dpi, 2.625×; glyph counts include spaces):**
+
+| Screen | Text | Glyphs | Ink px | Faithful AA px | Faithful / ink | Faithful / image | C4 AA px | C4 / ink | Matched AA px | Matched / ink |
+|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| Dialog | `headlineSmall` "Delete file?" (12) + `bodyMedium` 71-char body + two `labelLarge` actions (12) | 95 | 23,777 | 6,682 | 28.1% | 1.515% | 107 | 0.4% | 80 | 0.3% |
+| List (3 items) | 3 × `bodyLarge` "Project files" (13) + 3 × `bodyMedium` "Updated 2 hours ago" (19) | 96 | 21,757 | 4,841 | 22.2% | 1.098% | 78 | 0.4% | 0 | 0.0% |
+
+  Image percentages use the 441,000 px scene; the current 0.05% budget is 220.5 px. The faithful dialog and list are **30× and 22× over** the image budget, but **inside** the proposed 450/1,000 ink and 250/glyph caps. The matched dialog's 80 px is almost entirely the `headlineSmall` +1 px baseline (12 glyphs × 6.6 px/glyph).
+- **Why this is the right denominator:** a sub-pixel baseline/size shift changes the pixels on glyph **edges**, whose count scales with glyph perimeter (≈ font size × glyph count), not with image area. The measured `AA/glyph ÷ font px` is **0.48–2.63** across the 21 failures (the top group is **2.29–2.63**: `displayLarge`, `bodyMedium`, `displaySmallEmphasized`, `labelMediumEmphasized`) and **≈0** for roles whose font size and line height are integer-exact. Ink and glyph normalization capture that; image area does not.
+- **Alternatives rejected:**
+  - **Keep the image-area gate for text.** Fails every realistic dialog/list and any Day 11 component with a 14sp label; would force per-component thresholds, which is less honest than one text metric.
+  - **Require byte-identical text.** Impossible without replacing RN's text engine; the matched grid still has four +1 px baselines.
+  - **Drop the 30 type scenes.** Loses regression coverage for tokens, weights, line heights, and the font fallback.
+  - **Ship C2/C4 per-role compensation.** String- and density-specific; changes shipped token values; overfits one 8-glyph sample. Rejected for 1.0.0.
+  - **Gate on exact pixels only.** Ignores the AA residual that the product actually ships; contradicts the existing AA-aware pipeline.
+- **Consequences if approved:**
+  - Day 11 components with text can be diffed with a meaningful budget; non-text geometry stays at ±0 px.
+  - Reports and docs must use the wording rule in PLAYBOOK §9.1: never "pixel-perfect text"; state the mode, ink, glyphs, and measured AA ratio.
+  - The faithful budget is a **regression ceiling**, not a parity claim. The matched grid remains the parity reference.
+  - The C4 tier stays unused unless a compensation layer is separately approved; if approved, the budget tightens to 150/1,000 ink and 25/glyph.
+- **Evidence:** `docs/evidence/day5/typography/compensation/README.md` (D-001 pipeline + C1–C4), `docs/evidence/day5/typography/baseline/README.md` (+1 px baseline arithmetic), `docs/evidence/day5/typography/README.md` (30-role faithful/matched tables), `docs/evidence/day5/typography/compensation.json`, `runs/{faithful,matched-grid}/results.json`.

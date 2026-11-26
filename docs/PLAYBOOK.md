@@ -247,6 +247,26 @@ Everything below is **in scope for 1.0**. Names are indicative; the Compose publ
 - Supply chain: exact-pin dev deps, lockfile committed, `npm audit` clean, provenance-enabled publish, SBOM, `NOTICE`.
 - Versioning: Changesets; `1.0.0-rc.N` before `1.0.0`.
 
+### 9.1 Documentation wording rules (added 2026-11-26, U-25)
+
+Text is **not** described as pixel-perfect. React Native's integer text pipeline guarantees a
+sub-pixel residual even when the layout box is exact (ADR-010, D-001). Every doc, README, gallery
+label, release note, and report follows these rules:
+
+- **Never write "pixel-perfect text", "identical text", or "byte-identical text"** unless the
+  measured exact-diff count is zero. State the mode instead: `faithful`, `matched`, or
+  `compensated`.
+- **Say what is measured**, with numbers: layout box height/width deltas, AA-aware pixels, text ink
+  pixels, glyph count, `AA px / 1,000 ink px`, and `AA px / glyph`.
+- **Use "layout-exact"** only when the text layout-box height delta is 0 px and the width delta is
+  inside the documented bound (ADR-010: ≤5 px faithful, ≤1 px matched).
+- **Apply the ±1 px baseline rule** explicitly where it is the cause (four matched-grid roles;
+  see U-25.2). Do not hide it behind a rounded "0 px" claim.
+- **Keep verification labels precise:** "Compose-verified" only for an Android pixel diff;
+  "spec-verified" per ADR-005; "MCU-spec-verified" per ADR-009.
+- **Example:** "Layout-exact (height Δ 0 px, width Δ 0.4 px); AA differs by 28.1% of text ink
+  (6,682 px) on this dialog." Not: "Text is pixel-perfect."
+
 ---
 
 ## 10. DAY-BY-DAY EXECUTION PLAN (60 days)

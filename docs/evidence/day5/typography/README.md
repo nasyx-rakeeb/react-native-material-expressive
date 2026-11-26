@@ -170,8 +170,8 @@ captures/diff bundle.
 This is a diagnostic, not a shipping mode. It isolates the type tokens from
 the RN text engine by normalizing the rendering grid:
 
-- Compose `TextMotion.Animated` (hinting/subpixel off, matching RN's
-  `isSubpixelText = true` / `isLinearText = true` behavior), integer physical
+- Compose `TextMotion.Animated` (linear text with subpixel positioning on,
+  matching RN's flags; see U-25.2), integer physical
   font sizes (`textSizeMode=ceil`), and floored pixel offsets
   (`textPosMode=floor`). React Native is unchanged.
 - Run: 1 boot, 1 repeat per scene, 35 scenes, 70 renders.
