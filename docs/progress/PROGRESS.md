@@ -332,6 +332,7 @@ A day closes only when its exit criteria are met with evidence. Slippage is reco
 
 ---
 
+
 ## Day 6 follow-up | 2026-11-26 | U-25 text follow-up: D-001 pipeline, compensation, baseline, ADR-010
 
 **Status:** Follow-up complete. No gate, threshold, token, or scene changed. **ADR-010 is proposed and awaits Nasyx’s approval before Day 11.**
@@ -365,3 +366,56 @@ A day closes only when its exit criteria are met with evidence. Slippage is reco
 **Next step**
 
 - Day 7: `PathCanvas` Skia-vs-SVG spike, ADR-002/ADR-003, `Shape`/`MorphingShape`/`ShapeContainer`, and the shape gallery.
+
+## Day 7 | 2026-11-26 | Renderer decision, shape primitives, and static Compose shape diff
+
+**Status:** PASS. Day 7 exit is met: ADR-002 is accepted with measured binary-size, build/install-friction and RN-child-clipping data; ADR-003 is finalized; `Shape`, `MorphingShape` and `ShapeContainer` are implemented; the gallery shows all 35 shapes plus animated morphs; the static 35-shape grid diff has **0 AA-aware differing pixels**. Physical-device frame-time confirmation remains `U-29`; it does not reopen the functional renderer choice.
+
+**Done**
+
+- Implemented the renderer boundary and primitives: `PathCanvas` (the only file importing `react-native-svg`), `shapeSource` (named/custom polygon resolution, geometry and morph-endpoint caches), `Shape`, `MorphingShape` and `ShapeContainer` (SVG `clipPath` + `foreignObject` for real RN children). React primitives are exported from `src/shapes/components.ts` and the package root, keeping the shape engine React-free.
+- Added `react-native-svg@15.16.0` as the library devDependency and `>=15.0.0` peer; ADR-003 now lists the final peers and the tested Expo 58 / RN 0.88.1 / Reanimated 4.7.1 / Worklets 0.13.0 / SVG 15.16.0 matrix.
+- Built the renderer spike: `cycle` (35-shape morph cycle), `concurrent` (10 morphs), `clip` (gradient clipped to a morphing path), `clipchildren` (RN children clipped to a morph), and `grid` (all 35 shapes), on both SVG and Skia. All modes run in the release gallery on Hermes/New Architecture.
+- Fixed the animated crash: `interpolateGeometry` was a worklet but its helper `interpolate` was not, so the UI runtime tried to call it remotely (`Tried to synchronously call a Remote Function`). Marked `interpolate` as a worklet and inlined `Math.fround`; `MorphingShape`, `ShapeContainer` and `PathCanvas` now animate on the UI thread.
+- Measured the renderer cost: release APK **203,432,215 B** (SHA-256 `0305709…c5ca`) with both renderers. Per `arm64-v8a`: SVG **771,984 B (0.77 MB)**; Skia **29,780,096 B (29.78 MB)** including `libwebgpu_dawn` even though WebGPU is unused. Across all four ABIs Skia adds **115,468,444 B**. Skia required a from-source native build (14m 25s first build); SVG's native artifact is prebuilt.
+- Captured clipping evidence: SVG clips three real RN `View` bands and an RN `Text` to a morphing path; Skia can clip only Skia-drawn content. This is the deciding functional constraint for `ShapeContainer`.
+- Added the static shape harness: a Compose `ShapeGridActivity` and an RN `ShapeDiffScreen` (5×7, 64dp shapes, 72dp pitch, `#6750A4` on white), plus `tools/shapes/diff-static.mjs` using the existing AA-aware pixelmatch. Result: **0 AA-aware differing pixels**; 12,157 exact pixels (1.0105%, all anti-aliasing fringe), max channel delta 68, mean absolute delta 0.0163; every shape in the same 64dp cell (zero layout-edge delta).
+- Added the gallery: `m3egallery://?screen=shapes` shows all 35 shapes, five animated morph rows and a `ShapeContainer` demo. Screenshots in `docs/evidence/day7/gallery/`.
+- Extended `shapes.test.ts` with shape-source tests (named/custom resolution, unknown-name error, stable geometry cache identity, ordered morph-pair cache identity). Focused suite **14/14**.
+
+**Evidence**
+
+- `docs/DECISIONS.md` — ADR-002 (SVG for 1.0.0, Skia rejected) and ADR-003 (final peers).
+- `docs/evidence/day7/renderer/README.md` — APK hash/size, per-ABI library table, build friction, reproduce commands.
+- `docs/evidence/day7/frame-times.md` — emulator-only frame table and the physical-device adb procedure for `U-29`.
+- `docs/evidence/day7/clipping/` — SVG vs Skia clipping screenshots and the visual-clipping caveat.
+- `docs/evidence/day7/static-diff/` — `compose.png`, `rn.png`, `diff.png`, `results.json`, `README.md`.
+- `docs/evidence/day7/gallery/` — grid and morph/clip screenshots.
+- `apps/reference-compose/.../ShapeGridActivity.kt`, `ShapeCatalog.kt`, `apps/gallery/src/shapes/ShapeDiffScreen.tsx`, `tools/shapes/diff-static.mjs`.
+- `docs/COMPONENT_MATRIX.md` — `MaterialShapes`/`RoundedPolygon`/`Morph` diff and gallery boxes ticked; `Shape`, `MorphingShape`, `ShapeContainer` rows added.
+- `docs/UNVERIFIED.md` — `U-26`, `U-27`, `U-30` resolved; `U-29` updated with the measured emulator numbers and remains open.
+- JVM golden test: `cd apps/reference-compose && ./gradlew :app:testDebugUnitTest` — **BUILD SUCCESSFUL**.
+- Local gates: `format:check` clean; `lint` 3/3 + `eslint tools`; `typecheck` 4/4; `test` **9 suites / 101 tests**; `build` ESM + CJS + declarations; `scenes:check` 37 scenes (core 5 / text 32).
+- Code commit: `40d3142` — `feat(shapes): add SVG shape primitives, renderer spike, and static shape diff`.
+
+**Deviations**
+
+- Frame times are **emulator-only / SwiftShader** and pinned at the 60 Hz vsync ceiling. They are not a production performance claim and did not decide ADR-002.
+- The static diff's exact-difference count is 1.0105% because every shape edge has an anti-aliasing fringe; the AA-aware mask is empty. This is reported as a renderer probe, not the five-scene gate.
+- `ShapeContainer` clips visually only; touch targets remain rectangular. Path-accurate hit-testing is not part of 1.0.
+- The primitives have no RNTL render tests yet; they are device-verified through the gallery and the static diff. The matrix `tests` boxes stay open until those tests exist.
+- `react-native-skia` remains a gallery devDependency for the spike only; it is not a library dependency or peer.
+
+**Risks**
+
+- A physical mid-range device may not hold 60 fps for 10 concurrent morphs. `U-29` records the exact procedure; if it fails, revisit with a new ADR rather than assuming Skia fixes it (Skia cannot clip RN children).
+- The Worklets Babel plugin is an install requirement. A custom Babel setup that omits it will fail at runtime; the package README and ADR-003 document it.
+- Animated morph raster parity against Compose is not diffed yet. Day 7 verifies static shapes and the animated path's frame behavior; frame-sampled motion diffs start with the motion work.
+- The static diff covers one device profile (1080×1920, 2.625×). Other densities remain part of the Day 42 compatibility matrix.
+
+**Next step**
+
+- Day 8: spring tokens → solver, Reanimated `withSpring` comparison, analytic fallback if deviation >1%, `MotionScheme` (expressive/standard), `useSpring`/`useSpatialSpring`/`useEffectsSpring`, and reduce-motion mapping.
+- Before Day 11: answer ADR-010 questions (a)–(d), run C2 at ≥2 density/font-scale combinations including font scale 1.3, and revise ADR-010.
+
+---
