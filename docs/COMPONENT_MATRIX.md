@@ -30,10 +30,10 @@
 | Component | Authority / source | spec | impl | diff | motion | iOS | a11y | tests | docs | gallery | DONE |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | `M3Provider` / theme | `MaterialTheme.kt`, `MaterialExpressiveTheme` | [ ] | [ ] | — | — | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
-| Color schemes & roles | `ColorScheme.kt`, `ColorLightTokens`, `ColorDarkTokens`, `PaletteTokens` | [ ] | [ ] | [ ] | — | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
-| Dynamic color (Android 12+) | Native module + fallback; `@material/material-color-utilities` 0.4.0 | [ ] | [ ] | [ ] | — | n/a | [ ] | [ ] | [ ] | [ ] | [ ] |
-| Typography (baseline + emphasized) | `Typography.kt`, `TypeScaleTokens.kt`, `TypefaceTokens.kt` | [ ] | [ ] | [ ] | — | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
-| Shape tokens | `ShapeTokens.kt`, `Shapes.kt` | [ ] | [ ] | [ ] | — | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| Color schemes & roles | `ColorScheme.kt`, `ColorLightTokens`, `ColorDarkTokens`, `PaletteTokens` | [x] | [x] | [ ] | — | [ ] | [ ] | [x] | [x] | [ ] | [ ] |
+| Dynamic color (Android 12+) | Native module + fallback; `@material/material-color-utilities` 0.4.0 | [x] | [x] | [ ] | — | n/a | [ ] | [x] | [x] | [ ] | [ ] |
+| Typography (baseline + emphasized) | `Typography.kt`, `TypeScaleTokens.kt`, `TypefaceTokens.kt` | [x] | [x] | [ ] | — | [ ] | [ ] | [x] | [x] | [ ] | [ ] |
+| Shape tokens | `ShapeTokens.kt`, `Shapes.kt` | [x] | [x] | [ ] | — | [ ] | [ ] | [x] | [x] | [ ] | [ ] |
 | `MaterialShapes` (35 shapes) | `MaterialShapes.kt`, `graphics-shapes` 1.1.0 | [x] | [x] | [ ] | — | [ ] | — | [x] | [x] | [ ] | [ ] |
 | `RoundedPolygon` / `Morph` engine | `graphics-shapes` sources | [x] | [x] | [ ] | — | [ ] | — | [x] | [x] | [ ] | [ ] |
 | Motion scheme & spring hooks | `MotionScheme.kt`, `StandardMotionTokens`, `ExpressiveMotionTokens` | [ ] | [ ] | — | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
@@ -52,6 +52,26 @@
 Day 6 note: `MaterialShapes` and the `RoundedPolygon` / `Morph` engine are geometry-,
 feature-, and morph-golden complete (`docs/evidence/day6/shapes/README.md`). Their diff,
 iOS, and gallery boxes stay open because `PathCanvas` and the shape gallery are Day 7.
+
+**Foundation evidence (Days 2–6):**
+
+- **Color schemes & roles** — `docs/specs/tokens.json` (48 light + 48 dark roles, 91 palette
+  roles); `packages/react-native-material-expressive/src/color/`; 432 MCU schemes / 20,736
+  values and 108 Compose-mapped schemes / 5,184 values at **0 differences**; defaults 144/144
+  exact. Evidence: `docs/evidence/day4/color/README.md`, commit `86e5dba`. The `diff` box stays
+  open because only scene fills are screenshot-diffed (Day 3 gate); the scheme itself is
+  value-golden verified.
+- **Dynamic color** — Android `M3EDynamicColor` TurboModule; API 31 `tones` payload 96/96
+  exact, unsupported fallback verified; API 34+ role resources are source-derived (`U-24`).
+  Evidence: `docs/evidence/day4/color/README.md`, commit `86e5dba`.
+- **Typography** — `docs/specs/typography.json` (30 roles); `src/typography/`; layout height
+  exact for all 30 roles; matched-grid 30/30 inside the 0.05% AA gate, faithful 9/30 with
+  `D-001`. Evidence: `docs/evidence/day5/typography/README.md`, commit `0122873`. The `diff`
+  box stays open until ADR-010 is approved; no text is called pixel-perfect.
+- **Shape tokens** — `docs/specs/tokens.json` (`ShapeTokens` 24, `ShapeKeyTokens` 15);
+  generated `shapes` object with all 15 shape values; corner-radius scale evidence in
+  `docs/evidence/day2/m3/shape-corner-radius-scale.txt`; extractor drift gate in CI. Commit
+  `191a3a1`.
 
 ## Actions
 
@@ -184,7 +204,7 @@ These are **in Compose Material3 1.5.0 and/or the m3 catalog but missing or misn
 | XR components (`nav-bar`, `nav-rail`, XR app bars/dialogs/toolbars) | **Defer** | m3 foundations/xr | Out of 1.0 scope; not in §8. BACKLOG. |
 | Banner, Avatar, DataTable, Accordion | **Keep as Paper parity extras** | Paper only; no Compose reference | Spec-verified against m3/Paper measurements + self-regression baseline; never Compose-verified (ADR-005). |
 
-## Matrix counts (Day 0)
+## Matrix counts (Day 7 in progress)
 
 - Foundations/primitives rows: 19
 - Component rows: 53 (actions 10, selection/input 14, containment 14, navigation 12, feedback 3)
@@ -193,4 +213,7 @@ These are **in Compose Material3 1.5.0 and/or the m3 catalog but missing or misn
 - m3 catalog families reconciled: **37** (excluding XR/index pages)
 - Compose 1.5.0 public functions inventoried: **194** (see `docs/research/DAY0_SOURCES.md`)
 
-Nothing above is implemented; every box is intentionally unticked. Day 0 is research only.
+**Status (Day 7):** Days 0–6 are complete for the foundations recorded above. Component
+work starts after the Day 7 renderer decision. `M3Provider`/theme, `Surface`, `Text`,
+`Icon`, motion, interaction, and overlay primitives remain open (Days 8–10); see
+`docs/progress/PROGRESS.md` for the current session.
