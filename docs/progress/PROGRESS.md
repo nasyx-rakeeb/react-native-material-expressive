@@ -217,7 +217,7 @@ A day closes only when its exit criteria are met with evidence. Slippage is reco
 - Executable gates: `src/color/__tests__/{composeGoldens,mcuGoldens}.test.ts`, `src/theme/__tests__/{dynamicColor,resolveTheme}.test.ts`.
 - Local gates on the committed tree: `format:check` clean; `lint` 3/3 tasks + `eslint tools`; `typecheck` 4/4; `test` 7 suites / **71 tests**, coverage 81.91% statements / 89.94% branches / 75.60% functions / 82.22% lines; `build` 18 files ESM + CJS + types; `scenes:check` 7 scenes; gallery `typecheck`/`lint` clean.
 - No pixel threshold, gate scene, or fidelity baseline changed. The Day 3 gate scene remains 4 AA-aware px / 0.0009% against the unchanged 220.5 px / 0.05% budget.
-- Commit and CI: recorded in the Day 4 closeout follow-up.
+- Commit: `86e5dba`; CI run [`45770339311`](https://github.com/nasyx-rakeeb/react-native-material-expressive/actions/runs/45770339311) — **success**, all steps green (spec drift, scenes, format, lint, typecheck, test, build).
 
 **Deviations**
 
