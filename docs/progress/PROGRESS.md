@@ -267,7 +267,7 @@ A day closes only when its exit criteria are met with evidence. Slippage is reco
 - `docs/evidence/day5/gate/` — standard five-scene gate, 3 cold boots × 20 trivial repeats + 2 scene repeats = **168 renders**. Same-harness determinism and cross-boot repeatability **0 px**; `solid`/`rect`/`shadow` **0 exact / 0 AA**; `text`/`trivial` **1,745 exact / 4 AA (0.0009%)**, text layout 402.0×73.0 px in both. `crossStackAaAwareBelowPlaybookGate: true`; `crossStackExactZero: false` is the recorded `D-001` residual.
 - `docs/specs/typography.json` — 30 roles with source lines and the extracted defaults; `pnpm scenes:check` reports 30 typography roles / 37 scenes.
 - Local gates on the final tree: `format:check` clean; `lint` 3/3 + `eslint tools` clean; `typecheck` 4/4; `test` 8 suites / **87 tests**; `build` 23 files ESM + CJS + types; typography builders 100% line coverage (folder 97.82% lines).
-- Commit: pending at entry time; CI run: pending. The hash and run ID are recorded in the docs follow-up.
+- Commit: `0122873848273f355e5a0480865abdee0b2f3ada`; CI run [`45780797908`](https://github.com/nasyx-rakeeb/react-native-material-expressive/actions/runs/45780797908) — **success**, all steps green.
 
 **Deviations**
 

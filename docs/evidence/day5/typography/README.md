@@ -19,7 +19,9 @@ font scale 1.0, locale `en-US`, animations 0, night mode off.
 **Font:** Roboto Flex SHA-256
 `9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281`,
 identical in both APKs and in the source tree.
-**Commit and CI:** recorded in `docs/progress/PROGRESS.md`, Day 5.
+**Commit and CI:** `0122873848273f355e5a0480865abdee0b2f3ada`; run
+[`45780797908`](https://github.com/nasyx-rakeeb/react-native-material-expressive/actions/runs/45780797908)
+— success. The canonical record is `docs/progress/PROGRESS.md`, Day 5.
 
 ## What shipped
 
