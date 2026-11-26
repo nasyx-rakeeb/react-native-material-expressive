@@ -34,4 +34,11 @@ export {
 } from './pathGeometry';
 export type { RoundedPolygonVerticesOptions } from './RoundedPolygon';
 export { RoundedPolygon } from './RoundedPolygon';
+export type { MorphEndpoints, ShapeSource } from './shapeSource';
+export {
+  isMaterialShapeName,
+  resolveMorphEndpoints,
+  resolvePolygon,
+  resolveShapeGeometry,
+} from './shapeSource';
 export type { Point, PointTransformer } from './math';

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import Animated, {
   Easing,
@@ -14,6 +14,7 @@ import Animated, {
 import Svg, {
   ClipPath,
   Defs,
+  ForeignObject,
   G,
   LinearGradient,
   Path,
@@ -39,7 +40,7 @@ import {
   type PathGeometry,
 } from 'react-native-material-expressive';
 
-export type SpikeMode = 'cycle' | 'concurrent' | 'clip' | 'grid';
+export type SpikeMode = 'cycle' | 'concurrent' | 'clip' | 'clipchildren' | 'grid';
 export type SpikeRenderer = 'svg' | 'skia';
 
 interface MorphPair {
@@ -66,8 +67,7 @@ function buildPairs(): MorphPair[] {
   const pairs: MorphPair[] = [];
   for (let index = 0; index < MATERIAL_SHAPE_NAMES.length; index++) {
     const from = MaterialShapes[MATERIAL_SHAPE_NAMES[index]!];
-    const to =
-      MaterialShapes[MATERIAL_SHAPE_NAMES[(index + 1) % MATERIAL_SHAPE_NAMES.length]!];
+    const to = MaterialShapes[MATERIAL_SHAPE_NAMES[(index + 1) % MATERIAL_SHAPE_NAMES.length]!];
     pairs.push(morphToGeometries(new Morph(from, to)));
   }
   return pairs;
@@ -119,11 +119,7 @@ function SvgMorph({
   fill: string;
 }) {
   const animatedProps = useAnimatedProps(() => ({
-    d: geometryToSvgPath(
-      interpolateGeometry(pair.start, pair.end, progress.value),
-      size,
-      size,
-    ),
+    d: geometryToSvgPath(interpolateGeometry(pair.start, pair.end, progress.value), size, size),
   }));
   return <AnimatedSvgPath animatedProps={animatedProps} fill={fill} />;
 }
@@ -171,28 +167,33 @@ function useCycleProgress(duration: number) {
   return progress;
 }
 
-function CycleSpike({ pairs, renderer }: { pairs: MorphPair[]; renderer: SpikeRenderer }) {
+function useCycleGeometry(pairs: MorphPair[]) {
   const progress = useCycleProgress(42_000);
-  const size = 300;
-  const geometry = useDerivedValue(() => {
+  return useDerivedValue(() => {
     const value = progress.value;
     const segment = Math.min(pairs.length - 1, Math.floor(value));
     const local = value - segment;
     const pair = pairs[segment]!;
     return interpolateGeometry(pair.start, pair.end, local);
   });
+}
 
-  if (renderer === 'svg') {
-    const animatedProps = useAnimatedProps(() => ({
-      d: geometryToSvgPath(geometry.value, size, size),
-    }));
-    return (
-      <Svg width={size} height={size}>
-        <AnimatedSvgPath animatedProps={animatedProps} fill={PALETTE[0]} />
-      </Svg>
-    );
-  }
+function SvgCycle({ pairs }: { pairs: MorphPair[] }) {
+  const geometry = useCycleGeometry(pairs);
+  const size = 300;
+  const animatedProps = useAnimatedProps(() => ({
+    d: geometryToSvgPath(geometry.value, size, size),
+  }));
+  return (
+    <Svg width={size} height={size}>
+      <AnimatedSvgPath animatedProps={animatedProps} fill={PALETTE[0]} />
+    </Svg>
+  );
+}
 
+function SkiaCycle({ pairs }: { pairs: MorphPair[] }) {
+  const geometry = useCycleGeometry(pairs);
+  const size = 300;
   const path = useDerivedValue(() => {
     const points = geometry.value;
     const next = Skia.PathBuilder.Make();
@@ -217,6 +218,10 @@ function CycleSpike({ pairs, renderer }: { pairs: MorphPair[]; renderer: SpikeRe
   );
 }
 
+function CycleSpike({ pairs, renderer }: { pairs: MorphPair[]; renderer: SpikeRenderer }) {
+  return renderer === 'svg' ? <SvgCycle pairs={pairs} /> : <SkiaCycle pairs={pairs} />;
+}
+
 function ConcurrentCell({
   pair,
   index,
@@ -237,13 +242,23 @@ function ConcurrentCell({
   if (renderer === 'svg') {
     return (
       <Svg width={size} height={size}>
-        <SvgMorph pair={pair} progress={progress} size={size} fill={PALETTE[index % PALETTE.length]!} />
+        <SvgMorph
+          pair={pair}
+          progress={progress}
+          size={size}
+          fill={PALETTE[index % PALETTE.length]!}
+        />
       </Svg>
     );
   }
   return (
     <Canvas style={{ width: size, height: size }}>
-      <SkiaMorph pair={pair} progress={progress} size={size} fill={PALETTE[index % PALETTE.length]!} />
+      <SkiaMorph
+        pair={pair}
+        progress={progress}
+        size={size}
+        fill={PALETTE[index % PALETTE.length]!}
+      />
     </Canvas>
   );
 }
@@ -258,7 +273,7 @@ function ConcurrentSpike({ pairs, renderer }: { pairs: MorphPair[]; renderer: Sp
   );
 }
 
-function ClipSpike({ pair, renderer }: { pair: MorphPair; renderer: SpikeRenderer }) {
+function useClipProgress() {
   const progress = useSharedValue(0);
   useEffect(() => {
     progress.value = withRepeat(
@@ -267,31 +282,37 @@ function ClipSpike({ pair, renderer }: { pair: MorphPair; renderer: SpikeRendere
       true,
     );
   }, [progress]);
+  return progress;
+}
+
+function SvgClip({ pair }: { pair: MorphPair }) {
+  const progress = useClipProgress();
   const size = 320;
+  const animatedProps = useAnimatedProps(() => ({
+    d: geometryToSvgPath(interpolateGeometry(pair.start, pair.end, progress.value), size, size),
+  }));
+  return (
+    <Svg width={size} height={size}>
+      <Defs>
+        <ClipPath id="morph-clip">
+          <AnimatedSvgPath animatedProps={animatedProps} />
+        </ClipPath>
+        <LinearGradient id="morph-fill" x1="0" y1="0" x2="1" y2="1">
+          <Stop offset="0" stopColor="#6750A4" />
+          <Stop offset="0.5" stopColor="#B3261E" />
+          <Stop offset="1" stopColor="#00639B" />
+        </LinearGradient>
+      </Defs>
+      <G clipPath="url(#morph-clip)">
+        <Rect x={0} y={0} width={size} height={size} fill="url(#morph-fill)" />
+      </G>
+    </Svg>
+  );
+}
 
-  if (renderer === 'svg') {
-    const animatedProps = useAnimatedProps(() => ({
-      d: geometryToSvgPath(interpolateGeometry(pair.start, pair.end, progress.value), size, size),
-    }));
-    return (
-      <Svg width={size} height={size}>
-        <Defs>
-          <ClipPath id="morph-clip">
-            <AnimatedSvgPath animatedProps={animatedProps} />
-          </ClipPath>
-          <LinearGradient id="morph-fill" x1="0" y1="0" x2="1" y2="1">
-            <Stop offset="0" stopColor="#6750A4" />
-            <Stop offset="0.5" stopColor="#B3261E" />
-            <Stop offset="1" stopColor="#00639B" />
-          </LinearGradient>
-        </Defs>
-        <G clipPath="url(#morph-clip)">
-          <Rect x={0} y={0} width={size} height={size} fill="url(#morph-fill)" />
-        </G>
-      </Svg>
-    );
-  }
-
+function SkiaClip({ pair }: { pair: MorphPair }) {
+  const progress = useClipProgress();
+  const size = 320;
   const path = useDerivedValue(() => {
     const geometry = interpolateGeometry(pair.start, pair.end, progress.value);
     const next = Skia.PathBuilder.Make();
@@ -322,6 +343,77 @@ function ClipSpike({ pair, renderer }: { pair: MorphPair; renderer: SpikeRendere
       </Group>
     </Canvas>
   );
+}
+
+function ClipSpike({ pair, renderer }: { pair: MorphPair; renderer: SpikeRenderer }) {
+  return renderer === 'svg' ? <SvgClip pair={pair} /> : <SkiaClip pair={pair} />;
+}
+
+function SvgClipChildren({ pair }: { pair: MorphPair }) {
+  const progress = useClipProgress();
+  const size = 320;
+  const animatedProps = useAnimatedProps(() => ({
+    d: geometryToSvgPath(interpolateGeometry(pair.start, pair.end, progress.value), size, size),
+  }));
+  return (
+    <Svg width={size} height={size}>
+      <Defs>
+        <ClipPath id="morph-children-clip">
+          <AnimatedSvgPath animatedProps={animatedProps} />
+        </ClipPath>
+      </Defs>
+      <G clipPath="url(#morph-children-clip)">
+        <ForeignObject x={0} y={0} width={size} height={size}>
+          <View style={styles.clipChildren}>
+            <View style={[styles.clipBand, { backgroundColor: '#6750A4' }]} />
+            <View style={[styles.clipBand, { backgroundColor: '#B3261E' }]} />
+            <View style={[styles.clipBand, { backgroundColor: '#00639B' }]} />
+            <Text style={styles.clipLabel}>CLIPPED RN CHILDREN</Text>
+          </View>
+        </ForeignObject>
+      </G>
+    </Svg>
+  );
+}
+
+function SkiaClipChildren({ pair }: { pair: MorphPair }) {
+  const progress = useClipProgress();
+  const size = 320;
+  const path = useDerivedValue(() => {
+    const geometry = interpolateGeometry(pair.start, pair.end, progress.value);
+    const next = Skia.PathBuilder.Make();
+    next.moveTo(geometry[0]! * size, geometry[1]! * size);
+    for (let index = 0; index < geometry.length; index += 8) {
+      next.cubicTo(
+        geometry[index + 2]! * size,
+        geometry[index + 3]! * size,
+        geometry[index + 4]! * size,
+        geometry[index + 5]! * size,
+        geometry[index + 6]! * size,
+        geometry[index + 7]! * size,
+      );
+    }
+    next.close();
+    return next.detach();
+  });
+  return (
+    <View style={styles.clipChildrenHost}>
+      <Canvas style={{ width: size, height: size }}>
+        <Group clip={path}>
+          <SkiaPath path="M0 0H320V107H0Z" color="#6750A4" />
+          <SkiaPath path="M0 107H320V214H0Z" color="#B3261E" />
+          <SkiaPath path="M0 214H320V320H0Z" color="#00639B" />
+        </Group>
+      </Canvas>
+      <Text style={styles.clipNote}>
+        Skia clips Skia content only; RN children cannot be clipped.
+      </Text>
+    </View>
+  );
+}
+
+function ClipChildrenSpike({ pair, renderer }: { pair: MorphPair; renderer: SpikeRenderer }) {
+  return renderer === 'svg' ? <SvgClipChildren pair={pair} /> : <SkiaClipChildren pair={pair} />;
 }
 
 function GridSpike({ renderer }: { renderer: SpikeRenderer }) {
@@ -361,7 +453,10 @@ function GridSpike({ renderer }: { renderer: SpikeRenderer }) {
             return (
               <Group
                 key={MATERIAL_SHAPE_NAMES[index]}
-                transform={[{ translateX: column * (cell + gap) }, { translateY: row * (cell + gap) }]}
+                transform={[
+                  { translateX: column * (cell + gap) },
+                  { translateY: row * (cell + gap) },
+                ]}
               >
                 <SkiaPath
                   path={geometryToSvgPath(geometry, cell, cell)}
@@ -392,9 +487,8 @@ export default function ShapeSpike({
 }) {
   const pairs = useMorphPairs();
   useFrameStats(`${mode}/${renderer}`);
-  const mount = useRef(Date.now());
   useEffect(() => {
-    console.log(`M3E_SPIKE_READY ${mode}/${renderer} at ${Date.now() - mount.current}ms`);
+    console.log(`M3E_SPIKE_READY ${mode}/${renderer}`);
   }, [mode, renderer]);
 
   return (
@@ -415,6 +509,8 @@ export default function ShapeSpike({
           <ConcurrentSpike pairs={pairs} renderer={renderer} />
         ) : mode === 'clip' ? (
           <ClipSpike pair={pairs[0]!} renderer={renderer} />
+        ) : mode === 'clipchildren' ? (
+          <ClipChildrenSpike pair={pairs[0]!} renderer={renderer} />
         ) : (
           <GridSpike renderer={renderer} />
         )}
@@ -466,6 +562,33 @@ const styles = StyleSheet.create({
   scroll: {
     alignItems: 'center',
     paddingBottom: 40,
+  },
+  clipChildren: {
+    width: 320,
+    height: 320,
+    backgroundColor: '#FFF7E6',
+  },
+  clipBand: {
+    height: 106,
+  },
+  clipLabel: {
+    position: 'absolute',
+    left: 16,
+    top: 140,
+    fontSize: 24,
+    fontWeight: '800',
+    color: '#FFFFFF',
+  },
+  clipChildrenHost: {
+    alignItems: 'center',
+    gap: 12,
+  },
+  clipNote: {
+    fontSize: 11,
+    lineHeight: 15,
+    color: '#6B6257',
+    textAlign: 'center',
+    maxWidth: 320,
   },
   legend: {
     flexDirection: 'row',

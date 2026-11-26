@@ -6,7 +6,7 @@
  */
 
 import type { Cubic } from './Cubic';
-import { f32, interpolate } from './math';
+import { interpolate } from './math';
 import type { Morph } from './Morph';
 import type { RoundedPolygon } from './RoundedPolygon';
 
@@ -71,7 +71,7 @@ export function interpolateGeometry(
   if (start.length !== end.length) {
     throw new Error('Path geometries must have the same length');
   }
-  const p = f32(progress);
+  const p = Math.fround(progress);
   const result = new Array<number>(start.length);
   for (let index = 0; index < start.length; index++) {
     result[index] = interpolate(start[index]!, end[index]!, p);

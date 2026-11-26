@@ -13,7 +13,7 @@ import {
 
 type FontProbeState = 'pending' | 'ok' | 'fallback';
 
-export type SpikeMode = 'cycle' | 'concurrent' | 'clip' | 'grid';
+export type SpikeMode = 'cycle' | 'concurrent' | 'clip' | 'clipchildren' | 'grid';
 export type SpikeRenderer = 'svg' | 'skia';
 
 export interface HarnessRoute {
@@ -21,6 +21,7 @@ export interface HarnessRoute {
   textComp: TextCompStrategy;
   spike: SpikeMode | null;
   renderer: SpikeRenderer;
+  screen: 'shapes' | 'shapesdiff' | null;
 }
 
 const FONT_FAMILY = 'RobotoFlex';
@@ -51,13 +52,24 @@ function parseTextComp(url: string | null | undefined): TextCompStrategy {
 function parseSpike(url: string | null | undefined): SpikeMode | null {
   const match = /[?&]spike=([^&]+)/.exec(url ?? '');
   const value = match?.[1];
-  return value === 'cycle' || value === 'concurrent' || value === 'clip' || value === 'grid'
+  return value === 'cycle' ||
+    value === 'concurrent' ||
+    value === 'clip' ||
+    value === 'clipchildren' ||
+    value === 'grid'
     ? value
     : null;
 }
 
 function parseRenderer(url: string | null | undefined): SpikeRenderer {
   return /[?&]renderer=skia(?:&|$)/.test(url ?? '') ? 'skia' : 'svg';
+}
+
+function parseScreen(url: string | null | undefined): 'shapes' | 'shapesdiff' | null {
+  if (/[?&]screen=shapesdiff(?:&|$)/.test(url ?? '')) {
+    return 'shapesdiff';
+  }
+  return /[?&]screen=shapes(?:&|$)/.test(url ?? '') ? 'shapes' : null;
 }
 
 function RectView({ layer }: { layer: RectLayer }) {
@@ -259,6 +271,7 @@ export function useHarnessScene(): HarnessRoute | undefined {
           textComp: parseTextComp(url),
           spike: parseSpike(url),
           renderer: parseRenderer(url),
+          screen: parseScreen(url),
         });
       }
     });

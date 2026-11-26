@@ -1,7 +1,6 @@
 package com.nasyxrakeeb.m3ereference
 
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
-import androidx.compose.material3.MaterialShapes
 import androidx.graphics.shapes.Cubic
 import androidx.graphics.shapes.Morph
 import androidx.graphics.shapes.RoundedPolygon
@@ -16,84 +15,9 @@ import java.io.File
  */
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
 class ShapeGoldenTest {
-    private val names =
-        listOf(
-            "Arch",
-            "Arrow",
-            "Boom",
-            "Bun",
-            "Burst",
-            "Circle",
-            "ClamShell",
-            "Clover4Leaf",
-            "Clover8Leaf",
-            "Cookie12Sided",
-            "Cookie4Sided",
-            "Cookie6Sided",
-            "Cookie7Sided",
-            "Cookie9Sided",
-            "Diamond",
-            "Fan",
-            "Flower",
-            "Gem",
-            "Ghostish",
-            "Heart",
-            "Oval",
-            "Pentagon",
-            "Pill",
-            "PixelCircle",
-            "PixelTriangle",
-            "Puffy",
-            "PuffyDiamond",
-            "SemiCircle",
-            "Slanted",
-            "SoftBoom",
-            "SoftBurst",
-            "Square",
-            "Sunny",
-            "Triangle",
-            "VerySunny",
-        )
+    private val names = MATERIAL_SHAPE_NAMES
 
-    private fun shape(name: String): RoundedPolygon =
-        when (name) {
-            "Arch" -> MaterialShapes.Arch
-            "Arrow" -> MaterialShapes.Arrow
-            "Boom" -> MaterialShapes.Boom
-            "Bun" -> MaterialShapes.Bun
-            "Burst" -> MaterialShapes.Burst
-            "Circle" -> MaterialShapes.Circle
-            "ClamShell" -> MaterialShapes.ClamShell
-            "Clover4Leaf" -> MaterialShapes.Clover4Leaf
-            "Clover8Leaf" -> MaterialShapes.Clover8Leaf
-            "Cookie12Sided" -> MaterialShapes.Cookie12Sided
-            "Cookie4Sided" -> MaterialShapes.Cookie4Sided
-            "Cookie6Sided" -> MaterialShapes.Cookie6Sided
-            "Cookie7Sided" -> MaterialShapes.Cookie7Sided
-            "Cookie9Sided" -> MaterialShapes.Cookie9Sided
-            "Diamond" -> MaterialShapes.Diamond
-            "Fan" -> MaterialShapes.Fan
-            "Flower" -> MaterialShapes.Flower
-            "Gem" -> MaterialShapes.Gem
-            "Ghostish" -> MaterialShapes.Ghostish
-            "Heart" -> MaterialShapes.Heart
-            "Oval" -> MaterialShapes.Oval
-            "Pentagon" -> MaterialShapes.Pentagon
-            "Pill" -> MaterialShapes.Pill
-            "PixelCircle" -> MaterialShapes.PixelCircle
-            "PixelTriangle" -> MaterialShapes.PixelTriangle
-            "Puffy" -> MaterialShapes.Puffy
-            "PuffyDiamond" -> MaterialShapes.PuffyDiamond
-            "SemiCircle" -> MaterialShapes.SemiCircle
-            "Slanted" -> MaterialShapes.Slanted
-            "SoftBoom" -> MaterialShapes.SoftBoom
-            "SoftBurst" -> MaterialShapes.SoftBurst
-            "Square" -> MaterialShapes.Square
-            "Sunny" -> MaterialShapes.Sunny
-            "Triangle" -> MaterialShapes.Triangle
-            "VerySunny" -> MaterialShapes.VerySunny
-            else -> error("Unknown shape $name")
-        }
+    private fun shape(name: String): RoundedPolygon = materialShape(name)
 
     private fun number(value: Float): String = value.toString()
 

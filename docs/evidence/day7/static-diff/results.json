@@ -1,0 +1,39 @@
+{
+  "schema": 1,
+  "generatedBy": "tools/shapes/diff-static.mjs",
+  "device": {
+    "profile": {
+      "width": 1080,
+      "height": 1920,
+      "densityScale": 2.625
+    },
+    "composePackage": "com.nasyxrakeeb.m3ereference",
+    "rnPackage": "com.nasyxrakeeb.m3egallery",
+    "note": "Emulator capture. Frame timing is not measured here."
+  },
+  "grid": {
+    "columns": 5,
+    "rows": 7,
+    "shapeDp": 64,
+    "pitchDp": 72,
+    "widthDp": 352,
+    "heightDp": 496,
+    "widthPx": 924,
+    "heightPx": 1302
+  },
+  "comparison": {
+    "exactDiffPixels": 12157,
+    "exactDiffPercent": 1.0105166211156995,
+    "aaAwareDiffPixels": 0,
+    "aaAwareDiffPercent": 0,
+    "maxChannelDelta": 68,
+    "meanAbsoluteDelta": 0.016345427059712776,
+    "exactBbox": {
+      "x": 0,
+      "y": 0,
+      "width": 924,
+      "height": 1302
+    },
+    "aaAwareBbox": null
+  }
+}

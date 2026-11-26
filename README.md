@@ -2,7 +2,9 @@
 
 Material 3 Expressive components for React Native. Fidelity is measured against **Jetpack Compose Material3 1.5.0**, not claimed from screenshots and not copied from another port.
 
-> **Status: pre-alpha (Day 1 scaffolding).** No components are implemented yet. The API is not stable and nothing is published. The first release will be `1.0.0`; there is no MVP release.
+> **Status: pre-alpha (Day 7).** Foundations and shape primitives are implemented and
+> device-verified; no package is published. The API is not stable. The first release will
+> be `1.0.0`; there is no MVP release.
 
 ## Why this exists
 

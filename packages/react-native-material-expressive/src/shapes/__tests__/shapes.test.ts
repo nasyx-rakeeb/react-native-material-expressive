@@ -5,11 +5,15 @@ import { Corner } from '../Features';
 import {
   geometryToSvgPath,
   interpolateGeometry,
+  isMaterialShapeName,
   MATERIAL_SHAPE_NAMES,
   MaterialShapes,
   Morph,
   morphToGeometries,
   polygonToGeometry,
+  resolveMorphEndpoints,
+  resolvePolygon,
+  resolveShapeGeometry,
   type MaterialShapeName,
 } from '../index';
 
@@ -178,5 +182,33 @@ describe('path geometry', () => {
     const geometry = [0, 0, 0.25, 0, 0.75, 1, 1, 1];
     expect(geometryToSvgPath(geometry, 100, 50)).toBe('M0 0C25 0 75 50 100 50Z');
     expect(geometryToSvgPath([], 100, 50)).toBe('');
+  });
+});
+
+describe('shape source resolution', () => {
+  it('resolves names to the shared MaterialShapes polygons', () => {
+    expect(isMaterialShapeName('Arch')).toBe(true);
+    expect(isMaterialShapeName(MaterialShapes.Arch)).toBe(false);
+    expect(resolvePolygon('Arch')).toBe(MaterialShapes.Arch);
+    expect(resolvePolygon(MaterialShapes.Arch)).toBe(MaterialShapes.Arch);
+  });
+
+  it('rejects unknown Material shape names', () => {
+    expect(() => resolvePolygon('NotAShape' as MaterialShapeName)).toThrow(
+      'Unknown Material shape: NotAShape',
+    );
+  });
+
+  it('caches shape geometry by polygon identity', () => {
+    const first = resolveShapeGeometry('Arch');
+    expect(resolveShapeGeometry(MaterialShapes.Arch)).toBe(first);
+    expect(first).toHaveLength(MaterialShapes.Arch.cubics.length * 8);
+  });
+
+  it('caches morph endpoints by ordered polygon pair', () => {
+    const first = resolveMorphEndpoints('Arch', 'Clover4Leaf');
+    expect(resolveMorphEndpoints(MaterialShapes.Arch, MaterialShapes.Clover4Leaf)).toBe(first);
+    expect(first.start).toHaveLength(first.end.length);
+    expect(resolveMorphEndpoints('Clover4Leaf', 'Arch')).not.toBe(first);
   });
 });

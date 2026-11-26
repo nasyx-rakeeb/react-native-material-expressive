@@ -119,7 +119,8 @@ export function unaryMinus(p: Point): Point {
 }
 
 export function interpolate(start: number, stop: number, fraction: number): number {
-  return f32(f32(f32(1 - fraction) * start) + f32(fraction * stop));
+  'worklet';
+  return Math.fround(Math.fround(Math.fround(1 - fraction) * start) + Math.fround(fraction * stop));
 }
 
 export function interpolatePoint(start: Point, stop: Point, fraction: number): Point {

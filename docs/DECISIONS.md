@@ -40,32 +40,49 @@ Every accepted decision has a date and evidence. Day 0 decisions are research-on
 
 ---
 
-## ADR-002 — Rendering strategy: decide by Day 7 spike
+## ADR-002 — Path rendering: `react-native-svg` for 1.0.0, Skia rejected
 
-- **Date:** 2026-11-25 (placeholder created Day 1)
-- **Status:** **Open — decision due Day 7** (playbook §5.2)
-- **Decision deferred:** Skia vs `react-native-svg` + Reanimated `animatedProps` for path-based drawing, behind an internal `PathCanvas` abstraction. Default RN views + Reanimated shared values for everything that can animate as corner radius/size/color/opacity.
-- **Gate:** Day 7 spike must record frame time, UI/JS-thread cost, binary size, clipping behavior, web story, and install friction, then accept or reject Skia with numbers.
-- **Consequences until then:** No component may import Skia or SVG directly. Only `PathCanvas` may, so the Day 7 decision is a one-file swap.
+- **Date:** 2026-11-26 (placeholder created Day 1; decided Day 7)
+- **Status:** **Accepted for 1.0.0.** The functional decision is final. The physical-device frame-time confirmation is tracked by `U-29` and does not reopen the renderer choice by itself.
+- **Context:** Shape morphs, shaped containers, loading indicators, wavy progress and internal path icons need path drawing. The candidates were `react-native-skia@3.13.1` and `react-native-svg@15.16.0` driven by Reanimated 4 `useAnimatedProps` / `useDerivedValue`, both behind the `PathCanvas` boundary. Everything that can animate as corner radius, size, colour or opacity stays a plain RN view with shared values.
+- **Decision:** `react-native-svg` is the 1.0 path renderer. `react-native-skia` is not a dependency of the library. `PathCanvas.tsx` remains the only file that imports a path renderer, so a future swap is still one file plus an ADR.
+- **Evidence:**
+  1. **Binary size.** Release APK, `arm64-v8a`, measured with `unzip -l`: SVG adds `libreact_codegen_rnsvg.so` = **771,984 B (0.77 MB)**. Skia adds `librnskia.so` 13,961,504 B + `libwebgpu_dawn.so` 15,818,592 B = **29,780,096 B (29.78 MB)**. Across the four packaged ABIs Skia adds **115,468,444 B** of native libraries. Skia pulls Dawn even though the spike never uses WebGPU. Full measurements: `docs/evidence/day7/renderer/README.md`.
+  2. **Build and install friction.** Skia compiled native code from source on the first Day 7 release build (**14m 25s**). SVG's native artifact ships prebuilt; JS-only rebuilds of the same gallery took **59s–2m 35s**. Both renderers built, installed and ran on `emulator-5554` (API 31), release/Hermes, New Architecture, RN 0.88.1. `react-native-svg` is already present in most Expo/RN apps; Skia adds a large native dependency plus Dawn.
+  3. **Clipping RN children — the deciding functional constraint.** `ShapeContainer` must clip arbitrary React Native views to a morphing path. SVG does this with `clipPath` + `foreignObject`: the device capture shows three RN band views and an RN `Text` clipped to the morph. Skia's `Group clip` clips only Skia-drawn content; RN children are outside its canvas and cannot be clipped without rasterizing the child tree. Screenshots: `docs/evidence/day7/clipping/`.
+  4. **Frame time (emulator-only / SwiftShader).** 35-shape morph cycle: avg **16.69 ms** SVG / **16.72 ms** Skia. Ten concurrent morphs: avg **16.67 ms** / **16.67 ms**. Clipped gradient: avg **16.67 ms** / **16.68 ms**. Both renderers sit at the 60 Hz vsync ceiling; repeat runs varied by ≤0.07 ms on average and maxima ranged from 16.67 ms to 83.33 ms (scheduling noise). These numbers cannot separate the renderers and are **not** a production performance claim. Details: `docs/evidence/day7/frame-times.md`.
+  5. **JS/UI-thread cost.** No per-frame JS-thread work is required by either implementation: progress is a shared value and interpolation runs in a UI-thread worklet. SVG spends UI-thread time building the path string; Skia spends it in `PathBuilder`. The spike did not isolate those costs, and the emulator is vsync-bound, so no numeric winner is claimed.
+  6. **Web story.** SVG maps to `react-native-svg`'s react-native-web implementation; Skia web needs CanvasKit/WASM assets. The web target is best-effort and is verified on Day 43, not here.
+- **Alternatives rejected:** Skia (size, from-source build, and it cannot clip RN children); shipping both renderers (two native dependencies and two code paths with no measured benefit); rasterizing children to an image for Skia clipping (blurs text, breaks accessibility and dynamic content).
+- **Consequences:**
+  - `react-native-svg >=15.0.0` becomes a required peer (ADR-003).
+  - `ShapeContainer` documents **visual clipping only**: touch targets remain rectangular and are not clipped to the path.
+  - `PathCanvas` keeps the renderer boundary; no other file may import SVG.
+  - Reopen only with a new ADR if a physical mid-range device cannot sustain the target frame rate for concurrent morphs **and** a Skia design solves RN-child clipping. Skia is not automatically the fallback.
 
 ---
 
-## ADR-003 — Peer dependencies (draft; finalize Day 7)
+## ADR-003 — Peer dependencies (final for 1.0.0)
 
-- **Date:** 2026-11-25
-- **Status:** **Draft accepted for Day 1**; final pin Day 7 (playbook §5.3)
-- **Draft peers:**
+- **Date:** 2026-11-25 (draft); finalized 2026-11-26
+- **Status:** **Accepted (final for 1.0.0).**
+- **Required peers:**
   - `react >=19.0.0`
   - `react-native >=0.81.0`
   - `react-native-reanimated >=4.0.0`
   - `react-native-worklets >=0.7.0`
-  - `react-native-gesture-handler` — required only if the Day 7 gesture spike chooses it for slider/sheets/carousel; currently **not** a peer.
-  - `react-native-safe-area-context` — same, pending the overlay/inset design.
-  - `react-native-svg` / `react-native-skia` — must not be peers of the core package; they are implementation detail of `PathCanvas` (ADR-002), and only the chosen one becomes a peer (or an optional peer) on Day 7.
-- **Gallery pin (not a library peer):** Expo SDK `58.0.26` → RN `0.88.1`, Reanimated `4.7.1`, Worklets `0.13.0`, React `19.3.0`.
-- **Compatibility rule:** Reanimated and Worklets are upgraded only in the Expo-blessed pair; the compatibility table lives in `docs/research/DAY0_SOURCES.md` and is re-checked every Expo patch.
-- **Why draft now:** The library must declare *something* to install in the gallery, but the rendering spike can legitimately add one peer. Declaring Skia/SVG now would pre-empt ADR-002.
-- **Consequences:** 1.0's install story is "you already have Reanimated 4" — which is true for any Expo SDK 58 app. Any extra peer added on Day 7 must be justified in the ADR with install-friction numbers.
+  - `react-native-svg >=15.0.0` — chosen by ADR-002. **Required, not optional:** `PathCanvas` imports it and the package root re-exports the shape primitives, so the module must resolve at install time.
+- **Not peers:** `react-native-gesture-handler` and `react-native-safe-area-context` (not used by the Day 7 primitives; add only when a component needs them), `react-native-skia` (rejected by ADR-002).
+- **Tested compatibility matrix (gallery pin, exact):**
+
+  | Expo SDK | React Native | React | Reanimated | Worklets | SVG | Skia (spike only) |
+  |---|---|---|---|---|---|---|
+  | 58.0.26 | 0.88.1 | 19.3.0 | 4.7.1 | 0.13.0 | 15.16.0 | 3.13.1 |
+
+  The peer ranges are lower bounds, not a claim that every combination in range was tested. CI and the gallery use the exact pin above. Reanimated and Worklets are upgraded only in the Expo-blessed pair; the table is re-checked every Expo patch.
+- **Worklets transform requirement:** the consuming app must compile with the Worklets Babel plugin. `babel-preset-expo` adds `react-native-worklets/plugin` automatically when `react-native-worklets` is installed. Without it, animated shape updates fail at runtime with `Tried to synchronously call a Remote Function` (observed and fixed on Day 7). This is an install-doc requirement, not a second animation runtime.
+- **Why these peers:** Reanimated 4 is already the animation engine the library's public motion API targets; Worklets is its required companion; SVG is the ADR-002 renderer; React and RN are the host.
+- **Consequences:** 1.0's install story is "Reanimated 4 + Worklets + `react-native-svg`". Gesture Handler and Safe Area Context stay optional until a component actually uses them. Any new peer needs an ADR with install-friction numbers. The install docs must mention the Worklets Babel plugin.
 
 ---
 

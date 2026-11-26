@@ -34,8 +34,11 @@
 | Dynamic color (Android 12+) | Native module + fallback; `@material/material-color-utilities` 0.4.0 | [x] | [x] | [ ] | — | n/a | [ ] | [x] | [x] | [ ] | [ ] |
 | Typography (baseline + emphasized) | `Typography.kt`, `TypeScaleTokens.kt`, `TypefaceTokens.kt` | [x] | [x] | [ ] | — | [ ] | [ ] | [x] | [x] | [ ] | [ ] |
 | Shape tokens | `ShapeTokens.kt`, `Shapes.kt` | [x] | [x] | [ ] | — | [ ] | [ ] | [x] | [x] | [ ] | [ ] |
-| `MaterialShapes` (35 shapes) | `MaterialShapes.kt`, `graphics-shapes` 1.1.0 | [x] | [x] | [ ] | — | [ ] | — | [x] | [x] | [ ] | [ ] |
-| `RoundedPolygon` / `Morph` engine | `graphics-shapes` sources | [x] | [x] | [ ] | — | [ ] | — | [x] | [x] | [ ] | [ ] |
+| `MaterialShapes` (35 shapes) | `MaterialShapes.kt`, `graphics-shapes` 1.1.0 | [x] | [x] | [x] | — | [ ] | — | [x] | [x] | [x] | [ ] |
+| `RoundedPolygon` / `Morph` engine | `graphics-shapes` sources | [x] | [x] | [x] | — | [ ] | — | [x] | [x] | [x] | [ ] |
+| `Shape` primitive | ADR-002; `MaterialShapes.kt` | [x] | [x] | [x] | — | [ ] | — | [ ] | [x] | [x] | [ ] |
+| `MorphingShape` primitive | ADR-011/012; `Morph.toPath` | [x] | [x] | [ ] | [x] | [ ] | — | [ ] | [x] | [x] | [ ] |
+| `ShapeContainer` (visual clip) | ADR-002; shaped-container design | [ ] | [x] | [x] | [x] | [ ] | [ ] | [ ] | [x] | [x] | [ ] |
 | Motion scheme & spring hooks | `MotionScheme.kt`, `StandardMotionTokens`, `ExpressiveMotionTokens` | [ ] | [ ] | — | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
 | Elevation & shadows | `Elevation.kt`, `ElevationTokens.kt` | [ ] | [ ] | [ ] | — | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
 | State layers | `StateTokens.kt` (hover .08, focus .10, pressed .10, dragged .16) | [ ] | [ ] | [ ] | — | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
@@ -49,9 +52,12 @@
 | Haptics adapter | Injectable adapter (no hard dependency) | [ ] | [ ] | — | — | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
 | RTL / layout utilities | Compose layout semantics; m3 guidelines | [ ] | [ ] | [ ] | — | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
 
-Day 6 note: `MaterialShapes` and the `RoundedPolygon` / `Morph` engine are geometry-,
-feature-, and morph-golden complete (`docs/evidence/day6/shapes/README.md`). Their diff,
-iOS, and gallery boxes stay open because `PathCanvas` and the shape gallery are Day 7.
+Day 7 note: the static 35-shape grid now diff-passes against Compose with **0 AA-aware
+differing pixels** (`docs/evidence/day7/static-diff/README.md`), and the shape gallery
+renders all 35 shapes, animated morphs and a clipped RN-content container
+(`docs/evidence/day7/gallery/`). `Shape`, `MorphingShape` and `ShapeContainer` are
+implemented on the SVG `PathCanvas` (ADR-002); animated morphs run on the UI thread.
+Their iOS, a11y and RNTL boxes stay open, so the rows are not DONE yet.
 
 **Foundation evidence (Days 2–6):**
 

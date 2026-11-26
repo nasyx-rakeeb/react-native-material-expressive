@@ -196,19 +196,19 @@ Paper `6.0.0-alpha.4` (2026-11-23); 34 public component exports; signature-set s
   - U-25.4: PLAYBOOK §9.1 adds the “never claim pixel-perfect text” wording rule.
 - **Blocks:** **ADR-010 approval before Day 11** (first component with text is diffed). Day 5’s PASS label is resolved: PASS with the text category tracked separately. No implementation, gate, or threshold change is pending.
 
-### U-26 — Static shape rasterization and the Compose shape diff are not yet verified
+### U-26 — Static shape rasterization and the Compose shape diff are not yet verified — **RESOLVED**
 
-- **Evidence:** Day 6 verifies cubic geometry, feature mapping, and morph interpolation in a JVM golden. It makes no rendering claim. The shape gallery and the static-shape Compose diff are Day 7 exit items.
-- **Impact:** A renderer can draw the correct cubics with a different fill rule, antialiasing, or clipping and still pass the Day 6 tests. No screenshot evidence exists yet.
-- **Resolution:** Day 7: render all 35 shapes in the gallery and in a Compose reference scene, run the AA-aware pixel diff, and record the result in `docs/evidence/day7/shapes/README.md`. Do not claim shape rasterization parity before that report exists.
-- **Blocks:** Day 7 exit; the shapes `diff` and `gallery` matrix cells.
+- **Evidence (original):** Day 6 verified cubic geometry, feature mapping, and morph interpolation in a JVM golden. It made no rendering claim.
+- **Resolution (2026-11-26):** Day 7 added a 35-shape Compose reference activity and a matching RN screen (5×7, 64dp shapes, 72dp pitch, identical `#6750A4` fill). A 924×1302 px crop was compared with the same AA-aware pixelmatch used by the scene gate: **0 AA-aware differing pixels**, 12,157 exact pixels (1.0105%, all classified as anti-aliasing fringe), max channel delta 68, mean absolute delta 0.0163. The exact bbox spans the grid because every shape's AA edge differs; the AA-aware bbox is empty, and every shape lands in the same 64dp cell (zero layout-edge delta). Evidence: `docs/evidence/day7/static-diff/README.md`, `apps/reference-compose/.../ShapeGridActivity.kt`, `apps/gallery/src/shapes/ShapeDiffScreen.tsx`, `tools/shapes/diff-static.mjs`.
+- **Blocks:** Nothing. Shape rasterization parity is verified for the static grid.
 
-### U-27 — The shape engine has not run on Hermes or the UI thread
+### U-27 — The shape engine has not run on Hermes or the UI thread — **RESOLVED**
 
-- **Evidence:** The Day 6 engine is pure TypeScript with no platform imports and no `'worklet'` directives. It is exercised only by Jest on Node. Day 7 adds `PathCanvas`, which decides where the interpolation runs.
-- **Impact:** Hermes numeric behavior, worklet serialization of `PathGeometry`, and UI-thread allocation costs are unmeasured. A Node-only pass does not prove the engine can run per frame on the UI thread.
-- **Resolution:** Day 7: run the shape spike and `PathCanvas` in the release gallery on Hermes, verify the worklet path, and record frame/behavior evidence. Add worklet directives only where the UI-thread path requires them.
-- **Blocks:** `PathCanvas` DONE and the Day 7 renderer decision.
+- **Evidence (original):** The Day 6 engine was pure TypeScript with no platform imports and no `'worklet'` directives. It was exercised only by Jest on Node.
+- **Resolution (2026-11-26):** Day 7 ran the engine in the release gallery on Hermes, New Architecture, on both SVG and Skia. `interpolateGeometry`, `interpolate`, `geometryToSvgPath` and `formatCoordinate` carry `'worklet'` and execute on the UI thread; the spike's `useFrameCallback` measured 840–960 frames per 18 s run with no JS-thread per-frame work (progress is a shared value).
+- **Crash found and fixed:** The first animated run failed with `[Worklets] Tried to synchronously call a Remote Function … interpolateGeometry_pathGeometryTs1` because `interpolateGeometry` was a worklet but its helper `interpolate` was not. The fix was to mark `interpolate` as a worklet and inline `Math.fround` instead of capturing the `f32` alias. `MorphingShape`, `ShapeContainer` and `PathCanvas` now animate on the UI thread. Evidence: `docs/evidence/day7/frame-times.md`, `apps/gallery/src/spike/ShapeSpike.tsx`, `packages/react-native-material-expressive/src/shapes/pathGeometry.ts`.
+- **Install requirement:** consumers need the Worklets Babel plugin; `babel-preset-expo` adds it when `react-native-worklets` is installed. Recorded in ADR-003.
+- **Blocks:** Nothing.
 
 ### U-28 — Morph goldens sample five progress values only — **RESOLVED**
 
@@ -218,17 +218,16 @@ Paper `6.0.0-alpha.4` (2026-11-23); 34 public component exports; signature-set s
 
 ### U-29 — Day 7 frame times are emulator-only until a physical device is measured
 
-- **Evidence:** The only Android target is `emulator-5554`, API 31, 1080×1920, 420 dpi, SwiftShader software rendering. Day 7’s 35-shape cycle, 10 concurrent morphs, and clipping benchmarks run there.
-- **Impact:** SwiftShader frame times are not representative of a mid-range phone GPU. They can compare SVG vs Skia relative behavior, but they cannot justify a production performance claim or a hard frame-time budget.
-- **Resolution:** Build the release spike APK and collect `dumpsys gfxinfo` on Nasyx's physical Android phone (or a connected adb device) before the frame-time part of ADR-002 is final. Label every emulator number **emulator-only / SwiftShader**. Binary-size, install friction, and clipping correctness can be decided from the current build.
-- **Blocks:** The frame-time portion of ADR-002; not the renderer’s functional decision.
+- **Evidence:** The only Android target is `emulator-5554`, API 31, 1080×1920, 420 dpi, SwiftShader software rendering. Day 7’s 35-shape cycle, 10 concurrent morphs, and clipped gradient ran there. Measured: cycle avg 16.69 ms SVG / 16.72 ms Skia; concurrent avg 16.67 / 16.67; clip avg 16.67 / 16.68. All are pinned at the 60 Hz vsync ceiling; repeat-run averages varied by ≤0.07 ms and maxima ranged from 16.67 ms to 83.33 ms. Full table: `docs/evidence/day7/frame-times.md`.
+- **Impact:** SwiftShader frame times are not representative of a mid-range phone GPU. They cannot justify a production performance claim or a hard frame-time budget, and they cannot separate the renderers.
+- **Resolution:** Run the release spike APK on Nasyx's physical Android phone (or any connected adb device) with the exact commands in `docs/evidence/day7/frame-times.md`, and record the device model/SoC/refresh rate. Label every emulator number **emulator-only / SwiftShader**. ADR-002 is decided on binary size, build/install friction and RN-child clipping; the physical-device run confirms or reopens the frame-time claim, not the functional renderer choice.
+- **Blocks:** The production frame-time claim in ADR-002 only. Not the renderer decision, not Day 7 exit.
 
-### U-30 — `react-native-skia` and `react-native-svg` are not runtime-verified with RN 0.88.1
+### U-30 — `react-native-skia` and `react-native-svg` are not runtime-verified with RN 0.88.1 — **RESOLVED**
 
-- **Evidence:** `react-native-svg@15.16.0` is the Expo SDK 58 pin; `react-native-skia@3.13.1` is the current package. Both are installed in the gallery for the Day 7 spike, but neither has a committed release-build run yet.
-- **Impact:** A native build failure, New Architecture incompatibility, or missing worklet support would invalidate the spike. Package metadata alone is not evidence.
-- **Resolution:** Day 7: build and run the release gallery with each renderer, record the build result, APK size, and on-device behavior, then pin the chosen peer versions in ADR-003.
-- **Blocks:** ADR-002 and ADR-003 finalization.
+- **Evidence (original):** `react-native-svg@15.16.0` was the Expo SDK 58 pin; `react-native-skia@3.13.1` was the current package. Both were installed in the gallery for the Day 7 spike, but neither had a committed release-build run.
+- **Resolution (2026-11-26):** Both renderers built into a release APK, installed, and ran on `emulator-5554` (API 31), RN 0.88.1, New Architecture, Hermes. Grid, cycle, concurrent, clip and clipchildren modes all rendered on both. The release APK is **203,431,419 bytes** with both; per-ABI cost is SVG **0.77 MB** vs Skia **29.78 MB** (`docs/evidence/day7/renderer/README.md`). SVG is pinned as the peer in ADR-003; Skia remains a gallery-only spike dependency.
+- **Blocks:** Nothing. ADR-002 and ADR-003 are finalized.
 
 ### U-31 — The approved “text” scene category is not yet represented in the schema or report — **RESOLVED**
 
