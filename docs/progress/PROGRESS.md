@@ -288,3 +288,44 @@ A day closes only when its exit criteria are met with evidence. Slippage is reco
 **Next step**
 
 - Nasyx confirms `U-25`. Day 6: shapes core (pure TS) — port `androidx.graphics.shapes` (`RoundedPolygon`, `CornerRounding`, `Cubic`, `Feature`, `Morph` + `DoubleMapper`), all 35 `MaterialShapes`, and Compose JVM golden dumps for 35 shapes + ≥50 morph pairs × 5 progress values within 1e-4.
+
+---
+
+## Day 6 | 2026-11-26 | Shapes core: 35 MaterialShapes, RoundedPolygon, Morph, and JVM golden
+
+**Status:** PASS. All **35** shapes and **50** morph pairs at five progress values match the Compose JVM golden within **1e-4**. Worst shape delta **1.329e-7** (`Oval`); worst morph delta **1.2678e-6** (`Gem -> Ghostish` @ 0). No rendering is claimed; `PathCanvas` and the shape gallery are Day 7.
+
+**Done**
+
+- Ported `androidx.graphics:graphics-shapes:1.1.0` to worklet-safe TypeScript: `math`, `Cubic`, `CornerRounding`, `Features` (`Corner`/`Edge`), `RoundedPolygon`, `PolygonMeasure`, `FeatureMapping` (`DoubleMapper`, `featureDistSquared`), `Morph`, and the public `shapes` index.
+- Added all **35** `MaterialShapes` with the Compose 1.5.0 definitions, lazy per-shape cache, `MATERIAL_SHAPE_NAMES`, `getMaterialShape()`, and public getters. Every getter returns `.normalized()`, matching Compose.
+- Emulated Kotlin `Float` with `Math.fround` across construction, measuring, mapping, and morphing. The last two fidelity issues were (a) JS double literals used where Kotlin uses `Float` literals, which moved Clover's raw points by one ULP and flipped the `Arch -> Clover4Leaf` mapping, and (b) Compose `Matrix.rotateZ` computing radians in Float64. Rounding points/rounding values at the boundary and mirroring the matrix rotation removed both.
+- Added `ShapeGoldenTest.kt` (JVM) and pinned `androidx.graphics:graphics-shapes:1.1.0` in the reference app. Material3 1.5.0 otherwise resolves graphics-shapes 1.0.1 and produces a stale golden.
+- Generated `docs/specs/shapes-goldens.json`: 35 shapes with centers, **1,168** raw feature metadata entries (584 corners), **2,104** raw feature cubics, **943** flattened cubics; 50 morph pairs × 5 progress values (**250** samples, **11,730** cubic comparisons). Added `tools/shapes/generate-goldens.sh`.
+- Added `shapes.test.ts` assertions for name order, shape centers/cubics, feature count/type/convexity/raw cubic count, all 50 morphs × 5 progress values, and unit-square bounds. Tolerance is `1e-4` for every geometry check.
+
+**Evidence**
+
+- `docs/evidence/day6/shapes/README.md` — scope, port surface, Float32 findings, golden provenance, measured maxima, commands, licensing, limitations.
+- `docs/specs/shapes-goldens.json` — 35-shape + 50-morph golden, source `androidx.graphics:graphics-shapes:1.1.0 + androidx.compose.material3:material3:1.5.0`.
+- `apps/reference-compose/app/src/test/java/com/nasyxrakeeb/m3ereference/ShapeGoldenTest.kt` — JVM golden generator; `tools/shapes/generate-goldens.sh` reproduces and copies it.
+- Focused suite: `pnpm exec jest src/shapes/__tests__/shapes.test.ts --runInBand` — **5/5 tests**.
+- Local gates: `format:check` clean; `lint` 3/3 + `eslint tools`; `typecheck` 4/4; `test` **9 suites / 92 tests**; `build` ESM + CJS + declarations; `scenes:check` 30 typography roles / 37 scenes.
+- Commit: pending at the time of this entry; CI recorded in the follow-up.
+
+**Deviations**
+
+- The golden is a JVM AndroidX dump, not an on-device Compose render. It verifies geometry and feature mapping; rasterization is Day 7.
+- Worklet directives are not applied yet. The module is pure computation with no platform imports; Day 7 decides how `Morph` instances cross the JS/UI-thread boundary and where the directives belong.
+- `MaterialShapes` and `RoundedPolygon`/`Morph` are ticked for spec/impl/tests/docs in `COMPONENT_MATRIX.md`; diff/iOS/gallery stay open until Day 7.
+
+**Risks**
+
+- The reference app must keep the explicit `graphics-shapes:1.1.0` pin. Removing it silently regresses the golden to 1.0.1.
+- The morph golden samples five progress values, not every frame. Intermediate curves rely on the shared cubic interpolation and the measured feature mapping.
+- The shapes engine is not yet exercised on Hermes/JSC or on the UI thread. Day 7's rendering spike is the first runtime test.
+
+**Next step**
+
+- Day 7: implement `PathCanvas` on Skia and SVG+Reanimated, benchmark the 35-shape cycle / 10 concurrent morphs / clipping, write ADR-002 and finalize ADR-003, and build `Shape`, `MorphingShape`, `ShapeContainer` plus the shape gallery.
+- Before the Day 7 report: complete the `U-25` follow-ups (D-001 pipeline explanation, compensation experiments for the 21 faithful failures, four 1 px baseline scenes, and a proposed text-category ADR metric) and add the docs wording rule to `docs/PLAYBOOK.md`.

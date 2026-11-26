@@ -34,8 +34,8 @@
 | Dynamic color (Android 12+) | Native module + fallback; `@material/material-color-utilities` 0.4.0 | [ ] | [ ] | [ ] | — | n/a | [ ] | [ ] | [ ] | [ ] | [ ] |
 | Typography (baseline + emphasized) | `Typography.kt`, `TypeScaleTokens.kt`, `TypefaceTokens.kt` | [ ] | [ ] | [ ] | — | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
 | Shape tokens | `ShapeTokens.kt`, `Shapes.kt` | [ ] | [ ] | [ ] | — | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
-| `MaterialShapes` (35 shapes) | `MaterialShapes.kt`, `graphics-shapes` 1.1.0 | [ ] | [ ] | [ ] | — | [ ] | — | [ ] | [ ] | [ ] | [ ] |
-| `RoundedPolygon` / `Morph` engine | `graphics-shapes` sources | [ ] | [ ] | [ ] | — | [ ] | — | [ ] | [ ] | [ ] | [ ] |
+| `MaterialShapes` (35 shapes) | `MaterialShapes.kt`, `graphics-shapes` 1.1.0 | [x] | [x] | [ ] | — | [ ] | — | [x] | [x] | [ ] | [ ] |
+| `RoundedPolygon` / `Morph` engine | `graphics-shapes` sources | [x] | [x] | [ ] | — | [ ] | — | [x] | [x] | [ ] | [ ] |
 | Motion scheme & spring hooks | `MotionScheme.kt`, `StandardMotionTokens`, `ExpressiveMotionTokens` | [ ] | [ ] | — | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
 | Elevation & shadows | `Elevation.kt`, `ElevationTokens.kt` | [ ] | [ ] | [ ] | — | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
 | State layers | `StateTokens.kt` (hover .08, focus .10, pressed .10, dragged .16) | [ ] | [ ] | [ ] | — | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
@@ -48,6 +48,10 @@
 | Window size classes | `material3-window-size-class` 1.5.0; 8dp spacing | [ ] | [ ] | — | — | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
 | Haptics adapter | Injectable adapter (no hard dependency) | [ ] | [ ] | — | — | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
 | RTL / layout utilities | Compose layout semantics; m3 guidelines | [ ] | [ ] | [ ] | — | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+
+Day 6 note: `MaterialShapes` and the `RoundedPolygon` / `Morph` engine are geometry-,
+feature-, and morph-golden complete (`docs/evidence/day6/shapes/README.md`). Their diff,
+iOS, and gallery boxes stay open because `PathCanvas` and the shape gallery are Day 7.
 
 ## Actions
 
