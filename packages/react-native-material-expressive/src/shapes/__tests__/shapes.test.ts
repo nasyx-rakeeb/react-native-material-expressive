@@ -2,7 +2,16 @@ import { readFileSync } from 'node:fs';
 import path from 'node:path';
 
 import { Corner } from '../Features';
-import { MATERIAL_SHAPE_NAMES, MaterialShapes, Morph, type MaterialShapeName } from '../index';
+import {
+  geometryToSvgPath,
+  interpolateGeometry,
+  MATERIAL_SHAPE_NAMES,
+  MaterialShapes,
+  Morph,
+  morphToGeometries,
+  polygonToGeometry,
+  type MaterialShapeName,
+} from '../index';
 
 interface GoldenFeature {
   type: 'corner' | 'edge';
@@ -122,5 +131,36 @@ describe('MaterialShapes golden geometry', () => {
       expect(bounds[2]!).toBeLessThanOrEqual(1 + 1e-4);
       expect(bounds[3]!).toBeLessThanOrEqual(1 + 1e-4);
     }
+  });
+});
+
+describe('path geometry', () => {
+  it('flattens every polygon cubic in order', () => {
+    const shape = MaterialShapes.Arch;
+    const geometry = polygonToGeometry(shape);
+    expect(geometry).toHaveLength(shape.cubics.length * 8);
+    shape.cubics.forEach((cubic, index) => {
+      expect(geometry.slice(index * 8, index * 8 + 8)).toEqual([...cubic.points]);
+    });
+  });
+
+  it('precomputes morph endpoints and interpolates like Morph.asCubics', () => {
+    const morph = new Morph(MaterialShapes.Arch, MaterialShapes.Clover4Leaf);
+    const endpoints = morphToGeometries(morph);
+    expect(endpoints.start).toHaveLength(endpoints.end.length);
+    for (const progress of [0, 0.25, 0.5, 0.75, 1]) {
+      const actual = interpolateGeometry(endpoints.start, endpoints.end, progress);
+      const expected = morph.asCubics(progress).flatMap((cubic) => [...cubic.points]);
+      expect(actual).toHaveLength(expected.length);
+      for (let index = 0; index < expected.length; index++) {
+        expectClose(actual[index]!, expected[index]!, `interpolate@${progress}[${index}]`);
+      }
+    }
+  });
+
+  it('serialises scaled geometry as an absolute, closed SVG path', () => {
+    const geometry = [0, 0, 0.25, 0, 0.75, 1, 1, 1];
+    expect(geometryToSvgPath(geometry, 100, 50)).toBe('M0 0C25 0 75 50 100 50Z');
+    expect(geometryToSvgPath([], 100, 50)).toBe('');
   });
 });

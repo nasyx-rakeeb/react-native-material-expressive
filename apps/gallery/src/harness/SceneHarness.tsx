@@ -13,9 +13,14 @@ import {
 
 type FontProbeState = 'pending' | 'ok' | 'fallback';
 
+export type SpikeMode = 'cycle' | 'concurrent' | 'clip' | 'grid';
+export type SpikeRenderer = 'svg' | 'skia';
+
 export interface HarnessRoute {
   sceneId: SceneId | null;
   textComp: TextCompStrategy;
+  spike: SpikeMode | null;
+  renderer: SpikeRenderer;
 }
 
 const FONT_FAMILY = 'RobotoFlex';
@@ -41,6 +46,18 @@ function parseTextComp(url: string | null | undefined): TextCompStrategy {
   const match = /[?&]textComp=([^&]+)/.exec(url ?? '');
   const value = match?.[1];
   return value === 'c1' || value === 'c2' || value === 'c3' || value === 'c4' ? value : 'none';
+}
+
+function parseSpike(url: string | null | undefined): SpikeMode | null {
+  const match = /[?&]spike=([^&]+)/.exec(url ?? '');
+  const value = match?.[1];
+  return value === 'cycle' || value === 'concurrent' || value === 'clip' || value === 'grid'
+    ? value
+    : null;
+}
+
+function parseRenderer(url: string | null | undefined): SpikeRenderer {
+  return /[?&]renderer=skia(?:&|$)/.test(url ?? '') ? 'skia' : 'svg';
 }
 
 function RectView({ layer }: { layer: RectLayer }) {
@@ -237,7 +254,12 @@ export function useHarnessScene(): HarnessRoute | undefined {
     let mounted = true;
     Linking.getInitialURL().then((url) => {
       if (mounted) {
-        setRoute({ sceneId: parseSceneId(url), textComp: parseTextComp(url) });
+        setRoute({
+          sceneId: parseSceneId(url),
+          textComp: parseTextComp(url),
+          spike: parseSpike(url),
+          renderer: parseRenderer(url),
+        });
       }
     });
     return () => {
