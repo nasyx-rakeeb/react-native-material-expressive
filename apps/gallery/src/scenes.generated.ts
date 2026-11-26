@@ -2,6 +2,206 @@
 import type { Scene } from './scene-types';
 
 export const scenes = {
+  "labels": {
+  "schema": 1,
+  "id": "labels",
+  "description": "A dense stack of short list labels. Used to measure text rasterization as a function of glyph count.",
+  "widthDp": 320,
+  "heightDp": 200,
+  "background": "#FFFBFE",
+  "layers": [
+    {
+      "type": "text",
+      "x": 16,
+      "y": 4,
+      "text": "Inbox 12",
+      "sizeSp": 14,
+      "weight": 500,
+      "color": "#1D1B20",
+      "letterSpacingSp": 0
+    },
+    {
+      "type": "text",
+      "x": 16,
+      "y": 23,
+      "text": "Starred 3",
+      "sizeSp": 14,
+      "weight": 400,
+      "color": "#1D1B20",
+      "letterSpacingSp": 0
+    },
+    {
+      "type": "text",
+      "x": 16,
+      "y": 42,
+      "text": "Snoozed 0",
+      "sizeSp": 14,
+      "weight": 400,
+      "color": "#49454F",
+      "letterSpacingSp": 0
+    },
+    {
+      "type": "text",
+      "x": 16,
+      "y": 61,
+      "text": "Important 28",
+      "sizeSp": 14,
+      "weight": 500,
+      "color": "#1D1B20",
+      "letterSpacingSp": 0
+    },
+    {
+      "type": "text",
+      "x": 16,
+      "y": 80,
+      "text": "Sent 104",
+      "sizeSp": 14,
+      "weight": 400,
+      "color": "#1D1B20",
+      "letterSpacingSp": 0
+    },
+    {
+      "type": "text",
+      "x": 16,
+      "y": 99,
+      "text": "Drafts 2",
+      "sizeSp": 14,
+      "weight": 400,
+      "color": "#1D1B20",
+      "letterSpacingSp": 0
+    },
+    {
+      "type": "text",
+      "x": 16,
+      "y": 118,
+      "text": "All mail 310",
+      "sizeSp": 14,
+      "weight": 500,
+      "color": "#1D1B20",
+      "letterSpacingSp": 0
+    },
+    {
+      "type": "text",
+      "x": 16,
+      "y": 137,
+      "text": "Spam 6",
+      "sizeSp": 14,
+      "weight": 400,
+      "color": "#49454F",
+      "letterSpacingSp": 0
+    },
+    {
+      "type": "text",
+      "x": 16,
+      "y": 156,
+      "text": "Trash 1",
+      "sizeSp": 14,
+      "weight": 400,
+      "color": "#49454F",
+      "letterSpacingSp": 0
+    },
+    {
+      "type": "text",
+      "x": 16,
+      "y": 175,
+      "text": "Archive 42",
+      "sizeSp": 14,
+      "weight": 500,
+      "color": "#1D1B20",
+      "letterSpacingSp": 0
+    }
+  ]
+} as Scene,
+  "paragraph": {
+  "schema": 1,
+  "id": "paragraph",
+  "description": "A multi-line paragraph at several sizes and weights. Used to measure text rasterization as a function of glyph count.",
+  "widthDp": 320,
+  "heightDp": 200,
+  "background": "#FFFBFE",
+  "layers": [
+    {
+      "type": "text",
+      "x": 16,
+      "y": 8,
+      "text": "Expressive typography",
+      "sizeSp": 22,
+      "weight": 700,
+      "color": "#1D1B20",
+      "letterSpacingSp": 0
+    },
+    {
+      "type": "text",
+      "x": 16,
+      "y": 40,
+      "text": "Material 3 Expressive pairs",
+      "sizeSp": 16,
+      "weight": 500,
+      "color": "#1D1B20",
+      "letterSpacingSp": 0.15
+    },
+    {
+      "type": "text",
+      "x": 16,
+      "y": 58,
+      "text": "variable fonts with a flexible",
+      "sizeSp": 16,
+      "weight": 400,
+      "color": "#49454F",
+      "letterSpacingSp": 0.15
+    },
+    {
+      "type": "text",
+      "x": 16,
+      "y": 76,
+      "text": "type scale and clear emphasis.",
+      "sizeSp": 16,
+      "weight": 400,
+      "color": "#49454F",
+      "letterSpacingSp": 0.15
+    },
+    {
+      "type": "text",
+      "x": 16,
+      "y": 104,
+      "text": "Roboto Flex, wdth 100, wght 400",
+      "sizeSp": 12,
+      "weight": 500,
+      "color": "#49454F",
+      "letterSpacingSp": 0.5
+    },
+    {
+      "type": "text",
+      "x": 16,
+      "y": 120,
+      "text": "The quick brown fox jumps over",
+      "sizeSp": 12,
+      "weight": 400,
+      "color": "#49454F",
+      "letterSpacingSp": 0.4
+    },
+    {
+      "type": "text",
+      "x": 16,
+      "y": 136,
+      "text": "the lazy dog. 0123456789",
+      "sizeSp": 12,
+      "weight": 400,
+      "color": "#49454F",
+      "letterSpacingSp": 0.4
+    },
+    {
+      "type": "text",
+      "x": 16,
+      "y": 160,
+      "text": "Buttons · Chips · Dialogs · Lists",
+      "sizeSp": 14,
+      "weight": 600,
+      "color": "#6750A4",
+      "letterSpacingSp": 0.1
+    }
+  ]
+} as Scene,
   "rect": {
   "schema": 1,
   "id": "rect",

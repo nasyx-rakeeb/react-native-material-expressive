@@ -17,6 +17,8 @@ apps/gallery/android/
 apps/reference-compose/.gradle/
 apps/reference-compose/.kotlin/
 apps/reference-compose/**/build/
+packages/*/android/build/
+packages/*/android/.gradle/
 *.jks
 *.p8
 *.p12

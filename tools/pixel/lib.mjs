@@ -371,7 +371,7 @@ export function forceStop(app) {
 
 export function launch(app, sceneId) {
   if (app.id === 'compose') {
-    return adb([
+    const args = [
       'shell',
       'am',
       'start',
@@ -381,7 +381,17 @@ export function launch(app, sceneId) {
       '--es',
       'scene',
       sceneId,
-    ]).toString('utf8');
+    ];
+    if (process.env.M3E_TEXT_MOTION) {
+      args.push('--es', 'textMotion', process.env.M3E_TEXT_MOTION);
+    }
+    if (process.env.M3E_TEXT_SIZE_MODE) {
+      args.push('--es', 'textSizeMode', process.env.M3E_TEXT_SIZE_MODE);
+    }
+    if (process.env.M3E_TEXT_POS_MODE) {
+      args.push('--es', 'textPosMode', process.env.M3E_TEXT_POS_MODE);
+    }
+    return adb(args).toString('utf8');
   }
   return adb([
     'shell',

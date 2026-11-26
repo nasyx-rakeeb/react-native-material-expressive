@@ -1,12 +1,34 @@
 import { StatusBar } from 'expo-status-bar';
+import { useEffect } from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
-import { PACKAGE_NAME } from 'react-native-material-expressive';
+import {
+  PACKAGE_NAME,
+  getDynamicColorSchemes,
+  isDynamicColorAvailable,
+} from 'react-native-material-expressive';
 
 import SceneHarness, { useHarnessScene } from './src/harness/SceneHarness';
 
+/**
+ * Verification probe only. Set at bundle time:
+ *   EXPO_PUBLIC_M3E_DYNAMIC_PROBE=1 ./gradlew :app:assembleRelease
+ * The committed colour evidence was captured with the probe enabled.
+ */
+const DYNAMIC_PROBE_ENABLED = process.env.EXPO_PUBLIC_M3E_DYNAMIC_PROBE === '1';
+
 export default function App() {
   const sceneId = useHarnessScene();
+
+  useEffect(() => {
+    if (!DYNAMIC_PROBE_ENABLED || Platform.OS !== 'android') {
+      return;
+    }
+    console.log(`M3E_DYNAMIC_AVAILABLE ${isDynamicColorAvailable()}`);
+    void getDynamicColorSchemes().then((schemes) => {
+      console.log(`M3E_DYNAMIC_PAYLOAD ${JSON.stringify(schemes)}`);
+    });
+  }, []);
 
   if (sceneId === undefined) {
     return <View style={styles.boot} />;

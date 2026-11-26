@@ -2,7 +2,7 @@
 
 A component cannot be marked DONE while it has an open entry here. Day 0 resolved the six original `UNVERIFIED-1..6`; new open items are listed below with an owner and a resolution day.
 
-**Last updated:** 2026-11-25 (Day 3)
+**Last updated:** 2026-11-26 (Day 4)
 
 ---
 
@@ -169,10 +169,18 @@ Paper `6.0.0-alpha.4` (2026-11-23); 34 public component exports; signature-set s
 - **Resolution:** Day 11, before Button's DONE cell: decide whether 1.0 follows Compose 1.5.0 (the pinned authority) or exposes an m3-XS-parity option. Record the decision in `docs/specs/button.behavior.md`; do not silently change either source. Until resolved, use Compose 16/16/8 and do not claim m3 XS parity.
 - **Blocks:** Button DONE (Day 11) for the XS variant only.
 
-### U-23 — Cross-stack text rasterization is not byte-identical on the Day 3 trivial scene
+### U-23 — Cross-stack text rasterization is not byte-identical on the Day 3 trivial scene — **RESOLVED**
 
 - **Evidence (Day 3):** Both harnesses load the same Roboto Flex file (SHA-256 `9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281`), the measured text layout is identical (402.0×73.0 px), and the strict content bbox is identical (68,75 395×59). The trivial and text scenes nevertheless differ by **1,745 px (0.3957%)** exact RGB; pixelmatch AA detection reduces this to **4 non-AA px (0.0009%)** at max channel Δ 162. Solid, rect, and shadow are exact-zero across 3 cold boots. Evidence: `docs/evidence/day3/README.md`, `results.json`, `report.html`.
-- **Impact:** The trivial scene does not meet a literal cross-stack exact-zero test, although it meets the existing PLAYBOOK §7 AA-aware gate (4 px, below the 220.5 px / 0.05% budget). Future text components inherit the same rasterization difference.
-- **Resolution:** Nasyx decision: accept the existing AA-aware gate for cross-stack text and close Day 3, or treat the 4 pixels as a defect and investigate text rendering. Do not tune the scene or the threshold; do not claim byte-exact cross-stack text parity either way.
-- **Blocks:** Day 3 close (pending decision); any future “0-diff text” claim.
+- **Root cause (Day 4 follow-up):** RN hardcodes `isSubpixelText = true` and `isLinearText = true` on `CustomStyleSpan` and rounds font sizes **up to an integer physical pixel** (`Math.ceil(PixelUtil.toPixelFromDIP(fontSize))`). Compose's default `TextMotion.Static` uses font hinting with subpixel text off and keeps fractional sp/dp. Matching RN's flags (`TextMotion.Animated`) makes `text` and `trivial` **0 / 0**; adding integer font sizes reduces a 195-glyph paragraph to 119 AA-aware px and a 78-glyph label stack to 348; adding integer offsets leaves **1 + 2 exact px** (max Δ 6), 0 AA-aware. Evidence: `docs/evidence/day4/text-scaling/README.md`, `summary.json`, `SOURCE_EVIDENCE.md`, and `runs/{faithful,animated,ceil,floor}/`.
+- **Impact:** The Day 3 gate scene remains at 4 AA-aware px, below the existing 220.5 px / 0.05% budget. Dense text scenes inherit RN's integer-pixel quantization; no library-side fix exists without changing text metrics. This is not a font-file, shaping, or renderer defect.
+- **Resolution:** Resolved by measurement. The existing AA-aware gate is unchanged and no per-category threshold or ADR is proposed. `KNOWN_DEVIATIONS.md` records the inherent deviation. Any future “byte-exact cross-stack text under faithful Compose defaults” claim remains false; the accurate claims are **4 AA-aware px on the Day 3 gate scene** and **0 exact px when both harnesses use RN's integer text grid**.
+- **Blocks:** None. Day 3 closed; Day 4 text follow-up complete.
 
+
+### U-24 — API 34+ dynamic-colour role resources are source-derived, not emulator-verified
+
+- **Evidence:** On API 31, the release gallery app returned a native tonal payload and all **96** values (48 light + 48 dark roles) matched Compose’s `dynamicLightColorScheme` / `dynamicDarkColorScheme` exactly. On API 34+, the native module reads 43 `system_*` role resources and fills `error`, `onError`, `errorContainer`, `onErrorContainer`, and `scrim` from the Compose baseline; the mapping is derived from Compose’s `DynamicTonalPalette.android.kt` and Android’s resource names. No API 34/35 system image is installed in the current environment, so this path has not run on a device.
+- **Impact:** A renamed or missing role resource on API 34+ would make dynamic colour fall back to static colours (the JS loader catches malformed payloads), not crash. A wrong mapping could produce a plausible but incorrect scheme.
+- **Resolution:** Day 42 Android compatibility matrix (or earlier): boot an API 34/35 emulator, run the gallery `M3E_DYNAMIC_PAYLOAD` probe, and compare against Compose’s dynamic schemes on the same device. Until then, do not claim API 34+ dynamic-colour exactness. API 31–33 is verified.
+- **Blocks:** The API 34+ dynamic-colour claim only; Day 4 exit is met on API 31.

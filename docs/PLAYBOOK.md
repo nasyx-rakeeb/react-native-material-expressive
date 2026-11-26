@@ -264,7 +264,11 @@ Everything below is **in scope for 1.0**. Names are indicative; the Compose publ
 
 **Day 3 — Reference harness & diff pipeline.** Build `apps/reference-compose` (Compose M3 1.5.0), the scene manifest format, the RN scene renderer in gallery, capture scripts, compare + HTML report. Bundle identical fonts in both. **Exit:** one trivial scene (colored rounded rect + text) renders identically (0 diff) 20×; report generated; emulator profile frozen and documented.
 
+> **Follow-up (2026-11-26):** `U-23` resolved by measurement: the residual is RN-vs-Compose text-layout quantization (subpixel/linear flags and integer physical-pixel sizes/offsets), not an implementation defect. The existing AA-aware gate is unchanged. See `docs/evidence/day4/text-scaling/README.md` and `KNOWN_DEVIATIONS.md` D-001.
+
 **Day 4 — Color system.** Integrate `material-color-utilities`; all scheme variants + contrast levels + full role set + light/dark; Android dynamic color native module with fallback; Compose-side script dumps role values for N seeds → golden JSON. **Exit:** role values match Compose goldens exactly (or within 1 RGB unit with documented reason) for ≥6 seeds × variants × light/dark; dynamic color works on an API 31+ emulator.
+
+> **Closeout note (2026-11-26):** Compose 1.5.0 has no public seed→scheme or variant→scheme API. Defaults and API-31 dynamic colour are compared to Compose exactly; Compose's own role mapping is exercised via reflection with MCU tonal palettes for 6 seeds × 9 variants × light/dark (108 schemes, 0 differences); the seed generator is verified against MCU 0.4.0 `2021` goldens (432 schemes, 20,736 values, 0 differences). Generated schemes are **spec-verified**, never Compose-verified. See ADR-009 and `docs/evidence/day4/color/`.
 
 **Day 5 — Typography.** Roboto Flex via `fontVariationSettings` (capability-detected); baseline + emphasized scales from tokens; custom brand font option; font scaling; fallback path for RN <0.88. Compose-side text scenes for every style. **Exit:** text scenes for all styles diff-pass (size, weight, width, tracking, line height); fallback path documented.
 

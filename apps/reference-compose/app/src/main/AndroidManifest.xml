@@ -8,6 +8,10 @@
         android:theme="@style/Theme.M3EReference">
 
         <activity
+            android:name=".SchemeDumpActivity"
+            android:exported="true" />
+
+        <activity
             android:name=".MainActivity"
             android:configChanges="orientation|screenSize|screenLayout|keyboardHidden|uiMode|fontScale|density"
             android:exported="true"

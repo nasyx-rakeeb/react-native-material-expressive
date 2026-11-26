@@ -30,6 +30,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.ExperimentalTextApi
 import androidx.compose.ui.text.PlatformTextStyle
 import androidx.compose.ui.text.TextStyle
@@ -41,7 +42,9 @@ import androidx.compose.ui.text.font.FontVariation
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextMotion
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.content.ContextCompat
@@ -52,6 +55,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.json.JSONObject
 import java.security.MessageDigest
+import kotlin.math.ceil
 
 private const val TAG = "M3E"
 private const val ACTION_RERENDER = "com.nasyxrakeeb.m3ereference.RERENDER"
@@ -141,6 +145,9 @@ class MainActivity : ComponentActivity() {
     private var sceneId by mutableStateOf("trivial")
     private var renderKey by mutableIntStateOf(0)
     private var fontState by mutableStateOf(FontState.PENDING)
+    private var textMotion by mutableStateOf("static")
+    private var textSizeMode by mutableStateOf("exact")
+    private var textPosMode by mutableStateOf("exact")
 
     private val rerenderReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
@@ -155,6 +162,12 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         sceneId = intent?.getStringExtra("scene") ?: "trivial"
+        textMotion = intent?.getStringExtra("textMotion") ?: "static"
+        textSizeMode = intent?.getStringExtra("textSizeMode") ?: "exact"
+        Log.i(TAG, "M3E_TEXT_MOTION $textMotion")
+        Log.i(TAG, "M3E_TEXT_SIZE_MODE $textSizeMode")
+        textPosMode = intent?.getStringExtra("textPosMode") ?: "exact"
+        Log.i(TAG, "M3E_TEXT_POS_MODE $textPosMode")
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
         WindowCompat.setDecorFitsSystemWindows(window, false)
         val controller = WindowCompat.getInsetsController(window, window.decorView)
@@ -166,13 +179,17 @@ class MainActivity : ComponentActivity() {
             val context = LocalContext.current
             val fontFamily = remember(context) {
                 FontFamily(
-                    Font(
-                        path = FONT_ASSET,
-                        assetManager = context.assets,
-                        weight = FontWeight.Normal,
-                        style = FontStyle.Normal,
-                        variationSettings = FontVariation.Settings(FontVariation.weight(400)),
-                    ),
+                    listOf(400, 500, 600, 700).map { weight ->
+                        Font(
+                            path = FONT_ASSET,
+                            assetManager = context.assets,
+                            weight = FontWeight(weight),
+                            style = FontStyle.Normal,
+                            variationSettings = FontVariation.Settings(
+                                FontVariation.weight(weight),
+                            ),
+                        )
+                    },
                 )
             }
             val measurer = rememberTextMeasurer()
@@ -182,6 +199,19 @@ class MainActivity : ComponentActivity() {
                     sha256(context.assets.open(FONT_ASSET).use { it.readBytes() })
                 }
                 Log.i(TAG, "M3E_FONT_HASH $FONT_ASSET $hash")
+                val probePaint = android.graphics.Paint(android.graphics.Paint.ANTI_ALIAS_FLAG).apply {
+                    typeface = android.graphics.Typeface.createFromAsset(context.assets, FONT_ASSET)
+                    fontVariationSettings = "'wght' 500"
+                }
+                for (size in listOf(35.5f, 36f, 36.75f, 37f, 37.5f, 38f)) {
+                    probePaint.textSize = size
+                    Log.i(
+                        TAG,
+                        "M3E_PAINT size=$size width=${probePaint.measureText("Archive 42")} " +
+                            "flags=${probePaint.flags} hinting=${probePaint.hinting} " +
+                            "subpixel=${probePaint.isSubpixelText} linear=${probePaint.isLinearText}",
+                    )
+                }
                 val probeFamily = { width: Float ->
                     FontFamily(
                         Font(
@@ -223,7 +253,7 @@ class MainActivity : ComponentActivity() {
             }
 
             MaterialTheme {
-                Harness(sceneId, renderKey, fontFamily, fontState)
+                Harness(sceneId, renderKey, fontFamily, fontState, textMotion, textSizeMode, textPosMode)
             }
         }
 
@@ -248,8 +278,12 @@ private fun Harness(
     renderKey: Int,
     fontFamily: FontFamily,
     fontState: FontState,
+    textMotion: String,
+    textSizeMode: String,
+    textPosMode: String,
 ) {
     val context = LocalContext.current
+    val density = LocalDensity.current
     var ready by remember(sceneId, renderKey) { mutableStateOf(false) }
     val scene = remember(sceneId) {
         runCatching { loadScene(context, sceneId) }
@@ -291,11 +325,27 @@ private fun Harness(
                     Box(modifier)
                 }
                 scene.texts.forEach { text ->
+                    val fontSize = if (textSizeMode == "ceil") {
+                        val px = with(density) { text.sizeSp.sp.toPx() }
+                        (ceil(px) / (density.density * density.fontScale)).sp
+                    } else {
+                        text.sizeSp.sp
+                    }
+                    val textOffset = if (textPosMode == "floor") {
+                        Modifier.offset {
+                            IntOffset(
+                                (text.x * density.density).toInt(),
+                                (text.y * density.density).toInt(),
+                            )
+                        }
+                    } else {
+                        Modifier.offset(text.x.dp, text.y.dp)
+                    }
                     Text(
                         text = text.text,
-                        modifier = Modifier.offset(text.x.dp, text.y.dp),
+                        modifier = textOffset,
                         color = parseColor(text.color),
-                        fontSize = text.sizeSp.sp,
+                        fontSize = fontSize,
                         fontWeight = FontWeight(text.weight),
                         fontFamily = fontFamily,
                         letterSpacing = text.letterSpacingSp.sp,
@@ -312,6 +362,10 @@ private fun Harness(
                         style = TextStyle(
                             fontSynthesis = FontSynthesis.None,
                             platformStyle = PlatformTextStyle(includeFontPadding = false),
+                            textMotion = when (textMotion) {
+                                "animated" -> TextMotion.Animated
+                                else -> TextMotion.Static
+                            },
                         ),
                     )
                 }

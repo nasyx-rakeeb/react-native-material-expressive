@@ -158,3 +158,36 @@ Every accepted decision has a date and evidence. Day 0 decisions are research-on
   - Compose 1.5.0 still ships `SegmentedButton.kt` for compatibility.
   - Paper #5150 D8: `SegmentedButtons` deprecated in 6.1, removed in 7.0; ConnectedButtonGroup in 6.1.
 - **Consequences:** Do not build new expressive behavior into SegmentedButton. It still needs a11y/tests/docs because Paper users will migrate from it.
+
+---
+
+## ADR-009 — Colour verification boundary: Compose-exact defaults/dynamic, MCU-spec-verified generated schemes
+
+- **Date:** 2026-11-26
+- **Status:** Accepted for Day 4 implementation; **flagged to Nasyx for confirmation** (no threshold or fidelity gate is changed)
+- **Context:**
+  - The Day 4 plan asks for Compose goldens for **N seeds × variants × light/dark**. Compose Material3 **1.5.0 has no public seed-to-scheme or variant-to-scheme API**. The public dynamic functions take a `Context`; the internal API-31/34 helpers take a `TonalPalette`, not a seed, and expose no variant or contrast parameter.
+  - `@material/material-color-utilities@0.4.0` is the current reference implementation for seed → tonal palettes → 48-role schemes. It supports 9 variants, contrast `-1..1`, light/dark, and spec versions `2021`/`2025`.
+  - MCU 0.4.0’s `2021` spec is a **later revision** than the mapping in Compose 1.5.0 and `com.google.android.material:material:1.11.0`: for non-fidelity light schemes, the revised spec uses on-container tone 30 (e.g. `onPrimaryContainer` `#4D3D75` for the default tonal-spot palette), while Compose/API-31 and material-java use tone 10 (e.g. `#201047`).
+- **Decision:**
+  1. **Default schemes** (`lightColorScheme()`, `darkColorScheme()`, `expressiveLightColorScheme()`) remain extracted Compose 1.5.0 tokens and are compared to a Compose device dump **exactly**. They are the only schemes claimed as Compose-token-exact.
+  2. **Native dynamic colour** is compared **exactly** to Compose’s `dynamicLightColorScheme` / `dynamicDarkColorScheme` on API 31. API 34+ role resources are source-mapped and remain an open verification item (U-24).
+  3. **Seed-generated schemes** use MCU 0.4.0 with `specVersion: '2021'`, all 9 variants, contrast `-1..1`, all 48 roles, light/dark. They are verified against **MCU goldens**, not Compose goldens, and must never be described as Compose-verified.
+  4. **Compose role mapping** is verified separately by feeding the MCU tonal palettes into Compose’s internal `dynamicLightColorScheme31` / `dynamicDarkColorScheme31` through reflection, including Compose’s own intermediate-tone derivation. This exercises Compose’s role table and tone mapping for 6 seeds × 9 variants × light/dark without pretending Compose has a seed API.
+  5. **`material` 1.11.0** is recorded as an independent Java oracle cross-check only. It implements the earlier on-container mapping and is **not** a release gate; divergence is expected and documented.
+- **Evidence:**
+  - `docs/evidence/day4/color/compose-dump.json` — Compose defaults, device dynamic schemes, 54 mapped palettes (108 schemes), and the Java oracle dump.
+  - `docs/evidence/day4/color/mcu-goldens.json` — 432 MCU schemes × 48 roles.
+  - `docs/evidence/day4/color/native-dynamic-payload.json` — API 31 release-app payload.
+  - `docs/evidence/day4/color/java-oracle-summary.json` — generated comparison; at standard contrast **321 / 5,184** role values differ (6.19%), concentrated in nine roles; across all contrast levels **5,740 / 20,736** differ (27.68%).
+  - `packages/react-native-material-expressive/src/color/__tests__/composeGoldens.test.ts` and `mcuGoldens.test.ts` — executable gates.
+- **Why:** This is the strongest honest verification available without inventing a Compose API. It keeps the Compose fidelity claim narrow and auditable, while still shipping a complete, seed-stable Material colour generator.
+- **Alternatives rejected:**
+  - Treat MCU-generated schemes as “Compose goldens” (false; Compose has no seed API).
+  - Make the generator imitate Compose’s older tone-10 mapping (would abandon the current Material spec, fixed roles, and contrast levels).
+  - Drop seed/variant generation until Compose ships an API (fails ADR-006 and the product requirement).
+- **Consequences:**
+  - Day 4 exit is met under this boundary. No pixel threshold, scene, or fidelity baseline is changed.
+  - Generated expressive dark remains opt-in (ADR-006); it is now explicitly MCU-2021-spec-verified.
+  - `KNOWN_DEVIATIONS.md` D-002 records the on-container tone drift so no later doc can accidentally claim full Compose parity for generated variants.
+  - The default provider still ships expressive light + standard dark; `mode="expressive"` switches only the dark side to the generated expressive scheme. A seed-generated light scheme requires `createColorScheme()` + `lightScheme`.

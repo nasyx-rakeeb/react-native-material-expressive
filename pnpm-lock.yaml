@@ -276,10 +276,17 @@ importers:
         version: 6.0.3
 
   packages/react-native-material-expressive:
+    dependencies:
+      '@material/material-color-utilities':
+        specifier: 0.4.0
+        version: 0.4.0
     devDependencies:
       '@types/jest':
         specifier: 30.0.0
         version: 30.0.0
+      '@types/node':
+        specifier: 26.6.10
+        version: 26.6.10
       '@types/react':
         specifier: 19.3.2
         version: 19.3.2
@@ -1723,6 +1730,9 @@ packages:
   '@manypkg/tools@2.1.2':
     resolution: {integrity: sha512-6QEf6yqFbETdwGITKq57aYoPfX/3K8XFNwsAlx0C1M7o8cb79sv1M3w+tWuWvIcSbNqrLF7OD7YpZMVVz335hQ==}
     engines: {node: '>=20.0.0'}
+
+  '@material/material-color-utilities@0.4.0':
+    resolution: {integrity: sha512-dlq6VExJReb8dhjj3a/yTigr3ncNwoFmL5Iy2ENtbDX03EmNeOEdZ+vsaGrj7RTuO+mB7L58II4LCsl4NpM8uw==}
 
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -6795,6 +6805,8 @@ snapshots:
       jju: 1.4.0
       tinyglobby: 0.2.17
       yaml: 2.9.1
+
+  '@material/material-color-utilities@0.4.0': {}
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:

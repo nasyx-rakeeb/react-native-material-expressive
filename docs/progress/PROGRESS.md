@@ -182,3 +182,60 @@ A day closes only when its exit criteria are met with evidence. Slippage is reco
 **Next step**
 
 - Nasyx decides U-23: accept the existing AA-aware gate for text and close Day 3, or treat the 4 pixels as a defect and investigate text rendering. Do not proceed by tuning the scene or threshold.
+
+---
+
+## Day 4 | 2026-11-26 | Colour system, native dynamic colour, text-rasterization closeout
+
+**Status:** PASS under **ADR-009**. Compose default schemes and the API-31 native dynamic path are exact; seed-generated variants are **MCU 2021 spec-verified**, not Compose-verified. The Day 3 text follow-up closes `U-23` with a measured root cause; no threshold or scene changed. API 34+ dynamic role resources remain `U-24`.
+
+**Done**
+
+- Implemented the full 48-role colour system: `M3ColorScheme`, all 9 MCU variants (`monochrome`, `neutral`, `tonalSpot`, `vibrant`, `expressive`, `fidelity`, `content`, `rainbow`, `fruitSalad`), contrast levels `-1..1`, `2021`/`2025` spec versions, phone/watch platforms, and light/dark. Results are deterministic, frozen, and LRU-cached (64).
+- Added static Compose 1.5.0 defaults: `standardLightColorScheme()` = extracted `colorLight`, `standardDarkColorScheme()` = extracted `colorDark`, and `expressiveLightColorScheme()` = standard light plus the four extracted expressive overrides (`onPrimaryContainer #4F378B`, `onSecondaryContainer #4A4458`, `onTertiaryContainer #633B48`, `onErrorContainer #8C1D18`). Generated expressive dark is opt-in (`expressiveDarkColorScheme(seed)`), per ADR-006.
+- Added `M3ThemeProvider` with `mode` (`system`/`light`/`dark`/`expressive`), `seed`, `contrastLevel`, `dynamicColor`, explicit `lightScheme`/`darkScheme`, and `useM3Theme`/`useM3ColorScheme` hooks. Priority is custom > dynamic > generated expressive dark > Compose baseline.
+- Added the Android `M3EDynamicColor` TurboModule: API 31–33 returns 13 tones per tonal range; API 34+ returns 43 `system_*` role resources plus the five baseline error/scrim roles; below API 31 it returns `unsupported`. The JS loader treats a missing module, malformed payload, or rejection as “dynamic unavailable” and keeps the static scheme.
+- Verified autolinking end-to-end. Gradle initially omitted the package because `apps/gallery/android/build/generated/autolinking/autolinking.json` was stale; deleting that generated directory regenerated the config. The package now compiles (`:react-native-material-expressive:compileDebugKotlin`), codegen emits `M3EDynamicColorSpec`, and the release gallery APK starts with `M3E_DYNAMIC_AVAILABLE true`.
+- Captured `compose-dump.json` (929 KB) from a Compose 1.5.0 device: public defaults, device dynamic schemes/tones, **54 seed × variant tonal palettes mapped through Compose's own internal API-31 role table** (108 light/dark schemes), and **432** independent `com.google.android.material:material:1.11.0` schemes as an oracle.
+- Generated `mcu-goldens.json` (432 schemes × 48 roles) and `compose-palettes.json` (54 palettes × 13 tones) with `tools/color/generate-goldens.mjs`; added `tools/color/compare-goldens.mjs` for defaults, mapped Compose schemes, native payload, and the Java-oracle summary.
+- Added executable gates: `composeGoldens.test.ts` compares defaults exactly, the API-31 native payload exactly, and all 108 mapped Compose schemes (5,184 role values, 0 differences); `mcuGoldens.test.ts` compares all 432 generated schemes (20,736 role values, 0 differences) and checks cache/fixed-role behaviour; `dynamicColor.test.ts` covers payload parsing, API-34 fill rules, unsupported/malformed fallbacks, and caching.
+- Recorded the Java oracle cross-check: **5,740 / 20,736** values differ (27.68%) across all contrast levels; at standard contrast **321 / 5,184** differ (6.19%), confined to nine on-container/primary/secondary/tertiary roles. `material` 1.11.0 implements an earlier spec draft; this is a cross-check, not a gate.
+- Closed the text follow-up (`U-23`). Root cause: RN hardcodes `isSubpixelText = true` and `isLinearText = true` (`CustomStyleSpan.kt:100-101`) and rounds font sizes up to an integer physical pixel (`ReactTextView.java:490-494`), while Compose's default `TextMotion.Static` uses hinting with subpixel off and fractional sp/dp. Experiment results: faithful `text` **1,745 exact / 4 AA** px, `labels` **17,793 / 5,313**, `paragraph` **52,139 / 17,998**; `TextMotion.Animated` gives `text` **0 / 0**, `labels` 12,314 / 561, `paragraph` 33,091 / 8,575; Animated + ceil sizes gives `text` 0 / 0, `labels` 4,357 / 348, `paragraph` 4,128 / 119; Animated + ceil + floor offsets gives `text` 0 / 0, `labels` 2 exact / 0 AA (max Δ 6), `paragraph` 1 / 0 (max Δ 1).
+- Added `tools/scenes/paragraph.json` (195 non-space glyphs) and `tools/scenes/labels.json` (78 glyphs); scene validation now covers 7 scenes. Diagnostic text modes are explicit harness options only (`M3E_TEXT_MOTION`, `M3E_TEXT_SIZE_MODE`, `M3E_TEXT_POS_MODE`), never shipped defaults.
+- Gated the gallery dynamic-colour log behind `EXPO_PUBLIC_M3E_DYNAMIC_PROBE=1`; it is verification instrumentation, not library runtime logging. Added `apps/gallery/expo-env.d.ts` for typed `process.env` access.
+
+**Evidence**
+
+- `docs/evidence/day4/color/README.md` — methods, exact results, Compose seed-API limitation, Java-oracle classification, reproduction commands, limitations.
+- `docs/evidence/day4/color/compose-dump.json` — Compose defaults, device dynamic schemes, 108 mapped schemes, 432 Java-oracle schemes.
+- `docs/evidence/day4/color/mcu-goldens.json` — 432 MCU schemes × 48 roles.
+- `docs/evidence/day4/color/compose-palettes.json` — 54 seed × variant palettes × 13 tones.
+- `docs/evidence/day4/color/native-dynamic-payload.json` — API-31 release-app payload; 96/96 role values match Compose.
+- `docs/evidence/day4/color/java-oracle-summary.json` — generated summary; not a gate.
+- `docs/evidence/day4/text-scaling/README.md`, `SOURCE_EVIDENCE.md`, `summary.json`, `runs/{faithful,animated,ceil,floor}/` — root cause, four modes, captures, metrics.
+- `tools/color/generate-goldens.mjs`, `compare-goldens.mjs`, `mcu-loader.mjs`, `register-mcu-loader.mjs`; `tools/scenes/{paragraph,labels}.json`.
+- Executable gates: `src/color/__tests__/{composeGoldens,mcuGoldens}.test.ts`, `src/theme/__tests__/{dynamicColor,resolveTheme}.test.ts`.
+- Local gates on the committed tree: `format:check` clean; `lint` 3/3 tasks + `eslint tools`; `typecheck` 4/4; `test` 7 suites / **71 tests**, coverage 81.91% statements / 89.94% branches / 75.60% functions / 82.22% lines; `build` 18 files ESM + CJS + types; `scenes:check` 7 scenes; gallery `typecheck`/`lint` clean.
+- No pixel threshold, gate scene, or fidelity baseline changed. The Day 3 gate scene remains 4 AA-aware px / 0.0009% against the unchanged 220.5 px / 0.05% budget.
+- Commit and CI: recorded in the Day 4 closeout follow-up.
+
+**Deviations**
+
+- **ADR-009 / Day 4 reinterpretation:** Compose Material3 1.5.0 has no public seed→scheme or variant→scheme API. The exit criterion is met as defaults-exact + Compose-role-mapping-exact + MCU-spec-exact, not as literal Compose seed goldens. This is flagged to Nasyx; no gate was changed.
+- **D-001:** faithful text retains a 4-AA-px residual on the Day 3 gate scene; inherent RN-vs-Compose quantization, recorded and accepted.
+- **D-002:** generated schemes follow MCU 0.4.0 `2021`, whose on-container mapping is newer than Compose 1.5/material-java 1.11. Generated schemes must never be described as Compose-verified.
+- **U-24:** API 34+ dynamic roles are source-mapped (43 resources + 5 baseline) but not emulator-verified. API 31–33 is verified exactly. A malformed/missing resource falls back to static colours rather than crashing.
+- The reference Compose app gained a diagnostic `SchemeDumpActivity` and text-mode extras; none of it ships in the library.
+- Reports live under `docs/evidence/day4/` rather than `docs/diff-reports/<date>/`, consistent with Day 3.
+
+**Risks**
+
+- MCU 0.4.0 is pinned; a version or default-spec change would move generated values. Any upgrade must regenerate both goldens and review the diff deliberately.
+- API 34+ resource names can vary by OEM/API level; only API 31 has been exercised on a device until `U-24` is closed.
+- Dynamic colours are read once per process (`getDynamicColorSchemes` cache). A wallpaper change while the app is alive is not observed; light/dark changes are still driven by `useColorScheme`.
+- `seed` affects only the generated expressive dark scheme in `mode="expressive"`; a seed-generated light scheme requires `createColorScheme()` + `lightScheme`. This is intentional but must be documented prominently in the Day 48 theme guide.
+- The Java oracle is an older spec generation and must not be used to “fix” MCU values.
+
+**Next step**
+
+- Day 5: typography. Build the 30 baseline/emphasized styles from tokens, Roboto Flex weight/width axes with capability detection, brand-font override, font scaling, and Compose text scenes for every style. Start with the `U-23` report summary and keep the existing pixel gate.

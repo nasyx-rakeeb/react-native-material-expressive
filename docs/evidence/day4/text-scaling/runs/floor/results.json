@@ -1,0 +1,735 @@
+{
+  "generatedAt": "2026-11-25T18:50:54.449Z",
+  "profile": {
+    "avd": "M3E_API31",
+    "api": 31,
+    "width": 1080,
+    "height": 1920,
+    "density": 420,
+    "densityScale": 2.625,
+    "gpu": "swiftshader_indirect",
+    "gpuDriverIncludes": "SwiftShader",
+    "fontScale": "1.0",
+    "locale": "en-US",
+    "animations": 0,
+    "coldBoots": 3,
+    "repeats": 20,
+    "fontFile": "apps/reference-compose/app/src/main/assets/fonts/RobotoFlex.ttf",
+    "fontSha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+    "statusBar": "hidden by both harnesses; scene starts at 0,0",
+    "navigationBar": "visible at the bottom, outside the scene crop",
+    "notes": [
+      "Pixel 2 AVD, no display cutout, no rounded-corner mask in screencap.",
+      "Cold boot means: emulator process stopped and restarted with -no-snapshot.",
+      "Both harnesses are installed from the exact APKs hashed by the run."
+    ]
+  },
+  "config": {
+    "boots": 1,
+    "repeats": 1,
+    "sceneRepeats": 1,
+    "scenes": [
+      "solid",
+      "rect",
+      "text",
+      "shadow",
+      "trivial",
+      "paragraph",
+      "labels"
+    ],
+    "outDir": "../../../../tmp/m3e-text-final3/floor"
+  },
+  "fonts": {
+    "sourceHash": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+    "galleryHash": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+    "apks": {
+      "compose": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+      "rn": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281"
+    }
+  },
+  "boots": [
+    {
+      "index": 0,
+      "startedAt": "2026-11-25T18:51:00.932Z",
+      "checks": [
+        {
+          "name": "avd",
+          "expected": "M3E_API31",
+          "actual": "M3E_API31",
+          "ok": true
+        },
+        {
+          "name": "api",
+          "expected": 31,
+          "actual": 31,
+          "ok": true
+        },
+        {
+          "name": "locale",
+          "expected": "en-US",
+          "actual": "en-US",
+          "ok": true
+        },
+        {
+          "name": "fontScale",
+          "expected": "1.0",
+          "actual": "1.0",
+          "ok": true
+        },
+        {
+          "name": "animatorDurationScale",
+          "expected": "0",
+          "actual": "0",
+          "ok": true
+        },
+        {
+          "name": "transitionAnimationScale",
+          "expected": "0",
+          "actual": "0",
+          "ok": true
+        },
+        {
+          "name": "windowAnimationScale",
+          "expected": "0",
+          "actual": "0",
+          "ok": true
+        },
+        {
+          "name": "userRotation",
+          "expected": "0",
+          "actual": "0",
+          "ok": true
+        },
+        {
+          "name": "immersiveConfirmation",
+          "expected": "confirmed",
+          "actual": "confirmed",
+          "ok": true
+        },
+        {
+          "name": "nightMode",
+          "expected": "Night mode: no",
+          "actual": "Night mode: no",
+          "ok": true
+        },
+        {
+          "name": "wmSize",
+          "expected": "Physical size: 1080x1920",
+          "actual": "Physical size: 1080x1920",
+          "ok": true
+        },
+        {
+          "name": "wmDensity",
+          "expected": "Physical density: 420",
+          "actual": "Physical density: 420",
+          "ok": true
+        },
+        {
+          "name": "gpu",
+          "expected": "SwiftShader",
+          "actual": "GLES: Google (Google Inc. (Google)), Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver-5.0.0)), OpenGL ES 3.1 (OpenGL ES 3.1.0 (ANGLE 2.1.2 git hash: 1f0534893540))",
+          "ok": true
+        }
+      ],
+      "captures": {
+        "compose": {
+          "solid": [
+            {
+              "path": "captures/769c75f7390f26c2c0a16ed770f3582dbfc2bd615753e5892a1f9d00e64fc639.png",
+              "sha256": "769c75f7390f26c2c0a16ed770f3582dbfc2bd615753e5892a1f9d00e64fc639",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "solid",
+                "render": 0
+              },
+              "textLayout": null,
+              "capturedAt": "2026-11-25T18:51:04.123Z"
+            }
+          ],
+          "rect": [
+            {
+              "path": "captures/62e8d31bac18416ce19bb20fcf052985b770560167df7cbd0091fb74b76f5a59.png",
+              "sha256": "62e8d31bac18416ce19bb20fcf052985b770560167df7cbd0091fb74b76f5a59",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "rect",
+                "render": 0
+              },
+              "textLayout": null,
+              "capturedAt": "2026-11-25T18:51:10.642Z"
+            }
+          ],
+          "text": [
+            {
+              "path": "captures/88fdb5439ab2fec365a6924ee894fcd0c2112a0faa5bae5c1d82a2f9651e6893.png",
+              "sha256": "88fdb5439ab2fec365a6924ee894fcd0c2112a0faa5bae5c1d82a2f9651e6893",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "text",
+                "render": 0
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "text"
+              },
+              "capturedAt": "2026-11-25T18:51:18.719Z"
+            }
+          ],
+          "shadow": [
+            {
+              "path": "captures/517d03a32a001dc104371bbe58430336afd4eb92bc04439676d4eca245e32ef6.png",
+              "sha256": "517d03a32a001dc104371bbe58430336afd4eb92bc04439676d4eca245e32ef6",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "shadow",
+                "render": 0
+              },
+              "textLayout": null,
+              "capturedAt": "2026-11-25T18:51:24.834Z"
+            }
+          ],
+          "trivial": [
+            {
+              "path": "captures/aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec.png",
+              "sha256": "aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 0
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T18:51:31.130Z"
+            }
+          ],
+          "paragraph": [
+            {
+              "path": "captures/286e73fa530fe1462b9eec39f0276b99e46a1c3ff35058323ead217da6aea030.png",
+              "sha256": "286e73fa530fe1462b9eec39f0276b99e46a1c3ff35058323ead217da6aea030",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "paragraph",
+                "render": 0
+              },
+              "textLayout": {
+                "text": "Buttons · Chips · Dialogs · Lists",
+                "width": 538,
+                "height": 43,
+                "lines": 1,
+                "scene": "paragraph"
+              },
+              "capturedAt": "2026-11-25T18:51:37.550Z"
+            }
+          ],
+          "labels": [
+            {
+              "path": "captures/804ce17141dfc9aa59779eacb932d81580709194764cf903259f3333a8a93bd2.png",
+              "sha256": "804ce17141dfc9aa59779eacb932d81580709194764cf903259f3333a8a93bd2",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "labels",
+                "render": 0
+              },
+              "textLayout": {
+                "text": "Archive 42",
+                "width": 175,
+                "height": 43,
+                "lines": 1,
+                "scene": "labels"
+              },
+              "capturedAt": "2026-11-25T18:51:45.800Z"
+            }
+          ]
+        },
+        "rn": {
+          "solid": [
+            {
+              "path": "captures/769c75f7390f26c2c0a16ed770f3582dbfc2bd615753e5892a1f9d00e64fc639.png",
+              "sha256": "769c75f7390f26c2c0a16ed770f3582dbfc2bd615753e5892a1f9d00e64fc639",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "solid",
+                "render": 0
+              },
+              "textLayout": null,
+              "capturedAt": "2026-11-25T18:51:06.921Z"
+            }
+          ],
+          "rect": [
+            {
+              "path": "captures/62e8d31bac18416ce19bb20fcf052985b770560167df7cbd0091fb74b76f5a59.png",
+              "sha256": "62e8d31bac18416ce19bb20fcf052985b770560167df7cbd0091fb74b76f5a59",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "rect",
+                "render": 0
+              },
+              "textLayout": null,
+              "capturedAt": "2026-11-25T18:51:14.450Z"
+            }
+          ],
+          "text": [
+            {
+              "path": "captures/88fdb5439ab2fec365a6924ee894fcd0c2112a0faa5bae5c1d82a2f9651e6893.png",
+              "sha256": "88fdb5439ab2fec365a6924ee894fcd0c2112a0faa5bae5c1d82a2f9651e6893",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "text",
+                "render": 0
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "text"
+              },
+              "capturedAt": "2026-11-25T18:51:21.530Z"
+            }
+          ],
+          "shadow": [
+            {
+              "path": "captures/517d03a32a001dc104371bbe58430336afd4eb92bc04439676d4eca245e32ef6.png",
+              "sha256": "517d03a32a001dc104371bbe58430336afd4eb92bc04439676d4eca245e32ef6",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "shadow",
+                "render": 0
+              },
+              "textLayout": null,
+              "capturedAt": "2026-11-25T18:51:27.780Z"
+            }
+          ],
+          "trivial": [
+            {
+              "path": "captures/aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec.png",
+              "sha256": "aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 0
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T18:51:33.927Z"
+            }
+          ],
+          "paragraph": [
+            {
+              "path": "captures/f20b1cdbeef990c0a4c0b1260ecc10e47f0165bfe95711a6c6458a5fd935f1ac.png",
+              "sha256": "f20b1cdbeef990c0a4c0b1260ecc10e47f0165bfe95711a6c6458a5fd935f1ac",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "paragraph",
+                "render": 0
+              },
+              "textLayout": {
+                "text": "\"Buttons · Chips · Dialogs · Lists\"",
+                "width": 536.9999942779541,
+                "height": 43.000001192092896,
+                "lines": 1,
+                "scene": "paragraph"
+              },
+              "capturedAt": "2026-11-25T18:51:42.385Z"
+            }
+          ],
+          "labels": [
+            {
+              "path": "captures/9bf0423d32800f8f1da7c0c66245ce01c73f69c718a8fc2077bb2e2010df223f.png",
+              "sha256": "9bf0423d32800f8f1da7c0c66245ce01c73f69c718a8fc2077bb2e2010df223f",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "labels",
+                "render": 0
+              },
+              "textLayout": {
+                "text": "\"Archive 42\"",
+                "width": 174.99999332427979,
+                "height": 43.000001192092896,
+                "lines": 1,
+                "scene": "labels"
+              },
+              "capturedAt": "2026-11-25T18:51:50.476Z"
+            }
+          ]
+        }
+      },
+      "determinism": {
+        "compose": {
+          "solid": {
+            "runs": 1,
+            "maxExact": 0,
+            "maxAa": 0,
+            "ok": true
+          },
+          "rect": {
+            "runs": 1,
+            "maxExact": 0,
+            "maxAa": 0,
+            "ok": true
+          },
+          "text": {
+            "runs": 1,
+            "maxExact": 0,
+            "maxAa": 0,
+            "ok": true
+          },
+          "shadow": {
+            "runs": 1,
+            "maxExact": 0,
+            "maxAa": 0,
+            "ok": true
+          },
+          "trivial": {
+            "runs": 1,
+            "maxExact": 0,
+            "maxAa": 0,
+            "ok": true
+          },
+          "paragraph": {
+            "runs": 1,
+            "maxExact": 0,
+            "maxAa": 0,
+            "ok": true
+          },
+          "labels": {
+            "runs": 1,
+            "maxExact": 0,
+            "maxAa": 0,
+            "ok": true
+          }
+        },
+        "rn": {
+          "solid": {
+            "runs": 1,
+            "maxExact": 0,
+            "maxAa": 0,
+            "ok": true
+          },
+          "rect": {
+            "runs": 1,
+            "maxExact": 0,
+            "maxAa": 0,
+            "ok": true
+          },
+          "text": {
+            "runs": 1,
+            "maxExact": 0,
+            "maxAa": 0,
+            "ok": true
+          },
+          "shadow": {
+            "runs": 1,
+            "maxExact": 0,
+            "maxAa": 0,
+            "ok": true
+          },
+          "trivial": {
+            "runs": 1,
+            "maxExact": 0,
+            "maxAa": 0,
+            "ok": true
+          },
+          "paragraph": {
+            "runs": 1,
+            "maxExact": 0,
+            "maxAa": 0,
+            "ok": true
+          },
+          "labels": {
+            "runs": 1,
+            "maxExact": 0,
+            "maxAa": 0,
+            "ok": true
+          }
+        }
+      },
+      "crossStack": {
+        "solid": {
+          "width": 840,
+          "height": 525,
+          "pixels": 441000,
+          "exactDiffPixels": 0,
+          "exactDiffPercent": 0,
+          "aaAwareDiffPixels": 0,
+          "aaAwareDiffPercent": 0,
+          "maxChannelDelta": 0,
+          "meanAbsoluteDelta": 0,
+          "bbox": null,
+          "aaAwareBbox": null,
+          "aaAwareCoordinates": [],
+          "regionCounts": {},
+          "diff": "diffs/boot-1-solid.png"
+        },
+        "rect": {
+          "width": 840,
+          "height": 525,
+          "pixels": 441000,
+          "exactDiffPixels": 0,
+          "exactDiffPercent": 0,
+          "aaAwareDiffPixels": 0,
+          "aaAwareDiffPercent": 0,
+          "maxChannelDelta": 0,
+          "meanAbsoluteDelta": 0,
+          "bbox": null,
+          "aaAwareBbox": null,
+          "aaAwareCoordinates": [],
+          "regionCounts": {},
+          "diff": "diffs/boot-1-rect.png"
+        },
+        "text": {
+          "width": 840,
+          "height": 525,
+          "pixels": 441000,
+          "exactDiffPixels": 0,
+          "exactDiffPercent": 0,
+          "aaAwareDiffPixels": 0,
+          "aaAwareDiffPercent": 0,
+          "maxChannelDelta": 0,
+          "meanAbsoluteDelta": 0,
+          "bbox": null,
+          "aaAwareBbox": null,
+          "aaAwareCoordinates": [],
+          "regionCounts": {
+            "text-0": 0
+          },
+          "diff": "diffs/boot-1-text.png"
+        },
+        "shadow": {
+          "width": 840,
+          "height": 525,
+          "pixels": 441000,
+          "exactDiffPixels": 0,
+          "exactDiffPercent": 0,
+          "aaAwareDiffPixels": 0,
+          "aaAwareDiffPercent": 0,
+          "maxChannelDelta": 0,
+          "meanAbsoluteDelta": 0,
+          "bbox": null,
+          "aaAwareBbox": null,
+          "aaAwareCoordinates": [],
+          "regionCounts": {
+            "shadow-0": 0
+          },
+          "diff": "diffs/boot-1-shadow.png"
+        },
+        "trivial": {
+          "width": 840,
+          "height": 525,
+          "pixels": 441000,
+          "exactDiffPixels": 0,
+          "exactDiffPercent": 0,
+          "aaAwareDiffPixels": 0,
+          "aaAwareDiffPercent": 0,
+          "maxChannelDelta": 0,
+          "meanAbsoluteDelta": 0,
+          "bbox": null,
+          "aaAwareBbox": null,
+          "aaAwareCoordinates": [],
+          "regionCounts": {
+            "text-1": 0
+          },
+          "diff": "diffs/boot-1-trivial.png"
+        },
+        "paragraph": {
+          "width": 840,
+          "height": 525,
+          "pixels": 441000,
+          "exactDiffPixels": 1,
+          "exactDiffPercent": 0.00022675736961451246,
+          "aaAwareDiffPixels": 0,
+          "aaAwareDiffPercent": 0,
+          "maxChannelDelta": 1,
+          "meanAbsoluteDelta": 0.0000022675736961451247,
+          "bbox": {
+            "x": 656,
+            "y": 45,
+            "width": 1,
+            "height": 1
+          },
+          "aaAwareBbox": null,
+          "aaAwareCoordinates": [],
+          "regionCounts": {
+            "text-0": 1,
+            "text-1": 0,
+            "text-2": 0,
+            "text-3": 0,
+            "text-4": 0,
+            "text-5": 0,
+            "text-6": 0,
+            "text-7": 0
+          },
+          "diff": "diffs/boot-1-paragraph.png"
+        },
+        "labels": {
+          "width": 840,
+          "height": 525,
+          "pixels": 441000,
+          "exactDiffPixels": 2,
+          "exactDiffPercent": 0.0004535147392290249,
+          "aaAwareDiffPixels": 0,
+          "aaAwareDiffPercent": 0,
+          "maxChannelDelta": 6,
+          "meanAbsoluteDelta": 0.000027210884353741498,
+          "bbox": {
+            "x": 41,
+            "y": 342,
+            "width": 1,
+            "height": 151
+          },
+          "aaAwareBbox": null,
+          "aaAwareCoordinates": [],
+          "regionCounts": {
+            "text-0": 0,
+            "text-1": 0,
+            "text-2": 0,
+            "text-3": 0,
+            "text-4": 0,
+            "text-5": 0,
+            "text-6": 0,
+            "text-7": 0,
+            "text-8": 0,
+            "text-9": 0
+          },
+          "diff": "diffs/boot-1-labels.png"
+        }
+      },
+      "shadow": {
+        "compose": {
+          "rect": {
+            "x": 105,
+            "y": 105,
+            "width": 525,
+            "height": 315
+          },
+          "outsidePixels": 46050,
+          "maxDeviation": 31,
+          "minDeviation": 1
+        },
+        "rn": {
+          "rect": {
+            "x": 105,
+            "y": 105,
+            "width": 525,
+            "height": 315
+          },
+          "outsidePixels": 46050,
+          "maxDeviation": 31,
+          "minDeviation": 1
+        }
+      },
+      "finishedAt": "2026-11-25T18:51:50.672Z"
+    }
+  ],
+  "crossBoot": {},
+  "gate": {
+    "determinismOk": true,
+    "crossStackExactZero": false,
+    "crossStackAaAwareBelowPlaybookGate": true,
+    "note": "No new pixel threshold is proposed. The 0.05% figure is the existing PLAYBOOK §7 gate."
+  }
+}

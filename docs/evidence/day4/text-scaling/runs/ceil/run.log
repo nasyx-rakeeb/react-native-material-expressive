@@ -1,0 +1,42 @@
+[18:49:54] plan: 1 cold boots, 1 trivial repeats, 1 repeats of solid/rect/text/shadow/trivial/paragraph/labels per app
+[18:49:54] fonts verified: 9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281
+[18:49:54] boot 1/1: starting
+[18:50:01] boot 1: profile verified (13 checks)
+[18:50:05] compose solid: 840x525 769c75f7390f M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true
+[18:50:05] compose solid: 1 runs, determinism max exact 0, max AA 0
+[18:50:08] rn solid: 840x525 769c75f7390f [M3E] font_probe narrow=376.00 wide=411.43 ok=true
+[18:50:08] rn solid: 1 runs, determinism max exact 0, max AA 0
+[18:50:08] solid: cross-stack exact 0 (0.0000%), AA-aware 0 (0.0000%), max delta 0
+[18:50:11] compose rect: 840x525 62e8d31bac18 M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true
+[18:50:11] compose rect: 1 runs, determinism max exact 0, max AA 0
+[18:50:14] rn rect: 840x525 62e8d31bac18 [M3E] font_probe narrow=376.00 wide=411.43 ok=true
+[18:50:14] rn rect: 1 runs, determinism max exact 0, max AA 0
+[18:50:14] rect: cross-stack exact 0 (0.0000%), AA-aware 0 (0.0000%), max delta 0
+[18:50:18] compose text: 840x525 88fdb5439ab2 M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true
+[18:50:18] compose text: 1 runs, determinism max exact 0, max AA 0
+[18:50:22] rn text: 840x525 88fdb5439ab2 [M3E] font_probe narrow=376.00 wide=411.43 ok=true
+[18:50:22] rn text: 1 runs, determinism max exact 0, max AA 0
+[18:50:22] text: cross-stack exact 0 (0.0000%), AA-aware 0 (0.0000%), max delta 0
+[18:50:25] compose shadow: 840x525 517d03a32a00 M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true
+[18:50:25] compose shadow: 1 runs, determinism max exact 0, max AA 0
+[18:50:28] rn shadow: 840x525 517d03a32a00 [M3E] font_probe narrow=376.00 wide=411.43 ok=true
+[18:50:28] rn shadow: 1 runs, determinism max exact 0, max AA 0
+[18:50:28] shadow: cross-stack exact 0 (0.0000%), AA-aware 0 (0.0000%), max delta 0
+[18:50:32] compose trivial: 840x525 aa3f158f178d M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true
+[18:50:32] compose trivial: 1 runs, determinism max exact 0, max AA 0
+[18:50:36] rn trivial: 840x525 aa3f158f178d [M3E] font_probe narrow=376.00 wide=411.43 ok=true
+[18:50:36] rn trivial: 1 runs, determinism max exact 0, max AA 0
+[18:50:36] trivial: cross-stack exact 0 (0.0000%), AA-aware 0 (0.0000%), max delta 0
+[18:50:40] compose paragraph: 840x525 2b74f8a56034 M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true
+[18:50:40] compose paragraph: 1 runs, determinism max exact 0, max AA 0
+[18:50:45] rn paragraph: 840x525 f20b1cdbeef9 [M3E] font_probe narrow=376.00 wide=411.43 ok=true
+[18:50:45] rn paragraph: 1 runs, determinism max exact 0, max AA 0
+[18:50:45] paragraph: cross-stack exact 4128 (0.9361%), AA-aware 119 (0.0270%), max delta 182
+[18:50:48] compose labels: 840x525 00fb9cfd72a8 M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true
+[18:50:48] compose labels: 1 runs, determinism max exact 0, max AA 0
+[18:50:53] rn labels: 840x525 9bf0423d3280 [M3E] font_probe narrow=376.00 wide=411.43 ok=true
+[18:50:53] rn labels: 1 runs, determinism max exact 0, max AA 0
+[18:50:53] labels: cross-stack exact 4357 (0.9880%), AA-aware 348 (0.0789%), max delta 226
+[18:50:54] report: ../../../../tmp/m3e-text-final3/ceil/report.html
+[18:50:54] summary: exactZero=false deterministic=true aaGate=false
+[18:50:54] RESULT: cross-stack exact zero is NOT met — see report for measured pixels

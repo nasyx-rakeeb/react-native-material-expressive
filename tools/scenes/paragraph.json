@@ -1,0 +1,90 @@
+{
+  "schema": 1,
+  "id": "paragraph",
+  "description": "A multi-line paragraph at several sizes and weights. Used to measure text rasterization as a function of glyph count.",
+  "widthDp": 320,
+  "heightDp": 200,
+  "background": "#FFFBFE",
+  "layers": [
+    {
+      "type": "text",
+      "x": 16,
+      "y": 8,
+      "text": "Expressive typography",
+      "sizeSp": 22,
+      "weight": 700,
+      "color": "#1D1B20",
+      "letterSpacingSp": 0
+    },
+    {
+      "type": "text",
+      "x": 16,
+      "y": 40,
+      "text": "Material 3 Expressive pairs",
+      "sizeSp": 16,
+      "weight": 500,
+      "color": "#1D1B20",
+      "letterSpacingSp": 0.15
+    },
+    {
+      "type": "text",
+      "x": 16,
+      "y": 58,
+      "text": "variable fonts with a flexible",
+      "sizeSp": 16,
+      "weight": 400,
+      "color": "#49454F",
+      "letterSpacingSp": 0.15
+    },
+    {
+      "type": "text",
+      "x": 16,
+      "y": 76,
+      "text": "type scale and clear emphasis.",
+      "sizeSp": 16,
+      "weight": 400,
+      "color": "#49454F",
+      "letterSpacingSp": 0.15
+    },
+    {
+      "type": "text",
+      "x": 16,
+      "y": 104,
+      "text": "Roboto Flex, wdth 100, wght 400",
+      "sizeSp": 12,
+      "weight": 500,
+      "color": "#49454F",
+      "letterSpacingSp": 0.5
+    },
+    {
+      "type": "text",
+      "x": 16,
+      "y": 120,
+      "text": "The quick brown fox jumps over",
+      "sizeSp": 12,
+      "weight": 400,
+      "color": "#49454F",
+      "letterSpacingSp": 0.4
+    },
+    {
+      "type": "text",
+      "x": 16,
+      "y": 136,
+      "text": "the lazy dog. 0123456789",
+      "sizeSp": 12,
+      "weight": 400,
+      "color": "#49454F",
+      "letterSpacingSp": 0.4
+    },
+    {
+      "type": "text",
+      "x": 16,
+      "y": 160,
+      "text": "Buttons · Chips · Dialogs · Lists",
+      "sizeSp": 14,
+      "weight": 600,
+      "color": "#6750A4",
+      "letterSpacingSp": 0.1
+    }
+  ]
+}

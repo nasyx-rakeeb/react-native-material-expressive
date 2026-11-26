@@ -1,0 +1,440 @@
+{
+  "schema": 1,
+  "generatedBy": "tools/color/compare-goldens.mjs",
+  "sources": {
+    "mcu": "0.4.0",
+    "specVersion": "2021",
+    "compose": "material3:1.5.0",
+    "javaOracle": "com.google.android.material:material:1.11.0"
+  },
+  "javaOracle": {
+    "comparedSchemes": 432,
+    "comparedValues": 20736,
+    "missing": 0,
+    "differences": 5740,
+    "maxChannelDelta": 255,
+    "byContrast": {
+      "0": 321,
+      "1": 2880,
+      "-1": 432,
+      "0.5": 2107
+    },
+    "byRole": {
+      "error": 216,
+      "errorContainer": 162,
+      "inversePrimary": 108,
+      "onError": 54,
+      "onErrorContainer": 210,
+      "onPrimary": 48,
+      "onPrimaryContainer": 216,
+      "onPrimaryFixedVariant": 54,
+      "onSecondary": 54,
+      "onSecondaryContainer": 222,
+      "onSecondaryFixedVariant": 54,
+      "onSurface": 108,
+      "onSurfaceVariant": 216,
+      "onTertiary": 54,
+      "onTertiaryContainer": 217,
+      "onTertiaryFixedVariant": 54,
+      "outline": 216,
+      "outlineVariant": 216,
+      "primary": 204,
+      "primaryContainer": 166,
+      "primaryFixed": 156,
+      "primaryFixedDim": 156,
+      "secondary": 216,
+      "secondaryContainer": 186,
+      "secondaryFixed": 162,
+      "secondaryFixedDim": 162,
+      "surfaceBright": 108,
+      "surfaceContainer": 216,
+      "surfaceContainerHigh": 216,
+      "surfaceContainerHighest": 216,
+      "surfaceContainerLow": 162,
+      "surfaceContainerLowest": 108,
+      "surfaceDim": 108,
+      "tertiary": 223,
+      "tertiaryContainer": 184,
+      "tertiaryFixed": 156,
+      "tertiaryFixedDim": 156
+    },
+    "byVariant": {
+      "content": 701,
+      "expressive": 636,
+      "fidelity": 701,
+      "fruitSalad": 636,
+      "monochrome": 522,
+      "neutral": 636,
+      "rainbow": 636,
+      "tonalSpot": 636,
+      "vibrant": 636
+    },
+    "byMode": {
+      "dark": 2887,
+      "light": 2853
+    },
+    "examples": [
+      {
+        "seed": "#6750A4",
+        "variant": "monochrome",
+        "mode": "light",
+        "contrast": "-1",
+        "role": "onErrorContainer",
+        "expected": "#E23A32",
+        "actual": "#BA1A1A",
+        "delta": 40
+      },
+      {
+        "seed": "#6750A4",
+        "variant": "monochrome",
+        "mode": "light",
+        "contrast": "-1",
+        "role": "onPrimaryContainer",
+        "expected": "#7A7A7A",
+        "actual": "#5E5E5E",
+        "delta": 28
+      },
+      {
+        "seed": "#6750A4",
+        "variant": "monochrome",
+        "mode": "light",
+        "contrast": "-1",
+        "role": "onSecondaryContainer",
+        "expected": "#7A7A7A",
+        "actual": "#5E5E5E",
+        "delta": 28
+      },
+      {
+        "seed": "#6750A4",
+        "variant": "monochrome",
+        "mode": "light",
+        "contrast": "-1",
+        "role": "onTertiaryContainer",
+        "expected": "#7A7A7A",
+        "actual": "#5E5E5E",
+        "delta": 28
+      },
+      {
+        "seed": "#6750A4",
+        "variant": "monochrome",
+        "mode": "dark",
+        "contrast": "-1",
+        "role": "onErrorContainer",
+        "expected": "#F0443B",
+        "actual": "#FF7D70",
+        "delta": 57
+      },
+      {
+        "seed": "#6750A4",
+        "variant": "monochrome",
+        "mode": "dark",
+        "contrast": "-1",
+        "role": "onPrimaryContainer",
+        "expected": "#848484",
+        "actual": "#A4A4A4",
+        "delta": 32
+      },
+      {
+        "seed": "#6750A4",
+        "variant": "monochrome",
+        "mode": "dark",
+        "contrast": "-1",
+        "role": "onSecondaryContainer",
+        "expected": "#848484",
+        "actual": "#A4A4A4",
+        "delta": 32
+      },
+      {
+        "seed": "#6750A4",
+        "variant": "monochrome",
+        "mode": "dark",
+        "contrast": "-1",
+        "role": "onTertiaryContainer",
+        "expected": "#848484",
+        "actual": "#A4A4A4",
+        "delta": 32
+      },
+      {
+        "seed": "#6750A4",
+        "variant": "monochrome",
+        "mode": "light",
+        "contrast": "0.5",
+        "role": "error",
+        "expected": "#740006",
+        "actual": "#8C0009",
+        "delta": 24
+      },
+      {
+        "seed": "#6750A4",
+        "variant": "monochrome",
+        "mode": "light",
+        "contrast": "0.5",
+        "role": "errorContainer",
+        "expected": "#CF2C27",
+        "actual": "#DA342E",
+        "delta": 11
+      },
+      {
+        "seed": "#6750A4",
+        "variant": "monochrome",
+        "mode": "light",
+        "contrast": "0.5",
+        "role": "onSurface",
+        "expected": "#111111",
+        "actual": "#1B1B1B",
+        "delta": 10
+      },
+      {
+        "seed": "#6750A4",
+        "variant": "monochrome",
+        "mode": "light",
+        "contrast": "0.5",
+        "role": "onSurfaceVariant",
+        "expected": "#363636",
+        "actual": "#434343",
+        "delta": 13
+      },
+      {
+        "seed": "#6750A4",
+        "variant": "monochrome",
+        "mode": "light",
+        "contrast": "0.5",
+        "role": "onTertiary",
+        "expected": "#F5F5F5",
+        "actual": "#FFFFFF",
+        "delta": 10
+      },
+      {
+        "seed": "#6750A4",
+        "variant": "monochrome",
+        "mode": "light",
+        "contrast": "0.5",
+        "role": "outline",
+        "expected": "#525252",
+        "actual": "#5F5F5F",
+        "delta": 13
+      },
+      {
+        "seed": "#6750A4",
+        "variant": "monochrome",
+        "mode": "light",
+        "contrast": "0.5",
+        "role": "outlineVariant",
+        "expected": "#6D6D6D",
+        "actual": "#7B7B7B",
+        "delta": 14
+      },
+      {
+        "seed": "#6750A4",
+        "variant": "monochrome",
+        "mode": "light",
+        "contrast": "0.5",
+        "role": "secondary",
+        "expected": "#363636",
+        "actual": "#434343",
+        "delta": 13
+      },
+      {
+        "seed": "#6750A4",
+        "variant": "monochrome",
+        "mode": "light",
+        "contrast": "0.5",
+        "role": "secondaryContainer",
+        "expected": "#6D6D6D",
+        "actual": "#747474",
+        "delta": 7
+      },
+      {
+        "seed": "#6750A4",
+        "variant": "monochrome",
+        "mode": "light",
+        "contrast": "0.5",
+        "role": "secondaryFixed",
+        "expected": "#6D6D6D",
+        "actual": "#747474",
+        "delta": 7
+      },
+      {
+        "seed": "#6750A4",
+        "variant": "monochrome",
+        "mode": "light",
+        "contrast": "0.5",
+        "role": "secondaryFixedDim",
+        "expected": "#555555",
+        "actual": "#5C5C5C",
+        "delta": 7
+      },
+      {
+        "seed": "#6750A4",
+        "variant": "monochrome",
+        "mode": "light",
+        "contrast": "0.5",
+        "role": "surfaceContainer",
+        "expected": "#E8E8E8",
+        "actual": "#EEEEEE",
+        "delta": 6
+      }
+    ],
+    "standardContrast": {
+      "comparedValues": 5184,
+      "differences": 321,
+      "maxChannelDelta": 255,
+      "roles": {
+        "onErrorContainer": 48,
+        "onPrimaryContainer": 60,
+        "onSecondaryContainer": 60,
+        "onTertiaryContainer": 60,
+        "primary": 12,
+        "primaryContainer": 22,
+        "secondaryContainer": 24,
+        "tertiary": 13,
+        "tertiaryContainer": 22
+      },
+      "examples": [
+        {
+          "seed": "#6750A4",
+          "variant": "neutral",
+          "mode": "light",
+          "role": "onErrorContainer",
+          "expected": "#93000A",
+          "actual": "#410002",
+          "delta": 82
+        },
+        {
+          "seed": "#6750A4",
+          "variant": "neutral",
+          "mode": "light",
+          "role": "onPrimaryContainer",
+          "expected": "#494453",
+          "actual": "#1D1A26",
+          "delta": 45
+        },
+        {
+          "seed": "#6750A4",
+          "variant": "neutral",
+          "mode": "light",
+          "role": "onSecondaryContainer",
+          "expected": "#49454E",
+          "actual": "#1D1A22",
+          "delta": 44
+        },
+        {
+          "seed": "#6750A4",
+          "variant": "neutral",
+          "mode": "light",
+          "role": "onTertiaryContainer",
+          "expected": "#4A4458",
+          "actual": "#1E192B",
+          "delta": 45
+        },
+        {
+          "seed": "#6750A4",
+          "variant": "tonalSpot",
+          "mode": "light",
+          "role": "onErrorContainer",
+          "expected": "#93000A",
+          "actual": "#410002",
+          "delta": 82
+        },
+        {
+          "seed": "#6750A4",
+          "variant": "tonalSpot",
+          "mode": "light",
+          "role": "onPrimaryContainer",
+          "expected": "#4D3D75",
+          "actual": "#201047",
+          "delta": 46
+        },
+        {
+          "seed": "#6750A4",
+          "variant": "tonalSpot",
+          "mode": "light",
+          "role": "onSecondaryContainer",
+          "expected": "#4A4458",
+          "actual": "#1E192B",
+          "delta": 45
+        },
+        {
+          "seed": "#6750A4",
+          "variant": "tonalSpot",
+          "mode": "light",
+          "role": "onTertiaryContainer",
+          "expected": "#633B48",
+          "actual": "#31101D",
+          "delta": 50
+        },
+        {
+          "seed": "#6750A4",
+          "variant": "vibrant",
+          "mode": "light",
+          "role": "onErrorContainer",
+          "expected": "#93000A",
+          "actual": "#410002",
+          "delta": 82
+        },
+        {
+          "seed": "#6750A4",
+          "variant": "vibrant",
+          "mode": "light",
+          "role": "onPrimaryContainer",
+          "expected": "#5400CC",
+          "actual": "#22005D",
+          "delta": 111
+        },
+        {
+          "seed": "#6750A4",
+          "variant": "vibrant",
+          "mode": "light",
+          "role": "onSecondaryContainer",
+          "expected": "#523F5F",
+          "actual": "#251431",
+          "delta": 46
+        },
+        {
+          "seed": "#6750A4",
+          "variant": "vibrant",
+          "mode": "light",
+          "role": "onTertiaryContainer",
+          "expected": "#5F3961",
+          "actual": "#2F0D33",
+          "delta": 48
+        }
+      ]
+    },
+    "status": "cross-check-only",
+    "note": "material 1.11.0 implements the earlier on-container tone mapping; MCU 0.4.0 implements the revised 2021 spec. Differences are expected and are not a gate."
+  },
+  "nativeDynamic": {
+    "apiLevel": 31,
+    "kind": "tones",
+    "light": {
+      "comparedValues": 48,
+      "differences": 0,
+      "maxChannelDelta": 0,
+      "byRole": {},
+      "examples": []
+    },
+    "dark": {
+      "comparedValues": 48,
+      "differences": 0,
+      "maxChannelDelta": 0,
+      "byRole": {},
+      "examples": []
+    }
+  },
+  "composeMapped": {
+    "palettes": 54,
+    "schemes": 108
+  },
+  "composeDefaults": {
+    "lightRoles": 48,
+    "darkRoles": 48,
+    "expressiveLightRoles": 48,
+    "expressiveLightOverrides": [
+      "onPrimaryContainer",
+      "onSecondaryContainer",
+      "onTertiaryContainer",
+      "onErrorContainer"
+    ]
+  }
+}

@@ -25,6 +25,7 @@ android {
     }
 
     sourceSets["main"].assets.srcDir("../../../tools/scenes")
+    sourceSets["main"].assets.srcDir("../../../docs/evidence/day4/color")
 }
 
 kotlin {
@@ -38,4 +39,5 @@ dependencies {
     implementation("androidx.compose.material3:material3:1.5.0")
     implementation("androidx.compose.ui:ui:1.12.0")
     implementation("androidx.core:core-ktx:1.19.1")
+    implementation("com.google.android.material:material:1.11.0")
 }

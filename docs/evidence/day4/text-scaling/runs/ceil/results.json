@@ -1,0 +1,907 @@
+{
+  "generatedAt": "2026-11-25T18:49:54.956Z",
+  "profile": {
+    "avd": "M3E_API31",
+    "api": 31,
+    "width": 1080,
+    "height": 1920,
+    "density": 420,
+    "densityScale": 2.625,
+    "gpu": "swiftshader_indirect",
+    "gpuDriverIncludes": "SwiftShader",
+    "fontScale": "1.0",
+    "locale": "en-US",
+    "animations": 0,
+    "coldBoots": 3,
+    "repeats": 20,
+    "fontFile": "apps/reference-compose/app/src/main/assets/fonts/RobotoFlex.ttf",
+    "fontSha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+    "statusBar": "hidden by both harnesses; scene starts at 0,0",
+    "navigationBar": "visible at the bottom, outside the scene crop",
+    "notes": [
+      "Pixel 2 AVD, no display cutout, no rounded-corner mask in screencap.",
+      "Cold boot means: emulator process stopped and restarted with -no-snapshot.",
+      "Both harnesses are installed from the exact APKs hashed by the run."
+    ]
+  },
+  "config": {
+    "boots": 1,
+    "repeats": 1,
+    "sceneRepeats": 1,
+    "scenes": [
+      "solid",
+      "rect",
+      "text",
+      "shadow",
+      "trivial",
+      "paragraph",
+      "labels"
+    ],
+    "outDir": "../../../../tmp/m3e-text-final3/ceil"
+  },
+  "fonts": {
+    "sourceHash": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+    "galleryHash": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+    "apks": {
+      "compose": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+      "rn": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281"
+    }
+  },
+  "boots": [
+    {
+      "index": 0,
+      "startedAt": "2026-11-25T18:50:01.865Z",
+      "checks": [
+        {
+          "name": "avd",
+          "expected": "M3E_API31",
+          "actual": "M3E_API31",
+          "ok": true
+        },
+        {
+          "name": "api",
+          "expected": 31,
+          "actual": 31,
+          "ok": true
+        },
+        {
+          "name": "locale",
+          "expected": "en-US",
+          "actual": "en-US",
+          "ok": true
+        },
+        {
+          "name": "fontScale",
+          "expected": "1.0",
+          "actual": "1.0",
+          "ok": true
+        },
+        {
+          "name": "animatorDurationScale",
+          "expected": "0",
+          "actual": "0",
+          "ok": true
+        },
+        {
+          "name": "transitionAnimationScale",
+          "expected": "0",
+          "actual": "0",
+          "ok": true
+        },
+        {
+          "name": "windowAnimationScale",
+          "expected": "0",
+          "actual": "0",
+          "ok": true
+        },
+        {
+          "name": "userRotation",
+          "expected": "0",
+          "actual": "0",
+          "ok": true
+        },
+        {
+          "name": "immersiveConfirmation",
+          "expected": "confirmed",
+          "actual": "confirmed",
+          "ok": true
+        },
+        {
+          "name": "nightMode",
+          "expected": "Night mode: no",
+          "actual": "Night mode: no",
+          "ok": true
+        },
+        {
+          "name": "wmSize",
+          "expected": "Physical size: 1080x1920",
+          "actual": "Physical size: 1080x1920",
+          "ok": true
+        },
+        {
+          "name": "wmDensity",
+          "expected": "Physical density: 420",
+          "actual": "Physical density: 420",
+          "ok": true
+        },
+        {
+          "name": "gpu",
+          "expected": "SwiftShader",
+          "actual": "GLES: Google (Google Inc. (Google)), Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver-5.0.0)), OpenGL ES 3.1 (OpenGL ES 3.1.0 (ANGLE 2.1.2 git hash: 1f0534893540))",
+          "ok": true
+        }
+      ],
+      "captures": {
+        "compose": {
+          "solid": [
+            {
+              "path": "captures/769c75f7390f26c2c0a16ed770f3582dbfc2bd615753e5892a1f9d00e64fc639.png",
+              "sha256": "769c75f7390f26c2c0a16ed770f3582dbfc2bd615753e5892a1f9d00e64fc639",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "solid",
+                "render": 0
+              },
+              "textLayout": null,
+              "capturedAt": "2026-11-25T18:50:05.140Z"
+            }
+          ],
+          "rect": [
+            {
+              "path": "captures/62e8d31bac18416ce19bb20fcf052985b770560167df7cbd0091fb74b76f5a59.png",
+              "sha256": "62e8d31bac18416ce19bb20fcf052985b770560167df7cbd0091fb74b76f5a59",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "rect",
+                "render": 0
+              },
+              "textLayout": null,
+              "capturedAt": "2026-11-25T18:50:11.601Z"
+            }
+          ],
+          "text": [
+            {
+              "path": "captures/88fdb5439ab2fec365a6924ee894fcd0c2112a0faa5bae5c1d82a2f9651e6893.png",
+              "sha256": "88fdb5439ab2fec365a6924ee894fcd0c2112a0faa5bae5c1d82a2f9651e6893",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "text",
+                "render": 0
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "text"
+              },
+              "capturedAt": "2026-11-25T18:50:18.310Z"
+            }
+          ],
+          "shadow": [
+            {
+              "path": "captures/517d03a32a001dc104371bbe58430336afd4eb92bc04439676d4eca245e32ef6.png",
+              "sha256": "517d03a32a001dc104371bbe58430336afd4eb92bc04439676d4eca245e32ef6",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "shadow",
+                "render": 0
+              },
+              "textLayout": null,
+              "capturedAt": "2026-11-25T18:50:25.632Z"
+            }
+          ],
+          "trivial": [
+            {
+              "path": "captures/aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec.png",
+              "sha256": "aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 0
+              },
+              "textLayout": {
+                "text": "M3 Expressive",
+                "width": 402,
+                "height": 73,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T18:50:32.270Z"
+            }
+          ],
+          "paragraph": [
+            {
+              "path": "captures/2b74f8a5603444d3dee3c62b5ca0e38ed7fe97b7a80c5bbef80b66670423b237.png",
+              "sha256": "2b74f8a5603444d3dee3c62b5ca0e38ed7fe97b7a80c5bbef80b66670423b237",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "paragraph",
+                "render": 0
+              },
+              "textLayout": {
+                "text": "Buttons · Chips · Dialogs · Lists",
+                "width": 538,
+                "height": 43,
+                "lines": 1,
+                "scene": "paragraph"
+              },
+              "capturedAt": "2026-11-25T18:50:40.060Z"
+            }
+          ],
+          "labels": [
+            {
+              "path": "captures/00fb9cfd72a87d9eb70294b036b2ea1d4d3074cca5105d3fb87984b4938bdf87.png",
+              "sha256": "00fb9cfd72a87d9eb70294b036b2ea1d4d3074cca5105d3fb87984b4938bdf87",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "sha256": "9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281",
+                "probe": "M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true"
+              },
+              "render": {
+                "scene": "labels",
+                "render": 0
+              },
+              "textLayout": {
+                "text": "Archive 42",
+                "width": 175,
+                "height": 43,
+                "lines": 1,
+                "scene": "labels"
+              },
+              "capturedAt": "2026-11-25T18:50:48.761Z"
+            }
+          ]
+        },
+        "rn": {
+          "solid": [
+            {
+              "path": "captures/769c75f7390f26c2c0a16ed770f3582dbfc2bd615753e5892a1f9d00e64fc639.png",
+              "sha256": "769c75f7390f26c2c0a16ed770f3582dbfc2bd615753e5892a1f9d00e64fc639",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "solid",
+                "render": 0
+              },
+              "textLayout": null,
+              "capturedAt": "2026-11-25T18:50:08.131Z"
+            }
+          ],
+          "rect": [
+            {
+              "path": "captures/62e8d31bac18416ce19bb20fcf052985b770560167df7cbd0091fb74b76f5a59.png",
+              "sha256": "62e8d31bac18416ce19bb20fcf052985b770560167df7cbd0091fb74b76f5a59",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "rect",
+                "render": 0
+              },
+              "textLayout": null,
+              "capturedAt": "2026-11-25T18:50:14.603Z"
+            }
+          ],
+          "text": [
+            {
+              "path": "captures/88fdb5439ab2fec365a6924ee894fcd0c2112a0faa5bae5c1d82a2f9651e6893.png",
+              "sha256": "88fdb5439ab2fec365a6924ee894fcd0c2112a0faa5bae5c1d82a2f9651e6893",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "text",
+                "render": 0
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "text"
+              },
+              "capturedAt": "2026-11-25T18:50:22.147Z"
+            }
+          ],
+          "shadow": [
+            {
+              "path": "captures/517d03a32a001dc104371bbe58430336afd4eb92bc04439676d4eca245e32ef6.png",
+              "sha256": "517d03a32a001dc104371bbe58430336afd4eb92bc04439676d4eca245e32ef6",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "shadow",
+                "render": 0
+              },
+              "textLayout": null,
+              "capturedAt": "2026-11-25T18:50:28.646Z"
+            }
+          ],
+          "trivial": [
+            {
+              "path": "captures/aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec.png",
+              "sha256": "aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "trivial",
+                "render": 0
+              },
+              "textLayout": {
+                "text": "\"M3 Expressive\"",
+                "width": 401.9999885559082,
+                "height": 73.00000190734863,
+                "lines": 1,
+                "scene": "trivial"
+              },
+              "capturedAt": "2026-11-25T18:50:36.283Z"
+            }
+          ],
+          "paragraph": [
+            {
+              "path": "captures/f20b1cdbeef990c0a4c0b1260ecc10e47f0165bfe95711a6c6458a5fd935f1ac.png",
+              "sha256": "f20b1cdbeef990c0a4c0b1260ecc10e47f0165bfe95711a6c6458a5fd935f1ac",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "paragraph",
+                "render": 0
+              },
+              "textLayout": {
+                "text": "\"Buttons · Chips · Dialogs · Lists\"",
+                "width": 536.9999942779541,
+                "height": 43.000001192092896,
+                "lines": 1,
+                "scene": "paragraph"
+              },
+              "capturedAt": "2026-11-25T18:50:45.012Z"
+            }
+          ],
+          "labels": [
+            {
+              "path": "captures/9bf0423d32800f8f1da7c0c66245ce01c73f69c718a8fc2077bb2e2010df223f.png",
+              "sha256": "9bf0423d32800f8f1da7c0c66245ce01c73f69c718a8fc2077bb2e2010df223f",
+              "width": 840,
+              "height": 525,
+              "marker": {
+                "ok": true,
+                "narrow": 376,
+                "wide": 411.43,
+                "probe": "[M3E] font_probe narrow=376.00 wide=411.43 ok=true"
+              },
+              "render": {
+                "scene": "labels",
+                "render": 0
+              },
+              "textLayout": {
+                "text": "\"Archive 42\"",
+                "width": 174.99999332427979,
+                "height": 43.000001192092896,
+                "lines": 1,
+                "scene": "labels"
+              },
+              "capturedAt": "2026-11-25T18:50:53.601Z"
+            }
+          ]
+        }
+      },
+      "determinism": {
+        "compose": {
+          "solid": {
+            "runs": 1,
+            "maxExact": 0,
+            "maxAa": 0,
+            "ok": true
+          },
+          "rect": {
+            "runs": 1,
+            "maxExact": 0,
+            "maxAa": 0,
+            "ok": true
+          },
+          "text": {
+            "runs": 1,
+            "maxExact": 0,
+            "maxAa": 0,
+            "ok": true
+          },
+          "shadow": {
+            "runs": 1,
+            "maxExact": 0,
+            "maxAa": 0,
+            "ok": true
+          },
+          "trivial": {
+            "runs": 1,
+            "maxExact": 0,
+            "maxAa": 0,
+            "ok": true
+          },
+          "paragraph": {
+            "runs": 1,
+            "maxExact": 0,
+            "maxAa": 0,
+            "ok": true
+          },
+          "labels": {
+            "runs": 1,
+            "maxExact": 0,
+            "maxAa": 0,
+            "ok": true
+          }
+        },
+        "rn": {
+          "solid": {
+            "runs": 1,
+            "maxExact": 0,
+            "maxAa": 0,
+            "ok": true
+          },
+          "rect": {
+            "runs": 1,
+            "maxExact": 0,
+            "maxAa": 0,
+            "ok": true
+          },
+          "text": {
+            "runs": 1,
+            "maxExact": 0,
+            "maxAa": 0,
+            "ok": true
+          },
+          "shadow": {
+            "runs": 1,
+            "maxExact": 0,
+            "maxAa": 0,
+            "ok": true
+          },
+          "trivial": {
+            "runs": 1,
+            "maxExact": 0,
+            "maxAa": 0,
+            "ok": true
+          },
+          "paragraph": {
+            "runs": 1,
+            "maxExact": 0,
+            "maxAa": 0,
+            "ok": true
+          },
+          "labels": {
+            "runs": 1,
+            "maxExact": 0,
+            "maxAa": 0,
+            "ok": true
+          }
+        }
+      },
+      "crossStack": {
+        "solid": {
+          "width": 840,
+          "height": 525,
+          "pixels": 441000,
+          "exactDiffPixels": 0,
+          "exactDiffPercent": 0,
+          "aaAwareDiffPixels": 0,
+          "aaAwareDiffPercent": 0,
+          "maxChannelDelta": 0,
+          "meanAbsoluteDelta": 0,
+          "bbox": null,
+          "aaAwareBbox": null,
+          "aaAwareCoordinates": [],
+          "regionCounts": {},
+          "diff": "diffs/boot-1-solid.png"
+        },
+        "rect": {
+          "width": 840,
+          "height": 525,
+          "pixels": 441000,
+          "exactDiffPixels": 0,
+          "exactDiffPercent": 0,
+          "aaAwareDiffPixels": 0,
+          "aaAwareDiffPercent": 0,
+          "maxChannelDelta": 0,
+          "meanAbsoluteDelta": 0,
+          "bbox": null,
+          "aaAwareBbox": null,
+          "aaAwareCoordinates": [],
+          "regionCounts": {},
+          "diff": "diffs/boot-1-rect.png"
+        },
+        "text": {
+          "width": 840,
+          "height": 525,
+          "pixels": 441000,
+          "exactDiffPixels": 0,
+          "exactDiffPercent": 0,
+          "aaAwareDiffPixels": 0,
+          "aaAwareDiffPercent": 0,
+          "maxChannelDelta": 0,
+          "meanAbsoluteDelta": 0,
+          "bbox": null,
+          "aaAwareBbox": null,
+          "aaAwareCoordinates": [],
+          "regionCounts": {
+            "text-0": 0
+          },
+          "diff": "diffs/boot-1-text.png"
+        },
+        "shadow": {
+          "width": 840,
+          "height": 525,
+          "pixels": 441000,
+          "exactDiffPixels": 0,
+          "exactDiffPercent": 0,
+          "aaAwareDiffPixels": 0,
+          "aaAwareDiffPercent": 0,
+          "maxChannelDelta": 0,
+          "meanAbsoluteDelta": 0,
+          "bbox": null,
+          "aaAwareBbox": null,
+          "aaAwareCoordinates": [],
+          "regionCounts": {
+            "shadow-0": 0
+          },
+          "diff": "diffs/boot-1-shadow.png"
+        },
+        "trivial": {
+          "width": 840,
+          "height": 525,
+          "pixels": 441000,
+          "exactDiffPixels": 0,
+          "exactDiffPercent": 0,
+          "aaAwareDiffPixels": 0,
+          "aaAwareDiffPercent": 0,
+          "maxChannelDelta": 0,
+          "meanAbsoluteDelta": 0,
+          "bbox": null,
+          "aaAwareBbox": null,
+          "aaAwareCoordinates": [],
+          "regionCounts": {
+            "text-1": 0
+          },
+          "diff": "diffs/boot-1-trivial.png"
+        },
+        "paragraph": {
+          "width": 840,
+          "height": 525,
+          "pixels": 441000,
+          "exactDiffPixels": 4128,
+          "exactDiffPercent": 0.9360544217687075,
+          "aaAwareDiffPixels": 119,
+          "aaAwareDiffPercent": 0.026984126984126982,
+          "maxChannelDelta": 182,
+          "meanAbsoluteDelta": 0.6275396825396825,
+          "bbox": {
+            "x": 42,
+            "y": 45,
+            "width": 615,
+            "height": 203
+          },
+          "aaAwareBbox": {
+            "x": 56,
+            "y": 217,
+            "width": 532,
+            "height": 22
+          },
+          "aaAwareCoordinates": [
+            {
+              "x": 57,
+              "y": 217
+            },
+            {
+              "x": 58,
+              "y": 217
+            },
+            {
+              "x": 306,
+              "y": 217
+            },
+            {
+              "x": 56,
+              "y": 218
+            },
+            {
+              "x": 274,
+              "y": 218
+            },
+            {
+              "x": 306,
+              "y": 218
+            },
+            {
+              "x": 460,
+              "y": 218
+            },
+            {
+              "x": 461,
+              "y": 218
+            },
+            {
+              "x": 85,
+              "y": 219
+            },
+            {
+              "x": 277,
+              "y": 219
+            },
+            {
+              "x": 307,
+              "y": 219
+            },
+            {
+              "x": 462,
+              "y": 219
+            },
+            {
+              "x": 472,
+              "y": 219
+            },
+            {
+              "x": 475,
+              "y": 219
+            },
+            {
+              "x": 498,
+              "y": 219
+            },
+            {
+              "x": 499,
+              "y": 219
+            },
+            {
+              "x": 523,
+              "y": 219
+            },
+            {
+              "x": 84,
+              "y": 220
+            },
+            {
+              "x": 275,
+              "y": 220
+            },
+            {
+              "x": 412,
+              "y": 220
+            }
+          ],
+          "regionCounts": {
+            "text-0": 4128,
+            "text-1": 4127,
+            "text-2": 4127,
+            "text-3": 4127,
+            "text-4": 0,
+            "text-5": 0,
+            "text-6": 0,
+            "text-7": 0
+          },
+          "diff": "diffs/boot-1-paragraph.png"
+        },
+        "labels": {
+          "width": 840,
+          "height": 525,
+          "pixels": 441000,
+          "exactDiffPixels": 4357,
+          "exactDiffPercent": 0.9879818594104308,
+          "aaAwareDiffPixels": 348,
+          "aaAwareDiffPercent": 0.07891156462585033,
+          "maxChannelDelta": 226,
+          "meanAbsoluteDelta": 0.7951987906273621,
+          "bbox": {
+            "x": 41,
+            "y": 16,
+            "width": 195,
+            "height": 477
+          },
+          "aaAwareBbox": {
+            "x": 43,
+            "y": 23,
+            "width": 165,
+            "height": 421
+          },
+          "aaAwareCoordinates": [
+            {
+              "x": 151,
+              "y": 23
+            },
+            {
+              "x": 147,
+              "y": 24
+            },
+            {
+              "x": 132,
+              "y": 25
+            },
+            {
+              "x": 166,
+              "y": 25
+            },
+            {
+              "x": 167,
+              "y": 25
+            },
+            {
+              "x": 59,
+              "y": 26
+            },
+            {
+              "x": 80,
+              "y": 26
+            },
+            {
+              "x": 63,
+              "y": 27
+            },
+            {
+              "x": 83,
+              "y": 27
+            },
+            {
+              "x": 60,
+              "y": 28
+            },
+            {
+              "x": 61,
+              "y": 28
+            },
+            {
+              "x": 81,
+              "y": 28
+            },
+            {
+              "x": 59,
+              "y": 29
+            },
+            {
+              "x": 80,
+              "y": 29
+            },
+            {
+              "x": 172,
+              "y": 40
+            },
+            {
+              "x": 173,
+              "y": 40
+            },
+            {
+              "x": 174,
+              "y": 40
+            },
+            {
+              "x": 117,
+              "y": 43
+            },
+            {
+              "x": 133,
+              "y": 43
+            },
+            {
+              "x": 46,
+              "y": 44
+            }
+          ],
+          "regionCounts": {
+            "text-0": 4355,
+            "text-1": 3532,
+            "text-2": 3532,
+            "text-3": 3532,
+            "text-4": 3532,
+            "text-5": 3532,
+            "text-6": 2606,
+            "text-7": 1581,
+            "text-8": 629,
+            "text-9": 0
+          },
+          "diff": "diffs/boot-1-labels.png"
+        }
+      },
+      "shadow": {
+        "compose": {
+          "rect": {
+            "x": 105,
+            "y": 105,
+            "width": 525,
+            "height": 315
+          },
+          "outsidePixels": 46050,
+          "maxDeviation": 31,
+          "minDeviation": 1
+        },
+        "rn": {
+          "rect": {
+            "x": 105,
+            "y": 105,
+            "width": 525,
+            "height": 315
+          },
+          "outsidePixels": 46050,
+          "maxDeviation": 31,
+          "minDeviation": 1
+        }
+      },
+      "finishedAt": "2026-11-25T18:50:53.820Z"
+    }
+  ],
+  "crossBoot": {},
+  "gate": {
+    "determinismOk": true,
+    "crossStackExactZero": false,
+    "crossStackAaAwareBelowPlaybookGate": false,
+    "note": "No new pixel threshold is proposed. The 0.05% figure is the existing PLAYBOOK §7 gate."
+  }
+}

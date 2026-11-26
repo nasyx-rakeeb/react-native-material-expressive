@@ -49,7 +49,7 @@ function TextView({ layer }: { layer: TextLayer }) {
     fontSize: layer.sizeSp,
     letterSpacing: layer.letterSpacingSp,
     fontFamily: FONT_FAMILY,
-    fontVariationSettings: "'wght' 400",
+    fontVariationSettings: `'wght' ${layer.weight}`,
     includeFontPadding: false,
     textAlign: 'left',
   };

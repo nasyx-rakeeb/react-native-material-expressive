@@ -13,7 +13,7 @@ pnpm install
 pnpm --filter @react-native-material-expressive/gallery start
 ```
 
-Then press `a` for Android or `i` for iOS. Expo Go is enough for Day 1 because the app has no custom native modules yet. The dev client arrives when the dynamic-color native module is added (Day 4).
+Then press `a` for Android or `i` for iOS. Expo Go is **not** sufficient: the gallery now contains the `M3EDynamicColor` native module, so use an Expo dev build.
 
 For an already-running emulator/simulator:
 
@@ -21,6 +21,18 @@ For an already-running emulator/simulator:
 pnpm --filter @react-native-material-expressive/gallery android
 pnpm --filter @react-native-material-expressive/gallery ios
 ```
+
+## Dynamic-colour verification probe
+
+The gallery can log the native Android payload at startup. It is off by default; enable it in `apps/gallery/.env.local` (git-ignored) before bundling:
+
+```sh
+printf 'EXPO_PUBLIC_M3E_DYNAMIC_PROBE=1\n' > .env.local
+pnpm --filter @react-native-material-expressive/gallery exec expo run:android --variant release
+rm .env.local
+```
+
+Expo CLI loads `.env.local` for the JS bundle even when Gradle launches the bundler. The two log lines are `M3E_DYNAMIC_AVAILABLE` and `M3E_DYNAMIC_PAYLOAD`. This is gallery instrumentation, not library runtime logging. The committed Day 4 evidence was captured with the probe enabled.
 
 ## Pinned runtime
 
