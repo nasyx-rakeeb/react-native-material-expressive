@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "id": "type-label-small-emphasized",
+  "description": "labelSmallEmphasized: 700, 11/16 sp, tracking 0.5 sp. One-line Roboto Flex text scene.",
+  "widthDp": 320,
+  "heightDp": 200,
+  "background": "#FFFBFE",
+  "layers": [
+    {
+      "type": "text",
+      "x": 16,
+      "y": 24,
+      "text": "Material",
+      "sizeSp": 11,
+      "weight": 700,
+      "color": "#1D1B20",
+      "letterSpacingSp": 0.5,
+      "lineHeightSp": 16
+    }
+  ]
+}

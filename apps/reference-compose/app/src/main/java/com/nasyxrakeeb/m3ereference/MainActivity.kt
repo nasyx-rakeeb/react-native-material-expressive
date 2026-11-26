@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -41,10 +42,12 @@ import androidx.compose.ui.text.font.FontSynthesis
 import androidx.compose.ui.text.font.FontVariation
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.rememberTextMeasurer
+import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextMotion
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.IntOffset
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.content.ContextCompat
@@ -82,6 +85,8 @@ data class TextLayer(
     val weight: Int,
     val color: String,
     val letterSpacingSp: Float,
+    val lineHeightSp: Float?,
+    val widthDp: Int?,
 )
 
 data class Scene(
@@ -122,6 +127,10 @@ private fun loadScene(context: Context, id: String): Scene {
                 weight = layer.getInt("weight"),
                 color = layer.getString("color"),
                 letterSpacingSp = layer.getDouble("letterSpacingSp").toFloat(),
+                lineHeightSp =
+                    if (layer.has("lineHeightSp")) layer.getDouble("lineHeightSp").toFloat()
+                    else null,
+                widthDp = if (layer.has("widthDp")) layer.getInt("widthDp") else null,
             )
             else -> error("unsupported layer type ${layer.getString("type")}")
         }
@@ -341,27 +350,35 @@ private fun Harness(
                     } else {
                         Modifier.offset(text.x.dp, text.y.dp)
                     }
+                    val multiline = text.widthDp != null || text.text.contains('\n')
+                    val textModifier =
+                        if (text.widthDp != null) textOffset.width(text.widthDp.dp) else textOffset
                     Text(
                         text = text.text,
-                        modifier = textOffset,
+                        modifier = textModifier,
                         color = parseColor(text.color),
                         fontSize = fontSize,
                         fontWeight = FontWeight(text.weight),
                         fontFamily = fontFamily,
                         letterSpacing = text.letterSpacingSp.sp,
+                        lineHeight = text.lineHeightSp?.sp ?: TextUnit.Unspecified,
                         textAlign = TextAlign.Left,
-                        maxLines = 1,
-                        softWrap = false,
+                        maxLines = if (multiline) Int.MAX_VALUE else 1,
+                        softWrap = multiline,
                         overflow = TextOverflow.Visible,
                         onTextLayout = { result ->
                             Log.i(
                                 TAG,
-                                "M3E_TEXT_LAYOUT text=${text.text} width=${result.size.width} height=${result.size.height} lines=${result.lineCount}",
+                                "M3E_TEXT_LAYOUT text=${text.text.replace("\n", "\\n")} width=${result.size.width} height=${result.size.height} lines=${result.lineCount}",
                             )
                         },
                         style = TextStyle(
                             fontSynthesis = FontSynthesis.None,
                             platformStyle = PlatformTextStyle(includeFontPadding = false),
+                            lineHeightStyle = LineHeightStyle(
+                                LineHeightStyle.Alignment.Center,
+                                LineHeightStyle.Trim.None,
+                            ),
                             textMotion = when (textMotion) {
                                 "animated" -> TextMotion.Animated
                                 else -> TextMotion.Static

@@ -4,6 +4,7 @@ import {
   standardDarkColorScheme,
   type M3ColorScheme,
 } from '../../color';
+import { defaultTypography } from '../../typography/createTypography';
 import { resolveM3Theme } from '../resolveTheme';
 
 const CUSTOM_LIGHT = Object.fromEntries(
@@ -23,6 +24,7 @@ describe('resolveM3Theme', () => {
   it('uses expressive light and standard dark in system mode', () => {
     const light = resolveM3Theme({}, 'light');
     expect(light.colorScheme).toBe(expressiveLightColorScheme());
+    expect(light.typography).toBe(defaultTypography);
     expect(light.source).toBe('default');
     expect(light.isDark).toBe(false);
 
@@ -104,5 +106,16 @@ describe('resolveM3Theme', () => {
     const theme = resolveM3Theme({ mode: 'expressive', seed: '#006A6A' }, 'dark');
     expect(theme.resolvedMode).toBe('dark');
     expect(theme.seed).toBe('#006A6A');
+  });
+
+  it('merges typography overrides over the default scale', () => {
+    const theme = resolveM3Theme({
+      typography: {
+        bodyLarge: { ...defaultTypography.bodyLarge, fontFamily: 'Brand Sans' },
+      },
+    });
+    expect(theme.typography.bodyLarge.fontFamily).toBe('Brand Sans');
+    expect(theme.typography.bodyMedium).toBe(defaultTypography.bodyMedium);
+    expect(Object.isFrozen(theme.typography)).toBe(true);
   });
 });

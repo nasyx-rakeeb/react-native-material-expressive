@@ -69,13 +69,16 @@ function validateScene(file, scene) {
       requireNumber(file, layer.y, `${label}.y`, { integer: true });
       requireNumber(file, layer.sizeSp, `${label}.sizeSp`, { min: 1 });
       requireNumber(file, layer.weight, `${label}.weight`, { min: 1 });
-      requireNumber(file, layer.letterSpacingSp, `${label}.letterSpacingSp`);
+      requireNumber(file, layer.letterSpacingSp, `${label}.letterSpacingSp`, { min: -1000 });
+      if (layer.lineHeightSp !== undefined) {
+        requireNumber(file, layer.lineHeightSp, `${label}.lineHeightSp`, { min: 1 });
+      }
+      if (layer.widthDp !== undefined) {
+        requireNumber(file, layer.widthDp, `${label}.widthDp`, { min: 1 });
+      }
       requireColor(file, layer.color, `${label}.color`);
       if (typeof layer.text !== 'string' || layer.text.length === 0) {
         fail(file, `${label}.text must be non-empty`);
-      }
-      if (layer.text.includes('\n')) {
-        fail(file, `${label}.text must be a single line`);
       }
     } else {
       fail(file, `${label}.type must be rect or text`);

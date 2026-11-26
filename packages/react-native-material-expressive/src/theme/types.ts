@@ -1,4 +1,5 @@
 import type { M3ColorScheme, M3ContrastLevel, M3SeedColor } from '../color/types';
+import type { M3Typography } from '../typography/types';
 
 /** How the provider chooses the scheme family. */
 export type M3ThemeMode = 'system' | 'light' | 'dark' | 'expressive';
@@ -10,6 +11,8 @@ export type M3ColorSchemeSource = 'default' | 'custom' | 'dynamic' | 'generated-
 export interface M3Theme {
   /** Complete 48-role scheme. */
   colorScheme: M3ColorScheme;
+  /** Complete 30-role type scale (baseline + emphasized). */
+  typography: M3Typography;
   /** Resolved appearance. */
   isDark: boolean;
   /** Resolved light/dark appearance, even when `mode` was `system`/`expressive`. */
@@ -38,4 +41,9 @@ export interface M3ThemeOptions {
   lightScheme?: M3ColorScheme;
   /** Explicit dark scheme; overrides defaults, generated, and dynamic colours. */
   darkScheme?: M3ColorScheme;
+  /**
+   * Type-scale role overrides. Use `createM3Typography()` or
+   * `robotoFlexTypography()` to build a complete branded scale.
+   */
+  typography?: Partial<M3Typography>;
 }

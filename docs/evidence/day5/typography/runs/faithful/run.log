@@ -1,0 +1,182 @@
+[07:42:53] plan: 1 cold boots, 1 trivial repeats, 2 repeats of solid/rect/text/shadow/trivial/type-body-large-emphasized/type-body-large/type-body-medium-emphasized/type-body-medium/type-body-small-emphasized/type-body-small/type-display-large-emphasized/type-display-large/type-display-medium-emphasized/type-display-medium/type-display-small-emphasized/type-display-small/type-headline-large-emphasized/type-headline-large/type-headline-medium-emphasized/type-headline-medium/type-headline-small-emphasized/type-headline-small/type-label-large-emphasized/type-label-large/type-label-medium-emphasized/type-label-medium/type-label-small-emphasized/type-label-small/type-title-large-emphasized/type-title-large/type-title-medium-emphasized/type-title-medium/type-title-small-emphasized/type-title-small per app
+[07:42:53] fonts verified: 9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281
+[07:42:53] boot 1/1: starting
+[07:42:59] boot 1: profile verified (13 checks)
+[07:43:02] compose solid: 840x525 769c75f7390f M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true
+[07:43:04] compose solid: 2 runs, determinism max exact 0, max AA 0
+[07:43:07] rn solid: 840x525 769c75f7390f [M3E] font_probe narrow=376.00 wide=411.43 ok=true
+[07:43:08] rn solid: 2 runs, determinism max exact 0, max AA 0
+[07:43:08] solid: cross-stack exact 0 (0.0000%), AA-aware 0 (0.0000%), max delta 0
+[07:43:12] compose rect: 840x525 62e8d31bac18 M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true
+[07:43:13] compose rect: 2 runs, determinism max exact 0, max AA 0
+[07:43:16] rn rect: 840x525 62e8d31bac18 [M3E] font_probe narrow=376.00 wide=411.43 ok=true
+[07:43:17] rn rect: 2 runs, determinism max exact 0, max AA 0
+[07:43:17] rect: cross-stack exact 0 (0.0000%), AA-aware 0 (0.0000%), max delta 0
+[07:43:21] compose text: 840x525 102c974b9576 M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true
+[07:43:22] compose text: 2 runs, determinism max exact 0, max AA 0
+[07:43:25] rn text: 840x525 88fdb5439ab2 [M3E] font_probe narrow=376.00 wide=411.43 ok=true
+[07:43:27] rn text: 2 runs, determinism max exact 0, max AA 0
+[07:43:27] text: cross-stack exact 1745 (0.3957%), AA-aware 4 (0.0009%), max delta 162
+[07:43:30] compose shadow: 840x525 517d03a32a00 M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true
+[07:43:32] compose shadow: 2 runs, determinism max exact 0, max AA 0
+[07:43:34] rn shadow: 840x525 517d03a32a00 [M3E] font_probe narrow=376.00 wide=411.43 ok=true
+[07:43:36] rn shadow: 2 runs, determinism max exact 0, max AA 0
+[07:43:36] shadow: cross-stack exact 0 (0.0000%), AA-aware 0 (0.0000%), max delta 0
+[07:43:40] compose trivial: 840x525 e422235ed157 M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true
+[07:43:40] compose trivial: 1 runs, determinism max exact 0, max AA 0
+[07:43:43] rn trivial: 840x525 aa3f158f178d [M3E] font_probe narrow=376.00 wide=411.43 ok=true
+[07:43:43] rn trivial: 1 runs, determinism max exact 0, max AA 0
+[07:43:43] trivial: cross-stack exact 1745 (0.3957%), AA-aware 4 (0.0009%), max delta 162
+[07:43:47] compose type-body-large-emphasized: 840x525 c1025ad79a9d M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true
+[07:43:48] compose type-body-large-emphasized: 2 runs, determinism max exact 0, max AA 0
+[07:43:52] rn type-body-large-emphasized: 840x525 fe0703b3bdfc [M3E] font_probe narrow=376.00 wide=411.43 ok=true
+[07:43:53] rn type-body-large-emphasized: 2 runs, determinism max exact 0, max AA 0
+[07:43:53] type-body-large-emphasized: cross-stack exact 988 (0.2240%), AA-aware 5 (0.0011%), max delta 226
+[07:43:57] compose type-body-large: 840x525 fdbe2f06935e M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true
+[07:43:58] compose type-body-large: 2 runs, determinism max exact 0, max AA 0
+[07:44:02] rn type-body-large: 840x525 492f77c8ef06 [M3E] font_probe narrow=376.00 wide=411.43 ok=true
+[07:44:03] rn type-body-large: 2 runs, determinism max exact 0, max AA 0
+[07:44:03] type-body-large: cross-stack exact 994 (0.2254%), AA-aware 5 (0.0011%), max delta 181
+[07:44:07] compose type-body-medium-emphasized: 840x525 3242b1a1aa64 M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true
+[07:44:08] compose type-body-medium-emphasized: 2 runs, determinism max exact 0, max AA 0
+[07:44:12] rn type-body-medium-emphasized: 840x525 64727f4ddf9a [M3E] font_probe narrow=376.00 wide=411.43 ok=true
+[07:44:13] rn type-body-medium-emphasized: 2 runs, determinism max exact 0, max AA 0
+[07:44:13] type-body-medium-emphasized: cross-stack exact 1614 (0.3660%), AA-aware 326 (0.0739%), max delta 226
+[07:44:17] compose type-body-medium: 840x525 9ed00f89f4a9 M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true
+[07:44:18] compose type-body-medium: 2 runs, determinism max exact 0, max AA 0
+[07:44:22] rn type-body-medium: 840x525 a9ca0c2df829 [M3E] font_probe narrow=376.00 wide=411.43 ok=true
+[07:44:24] rn type-body-medium: 2 runs, determinism max exact 0, max AA 0
+[07:44:24] type-body-medium: cross-stack exact 1884 (0.4272%), AA-aware 676 (0.1533%), max delta 226
+[07:44:27] compose type-body-small-emphasized: 840x525 8bf68f1c1473 M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true
+[07:44:28] compose type-body-small-emphasized: 2 runs, determinism max exact 0, max AA 0
+[07:44:32] rn type-body-small-emphasized: 840x525 85d89abc5304 [M3E] font_probe narrow=376.00 wide=411.43 ok=true
+[07:44:34] rn type-body-small-emphasized: 2 runs, determinism max exact 0, max AA 0
+[07:44:34] type-body-small-emphasized: cross-stack exact 1369 (0.3104%), AA-aware 311 (0.0705%), max delta 226
+[07:44:37] compose type-body-small: 840x525 07cb5e8fac11 M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true
+[07:44:38] compose type-body-small: 2 runs, determinism max exact 0, max AA 0
+[07:44:42] rn type-body-small: 840x525 8915643521b0 [M3E] font_probe narrow=376.00 wide=411.43 ok=true
+[07:44:44] rn type-body-small: 2 runs, determinism max exact 0, max AA 0
+[07:44:44] type-body-small: cross-stack exact 1397 (0.3168%), AA-aware 334 (0.0757%), max delta 226
+[07:44:47] compose type-display-large-emphasized: 840x525 2df0a0e232a7 M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true
+[07:44:49] compose type-display-large-emphasized: 2 runs, determinism max exact 0, max AA 0
+[07:44:52] rn type-display-large-emphasized: 840x525 84af442cda43 [M3E] font_probe narrow=376.00 wide=411.43 ok=true
+[07:44:54] rn type-display-large-emphasized: 2 runs, determinism max exact 0, max AA 0
+[07:44:54] type-display-large-emphasized: cross-stack exact 5374 (1.2186%), AA-aware 1236 (0.2803%), max delta 226
+[07:44:57] compose type-display-large: 840x525 794aecdd5c02 M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true
+[07:44:59] compose type-display-large: 2 runs, determinism max exact 0, max AA 0
+[07:45:02] rn type-display-large: 840x525 81e661b99b73 [M3E] font_probe narrow=376.00 wide=411.43 ok=true
+[07:45:04] rn type-display-large: 2 runs, determinism max exact 0, max AA 0
+[07:45:04] type-display-large: cross-stack exact 8034 (1.8218%), AA-aware 2745 (0.6224%), max delta 226
+[07:45:07] compose type-display-medium-emphasized: 840x525 b27066424b18 M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true
+[07:45:09] compose type-display-medium-emphasized: 2 runs, determinism max exact 0, max AA 0
+[07:45:13] rn type-display-medium-emphasized: 840x525 74e6182a85c6 [M3E] font_probe narrow=376.00 wide=411.43 ok=true
+[07:45:14] rn type-display-medium-emphasized: 2 runs, determinism max exact 0, max AA 0
+[07:45:14] type-display-medium-emphasized: cross-stack exact 6175 (1.4002%), AA-aware 1696 (0.3846%), max delta 226
+[07:45:18] compose type-display-medium: 840x525 353deeeffd62 M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true
+[07:45:19] compose type-display-medium: 2 runs, determinism max exact 0, max AA 0
+[07:45:23] rn type-display-medium: 840x525 509ab28e6dc7 [M3E] font_probe narrow=376.00 wide=411.43 ok=true
+[07:45:24] rn type-display-medium: 2 runs, determinism max exact 0, max AA 0
+[07:45:25] type-display-medium: cross-stack exact 6180 (1.4014%), AA-aware 1629 (0.3694%), max delta 226
+[07:45:28] compose type-display-small-emphasized: 840x525 cc17408832fd M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true
+[07:45:29] compose type-display-small-emphasized: 2 runs, determinism max exact 0, max AA 0
+[07:45:33] rn type-display-small-emphasized: 840x525 cb107fa5b61c [M3E] font_probe narrow=376.00 wide=411.43 ok=true
+[07:45:34] rn type-display-small-emphasized: 2 runs, determinism max exact 0, max AA 0
+[07:45:34] type-display-small-emphasized: cross-stack exact 5235 (1.1871%), AA-aware 1839 (0.4170%), max delta 226
+[07:45:38] compose type-display-small: 840x525 cecf42e417e8 M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true
+[07:45:39] compose type-display-small: 2 runs, determinism max exact 0, max AA 0
+[07:45:43] rn type-display-small: 840x525 95fb2fdca31d [M3E] font_probe narrow=376.00 wide=411.43 ok=true
+[07:45:44] rn type-display-small: 2 runs, determinism max exact 0, max AA 0
+[07:45:45] type-display-small: cross-stack exact 4378 (0.9927%), AA-aware 949 (0.2152%), max delta 226
+[07:45:48] compose type-headline-large-emphasized: 840x525 e91b7e168082 M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true
+[07:45:49] compose type-headline-large-emphasized: 2 runs, determinism max exact 0, max AA 0
+[07:45:53] rn type-headline-large-emphasized: 840x525 5c47a39f1272 [M3E] font_probe narrow=376.00 wide=411.43 ok=true
+[07:45:55] rn type-headline-large-emphasized: 2 runs, determinism max exact 0, max AA 0
+[07:45:55] type-headline-large-emphasized: cross-stack exact 1366 (0.3098%), AA-aware 1 (0.0002%), max delta 171
+[07:45:58] compose type-headline-large: 840x525 900312628c30 M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true
+[07:46:00] compose type-headline-large: 2 runs, determinism max exact 0, max AA 0
+[07:46:03] rn type-headline-large: 840x525 b86e9ae15eaf [M3E] font_probe narrow=376.00 wide=411.43 ok=true
+[07:46:05] rn type-headline-large: 2 runs, determinism max exact 0, max AA 0
+[07:46:05] type-headline-large: cross-stack exact 1646 (0.3732%), AA-aware 3 (0.0007%), max delta 184
+[07:46:08] compose type-headline-medium-emphasized: 840x525 835c024103ea M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true
+[07:46:10] compose type-headline-medium-emphasized: 2 runs, determinism max exact 0, max AA 0
+[07:46:13] rn type-headline-medium-emphasized: 840x525 4db16d79ca6b [M3E] font_probe narrow=376.00 wide=411.43 ok=true
+[07:46:15] rn type-headline-medium-emphasized: 2 runs, determinism max exact 0, max AA 0
+[07:46:15] type-headline-medium-emphasized: cross-stack exact 3367 (0.7635%), AA-aware 714 (0.1619%), max delta 226
+[07:46:18] compose type-headline-medium: 840x525 5577d0e8ecec M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true
+[07:46:20] compose type-headline-medium: 2 runs, determinism max exact 0, max AA 0
+[07:46:24] rn type-headline-medium: 840x525 45a3091835c3 [M3E] font_probe narrow=376.00 wide=411.43 ok=true
+[07:46:25] rn type-headline-medium: 2 runs, determinism max exact 0, max AA 0
+[07:46:25] type-headline-medium: cross-stack exact 3680 (0.8345%), AA-aware 993 (0.2252%), max delta 226
+[07:46:29] compose type-headline-small-emphasized: 840x525 15e63c5068c0 M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true
+[07:46:30] compose type-headline-small-emphasized: 2 runs, determinism max exact 0, max AA 0
+[07:46:34] rn type-headline-small-emphasized: 840x525 1250c27f7ea7 [M3E] font_probe narrow=376.00 wide=411.43 ok=true
+[07:46:35] rn type-headline-small-emphasized: 2 runs, determinism max exact 0, max AA 0
+[07:46:35] type-headline-small-emphasized: cross-stack exact 1877 (0.4256%), AA-aware 51 (0.0116%), max delta 226
+[07:46:39] compose type-headline-small: 840x525 d87583e18972 M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true
+[07:46:40] compose type-headline-small: 2 runs, determinism max exact 0, max AA 0
+[07:46:44] rn type-headline-small: 840x525 17339a6a9987 [M3E] font_probe narrow=376.00 wide=411.43 ok=true
+[07:46:45] rn type-headline-small: 2 runs, determinism max exact 0, max AA 0
+[07:46:45] type-headline-small: cross-stack exact 1912 (0.4336%), AA-aware 58 (0.0132%), max delta 226
+[07:46:49] compose type-label-large-emphasized: 840x525 53a7558796d5 M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true
+[07:46:50] compose type-label-large-emphasized: 2 runs, determinism max exact 0, max AA 0
+[07:46:54] rn type-label-large-emphasized: 840x525 3790e169c2d0 [M3E] font_probe narrow=376.00 wide=411.43 ok=true
+[07:46:55] rn type-label-large-emphasized: 2 runs, determinism max exact 0, max AA 0
+[07:46:56] type-label-large-emphasized: cross-stack exact 1692 (0.3837%), AA-aware 474 (0.1075%), max delta 226
+[07:46:59] compose type-label-large: 840x525 8de9ac021562 M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true
+[07:47:00] compose type-label-large: 2 runs, determinism max exact 0, max AA 0
+[07:47:04] rn type-label-large: 840x525 9a98b4b54f3f [M3E] font_probe narrow=376.00 wide=411.43 ok=true
+[07:47:06] rn type-label-large: 2 runs, determinism max exact 0, max AA 0
+[07:47:06] type-label-large: cross-stack exact 1683 (0.3816%), AA-aware 397 (0.0900%), max delta 226
+[07:47:09] compose type-label-medium-emphasized: 840x525 191670b4671e M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true
+[07:47:10] compose type-label-medium-emphasized: 2 runs, determinism max exact 0, max AA 0
+[07:47:14] rn type-label-medium-emphasized: 840x525 b9fa3290529c [M3E] font_probe narrow=376.00 wide=411.43 ok=true
+[07:47:16] rn type-label-medium-emphasized: 2 runs, determinism max exact 0, max AA 0
+[07:47:16] type-label-medium-emphasized: cross-stack exact 1762 (0.3995%), AA-aware 663 (0.1503%), max delta 226
+[07:47:19] compose type-label-medium: 840x525 e4bf55e2b897 M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true
+[07:47:21] compose type-label-medium: 2 runs, determinism max exact 0, max AA 0
+[07:47:24] rn type-label-medium: 840x525 2490bc72fd77 [M3E] font_probe narrow=376.00 wide=411.43 ok=true
+[07:47:26] rn type-label-medium: 2 runs, determinism max exact 0, max AA 0
+[07:47:26] type-label-medium: cross-stack exact 1439 (0.3263%), AA-aware 375 (0.0850%), max delta 226
+[07:47:29] compose type-label-small-emphasized: 840x525 ff172f534cbd M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true
+[07:47:31] compose type-label-small-emphasized: 2 runs, determinism max exact 0, max AA 0
+[07:47:34] rn type-label-small-emphasized: 840x525 83279f17ced4 [M3E] font_probe narrow=376.00 wide=411.43 ok=true
+[07:47:36] rn type-label-small-emphasized: 2 runs, determinism max exact 0, max AA 0
+[07:47:36] type-label-small-emphasized: cross-stack exact 1369 (0.3104%), AA-aware 397 (0.0900%), max delta 226
+[07:47:39] compose type-label-small: 840x525 54ffab6ba62f M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true
+[07:47:41] compose type-label-small: 2 runs, determinism max exact 0, max AA 0
+[07:47:44] rn type-label-small: 840x525 a777c4601e05 [M3E] font_probe narrow=376.00 wide=411.43 ok=true
+[07:47:46] rn type-label-small: 2 runs, determinism max exact 0, max AA 0
+[07:47:46] type-label-small: cross-stack exact 1139 (0.2583%), AA-aware 219 (0.0497%), max delta 226
+[07:47:49] compose type-title-large-emphasized: 840x525 8c52c27bb380 M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true
+[07:47:51] compose type-title-large-emphasized: 2 runs, determinism max exact 0, max AA 0
+[07:47:55] rn type-title-large-emphasized: 840x525 71f44e794138 [M3E] font_probe narrow=376.00 wide=411.43 ok=true
+[07:47:56] rn type-title-large-emphasized: 2 runs, determinism max exact 0, max AA 0
+[07:47:56] type-title-large-emphasized: cross-stack exact 1681 (0.3812%), AA-aware 222 (0.0503%), max delta 226
+[07:47:59] compose type-title-large: 840x525 ff840ead3986 M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true
+[07:48:01] compose type-title-large: 2 runs, determinism max exact 0, max AA 0
+[07:48:05] rn type-title-large: 840x525 c1fb34a13b52 [M3E] font_probe narrow=376.00 wide=411.43 ok=true
+[07:48:06] rn type-title-large: 2 runs, determinism max exact 0, max AA 0
+[07:48:06] type-title-large: cross-stack exact 2168 (0.4916%), AA-aware 598 (0.1356%), max delta 226
+[07:48:10] compose type-title-medium-emphasized: 840x525 6043905d49e7 M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true
+[07:48:11] compose type-title-medium-emphasized: 2 runs, determinism max exact 0, max AA 0
+[07:48:15] rn type-title-medium-emphasized: 840x525 b9182fb48e17 [M3E] font_probe narrow=376.00 wide=411.43 ok=true
+[07:48:16] rn type-title-medium-emphasized: 2 runs, determinism max exact 0, max AA 0
+[07:48:16] type-title-medium-emphasized: cross-stack exact 843 (0.1912%), AA-aware 9 (0.0020%), max delta 205
+[07:48:20] compose type-title-medium: 840x525 f6a7d3c51480 M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true
+[07:48:21] compose type-title-medium: 2 runs, determinism max exact 0, max AA 0
+[07:48:25] rn type-title-medium: 840x525 6a271191243e [M3E] font_probe narrow=376.00 wide=411.43 ok=true
+[07:48:27] rn type-title-medium: 2 runs, determinism max exact 0, max AA 0
+[07:48:27] type-title-medium: cross-stack exact 815 (0.1848%), AA-aware 2 (0.0005%), max delta 226
+[07:48:30] compose type-title-small-emphasized: 840x525 53a7558796d5 M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true
+[07:48:32] compose type-title-small-emphasized: 2 runs, determinism max exact 0, max AA 0
+[07:48:35] rn type-title-small-emphasized: 840x525 3790e169c2d0 [M3E] font_probe narrow=376.00 wide=411.43 ok=true
+[07:48:37] rn type-title-small-emphasized: 2 runs, determinism max exact 0, max AA 0
+[07:48:37] type-title-small-emphasized: cross-stack exact 1692 (0.3837%), AA-aware 474 (0.1075%), max delta 226
+[07:48:40] compose type-title-small: 840x525 8de9ac021562 M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true
+[07:48:42] compose type-title-small: 2 runs, determinism max exact 0, max AA 0
+[07:48:45] rn type-title-small: 840x525 9a98b4b54f3f [M3E] font_probe narrow=376.00 wide=411.43 ok=true
+[07:48:47] rn type-title-small: 2 runs, determinism max exact 0, max AA 0
+[07:48:47] type-title-small: cross-stack exact 1683 (0.3816%), AA-aware 397 (0.0900%), max delta 226
+[07:48:49] report: docs/evidence/day5/typography/runs/faithful/report.html
+[07:48:49] summary: exactZero=false deterministic=true aaGate=false
+[07:48:49] RESULT: cross-stack exact zero is NOT met — see report for measured pixels

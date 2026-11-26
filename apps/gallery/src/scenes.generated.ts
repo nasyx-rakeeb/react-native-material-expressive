@@ -301,6 +301,636 @@ export const scenes = {
     }
   ]
 } as Scene,
+  "type-body-large-emphasized": {
+  "schema": 1,
+  "id": "type-body-large-emphasized",
+  "description": "bodyLargeEmphasized: 500, 16/24 sp, tracking 0.15 sp. One-line Roboto Flex text scene.",
+  "widthDp": 320,
+  "heightDp": 200,
+  "background": "#FFFBFE",
+  "layers": [
+    {
+      "type": "text",
+      "x": 16,
+      "y": 24,
+      "text": "Material",
+      "sizeSp": 16,
+      "weight": 500,
+      "color": "#1D1B20",
+      "letterSpacingSp": 0.15,
+      "lineHeightSp": 24
+    }
+  ]
+} as Scene,
+  "type-body-large": {
+  "schema": 1,
+  "id": "type-body-large",
+  "description": "bodyLarge: 400, 16/24 sp, tracking 0.5 sp. One-line Roboto Flex text scene.",
+  "widthDp": 320,
+  "heightDp": 200,
+  "background": "#FFFBFE",
+  "layers": [
+    {
+      "type": "text",
+      "x": 16,
+      "y": 24,
+      "text": "Material",
+      "sizeSp": 16,
+      "weight": 400,
+      "color": "#1D1B20",
+      "letterSpacingSp": 0.5,
+      "lineHeightSp": 24
+    }
+  ]
+} as Scene,
+  "type-body-medium-emphasized": {
+  "schema": 1,
+  "id": "type-body-medium-emphasized",
+  "description": "bodyMediumEmphasized: 500, 14/20 sp, tracking 0.25 sp. One-line Roboto Flex text scene.",
+  "widthDp": 320,
+  "heightDp": 200,
+  "background": "#FFFBFE",
+  "layers": [
+    {
+      "type": "text",
+      "x": 16,
+      "y": 24,
+      "text": "Material",
+      "sizeSp": 14,
+      "weight": 500,
+      "color": "#1D1B20",
+      "letterSpacingSp": 0.25,
+      "lineHeightSp": 20
+    }
+  ]
+} as Scene,
+  "type-body-medium": {
+  "schema": 1,
+  "id": "type-body-medium",
+  "description": "bodyMedium: 400, 14/20 sp, tracking 0.2 sp. One-line Roboto Flex text scene.",
+  "widthDp": 320,
+  "heightDp": 200,
+  "background": "#FFFBFE",
+  "layers": [
+    {
+      "type": "text",
+      "x": 16,
+      "y": 24,
+      "text": "Material",
+      "sizeSp": 14,
+      "weight": 400,
+      "color": "#1D1B20",
+      "letterSpacingSp": 0.2,
+      "lineHeightSp": 20
+    }
+  ]
+} as Scene,
+  "type-body-small-emphasized": {
+  "schema": 1,
+  "id": "type-body-small-emphasized",
+  "description": "bodySmallEmphasized: 500, 12/16 sp, tracking 0.4 sp. One-line Roboto Flex text scene.",
+  "widthDp": 320,
+  "heightDp": 200,
+  "background": "#FFFBFE",
+  "layers": [
+    {
+      "type": "text",
+      "x": 16,
+      "y": 24,
+      "text": "Material",
+      "sizeSp": 12,
+      "weight": 500,
+      "color": "#1D1B20",
+      "letterSpacingSp": 0.4,
+      "lineHeightSp": 16
+    }
+  ]
+} as Scene,
+  "type-body-small": {
+  "schema": 1,
+  "id": "type-body-small",
+  "description": "bodySmall: 400, 12/16 sp, tracking 0.4 sp. One-line Roboto Flex text scene.",
+  "widthDp": 320,
+  "heightDp": 200,
+  "background": "#FFFBFE",
+  "layers": [
+    {
+      "type": "text",
+      "x": 16,
+      "y": 24,
+      "text": "Material",
+      "sizeSp": 12,
+      "weight": 400,
+      "color": "#1D1B20",
+      "letterSpacingSp": 0.4,
+      "lineHeightSp": 16
+    }
+  ]
+} as Scene,
+  "type-display-large-emphasized": {
+  "schema": 1,
+  "id": "type-display-large-emphasized",
+  "description": "displayLargeEmphasized: 500, 57/64 sp, tracking 0 sp. One-line Roboto Flex text scene.",
+  "widthDp": 320,
+  "heightDp": 200,
+  "background": "#FFFBFE",
+  "layers": [
+    {
+      "type": "text",
+      "x": 16,
+      "y": 24,
+      "text": "Material",
+      "sizeSp": 57,
+      "weight": 500,
+      "color": "#1D1B20",
+      "letterSpacingSp": 0,
+      "lineHeightSp": 64
+    }
+  ]
+} as Scene,
+  "type-display-large": {
+  "schema": 1,
+  "id": "type-display-large",
+  "description": "displayLarge: 400, 57/64 sp, tracking -0.2 sp. One-line Roboto Flex text scene.",
+  "widthDp": 320,
+  "heightDp": 200,
+  "background": "#FFFBFE",
+  "layers": [
+    {
+      "type": "text",
+      "x": 16,
+      "y": 24,
+      "text": "Material",
+      "sizeSp": 57,
+      "weight": 400,
+      "color": "#1D1B20",
+      "letterSpacingSp": -0.2,
+      "lineHeightSp": 64
+    }
+  ]
+} as Scene,
+  "type-display-medium-emphasized": {
+  "schema": 1,
+  "id": "type-display-medium-emphasized",
+  "description": "displayMediumEmphasized: 500, 45/52 sp, tracking 0 sp. One-line Roboto Flex text scene.",
+  "widthDp": 320,
+  "heightDp": 200,
+  "background": "#FFFBFE",
+  "layers": [
+    {
+      "type": "text",
+      "x": 16,
+      "y": 24,
+      "text": "Material",
+      "sizeSp": 45,
+      "weight": 500,
+      "color": "#1D1B20",
+      "letterSpacingSp": 0,
+      "lineHeightSp": 52
+    }
+  ]
+} as Scene,
+  "type-display-medium": {
+  "schema": 1,
+  "id": "type-display-medium",
+  "description": "displayMedium: 400, 45/52 sp, tracking 0 sp. One-line Roboto Flex text scene.",
+  "widthDp": 320,
+  "heightDp": 200,
+  "background": "#FFFBFE",
+  "layers": [
+    {
+      "type": "text",
+      "x": 16,
+      "y": 24,
+      "text": "Material",
+      "sizeSp": 45,
+      "weight": 400,
+      "color": "#1D1B20",
+      "letterSpacingSp": 0,
+      "lineHeightSp": 52
+    }
+  ]
+} as Scene,
+  "type-display-small-emphasized": {
+  "schema": 1,
+  "id": "type-display-small-emphasized",
+  "description": "displaySmallEmphasized: 500, 36/44 sp, tracking 0 sp. One-line Roboto Flex text scene.",
+  "widthDp": 320,
+  "heightDp": 200,
+  "background": "#FFFBFE",
+  "layers": [
+    {
+      "type": "text",
+      "x": 16,
+      "y": 24,
+      "text": "Material",
+      "sizeSp": 36,
+      "weight": 500,
+      "color": "#1D1B20",
+      "letterSpacingSp": 0,
+      "lineHeightSp": 44
+    }
+  ]
+} as Scene,
+  "type-display-small": {
+  "schema": 1,
+  "id": "type-display-small",
+  "description": "displaySmall: 400, 36/44 sp, tracking 0 sp. One-line Roboto Flex text scene.",
+  "widthDp": 320,
+  "heightDp": 200,
+  "background": "#FFFBFE",
+  "layers": [
+    {
+      "type": "text",
+      "x": 16,
+      "y": 24,
+      "text": "Material",
+      "sizeSp": 36,
+      "weight": 400,
+      "color": "#1D1B20",
+      "letterSpacingSp": 0,
+      "lineHeightSp": 44
+    }
+  ]
+} as Scene,
+  "type-headline-large-emphasized": {
+  "schema": 1,
+  "id": "type-headline-large-emphasized",
+  "description": "headlineLargeEmphasized: 500, 32/40 sp, tracking 0 sp. One-line Roboto Flex text scene.",
+  "widthDp": 320,
+  "heightDp": 200,
+  "background": "#FFFBFE",
+  "layers": [
+    {
+      "type": "text",
+      "x": 16,
+      "y": 24,
+      "text": "Material",
+      "sizeSp": 32,
+      "weight": 500,
+      "color": "#1D1B20",
+      "letterSpacingSp": 0,
+      "lineHeightSp": 40
+    }
+  ]
+} as Scene,
+  "type-headline-large": {
+  "schema": 1,
+  "id": "type-headline-large",
+  "description": "headlineLarge: 400, 32/40 sp, tracking 0 sp. One-line Roboto Flex text scene.",
+  "widthDp": 320,
+  "heightDp": 200,
+  "background": "#FFFBFE",
+  "layers": [
+    {
+      "type": "text",
+      "x": 16,
+      "y": 24,
+      "text": "Material",
+      "sizeSp": 32,
+      "weight": 400,
+      "color": "#1D1B20",
+      "letterSpacingSp": 0,
+      "lineHeightSp": 40
+    }
+  ]
+} as Scene,
+  "type-headline-medium-emphasized": {
+  "schema": 1,
+  "id": "type-headline-medium-emphasized",
+  "description": "headlineMediumEmphasized: 500, 28/36 sp, tracking 0 sp. One-line Roboto Flex text scene.",
+  "widthDp": 320,
+  "heightDp": 200,
+  "background": "#FFFBFE",
+  "layers": [
+    {
+      "type": "text",
+      "x": 16,
+      "y": 24,
+      "text": "Material",
+      "sizeSp": 28,
+      "weight": 500,
+      "color": "#1D1B20",
+      "letterSpacingSp": 0,
+      "lineHeightSp": 36
+    }
+  ]
+} as Scene,
+  "type-headline-medium": {
+  "schema": 1,
+  "id": "type-headline-medium",
+  "description": "headlineMedium: 400, 28/36 sp, tracking 0 sp. One-line Roboto Flex text scene.",
+  "widthDp": 320,
+  "heightDp": 200,
+  "background": "#FFFBFE",
+  "layers": [
+    {
+      "type": "text",
+      "x": 16,
+      "y": 24,
+      "text": "Material",
+      "sizeSp": 28,
+      "weight": 400,
+      "color": "#1D1B20",
+      "letterSpacingSp": 0,
+      "lineHeightSp": 36
+    }
+  ]
+} as Scene,
+  "type-headline-small-emphasized": {
+  "schema": 1,
+  "id": "type-headline-small-emphasized",
+  "description": "headlineSmallEmphasized: 500, 24/32 sp, tracking 0 sp. One-line Roboto Flex text scene.",
+  "widthDp": 320,
+  "heightDp": 200,
+  "background": "#FFFBFE",
+  "layers": [
+    {
+      "type": "text",
+      "x": 16,
+      "y": 24,
+      "text": "Material",
+      "sizeSp": 24,
+      "weight": 500,
+      "color": "#1D1B20",
+      "letterSpacingSp": 0,
+      "lineHeightSp": 32
+    }
+  ]
+} as Scene,
+  "type-headline-small": {
+  "schema": 1,
+  "id": "type-headline-small",
+  "description": "headlineSmall: 400, 24/32 sp, tracking 0 sp. One-line Roboto Flex text scene.",
+  "widthDp": 320,
+  "heightDp": 200,
+  "background": "#FFFBFE",
+  "layers": [
+    {
+      "type": "text",
+      "x": 16,
+      "y": 24,
+      "text": "Material",
+      "sizeSp": 24,
+      "weight": 400,
+      "color": "#1D1B20",
+      "letterSpacingSp": 0,
+      "lineHeightSp": 32
+    }
+  ]
+} as Scene,
+  "type-label-large-emphasized": {
+  "schema": 1,
+  "id": "type-label-large-emphasized",
+  "description": "labelLargeEmphasized: 700, 14/20 sp, tracking 0.1 sp. One-line Roboto Flex text scene.",
+  "widthDp": 320,
+  "heightDp": 200,
+  "background": "#FFFBFE",
+  "layers": [
+    {
+      "type": "text",
+      "x": 16,
+      "y": 24,
+      "text": "Material",
+      "sizeSp": 14,
+      "weight": 700,
+      "color": "#1D1B20",
+      "letterSpacingSp": 0.1,
+      "lineHeightSp": 20
+    }
+  ]
+} as Scene,
+  "type-label-large": {
+  "schema": 1,
+  "id": "type-label-large",
+  "description": "labelLarge: 500, 14/20 sp, tracking 0.1 sp. One-line Roboto Flex text scene.",
+  "widthDp": 320,
+  "heightDp": 200,
+  "background": "#FFFBFE",
+  "layers": [
+    {
+      "type": "text",
+      "x": 16,
+      "y": 24,
+      "text": "Material",
+      "sizeSp": 14,
+      "weight": 500,
+      "color": "#1D1B20",
+      "letterSpacingSp": 0.1,
+      "lineHeightSp": 20
+    }
+  ]
+} as Scene,
+  "type-label-medium-emphasized": {
+  "schema": 1,
+  "id": "type-label-medium-emphasized",
+  "description": "labelMediumEmphasized: 700, 12/16 sp, tracking 0.5 sp. One-line Roboto Flex text scene.",
+  "widthDp": 320,
+  "heightDp": 200,
+  "background": "#FFFBFE",
+  "layers": [
+    {
+      "type": "text",
+      "x": 16,
+      "y": 24,
+      "text": "Material",
+      "sizeSp": 12,
+      "weight": 700,
+      "color": "#1D1B20",
+      "letterSpacingSp": 0.5,
+      "lineHeightSp": 16
+    }
+  ]
+} as Scene,
+  "type-label-medium": {
+  "schema": 1,
+  "id": "type-label-medium",
+  "description": "labelMedium: 500, 12/16 sp, tracking 0.5 sp. One-line Roboto Flex text scene.",
+  "widthDp": 320,
+  "heightDp": 200,
+  "background": "#FFFBFE",
+  "layers": [
+    {
+      "type": "text",
+      "x": 16,
+      "y": 24,
+      "text": "Material",
+      "sizeSp": 12,
+      "weight": 500,
+      "color": "#1D1B20",
+      "letterSpacingSp": 0.5,
+      "lineHeightSp": 16
+    }
+  ]
+} as Scene,
+  "type-label-small-emphasized": {
+  "schema": 1,
+  "id": "type-label-small-emphasized",
+  "description": "labelSmallEmphasized: 700, 11/16 sp, tracking 0.5 sp. One-line Roboto Flex text scene.",
+  "widthDp": 320,
+  "heightDp": 200,
+  "background": "#FFFBFE",
+  "layers": [
+    {
+      "type": "text",
+      "x": 16,
+      "y": 24,
+      "text": "Material",
+      "sizeSp": 11,
+      "weight": 700,
+      "color": "#1D1B20",
+      "letterSpacingSp": 0.5,
+      "lineHeightSp": 16
+    }
+  ]
+} as Scene,
+  "type-label-small": {
+  "schema": 1,
+  "id": "type-label-small",
+  "description": "labelSmall: 500, 11/16 sp, tracking 0.5 sp. One-line Roboto Flex text scene.",
+  "widthDp": 320,
+  "heightDp": 200,
+  "background": "#FFFBFE",
+  "layers": [
+    {
+      "type": "text",
+      "x": 16,
+      "y": 24,
+      "text": "Material",
+      "sizeSp": 11,
+      "weight": 500,
+      "color": "#1D1B20",
+      "letterSpacingSp": 0.5,
+      "lineHeightSp": 16
+    }
+  ]
+} as Scene,
+  "type-title-large-emphasized": {
+  "schema": 1,
+  "id": "type-title-large-emphasized",
+  "description": "titleLargeEmphasized: 500, 22/28 sp, tracking 0 sp. One-line Roboto Flex text scene.",
+  "widthDp": 320,
+  "heightDp": 200,
+  "background": "#FFFBFE",
+  "layers": [
+    {
+      "type": "text",
+      "x": 16,
+      "y": 24,
+      "text": "Material",
+      "sizeSp": 22,
+      "weight": 500,
+      "color": "#1D1B20",
+      "letterSpacingSp": 0,
+      "lineHeightSp": 28
+    }
+  ]
+} as Scene,
+  "type-title-large": {
+  "schema": 1,
+  "id": "type-title-large",
+  "description": "titleLarge: 400, 22/28 sp, tracking 0 sp. One-line Roboto Flex text scene.",
+  "widthDp": 320,
+  "heightDp": 200,
+  "background": "#FFFBFE",
+  "layers": [
+    {
+      "type": "text",
+      "x": 16,
+      "y": 24,
+      "text": "Material",
+      "sizeSp": 22,
+      "weight": 400,
+      "color": "#1D1B20",
+      "letterSpacingSp": 0,
+      "lineHeightSp": 28
+    }
+  ]
+} as Scene,
+  "type-title-medium-emphasized": {
+  "schema": 1,
+  "id": "type-title-medium-emphasized",
+  "description": "titleMediumEmphasized: 700, 16/24 sp, tracking 0.15 sp. One-line Roboto Flex text scene.",
+  "widthDp": 320,
+  "heightDp": 200,
+  "background": "#FFFBFE",
+  "layers": [
+    {
+      "type": "text",
+      "x": 16,
+      "y": 24,
+      "text": "Material",
+      "sizeSp": 16,
+      "weight": 700,
+      "color": "#1D1B20",
+      "letterSpacingSp": 0.15,
+      "lineHeightSp": 24
+    }
+  ]
+} as Scene,
+  "type-title-medium": {
+  "schema": 1,
+  "id": "type-title-medium",
+  "description": "titleMedium: 500, 16/24 sp, tracking 0.2 sp. One-line Roboto Flex text scene.",
+  "widthDp": 320,
+  "heightDp": 200,
+  "background": "#FFFBFE",
+  "layers": [
+    {
+      "type": "text",
+      "x": 16,
+      "y": 24,
+      "text": "Material",
+      "sizeSp": 16,
+      "weight": 500,
+      "color": "#1D1B20",
+      "letterSpacingSp": 0.2,
+      "lineHeightSp": 24
+    }
+  ]
+} as Scene,
+  "type-title-small-emphasized": {
+  "schema": 1,
+  "id": "type-title-small-emphasized",
+  "description": "titleSmallEmphasized: 700, 14/20 sp, tracking 0.1 sp. One-line Roboto Flex text scene.",
+  "widthDp": 320,
+  "heightDp": 200,
+  "background": "#FFFBFE",
+  "layers": [
+    {
+      "type": "text",
+      "x": 16,
+      "y": 24,
+      "text": "Material",
+      "sizeSp": 14,
+      "weight": 700,
+      "color": "#1D1B20",
+      "letterSpacingSp": 0.1,
+      "lineHeightSp": 20
+    }
+  ]
+} as Scene,
+  "type-title-small": {
+  "schema": 1,
+  "id": "type-title-small",
+  "description": "titleSmall: 500, 14/20 sp, tracking 0.1 sp. One-line Roboto Flex text scene.",
+  "widthDp": 320,
+  "heightDp": 200,
+  "background": "#FFFBFE",
+  "layers": [
+    {
+      "type": "text",
+      "x": 16,
+      "y": 24,
+      "text": "Material",
+      "sizeSp": 14,
+      "weight": 500,
+      "color": "#1D1B20",
+      "letterSpacingSp": 0.1,
+      "lineHeightSp": 20
+    }
+  ]
+} as Scene,
 } as const;
 
 export type SceneId = keyof typeof scenes;

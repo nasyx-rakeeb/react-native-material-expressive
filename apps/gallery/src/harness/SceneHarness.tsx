@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Linking, Pressable, StyleSheet, Text, View, type TextStyle } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
+import { ROBOTO_FLEX_NATURAL_LINE_HEIGHT_RATIO } from 'react-native-material-expressive';
 
 import { scenes, type SceneId } from '../scenes.generated';
 import type { RectLayer, Scene, TextLayer } from '../scene-types';
@@ -9,6 +10,9 @@ type FontProbeState = 'pending' | 'ok' | 'fallback';
 
 const FONT_FAMILY = 'RobotoFlex';
 const PROBE_TEXT = 'M3 Expressive wdth probe 0123456789';
+// Compose expands a below-natural line height; React Native squashes it, so the
+// scene renderer applies the same floor the library's type scale applies.
+const LINE_HEIGHT_RATIO = ROBOTO_FLEX_NATURAL_LINE_HEIGHT_RATIO;
 
 function isSceneId(value: string | null | undefined): value is SceneId {
   return typeof value === 'string' && value in scenes;
@@ -52,15 +56,22 @@ function TextView({ layer }: { layer: TextLayer }) {
     fontVariationSettings: `'wght' ${layer.weight}`,
     includeFontPadding: false,
     textAlign: 'left',
+    ...(layer.lineHeightSp !== undefined
+      ? {
+          lineHeight: Math.max(layer.lineHeightSp, layer.sizeSp * LINE_HEIGHT_RATIO),
+        }
+      : null),
+    ...(layer.widthDp !== undefined ? { width: layer.widthDp } : null),
   };
   return (
     <Text
       allowFontScaling={false}
-      numberOfLines={1}
       onTextLayout={(event) => {
-        const line = event.nativeEvent.lines[0];
+        const lines = event.nativeEvent.lines;
+        const width = lines.length ? Math.max(...lines.map((line) => line.width)) : -1;
+        const height = lines.reduce((sum, line) => sum + line.height, 0);
         console.log(
-          `[M3E] scene_text_layout text=${JSON.stringify(layer.text)} width=${line?.width ?? -1} height=${line?.height ?? -1} lines=${event.nativeEvent.lines.length}`,
+          `[M3E] scene_text_layout text=${JSON.stringify(layer.text)} width=${width} height=${height} lines=${lines.length}`,
         );
       }}
       style={style}

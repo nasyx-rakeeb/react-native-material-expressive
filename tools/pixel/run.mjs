@@ -38,6 +38,7 @@ const config = {
   sceneRepeats: Number(arg('scene-repeats', 2)),
   scenes: arg('scenes', 'solid,rect,text,shadow,trivial').split(','),
   skipBoot: arg('skip-boot', '0') === '1',
+  label: arg('label', '') || undefined,
   outDir: path.resolve(ROOT, arg('out', 'docs/evidence/day3')),
 };
 
@@ -162,6 +163,7 @@ const results = {
     repeats: config.repeats,
     sceneRepeats: config.sceneRepeats,
     scenes: config.scenes,
+    label: config.label,
     outDir: path.relative(ROOT, outDir),
   },
   fonts,

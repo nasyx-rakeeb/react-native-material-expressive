@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
 import { useColorScheme } from 'react-native';
 import type { M3ColorScheme } from '../color/types';
+import type { M3Typography } from '../typography/types';
 import { getDynamicColorSchemes, isDynamicColorAvailable } from './dynamicColor';
 import { resolveM3Theme } from './resolveTheme';
 import type { M3Theme, M3ThemeOptions } from './types';
@@ -33,6 +34,7 @@ export function M3ThemeProvider({
   dynamicColor = false,
   lightScheme,
   darkScheme,
+  typography,
 }: M3ThemeProviderProps) {
   const systemMode = useColorScheme();
   const [dynamic, setDynamic] = useState<DynamicState | null>(null);
@@ -52,8 +54,8 @@ export function M3ThemeProvider({
   }, [dynamicColor]);
 
   const options = useMemo(
-    () => ({ mode, seed, contrastLevel, dynamicColor, lightScheme, darkScheme }),
-    [mode, seed, contrastLevel, dynamicColor, lightScheme, darkScheme],
+    () => ({ mode, seed, contrastLevel, dynamicColor, lightScheme, darkScheme, typography }),
+    [mode, seed, contrastLevel, dynamicColor, lightScheme, darkScheme, typography],
   );
 
   const theme = useMemo(
@@ -72,4 +74,9 @@ export function useM3Theme(): M3Theme {
 /** Read only the active 48-role colour scheme. */
 export function useM3ColorScheme(): M3ColorScheme {
   return useContext(M3ThemeContext).colorScheme;
+}
+
+/** Read only the active 30-role type scale. */
+export function useM3Typography(): M3Typography {
+  return useContext(M3ThemeContext).typography;
 }

@@ -18,6 +18,8 @@ export interface TextLayer {
   weight: number;
   color: string;
   letterSpacingSp: number;
+  lineHeightSp?: number;
+  widthDp?: number;
 }
 
 export interface Scene {

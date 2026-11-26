@@ -167,12 +167,15 @@ function layoutRows(results, outDir) {
 
 export function renderReport(results, outDir) {
   delete results.outDir;
+  const reportLabel = results.config.label ?? 'Day 3 — reference harness and measured noise floor';
   const summary = aggregate(results);
   const det = determinismRows(results);
   const crossBoot = crossBootRows(results);
   const pixels = trivialPixels(results, outDir);
   const layout = layoutRows(results, outDir);
   const boot0 = results.boots[0];
+  const trivial = summary.trivial ?? null;
+  const shadow = summary.shadow ?? null;
   const layoutCompose = firstRun(boot0, 'compose', 'trivial')?.textLayout ?? null;
   const layoutRn = firstRun(boot0, 'rn', 'trivial')?.textLayout ?? null;
   const maxDeterminismExact = Math.max(0, ...det.map((row) => row.maxExact));
@@ -284,7 +287,7 @@ export function renderReport(results, outDir) {
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>M3E Day 3 — harness and noise floor</title>
+<title>M3E — ${esc(reportLabel)}</title>
 <style>
   :root { color-scheme: light; }
   body { font: 15px/1.5 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif; margin: 0; padding: 32px; color: #1c1b1f; background: #fffbfe; }
@@ -311,16 +314,16 @@ export function renderReport(results, outDir) {
 </head>
 <body>
 <main>
-<h1>Day 3 — reference harness and measured noise floor</h1>
+<h1>${esc(reportLabel)}</h1>
 <p class="sub">${esc(results.generatedAt)} · ${esc(results.profile.avd)} · API ${results.profile.api} · ${results.profile.width}×${results.profile.height} @ ${results.profile.density}dpi · ${results.config.boots} cold boots · ${results.config.repeats} repeats of the trivial scene per app per boot.</p>
 
 <div class="status">
-  <p><strong>Cross-stack exact zero on the trivial scene: ${exactZero ? '<span class="ok">met</span>' : '<span class="bad">not met</span>'}</strong></p>
-  <p>${exactZero ? 'Compose and React Native produced byte-identical trivial-scene crops in every sampled boot.' : `The remaining difference is text-only: <strong>${px(summary.trivial.exact)}</strong> exact pixels (${percent(summary.trivial.exactPercent)}), and <strong>${px(summary.trivial.aa)}</strong> pixels after pixelmatch anti-aliasing detection (${percent(summary.trivial.aaPercent)}). Geometry and shadow scenes are byte-identical. This report does not tune the scene or propose a new threshold.`}</p>
+  <p><strong>Cross-stack exact zero across all scenes: ${exactZero ? '<span class="ok">met</span>' : '<span class="bad">not met</span>'}</strong></p>
+  <p>${exactZero ? 'Compose and React Native produced byte-identical crops in every sampled scene.' : trivial ? `The remaining difference is text-only: <strong>${px(trivial.exact)}</strong> exact pixels (${percent(trivial.exactPercent)}), and <strong>${px(trivial.aa)}</strong> pixels after pixelmatch anti-aliasing detection (${percent(trivial.aaPercent)}). Geometry and shadow scenes are byte-identical. This report does not tune the scene or propose a new threshold.` : 'The trivial scene was not part of this run; see the per-scene table for the measured differences.'}</p>
   <ul>
     <li><strong>Determinism:</strong> ${px(totalRenders)} renders (${det.length} app/scene/boot combinations), maximum exact difference between any repeat and its first run: <strong>${px(maxDeterminismExact)} px</strong>.</li>
-    <li><strong>Text anti-aliasing:</strong> <strong>${px(summary.trivial.exact)} px</strong> exact (${percent(summary.trivial.exactPercent)}), <strong>${px(summary.trivial.aa)} px</strong> AA-aware (${percent(summary.trivial.aaPercent)}), max channel Δ <strong>${summary.trivial.maxDelta}</strong>, confined to the text bbox.</li>
-    <li><strong>Shadows:</strong> cross-stack exact <strong>${px(summary.shadow.exact)} px</strong>; Compose and React Native both render ${shadowCompose ? px(shadowCompose.outsidePixels) : '?'} non-background shadow pixels outside the rectangle.</li>
+    <li><strong>Text anti-aliasing:</strong> ${trivial ? `<strong>${px(trivial.exact)} px</strong> exact (${percent(trivial.exactPercent)}), <strong>${px(trivial.aa)} px</strong> AA-aware (${percent(trivial.aaPercent)}), max channel Δ <strong>${trivial.maxDelta}</strong>, confined to the text bbox.` : 'trivial scene not included in this run.'}</li>
+    <li><strong>Shadows:</strong> ${shadow ? `cross-stack exact <strong>${px(shadow.exact)} px</strong>; Compose and React Native both render ${shadowCompose ? px(shadowCompose.outsidePixels) : '?'} non-background shadow pixels outside the rectangle.` : 'shadow scene not included in this run.'}</li>
   </ul>
   <p>Existing PLAYBOOK §7 AA-aware 0.05% gate on this data: ${aaGate ? 'below the gate' : 'above the gate'}. ${layoutText}</p>
 </div>
@@ -337,7 +340,7 @@ export function renderReport(results, outDir) {
   <thead><tr><th>App</th><th>Non-background px outside rect</th><th>Max Δ from background</th><th>Min Δ from background</th></tr></thead>
   <tbody>${shadowRows}</tbody>
 </table>
-<p class="note">The shadow is present in both renders (pixels outside the rectangle differ from the flat background), and the cross-stack diff for the whole shadow scene is ${px(summary.shadow.exact)} exact px. This is the shadow measurement, not an inference from an empty scene.</p>
+<p class="note">${shadow ? `The shadow is present in both renders (pixels outside the rectangle differ from the flat background), and the cross-stack diff for the whole shadow scene is ${px(shadow.exact)} exact px. This is the shadow measurement, not an inference from an empty scene.` : 'The shadow scene was not included in this run.'}</p>
 
 <h2>Layout edges</h2>
 <table>
@@ -366,7 +369,7 @@ ${pixels.length ? `<table><thead><tr><th>Coordinate</th><th>Compose</th><th>Reac
   <thead><tr><th>Check</th><th>Observed</th><th>Status</th></tr></thead>
   <tbody>${profileRows}</tbody>
 </table>
-<p>Font file: <code>${esc(results.fonts.sourceHash)}</code> in both APKs and in the source tree. Runtime probes: Compose <code>${esc(results.boots[0]?.captures.compose.trivial[0].marker.probe ?? '')}</code>; React Native <code>${esc(results.boots[0]?.captures.rn.trivial[0].marker.probe ?? '')}</code>.</p>
+<p>Font file: <code>${esc(results.fonts.sourceHash)}</code> in both APKs and in the source tree. Runtime probes: Compose <code>${esc(results.boots[0]?.captures.compose.trivial?.[0]?.marker.probe ?? '')}</code>; React Native <code>${esc(results.boots[0]?.captures.rn.trivial?.[0]?.marker.probe ?? '')}</code>.</p>
 <p>Frozen device, GPU, settings, and cold-boot procedure: <code>FROZEN_PROFILE.md</code>. Raw run log: <code>run.log</code>.</p>
 
 <h2>Scene captures</h2>
@@ -377,7 +380,7 @@ ${sceneSections}
   <li>The capture, crop, compare, and report pipeline is deterministic across repeated launches and cold boots.</li>
   <li>Compose and React Native agree exactly on solid fills, rounded-rectangle geometry, and elevation shadows on this profile.</li>
   <li>Text from the same Roboto Flex file differs only in rasterization: ${layoutText} The difference is confined to the glyph edges.</li>
-  <li>No threshold is proposed here. Day 3 is a measurement, not a gate change.</li>
+  <li>No threshold is proposed here. This run is a measurement, not a gate change.</li>
 </ul>
 
 <h2>What this does not establish</h2>
@@ -391,7 +394,7 @@ ${sceneSections}
 </html>
 `;
 
-  const md = `# Day 3 — reference harness and measured noise floor
+  const md = `# ${reportLabel}
 
 **Generated:** ${results.generatedAt}
 **Profile:** ${results.profile.avd}, API ${results.profile.api}, ${results.profile.width}×${results.profile.height}, ${results.profile.density}dpi (${results.profile.densityScale}×), GPU ${results.profile.gpu}, font scale ${results.profile.fontScale}, animations ${results.profile.animations}.
@@ -399,9 +402,9 @@ ${sceneSections}
 
 ## Headline
 
-- Cross-stack exact zero on the trivial scene: **${exactZero ? 'met' : 'not met'}**.
-- Trivial scene exact difference: **${px(summary.trivial.exact)} px (${percent(summary.trivial.exactPercent)})**.
-- Trivial scene AA-aware difference: **${px(summary.trivial.aa)} px (${percent(summary.trivial.aaPercent)})**.
+- Cross-stack exact zero: **${exactZero ? 'met' : 'not met'}**.
+- Trivial scene exact difference: **${trivial ? `${px(trivial.exact)} px (${percent(trivial.exactPercent)})` : 'not in this run'}**.
+- Trivial scene AA-aware difference: **${trivial ? `${px(trivial.aa)} px (${percent(trivial.aaPercent)})` : 'not in this run'}**.
 - Within-harness determinism: **${deterministic ? 'zero exact diffs' : 'FAILED'}** across ${px(totalRenders)} renders; max exact diff per app/scene/boot combination: ${px(maxDeterminismExact)} px.
 - Exact-zero scenes in every sampled boot: **${exactGeometryScenes.length ? exactGeometryScenes.join(', ') : 'none'}**.
 
@@ -411,7 +414,7 @@ The cross-stack difference is text-only. ${layoutText} The frameworks rasterize 
 
 **Determinism.** ${px(totalRenders)} renders across ${det.length} app/scene/boot combinations; maximum exact difference between any repeat and its first run is **${px(maxDeterminismExact)} px**. Per-combination numbers are in the determinism table.
 
-**Text anti-aliasing.** On the trivial scene: **${px(summary.trivial.exact)} px** exact (${percent(summary.trivial.exactPercent)}), **${px(summary.trivial.aa)} px** after pixelmatch AA detection (${percent(summary.trivial.aaPercent)}), max channel Δ **${summary.trivial.maxDelta}**. All exact differences fall inside the text bbox.
+**Text anti-aliasing.** ${trivial ? `On the trivial scene: **${px(trivial.exact)} px** exact (${percent(trivial.exactPercent)}), **${px(trivial.aa)} px** after pixelmatch AA detection (${percent(trivial.aaPercent)}), max channel Δ **${trivial.maxDelta}**. All exact differences fall inside the text bbox.` : 'The trivial scene was not included in this run.'}
 
 **Shadows.** The elevated rectangle is present and measured, not inferred from an empty scene:
 
@@ -420,7 +423,7 @@ The cross-stack difference is text-only. ${layoutText} The frameworks rasterize 
 ${shadowCompose ? `| Compose | ${px(shadowCompose.outsidePixels)} | ${shadowCompose.maxDeviation} | ${shadowCompose.minDeviation} |` : ''}
 ${shadowRn ? `| React Native | ${px(shadowRn.outsidePixels)} | ${shadowRn.maxDeviation} | ${shadowRn.minDeviation} |` : ''}
 
-The cross-stack diff for the shadow scene is **${px(summary.shadow.exact)} exact px** (${percent(summary.shadow.exactPercent)}).
+${shadow ? `The cross-stack diff for the shadow scene is **${px(shadow.exact)} exact px** (${percent(shadow.exactPercent)}).` : 'The shadow scene was not included in this run.'}
 
 ## Layout edges
 

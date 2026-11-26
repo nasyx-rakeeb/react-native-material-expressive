@@ -2,7 +2,7 @@
 
 A component cannot be marked DONE while it has an open entry here. Day 0 resolved the six original `UNVERIFIED-1..6`; new open items are listed below with an owner and a resolution day.
 
-**Last updated:** 2026-11-26 (Day 4)
+**Last updated:** 2026-11-26 (Day 5)
 
 ---
 
@@ -75,8 +75,8 @@ Paper `6.0.0-alpha.4` (2026-11-23); 34 public component exports; signature-set s
 
 - **Claim:** The plan says “custom brand font across the entire type scale” and “baseline + emphasized scales”.
 - **Evidence:** `TypographyTokens.kt`/`TypeScaleTokens.kt` contain 15 emphasized styles, but `MaterialExpressiveTheme` passes `Typography()` and contains `// TODO: replace with calls to Expressive typography default` (`MaterialTheme.kt` ~line 264).
-- **Resolution:** ADR-006 accepted. Emphasized styles ship as opt-in tokens; the default theme stays on standard `Typography()` so Compose renders match.
-- **Blocks:** Nothing; typography still due Day 5.
+- **Resolution:** ADR-006 accepted. Emphasized styles ship as opt-in tokens; the default theme stays on standard `Typography()` so Compose renders match. Day 5 implemented all 30 roles, theme wiring, and scenes; evidence: `docs/evidence/day5/typography/`.
+- **Blocks:** Nothing; Day 5 implementation complete. The faithful-vs-matched gate reading is `U-25`.
 
 ### U-9 — m3 chips page does not mark an Expressive update, but Compose Chip supports shape morph
 
@@ -148,12 +148,12 @@ Paper `6.0.0-alpha.4` (2026-11-23); 34 public component exports; signature-set s
 - **Resolution:** Day 53: install and test a sample; check a11y, motion, and fidelity. Do not cite it as production-ready until then.
 - **Blocks:** None.
 
-### U-19 — `fontVariationSettings` support below RN 0.88 / Android API 26
+### U-19 — `fontVariationSettings` support below RN 0.88 / Android API 26 — **RESOLVED (fallback implemented; runtime API 24/25 not measured)**
 
 - **Evidence:** RN 0.88 exposes `fontVariationSettings` as an object or CSS string; older RN versions and Android API <26 handle variable fonts inconsistently. ADR-001 sets the peer floor at RN 0.81 and Android minSdk 24.
-- **Impact:** Roboto Flex weight/optical-size fidelity on the supported floor.
-- **Resolution:** Day 5: build a capability probe and a static-weight fallback, then record measured differences on API 24/25 vs 26+ in `docs/specs/typography.json`. Never silently claim variable-font parity below the capability line.
-- **Blocks:** Typography DONE (Day 5).
+- **Resolution (Day 5):** `resolveVariableFontSupport()` gates on RN ≥ 0.88 and, on Android, API ≥ 26; `createM3Typography()` emits a static family plus explicit `fontWeight` on every unsupported branch and never emits `fontVariationSettings` there. `staticFamilies` maps 400/500/700 when the app supplies separate files; otherwise the base family is used with a synthetic weight. The resolver is unit-tested for RN 0.87, API 25, unknown RN versions, and unsupported platforms. RN's `ReactTypefaceUtils.parseFontVariationSettings` is source-verified to ignore the axis below API 26. Evidence: `packages/react-native-material-expressive/src/typography/support.ts`, `createTypography.ts`, `__tests__/typography.test.ts`, and the fallback matrix in `docs/evidence/day5/typography/README.md`.
+- **Remaining:** No API 24/25 system image is installed, so the static fallback has not been rendered on a device. This is deterministic and tested, but a runtime confirmation belongs to the Day 42 Android compatibility matrix. It does not block Day 5.
+- **Blocks:** Nothing for Day 5; API 24/25 runtime confirmation tracked under the compatibility matrix.
 
 ### U-20 — Compose's emphasized cubic-bezier is m3's standard fallback, not the Android emphasized path
 
@@ -184,3 +184,10 @@ Paper `6.0.0-alpha.4` (2026-11-23); 34 public component exports; signature-set s
 - **Impact:** A renamed or missing role resource on API 34+ would make dynamic colour fall back to static colours (the JS loader catches malformed payloads), not crash. A wrong mapping could produce a plausible but incorrect scheme.
 - **Resolution:** Day 42 Android compatibility matrix (or earlier): boot an API 34/35 emulator, run the gallery `M3E_DYNAMIC_PAYLOAD` probe, and compare against Compose’s dynamic schemes on the same device. Until then, do not claim API 34+ dynamic-colour exactness. API 31–33 is verified.
 - **Blocks:** The API 34+ dynamic-colour claim only; Day 4 exit is met on API 31.
+
+### U-25 — Day 5 typography gate interpretation: faithful vs matched rendering grid
+
+- **Evidence:** The 30 one-line type scenes were captured twice with the same tokens and font. Faithful (Compose `TextMotion.Static`, fractional sp/dp): **9/30** scenes inside the 0.05% AA-aware budget, worst **2,745 px / 0.6224%** (`displayLarge`). Matched rendering grid (Compose `TextMotion.Animated`, integer physical font sizes, floored offsets): **30/30** inside the budget, **26/30** byte-identical, four scenes with a 1 px baseline offset and max **105 px / 0.0238%**. The standard five-scene gate is unchanged and green. Evidence: `docs/evidence/day5/typography/README.md`, `runs/{faithful,matched-grid}/`, `docs/evidence/day5/gate/`.
+- **Impact:** PLAYBOOK Day 5 says “text scenes for all styles diff-pass (size, weight, width, tracking, line height)”. The parenthetical is met 30/30 on the matched grid; the faithful rasterized diff is 9/30. This decides whether Day 5 is marked PASS or PASS-with-flag, not whether the implementation ships.
+- **Resolution:** Nasyx to confirm before Day 6. Recommendation: keep the existing five-scene gate unchanged; treat the 30 type scenes as diagnostic evidence for token/layout parity under D-001; publish both numbers and never describe the 30 faithful scenes as byte-identical. No threshold, scene, or baseline change is proposed.
+- **Blocks:** The Day 5 PASS label only; implementation and evidence are complete.

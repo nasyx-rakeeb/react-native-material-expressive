@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>M3E — Day 5 — typography, matched rendering grid</title>
+<style>
+  :root { color-scheme: light; }
+  body { font: 15px/1.5 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif; margin: 0; padding: 32px; color: #1c1b1f; background: #fffbfe; }
+  main { max-width: 1180px; margin: 0 auto; }
+  h1 { font-size: 30px; line-height: 1.15; margin: 0 0 4px; letter-spacing: -0.02em; }
+  h2 { font-size: 20px; margin: 36px 0 8px; }
+  .sub { color: #5f5b66; margin: 0 0 24px; }
+  .status { border: 1px solid #cac4d0; border-radius: 16px; padding: 16px 20px; margin: 20px 0; background: #f7f2fa; }
+  .status strong { font-size: 17px; }
+  .bad { color: #b3261e; font-weight: 700; }
+  .ok { color: #146c2e; font-weight: 700; }
+  table { border-collapse: collapse; width: 100%; margin: 10px 0 20px; font-size: 13px; }
+  th, td { border-bottom: 1px solid #e7e0ec; padding: 7px 9px; text-align: left; vertical-align: top; }
+  th { background: #f3edf7; font-weight: 600; }
+  code { font: 12px ui-monospace, SFMono-Regular, Menlo, monospace; }
+  .shots { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+  figure { margin: 0; border: 1px solid #e7e0ec; border-radius: 12px; overflow: hidden; background: #fff; }
+  figure img { display: block; width: 100%; height: auto; image-rendering: pixelated; }
+  figcaption { padding: 8px 10px; font-size: 12px; color: #5f5b66; border-top: 1px solid #e7e0ec; }
+  ul { margin: 6px 0 18px; }
+  .note { border-left: 4px solid #6750a4; padding: 8px 14px; background: #f7f2fa; }
+  @media (max-width: 760px) { .shots { grid-template-columns: 1fr; } body { padding: 18px; } }
+</style>
+</head>
+<body>
+<main>
+<h1>Day 5 — typography, matched rendering grid</h1>
+<p class="sub">2026-11-26T07:48:56.979Z · M3E_API31 · API 31 · 1080×1920 @ 420dpi · 1 cold boots · 1 repeats of the trivial scene per app per boot.</p>
+
+<div class="status">
+  <p><strong>Cross-stack exact zero across all scenes: <span class="bad">not met</span></strong></p>
+  <p>The remaining difference is text-only: <strong>0</strong> exact pixels (0.0000%), and <strong>0</strong> pixels after pixelmatch anti-aliasing detection (0.0000%). Geometry and shadow scenes are byte-identical. This report does not tune the scene or propose a new threshold.</p>
+  <ul>
+    <li><strong>Determinism:</strong> 70 renders (70 app/scene/boot combinations), maximum exact difference between any repeat and its first run: <strong>0 px</strong>.</li>
+    <li><strong>Text anti-aliasing:</strong> <strong>0 px</strong> exact (0.0000%), <strong>0 px</strong> AA-aware (0.0000%), max channel Δ <strong>0</strong>, confined to the text bbox.</li>
+    <li><strong>Shadows:</strong> cross-stack exact <strong>0 px</strong>; Compose and React Native both render 46,050 non-background shadow pixels outside the rectangle.</li>
+  </ul>
+  <p>Existing PLAYBOOK §7 AA-aware 0.05% gate on this data: below the gate. Measured text layout: Compose 402.0×73.0 px, React Native 402.0×73.0 px.</p>
+</div>
+
+<h2>Noise split</h2>
+<table>
+  <thead><tr><th>Scene</th><th>Exact diff px</th><th>Exact %</th><th>AA-aware px</th><th>AA-aware %</th><th>Max channel Δ</th><th>Boots</th></tr></thead>
+  <tbody><tr><td>solid</td><td>0</td><td>0.0000%</td><td>0</td><td>0.0000%</td><td>0</td><td>1</td></tr><tr><td>rect</td><td>0</td><td>0.0000%</td><td>0</td><td>0.0000%</td><td>0</td><td>1</td></tr><tr><td>text</td><td>0</td><td>0.0000%</td><td>0</td><td>0.0000%</td><td>0</td><td>1</td></tr><tr><td>shadow</td><td>0</td><td>0.0000%</td><td>0</td><td>0.0000%</td><td>0</td><td>1</td></tr><tr><td>trivial</td><td>0</td><td>0.0000%</td><td>0</td><td>0.0000%</td><td>0</td><td>1</td></tr><tr><td>type-body-large-emphasized</td><td>0</td><td>0.0000%</td><td>0</td><td>0.0000%</td><td>0</td><td>1</td></tr><tr><td>type-body-large</td><td>0</td><td>0.0000%</td><td>0</td><td>0.0000%</td><td>0</td><td>1</td></tr><tr><td>type-body-medium-emphasized</td><td>0</td><td>0.0000%</td><td>0</td><td>0.0000%</td><td>0</td><td>1</td></tr><tr><td>type-body-medium</td><td>0</td><td>0.0000%</td><td>0</td><td>0.0000%</td><td>0</td><td>1</td></tr><tr><td>type-body-small-emphasized</td><td>0</td><td>0.0000%</td><td>0</td><td>0.0000%</td><td>0</td><td>1</td></tr><tr><td>type-body-small</td><td>0</td><td>0.0000%</td><td>0</td><td>0.0000%</td><td>0</td><td>1</td></tr><tr><td>type-display-large-emphasized</td><td>0</td><td>0.0000%</td><td>0</td><td>0.0000%</td><td>0</td><td>1</td></tr><tr><td>type-display-large</td><td>0</td><td>0.0000%</td><td>0</td><td>0.0000%</td><td>0</td><td>1</td></tr><tr><td>type-display-medium-emphasized</td><td>0</td><td>0.0000%</td><td>0</td><td>0.0000%</td><td>0</td><td>1</td></tr><tr><td>type-display-medium</td><td>0</td><td>0.0000%</td><td>0</td><td>0.0000%</td><td>0</td><td>1</td></tr><tr><td>type-display-small-emphasized</td><td>2,340</td><td>0.5306%</td><td>105</td><td>0.0238%</td><td>226</td><td>1</td></tr><tr><td>type-display-small</td><td>2,372</td><td>0.5379%</td><td>63</td><td>0.0143%</td><td>226</td><td>1</td></tr><tr><td>type-headline-large-emphasized</td><td>0</td><td>0.0000%</td><td>0</td><td>0.0000%</td><td>0</td><td>1</td></tr><tr><td>type-headline-large</td><td>0</td><td>0.0000%</td><td>0</td><td>0.0000%</td><td>0</td><td>1</td></tr><tr><td>type-headline-medium-emphasized</td><td>0</td><td>0.0000%</td><td>0</td><td>0.0000%</td><td>0</td><td>1</td></tr><tr><td>type-headline-medium</td><td>0</td><td>0.0000%</td><td>0</td><td>0.0000%</td><td>0</td><td>1</td></tr><tr><td>type-headline-small-emphasized</td><td>1,592</td><td>0.3610%</td><td>48</td><td>0.0109%</td><td>226</td><td>1</td></tr><tr><td>type-headline-small</td><td>1,574</td><td>0.3569%</td><td>53</td><td>0.0120%</td><td>226</td><td>1</td></tr><tr><td>type-label-large-emphasized</td><td>0</td><td>0.0000%</td><td>0</td><td>0.0000%</td><td>0</td><td>1</td></tr><tr><td>type-label-large</td><td>0</td><td>0.0000%</td><td>0</td><td>0.0000%</td><td>0</td><td>1</td></tr><tr><td>type-label-medium-emphasized</td><td>0</td><td>0.0000%</td><td>0</td><td>0.0000%</td><td>0</td><td>1</td></tr><tr><td>type-label-medium</td><td>0</td><td>0.0000%</td><td>0</td><td>0.0000%</td><td>0</td><td>1</td></tr><tr><td>type-label-small-emphasized</td><td>0</td><td>0.0000%</td><td>0</td><td>0.0000%</td><td>0</td><td>1</td></tr><tr><td>type-label-small</td><td>0</td><td>0.0000%</td><td>0</td><td>0.0000%</td><td>0</td><td>1</td></tr><tr><td>type-title-large-emphasized</td><td>0</td><td>0.0000%</td><td>0</td><td>0.0000%</td><td>0</td><td>1</td></tr><tr><td>type-title-large</td><td>0</td><td>0.0000%</td><td>0</td><td>0.0000%</td><td>0</td><td>1</td></tr><tr><td>type-title-medium-emphasized</td><td>0</td><td>0.0000%</td><td>0</td><td>0.0000%</td><td>0</td><td>1</td></tr><tr><td>type-title-medium</td><td>0</td><td>0.0000%</td><td>0</td><td>0.0000%</td><td>0</td><td>1</td></tr><tr><td>type-title-small-emphasized</td><td>0</td><td>0.0000%</td><td>0</td><td>0.0000%</td><td>0</td><td>1</td></tr><tr><td>type-title-small</td><td>0</td><td>0.0000%</td><td>0</td><td>0.0000%</td><td>0</td><td>1</td></tr></tbody>
+</table>
+<p class="note">Solid background and the rounded rectangle are byte-identical. The elevated rectangle is byte-identical. All cross-stack difference is confined to the text region, where the two frameworks rasterize the same Roboto Flex file with subpixel placement differences. The AA-aware count is the number of pixels pixelmatch classifies as non-anti-aliased differences at threshold 0.1.</p>
+
+<h2>Shadow measurement</h2>
+<table>
+  <thead><tr><th>App</th><th>Non-background px outside rect</th><th>Max Δ from background</th><th>Min Δ from background</th></tr></thead>
+  <tbody><tr><td>Compose</td><td>46,050</td><td>31</td><td>1</td></tr><tr><td>React Native</td><td>46,050</td><td>31</td><td>1</td></tr></tbody>
+</table>
+<p class="note">The shadow is present in both renders (pixels outside the rectangle differ from the flat background), and the cross-stack diff for the whole shadow scene is 0 exact px. This is the shadow measurement, not an inference from an empty scene.</p>
+
+<h2>Layout edges</h2>
+<table>
+  <thead><tr><th>Scene</th><th>Compose content bbox</th><th>React Native content bbox</th><th>Max edge delta (px)</th></tr></thead>
+  <tbody><tr><td>solid</td><td><code>none</code></td><td><code>none</code></td><td class="ok">0</td></tr><tr><td>rect</td><td><code>63,63 420×252</code></td><td><code>63,63 420×252</code></td><td class="ok">0</td></tr><tr><td>text</td><td><code>68,75 395×59</code></td><td><code>68,75 395×59</code></td><td class="ok">0</td></tr><tr><td>shadow</td><td><code>74,81 582×370</code></td><td><code>74,81 582×370</code></td><td class="ok">0</td></tr><tr><td>trivial</td><td><code>63,63 420×365</code></td><td><code>63,63 420×365</code></td><td class="ok">0</td></tr><tr><td>type-body-large-emphasized</td><td><code>45,77 154×33</code></td><td><code>45,77 154×33</code></td><td class="ok">0</td></tr><tr><td>type-body-large</td><td><code>46,77 156×33</code></td><td><code>46,77 156×33</code></td><td class="ok">0</td></tr><tr><td>type-body-medium-emphasized</td><td><code>45,74 137×29</code></td><td><code>45,74 137×29</code></td><td class="ok">0</td></tr><tr><td>type-body-medium</td><td><code>45,74 133×29</code></td><td><code>45,74 133×29</code></td><td class="ok">0</td></tr><tr><td>type-body-small-emphasized</td><td><code>45,71 122×25</code></td><td><code>45,71 122×25</code></td><td class="ok">0</td></tr><tr><td>type-body-small</td><td><code>45,71 119×25</code></td><td><code>45,71 119×25</code></td><td class="ok">0</td></tr><tr><td>type-display-large-emphasized</td><td><code>54,89 535×116</code></td><td><code>54,89 535×116</code></td><td class="ok">0</td></tr><tr><td>type-display-large</td><td><code>54,89 518×116</code></td><td><code>54,89 518×116</code></td><td class="ok">0</td></tr><tr><td>type-display-medium-emphasized</td><td><code>51,83 425×92</code></td><td><code>51,83 425×92</code></td><td class="ok">0</td></tr><tr><td>type-display-medium</td><td><code>51,83 415×92</code></td><td><code>51,83 415×92</code></td><td class="ok">0</td></tr><tr><td>type-display-small-emphasized</td><td><code>49,81 340×74</code></td><td><code>49,82 340×74</code></td><td class="bad">1</td></tr><tr><td>type-display-small</td><td><code>49,81 331×74</code></td><td><code>49,82 331×74</code></td><td class="bad">1</td></tr><tr><td>type-headline-large-emphasized</td><td><code>48,81 301×65</code></td><td><code>48,81 301×65</code></td><td class="ok">0</td></tr><tr><td>type-headline-large</td><td><code>48,81 293×65</code></td><td><code>48,81 293×65</code></td><td class="ok">0</td></tr><tr><td>type-headline-medium-emphasized</td><td><code>47,80 265×58</code></td><td><code>47,80 265×58</code></td><td class="ok">0</td></tr><tr><td>type-headline-medium</td><td><code>48,80 258×58</code></td><td><code>48,80 258×58</code></td><td class="ok">0</td></tr><tr><td>type-headline-small-emphasized</td><td><code>47,78 225×49</code></td><td><code>47,79 225×49</code></td><td class="bad">1</td></tr><tr><td>type-headline-small</td><td><code>47,78 220×49</code></td><td><code>47,79 220×49</code></td><td class="bad">1</td></tr><tr><td>type-label-large-emphasized</td><td><code>45,74 141×29</code></td><td><code>45,74 141×29</code></td><td class="ok">0</td></tr><tr><td>type-label-large</td><td><code>45,74 134×29</code></td><td><code>45,74 134×29</code></td><td class="ok">0</td></tr><tr><td>type-label-medium-emphasized</td><td><code>45,71 130×25</code></td><td><code>45,71 130×25</code></td><td class="ok">0</td></tr><tr><td>type-label-medium</td><td><code>45,71 124×25</code></td><td><code>45,71 124×25</code></td><td class="ok">0</td></tr><tr><td>type-label-small-emphasized</td><td><code>44,72 119×23</code></td><td><code>44,72 119×23</code></td><td class="ok">0</td></tr><tr><td>type-label-small</td><td><code>45,72 113×23</code></td><td><code>45,72 113×23</code></td><td class="ok">0</td></tr><tr><td>type-title-large-emphasized</td><td><code>46,76 208×45</code></td><td><code>46,76 208×45</code></td><td class="ok">0</td></tr><tr><td>type-title-large</td><td><code>46,76 203×45</code></td><td><code>46,76 203×45</code></td><td class="ok">0</td></tr><tr><td>type-title-medium-emphasized</td><td><code>45,77 161×33</code></td><td><code>45,77 161×33</code></td><td class="ok">0</td></tr><tr><td>type-title-medium</td><td><code>45,77 155×33</code></td><td><code>45,77 155×33</code></td><td class="ok">0</td></tr><tr><td>type-title-small-emphasized</td><td><code>45,74 141×29</code></td><td><code>45,74 141×29</code></td><td class="ok">0</td></tr><tr><td>type-title-small</td><td><code>45,74 134×29</code></td><td><code>45,74 134×29</code></td><td class="ok">0</td></tr></tbody>
+</table>
+<p class="note">Strict bounding box of pixels that are not exactly the scene background. It includes anti-aliased glyph edges and the shadow. No tolerance is added; the number is recorded as measured.</p>
+
+<h2>Non-AA text pixels (boot 1, trivial)</h2>
+<p>None.</p>
+
+<h2>Determinism</h2>
+<table>
+  <thead><tr><th>Boot</th><th>App</th><th>Scene</th><th>Runs</th><th>Max exact diff</th><th>Max AA-aware diff</th><th>Status</th></tr></thead>
+  <tbody><tr><td>0</td><td>compose</td><td>solid</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>compose</td><td>rect</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>compose</td><td>text</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>compose</td><td>shadow</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>compose</td><td>trivial</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>compose</td><td>type-body-large-emphasized</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>compose</td><td>type-body-large</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>compose</td><td>type-body-medium-emphasized</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>compose</td><td>type-body-medium</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>compose</td><td>type-body-small-emphasized</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>compose</td><td>type-body-small</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>compose</td><td>type-display-large-emphasized</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>compose</td><td>type-display-large</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>compose</td><td>type-display-medium-emphasized</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>compose</td><td>type-display-medium</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>compose</td><td>type-display-small-emphasized</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>compose</td><td>type-display-small</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>compose</td><td>type-headline-large-emphasized</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>compose</td><td>type-headline-large</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>compose</td><td>type-headline-medium-emphasized</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>compose</td><td>type-headline-medium</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>compose</td><td>type-headline-small-emphasized</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>compose</td><td>type-headline-small</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>compose</td><td>type-label-large-emphasized</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>compose</td><td>type-label-large</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>compose</td><td>type-label-medium-emphasized</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>compose</td><td>type-label-medium</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>compose</td><td>type-label-small-emphasized</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>compose</td><td>type-label-small</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>compose</td><td>type-title-large-emphasized</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>compose</td><td>type-title-large</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>compose</td><td>type-title-medium-emphasized</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>compose</td><td>type-title-medium</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>compose</td><td>type-title-small-emphasized</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>compose</td><td>type-title-small</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>solid</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>rect</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>text</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>shadow</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>trivial</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>type-body-large-emphasized</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>type-body-large</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>type-body-medium-emphasized</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>type-body-medium</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>type-body-small-emphasized</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>type-body-small</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>type-display-large-emphasized</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>type-display-large</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>type-display-medium-emphasized</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>type-display-medium</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>type-display-small-emphasized</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>type-display-small</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>type-headline-large-emphasized</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>type-headline-large</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>type-headline-medium-emphasized</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>type-headline-medium</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>type-headline-small-emphasized</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>type-headline-small</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>type-label-large-emphasized</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>type-label-large</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>type-label-medium-emphasized</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>type-label-medium</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>type-label-small-emphasized</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>type-label-small</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>type-title-large-emphasized</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>type-title-large</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>type-title-medium-emphasized</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>type-title-medium</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>type-title-small-emphasized</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>type-title-small</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr></tbody>
+</table>
+
+<h2>Cross-boot repeatability (each boot run 0 vs boot 1 run 0)</h2>
+<table>
+  <thead><tr><th>Boot</th><th>App</th><th>Scene</th><th>Exact diff px</th><th>AA-aware px</th><th>Max channel Δ</th></tr></thead>
+  <tbody><tr><td colspan="6">Single-boot run.</td></tr></tbody>
+</table>
+
+<h2>Emulator profile (verified)</h2>
+<table>
+  <thead><tr><th>Check</th><th>Observed</th><th>Status</th></tr></thead>
+  <tbody><tr><td>avd</td><td><code>M3E_API31</code></td><td class="ok">match</td></tr><tr><td>api</td><td><code>31</code></td><td class="ok">match</td></tr><tr><td>locale</td><td><code>en-US</code></td><td class="ok">match</td></tr><tr><td>fontScale</td><td><code>1.0</code></td><td class="ok">match</td></tr><tr><td>animatorDurationScale</td><td><code>0</code></td><td class="ok">match</td></tr><tr><td>transitionAnimationScale</td><td><code>0</code></td><td class="ok">match</td></tr><tr><td>windowAnimationScale</td><td><code>0</code></td><td class="ok">match</td></tr><tr><td>userRotation</td><td><code>0</code></td><td class="ok">match</td></tr><tr><td>immersiveConfirmation</td><td><code>confirmed</code></td><td class="ok">match</td></tr><tr><td>nightMode</td><td><code>Night mode: no</code></td><td class="ok">match</td></tr><tr><td>wmSize</td><td><code>Physical size: 1080x1920</code></td><td class="ok">match</td></tr><tr><td>wmDensity</td><td><code>Physical density: 420</code></td><td class="ok">match</td></tr><tr><td>gpu</td><td><code>GLES: Google (Google Inc. (Google)), Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver-5.0.0)), OpenGL ES 3.1 (OpenGL ES 3.1.0 (ANGLE 2.1.2 git hash: 1f0534893540))</code></td><td class="ok">match</td></tr></tbody>
+</table>
+<p>Font file: <code>9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281</code> in both APKs and in the source tree. Runtime probes: Compose <code>M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true</code>; React Native <code>[M3E] font_probe narrow=376.00 wide=411.43 ok=true</code>.</p>
+<p>Frozen device, GPU, settings, and cold-boot procedure: <code>FROZEN_PROFILE.md</code>. Raw run log: <code>run.log</code>.</p>
+
+<h2>Scene captures</h2>
+<section>
+  <h2>solid</h2>
+  <p><strong>0</strong> exact diff px (0.0000%), <strong>0</strong> AA-aware diff px (0.0000%), max channel delta <strong>0</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/769c75f7390f26c2c0a16ed770f3582dbfc2bd615753e5892a1f9d00e64fc639.png" alt="Compose solid"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/769c75f7390f26c2c0a16ed770f3582dbfc2bd615753e5892a1f9d00e64fc639.png" alt="React Native solid"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-solid.png" alt="Diff solid"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  
+</section>
+<section>
+  <h2>rect</h2>
+  <p><strong>0</strong> exact diff px (0.0000%), <strong>0</strong> AA-aware diff px (0.0000%), max channel delta <strong>0</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/62e8d31bac18416ce19bb20fcf052985b770560167df7cbd0091fb74b76f5a59.png" alt="Compose rect"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/62e8d31bac18416ce19bb20fcf052985b770560167df7cbd0091fb74b76f5a59.png" alt="React Native rect"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-rect.png" alt="Diff rect"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  
+</section>
+<section>
+  <h2>text</h2>
+  <p><strong>0</strong> exact diff px (0.0000%), <strong>0</strong> AA-aware diff px (0.0000%), max channel delta <strong>0</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/88fdb5439ab2fec365a6924ee894fcd0c2112a0faa5bae5c1d82a2f9651e6893.png" alt="Compose text"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/88fdb5439ab2fec365a6924ee894fcd0c2112a0faa5bae5c1d82a2f9651e6893.png" alt="React Native text"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-text.png" alt="Diff text"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  <ul><li><code>text-0</code>: 0 exact diff px</li></ul>
+</section>
+<section>
+  <h2>shadow</h2>
+  <p><strong>0</strong> exact diff px (0.0000%), <strong>0</strong> AA-aware diff px (0.0000%), max channel delta <strong>0</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/517d03a32a001dc104371bbe58430336afd4eb92bc04439676d4eca245e32ef6.png" alt="Compose shadow"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/517d03a32a001dc104371bbe58430336afd4eb92bc04439676d4eca245e32ef6.png" alt="React Native shadow"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-shadow.png" alt="Diff shadow"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  <ul><li><code>shadow-0</code>: 0 exact diff px</li></ul>
+</section>
+<section>
+  <h2>trivial</h2>
+  <p><strong>0</strong> exact diff px (0.0000%), <strong>0</strong> AA-aware diff px (0.0000%), max channel delta <strong>0</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec.png" alt="Compose trivial"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec.png" alt="React Native trivial"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-trivial.png" alt="Diff trivial"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  <ul><li><code>text-1</code>: 0 exact diff px</li></ul>
+</section>
+<section>
+  <h2>type-body-large-emphasized</h2>
+  <p><strong>0</strong> exact diff px (0.0000%), <strong>0</strong> AA-aware diff px (0.0000%), max channel delta <strong>0</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/fe0703b3bdfcd28dbc36ff8bb4cd87eaf4edbeac3b3472d569d22a39c6cb3ffe.png" alt="Compose type-body-large-emphasized"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/fe0703b3bdfcd28dbc36ff8bb4cd87eaf4edbeac3b3472d569d22a39c6cb3ffe.png" alt="React Native type-body-large-emphasized"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-type-body-large-emphasized.png" alt="Diff type-body-large-emphasized"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  <ul><li><code>text-0</code>: 0 exact diff px</li></ul>
+</section>
+<section>
+  <h2>type-body-large</h2>
+  <p><strong>0</strong> exact diff px (0.0000%), <strong>0</strong> AA-aware diff px (0.0000%), max channel delta <strong>0</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/492f77c8ef06427acbfc7c696d602f8d2ac101e3787ab87bb9c64d307901ca4c.png" alt="Compose type-body-large"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/492f77c8ef06427acbfc7c696d602f8d2ac101e3787ab87bb9c64d307901ca4c.png" alt="React Native type-body-large"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-type-body-large.png" alt="Diff type-body-large"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  <ul><li><code>text-0</code>: 0 exact diff px</li></ul>
+</section>
+<section>
+  <h2>type-body-medium-emphasized</h2>
+  <p><strong>0</strong> exact diff px (0.0000%), <strong>0</strong> AA-aware diff px (0.0000%), max channel delta <strong>0</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/64727f4ddf9adfbf8cbd62bb759ada05b02edb72c377b8d4762b8fe6e8aeedd9.png" alt="Compose type-body-medium-emphasized"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/64727f4ddf9adfbf8cbd62bb759ada05b02edb72c377b8d4762b8fe6e8aeedd9.png" alt="React Native type-body-medium-emphasized"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-type-body-medium-emphasized.png" alt="Diff type-body-medium-emphasized"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  <ul><li><code>text-0</code>: 0 exact diff px</li></ul>
+</section>
+<section>
+  <h2>type-body-medium</h2>
+  <p><strong>0</strong> exact diff px (0.0000%), <strong>0</strong> AA-aware diff px (0.0000%), max channel delta <strong>0</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/a9ca0c2df829145f959c94ae677751379391db09e5e91cafee7578e780f0b331.png" alt="Compose type-body-medium"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/a9ca0c2df829145f959c94ae677751379391db09e5e91cafee7578e780f0b331.png" alt="React Native type-body-medium"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-type-body-medium.png" alt="Diff type-body-medium"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  <ul><li><code>text-0</code>: 0 exact diff px</li></ul>
+</section>
+<section>
+  <h2>type-body-small-emphasized</h2>
+  <p><strong>0</strong> exact diff px (0.0000%), <strong>0</strong> AA-aware diff px (0.0000%), max channel delta <strong>0</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/85d89abc5304656fc0a14e50c073a13da95d9031301fb97441e2f4b7c2af9ee5.png" alt="Compose type-body-small-emphasized"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/85d89abc5304656fc0a14e50c073a13da95d9031301fb97441e2f4b7c2af9ee5.png" alt="React Native type-body-small-emphasized"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-type-body-small-emphasized.png" alt="Diff type-body-small-emphasized"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  <ul><li><code>text-0</code>: 0 exact diff px</li></ul>
+</section>
+<section>
+  <h2>type-body-small</h2>
+  <p><strong>0</strong> exact diff px (0.0000%), <strong>0</strong> AA-aware diff px (0.0000%), max channel delta <strong>0</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/8915643521b09d8b67ccae4408fed4cb5847af7ae9db132bfc78a197c5cb50e0.png" alt="Compose type-body-small"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/8915643521b09d8b67ccae4408fed4cb5847af7ae9db132bfc78a197c5cb50e0.png" alt="React Native type-body-small"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-type-body-small.png" alt="Diff type-body-small"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  <ul><li><code>text-0</code>: 0 exact diff px</li></ul>
+</section>
+<section>
+  <h2>type-display-large-emphasized</h2>
+  <p><strong>0</strong> exact diff px (0.0000%), <strong>0</strong> AA-aware diff px (0.0000%), max channel delta <strong>0</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/84af442cda439c223f1906947b5182525ed4d9480162449847a6e13209730e5f.png" alt="Compose type-display-large-emphasized"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/84af442cda439c223f1906947b5182525ed4d9480162449847a6e13209730e5f.png" alt="React Native type-display-large-emphasized"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-type-display-large-emphasized.png" alt="Diff type-display-large-emphasized"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  <ul><li><code>text-0</code>: 0 exact diff px</li></ul>
+</section>
+<section>
+  <h2>type-display-large</h2>
+  <p><strong>0</strong> exact diff px (0.0000%), <strong>0</strong> AA-aware diff px (0.0000%), max channel delta <strong>0</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/81e661b99b733abb82064798c4aea47017554e9529ec1c74e39764c7eb1fa50f.png" alt="Compose type-display-large"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/81e661b99b733abb82064798c4aea47017554e9529ec1c74e39764c7eb1fa50f.png" alt="React Native type-display-large"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-type-display-large.png" alt="Diff type-display-large"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  <ul><li><code>text-0</code>: 0 exact diff px</li></ul>
+</section>
+<section>
+  <h2>type-display-medium-emphasized</h2>
+  <p><strong>0</strong> exact diff px (0.0000%), <strong>0</strong> AA-aware diff px (0.0000%), max channel delta <strong>0</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/74e6182a85c6ebe0f2cd155c35df905bc2caaf6d0932bebe30a78d0ca18fe24e.png" alt="Compose type-display-medium-emphasized"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/74e6182a85c6ebe0f2cd155c35df905bc2caaf6d0932bebe30a78d0ca18fe24e.png" alt="React Native type-display-medium-emphasized"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-type-display-medium-emphasized.png" alt="Diff type-display-medium-emphasized"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  <ul><li><code>text-0</code>: 0 exact diff px</li></ul>
+</section>
+<section>
+  <h2>type-display-medium</h2>
+  <p><strong>0</strong> exact diff px (0.0000%), <strong>0</strong> AA-aware diff px (0.0000%), max channel delta <strong>0</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/509ab28e6dc72d84d903b5766ce4f7daba2ba88d4844c83bcffcf9e65265f363.png" alt="Compose type-display-medium"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/509ab28e6dc72d84d903b5766ce4f7daba2ba88d4844c83bcffcf9e65265f363.png" alt="React Native type-display-medium"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-type-display-medium.png" alt="Diff type-display-medium"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  <ul><li><code>text-0</code>: 0 exact diff px</li></ul>
+</section>
+<section>
+  <h2>type-display-small-emphasized</h2>
+  <p><strong>2,340</strong> exact diff px (0.5306%), <strong>105</strong> AA-aware diff px (0.0238%), max channel delta <strong>226</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/1b649432aad94fb1b5032855026d996554d40fb676f20a7a108c3a40ea7a448c.png" alt="Compose type-display-small-emphasized"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/cb107fa5b61c68f5d4d3c964870bda554aa98a54e030a2e5a91825feecf9cfe4.png" alt="React Native type-display-small-emphasized"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-type-display-small-emphasized.png" alt="Diff type-display-small-emphasized"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  <ul><li><code>text-0</code>: 2,340 exact diff px</li></ul>
+</section>
+<section>
+  <h2>type-display-small</h2>
+  <p><strong>2,372</strong> exact diff px (0.5379%), <strong>63</strong> AA-aware diff px (0.0143%), max channel delta <strong>226</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/43c0f258852eb9e6fd190efb9368fc67ea1438a06da2ee47962f4aade621d8c2.png" alt="Compose type-display-small"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/95fb2fdca31d99425d152f8811b9d2f0af6ef71502e98d56c9d92b6ffb8986ea.png" alt="React Native type-display-small"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-type-display-small.png" alt="Diff type-display-small"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  <ul><li><code>text-0</code>: 2,372 exact diff px</li></ul>
+</section>
+<section>
+  <h2>type-headline-large-emphasized</h2>
+  <p><strong>0</strong> exact diff px (0.0000%), <strong>0</strong> AA-aware diff px (0.0000%), max channel delta <strong>0</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/5c47a39f1272ea01fb75467cc83a8f394d82aeba29468ecfb35fbcb827471728.png" alt="Compose type-headline-large-emphasized"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/5c47a39f1272ea01fb75467cc83a8f394d82aeba29468ecfb35fbcb827471728.png" alt="React Native type-headline-large-emphasized"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-type-headline-large-emphasized.png" alt="Diff type-headline-large-emphasized"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  <ul><li><code>text-0</code>: 0 exact diff px</li></ul>
+</section>
+<section>
+  <h2>type-headline-large</h2>
+  <p><strong>0</strong> exact diff px (0.0000%), <strong>0</strong> AA-aware diff px (0.0000%), max channel delta <strong>0</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/b86e9ae15eaf064eb3e62a9c5aedc5ad210c8551bba102571fb768cdca2d705c.png" alt="Compose type-headline-large"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/b86e9ae15eaf064eb3e62a9c5aedc5ad210c8551bba102571fb768cdca2d705c.png" alt="React Native type-headline-large"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-type-headline-large.png" alt="Diff type-headline-large"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  <ul><li><code>text-0</code>: 0 exact diff px</li></ul>
+</section>
+<section>
+  <h2>type-headline-medium-emphasized</h2>
+  <p><strong>0</strong> exact diff px (0.0000%), <strong>0</strong> AA-aware diff px (0.0000%), max channel delta <strong>0</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/4db16d79ca6b893ec26aeb4e14fd4433d9e1f1e58adbabc81cc1957f0c0bde30.png" alt="Compose type-headline-medium-emphasized"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/4db16d79ca6b893ec26aeb4e14fd4433d9e1f1e58adbabc81cc1957f0c0bde30.png" alt="React Native type-headline-medium-emphasized"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-type-headline-medium-emphasized.png" alt="Diff type-headline-medium-emphasized"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  <ul><li><code>text-0</code>: 0 exact diff px</li></ul>
+</section>
+<section>
+  <h2>type-headline-medium</h2>
+  <p><strong>0</strong> exact diff px (0.0000%), <strong>0</strong> AA-aware diff px (0.0000%), max channel delta <strong>0</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/45a3091835c3a72e3203cd1d75a212f903805316eed88266a59b99859ce85ffe.png" alt="Compose type-headline-medium"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/45a3091835c3a72e3203cd1d75a212f903805316eed88266a59b99859ce85ffe.png" alt="React Native type-headline-medium"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-type-headline-medium.png" alt="Diff type-headline-medium"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  <ul><li><code>text-0</code>: 0 exact diff px</li></ul>
+</section>
+<section>
+  <h2>type-headline-small-emphasized</h2>
+  <p><strong>1,592</strong> exact diff px (0.3610%), <strong>48</strong> AA-aware diff px (0.0109%), max channel delta <strong>226</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/f9d07fafad2d0be520f5efd239a290c4d9bf7713c565a32fdcc7b7b815b55819.png" alt="Compose type-headline-small-emphasized"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/1250c27f7ea7e0bfa74e2356e09c18c0442681513b24d8e458ca0ad577e7c652.png" alt="React Native type-headline-small-emphasized"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-type-headline-small-emphasized.png" alt="Diff type-headline-small-emphasized"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  <ul><li><code>text-0</code>: 1,592 exact diff px</li></ul>
+</section>
+<section>
+  <h2>type-headline-small</h2>
+  <p><strong>1,574</strong> exact diff px (0.3569%), <strong>53</strong> AA-aware diff px (0.0120%), max channel delta <strong>226</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/07ab439b49f73c7a2c92c6801dc1c04c19af5d065d3a8a1b1ef87406e94e480f.png" alt="Compose type-headline-small"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/17339a6a9987e90f2986f6d0410a8a098e96d00dd60af504e7a3ddafef7478f0.png" alt="React Native type-headline-small"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-type-headline-small.png" alt="Diff type-headline-small"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  <ul><li><code>text-0</code>: 1,574 exact diff px</li></ul>
+</section>
+<section>
+  <h2>type-label-large-emphasized</h2>
+  <p><strong>0</strong> exact diff px (0.0000%), <strong>0</strong> AA-aware diff px (0.0000%), max channel delta <strong>0</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/3790e169c2d0982a076dd0823cac104ccb29e1c75b90957f03d585081c73fbd4.png" alt="Compose type-label-large-emphasized"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/3790e169c2d0982a076dd0823cac104ccb29e1c75b90957f03d585081c73fbd4.png" alt="React Native type-label-large-emphasized"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-type-label-large-emphasized.png" alt="Diff type-label-large-emphasized"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  <ul><li><code>text-0</code>: 0 exact diff px</li></ul>
+</section>
+<section>
+  <h2>type-label-large</h2>
+  <p><strong>0</strong> exact diff px (0.0000%), <strong>0</strong> AA-aware diff px (0.0000%), max channel delta <strong>0</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/9a98b4b54f3f7a9ca83ea53048e80747e764930d49eec238204d44419439d71c.png" alt="Compose type-label-large"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/9a98b4b54f3f7a9ca83ea53048e80747e764930d49eec238204d44419439d71c.png" alt="React Native type-label-large"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-type-label-large.png" alt="Diff type-label-large"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  <ul><li><code>text-0</code>: 0 exact diff px</li></ul>
+</section>
+<section>
+  <h2>type-label-medium-emphasized</h2>
+  <p><strong>0</strong> exact diff px (0.0000%), <strong>0</strong> AA-aware diff px (0.0000%), max channel delta <strong>0</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/b9fa3290529cdf0acfbc5241c42487a70c1fd037f605da52e887261519201091.png" alt="Compose type-label-medium-emphasized"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/b9fa3290529cdf0acfbc5241c42487a70c1fd037f605da52e887261519201091.png" alt="React Native type-label-medium-emphasized"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-type-label-medium-emphasized.png" alt="Diff type-label-medium-emphasized"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  <ul><li><code>text-0</code>: 0 exact diff px</li></ul>
+</section>
+<section>
+  <h2>type-label-medium</h2>
+  <p><strong>0</strong> exact diff px (0.0000%), <strong>0</strong> AA-aware diff px (0.0000%), max channel delta <strong>0</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/2490bc72fd77beecee43eb15faeb34cc95bf478f821f74d6984a8ca068e1ff83.png" alt="Compose type-label-medium"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/2490bc72fd77beecee43eb15faeb34cc95bf478f821f74d6984a8ca068e1ff83.png" alt="React Native type-label-medium"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-type-label-medium.png" alt="Diff type-label-medium"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  <ul><li><code>text-0</code>: 0 exact diff px</li></ul>
+</section>
+<section>
+  <h2>type-label-small-emphasized</h2>
+  <p><strong>0</strong> exact diff px (0.0000%), <strong>0</strong> AA-aware diff px (0.0000%), max channel delta <strong>0</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/83279f17ced4ff444257baa6c6b46346b7c69bccfa27dc71732ff4abd894f21e.png" alt="Compose type-label-small-emphasized"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/83279f17ced4ff444257baa6c6b46346b7c69bccfa27dc71732ff4abd894f21e.png" alt="React Native type-label-small-emphasized"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-type-label-small-emphasized.png" alt="Diff type-label-small-emphasized"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  <ul><li><code>text-0</code>: 0 exact diff px</li></ul>
+</section>
+<section>
+  <h2>type-label-small</h2>
+  <p><strong>0</strong> exact diff px (0.0000%), <strong>0</strong> AA-aware diff px (0.0000%), max channel delta <strong>0</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/a777c4601e058356795a4c81687c8384ad7b5009409f6982ed535f87f839b59e.png" alt="Compose type-label-small"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/a777c4601e058356795a4c81687c8384ad7b5009409f6982ed535f87f839b59e.png" alt="React Native type-label-small"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-type-label-small.png" alt="Diff type-label-small"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  <ul><li><code>text-0</code>: 0 exact diff px</li></ul>
+</section>
+<section>
+  <h2>type-title-large-emphasized</h2>
+  <p><strong>0</strong> exact diff px (0.0000%), <strong>0</strong> AA-aware diff px (0.0000%), max channel delta <strong>0</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/71f44e794138802dd1137a5777824177a2b2cd5e95e9b9fdc799267556f77392.png" alt="Compose type-title-large-emphasized"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/71f44e794138802dd1137a5777824177a2b2cd5e95e9b9fdc799267556f77392.png" alt="React Native type-title-large-emphasized"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-type-title-large-emphasized.png" alt="Diff type-title-large-emphasized"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  <ul><li><code>text-0</code>: 0 exact diff px</li></ul>
+</section>
+<section>
+  <h2>type-title-large</h2>
+  <p><strong>0</strong> exact diff px (0.0000%), <strong>0</strong> AA-aware diff px (0.0000%), max channel delta <strong>0</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/c1fb34a13b52163cce6d01c126f65374e7069d8786b92862d3271c9f8380aaac.png" alt="Compose type-title-large"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/c1fb34a13b52163cce6d01c126f65374e7069d8786b92862d3271c9f8380aaac.png" alt="React Native type-title-large"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-type-title-large.png" alt="Diff type-title-large"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  <ul><li><code>text-0</code>: 0 exact diff px</li></ul>
+</section>
+<section>
+  <h2>type-title-medium-emphasized</h2>
+  <p><strong>0</strong> exact diff px (0.0000%), <strong>0</strong> AA-aware diff px (0.0000%), max channel delta <strong>0</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/b9182fb48e1750dd0b67ef4e0b60b35577b79c401202869ea47950842dc3d62d.png" alt="Compose type-title-medium-emphasized"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/b9182fb48e1750dd0b67ef4e0b60b35577b79c401202869ea47950842dc3d62d.png" alt="React Native type-title-medium-emphasized"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-type-title-medium-emphasized.png" alt="Diff type-title-medium-emphasized"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  <ul><li><code>text-0</code>: 0 exact diff px</li></ul>
+</section>
+<section>
+  <h2>type-title-medium</h2>
+  <p><strong>0</strong> exact diff px (0.0000%), <strong>0</strong> AA-aware diff px (0.0000%), max channel delta <strong>0</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/6a271191243e6e9ad01e4f4fc97fd2db03389f3d979cbfdd0888c7e0c86cfede.png" alt="Compose type-title-medium"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/6a271191243e6e9ad01e4f4fc97fd2db03389f3d979cbfdd0888c7e0c86cfede.png" alt="React Native type-title-medium"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-type-title-medium.png" alt="Diff type-title-medium"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  <ul><li><code>text-0</code>: 0 exact diff px</li></ul>
+</section>
+<section>
+  <h2>type-title-small-emphasized</h2>
+  <p><strong>0</strong> exact diff px (0.0000%), <strong>0</strong> AA-aware diff px (0.0000%), max channel delta <strong>0</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/3790e169c2d0982a076dd0823cac104ccb29e1c75b90957f03d585081c73fbd4.png" alt="Compose type-title-small-emphasized"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/3790e169c2d0982a076dd0823cac104ccb29e1c75b90957f03d585081c73fbd4.png" alt="React Native type-title-small-emphasized"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-type-title-small-emphasized.png" alt="Diff type-title-small-emphasized"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  <ul><li><code>text-0</code>: 0 exact diff px</li></ul>
+</section>
+<section>
+  <h2>type-title-small</h2>
+  <p><strong>0</strong> exact diff px (0.0000%), <strong>0</strong> AA-aware diff px (0.0000%), max channel delta <strong>0</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/9a98b4b54f3f7a9ca83ea53048e80747e764930d49eec238204d44419439d71c.png" alt="Compose type-title-small"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/9a98b4b54f3f7a9ca83ea53048e80747e764930d49eec238204d44419439d71c.png" alt="React Native type-title-small"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-type-title-small.png" alt="Diff type-title-small"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  <ul><li><code>text-0</code>: 0 exact diff px</li></ul>
+</section>
+
+<h2>What this establishes</h2>
+<ul>
+  <li>The capture, crop, compare, and report pipeline is deterministic across repeated launches and cold boots.</li>
+  <li>Compose and React Native agree exactly on solid fills, rounded-rectangle geometry, and elevation shadows on this profile.</li>
+  <li>Text from the same Roboto Flex file differs only in rasterization: Measured text layout: Compose 402.0×73.0 px, React Native 402.0×73.0 px. The difference is confined to the glyph edges.</li>
+  <li>No threshold is proposed here. This run is a measurement, not a gate change.</li>
+</ul>
+
+<h2>What this does not establish</h2>
+<ul>
+  <li>It does not establish component parity; no library components exist yet.</li>
+  <li>It does not establish iOS behavior.</li>
+  <li>It does not establish that the 4 non-AA text pixels are acceptable. That is a product decision.</li>
+</ul>
+</main>
+</body>
+</html>

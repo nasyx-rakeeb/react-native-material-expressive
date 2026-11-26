@@ -1,0 +1,124 @@
+[07:56:41] plan: 3 cold boots, 20 trivial repeats, 2 repeats of solid/rect/text/shadow/trivial per app
+[07:56:41] fonts verified: 9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281
+[07:56:41] boot 1/3: starting
+cold boot: stopping any running emulator
+cold boot: starting M3E_API31 with -no-snapshot -gpu swiftshader_indirect
+Night mode: no
+Lock screen disabled set to true
+frozen: font_scale=1.0 animations=0 rotation=0 night=no immersive_confirmed
+cold boot complete: 31 / Physical density: 420
+[07:57:50] boot 1: profile verified (13 checks)
+[07:57:56] compose solid: 840x525 769c75f7390f M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true
+[07:58:15] compose solid: 2 runs, determinism max exact 0, max AA 0
+[07:58:19] rn solid: 840x525 769c75f7390f [M3E] font_probe narrow=376.00 wide=411.43 ok=true
+[07:58:21] rn solid: 2 runs, determinism max exact 0, max AA 0
+[07:58:21] solid: cross-stack exact 0 (0.0000%), AA-aware 0 (0.0000%), max delta 0
+[07:58:24] compose rect: 840x525 62e8d31bac18 M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true
+[07:58:26] compose rect: 2 runs, determinism max exact 0, max AA 0
+[07:58:28] rn rect: 840x525 62e8d31bac18 [M3E] font_probe narrow=376.00 wide=411.43 ok=true
+[07:58:30] rn rect: 2 runs, determinism max exact 0, max AA 0
+[07:58:30] rect: cross-stack exact 0 (0.0000%), AA-aware 0 (0.0000%), max delta 0
+[07:58:33] compose text: 840x525 102c974b9576 M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true
+[07:58:35] compose text: 2 runs, determinism max exact 0, max AA 0
+[07:58:39] rn text: 840x525 88fdb5439ab2 [M3E] font_probe narrow=376.00 wide=411.43 ok=true
+[07:58:40] rn text: 2 runs, determinism max exact 0, max AA 0
+[07:58:40] text: cross-stack exact 1745 (0.3957%), AA-aware 4 (0.0009%), max delta 162
+[07:58:44] compose shadow: 840x525 517d03a32a00 M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true
+[07:58:45] compose shadow: 2 runs, determinism max exact 0, max AA 0
+[07:58:48] rn shadow: 840x525 517d03a32a00 [M3E] font_probe narrow=376.00 wide=411.43 ok=true
+[07:58:50] rn shadow: 2 runs, determinism max exact 0, max AA 0
+[07:58:50] shadow: cross-stack exact 0 (0.0000%), AA-aware 0 (0.0000%), max delta 0
+[07:58:53] compose trivial: 840x525 e422235ed157 M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true
+[07:59:22] compose trivial: 20 runs, determinism max exact 0, max AA 0
+[07:59:26] rn trivial: 840x525 aa3f158f178d [M3E] font_probe narrow=376.00 wide=411.43 ok=true
+[07:59:56] rn trivial: 20 runs, determinism max exact 0, max AA 0
+[07:59:56] trivial: cross-stack exact 1745 (0.3957%), AA-aware 4 (0.0009%), max delta 162
+[07:59:56] boot 2/3: starting
+cold boot: stopping any running emulator
+cold boot: starting M3E_API31 with -no-snapshot -gpu swiftshader_indirect
+Night mode: no
+Lock screen disabled set to true
+frozen: font_scale=1.0 animations=0 rotation=0 night=no immersive_confirmed
+cold boot complete: 31 / Physical density: 420
+[08:01:05] boot 2: profile verified (13 checks)
+[08:01:11] compose solid: 840x525 769c75f7390f M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true
+[08:01:30] compose solid: 2 runs, determinism max exact 0, max AA 0
+[08:01:33] rn solid: 840x525 769c75f7390f [M3E] font_probe narrow=376.00 wide=411.43 ok=true
+[08:01:35] rn solid: 2 runs, determinism max exact 0, max AA 0
+[08:01:35] solid: cross-stack exact 0 (0.0000%), AA-aware 0 (0.0000%), max delta 0
+[08:01:38] compose rect: 840x525 62e8d31bac18 M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true
+[08:01:40] compose rect: 2 runs, determinism max exact 0, max AA 0
+[08:01:43] rn rect: 840x525 62e8d31bac18 [M3E] font_probe narrow=376.00 wide=411.43 ok=true
+[08:01:45] rn rect: 2 runs, determinism max exact 0, max AA 0
+[08:01:45] rect: cross-stack exact 0 (0.0000%), AA-aware 0 (0.0000%), max delta 0
+[08:01:48] compose text: 840x525 102c974b9576 M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true
+[08:01:49] compose text: 2 runs, determinism max exact 0, max AA 0
+[08:01:53] rn text: 840x525 88fdb5439ab2 [M3E] font_probe narrow=376.00 wide=411.43 ok=true
+[08:01:55] rn text: 2 runs, determinism max exact 0, max AA 0
+[08:01:55] text: cross-stack exact 1745 (0.3957%), AA-aware 4 (0.0009%), max delta 162
+[08:01:58] compose shadow: 840x525 517d03a32a00 M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true
+[08:01:59] compose shadow: 2 runs, determinism max exact 0, max AA 0
+[08:02:02] rn shadow: 840x525 517d03a32a00 [M3E] font_probe narrow=376.00 wide=411.43 ok=true
+[08:02:04] rn shadow: 2 runs, determinism max exact 0, max AA 0
+[08:02:04] shadow: cross-stack exact 0 (0.0000%), AA-aware 0 (0.0000%), max delta 0
+[08:02:07] compose trivial: 840x525 e422235ed157 M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true
+[08:02:40] compose trivial: 20 runs, determinism max exact 0, max AA 0
+[08:02:46] rn trivial: 840x525 aa3f158f178d [M3E] font_probe narrow=376.00 wide=411.43 ok=true
+[08:03:21] rn trivial: 20 runs, determinism max exact 0, max AA 0
+[08:03:21] trivial: cross-stack exact 1745 (0.3957%), AA-aware 4 (0.0009%), max delta 162
+[08:03:21] cross-boot compose solid boot 1 vs 2: exact 0, AA 0
+[08:03:21] cross-boot compose rect boot 1 vs 2: exact 0, AA 0
+[08:03:21] cross-boot compose text boot 1 vs 2: exact 0, AA 0
+[08:03:21] cross-boot compose shadow boot 1 vs 2: exact 0, AA 0
+[08:03:21] cross-boot compose trivial boot 1 vs 2: exact 0, AA 0
+[08:03:21] cross-boot rn solid boot 1 vs 2: exact 0, AA 0
+[08:03:21] cross-boot rn rect boot 1 vs 2: exact 0, AA 0
+[08:03:21] cross-boot rn text boot 1 vs 2: exact 0, AA 0
+[08:03:21] cross-boot rn shadow boot 1 vs 2: exact 0, AA 0
+[08:03:21] cross-boot rn trivial boot 1 vs 2: exact 0, AA 0
+[08:03:21] boot 3/3: starting
+cold boot: stopping any running emulator
+cold boot: starting M3E_API31 with -no-snapshot -gpu swiftshader_indirect
+Night mode: no
+Lock screen disabled set to true
+frozen: font_scale=1.0 animations=0 rotation=0 night=no immersive_confirmed
+cold boot complete: 31 / Physical density: 420
+[08:04:32] boot 3: profile verified (13 checks)
+[08:04:38] compose solid: 840x525 769c75f7390f M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true
+[08:04:55] compose solid: 2 runs, determinism max exact 0, max AA 0
+[08:04:59] rn solid: 840x525 769c75f7390f [M3E] font_probe narrow=376.00 wide=411.43 ok=true
+[08:05:00] rn solid: 2 runs, determinism max exact 0, max AA 0
+[08:05:00] solid: cross-stack exact 0 (0.0000%), AA-aware 0 (0.0000%), max delta 0
+[08:05:04] compose rect: 840x525 62e8d31bac18 M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true
+[08:05:05] compose rect: 2 runs, determinism max exact 0, max AA 0
+[08:05:08] rn rect: 840x525 62e8d31bac18 [M3E] font_probe narrow=376.00 wide=411.43 ok=true
+[08:05:10] rn rect: 2 runs, determinism max exact 0, max AA 0
+[08:05:10] rect: cross-stack exact 0 (0.0000%), AA-aware 0 (0.0000%), max delta 0
+[08:05:13] compose text: 840x525 102c974b9576 M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true
+[08:05:15] compose text: 2 runs, determinism max exact 0, max AA 0
+[08:05:18] rn text: 840x525 88fdb5439ab2 [M3E] font_probe narrow=376.00 wide=411.43 ok=true
+[08:05:19] rn text: 2 runs, determinism max exact 0, max AA 0
+[08:05:19] text: cross-stack exact 1745 (0.3957%), AA-aware 4 (0.0009%), max delta 162
+[08:05:21] compose shadow: 840x525 517d03a32a00 M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true
+[08:05:22] compose shadow: 2 runs, determinism max exact 0, max AA 0
+[08:05:24] rn shadow: 840x525 517d03a32a00 [M3E] font_probe narrow=376.00 wide=411.43 ok=true
+[08:05:25] rn shadow: 2 runs, determinism max exact 0, max AA 0
+[08:05:25] shadow: cross-stack exact 0 (0.0000%), AA-aware 0 (0.0000%), max delta 0
+[08:05:27] compose trivial: 840x525 e422235ed157 M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true
+[08:05:46] compose trivial: 20 runs, determinism max exact 0, max AA 0
+[08:05:48] rn trivial: 840x525 aa3f158f178d [M3E] font_probe narrow=376.00 wide=411.43 ok=true
+[08:06:09] rn trivial: 20 runs, determinism max exact 0, max AA 0
+[08:06:09] trivial: cross-stack exact 1745 (0.3957%), AA-aware 4 (0.0009%), max delta 162
+[08:06:09] cross-boot compose solid boot 1 vs 3: exact 0, AA 0
+[08:06:09] cross-boot compose rect boot 1 vs 3: exact 0, AA 0
+[08:06:09] cross-boot compose text boot 1 vs 3: exact 0, AA 0
+[08:06:09] cross-boot compose shadow boot 1 vs 3: exact 0, AA 0
+[08:06:09] cross-boot compose trivial boot 1 vs 3: exact 0, AA 0
+[08:06:09] cross-boot rn solid boot 1 vs 3: exact 0, AA 0
+[08:06:09] cross-boot rn rect boot 1 vs 3: exact 0, AA 0
+[08:06:09] cross-boot rn text boot 1 vs 3: exact 0, AA 0
+[08:06:09] cross-boot rn shadow boot 1 vs 3: exact 0, AA 0
+[08:06:09] cross-boot rn trivial boot 1 vs 3: exact 0, AA 0
+[08:06:09] report: docs/evidence/day5/gate/report.html
+[08:06:09] summary: exactZero=false deterministic=true aaGate=true
+[08:06:09] RESULT: cross-stack exact zero is NOT met — see report for measured pixels

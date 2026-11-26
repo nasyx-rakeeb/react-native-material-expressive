@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "id": "type-body-large",
+  "description": "bodyLarge: 400, 16/24 sp, tracking 0.5 sp. One-line Roboto Flex text scene.",
+  "widthDp": 320,
+  "heightDp": 200,
+  "background": "#FFFBFE",
+  "layers": [
+    {
+      "type": "text",
+      "x": 16,
+      "y": 24,
+      "text": "Material",
+      "sizeSp": 16,
+      "weight": 400,
+      "color": "#1D1B20",
+      "letterSpacingSp": 0.5,
+      "lineHeightSp": 24
+    }
+  ]
+}

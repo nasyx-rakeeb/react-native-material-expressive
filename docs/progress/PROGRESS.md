@@ -239,3 +239,52 @@ A day closes only when its exit criteria are met with evidence. Slippage is reco
 **Next step**
 
 - Day 5: typography. Build the 30 baseline/emphasized styles from tokens, Roboto Flex weight/width axes with capability detection, brand-font override, font scaling, and Compose text scenes for every style. Start with the `U-23` report summary and keep the existing pixel gate.
+
+---
+
+## Day 5 | 2026-11-26 | Typography: 30-role type scale, Roboto Flex axes, fallback, and text scenes
+
+**Status:** PASS on implementation and the standard five-scene gate. The 30 type scenes prove token/layout parity on a matched integer rendering grid: **30/30** inside the 0.05% AA-aware budget, **26/30** byte-identical. Faithful cross-stack rasterization remains the inherited `D-001` residual: **9/30** inside the budget, worst **2,745 px / 0.6224%**. The Day 5 “text scenes for all styles diff-pass” reading is flagged as **`U-25`** for Nasyx; no threshold, scene, or baseline was changed.
+
+**Done**
+
+- Added the full 30-role type scale from `docs/specs/typography.json` (extracted from Compose 1.5.0 `TypeScaleTokens` + `TypefaceTokens`): 15 baseline and 15 emphasized roles, with sizes, weights, tracking, line heights, and the extracted `LineHeightStyle(Center, None)` / `includeFontPadding = false` defaults.
+- Added `M3Typography`, `M3TextStyle`, `createM3Typography()`, `robotoFlexTypography()`, `defaultTypography`, `useM3TextStyle()`, and the public `ROBOTO_FLEX_NATURAL_LINE_HEIGHT_RATIO`. `defaultTypography` is the platform font with explicit 400/500/700 weights; Roboto Flex and the `wdth` axis are opt-in.
+- Added the Roboto Flex `wdth` axis (25..151), emitted only for variable-font output and only when non-normal; invalid values throw. Added `staticFamilies` for per-weight fallback families.
+- Added capability detection for variable-font settings: RN ≥ 0.88 and Android API ≥ 26 use `fontVariationSettings`; RN < 0.88, API < 26, unknown RN versions, and unsupported platforms use a static family + `fontWeight` and never emit the variable axis. The pure resolver is unit-tested for every branch.
+- Added the natural line-box floor: Compose expands a below-natural `lineHeight` while React Native squashes it. The library applies `max(tokenLineHeight, fontSize × 1.176)` by default, affecting only `displayLarge`/`displayMedium` and their emphasized variants; `naturalLineHeightRatio: 0` restores the nominal tokens, and a brand font can supply its own ratio. Measured before/after: displayLarge Compose/RN line box 176/168 → 176/176 px; displayMedium 139/137 → 139/139 px.
+- Wired typography into the theme: `M3Theme.typography`, `M3ThemeProvider.typography` overrides, `useM3Typography()`, and a merge over `defaultTypography` in `resolveM3Theme()`.
+- Generated 30 one-line scenes from the spec with `tools/scenes/generate-typography.mjs` (`type-<role>`), bringing the scene index to **37**. Each scene is 320×200 dp, uses `Material` at (16, 24), and carries the role's exact size, weight, tracking, and line height.
+- Extended both harnesses for `lineHeightSp`, optional `widthDp`, multiline text, and newline-safe layout logging. The Compose harness now applies the extracted `LineHeightStyle(Center, None)`; the RN harness applies the same natural-box floor as the library.
+- Added report labels (`M3E_LABEL`) and missing-scene guards to the pixel report so the same pipeline can produce Day 5 typography reports without a `trivial`/`shadow` scene. The report title is no longer hard-coded to Day 3.
+- Font scaling is delegated to RN 0.88.1, which scales `fontSize`, `lineHeight`, and `letterSpacing` together when `allowFontScaling` is true. The library does not pre-scale and ships no scaling helper; pixel scenes set `allowFontScaling={false}` to keep the profile at 1.0.
+
+**Evidence**
+
+- `docs/evidence/day5/typography/README.md` — type-scale table, scene design, faithful vs matched method, line-height finding, fallback matrix, reproduction commands, limitations.
+- `docs/evidence/day5/typography/runs/faithful/` — 1 boot, 2 repeats, 35 scenes, **140 renders**. **9/30** type scenes inside 0.05%; **17,798** AA-aware px across the 30; worst `displayLarge` **2,745 px / 0.6224%**. `solid`/`rect`/`shadow` 0/0; `text`/`trivial` 1,745 exact / 4 AA (0.0009%).
+- `docs/evidence/day5/typography/runs/matched-grid/` — 1 boot, 1 repeat, **70 renders**. Compose `TextMotion.Animated` + integer physical sizes + floored offsets; RN unchanged. **30/30** inside 0.05%, **26/30** byte-identical; four scenes (`displaySmall`, `displaySmallEmphasized`, `headlineSmall`, `headlineSmallEmphasized`) have a 1 px baseline offset, max **105 px / 0.0238%**.
+- `docs/evidence/day5/gate/` — standard five-scene gate, 3 cold boots × 20 trivial repeats + 2 scene repeats = **168 renders**. Same-harness determinism and cross-boot repeatability **0 px**; `solid`/`rect`/`shadow` **0 exact / 0 AA**; `text`/`trivial` **1,745 exact / 4 AA (0.0009%)**, text layout 402.0×73.0 px in both. `crossStackAaAwareBelowPlaybookGate: true`; `crossStackExactZero: false` is the recorded `D-001` residual.
+- `docs/specs/typography.json` — 30 roles with source lines and the extracted defaults; `pnpm scenes:check` reports 30 typography roles / 37 scenes.
+- Local gates on the final tree: `format:check` clean; `lint` 3/3 + `eslint tools` clean; `typecheck` 4/4; `test` 8 suites / **87 tests**; `build` 23 files ESM + CJS + types; typography builders 100% line coverage (folder 97.82% lines).
+- Commit: pending at entry time; CI run: pending. The hash and run ID are recorded in the docs follow-up.
+
+**Deviations**
+
+- **`D-001` extended to typography:** faithful cross-stack text is not byte-identical. The 21 type scenes above the 0.05% AA-aware budget are the same RN integer physical-pixel / subpixel-text quantization recorded on Day 3 and closed as a root cause on Day 4. No threshold or scene was changed; the standard five-scene gate remains green.
+- **`U-25` (open):** the Day 5 exit phrase “text scenes for all styles diff-pass” is met **30/30** on the matched rendering grid and **9/30** on the faithful rasterized diff. Nasyx must confirm which reading is the release gate. Recommendation: keep the existing five-scene gate, treat the 30 type scenes as diagnostic token/layout evidence, and publish both numbers.
+- **`U-19` resolved:** the static-weight fallback is implemented and unit-tested; RN’s API-26 variable-axis gate is source-verified. No API 24/25 system image is installed, so the fallback was not rendered on a device; that runtime confirmation is deferred to the Day 42 Android compatibility matrix and does not block Day 5.
+- **Contaminated run discarded:** the first full typography run used a release APK that still contained an env-gated line-height diagnostic because Gradle had reused the JS bundle. The bundle was rebuilt from scratch, the display scene was re-checked (RN line box 168 px, i.e. no diagnostic), and both evidence runs were repeated. No numbers from the contaminated run are used.
+- Evidence lives under `docs/evidence/day5/` rather than `docs/diff-reports/<date>/`, consistent with Day 3/4.
+
+**Risks**
+
+- `U-25` is a reporting/exit-label decision, not an implementation defect. Do not describe the 30 faithful type scenes as byte-identical or as 30/30 inside the 0.05% gate.
+- The 1.176 natural-line-height ratio was measured on Roboto Flex at 2.625×. A brand font with a different natural line box should pass its own `naturalLineHeightRatio`; `0` restores the raw tokens. A different density may shift a display line box by 1 px.
+- The four matched-grid scenes retain a 1 px baseline offset at half-pixel font sizes; this is a rasterization-grid residual, not a token error.
+- Pixel evidence is Android API 31 only; iOS uses the same sp values and RN scaling path but is not pixel-gated on Day 5.
+- Web accepts the variable-font path as best-effort; no web pixel evidence is claimed.
+
+**Next step**
+
+- Nasyx confirms `U-25`. Day 6: shapes core (pure TS) — port `androidx.graphics.shapes` (`RoundedPolygon`, `CornerRounding`, `Cubic`, `Feature`, `Morph` + `DoubleMapper`), all 35 `MaterialShapes`, and Compose JVM golden dumps for 35 shapes + ≥50 morph pairs × 5 progress values within 1e-4.

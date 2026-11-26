@@ -1,6 +1,8 @@
 import { expressiveLightColorScheme, standardDarkColorScheme } from '../color/defaultSchemes';
 import { createColorScheme, expressiveDarkColorScheme } from '../color/generate';
 import type { M3ColorScheme } from '../color/types';
+import { defaultTypography } from '../typography/createTypography';
+import type { M3Typography } from '../typography/types';
 import type { M3ColorSchemeSource, M3Theme, M3ThemeOptions } from './types';
 
 interface DynamicSchemes {
@@ -62,8 +64,13 @@ export function resolveM3Theme(
     source = 'default';
   }
 
+  const typography: M3Typography = options.typography
+    ? Object.freeze({ ...defaultTypography, ...options.typography })
+    : defaultTypography;
+
   return {
     colorScheme,
+    typography,
     isDark,
     resolvedMode,
     source,
