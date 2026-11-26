@@ -148,7 +148,12 @@ class ShapeGoldenTest {
         }
         out.append("  },\n")
         out.append("  \"morphs\": [\n")
-        val progressValues = listOf(0f, 0.25f, 0.5f, 0.75f, 1f)
+        // Nine in-range samples including intermediate values, plus two close
+        // out-of-range samples for the spring-overshoot case documented by
+        // Morph.asCubics. -0.1 / 1.1 bracket the first overshoot of the
+        // damping-ratio-0.6 spring used by LoadingIndicator.
+        val progressValues =
+            listOf(-0.1f, 0f, 0.1f, 0.25f, 0.33f, 0.5f, 0.6f, 0.75f, 0.9f, 1f, 1.1f)
         for ((index, pair) in pairs.withIndex()) {
             val morph = Morph(shape(pair.first), shape(pair.second))
             out.append("    {\n")

@@ -6,6 +6,7 @@
  */
 
 import type { Cubic } from './Cubic';
+import { f32, interpolate } from './math';
 import type { Morph } from './Morph';
 import type { RoundedPolygon } from './RoundedPolygon';
 
@@ -52,7 +53,15 @@ export function morphToGeometries(morph: Morph): {
   return { start, end };
 }
 
-/** Linearly interpolates two endpoint geometries at `progress` in `[0, 1]`. */
+/**
+ * Linearly interpolates two endpoint geometries at `progress`.
+ *
+ * Matches `Morph.asCubics`: the value is not clamped, so progress outside
+ * `[0, 1]` extrapolates. Compose documents close out-of-range values as the
+ * overshoot/bounce case, and `LoadingIndicator` feeds a damping-ratio-0.6
+ * spring straight into `Morph`; farther values are allowed but can produce
+ * exaggerated or self-intersecting shapes.
+ */
 export function interpolateGeometry(
   start: PathGeometry,
   end: PathGeometry,
@@ -62,11 +71,10 @@ export function interpolateGeometry(
   if (start.length !== end.length) {
     throw new Error('Path geometries must have the same length');
   }
-  const t = progress < 0 ? 0 : progress > 1 ? 1 : progress;
+  const p = f32(progress);
   const result = new Array<number>(start.length);
   for (let index = 0; index < start.length; index++) {
-    const from = start[index]!;
-    result[index] = from + (end[index]! - from) * t;
+    result[index] = interpolate(start[index]!, end[index]!, p);
   }
   return result;
 }

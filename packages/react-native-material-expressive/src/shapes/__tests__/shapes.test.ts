@@ -108,11 +108,11 @@ describe('MaterialShapes golden geometry', () => {
     }
   });
 
-  it('matches 50 Compose morphs at five progress values within 1e-4', () => {
+  it('matches 50 Compose morphs at eleven progress values within 1e-4', () => {
     expect(golden.morphs).toHaveLength(50);
     for (const expectedMorph of golden.morphs) {
       const morph = new Morph(MaterialShapes[expectedMorph.from], MaterialShapes[expectedMorph.to]);
-      expect(expectedMorph.samples).toHaveLength(5);
+      expect(expectedMorph.samples).toHaveLength(11);
       for (const sample of expectedMorph.samples) {
         expectCubics(
           morph.asCubics(sample.progress).map((cubic) => [...cubic.points]),
@@ -148,7 +148,8 @@ describe('path geometry', () => {
     const morph = new Morph(MaterialShapes.Arch, MaterialShapes.Clover4Leaf);
     const endpoints = morphToGeometries(morph);
     expect(endpoints.start).toHaveLength(endpoints.end.length);
-    for (const progress of [0, 0.25, 0.5, 0.75, 1]) {
+    const progressValues = [-0.5, -0.1, 0, 0.1, 0.25, 0.33, 0.5, 0.6, 0.75, 0.9, 1, 1.1, 1.5];
+    for (const progress of progressValues) {
       const actual = interpolateGeometry(endpoints.start, endpoints.end, progress);
       const expected = morph.asCubics(progress).flatMap((cubic) => [...cubic.points]);
       expect(actual).toHaveLength(expected.length);
@@ -156,6 +157,21 @@ describe('path geometry', () => {
         expectClose(actual[index]!, expected[index]!, `interpolate@${progress}[${index}]`);
       }
     }
+  });
+
+  it('extrapolates outside [0, 1] instead of clamping', () => {
+    const start = [0, 0, 0, 0, 0, 0, 1, 1];
+    const end = [1, 1, 1, 1, 1, 1, 2, 2];
+    expect(interpolateGeometry(start, end, 1.5)).toEqual([1.5, 1.5, 1.5, 1.5, 1.5, 1.5, 2.5, 2.5]);
+    expect(interpolateGeometry(start, end, -0.5)).toEqual([
+      -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5,
+    ]);
+  });
+
+  it('rejects geometries with different cubic counts', () => {
+    expect(() => interpolateGeometry([0, 0, 0, 0, 0, 0, 1, 1], [], 0.5)).toThrow(
+      'Path geometries must have the same length',
+    );
   });
 
   it('serialises scaled geometry as an absolute, closed SVG path', () => {

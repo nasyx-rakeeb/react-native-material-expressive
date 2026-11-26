@@ -210,12 +210,11 @@ Paper `6.0.0-alpha.4` (2026-11-23); 34 public component exports; signature-set s
 - **Resolution:** Day 7: run the shape spike and `PathCanvas` in the release gallery on Hermes, verify the worklet path, and record frame/behavior evidence. Add worklet directives only where the UI-thread path requires them.
 - **Blocks:** `PathCanvas` DONE and the Day 7 renderer decision.
 
-### U-28 — Morph goldens sample five progress values only
+### U-28 — Morph goldens sample five progress values only — **RESOLVED**
 
-- **Evidence:** The Day 6 golden covers progress `0, 0.25, 0.5, 0.75, 1`. Intermediate curves rely on the shared cubic interpolation; there is no golden for `0.1`, `0.33`, `0.6`, or `0.9`, and no out-of-range sample.
-- **Impact:** A bug that only appears between the sampled values would pass. Out-of-range behavior (spring overshoot, negative progress) is not covered at all.
-- **Resolution:** Day 6 follow-up: add intermediate samples and out-of-range samples to the JVM golden, test the TS port against them, and document whether `Morph` clamps or extrapolates. This item closes when the new samples pass.
-- **Blocks:** Any morphing component that can overshoot (Day 7 `MorphingShape` and later spring-driven components).
+- **Evidence:** The Day 6 golden covered progress `0, 0.25, 0.5, 0.75, 1`. Intermediate curves relied on the shared cubic interpolation; there was no golden for `0.1`, `0.33`, `0.6`, `0.9`, and no out-of-range sample.
+- **Resolution (2026-11-26):** The JVM golden now samples `-0.1, 0, 0.1, 0.25, 0.33, 0.5, 0.6, 0.75, 0.9, 1, 1.1` on all 50 morphs: **550 samples / 25,806 cubic comparisons**, max **1.3594e-6** (`Gem -> Ghostish` @ `-0.1`), **0 failures over 1e-4**. `Morph.asCubics` and `interpolateGeometry` extrapolate; they do not clamp. `LoadingIndicator` uses a damping-ratio-0.6 spring on an `Animatable(0f) -> 1f` and passes the overshooting value into `Morph`, so this is the behavior the primitive must preserve. The TS suite also checks `-0.5` and `1.5` against `Morph.asCubics`. Evidence: `docs/evidence/day6/shapes/README.md` §“Morph progress outside [0, 1]”, `ShapeGoldenTest.kt`, `shapes.test.ts`.
+- **Blocks:** Nothing. `MorphingShape` can pass spring progress straight through.
 
 ### U-29 — Day 7 frame times are emulator-only until a physical device is measured
 
