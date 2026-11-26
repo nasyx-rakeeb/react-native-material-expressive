@@ -35,7 +35,7 @@ interface ShapeGolden {
 }
 
 const golden = JSON.parse(
-  readFileSync(path.resolve(__dirname, '../../../../../docs/specs/shapes-goldens.json'), 'utf8'),
+  readFileSync(path.resolve(__dirname, '../../../../../docs/specs/shapes/goldens.json'), 'utf8'),
 ) as ShapeGolden;
 
 function expectClose(actual: number, expected: number, label: string): void {

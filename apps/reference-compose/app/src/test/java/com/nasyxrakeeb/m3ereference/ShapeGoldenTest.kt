@@ -12,7 +12,7 @@ import java.io.File
  * Dumps the Compose/AndroidX shape and morph geometry used by the Day 6 golden test.
  *
  * This is a JVM unit test so the golden can be regenerated without an emulator. The output is
- * copied to docs/specs/shapes-goldens.json by tools/shapes/generate-goldens.sh.
+ * copied to docs/specs/shapes/goldens.json by tools/shapes/generate-goldens.sh.
  */
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
 class ShapeGoldenTest {

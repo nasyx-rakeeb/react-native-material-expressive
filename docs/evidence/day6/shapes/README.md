@@ -75,7 +75,7 @@ tools/shapes/generate-goldens.sh
 ```
 
 The script reruns the JVM test and copies `app/build/shapes-goldens.json` to
-`docs/specs/shapes-goldens.json`.
+`docs/specs/shapes/goldens.json`.
 
 ## Verification
 

@@ -301,13 +301,13 @@ A day closes only when its exit criteria are met with evidence. Slippage is reco
 - Added all **35** `MaterialShapes` with the Compose 1.5.0 definitions, lazy per-shape cache, `MATERIAL_SHAPE_NAMES`, `getMaterialShape()`, and public getters. Every getter returns `.normalized()`, matching Compose.
 - Emulated Kotlin `Float` with `Math.fround` across construction, measuring, mapping, and morphing. The last two fidelity issues were (a) JS double literals used where Kotlin uses `Float` literals, which moved Clover's raw points by one ULP and flipped the `Arch -> Clover4Leaf` mapping, and (b) Compose `Matrix.rotateZ` computing radians in Float64. Rounding points/rounding values at the boundary and mirroring the matrix rotation removed both.
 - Added `ShapeGoldenTest.kt` (JVM) and pinned `androidx.graphics:graphics-shapes:1.1.0` in the reference app. Material3 1.5.0 otherwise resolves graphics-shapes 1.0.1 and produces a stale golden.
-- Generated `docs/specs/shapes-goldens.json`: 35 shapes with centers, **1,168** raw feature metadata entries (584 corners), **2,104** raw feature cubics, **943** flattened cubics; 50 morph pairs × 5 progress values (**250** samples, **11,730** cubic comparisons). Added `tools/shapes/generate-goldens.sh`.
+- Generated `docs/specs/shapes/goldens.json`: 35 shapes with centers, **1,168** raw feature metadata entries (584 corners), **2,104** raw feature cubics, **943** flattened cubics; 50 morph pairs × 5 progress values (**250** samples, **11,730** cubic comparisons). Added `tools/shapes/generate-goldens.sh`.
 - Added `shapes.test.ts` assertions for name order, shape centers/cubics, feature count/type/convexity/raw cubic count, all 50 morphs × 5 progress values, and unit-square bounds. Tolerance is `1e-4` for every geometry check.
 
 **Evidence**
 
 - `docs/evidence/day6/shapes/README.md` — scope, port surface, Float32 findings, golden provenance, measured maxima, commands, licensing, limitations.
-- `docs/specs/shapes-goldens.json` — 35-shape + 50-morph golden, source `androidx.graphics:graphics-shapes:1.1.0 + androidx.compose.material3:material3:1.5.0`.
+- `docs/specs/shapes/goldens.json` — 35-shape + 50-morph golden, source `androidx.graphics:graphics-shapes:1.1.0 + androidx.compose.material3:material3:1.5.0`.
 - `apps/reference-compose/app/src/test/java/com/nasyxrakeeb/m3ereference/ShapeGoldenTest.kt` — JVM golden generator; `tools/shapes/generate-goldens.sh` reproduces and copies it.
 - Focused suite: `pnpm exec jest src/shapes/__tests__/shapes.test.ts --runInBand` — **5/5 tests**.
 - Local gates: `format:check` clean; `lint` 3/3 + `eslint tools`; `typecheck` 4/4; `test` **9 suites / 92 tests**; `build` ESM + CJS + declarations; `scenes:check` 30 typography roles / 37 scenes.
