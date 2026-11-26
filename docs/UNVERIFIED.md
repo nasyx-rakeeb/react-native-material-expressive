@@ -195,3 +195,45 @@ Paper `6.0.0-alpha.4` (2026-11-23); 34 public component exports; signature-set s
   - U-25.3: **ADR-010** proposes an ink-normalized text metric (faithful ≤450 AA px / 1,000 ink px and ≤250 px/glyph; matched ≤15 / 1,000 and ≤15/glyph) plus a ±1 px baseline rule, with all 30 roles and dialog/list projections. **Not applied.**
   - U-25.4: PLAYBOOK §9.1 adds the “never claim pixel-perfect text” wording rule.
 - **Blocks:** **ADR-010 approval before Day 11** (first component with text is diffed). Day 5’s PASS label is resolved: PASS with the text category tracked separately. No implementation, gate, or threshold change is pending.
+
+### U-26 — Static shape rasterization and the Compose shape diff are not yet verified
+
+- **Evidence:** Day 6 verifies cubic geometry, feature mapping, and morph interpolation in a JVM golden. It makes no rendering claim. The shape gallery and the static-shape Compose diff are Day 7 exit items.
+- **Impact:** A renderer can draw the correct cubics with a different fill rule, antialiasing, or clipping and still pass the Day 6 tests. No screenshot evidence exists yet.
+- **Resolution:** Day 7: render all 35 shapes in the gallery and in a Compose reference scene, run the AA-aware pixel diff, and record the result in `docs/evidence/day7/shapes/README.md`. Do not claim shape rasterization parity before that report exists.
+- **Blocks:** Day 7 exit; the shapes `diff` and `gallery` matrix cells.
+
+### U-27 — The shape engine has not run on Hermes or the UI thread
+
+- **Evidence:** The Day 6 engine is pure TypeScript with no platform imports and no `'worklet'` directives. It is exercised only by Jest on Node. Day 7 adds `PathCanvas`, which decides where the interpolation runs.
+- **Impact:** Hermes numeric behavior, worklet serialization of `PathGeometry`, and UI-thread allocation costs are unmeasured. A Node-only pass does not prove the engine can run per frame on the UI thread.
+- **Resolution:** Day 7: run the shape spike and `PathCanvas` in the release gallery on Hermes, verify the worklet path, and record frame/behavior evidence. Add worklet directives only where the UI-thread path requires them.
+- **Blocks:** `PathCanvas` DONE and the Day 7 renderer decision.
+
+### U-28 — Morph goldens sample five progress values only
+
+- **Evidence:** The Day 6 golden covers progress `0, 0.25, 0.5, 0.75, 1`. Intermediate curves rely on the shared cubic interpolation; there is no golden for `0.1`, `0.33`, `0.6`, or `0.9`, and no out-of-range sample.
+- **Impact:** A bug that only appears between the sampled values would pass. Out-of-range behavior (spring overshoot, negative progress) is not covered at all.
+- **Resolution:** Day 6 follow-up: add intermediate samples and out-of-range samples to the JVM golden, test the TS port against them, and document whether `Morph` clamps or extrapolates. This item closes when the new samples pass.
+- **Blocks:** Any morphing component that can overshoot (Day 7 `MorphingShape` and later spring-driven components).
+
+### U-29 — Day 7 frame times are emulator-only until a physical device is measured
+
+- **Evidence:** The only Android target is `emulator-5554`, API 31, 1080×1920, 420 dpi, SwiftShader software rendering. Day 7’s 35-shape cycle, 10 concurrent morphs, and clipping benchmarks run there.
+- **Impact:** SwiftShader frame times are not representative of a mid-range phone GPU. They can compare SVG vs Skia relative behavior, but they cannot justify a production performance claim or a hard frame-time budget.
+- **Resolution:** Build the release spike APK and collect `dumpsys gfxinfo` on Nasyx's physical Android phone (or a connected adb device) before the frame-time part of ADR-002 is final. Label every emulator number **emulator-only / SwiftShader**. Binary-size, install friction, and clipping correctness can be decided from the current build.
+- **Blocks:** The frame-time portion of ADR-002; not the renderer’s functional decision.
+
+### U-30 — `react-native-skia` and `react-native-svg` are not runtime-verified with RN 0.88.1
+
+- **Evidence:** `react-native-svg@15.16.0` is the Expo SDK 58 pin; `react-native-skia@3.13.1` is the current package. Both are installed in the gallery for the Day 7 spike, but neither has a committed release-build run yet.
+- **Impact:** A native build failure, New Architecture incompatibility, or missing worklet support would invalidate the spike. Package metadata alone is not evidence.
+- **Resolution:** Day 7: build and run the release gallery with each renderer, record the build result, APK size, and on-device behavior, then pin the chosen peer versions in ADR-003.
+- **Blocks:** ADR-002 and ADR-003 finalization.
+
+### U-31 — The approved “text” scene category is not yet represented in the schema or report
+
+- **Evidence:** Nasyx approved keeping the 30 type scenes as tracked scenes in a separate **“text”** category. The scenes exist as `type-*` files, but the scene schema, index, and report have no category field or grouping; the five-scene gate is unchanged.
+- **Impact:** Reports cannot separate the text category from the five-scene gate, so the approved structure is not auditable.
+- **Resolution:** Add a `category` field to the scene schema/index (`core` for the five gate scenes, `text` for the 30 type scenes), surface it in the report, and keep the five-scene gate selection unchanged. Close this item with the commit and a regenerated report.
+- **Blocks:** Nothing at runtime; it blocks the U-25 reporting claim until implemented.
