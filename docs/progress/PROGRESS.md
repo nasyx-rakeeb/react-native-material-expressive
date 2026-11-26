@@ -360,7 +360,7 @@ A day closes only when its exit criteria are met with evidence. Slippage is reco
 
 - Nasyx approval of ADR-010 before Day 11. The faithful/matched budgets and the ±1 px baseline rule are proposals; the current five-scene gate and 0.05% threshold remain in force.
 - The C4 tier is unused unless a compensation layer is separately approved; it is not recommended for 1.0.0.
-- Commit: pending at the time of this entry; CI recorded in the follow-up.
+- Commit: `74d4f41` (harness switch) and `4228de8` (evidence + ADR-010). CI run `45832320328` **success**.
 
 **Next step**
 
