@@ -25,6 +25,13 @@ export {
 } from './MaterialShapes';
 export type { CubicPair } from './Morph';
 export { Morph } from './Morph';
+export type { PathGeometry } from './pathGeometry';
+export {
+  geometryToSvgPath,
+  interpolateGeometry,
+  morphToGeometries,
+  polygonToGeometry,
+} from './pathGeometry';
 export type { RoundedPolygonVerticesOptions } from './RoundedPolygon';
 export { RoundedPolygon } from './RoundedPolygon';
 export type { Point, PointTransformer } from './math';

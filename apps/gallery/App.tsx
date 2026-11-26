@@ -9,6 +9,7 @@ import {
 } from 'react-native-material-expressive';
 
 import SceneHarness, { useHarnessScene } from './src/harness/SceneHarness';
+import ShapeSpike from './src/spike/ShapeSpike';
 
 /**
  * Verification probe only. Set at bundle time:
@@ -32,6 +33,10 @@ export default function App() {
 
   if (route === undefined) {
     return <View style={styles.boot} />;
+  }
+
+  if (route.spike !== null) {
+    return <ShapeSpike mode={route.spike} renderer={route.renderer} />;
   }
 
   if (route.sceneId !== null) {
