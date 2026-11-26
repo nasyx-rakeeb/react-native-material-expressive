@@ -23,6 +23,10 @@ function firstRun(boot, app, scene) {
   return boot.captures?.[app]?.[scene]?.[0] ?? null;
 }
 
+function categoryOf(scene) {
+  return readScene(scene).category;
+}
+
 function aggregate(results) {
   const scenes = results.config.scenes;
   const summary = {};
@@ -188,7 +192,24 @@ export function renderReport(results, outDir) {
     results.boots.every((boot) =>
       Object.values(boot.crossStack ?? {}).every((metrics) => metrics.exactDiffPixels === 0),
     );
-  const aaGate = results.config.scenes.every((scene) => summary[scene].aaPercent <= 0.05);
+  const categories = [...new Set(results.config.scenes.map(categoryOf))].sort();
+  const coreScenes = results.config.scenes.filter((scene) => categoryOf(scene) === 'core');
+  const textScenes = results.config.scenes.filter((scene) => categoryOf(scene) === 'text');
+  const categoryRows = categories.map((category) => {
+    const scenes = results.config.scenes.filter((scene) => categoryOf(scene) === category);
+    const rows = scenes.map((scene) => summary[scene]);
+    return {
+      category,
+      scenes: scenes.length,
+      exact: rows.reduce((sum, row) => sum + row.exact, 0),
+      aa: rows.reduce((sum, row) => sum + row.aa, 0),
+      maxAaPercent: Math.max(...rows.map((row) => row.aaPercent)),
+      maxDelta: Math.max(...rows.map((row) => row.maxDelta)),
+      gate: category === 'core' ? Math.max(...rows.map((row) => row.aaPercent)) <= 0.05 : null,
+    };
+  });
+  const aaGate =
+    coreScenes.length === 0 ? null : coreScenes.every((scene) => summary[scene].aaPercent <= 0.05);
   const layoutText =
     layoutCompose && layoutRn
       ? `Measured text layout: Compose ${layoutCompose.width.toFixed(1)}×${layoutCompose.height.toFixed(1)} px, React Native ${layoutRn.width.toFixed(1)}×${layoutRn.height.toFixed(1)} px.`
@@ -210,7 +231,11 @@ export function renderReport(results, outDir) {
     determinismOk: deterministic,
     crossStackExactZero: exactZero,
     crossStackAaAwareBelowPlaybookGate: aaGate,
-    note: 'No new pixel threshold is proposed. The 0.05% figure is the existing PLAYBOOK §7 gate.',
+    aaGateScope: 'core',
+    coreScenes,
+    textScenes,
+    categories: categoryRows,
+    note: 'No new pixel threshold is proposed. The 0.05% figure is the existing PLAYBOOK §7 gate and applies to the five core scenes only. Text-category scenes are tracked separately under U-25.',
   };
   writeJson(path.join(outDir, 'results.json'), results);
 
@@ -224,8 +249,15 @@ export function renderReport(results, outDir) {
   const summaryRows = results.config.scenes
     .map((scene) => {
       const row = summary[scene];
-      return `<tr><td>${scene}</td><td>${px(row.exact)}</td><td>${percent(row.exactPercent)}</td><td>${px(row.aa)}</td><td>${percent(row.aaPercent)}</td><td>${row.maxDelta}</td><td>${row.samples}</td></tr>`;
+      return `<tr><td>${scene}</td><td>${categoryOf(scene)}</td><td>${px(row.exact)}</td><td>${percent(row.exactPercent)}</td><td>${px(row.aa)}</td><td>${percent(row.aaPercent)}</td><td>${row.maxDelta}</td><td>${row.samples}</td></tr>`;
     })
+    .join('');
+
+  const categoryTableRows = categoryRows
+    .map(
+      (row) =>
+        `<tr><td><code>${row.category}</code></td><td>${row.scenes}</td><td>${px(row.exact)}</td><td>${px(row.aa)}</td><td>${percent(row.maxAaPercent)}</td><td class="${row.gate === null ? '' : row.gate ? 'ok' : 'bad'}">${row.gate === null ? 'tracked — no threshold' : row.gate ? '0.05% met' : '0.05% exceeded'}</td></tr>`,
+    )
     .join('');
 
   const detRows = det
@@ -325,12 +357,19 @@ export function renderReport(results, outDir) {
     <li><strong>Text anti-aliasing:</strong> ${trivial ? `<strong>${px(trivial.exact)} px</strong> exact (${percent(trivial.exactPercent)}), <strong>${px(trivial.aa)} px</strong> AA-aware (${percent(trivial.aaPercent)}), max channel Δ <strong>${trivial.maxDelta}</strong>, confined to the text bbox.` : 'trivial scene not included in this run.'}</li>
     <li><strong>Shadows:</strong> ${shadow ? `cross-stack exact <strong>${px(shadow.exact)} px</strong>; Compose and React Native both render ${shadowCompose ? px(shadowCompose.outsidePixels) : '?'} non-background shadow pixels outside the rectangle.` : 'shadow scene not included in this run.'}</li>
   </ul>
-  <p>Existing PLAYBOOK §7 AA-aware 0.05% gate on this data: ${aaGate ? 'below the gate' : 'above the gate'}. ${layoutText}</p>
+  <p>Existing PLAYBOOK §7 AA-aware 0.05% gate on the <strong>core</strong> scenes: ${aaGate === null ? 'not evaluated (no core scenes in this run)' : aaGate ? 'below the gate' : 'above the gate'}. ${layoutText}</p>
 </div>
+
+<h2>Scene categories</h2>
+<table>
+  <thead><tr><th>Category</th><th>Scenes</th><th>Σ exact px (scene max)</th><th>Σ AA-aware px (scene max)</th><th>Max AA-aware %</th><th>Gate</th></tr></thead>
+  <tbody>${categoryTableRows}</tbody>
+</table>
+<p class="note">Only the <code>core</code> category is the five-scene PLAYBOOK §7 gate. The <code>text</code> category contains the 30 typography roles (and, when included, the dense label/paragraph probes), tracked separately under U-25. Its numbers are a regression ceiling, not a pass/fail claim; ADR-010 is pending.</p>
 
 <h2>Noise split</h2>
 <table>
-  <thead><tr><th>Scene</th><th>Exact diff px</th><th>Exact %</th><th>AA-aware px</th><th>AA-aware %</th><th>Max channel Δ</th><th>Boots</th></tr></thead>
+  <thead><tr><th>Scene</th><th>Category</th><th>Exact diff px</th><th>Exact %</th><th>AA-aware px</th><th>AA-aware %</th><th>Max channel Δ</th><th>Boots</th></tr></thead>
   <tbody>${summaryRows}</tbody>
 </table>
 <p class="note">Solid background and the rounded rectangle are byte-identical. The elevated rectangle is byte-identical. All cross-stack difference is confined to the text region, where the two frameworks rasterize the same Roboto Flex file with subpixel placement differences. The AA-aware count is the number of pixels pixelmatch classifies as non-anti-aliased differences at threshold 0.1.</p>
@@ -433,11 +472,19 @@ ${layout.map((row) => `| ${row.scene} | ${formatBbox(row.compose)} | ${formatBbo
 
 Strict bounding box of pixels that are not exactly the scene background, including anti-aliased glyph edges and the shadow. No tolerance is applied.
 
+## Scene categories
+
+| Category | Scenes | Σ exact px (scene max) | Σ AA-aware px (scene max) | Max AA-aware % | Gate |
+|---|---:|---:|---:|---:|---|
+${categoryRows.map((row) => `| \`${row.category}\` | ${row.scenes} | ${px(row.exact)} | ${px(row.aa)} | ${percent(row.maxAaPercent)} | ${row.gate === null ? 'tracked — no threshold' : row.gate ? '0.05% met' : '0.05% exceeded'} |`).join('\n')}
+
+Only the \`core\` category is the five-scene PLAYBOOK §7 gate. The \`text\` category contains the 30 typography roles (and, when included, the dense label/paragraph probes), tracked separately under U-25; its numbers are a regression ceiling, not a pass/fail claim. ADR-010 is pending.
+
 ## Noise split by scene
 
-| Scene | Exact px | Exact % | AA-aware px | AA-aware % | Max Δ | Boots |
-|---|---:|---:|---:|---:|---:|---:|
-${results.config.scenes.map((scene) => `| ${scene} | ${px(summary[scene].exact)} | ${percent(summary[scene].exactPercent)} | ${px(summary[scene].aa)} | ${percent(summary[scene].aaPercent)} | ${summary[scene].maxDelta} | ${summary[scene].samples} |`).join('\n')}
+| Scene | Category | Exact px | Exact % | AA-aware px | AA-aware % | Max Δ | Boots |
+|---|---|---:|---:|---:|---:|---:|---:|
+${results.config.scenes.map((scene) => `| ${scene} | ${categoryOf(scene)} | ${px(summary[scene].exact)} | ${percent(summary[scene].exactPercent)} | ${px(summary[scene].aa)} | ${percent(summary[scene].aaPercent)} | ${summary[scene].maxDelta} | ${summary[scene].samples} |`).join('\n')}
 
 ## Non-AA text pixels (boot 1, trivial)
 

@@ -1,6 +1,7 @@
 {
   "schema": 1,
   "id": "type-display-medium",
+  "category": "text",
   "description": "displayMedium: 400, 45/52 sp, tracking 0 sp. One-line Roboto Flex text scene.",
   "widthDp": 320,
   "heightDp": 200,

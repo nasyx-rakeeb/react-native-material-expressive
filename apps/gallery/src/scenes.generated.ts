@@ -5,6 +5,7 @@ export const scenes = {
   "labels": {
   "schema": 1,
   "id": "labels",
+  "category": "text",
   "description": "A dense stack of short list labels. Used to measure text rasterization as a function of glyph count.",
   "widthDp": 320,
   "heightDp": 200,
@@ -115,6 +116,7 @@ export const scenes = {
   "paragraph": {
   "schema": 1,
   "id": "paragraph",
+  "category": "text",
   "description": "A multi-line paragraph at several sizes and weights. Used to measure text rasterization as a function of glyph count.",
   "widthDp": 320,
   "heightDp": 200,
@@ -205,6 +207,7 @@ export const scenes = {
   "rect": {
   "schema": 1,
   "id": "rect",
+  "category": "core",
   "description": "One rounded rectangle on the scene background. Geometry and edge antialiasing only.",
   "widthDp": 320,
   "heightDp": 200,
@@ -225,6 +228,7 @@ export const scenes = {
   "shadow": {
   "schema": 1,
   "id": "shadow",
+  "category": "core",
   "description": "One elevated rounded rectangle. Shadow spread, color, and edge stability only.",
   "widthDp": 320,
   "heightDp": 200,
@@ -245,6 +249,7 @@ export const scenes = {
   "solid": {
   "schema": 1,
   "id": "solid",
+  "category": "core",
   "description": "Scene background only. Pure determinism control: no geometry, text, or shadow inside the crop.",
   "widthDp": 320,
   "heightDp": 200,
@@ -254,6 +259,7 @@ export const scenes = {
   "text": {
   "schema": 1,
   "id": "text",
+  "category": "core",
   "description": "One line of Roboto Flex text on the scene background. Text antialiasing and metrics only.",
   "widthDp": 320,
   "heightDp": 200,
@@ -274,6 +280,7 @@ export const scenes = {
   "trivial": {
   "schema": 1,
   "id": "trivial",
+  "category": "core",
   "description": "The Day 3 exit scene: one colored rounded rectangle plus one line of Roboto Flex text.",
   "widthDp": 320,
   "heightDp": 200,
@@ -304,6 +311,7 @@ export const scenes = {
   "type-body-large-emphasized": {
   "schema": 1,
   "id": "type-body-large-emphasized",
+  "category": "text",
   "description": "bodyLargeEmphasized: 500, 16/24 sp, tracking 0.15 sp. One-line Roboto Flex text scene.",
   "widthDp": 320,
   "heightDp": 200,
@@ -325,6 +333,7 @@ export const scenes = {
   "type-body-large": {
   "schema": 1,
   "id": "type-body-large",
+  "category": "text",
   "description": "bodyLarge: 400, 16/24 sp, tracking 0.5 sp. One-line Roboto Flex text scene.",
   "widthDp": 320,
   "heightDp": 200,
@@ -346,6 +355,7 @@ export const scenes = {
   "type-body-medium-emphasized": {
   "schema": 1,
   "id": "type-body-medium-emphasized",
+  "category": "text",
   "description": "bodyMediumEmphasized: 500, 14/20 sp, tracking 0.25 sp. One-line Roboto Flex text scene.",
   "widthDp": 320,
   "heightDp": 200,
@@ -367,6 +377,7 @@ export const scenes = {
   "type-body-medium": {
   "schema": 1,
   "id": "type-body-medium",
+  "category": "text",
   "description": "bodyMedium: 400, 14/20 sp, tracking 0.2 sp. One-line Roboto Flex text scene.",
   "widthDp": 320,
   "heightDp": 200,
@@ -388,6 +399,7 @@ export const scenes = {
   "type-body-small-emphasized": {
   "schema": 1,
   "id": "type-body-small-emphasized",
+  "category": "text",
   "description": "bodySmallEmphasized: 500, 12/16 sp, tracking 0.4 sp. One-line Roboto Flex text scene.",
   "widthDp": 320,
   "heightDp": 200,
@@ -409,6 +421,7 @@ export const scenes = {
   "type-body-small": {
   "schema": 1,
   "id": "type-body-small",
+  "category": "text",
   "description": "bodySmall: 400, 12/16 sp, tracking 0.4 sp. One-line Roboto Flex text scene.",
   "widthDp": 320,
   "heightDp": 200,
@@ -430,6 +443,7 @@ export const scenes = {
   "type-display-large-emphasized": {
   "schema": 1,
   "id": "type-display-large-emphasized",
+  "category": "text",
   "description": "displayLargeEmphasized: 500, 57/64 sp, tracking 0 sp. One-line Roboto Flex text scene.",
   "widthDp": 320,
   "heightDp": 200,
@@ -451,6 +465,7 @@ export const scenes = {
   "type-display-large": {
   "schema": 1,
   "id": "type-display-large",
+  "category": "text",
   "description": "displayLarge: 400, 57/64 sp, tracking -0.2 sp. One-line Roboto Flex text scene.",
   "widthDp": 320,
   "heightDp": 200,
@@ -472,6 +487,7 @@ export const scenes = {
   "type-display-medium-emphasized": {
   "schema": 1,
   "id": "type-display-medium-emphasized",
+  "category": "text",
   "description": "displayMediumEmphasized: 500, 45/52 sp, tracking 0 sp. One-line Roboto Flex text scene.",
   "widthDp": 320,
   "heightDp": 200,
@@ -493,6 +509,7 @@ export const scenes = {
   "type-display-medium": {
   "schema": 1,
   "id": "type-display-medium",
+  "category": "text",
   "description": "displayMedium: 400, 45/52 sp, tracking 0 sp. One-line Roboto Flex text scene.",
   "widthDp": 320,
   "heightDp": 200,
@@ -514,6 +531,7 @@ export const scenes = {
   "type-display-small-emphasized": {
   "schema": 1,
   "id": "type-display-small-emphasized",
+  "category": "text",
   "description": "displaySmallEmphasized: 500, 36/44 sp, tracking 0 sp. One-line Roboto Flex text scene.",
   "widthDp": 320,
   "heightDp": 200,
@@ -535,6 +553,7 @@ export const scenes = {
   "type-display-small": {
   "schema": 1,
   "id": "type-display-small",
+  "category": "text",
   "description": "displaySmall: 400, 36/44 sp, tracking 0 sp. One-line Roboto Flex text scene.",
   "widthDp": 320,
   "heightDp": 200,
@@ -556,6 +575,7 @@ export const scenes = {
   "type-headline-large-emphasized": {
   "schema": 1,
   "id": "type-headline-large-emphasized",
+  "category": "text",
   "description": "headlineLargeEmphasized: 500, 32/40 sp, tracking 0 sp. One-line Roboto Flex text scene.",
   "widthDp": 320,
   "heightDp": 200,
@@ -577,6 +597,7 @@ export const scenes = {
   "type-headline-large": {
   "schema": 1,
   "id": "type-headline-large",
+  "category": "text",
   "description": "headlineLarge: 400, 32/40 sp, tracking 0 sp. One-line Roboto Flex text scene.",
   "widthDp": 320,
   "heightDp": 200,
@@ -598,6 +619,7 @@ export const scenes = {
   "type-headline-medium-emphasized": {
   "schema": 1,
   "id": "type-headline-medium-emphasized",
+  "category": "text",
   "description": "headlineMediumEmphasized: 500, 28/36 sp, tracking 0 sp. One-line Roboto Flex text scene.",
   "widthDp": 320,
   "heightDp": 200,
@@ -619,6 +641,7 @@ export const scenes = {
   "type-headline-medium": {
   "schema": 1,
   "id": "type-headline-medium",
+  "category": "text",
   "description": "headlineMedium: 400, 28/36 sp, tracking 0 sp. One-line Roboto Flex text scene.",
   "widthDp": 320,
   "heightDp": 200,
@@ -640,6 +663,7 @@ export const scenes = {
   "type-headline-small-emphasized": {
   "schema": 1,
   "id": "type-headline-small-emphasized",
+  "category": "text",
   "description": "headlineSmallEmphasized: 500, 24/32 sp, tracking 0 sp. One-line Roboto Flex text scene.",
   "widthDp": 320,
   "heightDp": 200,
@@ -661,6 +685,7 @@ export const scenes = {
   "type-headline-small": {
   "schema": 1,
   "id": "type-headline-small",
+  "category": "text",
   "description": "headlineSmall: 400, 24/32 sp, tracking 0 sp. One-line Roboto Flex text scene.",
   "widthDp": 320,
   "heightDp": 200,
@@ -682,6 +707,7 @@ export const scenes = {
   "type-label-large-emphasized": {
   "schema": 1,
   "id": "type-label-large-emphasized",
+  "category": "text",
   "description": "labelLargeEmphasized: 700, 14/20 sp, tracking 0.1 sp. One-line Roboto Flex text scene.",
   "widthDp": 320,
   "heightDp": 200,
@@ -703,6 +729,7 @@ export const scenes = {
   "type-label-large": {
   "schema": 1,
   "id": "type-label-large",
+  "category": "text",
   "description": "labelLarge: 500, 14/20 sp, tracking 0.1 sp. One-line Roboto Flex text scene.",
   "widthDp": 320,
   "heightDp": 200,
@@ -724,6 +751,7 @@ export const scenes = {
   "type-label-medium-emphasized": {
   "schema": 1,
   "id": "type-label-medium-emphasized",
+  "category": "text",
   "description": "labelMediumEmphasized: 700, 12/16 sp, tracking 0.5 sp. One-line Roboto Flex text scene.",
   "widthDp": 320,
   "heightDp": 200,
@@ -745,6 +773,7 @@ export const scenes = {
   "type-label-medium": {
   "schema": 1,
   "id": "type-label-medium",
+  "category": "text",
   "description": "labelMedium: 500, 12/16 sp, tracking 0.5 sp. One-line Roboto Flex text scene.",
   "widthDp": 320,
   "heightDp": 200,
@@ -766,6 +795,7 @@ export const scenes = {
   "type-label-small-emphasized": {
   "schema": 1,
   "id": "type-label-small-emphasized",
+  "category": "text",
   "description": "labelSmallEmphasized: 700, 11/16 sp, tracking 0.5 sp. One-line Roboto Flex text scene.",
   "widthDp": 320,
   "heightDp": 200,
@@ -787,6 +817,7 @@ export const scenes = {
   "type-label-small": {
   "schema": 1,
   "id": "type-label-small",
+  "category": "text",
   "description": "labelSmall: 500, 11/16 sp, tracking 0.5 sp. One-line Roboto Flex text scene.",
   "widthDp": 320,
   "heightDp": 200,
@@ -808,6 +839,7 @@ export const scenes = {
   "type-title-large-emphasized": {
   "schema": 1,
   "id": "type-title-large-emphasized",
+  "category": "text",
   "description": "titleLargeEmphasized: 500, 22/28 sp, tracking 0 sp. One-line Roboto Flex text scene.",
   "widthDp": 320,
   "heightDp": 200,
@@ -829,6 +861,7 @@ export const scenes = {
   "type-title-large": {
   "schema": 1,
   "id": "type-title-large",
+  "category": "text",
   "description": "titleLarge: 400, 22/28 sp, tracking 0 sp. One-line Roboto Flex text scene.",
   "widthDp": 320,
   "heightDp": 200,
@@ -850,6 +883,7 @@ export const scenes = {
   "type-title-medium-emphasized": {
   "schema": 1,
   "id": "type-title-medium-emphasized",
+  "category": "text",
   "description": "titleMediumEmphasized: 700, 16/24 sp, tracking 0.15 sp. One-line Roboto Flex text scene.",
   "widthDp": 320,
   "heightDp": 200,
@@ -871,6 +905,7 @@ export const scenes = {
   "type-title-medium": {
   "schema": 1,
   "id": "type-title-medium",
+  "category": "text",
   "description": "titleMedium: 500, 16/24 sp, tracking 0.2 sp. One-line Roboto Flex text scene.",
   "widthDp": 320,
   "heightDp": 200,
@@ -892,6 +927,7 @@ export const scenes = {
   "type-title-small-emphasized": {
   "schema": 1,
   "id": "type-title-small-emphasized",
+  "category": "text",
   "description": "titleSmallEmphasized: 700, 14/20 sp, tracking 0.1 sp. One-line Roboto Flex text scene.",
   "widthDp": 320,
   "heightDp": 200,
@@ -913,6 +949,7 @@ export const scenes = {
   "type-title-small": {
   "schema": 1,
   "id": "type-title-small",
+  "category": "text",
   "description": "titleSmall: 500, 14/20 sp, tracking 0.1 sp. One-line Roboto Flex text scene.",
   "widthDp": 320,
   "heightDp": 200,

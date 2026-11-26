@@ -41,15 +41,23 @@ The cross-stack diff for the shadow scene is **0 exact px** (0.0000%).
 
 Strict bounding box of pixels that are not exactly the scene background, including anti-aliased glyph edges and the shadow. No tolerance is applied.
 
+## Scene categories
+
+| Category | Scenes | Σ exact px (scene max) | Σ AA-aware px (scene max) | Max AA-aware % | Gate |
+|---|---:|---:|---:|---:|---|
+| `core` | 5 | 3,490 | 8 | 0.0009% | 0.05% met |
+
+Only the `core` category is the five-scene PLAYBOOK §7 gate. The `text` category contains the 30 typography roles (and, when included, the dense label/paragraph probes), tracked separately under U-25; its numbers are a regression ceiling, not a pass/fail claim. ADR-010 is pending.
+
 ## Noise split by scene
 
-| Scene | Exact px | Exact % | AA-aware px | AA-aware % | Max Δ | Boots |
-|---|---:|---:|---:|---:|---:|---:|
-| solid | 0 | 0.0000% | 0 | 0.0000% | 0 | 3 |
-| rect | 0 | 0.0000% | 0 | 0.0000% | 0 | 3 |
-| text | 1,745 | 0.3957% | 4 | 0.0009% | 162 | 3 |
-| shadow | 0 | 0.0000% | 0 | 0.0000% | 0 | 3 |
-| trivial | 1,745 | 0.3957% | 4 | 0.0009% | 162 | 3 |
+| Scene | Category | Exact px | Exact % | AA-aware px | AA-aware % | Max Δ | Boots |
+|---|---|---:|---:|---:|---:|---:|---:|
+| solid | core | 0 | 0.0000% | 0 | 0.0000% | 0 | 3 |
+| rect | core | 0 | 0.0000% | 0 | 0.0000% | 0 | 3 |
+| text | core | 1,745 | 0.3957% | 4 | 0.0009% | 162 | 3 |
+| shadow | core | 0 | 0.0000% | 0 | 0.0000% | 0 | 3 |
+| trivial | core | 1,745 | 0.3957% | 4 | 0.0009% | 162 | 3 |
 
 ## Non-AA text pixels (boot 1, trivial)
 

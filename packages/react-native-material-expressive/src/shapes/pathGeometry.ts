@@ -56,7 +56,7 @@ export function morphToGeometries(morph: Morph): {
 export function interpolateGeometry(
   start: PathGeometry,
   end: PathGeometry,
-  progress: number
+  progress: number,
 ): number[] {
   'worklet';
   if (start.length !== end.length) {
@@ -83,11 +83,7 @@ function formatCoordinate(value: number): string {
  * The result uses absolute coordinates and closes the path. It is intentionally
  * built with string concatenation: this function runs once per animated frame.
  */
-export function geometryToSvgPath(
-  geometry: PathGeometry,
-  width: number,
-  height: number
-): string {
+export function geometryToSvgPath(geometry: PathGeometry, width: number, height: number): string {
   'worklet';
   if (geometry.length < 8) {
     return '';

@@ -1,6 +1,7 @@
 {
   "schema": 1,
   "id": "type-title-medium-emphasized",
+  "category": "text",
   "description": "titleMediumEmphasized: 700, 16/24 sp, tracking 0.15 sp. One-line Roboto Flex text scene.",
   "widthDp": 320,
   "heightDp": 200,

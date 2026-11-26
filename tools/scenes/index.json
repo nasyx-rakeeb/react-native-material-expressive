@@ -4,260 +4,297 @@
   "scenes": [
     {
       "id": "labels",
+      "category": "text",
       "source": "tools/scenes/labels.json",
-      "sourceSha256": "9c281d36e84f4e2ef2db1913031155a4ca30ab55ffa395e7655809c4ab282407",
+      "sourceSha256": "19ed9e42b6aa5f4aa24c517f1470a0b31eeaecd6451e4d54772f67afeb7bf14b",
       "widthDp": 320,
       "heightDp": 200
     },
     {
       "id": "paragraph",
+      "category": "text",
       "source": "tools/scenes/paragraph.json",
-      "sourceSha256": "8d47d049664f15cbc7fd31341fcbfc1f70d6d5ca17a306452329162b296795d5",
+      "sourceSha256": "1c17d1af75ad548ffdbc2e945ae4a4501065025549afda436f15bab26ff27627",
       "widthDp": 320,
       "heightDp": 200
     },
     {
       "id": "rect",
+      "category": "core",
       "source": "tools/scenes/rect.json",
-      "sourceSha256": "0fa4d1c3706ae5f5a8087da2c0b38c2a8d657a752a3a8c6aeea03bc3d7a04991",
+      "sourceSha256": "a00a616a98ad7234ea15a7faad7f4bdb15a5db35828ece1d0de3e1febb9d875a",
       "widthDp": 320,
       "heightDp": 200
     },
     {
       "id": "shadow",
+      "category": "core",
       "source": "tools/scenes/shadow.json",
-      "sourceSha256": "98c9bccf700e3ea6f2a646639f2253e8d4fbb00dc7872baa41b53c35bb0b435e",
+      "sourceSha256": "5005ac3f8f008aa64c6a2c728d436ae1d0796b9c50995c3c3b22d2f5b08a5417",
       "widthDp": 320,
       "heightDp": 200
     },
     {
       "id": "solid",
+      "category": "core",
       "source": "tools/scenes/solid.json",
-      "sourceSha256": "39cbf6072b416854ad59a15e13f1742469c72593460d567856a76244ce4bac69",
+      "sourceSha256": "8af83acabf7db1b6123a41e0554ab29e4b23631e2f67fe9c07c63d1a5c94e377",
       "widthDp": 320,
       "heightDp": 200
     },
     {
       "id": "text",
+      "category": "core",
       "source": "tools/scenes/text.json",
-      "sourceSha256": "d3e5006d16050bfb0755ed94591c1eb5957b204cd80e6adf91b5782ecf6d1de4",
+      "sourceSha256": "7c1316bb9985aab8944b91798e75b568f8bd0326f02cf98bb9bca2a5fa0ca341",
       "widthDp": 320,
       "heightDp": 200
     },
     {
       "id": "trivial",
+      "category": "core",
       "source": "tools/scenes/trivial.json",
-      "sourceSha256": "3b4cbec14782b2c3fd5c520bf69b3a20b80e2ebacad5be6ae6c035094f936fc7",
+      "sourceSha256": "a69201b2d239e316d1afa732e4382165314917f3efa1b6751afd90605542f91c",
       "widthDp": 320,
       "heightDp": 200
     },
     {
       "id": "type-body-large-emphasized",
+      "category": "text",
       "source": "tools/scenes/type-body-large-emphasized.json",
-      "sourceSha256": "52a45c0df050322108f37e0df4aada16e1d162c1e40c64dba5129b4d15f1da44",
+      "sourceSha256": "29b0e6a73645c55f0250a93146de79f7959c2fd3c5450625cf260d52c4550d9b",
       "widthDp": 320,
       "heightDp": 200
     },
     {
       "id": "type-body-large",
+      "category": "text",
       "source": "tools/scenes/type-body-large.json",
-      "sourceSha256": "603602d473c26e43209516c1b0a4af80c16b6b4189e24bfda5a9b9996b28b955",
+      "sourceSha256": "9bad39531f3d8c8c1edffcd1ef8afb6890e68d706153facc7928b91a58c43801",
       "widthDp": 320,
       "heightDp": 200
     },
     {
       "id": "type-body-medium-emphasized",
+      "category": "text",
       "source": "tools/scenes/type-body-medium-emphasized.json",
-      "sourceSha256": "783c7e7f531999e4b5378f9df84a53e699c177b4b8b3317f4927b0c55657615f",
+      "sourceSha256": "d2c5ec7b252b4e17c5d4369dd24a2d446281b5b65c88bd443ccd344f1c68ef5a",
       "widthDp": 320,
       "heightDp": 200
     },
     {
       "id": "type-body-medium",
+      "category": "text",
       "source": "tools/scenes/type-body-medium.json",
-      "sourceSha256": "c99701d47f3689d3e30211be8e3ceb96eb44d773616d6fc99ac5396c23b1b9e3",
+      "sourceSha256": "36e1eab8290b11ff99e416c9605bb0e158de1ef24eb634a0bdfaac5b538b7d2c",
       "widthDp": 320,
       "heightDp": 200
     },
     {
       "id": "type-body-small-emphasized",
+      "category": "text",
       "source": "tools/scenes/type-body-small-emphasized.json",
-      "sourceSha256": "134f66449a2590051354e9389f2cf017148dc5e9fac6c5437bc0f4215883184c",
+      "sourceSha256": "553e8093b17dfe827ae3a8a210e17f640a7e19289d32bdb476df9a5716280b9e",
       "widthDp": 320,
       "heightDp": 200
     },
     {
       "id": "type-body-small",
+      "category": "text",
       "source": "tools/scenes/type-body-small.json",
-      "sourceSha256": "965b413bbf7edb268a09025827711a19ec5e7a5b0a393f2a9051b7cc005ef92b",
+      "sourceSha256": "731bfe2c050cf1ac0ff3f45f8b02b18af5f8521049db35c028bcc59b0c34e676",
       "widthDp": 320,
       "heightDp": 200
     },
     {
       "id": "type-display-large-emphasized",
+      "category": "text",
       "source": "tools/scenes/type-display-large-emphasized.json",
-      "sourceSha256": "39c2b68d55b7818ff87389237ee39ef16183ed8311012e46800792507af3ab78",
+      "sourceSha256": "53569f744df8db037a1afb31ac3acb92d8bee313fe1c163cd00e7a4c240cf1d7",
       "widthDp": 320,
       "heightDp": 200
     },
     {
       "id": "type-display-large",
+      "category": "text",
       "source": "tools/scenes/type-display-large.json",
-      "sourceSha256": "3627d72a5dab60e8d49bcefb12adf72b11a1b3b7853e3e3c65f7cd6859ad1143",
+      "sourceSha256": "6abbbff57f5ecc1dac61cc5cab34a87db0898157ad7c68c4fe4571f0d8509fee",
       "widthDp": 320,
       "heightDp": 200
     },
     {
       "id": "type-display-medium-emphasized",
+      "category": "text",
       "source": "tools/scenes/type-display-medium-emphasized.json",
-      "sourceSha256": "dfa0c8c450343ec0d53c2540b988d0334e49b184dd97189e7481780cceb55e78",
+      "sourceSha256": "20c028df5de0de5866faeb085abf5d0a54591687f561540774a6448ab7823de9",
       "widthDp": 320,
       "heightDp": 200
     },
     {
       "id": "type-display-medium",
+      "category": "text",
       "source": "tools/scenes/type-display-medium.json",
-      "sourceSha256": "323e9cd797a330a934940fd0571f9647df7d5077379bd73076025b23ae1f927e",
+      "sourceSha256": "3b90044c44c3992519bdbb199e20f99e98bf8f35e8930d6c1867d77e0e838eca",
       "widthDp": 320,
       "heightDp": 200
     },
     {
       "id": "type-display-small-emphasized",
+      "category": "text",
       "source": "tools/scenes/type-display-small-emphasized.json",
-      "sourceSha256": "037d00f959cbd72bbe2789082e30811e38ba0ed70f408b64178d8035ea579818",
+      "sourceSha256": "77cdda5718a3305e94235fc2e7a584c5aa98fe3ddb6189e6dfa926af154a7035",
       "widthDp": 320,
       "heightDp": 200
     },
     {
       "id": "type-display-small",
+      "category": "text",
       "source": "tools/scenes/type-display-small.json",
-      "sourceSha256": "c14e80615217f9eed4d82fb26486c25886639522d16cde7f48b8d4d8e49ae0cb",
+      "sourceSha256": "edfb85e0cc3fd483db09cc36d7b14694b73beb2a6dcbe3870c98d943dbdd4ac7",
       "widthDp": 320,
       "heightDp": 200
     },
     {
       "id": "type-headline-large-emphasized",
+      "category": "text",
       "source": "tools/scenes/type-headline-large-emphasized.json",
-      "sourceSha256": "cdd56d0626c4c3d6d05552e4be363ba5af610c7c5f48d3ac0602829d6f249068",
+      "sourceSha256": "d574eeb07c08064ef29fd5d17699b21c78857771e67ae74017735bc971c5ff80",
       "widthDp": 320,
       "heightDp": 200
     },
     {
       "id": "type-headline-large",
+      "category": "text",
       "source": "tools/scenes/type-headline-large.json",
-      "sourceSha256": "2471c7b40fd412b41610bed1fccd3b0a68edaa1284cd82c404d370bfe2023519",
+      "sourceSha256": "492d030c4c4b7108bf4901aed64a7ee578b0b053a368ccfff6e44dd7274af7c5",
       "widthDp": 320,
       "heightDp": 200
     },
     {
       "id": "type-headline-medium-emphasized",
+      "category": "text",
       "source": "tools/scenes/type-headline-medium-emphasized.json",
-      "sourceSha256": "f8b1c6d5bfd2784db1b6fada5466ce3f2860e69bf02518ee4b4b440d4464a0c0",
+      "sourceSha256": "8235450aafc24266150a860bde813b5792246bf82e2c27eb572f139593c18402",
       "widthDp": 320,
       "heightDp": 200
     },
     {
       "id": "type-headline-medium",
+      "category": "text",
       "source": "tools/scenes/type-headline-medium.json",
-      "sourceSha256": "7b1fefc2427074ed9e37b0cef64e753577e4f880b98330669ba68a870988c5d9",
+      "sourceSha256": "64504439f79ac4f832001bd7ff8dfacc28abd14023813ba04beb62f354fba266",
       "widthDp": 320,
       "heightDp": 200
     },
     {
       "id": "type-headline-small-emphasized",
+      "category": "text",
       "source": "tools/scenes/type-headline-small-emphasized.json",
-      "sourceSha256": "ad36b14d5e6ea82a3112757e5277ddcaba1ce791fdd225a390a3db4565a24cc4",
+      "sourceSha256": "798281b3699b81252c339e982a1967eabd2e550fae5f5a288c5e50d004d87fc8",
       "widthDp": 320,
       "heightDp": 200
     },
     {
       "id": "type-headline-small",
+      "category": "text",
       "source": "tools/scenes/type-headline-small.json",
-      "sourceSha256": "b8fc877937c7171be286c8863615780ac68ffb40b10634da68c3048bcedd5925",
+      "sourceSha256": "7c2dfb02d97a732dae403f9f76933729abe879dea61c5f18fab169c14a724b73",
       "widthDp": 320,
       "heightDp": 200
     },
     {
       "id": "type-label-large-emphasized",
+      "category": "text",
       "source": "tools/scenes/type-label-large-emphasized.json",
-      "sourceSha256": "4bde0cb66851ec49e65406857c24c1dcad0384f135260e6f533ff7affae44471",
+      "sourceSha256": "adca72ba73d6c30b1a31445d970ed70f1f415ba9c6e0577cc41a34af014bd41e",
       "widthDp": 320,
       "heightDp": 200
     },
     {
       "id": "type-label-large",
+      "category": "text",
       "source": "tools/scenes/type-label-large.json",
-      "sourceSha256": "f3eb7726f0dd11eb012a385b6b875d5f40d2f46a17dbbefcc903743042b84cbb",
+      "sourceSha256": "403b0ffe2d99b9cf3be5ded08bec6800aa27a612cfcde598dcbabf56c365fcc1",
       "widthDp": 320,
       "heightDp": 200
     },
     {
       "id": "type-label-medium-emphasized",
+      "category": "text",
       "source": "tools/scenes/type-label-medium-emphasized.json",
-      "sourceSha256": "d4ffc700223db83e3417214773199f5bf18ec7b02ac669d066d2da62d5279ec6",
+      "sourceSha256": "7bccc42dc0994c12801393003249ceec9bda220afff74de9a7b041f2cbd8bbd4",
       "widthDp": 320,
       "heightDp": 200
     },
     {
       "id": "type-label-medium",
+      "category": "text",
       "source": "tools/scenes/type-label-medium.json",
-      "sourceSha256": "0dd2ec744c15cdae42a38edf56029144d93a8ded4a22dc72cb5b8020cd516180",
+      "sourceSha256": "351d9a11cfb778460351cb02daf7afcb675d62f525ebc971c79c187635ab81d2",
       "widthDp": 320,
       "heightDp": 200
     },
     {
       "id": "type-label-small-emphasized",
+      "category": "text",
       "source": "tools/scenes/type-label-small-emphasized.json",
-      "sourceSha256": "b05b1e34197082743099cbe74eb61b66416e5dbb31bd001b56c3b51943e64745",
+      "sourceSha256": "3a5554d4dc0fc87c2807cff9626ef62c058f7f340c2c729785f7cf8b29227816",
       "widthDp": 320,
       "heightDp": 200
     },
     {
       "id": "type-label-small",
+      "category": "text",
       "source": "tools/scenes/type-label-small.json",
-      "sourceSha256": "92f1e77b81d3b92bf16c2bd9ad9e4ac2941ca0e4e650d53951ff85853518c39f",
+      "sourceSha256": "3f1f95b52e3d376d957ee3141430b7dcb634ee87eb9e310e1c52ff79a8a8ade8",
       "widthDp": 320,
       "heightDp": 200
     },
     {
       "id": "type-title-large-emphasized",
+      "category": "text",
       "source": "tools/scenes/type-title-large-emphasized.json",
-      "sourceSha256": "8f7ddf50dc069afad21f9959478bb484b4c8de1ab8586c151b7d83ae3f00007c",
+      "sourceSha256": "d9d9b323553b6ad7ba19356adecbaa24164d9e6dd24d22f60c188f11800a5c4d",
       "widthDp": 320,
       "heightDp": 200
     },
     {
       "id": "type-title-large",
+      "category": "text",
       "source": "tools/scenes/type-title-large.json",
-      "sourceSha256": "c9f955d76806867bb8992018511f8aee52fb64dee09a579ffe00317e285343b4",
+      "sourceSha256": "b49a12b3296a5cab4922accd065608d5e27fbf63fb7d0584f68fcab3f925a008",
       "widthDp": 320,
       "heightDp": 200
     },
     {
       "id": "type-title-medium-emphasized",
+      "category": "text",
       "source": "tools/scenes/type-title-medium-emphasized.json",
-      "sourceSha256": "07e260dcec3e6f52e3edb2316a6731f5cc9b9eaca20db00bbc22f4b8e2e1eab8",
+      "sourceSha256": "b4780c7755a0ace79eca541df86fb5819c2dbb4f90b9d1cd2263ed85d8aba16b",
       "widthDp": 320,
       "heightDp": 200
     },
     {
       "id": "type-title-medium",
+      "category": "text",
       "source": "tools/scenes/type-title-medium.json",
-      "sourceSha256": "31597afd8f8b59e30af9f9d6cbd2094bfe554898ad6f76a4a514411a95b3f5f8",
+      "sourceSha256": "8a646b79a2a3e2a00f73e46ce24c9a8fe1f75d4dfce9271f23c905deaaf3e1fa",
       "widthDp": 320,
       "heightDp": 200
     },
     {
       "id": "type-title-small-emphasized",
+      "category": "text",
       "source": "tools/scenes/type-title-small-emphasized.json",
-      "sourceSha256": "9f4d43054ab688be5cc879a46637179bbc9f4436f2a377b3263ecf08b8a216d8",
+      "sourceSha256": "3f00c00acd0094eb71eb2b70b1d4b828ab9725dcace911d97369cd9c2a49dec3",
       "widthDp": 320,
       "heightDp": 200
     },
     {
       "id": "type-title-small",
+      "category": "text",
       "source": "tools/scenes/type-title-small.json",
-      "sourceSha256": "dd673a8380cc973b796c0da69249345bd2125823a2d227244a2eeb19bfb4ee84",
+      "sourceSha256": "75a5c88092a31b5ec39926a1bd8c2de7a8083b025a578fb32c7d8eeab2078c3f",
       "widthDp": 320,
       "heightDp": 200
     }

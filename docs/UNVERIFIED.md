@@ -231,9 +231,8 @@ Paper `6.0.0-alpha.4` (2026-11-23); 34 public component exports; signature-set s
 - **Resolution:** Day 7: build and run the release gallery with each renderer, record the build result, APK size, and on-device behavior, then pin the chosen peer versions in ADR-003.
 - **Blocks:** ADR-002 and ADR-003 finalization.
 
-### U-31 — The approved “text” scene category is not yet represented in the schema or report
+### U-31 — The approved “text” scene category is not yet represented in the schema or report — **RESOLVED**
 
-- **Evidence:** Nasyx approved keeping the 30 type scenes as tracked scenes in a separate **“text”** category. The scenes exist as `type-*` files, but the scene schema, index, and report have no category field or grouping; the five-scene gate is unchanged.
-- **Impact:** Reports cannot separate the text category from the five-scene gate, so the approved structure is not auditable.
-- **Resolution:** Add a `category` field to the scene schema/index (`core` for the five gate scenes, `text` for the 30 type scenes), surface it in the report, and keep the five-scene gate selection unchanged. Close this item with the commit and a regenerated report.
-- **Blocks:** Nothing at runtime; it blocks the U-25 reporting claim until implemented.
+- **Evidence:** Nasyx approved keeping the 30 type scenes as tracked scenes in a separate **“text”** category. The scenes existed as `type-*` files, but the scene schema, index, and report had no category field or grouping.
+- **Resolution (2026-11-26):** `category` is now a required scene field with values `core` or `text`. The five gate scenes are `core`; the 30 typography roles are `text`; the dense `labels` and `paragraph` probes are also `text`. `tools/scenes/index.json` and `apps/gallery/src/scenes.generated.ts` carry the category. The report adds a scene-category table, scopes the 0.05% gate to `core`, and reports `text` as tracked without a pass/fail threshold. The default `--scenes solid,rect,text,shadow,trivial` selection is unchanged. The gate, typography-faithful, and typography-matched reports were regenerated: the faithful run shows `core` 5 scenes / 8 AA px / 0.05% met and `text` 30 scenes / 17,798 AA px / tracked. Evidence: `tools/scenes/build.mjs`, `tools/pixel/report.mjs`, `docs/evidence/day5/typography/runs/faithful/results.json` (`gate.categories`).
+- **Blocks:** Nothing. U-25 reporting structure is now auditable.

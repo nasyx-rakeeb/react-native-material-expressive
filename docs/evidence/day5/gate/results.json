@@ -5115,6 +5115,26 @@
     "determinismOk": true,
     "crossStackExactZero": false,
     "crossStackAaAwareBelowPlaybookGate": true,
-    "note": "No new pixel threshold is proposed. The 0.05% figure is the existing PLAYBOOK §7 gate."
+    "note": "No new pixel threshold is proposed. The 0.05% figure is the existing PLAYBOOK §7 gate and applies to the five core scenes only. Text-category scenes are tracked separately under U-25.",
+    "aaGateScope": "core",
+    "coreScenes": [
+      "solid",
+      "rect",
+      "text",
+      "shadow",
+      "trivial"
+    ],
+    "textScenes": [],
+    "categories": [
+      {
+        "category": "core",
+        "scenes": 5,
+        "exact": 3490,
+        "aa": 8,
+        "maxAaPercent": 0.0009070294784580498,
+        "maxDelta": 162,
+        "gate": true
+      }
+    ]
   }
 }

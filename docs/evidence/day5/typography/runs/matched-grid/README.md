@@ -71,45 +71,54 @@ The cross-stack diff for the shadow scene is **0 exact px** (0.0000%).
 
 Strict bounding box of pixels that are not exactly the scene background, including anti-aliased glyph edges and the shadow. No tolerance is applied.
 
+## Scene categories
+
+| Category | Scenes | Σ exact px (scene max) | Σ AA-aware px (scene max) | Max AA-aware % | Gate |
+|---|---:|---:|---:|---:|---|
+| `core` | 5 | 0 | 0 | 0.0000% | 0.05% met |
+| `text` | 30 | 7,878 | 269 | 0.0238% | tracked — no threshold |
+
+Only the `core` category is the five-scene PLAYBOOK §7 gate. The `text` category contains the 30 typography roles (and, when included, the dense label/paragraph probes), tracked separately under U-25; its numbers are a regression ceiling, not a pass/fail claim. ADR-010 is pending.
+
 ## Noise split by scene
 
-| Scene | Exact px | Exact % | AA-aware px | AA-aware % | Max Δ | Boots |
-|---|---:|---:|---:|---:|---:|---:|
-| solid | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
-| rect | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
-| text | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
-| shadow | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
-| trivial | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
-| type-body-large-emphasized | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
-| type-body-large | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
-| type-body-medium-emphasized | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
-| type-body-medium | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
-| type-body-small-emphasized | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
-| type-body-small | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
-| type-display-large-emphasized | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
-| type-display-large | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
-| type-display-medium-emphasized | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
-| type-display-medium | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
-| type-display-small-emphasized | 2,340 | 0.5306% | 105 | 0.0238% | 226 | 1 |
-| type-display-small | 2,372 | 0.5379% | 63 | 0.0143% | 226 | 1 |
-| type-headline-large-emphasized | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
-| type-headline-large | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
-| type-headline-medium-emphasized | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
-| type-headline-medium | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
-| type-headline-small-emphasized | 1,592 | 0.3610% | 48 | 0.0109% | 226 | 1 |
-| type-headline-small | 1,574 | 0.3569% | 53 | 0.0120% | 226 | 1 |
-| type-label-large-emphasized | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
-| type-label-large | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
-| type-label-medium-emphasized | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
-| type-label-medium | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
-| type-label-small-emphasized | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
-| type-label-small | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
-| type-title-large-emphasized | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
-| type-title-large | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
-| type-title-medium-emphasized | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
-| type-title-medium | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
-| type-title-small-emphasized | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
-| type-title-small | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
+| Scene | Category | Exact px | Exact % | AA-aware px | AA-aware % | Max Δ | Boots |
+|---|---|---:|---:|---:|---:|---:|---:|
+| solid | core | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
+| rect | core | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
+| text | core | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
+| shadow | core | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
+| trivial | core | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
+| type-body-large-emphasized | text | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
+| type-body-large | text | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
+| type-body-medium-emphasized | text | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
+| type-body-medium | text | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
+| type-body-small-emphasized | text | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
+| type-body-small | text | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
+| type-display-large-emphasized | text | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
+| type-display-large | text | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
+| type-display-medium-emphasized | text | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
+| type-display-medium | text | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
+| type-display-small-emphasized | text | 2,340 | 0.5306% | 105 | 0.0238% | 226 | 1 |
+| type-display-small | text | 2,372 | 0.5379% | 63 | 0.0143% | 226 | 1 |
+| type-headline-large-emphasized | text | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
+| type-headline-large | text | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
+| type-headline-medium-emphasized | text | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
+| type-headline-medium | text | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
+| type-headline-small-emphasized | text | 1,592 | 0.3610% | 48 | 0.0109% | 226 | 1 |
+| type-headline-small | text | 1,574 | 0.3569% | 53 | 0.0120% | 226 | 1 |
+| type-label-large-emphasized | text | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
+| type-label-large | text | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
+| type-label-medium-emphasized | text | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
+| type-label-medium | text | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
+| type-label-small-emphasized | text | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
+| type-label-small | text | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
+| type-title-large-emphasized | text | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
+| type-title-large | text | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
+| type-title-medium-emphasized | text | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
+| type-title-medium | text | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
+| type-title-small-emphasized | text | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
+| type-title-small | text | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
 
 ## Non-AA text pixels (boot 1, trivial)
 

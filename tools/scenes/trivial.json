@@ -1,6 +1,7 @@
 {
   "schema": 1,
   "id": "trivial",
+  "category": "core",
   "description": "The Day 3 exit scene: one colored rounded rectangle plus one line of Roboto Flex text.",
   "widthDp": 320,
   "heightDp": 200,

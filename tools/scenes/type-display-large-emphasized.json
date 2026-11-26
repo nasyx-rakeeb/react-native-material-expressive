@@ -1,6 +1,7 @@
 {
   "schema": 1,
   "id": "type-display-large-emphasized",
+  "category": "text",
   "description": "displayLargeEmphasized: 500, 57/64 sp, tracking 0 sp. One-line Roboto Flex text scene.",
   "widthDp": 320,
   "heightDp": 200,

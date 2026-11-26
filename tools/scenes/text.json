@@ -1,6 +1,7 @@
 {
   "schema": 1,
   "id": "text",
+  "category": "core",
   "description": "One line of Roboto Flex text on the scene background. Text antialiasing and metrics only.",
   "widthDp": 320,
   "heightDp": 200,

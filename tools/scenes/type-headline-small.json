@@ -1,6 +1,7 @@
 {
   "schema": 1,
   "id": "type-headline-small",
+  "category": "text",
   "description": "headlineSmall: 400, 24/32 sp, tracking 0 sp. One-line Roboto Flex text scene.",
   "widthDp": 320,
   "heightDp": 200,

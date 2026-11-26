@@ -40,6 +40,7 @@ for (const role of roles) {
   const scene = {
     schema: 1,
     id,
+    category: 'text',
     description,
     widthDp: 320,
     heightDp: 200,

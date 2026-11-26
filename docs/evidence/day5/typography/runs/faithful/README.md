@@ -71,45 +71,54 @@ The cross-stack diff for the shadow scene is **0 exact px** (0.0000%).
 
 Strict bounding box of pixels that are not exactly the scene background, including anti-aliased glyph edges and the shadow. No tolerance is applied.
 
+## Scene categories
+
+| Category | Scenes | Σ exact px (scene max) | Σ AA-aware px (scene max) | Max AA-aware % | Gate |
+|---|---:|---:|---:|---:|---|
+| `core` | 5 | 3,490 | 8 | 0.0009% | 0.05% met |
+| `text` | 30 | 75,436 | 17,798 | 0.6224% | tracked — no threshold |
+
+Only the `core` category is the five-scene PLAYBOOK §7 gate. The `text` category contains the 30 typography roles (and, when included, the dense label/paragraph probes), tracked separately under U-25; its numbers are a regression ceiling, not a pass/fail claim. ADR-010 is pending.
+
 ## Noise split by scene
 
-| Scene | Exact px | Exact % | AA-aware px | AA-aware % | Max Δ | Boots |
-|---|---:|---:|---:|---:|---:|---:|
-| solid | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
-| rect | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
-| text | 1,745 | 0.3957% | 4 | 0.0009% | 162 | 1 |
-| shadow | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
-| trivial | 1,745 | 0.3957% | 4 | 0.0009% | 162 | 1 |
-| type-body-large-emphasized | 988 | 0.2240% | 5 | 0.0011% | 226 | 1 |
-| type-body-large | 994 | 0.2254% | 5 | 0.0011% | 181 | 1 |
-| type-body-medium-emphasized | 1,614 | 0.3660% | 326 | 0.0739% | 226 | 1 |
-| type-body-medium | 1,884 | 0.4272% | 676 | 0.1533% | 226 | 1 |
-| type-body-small-emphasized | 1,369 | 0.3104% | 311 | 0.0705% | 226 | 1 |
-| type-body-small | 1,397 | 0.3168% | 334 | 0.0757% | 226 | 1 |
-| type-display-large-emphasized | 5,374 | 1.2186% | 1,236 | 0.2803% | 226 | 1 |
-| type-display-large | 8,034 | 1.8218% | 2,745 | 0.6224% | 226 | 1 |
-| type-display-medium-emphasized | 6,175 | 1.4002% | 1,696 | 0.3846% | 226 | 1 |
-| type-display-medium | 6,180 | 1.4014% | 1,629 | 0.3694% | 226 | 1 |
-| type-display-small-emphasized | 5,235 | 1.1871% | 1,839 | 0.4170% | 226 | 1 |
-| type-display-small | 4,378 | 0.9927% | 949 | 0.2152% | 226 | 1 |
-| type-headline-large-emphasized | 1,366 | 0.3098% | 1 | 0.0002% | 171 | 1 |
-| type-headline-large | 1,646 | 0.3732% | 3 | 0.0007% | 184 | 1 |
-| type-headline-medium-emphasized | 3,367 | 0.7635% | 714 | 0.1619% | 226 | 1 |
-| type-headline-medium | 3,680 | 0.8345% | 993 | 0.2252% | 226 | 1 |
-| type-headline-small-emphasized | 1,877 | 0.4256% | 51 | 0.0116% | 226 | 1 |
-| type-headline-small | 1,912 | 0.4336% | 58 | 0.0132% | 226 | 1 |
-| type-label-large-emphasized | 1,692 | 0.3837% | 474 | 0.1075% | 226 | 1 |
-| type-label-large | 1,683 | 0.3816% | 397 | 0.0900% | 226 | 1 |
-| type-label-medium-emphasized | 1,762 | 0.3995% | 663 | 0.1503% | 226 | 1 |
-| type-label-medium | 1,439 | 0.3263% | 375 | 0.0850% | 226 | 1 |
-| type-label-small-emphasized | 1,369 | 0.3104% | 397 | 0.0900% | 226 | 1 |
-| type-label-small | 1,139 | 0.2583% | 219 | 0.0497% | 226 | 1 |
-| type-title-large-emphasized | 1,681 | 0.3812% | 222 | 0.0503% | 226 | 1 |
-| type-title-large | 2,168 | 0.4916% | 598 | 0.1356% | 226 | 1 |
-| type-title-medium-emphasized | 843 | 0.1912% | 9 | 0.0020% | 205 | 1 |
-| type-title-medium | 815 | 0.1848% | 2 | 0.0005% | 226 | 1 |
-| type-title-small-emphasized | 1,692 | 0.3837% | 474 | 0.1075% | 226 | 1 |
-| type-title-small | 1,683 | 0.3816% | 397 | 0.0900% | 226 | 1 |
+| Scene | Category | Exact px | Exact % | AA-aware px | AA-aware % | Max Δ | Boots |
+|---|---|---:|---:|---:|---:|---:|---:|
+| solid | core | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
+| rect | core | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
+| text | core | 1,745 | 0.3957% | 4 | 0.0009% | 162 | 1 |
+| shadow | core | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
+| trivial | core | 1,745 | 0.3957% | 4 | 0.0009% | 162 | 1 |
+| type-body-large-emphasized | text | 988 | 0.2240% | 5 | 0.0011% | 226 | 1 |
+| type-body-large | text | 994 | 0.2254% | 5 | 0.0011% | 181 | 1 |
+| type-body-medium-emphasized | text | 1,614 | 0.3660% | 326 | 0.0739% | 226 | 1 |
+| type-body-medium | text | 1,884 | 0.4272% | 676 | 0.1533% | 226 | 1 |
+| type-body-small-emphasized | text | 1,369 | 0.3104% | 311 | 0.0705% | 226 | 1 |
+| type-body-small | text | 1,397 | 0.3168% | 334 | 0.0757% | 226 | 1 |
+| type-display-large-emphasized | text | 5,374 | 1.2186% | 1,236 | 0.2803% | 226 | 1 |
+| type-display-large | text | 8,034 | 1.8218% | 2,745 | 0.6224% | 226 | 1 |
+| type-display-medium-emphasized | text | 6,175 | 1.4002% | 1,696 | 0.3846% | 226 | 1 |
+| type-display-medium | text | 6,180 | 1.4014% | 1,629 | 0.3694% | 226 | 1 |
+| type-display-small-emphasized | text | 5,235 | 1.1871% | 1,839 | 0.4170% | 226 | 1 |
+| type-display-small | text | 4,378 | 0.9927% | 949 | 0.2152% | 226 | 1 |
+| type-headline-large-emphasized | text | 1,366 | 0.3098% | 1 | 0.0002% | 171 | 1 |
+| type-headline-large | text | 1,646 | 0.3732% | 3 | 0.0007% | 184 | 1 |
+| type-headline-medium-emphasized | text | 3,367 | 0.7635% | 714 | 0.1619% | 226 | 1 |
+| type-headline-medium | text | 3,680 | 0.8345% | 993 | 0.2252% | 226 | 1 |
+| type-headline-small-emphasized | text | 1,877 | 0.4256% | 51 | 0.0116% | 226 | 1 |
+| type-headline-small | text | 1,912 | 0.4336% | 58 | 0.0132% | 226 | 1 |
+| type-label-large-emphasized | text | 1,692 | 0.3837% | 474 | 0.1075% | 226 | 1 |
+| type-label-large | text | 1,683 | 0.3816% | 397 | 0.0900% | 226 | 1 |
+| type-label-medium-emphasized | text | 1,762 | 0.3995% | 663 | 0.1503% | 226 | 1 |
+| type-label-medium | text | 1,439 | 0.3263% | 375 | 0.0850% | 226 | 1 |
+| type-label-small-emphasized | text | 1,369 | 0.3104% | 397 | 0.0900% | 226 | 1 |
+| type-label-small | text | 1,139 | 0.2583% | 219 | 0.0497% | 226 | 1 |
+| type-title-large-emphasized | text | 1,681 | 0.3812% | 222 | 0.0503% | 226 | 1 |
+| type-title-large | text | 2,168 | 0.4916% | 598 | 0.1356% | 226 | 1 |
+| type-title-medium-emphasized | text | 843 | 0.1912% | 9 | 0.0020% | 205 | 1 |
+| type-title-medium | text | 815 | 0.1848% | 2 | 0.0005% | 226 | 1 |
+| type-title-small-emphasized | text | 1,692 | 0.3837% | 474 | 0.1075% | 226 | 1 |
+| type-title-small | text | 1,683 | 0.3816% | 397 | 0.0900% | 226 | 1 |
 
 ## Non-AA text pixels (boot 1, trivial)
 

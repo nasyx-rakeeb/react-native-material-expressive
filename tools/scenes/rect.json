@@ -1,6 +1,7 @@
 {
   "schema": 1,
   "id": "rect",
+  "category": "core",
   "description": "One rounded rectangle on the scene background. Geometry and edge antialiasing only.",
   "widthDp": 320,
   "heightDp": 200,

@@ -1,6 +1,7 @@
 {
   "schema": 1,
   "id": "type-title-large",
+  "category": "text",
   "description": "titleLarge: 400, 22/28 sp, tracking 0 sp. One-line Roboto Flex text scene.",
   "widthDp": 320,
   "heightDp": 200,

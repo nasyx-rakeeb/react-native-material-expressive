@@ -1,6 +1,7 @@
 {
   "schema": 1,
   "id": "type-label-small-emphasized",
+  "category": "text",
   "description": "labelSmallEmphasized: 700, 11/16 sp, tracking 0.5 sp. One-line Roboto Flex text scene.",
   "widthDp": 320,
   "heightDp": 200,

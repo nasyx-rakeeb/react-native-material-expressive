@@ -1,6 +1,7 @@
 {
   "schema": 1,
   "id": "shadow",
+  "category": "core",
   "description": "One elevated rounded rectangle. Shadow spread, color, and edge stability only.",
   "widthDp": 320,
   "heightDp": 200,

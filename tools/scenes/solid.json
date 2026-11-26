@@ -1,6 +1,7 @@
 {
   "schema": 1,
   "id": "solid",
+  "category": "core",
   "description": "Scene background only. Pure determinism control: no geometry, text, or shadow inside the crop.",
   "widthDp": 320,
   "heightDp": 200,

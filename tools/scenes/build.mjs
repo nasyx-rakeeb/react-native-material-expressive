@@ -10,6 +10,7 @@ const indexJson = path.join(scenesDir, 'index.json');
 const check = process.argv.includes('--check');
 
 const colorPattern = /^#[0-9A-Fa-f]{6}$/;
+const SCENE_CATEGORIES = ['core', 'text'];
 
 function fail(file, message) {
   throw new Error(`${path.relative(root, file)}: ${message}`);
@@ -44,6 +45,9 @@ function validateScene(file, scene) {
   }
   if (path.basename(file, '.json') !== scene.id) {
     fail(file, `file name must be ${scene.id}.json`);
+  }
+  if (!SCENE_CATEGORIES.includes(scene.category)) {
+    fail(file, `category must be one of ${SCENE_CATEGORIES.join(', ')}`);
   }
   if (typeof scene.description !== 'string' || scene.description.length < 10) {
     fail(file, 'description must be at least 10 characters');
@@ -117,6 +121,7 @@ const index = {
   generatedBy: 'tools/scenes/build.mjs',
   scenes: scenes.map(({ source, sourceSha256, ...scene }) => ({
     id: scene.id,
+    category: scene.category,
     source,
     sourceSha256,
     widthDp: scene.widthDp,
@@ -161,4 +166,7 @@ async function currentOrWrite(file, text) {
 
 await currentOrWrite(indexJson, indexText);
 await currentOrWrite(generatedTs, tsText);
-console.log(`scenes ok: ${ids.join(', ')}`);
+const categorySummary = SCENE_CATEGORIES.map(
+  (category) => `${category}=${scenes.filter((scene) => scene.category === category).length}`,
+).join(' ');
+console.log(`scenes ok: ${scenes.length} (${categorySummary})`);
