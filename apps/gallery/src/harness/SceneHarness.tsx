@@ -5,8 +5,18 @@ import { ROBOTO_FLEX_NATURAL_LINE_HEIGHT_RATIO } from 'react-native-material-exp
 
 import { scenes, type SceneId } from '../scenes.generated';
 import type { RectLayer, Scene, TextLayer } from '../scene-types';
+import {
+  TEXT_COMPENSATIONS,
+  type TextCompOverride,
+  type TextCompStrategy,
+} from './text-compensation.generated';
 
 type FontProbeState = 'pending' | 'ok' | 'fallback';
+
+export interface HarnessRoute {
+  sceneId: SceneId | null;
+  textComp: TextCompStrategy;
+}
 
 const FONT_FAMILY = 'RobotoFlex';
 const PROBE_TEXT = 'M3 Expressive wdth probe 0123456789';
@@ -27,6 +37,12 @@ function parseSceneId(url: string | null | undefined): SceneId | null {
   return isSceneId(name) ? name : null;
 }
 
+function parseTextComp(url: string | null | undefined): TextCompStrategy {
+  const match = /[?&]textComp=([^&]+)/.exec(url ?? '');
+  const value = match?.[1];
+  return value === 'c1' || value === 'c2' || value === 'c3' || value === 'c4' ? value : 'none';
+}
+
 function RectView({ layer }: { layer: RectLayer }) {
   return (
     <View
@@ -44,21 +60,24 @@ function RectView({ layer }: { layer: RectLayer }) {
   );
 }
 
-function TextView({ layer }: { layer: TextLayer }) {
+function TextView({ layer, override }: { layer: TextLayer; override?: TextCompOverride }) {
+  const sizeSp = override?.sizeSp ?? layer.sizeSp;
+  const letterSpacingSp = override?.letterSpacingSp ?? layer.letterSpacingSp;
+  const lineHeightSp = override?.lineHeightSp ?? layer.lineHeightSp;
   const style: TextStyle = {
     position: 'absolute',
     left: layer.x,
     top: layer.y,
     color: layer.color,
-    fontSize: layer.sizeSp,
-    letterSpacing: layer.letterSpacingSp,
+    fontSize: sizeSp,
+    letterSpacing: letterSpacingSp,
     fontFamily: FONT_FAMILY,
     fontVariationSettings: `'wght' ${layer.weight}`,
     includeFontPadding: false,
     textAlign: 'left',
-    ...(layer.lineHeightSp !== undefined
+    ...(lineHeightSp !== undefined
       ? {
-          lineHeight: Math.max(layer.lineHeightSp, layer.sizeSp * LINE_HEIGHT_RATIO),
+          lineHeight: Math.max(lineHeightSp, sizeSp * LINE_HEIGHT_RATIO),
         }
       : null),
     ...(layer.widthDp !== undefined ? { width: layer.widthDp } : null),
@@ -133,7 +152,8 @@ function FontProbe({ onResult }: { onResult: (state: FontProbeState) => void }) 
   );
 }
 
-function SceneBody({ scene }: { scene: Scene }) {
+function SceneBody({ scene, textComp }: { scene: Scene; textComp: TextCompStrategy }) {
+  const override = TEXT_COMPENSATIONS[textComp][scene.id];
   return (
     <View
       style={{
@@ -149,14 +169,20 @@ function SceneBody({ scene }: { scene: Scene }) {
         layer.type === 'rect' ? (
           <RectView key={`rect-${index}`} layer={layer} />
         ) : (
-          <TextView key={`text-${index}`} layer={layer} />
+          <TextView key={`text-${index}`} layer={layer} override={override} />
         ),
       )}
     </View>
   );
 }
 
-export default function SceneHarness({ sceneId }: { sceneId: SceneId }) {
+export default function SceneHarness({
+  sceneId,
+  textComp = 'none',
+}: {
+  sceneId: SceneId;
+  textComp?: TextCompStrategy;
+}) {
   const scene = scenes[sceneId] as Scene;
   const [fontState, setFontState] = useState<FontProbeState>('pending');
   const [renderKey, setRenderKey] = useState(0);
@@ -191,7 +217,7 @@ export default function SceneHarness({ sceneId }: { sceneId: SceneId }) {
     <View style={styles.root}>
       <StatusBar hidden />
       <FontProbe onResult={setFontState} />
-      <SceneBody key={`${sceneId}-${renderKey}`} scene={scene} />
+      <SceneBody key={`${sceneId}-${renderKey}`} scene={scene} textComp={textComp} />
       <View style={[styles.band, { backgroundColor: bandColor }]} />
       <Pressable
         accessibilityRole="button"
@@ -204,14 +230,14 @@ export default function SceneHarness({ sceneId }: { sceneId: SceneId }) {
   );
 }
 
-export function useHarnessScene(): SceneId | null | undefined {
-  const [sceneId, setSceneId] = useState<SceneId | null | undefined>(undefined);
+export function useHarnessScene(): HarnessRoute | undefined {
+  const [route, setRoute] = useState<HarnessRoute | undefined>(undefined);
 
   useEffect(() => {
     let mounted = true;
     Linking.getInitialURL().then((url) => {
       if (mounted) {
-        setSceneId(parseSceneId(url));
+        setRoute({ sceneId: parseSceneId(url), textComp: parseTextComp(url) });
       }
     });
     return () => {
@@ -219,7 +245,7 @@ export function useHarnessScene(): SceneId | null | undefined {
     };
   }, []);
 
-  return sceneId;
+  return route;
 }
 
 const styles = StyleSheet.create({

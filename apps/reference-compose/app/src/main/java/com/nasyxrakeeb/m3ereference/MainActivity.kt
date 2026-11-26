@@ -208,19 +208,6 @@ class MainActivity : ComponentActivity() {
                     sha256(context.assets.open(FONT_ASSET).use { it.readBytes() })
                 }
                 Log.i(TAG, "M3E_FONT_HASH $FONT_ASSET $hash")
-                val probePaint = android.graphics.Paint(android.graphics.Paint.ANTI_ALIAS_FLAG).apply {
-                    typeface = android.graphics.Typeface.createFromAsset(context.assets, FONT_ASSET)
-                    fontVariationSettings = "'wght' 500"
-                }
-                for (size in listOf(35.5f, 36f, 36.75f, 37f, 37.5f, 38f)) {
-                    probePaint.textSize = size
-                    Log.i(
-                        TAG,
-                        "M3E_PAINT size=$size width=${probePaint.measureText("Archive 42")} " +
-                            "flags=${probePaint.flags} hinting=${probePaint.hinting} " +
-                            "subpixel=${probePaint.isSubpixelText} linear=${probePaint.isLinearText}",
-                    )
-                }
                 val probeFamily = { width: Float ->
                     FontFamily(
                         Font(

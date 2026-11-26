@@ -18,7 +18,7 @@ import SceneHarness, { useHarnessScene } from './src/harness/SceneHarness';
 const DYNAMIC_PROBE_ENABLED = process.env.EXPO_PUBLIC_M3E_DYNAMIC_PROBE === '1';
 
 export default function App() {
-  const sceneId = useHarnessScene();
+  const route = useHarnessScene();
 
   useEffect(() => {
     if (!DYNAMIC_PROBE_ENABLED || Platform.OS !== 'android') {
@@ -30,12 +30,12 @@ export default function App() {
     });
   }, []);
 
-  if (sceneId === undefined) {
+  if (route === undefined) {
     return <View style={styles.boot} />;
   }
 
-  if (sceneId !== null) {
-    return <SceneHarness sceneId={sceneId} />;
+  if (route.sceneId !== null) {
+    return <SceneHarness sceneId={route.sceneId} textComp={route.textComp} />;
   }
 
   return <Home />;

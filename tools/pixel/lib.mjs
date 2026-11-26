@@ -393,6 +393,8 @@ export function launch(app, sceneId) {
     }
     return adb(args).toString('utf8');
   }
+  const comp = process.env.M3E_RN_TEXT_COMP;
+  const query = comp ? `name=${sceneId}&textComp=${comp}` : `name=${sceneId}`;
   return adb([
     'shell',
     'am',
@@ -401,7 +403,7 @@ export function launch(app, sceneId) {
     '-a',
     'android.intent.action.VIEW',
     '-d',
-    `m3egallery://scene?name=${sceneId}`,
+    `'m3egallery://scene?${query}'`,
     app.package,
   ]).toString('utf8');
 }
