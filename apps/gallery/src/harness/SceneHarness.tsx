@@ -1,10 +1,24 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { Linking, Pressable, StyleSheet, Text, View, type TextStyle } from 'react-native';
+import {
+  Linking,
+  PixelRatio,
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
+  type TextStyle,
+} from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import { ROBOTO_FLEX_NATURAL_LINE_HEIGHT_RATIO } from 'react-native-material-expressive';
+import {
+  FocusRing,
+  Ripple,
+  ROBOTO_FLEX_NATURAL_LINE_HEIGHT_RATIO,
+  StateLayer,
+  Surface,
+} from 'react-native-material-expressive';
 
 import { scenes, type SceneId } from '../scenes.generated';
-import type { RectLayer, Scene, TextLayer } from '../scene-types';
+import type { InteractionLayer, RectLayer, Scene, TextLayer } from '../scene-types';
 import {
   TEXT_COMPENSATIONS,
   type TextCompOverride,
@@ -31,6 +45,18 @@ export interface HarnessRoute {
 
 const FONT_FAMILY = 'RobotoFlex';
 const PROBE_TEXT = 'M3 Expressive wdth probe 0123456789';
+const DENSITY = PixelRatio.get();
+
+/**
+ * Compose lays out at integer pixels: a 36 dp height at 2.625× becomes 95 px,
+ * not 94.5. Yoga rounds the same size down, which leaves a 1 px edge on every
+ * fractional-dp scene layer. Snapping the harness bounds to the pixel grid
+ * makes both stacks render the same rectangle; it does not change the library,
+ * which still takes dp.
+ */
+function snapDp(value: number): number {
+  return Math.round(value * DENSITY) / DENSITY;
+}
 // Compose expands a below-natural line height; React Native squashes it, so the
 // scene renderer applies the same floor the library's type scale applies.
 const LINE_HEIGHT_RATIO = ROBOTO_FLEX_NATURAL_LINE_HEIGHT_RATIO;
@@ -169,6 +195,56 @@ function TextView({
   );
 }
 
+function InteractionView({ layer }: { layer: InteractionLayer }) {
+  const width = snapDp(layer.width);
+  const height = snapDp(layer.height);
+  const showStateLayer =
+    layer.focusRing === null &&
+    layer.ripple === null &&
+    layer.state !== 'default' &&
+    layer.state !== 'disabled';
+  return (
+    <Surface
+      color={layer.containerColor}
+      shape={layer.radius}
+      shadowElevation={layer.elevationDp}
+      style={{
+        position: 'absolute',
+        left: snapDp(layer.x),
+        top: snapDp(layer.y),
+        width,
+        height,
+      }}
+      tonalElevation={layer.elevationDp}
+    >
+      {showStateLayer ? (
+        <StateLayer borderRadius={layer.radius} color={layer.contentColor} state={layer.state} />
+      ) : null}
+      {layer.ripple !== null ? (
+        <Ripple
+          active
+          borderRadius={layer.radius}
+          bounded={layer.ripple.bounded}
+          color={layer.contentColor}
+          height={height}
+          origin={{ x: layer.ripple.originX, y: layer.ripple.originY }}
+          progress={layer.ripple.progress}
+          width={width}
+        />
+      ) : null}
+      {layer.focusRing !== null ? (
+        <FocusRing
+          innerColor={layer.focusRing.innerColor}
+          outerColor={layer.focusRing.outerColor}
+          progress={1}
+          radius={layer.radius}
+          visible
+        />
+      ) : null}
+    </Surface>
+  );
+}
+
 function ProbeText({ width, onWidth }: { width: number; onWidth: (value: number) => void }) {
   return (
     <Text
@@ -241,18 +317,22 @@ function SceneBody({
         backgroundColor: scene.background,
       }}
     >
-      {scene.layers.map((layer, index) =>
-        layer.type === 'rect' ? (
-          <RectView key={`rect-${index}`} layer={layer} />
-        ) : (
-          <TextView
-            key={`text-${index}`}
-            layer={layer}
-            override={override}
-            fontScaling={fontScaling}
-          />
-        ),
-      )}
+      {scene.layers.map((layer, index) => {
+        if (layer.type === 'rect') {
+          return <RectView key={`rect-${index}`} layer={layer} />;
+        }
+        if (layer.type === 'text') {
+          return (
+            <TextView
+              key={`text-${index}`}
+              layer={layer}
+              override={override}
+              fontScaling={fontScaling}
+            />
+          );
+        }
+        return <InteractionView key={`interaction-${index}`} layer={layer} />;
+      })}
     </View>
   );
 }

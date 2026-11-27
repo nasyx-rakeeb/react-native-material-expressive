@@ -1,0 +1,65 @@
+{
+  "schema": 1,
+  "id": "focus-rings",
+  "category": "interaction",
+  "description": "Inset focus rings at 8, 16 and 24 dp radii: outer 2 dp secondary, inner 3 dp onSecondary, drawn inside the bounds.",
+  "widthDp": 320,
+  "heightDp": 200,
+  "background": "#FEF7FF",
+  "layers": [
+    {
+      "type": "interaction",
+      "x": 16,
+      "y": 68,
+      "width": 88,
+      "height": 64,
+      "radius": 8,
+      "containerColor": "#EADDFF",
+      "contentColor": "#21005D",
+      "state": "focus",
+      "elevationDp": 0,
+      "surfaceTint": "#6750A4",
+      "focusRing": {
+        "outerColor": "#625B71",
+        "innerColor": "#FFFFFF"
+      },
+      "ripple": null
+    },
+    {
+      "type": "interaction",
+      "x": 116,
+      "y": 68,
+      "width": 88,
+      "height": 64,
+      "radius": 16,
+      "containerColor": "#EADDFF",
+      "contentColor": "#21005D",
+      "state": "focus",
+      "elevationDp": 0,
+      "surfaceTint": "#6750A4",
+      "focusRing": {
+        "outerColor": "#625B71",
+        "innerColor": "#FFFFFF"
+      },
+      "ripple": null
+    },
+    {
+      "type": "interaction",
+      "x": 216,
+      "y": 68,
+      "width": 88,
+      "height": 64,
+      "radius": 24,
+      "containerColor": "#EADDFF",
+      "contentColor": "#21005D",
+      "state": "focus",
+      "elevationDp": 0,
+      "surfaceTint": "#6750A4",
+      "focusRing": {
+        "outerColor": "#625B71",
+        "innerColor": "#FFFFFF"
+      },
+      "ripple": null
+    }
+  ]
+}

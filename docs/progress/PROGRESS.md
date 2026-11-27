@@ -596,3 +596,67 @@ A day closes only when its exit criteria are met with evidence and Nasyx approve
 - `docs/evidence/day7/u29-device-steps.md` — completed hand-off with the result table and reproduction steps.
 - `docs/UNVERIFIED.md` U-29 — resolved.
 - `tools/device/u29-capture.sh` — now reports the active display mode (`mActiveModeId`), not the first supported mode.
+
+---
+
+## Day 9 | 2026-11-27/28 | Interaction primitives, state layers, ripple, focus ring, elevation, haptics
+
+**Status:** READY FOR APPROVAL.
+
+**Done**
+
+- Implemented the `Interactive` state machine (enabled/disabled, hover, focus, press, drag, long-press) as a headless `Pressable`. It renders no visuals; consumers compose `StateLayer`, `Ripple` and `FocusRing` through a render-prop state. **ADR-018.**
+- Implemented Compose-cited state layers: hover **0.08**, focus **0.10**, pressed **0.10**, dragged **0.16** (`StateTokens.kt:21-25`); 15 ms linear default/hover, 45 ms focus-in and drag-start, 150 ms drag-out (`material3-ripple/Ripple.kt:474-494`).
+- Implemented the bounded/unbounded ripple: start radius `0.3 × max(w,h)`, bounded end `hypot(w,h)/2 + 10 dp`, fade-in 75 ms linear, radius 225 ms FastOutSlowIn, centre 225 ms linear, fade-out 150 ms linear, press alpha 0.10 (`RippleAnimation.kt:83-115,157-174`).
+- Implemented the inset focus ring: outer 0 dp / 2 dp `secondary`, inner 1 dp / 3 dp `onSecondary`, inner drawn first (`Ripple.kt:349-357,784-801`); focus-in is spatial, focus-out is effects.
+- Implemented elevation 0/1/3/6/8/12 dp (`ElevationTokens.kt:23-41`) and the tonal `surface` formula `((4.5·ln(elevation+1))+2)/100` (`ColorScheme.kt:1157-1160,1566-1572`). `Surface` resolves tonal colour only for the `surface` role; other roles keep their colour.
+- Implemented the 48 dp target with `hitSlop`, never layout: `resolveHitSlop` plus a render test that lays out a 24×24 visual, asserts a 12 dp slop on every side (24 + 12 + 12 = 48), and asserts the rendered style is still 24×24.
+- Implemented `M3Haptics` as an injectable adapter (`impact`, `selection`, `notification`) with `NOOP_HAPTICS` as the default. The library imports no native haptics module.
+- Closed the ADR-016 one-frame bug: `useReduceMotion` now starts `{ enabled: true, ready: false }`; `useSpring`/`useTimedValue` hold the first animation until the native answer arrives. **ADR-016 amendment.**
+- Enforced motion kinds: every animated property is declared `spatial` or `effects` in `docs/specs/interaction/behavior.md`; `tools/motion-kind/check.mjs` fails a missing/non-literal kind, a raw `withTiming`/`withSpring`, an undeclared component, or a spec/source mismatch. It runs in `pnpm lint`, has 6 analyzer self-tests, and a Jest wrapper. `useSpring` now requires `kind`.
+- Extended the scene pipeline with an `interaction` category and five 320×200 dp scenes: `interaction-states`, `state-layer-colors`, `focus-rings`, `elevation-levels`, `ripple-frames`. RN renders the real library primitives; Compose renders the same geometry and token values.
+- Captured iOS Release on the iPhone 17 Pro simulator and compared levels 0/1/3/6/8/12 side-by-side with Android. Tonal fills match 5/6 levels exactly (level 12 differs by 1/255); the iOS shadow is broader/softer and is documented as an **approximation**, never a pixel match. **ADR-019.**
+
+**Numbers**
+
+- Android diff, two captures per stack, determinism 0 exact / 0 AA-aware: `interaction-states` 97,787 exact (22.1739%), **0 AA-aware**, max Δ 9; `state-layer-colors` 187,908 (42.6095%), **0**, max Δ 9; `focus-rings` 2,254 (0.5111%), **0**, max Δ 18; `elevation-levels` 22,350 (5.0680%), **0**, max Δ 1; `ripple-frames` 79,557 (18.0401%), **0**, max Δ 11. Gate is AA-aware 0.05%; all five are **0.0000%**.
+- Motion-kind gate: 3 components, 6 properties (spatial 3, effects 3).
+- iOS shadow band (2–24 dp below each tile): Android depth 0.0/8.8/19.3/25.3/26.3/27.1 vs iOS 1.0/10.0/16.1/18.3/22.0/27.1 for levels 0/1/3/6/8/12. The iOS mean is higher at every level: broader, softer shadow.
+- Tests: **20 suites / 153 tests**. Scenes: **42 (core 5 / text 32 / interaction 5)**.
+
+**Evidence**
+
+- `docs/evidence/day9/README.md` — diff table, exact-vs-AA explanation, pixel-snapping note, 48 dp proof, haptics, reduce-motion readiness, motion-kind gate, limits, reproduce commands.
+- `docs/evidence/day9/diff/` — `report.html`, `results.json`, captures, diffs, side-by-side pairs.
+- `docs/evidence/day9/ios/README.md`, `shadow-profile.json`, `elevation-levels-android-vs-ios.png`.
+- `docs/specs/interaction/behavior.md` — every value cited to Compose 1.5.0, plus the motion-kind table.
+- `docs/DECISIONS.md` — ADR-016 amendment, ADR-018, ADR-019.
+- `tools/motion-kind/check.mjs`; `src/motion/__tests__/motionKind.test.ts`.
+- `src/interaction/__tests__/touchTarget.render.test.tsx`.
+
+**Gates (final run, 2026-11-28)**
+
+- `format:check` **PASS**; `lint` **PASS** (3/3 packages + tools + motion-kind); `typecheck` **PASS** (4/4); `test` **PASS** (20 suites / 153 tests); `build` **PASS** (ESM + CJS + declarations); `scenes:check` **PASS** (42 scenes).
+- Interaction diff gate **PASS** (AA-aware 0.0000% on all five scenes).
+
+**Deviations**
+
+- Exact-zero is not met on the interaction scenes. RN and Compose composite 8–16% state layers with different 8-bit rounding (fills differ by ≤1/255) and anti-alias clip/ripple edges differently (max Δ 9–18). The PLAYBOOK gate is AA-aware 0.05%; all five scenes are 0 AA-aware. Documented, not hidden.
+- The scene harness snaps static layer bounds to the device pixel grid (`snapDp`) because Compose rounds offset and size independently to integer pixels while Yoga rounds fractional sizes down, which otherwise leaves a 1 px edge. Harness-only; the library API still takes dp.
+- Live hover, drag and long-press pixels were not captured: no pointer device on the emulator and no transient gesture capture. The states are rendered statically (`interaction-states`, `state-layer-colors`) and the reducer is unit-tested. Stated in the evidence.
+- iOS elevation is inspection only; no Compose iOS reference exists. The shadow coefficients are an approximation and may be tuned in the Day 41 iOS pass.
+- One boot, two captures per stack. Cross-boot determinism remains Day 46 CI hardening.
+- Haptics has no visual diff; adapter unit tests only.
+- Reduce motion has no Compose counterpart; unit tests plus the Day 8 gallery.
+- The U-29 120 Hz re-run is still deferred to Day 30; the Xiaomi was not re-attached for Day 9.
+
+**Risks**
+
+- A visual below 48 dp with less than 48 dp spacing between targets will overlap hit regions; components must keep spacing or deliberately lower `minTouchTarget`.
+- The motion-kind checker only scans `packages/.../src`; new animation added directly in the gallery or another package is not covered.
+- iOS shadow coefficients are monotonic but not Android-equivalent; a designer comparing platforms may flag the softer look.
+- State-layer timing is transcribed from `Ripple.kt`; if Compose changes the tween in a future version, the spec must be re-pinned.
+
+**Next step**
+
+- Post the Day 9 Day-Close Report and stop. Day 10 (foundation gate) starts only after Nasyx approves and reviews the gallery/diff reports.

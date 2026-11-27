@@ -22,6 +22,15 @@ Do not work on these until the current day's exit criteria are met. Add findings
 - **Accessibility scanner automation**: Accessibility Scanner/TalkBack scripted checks in CI (Day 40).
 - **Release provenance/SBOM**: automate npm provenance + CycloneDX SBOM (Day 55).
 
+## Day 30 blockers — U-29 follow-ups (Nasyx, 2026-11-27)
+
+ADR-002 stays for now. These do not block Day 9, but all four must be closed before Day 30.
+
+1. **120 Hz device re-run.** Repeat the six 20 s captures on Nasyx's Xiaomi 2201116SI with the display set to 120 Hz. Report the same table (mode × renderer, frames, avg, max) plus the active mode id. **Remind Nasyx at the Day 10 gate** so the phone can be plugged in.
+2. **SVG time profile.** Break down where the SVG time goes in `cycle` and `concurrent` (path-string generation, native parse, UI-thread commit). Try cheap optimizations and report numbers: reduced decimal precision in the path string, fewer cubic segments where visually identical, caching, and for wave animation a translate-based approach instead of regenerating the path each frame.
+3. **Skia size verification.** Confirm whether 29.78 MB per ABI is the real APK-size increase after compression and stripping, or the uncompressed library size. Compare with Skia's documented size impact. Amend ADR-002 if the figure was misleading.
+4. **ADR amendment by Day 30.** Decide one of: (a) SVG is enough for the loading indicator and wavy progress, with 60 Hz and 120 Hz numbers; (b) those two components use Skia as an optional peer with a documented fallback; or (c) a hybrid. `PathCanvas` must remain the only file importing a renderer.
+
 ## Research notes to revisit
 
 - Paper’s Button/IconButton morph uses CSS transition props, not Reanimated. Test native behavior on the reference emulator (U-16) before citing it as a competitor capability.

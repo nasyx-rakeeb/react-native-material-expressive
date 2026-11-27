@@ -10,7 +10,8 @@ const indexJson = path.join(scenesDir, 'index.json');
 const check = process.argv.includes('--check');
 
 const colorPattern = /^#[0-9A-Fa-f]{6}$/;
-const SCENE_CATEGORIES = ['core', 'text'];
+const SCENE_CATEGORIES = ['core', 'text', 'interaction'];
+const INTERACTION_STATES = ['default', 'hover', 'focus', 'pressed', 'dragged', 'disabled'];
 
 function fail(file, message) {
   throw new Error(`${path.relative(root, file)}: ${message}`);
@@ -84,8 +85,45 @@ function validateScene(file, scene) {
       if (typeof layer.text !== 'string' || layer.text.length === 0) {
         fail(file, `${label}.text must be non-empty`);
       }
+    } else if (layer.type === 'interaction') {
+      requireNumber(file, layer.x, `${label}.x`, { integer: true });
+      requireNumber(file, layer.y, `${label}.y`, { integer: true });
+      requireNumber(file, layer.width, `${label}.width`, { min: 1 });
+      requireNumber(file, layer.height, `${label}.height`, { min: 1 });
+      requireNumber(file, layer.radius, `${label}.radius`, { min: 0 });
+      requireNumber(file, layer.elevationDp, `${label}.elevationDp`, { min: 0 });
+      if (!INTERACTION_STATES.includes(layer.state)) {
+        fail(file, `${label}.state must be one of ${INTERACTION_STATES.join(', ')}`);
+      }
+      requireColor(file, layer.containerColor, `${label}.containerColor`);
+      requireColor(file, layer.contentColor, `${label}.contentColor`);
+      requireColor(file, layer.surfaceTint, `${label}.surfaceTint`);
+      if (layer.focusRing !== null) {
+        if (typeof layer.focusRing !== 'object') {
+          fail(file, `${label}.focusRing must be null or an object`);
+        }
+        requireColor(file, layer.focusRing.outerColor, `${label}.focusRing.outerColor`);
+        requireColor(file, layer.focusRing.innerColor, `${label}.focusRing.innerColor`);
+      }
+      if (layer.ripple !== null) {
+        if (typeof layer.ripple !== 'object') {
+          fail(file, `${label}.ripple must be null or an object`);
+        }
+        requireNumber(file, layer.ripple.progress, `${label}.ripple.progress`, { min: 0 });
+        if (layer.ripple.progress > 1) {
+          fail(file, `${label}.ripple.progress must be <= 1`);
+        }
+        requireNumber(file, layer.ripple.originX, `${label}.ripple.originX`, { min: 0 });
+        requireNumber(file, layer.ripple.originY, `${label}.ripple.originY`, { min: 0 });
+        if (layer.ripple.originX > layer.width || layer.ripple.originY > layer.height) {
+          fail(file, `${label}.ripple origin must be inside the layer`);
+        }
+        if (typeof layer.ripple.bounded !== 'boolean') {
+          fail(file, `${label}.ripple.bounded must be a boolean`);
+        }
+      }
     } else {
-      fail(file, `${label}.type must be rect or text`);
+      fail(file, `${label}.type must be rect, text or interaction`);
     }
   }
   return scene;

@@ -10,6 +10,7 @@ if [ ! -d apps/gallery/android ] || [ "${1:-}" = "--clean" ]; then
   (cd apps/gallery && CI=1 npx expo prebuild -p android --clean --no-install)
 fi
 
+(cd apps/gallery/android && ./gradlew :app:createBundleReleaseJsAndAssets --rerun-tasks)
 (cd apps/gallery/android && ./gradlew :app:assembleRelease)
 (cd apps/reference-compose && ./gradlew :app:assembleDebug)
 

@@ -10,7 +10,7 @@
   },
   "scripts": {
     "build": "turbo run build",
-    "lint": "turbo run lint && eslint tools",
+    "lint": "turbo run lint && eslint tools && node tools/motion-kind/check.mjs",
     "typecheck": "turbo run typecheck",
     "test": "turbo run test",
     "format": "prettier --write .",

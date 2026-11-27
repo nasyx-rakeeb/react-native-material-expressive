@@ -480,6 +480,16 @@ Every accepted decision has a date and evidence. Day 0 decisions are research-on
   - `src/motion/__tests__/spring.test.ts` — "reduce-motion mapping" (2 tests).
   - `docs/evidence/day8/gallery/reduce-on.png`, `system-reduce-on.png`; `docs/evidence/day8/README.md`.
 
+### Amendment (Day 9, 2026-11-27) — no full-motion first frame
+
+The original consequence — "components start in the full-motion state for one frame" — was observable: `AccessibilityInfo.isReduceMotionEnabled` resolves asynchronously, so a component that mounted with the old `false` default could start a full spring before the native answer arrived. With reduce motion enabled, that is a visible violation of the setting, not an acceptable one-frame artefact.
+
+- `useReduceMotion()` now starts at `{ enabled: true, ready: false }`: conservative until the native answer arrives, so no spatial motion starts by default.
+- `useReduceMotionState()` exposes `{ enabled, ready }`. `useSpring` and `useTimedValue` hold the first animation while `ready === false`; when the answer is `false`, the held animation starts from its initial value. An explicit override is ready immediately.
+- The old default (`false`) remains available only as an explicit override; it is no longer the initial state.
+- Tests: `src/motion/__tests__/reduceMotion.test.ts` covers the pending state, the native `true`/`false` answers, the override, and the held-first-animation behaviour.
+- This amendment supersedes decision item 1's "defaults to `false` until the first native answer" and the first consequence bullet above.
+
 ## ADR-017 — Interactive containers use rounded rectangles; `ShapeContainer` is decorative-only
 
 - **Date:** 2026-11-27
@@ -515,3 +525,56 @@ Every accepted decision has a date and evidence. Day 0 decisions are research-on
   - `docs/COMPONENT_MATRIX.md` — `ShapeContainer` marked decorative-only.
   - `docs/BACKLOG.md` — native mask spike.
   - Audit commands: `grep -rl "MaterialShapes\." docs/research/raw/src/material3/commonMain/androidx/compose/material3/` → `LoadingIndicator.kt`; `grep -rln "RoundedPolygon" ...` → `LoadingIndicator.kt`, `internal/CircularWavyProgressModifiers.kt`, `internal/ShapeUtil.kt`, `MaterialShapes.kt`.
+
+## ADR-018 — Interaction primitives are headless; 48 dp uses `hitSlop`, not layout
+
+- **Date:** 2026-11-27
+- **Status:** Accepted (Day 9)
+- **Context:**
+  - Compose Material3 1.5.0 draws state layers, ripples and the inset focus ring inside components, and reserves a 48 dp minimum interactive size in layout (`InteractiveComponentSize.kt:266-269`). React Native can express the same visuals, but `hitSlop` expands only the touch region.
+  - The Day 8 motion gate requires every animated property to declare `spatial` or `effects`. A single component that animates opacity, radius and focus interpolation internally would need several kinds and would hide which property is which.
+- **Decision:**
+  1. `Interactive` is a headless `Pressable` state machine: enabled/disabled, hover, focus, press, drag and long-press. It renders no state layer, ripple or ring; consumers compose `StateLayer`, `Ripple` and `FocusRing` with a render-prop state.
+  2. The 48 dp minimum is applied with `hitSlop` (`resolveHitSlop`), so a 24 dp visual stays 24 dp. A render test asserts the visual style and layout are unchanged while the target grows.
+  3. State-layer opacities are the Compose tokens: hover 0.08, focus 0.10, pressed 0.10, dragged 0.16 (`StateTokens.kt:21-25`). The press visual is normally the ripple at 0.10; `StateLayer` exposes `pressed` only for surfaces that opt out of a ripple.
+  4. Ripple geometry, 75/225/150 ms timings and the 0.10 press alpha come from `material3-ripple` `RippleAnimation.kt:83-115,157-174`; the focus ring is 0 dp/2 dp `secondary` outer and 1 dp/3 dp `onSecondary` inner, drawn inner first (`Ripple.kt:349-357,784-801`).
+  5. Haptics are an injectable `M3Haptics` adapter with a documented no-op default; the library imports no haptics native module.
+- **Why:** Keeping the visuals separate preserves the motion-kind contract, lets components choose ripple vs state-layer-only, and keeps the interaction logic testable without a renderer. `hitSlop` matches the RN platform model and keeps the visual size the designer specified; Compose's layout reservation is a platform difference, not a fidelity target.
+- **Alternatives rejected:**
+  - **One `Interactive` that draws everything.** It would animate three kinds in one file, making the motion-kind declaration meaningless and preventing ripple-less surfaces.
+  - **Reserve 48 dp in layout.** It grows small visuals and changes spacing; Material's minimum is a target, not a visual size.
+  - **Copy opacity values from memory or a design kit.** Rejected; every value is cited to the Compose 1.5.0 sources.
+  - **Hard-depend on `expo-haptics`.** Adds a peer dependency for an optional platform nicety.
+- **Consequences:**
+  - A visual smaller than 48 dp can have a target that overlaps its neighbours if the layout spacing is under 48 dp; components must keep ≥48 dp between targets or opt into a smaller `minTouchTarget` deliberately.
+  - `StateLayer` and `Ripple` need the content colour; `FocusRing` needs the shape radius. These are explicit props, not theme guesses.
+  - The motion-kind gate (`tools/motion-kind/check.mjs`) fails any new animated component without a spec row and a literal kind.
+- **Evidence:**
+  - `docs/specs/interaction/behavior.md` — state precedence, opacities, ripple, focus ring, elevation, touch target, haptics, motion-kind table.
+  - `src/interaction/` — implementation; `src/interaction/__tests__/` — state machine, state layer, touch target, haptics, ripple.
+  - `docs/evidence/day9/README.md` and `docs/evidence/day9/diff/` — five Android diff scenes.
+
+## ADR-019 — iOS elevation is a documented approximation, never a pixel match
+
+- **Date:** 2026-11-27
+- **Status:** Accepted (Day 9)
+- **Context:**
+  - Android elevation is a RenderNode property that draws an ambient and a spot shadow; Compose's `Surface`/`Modifier.shadow` use that model. React Native's iOS shadow props (`shadowColor`, `shadowOpacity`, `shadowRadius`, `shadowOffset`) cannot reproduce it.
+  - There is no Compose iOS reference for Android elevation, so an iOS pixel diff against Compose would be a category error.
+- **Decision:**
+  1. `elevationToIosShadow(dp)` maps a Material elevation to `shadowOpacity = min(0.22, 0.05 + 0.012 × dp)`, `shadowRadius = 1.5 × dp`, and `shadowOffset.height = max(1, round(0.5 × dp))`, with a black shadow.
+  2. Android keeps the native `elevation` value; iOS uses the approximation; web uses a CSS `boxShadow` of the same shape.
+  3. The docs, component matrix and evidence call the iOS result an **approximation**. The iOS column is inspection, not the Compose diff gate (Core Rule 3, ADR-004).
+  4. Side-by-side screenshots at levels 0–5 are captured for review; the measured difference is reported, not gated.
+- **Why:** A monotonic, level-differentiated shadow preserves hierarchy on iOS without adding a rendering dependency. Being explicit about the approximation prevents a false fidelity claim.
+- **Alternatives rejected:**
+  - **No iOS shadow.** Loses the elevation hierarchy that Material relies on.
+  - **One fixed shadow for every level.** Levels become visually indistinguishable.
+  - **Skia drop shadow.** Adds a renderer dependency for a platform-only visual (ADR-002 keeps `PathCanvas` the only renderer importer).
+  - **Claim pixel parity with Android.** False: the shadow models differ.
+- **Consequences:**
+  - iOS shadows will not match Android pixel-for-pixel; Day 41 may tune the coefficients after the iOS fidelity pass.
+  - The Android elevation scene remains the gate; iOS evidence is reviewed visually and the deltas are documented.
+- **Evidence:**
+  - `src/elevation/elevation.ts` (`elevationToIosShadow`), `src/elevation/Surface.tsx`.
+  - `docs/evidence/day9/ios/` — side-by-side captures and the approximation note.

@@ -3,6 +3,30 @@
   "generatedBy": "tools/scenes/build.mjs",
   "scenes": [
     {
+      "id": "elevation-levels",
+      "category": "interaction",
+      "source": "tools/scenes/elevation-levels.json",
+      "sourceSha256": "ef87c15145f7314ad1c4c3ae73b3bfb1291d9f1f5acc007ca0a95b3954ef72ae",
+      "widthDp": 320,
+      "heightDp": 200
+    },
+    {
+      "id": "focus-rings",
+      "category": "interaction",
+      "source": "tools/scenes/focus-rings.json",
+      "sourceSha256": "c74607ec67806e3f94446fb6b220677e6660e35a0a3728594d20441c1e39765e",
+      "widthDp": 320,
+      "heightDp": 200
+    },
+    {
+      "id": "interaction-states",
+      "category": "interaction",
+      "source": "tools/scenes/interaction-states.json",
+      "sourceSha256": "9a5ed3cbdecc793fea50b788c2cf40357c38d62f922f9d52a746b23957c2d9c4",
+      "widthDp": 320,
+      "heightDp": 200
+    },
+    {
       "id": "labels",
       "category": "text",
       "source": "tools/scenes/labels.json",
@@ -27,6 +51,14 @@
       "heightDp": 200
     },
     {
+      "id": "ripple-frames",
+      "category": "interaction",
+      "source": "tools/scenes/ripple-frames.json",
+      "sourceSha256": "4c6dfc9fae15044a5829a6dc2f2e30223de2ae3493cafdacf238004a480f5636",
+      "widthDp": 320,
+      "heightDp": 200
+    },
+    {
       "id": "shadow",
       "category": "core",
       "source": "tools/scenes/shadow.json",
@@ -39,6 +71,14 @@
       "category": "core",
       "source": "tools/scenes/solid.json",
       "sourceSha256": "8af83acabf7db1b6123a41e0554ab29e4b23631e2f67fe9c07c63d1a5c94e377",
+      "widthDp": 320,
+      "heightDp": 200
+    },
+    {
+      "id": "state-layer-colors",
+      "category": "interaction",
+      "source": "tools/scenes/state-layer-colors.json",
+      "sourceSha256": "69636baaf4df9a530000006ffecdeb81df8e83e3daacdee304049300fab1f854",
       "widthDp": 320,
       "heightDp": 200
     },

@@ -39,17 +39,17 @@
 | `Shape` primitive | ADR-002; `MaterialShapes.kt` | [x] | [x] | [x] | — | [ ] | — | [ ] | [x] | [x] | [ ] |
 | `MorphingShape` primitive | ADR-011/012; `Morph.toPath` | [x] | [x] | [ ] | [x] | [ ] | — | [ ] | [x] | [x] | [ ] |
 | `ShapeContainer` (decorative clip only; ADR-017) | ADR-002; shaped-container design | [ ] | [x] | [x] | [x] | [ ] | [ ] | [ ] | [x] | [x] | [ ] |
-| Motion scheme & spring hooks | `MotionScheme.kt`, `StandardMotionTokens`, `ExpressiveMotionTokens` | [ ] | [ ] | — | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
-| Elevation & shadows | `Elevation.kt`, `ElevationTokens.kt` | [ ] | [ ] | [ ] | — | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
-| State layers | `StateTokens.kt` (hover .08, focus .10, pressed .10, dragged .16) | [ ] | [ ] | [ ] | — | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
-| Ripple + inset focus ring | `material3-ripple` 1.5.0, `Ripple.kt` | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
-| `Interactive` pressable primitive | `InteractiveComponentSize.kt`, state machine design | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
-| `Surface` | `Surface.kt` | [ ] | [ ] | [ ] | — | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| Motion scheme & spring hooks | `MotionScheme.kt`, `StandardMotionTokens`, `ExpressiveMotionTokens` | [x] | [x] | — | [x] | [ ] | [ ] | [x] | [x] | [x] | [ ] |
+| Elevation & shadows | `Elevation.kt`, `ElevationTokens.kt` | [x] | [x] | [x] | — | [x] | [ ] | [x] | [x] | [x] | [ ] |
+| State layers | `StateTokens.kt` (hover .08, focus .10, pressed .10, dragged .16) | [x] | [x] | [x] | — | [ ] | [ ] | [x] | [x] | [x] | [ ] |
+| Ripple + inset focus ring | `material3-ripple` 1.5.0, `Ripple.kt` | [x] | [x] | [x] | [x] | [ ] | [ ] | [x] | [x] | [x] | [ ] |
+| `Interactive` pressable primitive | `InteractiveComponentSize.kt`, state machine design | [x] | [x] | [x] | — | [ ] | [ ] | [x] | [x] | [x] | [ ] |
+| `Surface` | `Surface.kt` | [x] | [x] | [x] | — | [x] | [ ] | [x] | [x] | [x] | [ ] |
 | `Text` | `Text.kt`, `ProvideContentColorTextStyle.kt` | [ ] | [ ] | [ ] | — | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
 | `Icon` | `Icon.kt`; Material Symbols variable font + internal paths | [ ] | [ ] | [ ] | — | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
 | `OverlayHost` / `Portal` | Architecture §5.2; Compose `BasicEdgeToEdgeDialog`, `Menu`, `SnackbarHost` | [ ] | [ ] | [ ] | — | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
 | Window size classes | `material3-window-size-class` 1.5.0; 8dp spacing | [ ] | [ ] | — | — | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
-| Haptics adapter | Injectable adapter (no hard dependency) | [ ] | [ ] | — | — | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| Haptics adapter | Injectable adapter (no hard dependency) | [x] | [x] | — | — | [ ] | [ ] | [x] | [x] | [ ] | [ ] |
 | RTL / layout utilities | Compose layout semantics; m3 guidelines | [ ] | [ ] | [ ] | — | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
 
 Day 7 note: the static 35-shape grid now diff-passes against Compose with **0 AA-aware
@@ -63,6 +63,17 @@ that the clipped RN subtree is not laid out, so touch, scrolling and accessibili
 hit-testing do not work inside it (`U-32`, `docs/evidence/day7/foreign-object/`). It
 requires `decorative` at the call site, warns in development on interactive children, and
 hides the subtree from assistive technology. Interactive containers use `borderRadius`.
+
+Day 9 note: the interaction primitives are implemented and diffed against Compose
+Material3 1.5.0 in five scenes (`docs/evidence/day9/README.md`). All five are
+**0 AA-aware differing pixels** (exact-zero is not the gate; 8-bit state-layer
+compositing and clip AA leave ≤1/255 fills and edge pixels, explained in the
+evidence). iOS elevation is an **approximation**, inspected side-by-side at
+levels 0–12 (`docs/evidence/day9/ios/`), never a pixel match (ADR-019). The 48 dp
+minimum is a `hitSlop` target, not a layout size (ADR-018); a render test proves
+the visible 24 dp box does not grow. Haptics is an injectable adapter with a
+no-op default, so the gallery has no visual demo. The iOS, a11y and DONE boxes
+stay open for the Day 40–41 passes.
 
 **Foundation evidence (Days 2–6):**
 

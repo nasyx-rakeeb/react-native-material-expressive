@@ -1,0 +1,118 @@
+{
+  "note": "Sampled from 960x600 captures of the 320x200 dp elevation-levels scene. Shadow depth = background luminance (245,239,247) minus the darkest pixel in a band 2-24 dp below each tile, +/-30 dp around the centre. Mean is the same band. iOS is an approximation, not a pixel match.",
+  "background": [
+    245,
+    239,
+    247
+  ],
+  "rows": [
+    {
+      "level": 0,
+      "fillAndroid": [
+        254,
+        247,
+        255
+      ],
+      "fillIos": [
+        254,
+        247,
+        255
+      ],
+      "fillDelta": 0,
+      "shadowDepthAndroid": 0,
+      "shadowDepthIos": 1,
+      "shadowMeanAndroid": 0,
+      "shadowMeanIos": 0.2
+    },
+    {
+      "level": 1,
+      "fillAndroid": [
+        246,
+        238,
+        250
+      ],
+      "fillIos": [
+        246,
+        238,
+        250
+      ],
+      "fillDelta": 0,
+      "shadowDepthAndroid": 8.8,
+      "shadowDepthIos": 10,
+      "shadowMeanAndroid": 0.9,
+      "shadowMeanIos": 2.4
+    },
+    {
+      "level": 3,
+      "fillAndroid": [
+        242,
+        233,
+        248
+      ],
+      "fillIos": [
+        242,
+        233,
+        248
+      ],
+      "fillDelta": 0,
+      "shadowDepthAndroid": 19.3,
+      "shadowDepthIos": 16.1,
+      "shadowMeanAndroid": 3.7,
+      "shadowMeanIos": 9.8
+    },
+    {
+      "level": 6,
+      "fillAndroid": [
+        238,
+        229,
+        245
+      ],
+      "fillIos": [
+        238,
+        229,
+        245
+      ],
+      "fillDelta": 0,
+      "shadowDepthAndroid": 25.3,
+      "shadowDepthIos": 18.3,
+      "shadowMeanAndroid": 9,
+      "shadowMeanIos": 12.7
+    },
+    {
+      "level": 8,
+      "fillAndroid": [
+        236,
+        227,
+        244
+      ],
+      "fillIos": [
+        236,
+        227,
+        244
+      ],
+      "fillDelta": 0,
+      "shadowDepthAndroid": 26.3,
+      "shadowDepthIos": 22,
+      "shadowMeanAndroid": 11.6,
+      "shadowMeanIos": 16.8
+    },
+    {
+      "level": 12,
+      "fillAndroid": [
+        233,
+        224,
+        243
+      ],
+      "fillIos": [
+        234,
+        224,
+        243
+      ],
+      "fillDelta": 1,
+      "shadowDepthAndroid": 27.1,
+      "shadowDepthIos": 27.1,
+      "shadowMeanAndroid": 15.4,
+      "shadowMeanIos": 22.9
+    }
+  ]
+}

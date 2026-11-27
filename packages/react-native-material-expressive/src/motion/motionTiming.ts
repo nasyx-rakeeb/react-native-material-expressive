@@ -16,6 +16,13 @@ export type MotionTiming =
   | { readonly type: 'fade'; readonly durationMs: number }
   | { readonly type: 'instant' };
 
+/**
+ * A timing decision that can also ask the caller to wait. `hold` is returned
+ * before the platform has answered the reduce-motion query; the caller must
+ * leave its value at the starting point until the next decision.
+ */
+export type ResolvedMotionTiming = MotionTiming | { readonly type: 'hold' };
+
 export function resolveMotionTiming(
   kind: MotionKind,
   reduceMotion: boolean,
@@ -28,4 +35,22 @@ export function resolveMotionTiming(
     return { type: 'fade', durationMs: REDUCED_EFFECTS_FADE_MS };
   }
   return { type: 'instant' };
+}
+
+/**
+ * Resolve a spring timing from the full reduce-motion state.
+ *
+ * The platform query is asynchronous. Returning `hold` lets a component keep
+ * its first animation queued instead of guessing `false` and showing one
+ * frame of full motion to a reduce-motion user.
+ */
+export function resolveMotionTimingForState(
+  kind: MotionKind,
+  state: { readonly enabled: boolean; readonly ready: boolean },
+  config: SpringConfig,
+): ResolvedMotionTiming {
+  if (!state.ready) {
+    return { type: 'hold' };
+  }
+  return resolveMotionTiming(kind, state.enabled, config);
 }
