@@ -65,16 +65,7 @@ export function M3ThemeProvider({
       typography,
       motionScheme,
     }),
-    [
-      mode,
-      seed,
-      contrastLevel,
-      dynamicColor,
-      lightScheme,
-      darkScheme,
-      typography,
-      motionScheme,
-    ],
+    [mode, seed, contrastLevel, dynamicColor, lightScheme, darkScheme, typography, motionScheme],
   );
 
   const theme = useMemo(

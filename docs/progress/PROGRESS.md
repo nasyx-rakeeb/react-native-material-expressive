@@ -509,3 +509,56 @@ A day closes only when its exit criteria are met with evidence and Nasyx approve
 **Next step**
 
 - Connect the phone, run `SERIAL=<serial> tools/device/u29-capture.sh`, and record model/SoC/refresh plus the six rows in `docs/evidence/day7/frame-times.md`. Then `U-29` can close.
+
+---
+
+## Day 8 | 2026-11-27 | Motion scheme, Compose-exact spring driver, reduce motion
+
+**Status:** Work complete; six gates pass. Awaiting Day-Close approval. No tag and no Day 9 work until then.
+
+**Done**
+
+- Generated the motion golden from `androidx.compose.material3:material3:1.5.0` with `SpringGoldenTest` through the public `MotionScheme` API: twelve spring tokens (standard/expressive × spatial/effects × default/fast/slow), sampled at every whole millisecond, plus four non-zero-initial-velocity interruption scenarios. Stored at `docs/specs/motion/goldens.json`; method in `docs/specs/motion/README.md`.
+- Ported Compose `SpringSimulation` and `estimateAnimationDurationMillis` to `src/motion/spring.ts` (Float32 boundary, closed-form under/critical/over-damped branches, 0.01 visibility threshold). Added the Reanimated driver `withComposeSpring` in `src/motion/springAnimation.ts`, which samples the solver per frame and clamps at the Compose duration.
+- Added `MotionScheme` (standard/expressive, six springs each), `resolveMotionScheme`, and the public hooks `useSpring`, `useSpatialSpring`, `useEffectsSpring`. Components never call Reanimated `withSpring` for Material motion.
+- Compared Reanimated 4.7.1 stock `withSpring` with the golden: **2/12 tokens exceed the 1% gate** (`fastEffects` both schemes, 1.512%) and every token settles later than Compose (e.g. `fastEffects` 217 ms vs 107 ms, `defaultSpatial` 450 ms vs 228 ms). Recorded as **ADR-015**; the custom driver ships.
+- Mapped reduce motion as **ADR-016**: spatial → instant, effects → 100 ms linear fade (`MotionDurations.short2`); `useReduceMotion` reads `AccessibilityInfo.isReduceMotionEnabled` and listens for `reduceMotionChanged`, with an override for previews/tests.
+- Built the gallery motion screen (`m3egallery://?screen=motion`): scheme toggle, Play/Reverse, curve chart, all twelve token rows with custom-vs-stock tracks, reduce-motion demo, and `[M3E] motion_demo` logging. Captured `standard.png`, `expressive.png`, `reduce-on.png`, `system-reduce-on.png`.
+- Added `tools/motion/generate-goldens.sh`, `verify-traces.mjs` (writes `docs/evidence/day8/springs/summary.json`) and `reanimated-spring.mjs` (stock solver transcription for the comparison).
+- Motion tests: 9/9 (12 traces at 1e-6, exact durations, 4 interruptions, boundary clamp, constants, scheme routing, reduce-motion mapping). Full suite **10 suites / 110 tests**.
+
+**Numbers**
+
+- Solver: 12/12 durations exact; maximum deviation ≈5e-10 of the range (gate 1%); 4/4 interruption scenarios match.
+- Stock `withSpring`: 10/12 tokens inside 1%, `fastEffects` 1.512% in both schemes; all settle later, roughly 2×.
+
+**Evidence**
+
+- `docs/evidence/day8/README.md` — index, tables, gates, limits, reproduce commands.
+- `docs/evidence/day8/springs/verification.md` — full solver and stock comparison.
+- `docs/evidence/day8/springs/summary.json` — machine-readable verification run.
+- `docs/evidence/day8/gallery/*.png` — four 1080×1920 emulator captures.
+- `docs/DECISIONS.md` — ADR-015, ADR-016.
+- `docs/specs/motion/goldens.json`, `docs/specs/motion/README.md`, `docs/specs/motion/behavior.md`.
+- `apps/reference-compose/.../SpringGoldenTest.kt`; `tools/motion/`.
+
+**Gates (final run, 2026-11-27)**
+
+- `format:check` **PASS**; `lint` **PASS** (3/3); `typecheck` **PASS** (4/4); `test` **PASS** (10 suites / 110 tests); `build` **PASS** (ESM + CJS + declarations); `scenes:check` **PASS** (37 scenes: core 5 / text 32).
+
+**Deviations**
+
+- The driver is verified numerically off-device. Jest cannot execute the Reanimated UI-thread runtime, so the gallery smoke test remains the runtime check on every Reanimated upgrade.
+- The stock comparison uses a transcribed 4.7.1 solver, not an on-device trace; it measures the algorithm, which is the decision input.
+- Screenshots are emulator-only (API 31, 420 dpi, SwiftShader). They prove the UI and reduce-motion status, not frame timing.
+- Reduce motion has no Compose counterpart; it is a platform mapping covered by unit tests and the gallery, not the pixel gate.
+- `useReduceMotion` is async on first mount, so components start in full motion for one frame.
+
+**Risks**
+
+- Reanimated upgrades can change `defineAnimation` or its animation-object contract; ADR-015 lists the failure modes and the fallback (`FrameCallback`-driven shared value).
+- A component that tags spatial motion as `effects` would still animate under reduced motion; each component spec must state its kind.
+
+**Next step**
+
+- Post the Day 8 Day-Close Report and stop. Day 9 (interaction primitives) starts only after Nasyx approves.

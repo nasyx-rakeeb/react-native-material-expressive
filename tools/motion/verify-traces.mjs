@@ -64,7 +64,8 @@ function compareGolden(config, trace, initialVelocity, from, to) {
     maxPercent: maxAbs / Math.abs(to - from),
     maxAt,
     boundaryClamped: boundaryValue === to,
-    beforeBoundaryUnclamped: beforeValue ===
+    beforeBoundaryUnclamped:
+      beforeValue ===
       springMotionAtMillis(config, from, to, initialVelocity, Math.max(0, duration - 1)).value,
     pass: duration === trace.durationMs && maxAbs / Math.abs(to - from) < EXIT_CRITERION,
   };
@@ -161,7 +162,9 @@ lines.push('# Day 8 spring traces');
 lines.push('');
 lines.push('Reference: `docs/specs/motion/goldens.json`, generated from');
 lines.push('`androidx.compose.material3:material3:1.5.0` by `SpringGoldenTest` through the');
-lines.push('public `MotionScheme` API, `SpringSpec`, and `FiniteAnimationSpec.vectorize(Float.VectorConverter)`.');
+lines.push(
+  'public `MotionScheme` API, `SpringSpec`, and `FiniteAnimationSpec.vectorize(Float.VectorConverter)`.',
+);
 lines.push('Script: `tools/motion/verify-traces.mjs`; regenerate the golden with');
 lines.push('`tools/motion/generate-goldens.sh`.');
 lines.push('');
@@ -197,11 +200,13 @@ lines.push(
   'Reanimated uses the same closed form but terminates on an energy ratio (`6e-9`) instead of',
 );
 lines.push(
-  'Material3\'s 0.01 displacement threshold and estimated duration. Deviation is measured only',
+  "Material3's 0.01 displacement threshold and estimated duration. Deviation is measured only",
 );
 lines.push('while Compose is still animating; the settle column shows the rest-time mismatch.');
 lines.push('');
-lines.push('| token | Compose duration | Reanimated settle | active samples | max active deviation | < 1% |');
+lines.push(
+  '| token | Compose duration | Reanimated settle | active samples | max active deviation | < 1% |',
+);
 lines.push('| --- | --- | --- | --- | --- | --- |');
 for (const row of reanimatedRows) {
   lines.push(

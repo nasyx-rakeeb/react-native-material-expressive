@@ -37,8 +37,7 @@ function underDamped(animation, values) {
   return {
     position: toValue + frag,
     velocity:
-      -zeta * omega0 * frag +
-      envelope * (cos1 * (v0 + zeta * omega0 * x0) - omega1 * x0 * sin1),
+      -zeta * omega0 * frag + envelope * (cos1 * (v0 + zeta * omega0 * x0) - omega1 * x0 * sin1),
   };
 }
 
@@ -48,9 +47,7 @@ function criticallyDamped(animation, values) {
   const envelope = Math.exp(-omega0 * t);
   return {
     position: toValue + envelope * (x0 + (v0 + omega0 * x0) * t),
-    velocity:
-      envelope * -omega0 * (x0 + (v0 + omega0 * x0) * t) +
-      envelope * (v0 + omega0 * x0),
+    velocity: envelope * -omega0 * (x0 + (v0 + omega0 * x0) * t) + envelope * (v0 + omega0 * x0),
   };
 }
 

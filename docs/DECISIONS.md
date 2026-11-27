@@ -422,6 +422,64 @@ Every accepted decision has a date and evidence. Day 0 decisions are research-on
   - New generated spec domains must use a subdirectory, not a top-level file.
   - The token drift gate remains unchanged and green.
 
+## ADR-015 — Material motion uses a Compose-exact analytic spring driver, not Reanimated `withSpring`
+
+- **Date:** 2026-11-27
+- **Status:** Accepted (Day 8)
+- **Context:**
+  - Day 8 must reproduce the twelve Material3 1.5.0 `MotionScheme` springs (standard/expressive × spatial/effects × default/fast/slow). The golden is generated from the pinned artifact (`SpringGoldenTest`, `docs/specs/motion/goldens.json`), not from copied constants.
+  - Compose evaluates a closed-form spring with Float32 inputs and Float64 evaluation, and ends at `estimateAnimationDurationMillis` with `Spring.DefaultDisplacementThreshold` (0.01). Reanimated 4.7.1 `withSpring` uses the same closed form but terminates on an energy ratio (`6e-9`) with no estimated duration.
+  - Measured against the golden while Compose is still animating: **2/12 tokens exceed the 1% gate** — `fastEffects` (both schemes) deviates **1.512%** — and **every** token settles later than Compose. `fastEffects` settles at 217 ms instead of 107 ms; `defaultSpatial` at 450 ms instead of 228 ms. Full table: `docs/evidence/day8/springs/verification.md`.
+  - `fastEffects` is the spring most colour/alpha transitions use, so the deviation is visible in the common case, not an edge case.
+- **Decision:**
+  1. Ship the Compose solver in `src/motion/spring.ts`: `springMotionAtMillis`, `springValueAtMillis`, `springDurationMillis`, Float32 boundary, closed-form under/critically/over-damped branches, 0.01 exit threshold.
+  2. Ship the driver in `src/motion/springAnimation.ts` (`withComposeSpring`) using Reanimated's `defineAnimation`. It samples the solver per frame and clamps to the target at the Compose duration.
+  3. `useSpring` is the public API and routes through `resolveMotionTiming`; component code never calls Reanimated `withSpring` for Material motion.
+- **Why:** The parity promise is numeric, and the stock driver changes both the duration and the shape of the most-used effects spring. The solver is 350 lines, deterministic, and testable off-device against the artifact golden, so the cost is bounded.
+- **Maintenance cost:**
+  - ~440 lines owned by the motion layer (`spring.ts` 350, `springAnimation.ts` 90) plus `tools/motion/` (golden generator, trace verifier, stock-`withSpring` transcription).
+  - Regenerating the golden needs a JDK and Gradle (`tools/motion/generate-goldens.sh`); the artifact version is pinned in the script and in `docs/specs/motion/README.md`.
+  - Every Reanimated upgrade needs a device smoke test of the gallery motion screen, because `defineAnimation` is not covered by Jest.
+- **What breaks on a Reanimated upgrade:**
+  - `defineAnimation` signature or animation-object contract (`onStart`/`onFrame`/`onEnd`) — the driver would fail to start or never call back.
+  - Worklet serialization of the closure (config object, solver import) — the animation would throw on the UI thread.
+  - `useSharedValue` assignment semantics for animation objects — the value would jump to the target instead of animating.
+  - If `defineAnimation` disappears, the fallback is a `FrameCallback`-driven shared value (same solver, more boilerplate). `withTiming` keyframes are rejected: they approximate the curve and lose the interruption behaviour.
+  - Stock-`withSpring` drift is separately visible because `tools/motion/reanimated-spring.mjs` transcribes the 4.7.1 solver; regenerating the comparison table after an upgrade shows any change.
+- **Which test catches drift:** `src/motion/__tests__/spring.test.ts` — 9 tests. It compares all twelve traces with the golden at `1e-6` absolute, asserts exact durations, covers four non-zero-initial-velocity interruptions, the boundary clamp, the token constants, scheme routing, and the reduce-motion mapping. `tools/motion/verify-traces.mjs` reproduces the same check outside Jest and writes `summary.json`. A solver change that moves any sample or duration fails `pnpm test`.
+- **Evidence:**
+  - `docs/specs/motion/goldens.json` — artifact golden, 12 tokens + 4 interruptions.
+  - `docs/evidence/day8/springs/verification.md` — solver max deviation ≈5e-10 (1% gate), stock comparison.
+  - `docs/evidence/day8/springs/summary.json` — machine-readable run.
+  - `apps/gallery/src/motion/MotionGallery.tsx` — side-by-side custom vs stock driver.
+
+## ADR-016 — Reduce motion: spatial becomes instant, effects cross-fade over 100 ms
+
+- **Date:** 2026-11-27
+- **Status:** Accepted (Day 8)
+- **Context:**
+  - Compose Material3 1.5.0 has no reduce-motion API. On Android the platform convention is the animator duration scale; RN exposes it as `AccessibilityInfo.isReduceMotionEnabled` and the `reduceMotionChanged` event (Android `transition_animation_scale == 0`).
+  - Removing all animation makes colour/alpha state changes imperceptible or abrupt: a pressed state that only changes colour would appear to do nothing under reduced motion.
+- **Decision:**
+  1. `useReduceMotion(override?)` reads `AccessibilityInfo.isReduceMotionEnabled`, subscribes to `reduceMotionChanged`, defaults to `false` until the first native answer, and lets an explicit override win (previews and tests).
+  2. `resolveMotionTiming(kind, reduceMotion, config)` returns `spring(config)` normally; under reduced motion it returns `instant` for `spatial` and `fade` for `effects`.
+  3. The effects fade is **100 ms linear**, `MotionDurations.short2` from the Material3 token set, applied with `withTiming`.
+  4. `useSpring` applies the mapping; `useSpatialSpring`/`useEffectsSpring` exist so call sites classify their motion correctly.
+  5. The gallery exposes `system` / `on` / `off` and logs `[M3E] motion_demo … effectiveReduce=…` so the mapping can be checked on device.
+- **Why:** Spatial motion (translation, scale, morph) is what the setting is meant to suppress; colour and opacity changes are not motion and should stay perceptible. 100 ms is the shortest token duration that still reads as a transition, and it reuses the token set instead of inventing a value.
+- **Alternatives rejected:**
+  - **Disable every animation.** Colour/alpha state changes become invisible or instantaneous, which harms comprehension.
+  - **Keep springs under reduced motion.** Ignores the platform setting.
+  - **Scale all durations by a constant.** Still animates position and scale, so it does not satisfy the setting.
+- **Consequences:**
+  - Every animated component must pass the correct `kind`; a spatial animation tagged `effects` would still move under reduced motion. Review is part of each component's spec.
+  - There is no Compose behaviour to diff against. The mapping is a platform decision recorded here, covered by unit tests and the gallery, not by a pixel gate.
+  - `useReduceMotion` is async on first mount; components start in the full-motion state for one frame. This matches RN's own guidance and is not observable in the gallery.
+- **Evidence:**
+  - `packages/react-native-material-expressive/src/motion/motionTiming.ts`, `useReduceMotion.ts`, `useSpring.ts`.
+  - `src/motion/__tests__/spring.test.ts` — "reduce-motion mapping" (2 tests).
+  - `docs/evidence/day8/gallery/reduce-on.png`, `system-reduce-on.png`; `docs/evidence/day8/README.md`.
+
 ## ADR-017 — Interactive containers use rounded rectangles; `ShapeContainer` is decorative-only
 
 - **Date:** 2026-11-27
