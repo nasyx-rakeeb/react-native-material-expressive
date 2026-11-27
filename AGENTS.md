@@ -1,4 +1,5 @@
 ## HARD STOP RULE (overrides everything else)
+
 - You may never start Day N+1 until ALL of these are true: (a) every exit criterion of Day N is verified MET with evidence, or listed as NOT MET with the reason; (b) you have posted a Day-Close Report in the chat to the user; (c) the user has replied approving the next day. "Continue" or "go" from the user counts. Silence does not.
 - Day-Close Report format (always the same): Day N status (CLOSED / NOT CLOSED); exit criteria table (criterion, MET/NOT MET, evidence); what was skipped or deferred; decisions made (ADR numbers); failing tests or open risks; what I need from the user; proposed next step.
 - Maintain docs/progress/CURRENT.md at all times with exactly: current day, status (IN PROGRESS / AWAITING USER APPROVAL), last closed day, and the last commit hash. Update it before starting work and again when you stop. Create a git tag `day-N-closed` when a day is approved.
