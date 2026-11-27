@@ -9,6 +9,7 @@ import {
 } from 'react-native-material-expressive';
 
 import SceneHarness, { useHarnessScene } from './src/harness/SceneHarness';
+import ClipProbeScreen from './src/shapes/ClipProbeScreen';
 import ShapeDiffScreen from './src/shapes/ShapeDiffScreen';
 import ShapeGallery from './src/shapes/ShapeGallery';
 import ShapeSpike from './src/spike/ShapeSpike';
@@ -37,6 +38,10 @@ export default function App() {
     return <View style={styles.boot} />;
   }
 
+  if (route.screen === 'clipprobe') {
+    return <ClipProbeScreen />;
+  }
+
   if (route.screen === 'shapesdiff') {
     return <ShapeDiffScreen />;
   }
@@ -46,7 +51,13 @@ export default function App() {
   }
 
   if (route.spike !== null) {
-    return <ShapeSpike mode={route.spike} renderer={route.renderer} />;
+    return (
+      <ShapeSpike
+        key={`${route.spike}/${route.renderer}`}
+        mode={route.spike}
+        renderer={route.renderer}
+      />
+    );
   }
 
   if (route.sceneId !== null) {

@@ -22,7 +22,7 @@ export interface HarnessRoute {
   fontScaling: boolean;
   spike: SpikeMode | null;
   renderer: SpikeRenderer;
-  screen: 'shapes' | 'shapesdiff' | null;
+  screen: 'shapes' | 'shapesdiff' | 'clipprobe' | null;
 }
 
 const FONT_FAMILY = 'RobotoFlex';
@@ -70,9 +70,12 @@ function parseRenderer(url: string | null | undefined): SpikeRenderer {
   return /[?&]renderer=skia(?:&|$)/.test(url ?? '') ? 'skia' : 'svg';
 }
 
-function parseScreen(url: string | null | undefined): 'shapes' | 'shapesdiff' | null {
+function parseScreen(url: string | null | undefined): 'shapes' | 'shapesdiff' | 'clipprobe' | null {
   if (/[?&]screen=shapesdiff(?:&|$)/.test(url ?? '')) {
     return 'shapesdiff';
+  }
+  if (/[?&]screen=clipprobe(?:&|$)/.test(url ?? '')) {
+    return 'clipprobe';
   }
   return /[?&]screen=shapes(?:&|$)/.test(url ?? '') ? 'shapes' : null;
 }

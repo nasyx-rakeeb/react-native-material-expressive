@@ -1,5 +1,14 @@
 import { useEffect, useMemo, useState } from 'react';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import {
+  PixelRatio,
+  Platform,
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  Text,
+  useWindowDimensions,
+  View,
+} from 'react-native';
 import Animated, {
   Easing,
   runOnJS,
@@ -82,29 +91,69 @@ function useMorphPairs(): MorphPair[] | null {
   return pairs;
 }
 
-function useFrameStats(label: string): void {
+interface FrameStats {
+  frames: number;
+  avg: number;
+  max: number;
+  fps: number;
+}
+
+const EMPTY_FRAME_STATS: FrameStats = { frames: 0, avg: 0, max: 0, fps: 0 };
+
+function FrameStatsCard({ label }: { label: string }) {
+  const [display, setDisplay] = useState<FrameStats>(EMPTY_FRAME_STATS);
   const stats = useSharedValue({ frames: 0, sum: 0, max: 0 });
-  const log = (frames: number, sum: number, max: number) => {
+  const window = useWindowDimensions();
+  const density = PixelRatio.get();
+  const pixelWidth = Math.round(PixelRatio.getPixelSizeForLayoutSize(window.width));
+  const pixelHeight = Math.round(PixelRatio.getPixelSizeForLayoutSize(window.height));
+  const fps = display.frames > 0 ? display.fps : 0;
+
+  const publish = (frames: number, sum: number, max: number) => {
+    const avg = sum / frames;
+    setDisplay({ frames, avg, max, fps: 1000 / avg });
     console.log(
-      `M3E_SPIKE_UI ${label} frames=${frames} avg=${(sum / frames).toFixed(2)} max=${max.toFixed(2)}`,
+      `M3E_SPIKE_UI ${label} frames=${frames} avg=${avg.toFixed(2)} max=${max.toFixed(2)}`,
     );
   };
+
   useFrameCallback((frame) => {
     'worklet';
     const delta = frame.timeSincePreviousFrame ?? 0;
     if (delta <= 0 || delta > 1000) {
       return;
     }
-    const next = stats.value;
-    next.frames += 1;
-    next.sum += delta;
-    if (delta > next.max) {
-      next.max = delta;
-    }
-    if (next.frames % 120 === 0) {
-      runOnJS(log)(next.frames, next.sum, next.max);
+    const current = stats.value;
+    const next = {
+      frames: current.frames + 1,
+      sum: current.sum + delta,
+      max: delta > current.max ? delta : current.max,
+    };
+    stats.value = next;
+    // 1 Hz keeps the readout readable without re-rendering the spike tree.
+    if (next.frames % 60 === 0) {
+      runOnJS(publish)(next.frames, next.sum, next.max);
     }
   }, true);
+
+  return (
+    <View style={styles.statsCard}>
+      <Text style={styles.statsFps}>{fps > 0 ? fps.toFixed(1) : '—'} FPS</Text>
+      <Text style={styles.statsLine}>
+        avg {display.frames ? display.avg.toFixed(2) : '—'} ms · max{' '}
+        {display.frames ? display.max.toFixed(2) : '—'} ms
+      </Text>
+      <Text style={styles.statsLine}>
+        {display.frames} frames · {Math.round(window.width)}×{Math.round(window.height)} dp ·{' '}
+        {pixelWidth}×{pixelHeight} px · {density.toFixed(3)}× · {Platform.OS}{' '}
+        {String(Platform.Version)}
+      </Text>
+      <Text style={styles.statsHint}>
+        Let it run ≥18 s per mode. Read this card before reporting the device model, SoC and refresh
+        rate. max includes launch/scheduling spikes.
+      </Text>
+    </View>
+  );
 }
 
 function SvgMorph({
@@ -478,15 +527,20 @@ function GridSpike({ renderer }: { renderer: SpikeRenderer }) {
   );
 }
 
+const SPIKE_MODES: readonly SpikeMode[] = ['cycle', 'concurrent', 'clip', 'clipchildren', 'grid'];
+const SPIKE_RENDERERS: readonly SpikeRenderer[] = ['svg', 'skia'];
+
 export default function ShapeSpike({
-  mode,
-  renderer,
+  mode: initialMode,
+  renderer: initialRenderer,
 }: {
   mode: SpikeMode;
   renderer: SpikeRenderer;
 }) {
+  const [mode, setMode] = useState<SpikeMode>(initialMode);
+  const [renderer, setRenderer] = useState<SpikeRenderer>(initialRenderer);
   const pairs = useMorphPairs();
-  useFrameStats(`${mode}/${renderer}`);
+
   useEffect(() => {
     console.log(`M3E_SPIKE_READY ${mode}/${renderer}`);
   }, [mode, renderer]);
@@ -494,7 +548,7 @@ export default function ShapeSpike({
   return (
     <View style={styles.root}>
       <View style={styles.header}>
-        <Text style={styles.kicker}>DAY 7 · PATH RENDERER SPIKE</Text>
+        <Text style={styles.kicker}>DAY 7 · PATH RENDERER SPIKE · U-29</Text>
         <Text style={styles.title}>
           {mode} · {renderer}
         </Text>
@@ -502,6 +556,45 @@ export default function ShapeSpike({
           {pairs === null ? 'building morph pairs…' : `${pairs.length} morph pairs ready`}
         </Text>
       </View>
+
+      <FrameStatsCard key={`${mode}/${renderer}`} label={`${mode}/${renderer}`} />
+
+      <View style={styles.controls}>
+        <View style={styles.segment}>
+          {SPIKE_MODES.map((value) => (
+            <Pressable
+              key={value}
+              accessibilityRole="button"
+              accessibilityState={{ selected: mode === value }}
+              onPress={() => setMode(value)}
+              style={[styles.segmentItem, mode === value && styles.segmentItemActive]}
+            >
+              <Text
+                style={[styles.segmentText, mode === value && styles.segmentTextActive]}
+                numberOfLines={1}
+              >
+                {value === 'clipchildren' ? 'clip kids' : value}
+              </Text>
+            </Pressable>
+          ))}
+        </View>
+        <View style={styles.segment}>
+          {SPIKE_RENDERERS.map((value) => (
+            <Pressable
+              key={value}
+              accessibilityRole="button"
+              accessibilityState={{ selected: renderer === value }}
+              onPress={() => setRenderer(value)}
+              style={[styles.segmentItem, renderer === value && styles.segmentItemActive]}
+            >
+              <Text style={[styles.segmentText, renderer === value && styles.segmentTextActive]}>
+                {value}
+              </Text>
+            </Pressable>
+          ))}
+        </View>
+      </View>
+
       <View style={styles.stage}>
         {pairs === null ? null : mode === 'cycle' ? (
           <CycleSpike pairs={pairs} renderer={renderer} />
@@ -546,6 +639,60 @@ const styles = StyleSheet.create({
     fontSize: 13,
     color: '#6B6257',
     marginTop: 6,
+  },
+  statsCard: {
+    backgroundColor: '#1C1A17',
+    borderRadius: 14,
+    paddingHorizontal: 12,
+    paddingVertical: 10,
+    marginBottom: 10,
+  },
+  statsFps: {
+    color: '#FFFFFF',
+    fontSize: 28,
+    lineHeight: 32,
+    fontWeight: '800',
+    fontVariant: ['tabular-nums'],
+  },
+  statsLine: {
+    color: '#E3DCD2',
+    fontSize: 11,
+    lineHeight: 16,
+    fontVariant: ['tabular-nums'],
+  },
+  statsHint: {
+    color: '#A79D90',
+    fontSize: 9,
+    lineHeight: 12,
+    marginTop: 5,
+  },
+  controls: {
+    gap: 6,
+    marginBottom: 8,
+  },
+  segment: {
+    flexDirection: 'row',
+    alignSelf: 'flex-start',
+    borderRadius: 999,
+    borderWidth: 1,
+    borderColor: '#CAC2B7',
+    overflow: 'hidden',
+  },
+  segmentItem: {
+    paddingHorizontal: 7,
+    paddingVertical: 5,
+    backgroundColor: '#FFFFFF',
+  },
+  segmentItemActive: {
+    backgroundColor: '#6750A4',
+  },
+  segmentText: {
+    fontSize: 9,
+    fontWeight: '700',
+    color: '#4A443C',
+  },
+  segmentTextActive: {
+    color: '#FFFFFF',
   },
   stage: {
     flex: 1,

@@ -3,7 +3,10 @@
  * original project code (MIT).
  *
  * The clip is rendered through an SVG `foreignObject`. It is visual clipping
- * only: touch targets remain rectangular and are not clipped to the path.
+ * only: react-native-svg does not lay out the native subtree inside
+ * `foreignObject`, so touch and accessibility hit-testing do not work there.
+ * Do not put interactive content in `ShapeContainer` until the fallback in
+ * `U-32` is decided.
  */
 
 import { useMemo, type ReactNode } from 'react';
