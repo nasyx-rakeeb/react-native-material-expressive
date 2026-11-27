@@ -12,7 +12,7 @@
 - Within-harness determinism: **zero exact diffs** across 70 renders; max exact diff per app/scene/boot combination: 0 px.
 - Exact-zero scenes in every sampled boot: **solid, rect, text, shadow, type-body-large-emphasized, type-body-large, type-body-medium-emphasized, type-body-medium, type-body-small-emphasized, type-body-small, type-display-large-emphasized, type-display-large, type-display-medium-emphasized, type-display-medium, type-headline-large-emphasized, type-headline-large, type-headline-medium-emphasized, type-headline-medium, type-label-large-emphasized, type-label-large, type-label-medium-emphasized, type-label-medium, type-label-small-emphasized, type-label-small, type-title-large-emphasized, type-title-large, type-title-medium-emphasized, type-title-medium, type-title-small-emphasized, type-title-small**.
 
-The cross-stack difference is text-only. Measured text layout: Compose 402.0×73.0 px, React Native 402.0×73.0 px. The frameworks rasterize some glyph edges differently. This report does **not** tune the scene and does **not** propose a new threshold.
+See the per-scene table for the exact split. Measured text layout: Compose 402.0×73.0 px, React Native 402.0×73.0 px. This report does **not** tune the scene and does **not** propose or change a threshold. The threshold-independent columns (max channel Δ, mean Δ over differing pixels, Δ &gt; 2 outside AA edges, flat fills &gt; 2) are the evidence for deciding whether a future threshold ADR is needed.
 
 ## Measured noise split
 
@@ -212,3 +212,45 @@ Every profile check passed: API 31, 1080×1920, 420dpi, font scale 1.0, locale e
 Frozen device, GPU, settings, and cold-boot procedure: `FROZEN_PROFILE.md`. Raw run log: `run.log`.
 
 See `report.html` for side-by-side captures and diff heatmaps, and `results.json` for every per-run hash.
+
+## Threshold-independent metrics (2026-11-28)
+
+The AA-aware count uses pixelmatch 0.1 / `includeAA: false`; threshold 0.1 is a YIQ distance, not a channel delta. These raw columns are threshold-independent. An anti-aliased edge is a pixel with any 8-neighbour differing by more than 8/255 in either image; a flat fill has a uniform 3×3 neighbourhood in both images.
+
+| Scene | Exact px | AA-aware px | Max Δ | Mean Δ (diff px) | Δ > 2 outside AA | Flat fills > 2 |
+|---|---:|---:|---:|---:|---:|---:|
+| `solid` | 0 | 0 | 0 | 0.00 | 0 | 0 |
+| `rect` | 0 | 0 | 0 | 0.00 | 0 | 0 |
+| `text` | 0 | 0 | 0 | 0.00 | 0 | 0 |
+| `shadow` | 0 | 0 | 0 | 0.00 | 0 | 0 |
+| `trivial` | 0 | 0 | 0 | 0.00 | 0 | 0 |
+| `type-body-large-emphasized` | 0 | 0 | 0 | 0.00 | 0 | 0 |
+| `type-body-large` | 0 | 0 | 0 | 0.00 | 0 | 0 |
+| `type-body-medium-emphasized` | 0 | 0 | 0 | 0.00 | 0 | 0 |
+| `type-body-medium` | 0 | 0 | 0 | 0.00 | 0 | 0 |
+| `type-body-small-emphasized` | 0 | 0 | 0 | 0.00 | 0 | 0 |
+| `type-body-small` | 0 | 0 | 0 | 0.00 | 0 | 0 |
+| `type-display-large-emphasized` | 0 | 0 | 0 | 0.00 | 0 | 0 |
+| `type-display-large` | 0 | 0 | 0 | 0.00 | 0 | 0 |
+| `type-display-medium-emphasized` | 0 | 0 | 0 | 0.00 | 0 | 0 |
+| `type-display-medium` | 0 | 0 | 0 | 0.00 | 0 | 0 |
+| `type-display-small-emphasized` | 2340 | 105 | 226 | 87.73 | 0 | 0 |
+| `type-display-small` | 2372 | 63 | 226 | 85.19 | 0 | 0 |
+| `type-headline-large-emphasized` | 0 | 0 | 0 | 0.00 | 0 | 0 |
+| `type-headline-large` | 0 | 0 | 0 | 0.00 | 0 | 0 |
+| `type-headline-medium-emphasized` | 0 | 0 | 0 | 0.00 | 0 | 0 |
+| `type-headline-medium` | 0 | 0 | 0 | 0.00 | 0 | 0 |
+| `type-headline-small-emphasized` | 1592 | 48 | 226 | 85.25 | 0 | 0 |
+| `type-headline-small` | 1574 | 53 | 226 | 84.93 | 0 | 0 |
+| `type-label-large-emphasized` | 0 | 0 | 0 | 0.00 | 0 | 0 |
+| `type-label-large` | 0 | 0 | 0 | 0.00 | 0 | 0 |
+| `type-label-medium-emphasized` | 0 | 0 | 0 | 0.00 | 0 | 0 |
+| `type-label-medium` | 0 | 0 | 0 | 0.00 | 0 | 0 |
+| `type-label-small-emphasized` | 0 | 0 | 0 | 0.00 | 0 | 0 |
+| `type-label-small` | 0 | 0 | 0 | 0.00 | 0 | 0 |
+| `type-title-large-emphasized` | 0 | 0 | 0 | 0.00 | 0 | 0 |
+| `type-title-large` | 0 | 0 | 0 | 0.00 | 0 | 0 |
+| `type-title-medium-emphasized` | 0 | 0 | 0 | 0.00 | 0 | 0 |
+| `type-title-medium` | 0 | 0 | 0 | 0.00 | 0 | 0 |
+| `type-title-small-emphasized` | 0 | 0 | 0 | 0.00 | 0 | 0 |
+| `type-title-small` | 0 | 0 | 0 | 0.00 | 0 | 0 |

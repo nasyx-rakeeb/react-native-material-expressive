@@ -12,7 +12,7 @@
 - Within-harness determinism: **zero exact diffs** across 138 renders; max exact diff per app/scene/boot combination: 0 px.
 - Exact-zero scenes in every sampled boot: **solid, rect, shadow**.
 
-The cross-stack difference is text-only. Measured text layout: Compose 402.0×73.0 px, React Native 402.0×73.0 px. The frameworks rasterize some glyph edges differently. This report does **not** tune the scene and does **not** propose a new threshold.
+See the per-scene table for the exact split. Measured text layout: Compose 402.0×73.0 px, React Native 402.0×73.0 px. This report does **not** tune the scene and does **not** propose or change a threshold. The threshold-independent columns (max channel Δ, mean Δ over differing pixels, Δ &gt; 2 outside AA edges, flat fills &gt; 2) are the evidence for deciding whether a future threshold ADR is needed.
 
 ## Measured noise split
 
@@ -217,3 +217,45 @@ Every profile check passed: API 31, 1080×1920, 420dpi, font scale 1.0, locale e
 Frozen device, GPU, settings, and cold-boot procedure: `FROZEN_PROFILE.md`. Raw run log: `run.log`.
 
 See `report.html` for side-by-side captures and diff heatmaps, and `results.json` for every per-run hash.
+
+## Threshold-independent metrics (2026-11-28)
+
+The AA-aware count uses pixelmatch 0.1 / `includeAA: false`; threshold 0.1 is a YIQ distance, not a channel delta. These raw columns are threshold-independent. An anti-aliased edge is a pixel with any 8-neighbour differing by more than 8/255 in either image; a flat fill has a uniform 3×3 neighbourhood in both images.
+
+| Scene | Exact px | AA-aware px | Max Δ | Mean Δ (diff px) | Δ > 2 outside AA | Flat fills > 2 |
+|---|---:|---:|---:|---:|---:|---:|
+| `solid` | 0 | 0 | 0 | 0.00 | 0 | 0 |
+| `rect` | 0 | 0 | 0 | 0.00 | 0 | 0 |
+| `text` | 1745 | 4 | 162 | 36.33 | 0 | 0 |
+| `shadow` | 0 | 0 | 0 | 0.00 | 0 | 0 |
+| `trivial` | 1745 | 4 | 162 | 36.33 | 0 | 0 |
+| `type-body-large-emphasized` | 988 | 5 | 226 | 56.26 | 0 | 0 |
+| `type-body-large` | 994 | 5 | 181 | 42.08 | 0 | 0 |
+| `type-body-medium-emphasized` | 1614 | 326 | 226 | 106.58 | 0 | 0 |
+| `type-body-medium` | 1884 | 676 | 226 | 128.42 | 78 | 76 |
+| `type-body-small-emphasized` | 1369 | 311 | 226 | 113.78 | 0 | 0 |
+| `type-body-small` | 1397 | 334 | 226 | 114.66 | 0 | 0 |
+| `type-display-large-emphasized` | 5374 | 1236 | 226 | 129.00 | 0 | 0 |
+| `type-display-large` | 8034 | 2745 | 226 | 138.40 | 741 | 611 |
+| `type-display-medium-emphasized` | 6175 | 1696 | 226 | 132.07 | 226 | 220 |
+| `type-display-medium` | 6180 | 1629 | 226 | 121.93 | 222 | 217 |
+| `type-display-small-emphasized` | 5235 | 1839 | 226 | 142.37 | 296 | 294 |
+| `type-display-small` | 4378 | 949 | 226 | 126.33 | 0 | 0 |
+| `type-headline-large-emphasized` | 1366 | 1 | 171 | 57.57 | 0 | 0 |
+| `type-headline-large` | 1646 | 3 | 184 | 55.72 | 0 | 0 |
+| `type-headline-medium-emphasized` | 3367 | 714 | 226 | 132.13 | 0 | 0 |
+| `type-headline-medium` | 3680 | 993 | 226 | 131.36 | 106 | 106 |
+| `type-headline-small-emphasized` | 1877 | 51 | 226 | 81.03 | 0 | 0 |
+| `type-headline-small` | 1912 | 58 | 226 | 83.34 | 0 | 0 |
+| `type-label-large-emphasized` | 1692 | 474 | 226 | 120.82 | 67 | 67 |
+| `type-label-large` | 1683 | 397 | 226 | 108.35 | 0 | 0 |
+| `type-label-medium-emphasized` | 1762 | 663 | 226 | 142.93 | 147 | 144 |
+| `type-label-medium` | 1439 | 375 | 226 | 117.15 | 0 | 0 |
+| `type-label-small-emphasized` | 1369 | 397 | 226 | 123.06 | 39 | 38 |
+| `type-label-small` | 1139 | 219 | 226 | 109.31 | 0 | 0 |
+| `type-title-large-emphasized` | 1681 | 222 | 226 | 113.48 | 0 | 0 |
+| `type-title-large` | 2168 | 598 | 226 | 132.35 | 43 | 41 |
+| `type-title-medium-emphasized` | 843 | 9 | 205 | 62.37 | 0 | 0 |
+| `type-title-medium` | 815 | 2 | 226 | 51.28 | 0 | 0 |
+| `type-title-small-emphasized` | 1692 | 474 | 226 | 120.82 | 67 | 67 |
+| `type-title-small` | 1683 | 397 | 226 | 108.35 | 0 | 0 |

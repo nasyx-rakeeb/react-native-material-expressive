@@ -12,7 +12,7 @@
 - Within-harness determinism: **zero exact diffs** across 20 renders; max exact diff per app/scene/boot combination: 0 px.
 - Exact-zero scenes in every sampled boot: **none**.
 
-The cross-stack difference is text-only. Text layout markers were not captured. The frameworks rasterize some glyph edges differently. This report does **not** tune the scene and does **not** propose a new threshold.
+See the per-scene table for the exact split. Text layout markers were not captured. This report does **not** tune the scene and does **not** propose or change a threshold. The threshold-independent columns (max channel Δ, mean Δ over differing pixels, Δ &gt; 2 outside AA edges, flat fills &gt; 2) are the evidence for deciding whether a future threshold ADR is needed.
 
 ## Measured noise split
 

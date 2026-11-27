@@ -563,7 +563,12 @@
           "aaAwareBbox": null,
           "aaAwareCoordinates": [],
           "regionCounts": {},
-          "diff": "diffs/boot-1-solid.png"
+          "diff": "diffs/boot-1-solid.png",
+          "meanChannelDeltaOverDiffPixels": 0,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         },
         "rect": {
           "width": 840,
@@ -579,7 +584,12 @@
           "aaAwareBbox": null,
           "aaAwareCoordinates": [],
           "regionCounts": {},
-          "diff": "diffs/boot-1-rect.png"
+          "diff": "diffs/boot-1-rect.png",
+          "meanChannelDeltaOverDiffPixels": 0,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         },
         "text": {
           "width": 840,
@@ -594,10 +604,13 @@
           "bbox": null,
           "aaAwareBbox": null,
           "aaAwareCoordinates": [],
-          "regionCounts": {
-            "text-0": 0
-          },
-          "diff": "diffs/boot-1-text.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-text.png",
+          "meanChannelDeltaOverDiffPixels": 0,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         },
         "shadow": {
           "width": 840,
@@ -612,10 +625,13 @@
           "bbox": null,
           "aaAwareBbox": null,
           "aaAwareCoordinates": [],
-          "regionCounts": {
-            "shadow-0": 0
-          },
-          "diff": "diffs/boot-1-shadow.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-shadow.png",
+          "meanChannelDeltaOverDiffPixels": 0,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         },
         "trivial": {
           "width": 840,
@@ -630,10 +646,13 @@
           "bbox": null,
           "aaAwareBbox": null,
           "aaAwareCoordinates": [],
-          "regionCounts": {
-            "text-1": 0
-          },
-          "diff": "diffs/boot-1-trivial.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-trivial.png",
+          "meanChannelDeltaOverDiffPixels": 0,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         },
         "paragraph": {
           "width": 840,
@@ -739,17 +758,13 @@
               "y": 220
             }
           ],
-          "regionCounts": {
-            "text-0": 4128,
-            "text-1": 4127,
-            "text-2": 4127,
-            "text-3": 4127,
-            "text-4": 0,
-            "text-5": 0,
-            "text-6": 0,
-            "text-7": 0
-          },
-          "diff": "diffs/boot-1-paragraph.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-paragraph.png",
+          "meanChannelDeltaOverDiffPixels": 67.9140019379845,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         },
         "labels": {
           "width": 840,
@@ -855,19 +870,13 @@
               "y": 44
             }
           ],
-          "regionCounts": {
-            "text-0": 4355,
-            "text-1": 3532,
-            "text-2": 3532,
-            "text-3": 3532,
-            "text-4": 3532,
-            "text-5": 3532,
-            "text-6": 2606,
-            "text-7": 1581,
-            "text-8": 629,
-            "text-9": 0
-          },
-          "diff": "diffs/boot-1-labels.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-labels.png",
+          "meanChannelDeltaOverDiffPixels": 81.31673169612118,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         }
       },
       "shadow": {
@@ -901,7 +910,45 @@
   "gate": {
     "determinismOk": true,
     "crossStackExactZero": false,
-    "crossStackAaAwareBelowPlaybookGate": false,
-    "note": "No new pixel threshold is proposed. The 0.05% figure is the existing PLAYBOOK §7 gate."
+    "crossStackAaAwareBelowPlaybookGate": true,
+    "note": "No new pixel threshold is proposed. The 0.05% figure is the existing PLAYBOOK §7 gate and applies to the five core scenes only. Text-category scenes are tracked separately under U-25.",
+    "aaGateScope": "core",
+    "coreScenes": [
+      "solid",
+      "rect",
+      "text",
+      "shadow",
+      "trivial"
+    ],
+    "textScenes": [
+      "paragraph",
+      "labels"
+    ],
+    "categories": [
+      {
+        "category": "core",
+        "scenes": 5,
+        "exact": 0,
+        "aa": 0,
+        "maxAaPercent": 0,
+        "maxDelta": 0,
+        "maxMeanDelta": 0,
+        "highDelta": 0,
+        "flatHighDelta": 0,
+        "gate": true
+      },
+      {
+        "category": "text",
+        "scenes": 2,
+        "exact": 8485,
+        "aa": 467,
+        "maxAaPercent": 0.07891156462585033,
+        "maxDelta": 226,
+        "maxMeanDelta": 81.31673169612118,
+        "highDelta": 0,
+        "flatHighDelta": 0,
+        "gate": null
+      }
+    ]
   }
 }

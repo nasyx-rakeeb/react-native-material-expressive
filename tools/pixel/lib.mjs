@@ -177,6 +177,64 @@ function countInRegion(mask, width, region) {
   return count;
 }
 
+/**
+ * Threshold-independent edge test for the high-delta metric.
+ *
+ * A pixel is an "anti-aliased edge" when any of its 8 neighbours differs by
+ * more than 8/255 in any channel, in either image. This is deliberately
+ * independent of pixelmatch's matching threshold: the gate's 0.1 threshold
+ * (a YIQ squared-distance value, not a channel delta) ignores small flat-fill
+ * differences, so it cannot answer "do flat fills differ by more than 2?".
+ * A pixel with a uniform 3×3 neighbourhood in both images is a flat fill.
+ */
+const EDGE_CONTRAST = 8;
+
+function isAaEdge(image, x, y) {
+  const { data, width, height } = image;
+  const offset = (y * width + x) * 4;
+  const r = data[offset];
+  const g = data[offset + 1];
+  const b = data[offset + 2];
+  const x0 = Math.max(x - 1, 0);
+  const y0 = Math.max(y - 1, 0);
+  const x1 = Math.min(x + 1, width - 1);
+  const y1 = Math.min(y + 1, height - 1);
+  for (let ny = y0; ny <= y1; ny += 1) {
+    for (let nx = x0; nx <= x1; nx += 1) {
+      if (nx === x && ny === y) continue;
+      const no = (ny * width + nx) * 4;
+      if (
+        Math.abs(r - data[no]) > EDGE_CONTRAST ||
+        Math.abs(g - data[no + 1]) > EDGE_CONTRAST ||
+        Math.abs(b - data[no + 2]) > EDGE_CONTRAST
+      ) {
+        return true;
+      }
+    }
+  }
+  return false;
+}
+
+function isFlatFill(image, x, y) {
+  const { data, width, height } = image;
+  const offset = (y * width + x) * 4;
+  const r = data[offset];
+  const g = data[offset + 1];
+  const b = data[offset + 2];
+  const x0 = Math.max(x - 1, 0);
+  const y0 = Math.max(y - 1, 0);
+  const x1 = Math.min(x + 1, width - 1);
+  const y1 = Math.min(y + 1, height - 1);
+  for (let ny = y0; ny <= y1; ny += 1) {
+    for (let nx = x0; nx <= x1; nx += 1) {
+      if (nx === x && ny === y) continue;
+      const no = (ny * width + nx) * 4;
+      if (r !== data[no] || g !== data[no + 1] || b !== data[no + 2]) return false;
+    }
+  }
+  return true;
+}
+
 export function comparePng(a, b, { regions = [], writeDiff } = {}) {
   if (a.width !== b.width || a.height !== b.height) {
     throw new Error(`size mismatch: ${a.width}x${a.height} vs ${b.width}x${b.height}`);
@@ -192,6 +250,10 @@ export function comparePng(a, b, { regions = [], writeDiff } = {}) {
   let maxX = -1;
   let maxY = -1;
   let totalDelta = 0;
+  let totalMaxDelta = 0;
+  let highDeltaOutsideAaCount = 0;
+  let flatFillHighDeltaCount = 0;
+  const highDeltaOutsideAa = [];
 
   for (let index = 0; index < pixels; index += 1) {
     const offset = index * 4;
@@ -203,6 +265,7 @@ export function comparePng(a, b, { regions = [], writeDiff } = {}) {
     if (delta > 0) {
       mask[index] = 1;
       exact += 1;
+      totalMaxDelta += delta;
       if (delta > maxDelta) {
         maxDelta = delta;
       }
@@ -212,6 +275,19 @@ export function comparePng(a, b, { regions = [], writeDiff } = {}) {
       if (y < minY) minY = y;
       if (x > maxX) maxX = x;
       if (y > maxY) maxY = y;
+      // Threshold-independent high-delta count: raw max channel delta > 2,
+      // excluding pixels that the pixelmatch AA detector classifies as an
+      // anti-aliased edge. This is intentionally independent of the gate's
+      // 0.1 matching threshold; only the AA exclusion uses that detector.
+      if (delta > 2 && !isAaEdge(a.png, x, y) && !isAaEdge(b.png, x, y)) {
+        highDeltaOutsideAaCount += 1;
+        if (highDeltaOutsideAa.length < 20) {
+          highDeltaOutsideAa.push({ x, y, delta });
+        }
+        if (isFlatFill(a.png, x, y) && isFlatFill(b.png, x, y)) {
+          flatFillHighDeltaCount += 1;
+        }
+      }
     }
   }
 
@@ -263,6 +339,11 @@ export function comparePng(a, b, { regions = [], writeDiff } = {}) {
     aaAwareDiffPercent: (aaAware / pixels) * 100,
     maxChannelDelta: maxDelta,
     meanAbsoluteDelta: totalDelta / (pixels * 3),
+    meanChannelDeltaOverDiffPixels: exact === 0 ? 0 : totalMaxDelta / exact,
+    highDeltaOutsideAaPixels: highDeltaOutsideAaCount,
+    highDeltaOutsideAaPercent: (highDeltaOutsideAaCount / pixels) * 100,
+    highDeltaOutsideAaSamples: highDeltaOutsideAa,
+    flatFillHighDeltaPixels: flatFillHighDeltaCount,
     bbox:
       exact === 0 ? null : { x: minX, y: minY, width: maxX - minX + 1, height: maxY - minY + 1 },
     aaAwareBbox:

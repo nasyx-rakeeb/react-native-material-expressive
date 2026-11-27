@@ -3918,7 +3918,12 @@
           "aaAwareBbox": null,
           "aaAwareCoordinates": [],
           "regionCounts": {},
-          "diff": "diffs/boot-1-solid.png"
+          "diff": "diffs/boot-1-solid.png",
+          "meanChannelDeltaOverDiffPixels": 0,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         },
         "rect": {
           "width": 840,
@@ -3934,7 +3939,12 @@
           "aaAwareBbox": null,
           "aaAwareCoordinates": [],
           "regionCounts": {},
-          "diff": "diffs/boot-1-rect.png"
+          "diff": "diffs/boot-1-rect.png",
+          "meanChannelDeltaOverDiffPixels": 0,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         },
         "text": {
           "width": 840,
@@ -3976,10 +3986,13 @@
               "y": 114
             }
           ],
-          "regionCounts": {
-            "text-0": 1745
-          },
-          "diff": "diffs/boot-1-text.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-text.png",
+          "meanChannelDeltaOverDiffPixels": 36.331805157593124,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         },
         "shadow": {
           "width": 840,
@@ -3994,10 +4007,13 @@
           "bbox": null,
           "aaAwareBbox": null,
           "aaAwareCoordinates": [],
-          "regionCounts": {
-            "shadow-0": 0
-          },
-          "diff": "diffs/boot-1-shadow.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-shadow.png",
+          "meanChannelDeltaOverDiffPixels": 0,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         },
         "trivial": {
           "width": 840,
@@ -4039,10 +4055,13 @@
               "y": 408
             }
           ],
-          "regionCounts": {
-            "text-1": 1745
-          },
-          "diff": "diffs/boot-1-trivial.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-trivial.png",
+          "meanChannelDeltaOverDiffPixels": 36.331805157593124,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         },
         "type-body-large-emphasized": {
           "width": 840,
@@ -4088,10 +4107,13 @@
               "y": 108
             }
           ],
-          "regionCounts": {
-            "text-0": 988
-          },
-          "diff": "diffs/boot-1-type-body-large-emphasized.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-type-body-large-emphasized.png",
+          "meanChannelDeltaOverDiffPixels": 56.26417004048583,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         },
         "type-body-large": {
           "width": 840,
@@ -4137,10 +4159,13 @@
               "y": 92
             }
           ],
-          "regionCounts": {
-            "text-0": 994
-          },
-          "diff": "diffs/boot-1-type-body-large.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-type-body-large.png",
+          "meanChannelDeltaOverDiffPixels": 42.08048289738431,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         },
         "type-body-medium-emphasized": {
           "width": 840,
@@ -4246,10 +4271,13 @@
               "y": 78
             }
           ],
-          "regionCounts": {
-            "text-0": 1614
-          },
-          "diff": "diffs/boot-1-type-body-medium-emphasized.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-type-body-medium-emphasized.png",
+          "meanChannelDeltaOverDiffPixels": 106.57620817843866,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         },
         "type-body-medium": {
           "width": 840,
@@ -4355,10 +4383,114 @@
               "y": 77
             }
           ],
-          "regionCounts": {
-            "text-0": 1884
-          },
-          "diff": "diffs/boot-1-type-body-medium.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-type-body-medium.png",
+          "meanChannelDeltaOverDiffPixels": 128.42091295116774,
+          "highDeltaOutsideAaPixels": 78,
+          "highDeltaOutsideAaPercent": 0.017687074829931974,
+          "highDeltaOutsideAaSamples": [
+            {
+              "x": 170,
+              "y": 76,
+              "delta": 226
+            },
+            {
+              "x": 170,
+              "y": 77,
+              "delta": 226
+            },
+            {
+              "x": 170,
+              "y": 78,
+              "delta": 226
+            },
+            {
+              "x": 170,
+              "y": 79,
+              "delta": 226
+            },
+            {
+              "x": 170,
+              "y": 80,
+              "delta": 226
+            },
+            {
+              "x": 170,
+              "y": 81,
+              "delta": 226
+            },
+            {
+              "x": 170,
+              "y": 82,
+              "delta": 226
+            },
+            {
+              "x": 170,
+              "y": 83,
+              "delta": 226
+            },
+            {
+              "x": 170,
+              "y": 84,
+              "delta": 226
+            },
+            {
+              "x": 170,
+              "y": 85,
+              "delta": 226
+            },
+            {
+              "x": 170,
+              "y": 86,
+              "delta": 226
+            },
+            {
+              "x": 128,
+              "y": 87,
+              "delta": 226
+            },
+            {
+              "x": 141,
+              "y": 87,
+              "delta": 226
+            },
+            {
+              "x": 170,
+              "y": 87,
+              "delta": 226
+            },
+            {
+              "x": 128,
+              "y": 88,
+              "delta": 226
+            },
+            {
+              "x": 132,
+              "y": 88,
+              "delta": 226
+            },
+            {
+              "x": 141,
+              "y": 88,
+              "delta": 226
+            },
+            {
+              "x": 166,
+              "y": 88,
+              "delta": 226
+            },
+            {
+              "x": 170,
+              "y": 88,
+              "delta": 226
+            },
+            {
+              "x": 128,
+              "y": 89,
+              "delta": 226
+            }
+          ],
+          "flatFillHighDeltaPixels": 76
         },
         "type-body-small-emphasized": {
           "width": 840,
@@ -4464,10 +4596,13 @@
               "y": 75
             }
           ],
-          "regionCounts": {
-            "text-0": 1369
-          },
-          "diff": "diffs/boot-1-type-body-small-emphasized.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-type-body-small-emphasized.png",
+          "meanChannelDeltaOverDiffPixels": 113.77574872169467,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         },
         "type-body-small": {
           "width": 840,
@@ -4573,10 +4708,13 @@
               "y": 75
             }
           ],
-          "regionCounts": {
-            "text-0": 1397
-          },
-          "diff": "diffs/boot-1-type-body-small.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-type-body-small.png",
+          "meanChannelDeltaOverDiffPixels": 114.65926986399427,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         },
         "type-display-large-emphasized": {
           "width": 840,
@@ -4682,10 +4820,13 @@
               "y": 96
             }
           ],
-          "regionCounts": {
-            "text-0": 5374
-          },
-          "diff": "diffs/boot-1-type-display-large-emphasized.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-type-display-large-emphasized.png",
+          "meanChannelDeltaOverDiffPixels": 129.00446594715297,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         },
         "type-display-large": {
           "width": 840,
@@ -4791,10 +4932,114 @@
               "y": 92
             }
           ],
-          "regionCounts": {
-            "text-0": 8034
-          },
-          "diff": "diffs/boot-1-type-display-large.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-type-display-large.png",
+          "meanChannelDeltaOverDiffPixels": 138.40428180234005,
+          "highDeltaOutsideAaPixels": 741,
+          "highDeltaOutsideAaPercent": 0.16802721088435374,
+          "highDeltaOutsideAaSamples": [
+            {
+              "x": 554,
+              "y": 91,
+              "delta": 226
+            },
+            {
+              "x": 555,
+              "y": 91,
+              "delta": 226
+            },
+            {
+              "x": 567,
+              "y": 91,
+              "delta": 226
+            },
+            {
+              "x": 568,
+              "y": 91,
+              "delta": 226
+            },
+            {
+              "x": 569,
+              "y": 91,
+              "delta": 226
+            },
+            {
+              "x": 554,
+              "y": 92,
+              "delta": 226
+            },
+            {
+              "x": 555,
+              "y": 92,
+              "delta": 226
+            },
+            {
+              "x": 567,
+              "y": 92,
+              "delta": 226
+            },
+            {
+              "x": 568,
+              "y": 92,
+              "delta": 226
+            },
+            {
+              "x": 569,
+              "y": 92,
+              "delta": 226
+            },
+            {
+              "x": 554,
+              "y": 93,
+              "delta": 226
+            },
+            {
+              "x": 555,
+              "y": 93,
+              "delta": 226
+            },
+            {
+              "x": 567,
+              "y": 93,
+              "delta": 226
+            },
+            {
+              "x": 568,
+              "y": 93,
+              "delta": 226
+            },
+            {
+              "x": 569,
+              "y": 93,
+              "delta": 226
+            },
+            {
+              "x": 554,
+              "y": 94,
+              "delta": 226
+            },
+            {
+              "x": 555,
+              "y": 94,
+              "delta": 226
+            },
+            {
+              "x": 567,
+              "y": 94,
+              "delta": 226
+            },
+            {
+              "x": 568,
+              "y": 94,
+              "delta": 226
+            },
+            {
+              "x": 569,
+              "y": 94,
+              "delta": 226
+            }
+          ],
+          "flatFillHighDeltaPixels": 611
         },
         "type-display-medium-emphasized": {
           "width": 840,
@@ -4900,10 +5145,114 @@
               "y": 87
             }
           ],
-          "regionCounts": {
-            "text-0": 6175
-          },
-          "diff": "diffs/boot-1-type-display-medium-emphasized.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-type-display-medium-emphasized.png",
+          "meanChannelDeltaOverDiffPixels": 132.06898785425102,
+          "highDeltaOutsideAaPixels": 226,
+          "highDeltaOutsideAaPercent": 0.05124716553287982,
+          "highDeltaOutsideAaSamples": [
+            {
+              "x": 473,
+              "y": 85,
+              "delta": 226
+            },
+            {
+              "x": 460,
+              "y": 86,
+              "delta": 226
+            },
+            {
+              "x": 473,
+              "y": 86,
+              "delta": 226
+            },
+            {
+              "x": 460,
+              "y": 87,
+              "delta": 226
+            },
+            {
+              "x": 473,
+              "y": 87,
+              "delta": 226
+            },
+            {
+              "x": 460,
+              "y": 88,
+              "delta": 226
+            },
+            {
+              "x": 473,
+              "y": 88,
+              "delta": 226
+            },
+            {
+              "x": 460,
+              "y": 89,
+              "delta": 226
+            },
+            {
+              "x": 473,
+              "y": 89,
+              "delta": 226
+            },
+            {
+              "x": 460,
+              "y": 90,
+              "delta": 226
+            },
+            {
+              "x": 473,
+              "y": 90,
+              "delta": 226
+            },
+            {
+              "x": 460,
+              "y": 91,
+              "delta": 226
+            },
+            {
+              "x": 473,
+              "y": 91,
+              "delta": 226
+            },
+            {
+              "x": 460,
+              "y": 92,
+              "delta": 226
+            },
+            {
+              "x": 473,
+              "y": 92,
+              "delta": 226
+            },
+            {
+              "x": 460,
+              "y": 93,
+              "delta": 226
+            },
+            {
+              "x": 473,
+              "y": 93,
+              "delta": 226
+            },
+            {
+              "x": 460,
+              "y": 94,
+              "delta": 226
+            },
+            {
+              "x": 473,
+              "y": 94,
+              "delta": 226
+            },
+            {
+              "x": 460,
+              "y": 95,
+              "delta": 226
+            }
+          ],
+          "flatFillHighDeltaPixels": 220
         },
         "type-display-medium": {
           "width": 840,
@@ -5009,10 +5358,114 @@
               "y": 87
             }
           ],
-          "regionCounts": {
-            "text-0": 6180
-          },
-          "diff": "diffs/boot-1-type-display-medium.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-type-display-medium.png",
+          "meanChannelDeltaOverDiffPixels": 121.93300970873787,
+          "highDeltaOutsideAaPixels": 222,
+          "highDeltaOutsideAaPercent": 0.050340136054421766,
+          "highDeltaOutsideAaSamples": [
+            {
+              "x": 463,
+              "y": 85,
+              "delta": 226
+            },
+            {
+              "x": 452,
+              "y": 86,
+              "delta": 226
+            },
+            {
+              "x": 463,
+              "y": 86,
+              "delta": 226
+            },
+            {
+              "x": 452,
+              "y": 87,
+              "delta": 226
+            },
+            {
+              "x": 463,
+              "y": 87,
+              "delta": 226
+            },
+            {
+              "x": 452,
+              "y": 88,
+              "delta": 226
+            },
+            {
+              "x": 463,
+              "y": 88,
+              "delta": 226
+            },
+            {
+              "x": 452,
+              "y": 89,
+              "delta": 226
+            },
+            {
+              "x": 463,
+              "y": 89,
+              "delta": 226
+            },
+            {
+              "x": 452,
+              "y": 90,
+              "delta": 226
+            },
+            {
+              "x": 463,
+              "y": 90,
+              "delta": 226
+            },
+            {
+              "x": 452,
+              "y": 91,
+              "delta": 226
+            },
+            {
+              "x": 463,
+              "y": 91,
+              "delta": 226
+            },
+            {
+              "x": 452,
+              "y": 92,
+              "delta": 226
+            },
+            {
+              "x": 463,
+              "y": 92,
+              "delta": 226
+            },
+            {
+              "x": 452,
+              "y": 93,
+              "delta": 226
+            },
+            {
+              "x": 463,
+              "y": 93,
+              "delta": 226
+            },
+            {
+              "x": 452,
+              "y": 94,
+              "delta": 226
+            },
+            {
+              "x": 463,
+              "y": 94,
+              "delta": 226
+            },
+            {
+              "x": 452,
+              "y": 95,
+              "delta": 226
+            }
+          ],
+          "flatFillHighDeltaPixels": 217
         },
         "type-display-small-emphasized": {
           "width": 840,
@@ -5118,10 +5571,114 @@
               "y": 84
             }
           ],
-          "regionCounts": {
-            "text-0": 5235
-          },
-          "diff": "diffs/boot-1-type-display-small-emphasized.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-type-display-small-emphasized.png",
+          "meanChannelDeltaOverDiffPixels": 142.36638013371538,
+          "highDeltaOutsideAaPixels": 296,
+          "highDeltaOutsideAaPercent": 0.06712018140589569,
+          "highDeltaOutsideAaSamples": [
+            {
+              "x": 375,
+              "y": 83,
+              "delta": 226
+            },
+            {
+              "x": 376,
+              "y": 83,
+              "delta": 226
+            },
+            {
+              "x": 375,
+              "y": 84,
+              "delta": 226
+            },
+            {
+              "x": 376,
+              "y": 84,
+              "delta": 226
+            },
+            {
+              "x": 386,
+              "y": 84,
+              "delta": 226
+            },
+            {
+              "x": 375,
+              "y": 85,
+              "delta": 226
+            },
+            {
+              "x": 376,
+              "y": 85,
+              "delta": 226
+            },
+            {
+              "x": 386,
+              "y": 85,
+              "delta": 226
+            },
+            {
+              "x": 375,
+              "y": 86,
+              "delta": 226
+            },
+            {
+              "x": 376,
+              "y": 86,
+              "delta": 226
+            },
+            {
+              "x": 386,
+              "y": 86,
+              "delta": 226
+            },
+            {
+              "x": 375,
+              "y": 87,
+              "delta": 226
+            },
+            {
+              "x": 376,
+              "y": 87,
+              "delta": 226
+            },
+            {
+              "x": 386,
+              "y": 87,
+              "delta": 226
+            },
+            {
+              "x": 375,
+              "y": 88,
+              "delta": 226
+            },
+            {
+              "x": 376,
+              "y": 88,
+              "delta": 226
+            },
+            {
+              "x": 386,
+              "y": 88,
+              "delta": 226
+            },
+            {
+              "x": 298,
+              "y": 89,
+              "delta": 226
+            },
+            {
+              "x": 375,
+              "y": 89,
+              "delta": 226
+            },
+            {
+              "x": 376,
+              "y": 89,
+              "delta": 226
+            }
+          ],
+          "flatFillHighDeltaPixels": 294
         },
         "type-display-small": {
           "width": 840,
@@ -5227,10 +5784,13 @@
               "y": 86
             }
           ],
-          "regionCounts": {
-            "text-0": 4378
-          },
-          "diff": "diffs/boot-1-type-display-small.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-type-display-small.png",
+          "meanChannelDeltaOverDiffPixels": 126.33005938784834,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         },
         "type-headline-large-emphasized": {
           "width": 840,
@@ -5260,10 +5820,13 @@
               "y": 137
             }
           ],
-          "regionCounts": {
-            "text-0": 1366
-          },
-          "diff": "diffs/boot-1-type-headline-large-emphasized.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-type-headline-large-emphasized.png",
+          "meanChannelDeltaOverDiffPixels": 57.56588579795022,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         },
         "type-headline-large": {
           "width": 840,
@@ -5301,10 +5864,13 @@
               "y": 141
             }
           ],
-          "regionCounts": {
-            "text-0": 1646
-          },
-          "diff": "diffs/boot-1-type-headline-large.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-type-headline-large.png",
+          "meanChannelDeltaOverDiffPixels": 55.71628189550425,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         },
         "type-headline-medium-emphasized": {
           "width": 840,
@@ -5410,10 +5976,13 @@
               "y": 84
             }
           ],
-          "regionCounts": {
-            "text-0": 3367
-          },
-          "diff": "diffs/boot-1-type-headline-medium-emphasized.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-type-headline-medium-emphasized.png",
+          "meanChannelDeltaOverDiffPixels": 132.12503712503712,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         },
         "type-headline-medium": {
           "width": 840,
@@ -5519,10 +6088,114 @@
               "y": 83
             }
           ],
-          "regionCounts": {
-            "text-0": 3680
-          },
-          "diff": "diffs/boot-1-type-headline-medium.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-type-headline-medium.png",
+          "meanChannelDeltaOverDiffPixels": 131.36467391304348,
+          "highDeltaOutsideAaPixels": 106,
+          "highDeltaOutsideAaPercent": 0.024036281179138322,
+          "highDeltaOutsideAaSamples": [
+            {
+              "x": 296,
+              "y": 81,
+              "delta": 226
+            },
+            {
+              "x": 296,
+              "y": 82,
+              "delta": 226
+            },
+            {
+              "x": 303,
+              "y": 82,
+              "delta": 226
+            },
+            {
+              "x": 296,
+              "y": 83,
+              "delta": 226
+            },
+            {
+              "x": 303,
+              "y": 83,
+              "delta": 226
+            },
+            {
+              "x": 296,
+              "y": 84,
+              "delta": 226
+            },
+            {
+              "x": 303,
+              "y": 84,
+              "delta": 226
+            },
+            {
+              "x": 296,
+              "y": 85,
+              "delta": 226
+            },
+            {
+              "x": 303,
+              "y": 85,
+              "delta": 226
+            },
+            {
+              "x": 296,
+              "y": 86,
+              "delta": 226
+            },
+            {
+              "x": 303,
+              "y": 86,
+              "delta": 226
+            },
+            {
+              "x": 296,
+              "y": 87,
+              "delta": 226
+            },
+            {
+              "x": 303,
+              "y": 87,
+              "delta": 226
+            },
+            {
+              "x": 296,
+              "y": 88,
+              "delta": 226
+            },
+            {
+              "x": 303,
+              "y": 88,
+              "delta": 226
+            },
+            {
+              "x": 296,
+              "y": 89,
+              "delta": 226
+            },
+            {
+              "x": 303,
+              "y": 89,
+              "delta": 226
+            },
+            {
+              "x": 296,
+              "y": 90,
+              "delta": 226
+            },
+            {
+              "x": 303,
+              "y": 90,
+              "delta": 226
+            },
+            {
+              "x": 296,
+              "y": 91,
+              "delta": 226
+            }
+          ],
+          "flatFillHighDeltaPixels": 106
         },
         "type-headline-small-emphasized": {
           "width": 840,
@@ -5628,10 +6301,13 @@
               "y": 126
             }
           ],
-          "regionCounts": {
-            "text-0": 1877
-          },
-          "diff": "diffs/boot-1-type-headline-small-emphasized.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-type-headline-small-emphasized.png",
+          "meanChannelDeltaOverDiffPixels": 81.03249866808737,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         },
         "type-headline-small": {
           "width": 840,
@@ -5737,10 +6413,13 @@
               "y": 111
             }
           ],
-          "regionCounts": {
-            "text-0": 1912
-          },
-          "diff": "diffs/boot-1-type-headline-small.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-type-headline-small.png",
+          "meanChannelDeltaOverDiffPixels": 83.3357740585774,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         },
         "type-label-large-emphasized": {
           "width": 840,
@@ -5846,10 +6525,114 @@
               "y": 76
             }
           ],
-          "regionCounts": {
-            "text-0": 1692
-          },
-          "diff": "diffs/boot-1-type-label-large-emphasized.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-type-label-large-emphasized.png",
+          "meanChannelDeltaOverDiffPixels": 120.81796690307328,
+          "highDeltaOutsideAaPixels": 67,
+          "highDeltaOutsideAaPercent": 0.015192743764172336,
+          "highDeltaOutsideAaSamples": [
+            {
+              "x": 178,
+              "y": 76,
+              "delta": 226
+            },
+            {
+              "x": 183,
+              "y": 76,
+              "delta": 226
+            },
+            {
+              "x": 178,
+              "y": 77,
+              "delta": 226
+            },
+            {
+              "x": 183,
+              "y": 77,
+              "delta": 226
+            },
+            {
+              "x": 178,
+              "y": 78,
+              "delta": 226
+            },
+            {
+              "x": 183,
+              "y": 78,
+              "delta": 226
+            },
+            {
+              "x": 178,
+              "y": 79,
+              "delta": 226
+            },
+            {
+              "x": 183,
+              "y": 79,
+              "delta": 226
+            },
+            {
+              "x": 178,
+              "y": 80,
+              "delta": 226
+            },
+            {
+              "x": 183,
+              "y": 80,
+              "delta": 226
+            },
+            {
+              "x": 178,
+              "y": 81,
+              "delta": 226
+            },
+            {
+              "x": 183,
+              "y": 81,
+              "delta": 226
+            },
+            {
+              "x": 178,
+              "y": 82,
+              "delta": 226
+            },
+            {
+              "x": 183,
+              "y": 82,
+              "delta": 226
+            },
+            {
+              "x": 178,
+              "y": 83,
+              "delta": 226
+            },
+            {
+              "x": 183,
+              "y": 83,
+              "delta": 226
+            },
+            {
+              "x": 151,
+              "y": 84,
+              "delta": 226
+            },
+            {
+              "x": 178,
+              "y": 84,
+              "delta": 226
+            },
+            {
+              "x": 183,
+              "y": 84,
+              "delta": 226
+            },
+            {
+              "x": 151,
+              "y": 85,
+              "delta": 226
+            }
+          ],
+          "flatFillHighDeltaPixels": 67
         },
         "type-label-large": {
           "width": 840,
@@ -5955,10 +6738,13 @@
               "y": 77
             }
           ],
-          "regionCounts": {
-            "text-0": 1683
-          },
-          "diff": "diffs/boot-1-type-label-large.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-type-label-large.png",
+          "meanChannelDeltaOverDiffPixels": 108.34878193701724,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         },
         "type-label-medium-emphasized": {
           "width": 840,
@@ -6064,10 +6850,114 @@
               "y": 72
             }
           ],
-          "regionCounts": {
-            "text-0": 1762
-          },
-          "diff": "diffs/boot-1-type-label-medium-emphasized.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-type-label-medium-emphasized.png",
+          "meanChannelDeltaOverDiffPixels": 142.93416572077186,
+          "highDeltaOutsideAaPixels": 147,
+          "highDeltaOutsideAaPercent": 0.03333333333333333,
+          "highDeltaOutsideAaSamples": [
+            {
+              "x": 137,
+              "y": 72,
+              "delta": 226
+            },
+            {
+              "x": 167,
+              "y": 72,
+              "delta": 226
+            },
+            {
+              "x": 137,
+              "y": 73,
+              "delta": 226
+            },
+            {
+              "x": 167,
+              "y": 73,
+              "delta": 226
+            },
+            {
+              "x": 171,
+              "y": 73,
+              "delta": 226
+            },
+            {
+              "x": 172,
+              "y": 73,
+              "delta": 226
+            },
+            {
+              "x": 167,
+              "y": 74,
+              "delta": 226
+            },
+            {
+              "x": 171,
+              "y": 74,
+              "delta": 226
+            },
+            {
+              "x": 172,
+              "y": 74,
+              "delta": 226
+            },
+            {
+              "x": 167,
+              "y": 75,
+              "delta": 226
+            },
+            {
+              "x": 171,
+              "y": 75,
+              "delta": 226
+            },
+            {
+              "x": 172,
+              "y": 75,
+              "delta": 226
+            },
+            {
+              "x": 167,
+              "y": 76,
+              "delta": 226
+            },
+            {
+              "x": 171,
+              "y": 76,
+              "delta": 226
+            },
+            {
+              "x": 172,
+              "y": 76,
+              "delta": 226
+            },
+            {
+              "x": 167,
+              "y": 77,
+              "delta": 226
+            },
+            {
+              "x": 171,
+              "y": 77,
+              "delta": 226
+            },
+            {
+              "x": 172,
+              "y": 77,
+              "delta": 226
+            },
+            {
+              "x": 167,
+              "y": 78,
+              "delta": 226
+            },
+            {
+              "x": 171,
+              "y": 78,
+              "delta": 226
+            }
+          ],
+          "flatFillHighDeltaPixels": 144
         },
         "type-label-medium": {
           "width": 840,
@@ -6173,10 +7063,13 @@
               "y": 74
             }
           ],
-          "regionCounts": {
-            "text-0": 1439
-          },
-          "diff": "diffs/boot-1-type-label-medium.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-type-label-medium.png",
+          "meanChannelDeltaOverDiffPixels": 117.14801945795692,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         },
         "type-label-small-emphasized": {
           "width": 840,
@@ -6282,10 +7175,114 @@
               "y": 75
             }
           ],
-          "regionCounts": {
-            "text-0": 1369
-          },
-          "diff": "diffs/boot-1-type-label-small-emphasized.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-type-label-small-emphasized.png",
+          "meanChannelDeltaOverDiffPixels": 123.05697589481373,
+          "highDeltaOutsideAaPixels": 39,
+          "highDeltaOutsideAaPercent": 0.008843537414965987,
+          "highDeltaOutsideAaSamples": [
+            {
+              "x": 156,
+              "y": 74,
+              "delta": 226
+            },
+            {
+              "x": 156,
+              "y": 75,
+              "delta": 226
+            },
+            {
+              "x": 156,
+              "y": 76,
+              "delta": 226
+            },
+            {
+              "x": 156,
+              "y": 77,
+              "delta": 226
+            },
+            {
+              "x": 156,
+              "y": 78,
+              "delta": 226
+            },
+            {
+              "x": 156,
+              "y": 79,
+              "delta": 226
+            },
+            {
+              "x": 156,
+              "y": 80,
+              "delta": 226
+            },
+            {
+              "x": 129,
+              "y": 81,
+              "delta": 226
+            },
+            {
+              "x": 156,
+              "y": 81,
+              "delta": 226
+            },
+            {
+              "x": 129,
+              "y": 82,
+              "delta": 226
+            },
+            {
+              "x": 156,
+              "y": 82,
+              "delta": 226
+            },
+            {
+              "x": 129,
+              "y": 83,
+              "delta": 226
+            },
+            {
+              "x": 151,
+              "y": 83,
+              "delta": 226
+            },
+            {
+              "x": 156,
+              "y": 83,
+              "delta": 226
+            },
+            {
+              "x": 129,
+              "y": 84,
+              "delta": 226
+            },
+            {
+              "x": 151,
+              "y": 84,
+              "delta": 226
+            },
+            {
+              "x": 156,
+              "y": 84,
+              "delta": 226
+            },
+            {
+              "x": 129,
+              "y": 85,
+              "delta": 226
+            },
+            {
+              "x": 151,
+              "y": 85,
+              "delta": 226
+            },
+            {
+              "x": 156,
+              "y": 85,
+              "delta": 226
+            }
+          ],
+          "flatFillHighDeltaPixels": 38
         },
         "type-label-small": {
           "width": 840,
@@ -6391,10 +7388,13 @@
               "y": 77
             }
           ],
-          "regionCounts": {
-            "text-0": 1139
-          },
-          "diff": "diffs/boot-1-type-label-small.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-type-label-small.png",
+          "meanChannelDeltaOverDiffPixels": 109.3064091308165,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         },
         "type-title-large-emphasized": {
           "width": 840,
@@ -6500,10 +7500,13 @@
               "y": 83
             }
           ],
-          "regionCounts": {
-            "text-0": 1681
-          },
-          "diff": "diffs/boot-1-type-title-large-emphasized.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-type-title-large-emphasized.png",
+          "meanChannelDeltaOverDiffPixels": 113.47828673408685,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         },
         "type-title-large": {
           "width": 840,
@@ -6609,10 +7612,114 @@
               "y": 80
             }
           ],
-          "regionCounts": {
-            "text-0": 2168
-          },
-          "diff": "diffs/boot-1-type-title-large.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-type-title-large.png",
+          "meanChannelDeltaOverDiffPixels": 132.34640221402213,
+          "highDeltaOutsideAaPixels": 43,
+          "highDeltaOutsideAaPercent": 0.009750566893424037,
+          "highDeltaOutsideAaSamples": [
+            {
+              "x": 246,
+              "y": 78,
+              "delta": 226
+            },
+            {
+              "x": 246,
+              "y": 79,
+              "delta": 226
+            },
+            {
+              "x": 246,
+              "y": 80,
+              "delta": 226
+            },
+            {
+              "x": 246,
+              "y": 81,
+              "delta": 226
+            },
+            {
+              "x": 246,
+              "y": 82,
+              "delta": 226
+            },
+            {
+              "x": 246,
+              "y": 83,
+              "delta": 226
+            },
+            {
+              "x": 246,
+              "y": 84,
+              "delta": 226
+            },
+            {
+              "x": 246,
+              "y": 85,
+              "delta": 226
+            },
+            {
+              "x": 246,
+              "y": 86,
+              "delta": 226
+            },
+            {
+              "x": 246,
+              "y": 87,
+              "delta": 226
+            },
+            {
+              "x": 246,
+              "y": 88,
+              "delta": 226
+            },
+            {
+              "x": 246,
+              "y": 89,
+              "delta": 226
+            },
+            {
+              "x": 246,
+              "y": 90,
+              "delta": 226
+            },
+            {
+              "x": 246,
+              "y": 91,
+              "delta": 226
+            },
+            {
+              "x": 246,
+              "y": 92,
+              "delta": 226
+            },
+            {
+              "x": 246,
+              "y": 93,
+              "delta": 226
+            },
+            {
+              "x": 246,
+              "y": 94,
+              "delta": 226
+            },
+            {
+              "x": 246,
+              "y": 95,
+              "delta": 226
+            },
+            {
+              "x": 246,
+              "y": 96,
+              "delta": 226
+            },
+            {
+              "x": 246,
+              "y": 97,
+              "delta": 226
+            }
+          ],
+          "flatFillHighDeltaPixels": 41
         },
         "type-title-medium-emphasized": {
           "width": 840,
@@ -6674,10 +7781,13 @@
               "y": 108
             }
           ],
-          "regionCounts": {
-            "text-0": 843
-          },
-          "diff": "diffs/boot-1-type-title-medium-emphasized.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-type-title-medium-emphasized.png",
+          "meanChannelDeltaOverDiffPixels": 62.37247924080664,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         },
         "type-title-medium": {
           "width": 840,
@@ -6711,10 +7821,13 @@
               "y": 89
             }
           ],
-          "regionCounts": {
-            "text-0": 815
-          },
-          "diff": "diffs/boot-1-type-title-medium.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-type-title-medium.png",
+          "meanChannelDeltaOverDiffPixels": 51.27975460122699,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         },
         "type-title-small-emphasized": {
           "width": 840,
@@ -6820,10 +7933,114 @@
               "y": 76
             }
           ],
-          "regionCounts": {
-            "text-0": 1692
-          },
-          "diff": "diffs/boot-1-type-title-small-emphasized.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-type-title-small-emphasized.png",
+          "meanChannelDeltaOverDiffPixels": 120.81796690307328,
+          "highDeltaOutsideAaPixels": 67,
+          "highDeltaOutsideAaPercent": 0.015192743764172336,
+          "highDeltaOutsideAaSamples": [
+            {
+              "x": 178,
+              "y": 76,
+              "delta": 226
+            },
+            {
+              "x": 183,
+              "y": 76,
+              "delta": 226
+            },
+            {
+              "x": 178,
+              "y": 77,
+              "delta": 226
+            },
+            {
+              "x": 183,
+              "y": 77,
+              "delta": 226
+            },
+            {
+              "x": 178,
+              "y": 78,
+              "delta": 226
+            },
+            {
+              "x": 183,
+              "y": 78,
+              "delta": 226
+            },
+            {
+              "x": 178,
+              "y": 79,
+              "delta": 226
+            },
+            {
+              "x": 183,
+              "y": 79,
+              "delta": 226
+            },
+            {
+              "x": 178,
+              "y": 80,
+              "delta": 226
+            },
+            {
+              "x": 183,
+              "y": 80,
+              "delta": 226
+            },
+            {
+              "x": 178,
+              "y": 81,
+              "delta": 226
+            },
+            {
+              "x": 183,
+              "y": 81,
+              "delta": 226
+            },
+            {
+              "x": 178,
+              "y": 82,
+              "delta": 226
+            },
+            {
+              "x": 183,
+              "y": 82,
+              "delta": 226
+            },
+            {
+              "x": 178,
+              "y": 83,
+              "delta": 226
+            },
+            {
+              "x": 183,
+              "y": 83,
+              "delta": 226
+            },
+            {
+              "x": 151,
+              "y": 84,
+              "delta": 226
+            },
+            {
+              "x": 178,
+              "y": 84,
+              "delta": 226
+            },
+            {
+              "x": 183,
+              "y": 84,
+              "delta": 226
+            },
+            {
+              "x": 151,
+              "y": 85,
+              "delta": 226
+            }
+          ],
+          "flatFillHighDeltaPixels": 67
         },
         "type-title-small": {
           "width": 840,
@@ -6929,10 +8146,13 @@
               "y": 77
             }
           ],
-          "regionCounts": {
-            "text-0": 1683
-          },
-          "diff": "diffs/boot-1-type-title-small.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-type-title-small.png",
+          "meanChannelDeltaOverDiffPixels": 108.34878193701724,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         }
       },
       "shadow": {
@@ -7016,6 +8236,9 @@
         "aa": 8,
         "maxAaPercent": 0.0009070294784580498,
         "maxDelta": 162,
+        "maxMeanDelta": 36.331805157593124,
+        "highDelta": 0,
+        "flatHighDelta": 0,
         "gate": true
       },
       {
@@ -7025,6 +8248,9 @@
         "aa": 17798,
         "maxAaPercent": 0.6224489795918368,
         "maxDelta": 226,
+        "maxMeanDelta": 142.93416572077186,
+        "highDelta": 741,
+        "flatHighDelta": 611,
         "gate": null
       }
     ]

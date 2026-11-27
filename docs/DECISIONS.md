@@ -578,3 +578,31 @@ The original consequence — "components start in the full-motion state for one 
 - **Evidence:**
   - `src/elevation/elevation.ts` (`elevationToIosShadow`), `src/elevation/Surface.tsx`.
   - `docs/evidence/day9/ios/` — side-by-side captures and the approximation note.
+
+## ADR-020 — Diff reports publish threshold-independent deltas (proposed)
+
+- **Date:** 2026-11-28
+- **Status:** **Proposed** — awaiting Nasyx. The gate is unchanged until approved.
+- **Context:**
+  - The PLAYBOOK §7 gate counts pixelmatch pixels at `threshold: 0.1`, `includeAA: false`. Threshold 0.1 is a YIQ squared-colour-distance limit (`35215 × 0.1²`), not a per-channel delta; for neutral grey it is roughly 26/255 per channel.
+  - The Day 9 interaction scenes therefore report 22.2% and 42.6% exact-different pixels with max channel Δ 9 while the AA-aware count is 0. That is correct for the current gate but easy to misread as "byte-identical" or "only 1/255".
+  - The audit found no flat fill above Δ 2 in any non-text scene, and all Δ > 2 pixels sit within one pixel of a colour transition. The only flat-fill misses are the Day 4 diagnostic text probes, already D-001.
+- **Proposed decision:**
+  1. Keep the existing 0.05% AA-aware gate unchanged.
+  2. Every diff report must publish, per scene: max channel Δ, mean channel Δ over differing pixels, count of pixels with Δ > 2 outside anti-aliased edges, and count of flat fills with Δ > 2.
+  3. For non-text scenes, a non-zero flat-fill count above Δ 2 is a failure; a non-zero Δ > 2 outside AA edges count is a failure. Text scenes remain under ADR-010/D-001.
+  4. Do not replace the AA-aware gate without a separate approved ADR. The raw metrics are guardrails, not a retroactive failure of past scenes.
+- **Why:** A threshold-dependent count cannot distinguish "small flat rounding" from "a real edge shift". Publishing both makes the claim auditable without silently tightening or loosening the gate.
+- **Alternatives rejected:**
+  - **Lower pixelmatch threshold to 0.01.** It would count more AA edge pixels and change the gate without a product decision.
+  - **Gate on max channel Δ alone.** A single AA edge can exceed 100; it would fail every text scene.
+  - **Keep only the AA-aware count.** It hides Δ 9–18 edge differences and invites the "≤1/255" misreading.
+- **Consequences:**
+  - Reports grow by four columns; the backfill script recomputes stored runs.
+  - Future scenes cannot pass by staying below pixelmatch's perceptual threshold if they have a real flat-fill shift.
+  - Approval is required before any CI gate uses the new counts.
+- **Evidence:**
+  - `tools/pixel/lib.mjs` (`meanChannelDeltaOverDiffPixels`, `highDeltaOutsideAaPixels`, `flatFillHighDeltaPixels`).
+  - `tools/pixel/report.mjs`; `tools/pixel/backfill-metrics.mjs`.
+  - `docs/evidence/day9/README.md#threshold-independent-metrics-added-2026-11-28`.
+  - `docs/KNOWN_DEVIATIONS.md` D-001 audit paragraph.

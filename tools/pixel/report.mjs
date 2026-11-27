@@ -37,6 +37,10 @@ function aggregate(results) {
       aa: 0,
       aaPercent: 0,
       maxDelta: 0,
+      meanDelta: 0,
+      highDelta: 0,
+      highDeltaPercent: 0,
+      flatHighDelta: 0,
       samples: 0,
     };
   }
@@ -51,6 +55,16 @@ function aggregate(results) {
       row.aa = Math.max(row.aa, metrics.aaAwareDiffPixels);
       row.aaPercent = Math.max(row.aaPercent, metrics.aaAwareDiffPercent);
       row.maxDelta = Math.max(row.maxDelta, metrics.maxChannelDelta);
+      row.meanDelta = Math.max(
+        row.meanDelta,
+        metrics.meanChannelDeltaOverDiffPixels ?? 0,
+      );
+      row.highDelta = Math.max(row.highDelta, metrics.highDeltaOutsideAaPixels ?? 0);
+      row.highDeltaPercent = Math.max(
+        row.highDeltaPercent,
+        metrics.highDeltaOutsideAaPercent ?? 0,
+      );
+      row.flatHighDelta = Math.max(row.flatHighDelta, metrics.flatFillHighDeltaPixels ?? 0);
     }
   }
   return summary;
@@ -205,6 +219,9 @@ export function renderReport(results, outDir) {
       aa: rows.reduce((sum, row) => sum + row.aa, 0),
       maxAaPercent: Math.max(...rows.map((row) => row.aaPercent)),
       maxDelta: Math.max(...rows.map((row) => row.maxDelta)),
+      maxMeanDelta: Math.max(...rows.map((row) => row.meanDelta)),
+      highDelta: Math.max(...rows.map((row) => row.highDelta)),
+      flatHighDelta: Math.max(...rows.map((row) => row.flatHighDelta)),
       gate: category === 'core' ? Math.max(...rows.map((row) => row.aaPercent)) <= 0.05 : null,
     };
   });
@@ -249,14 +266,14 @@ export function renderReport(results, outDir) {
   const summaryRows = results.config.scenes
     .map((scene) => {
       const row = summary[scene];
-      return `<tr><td>${scene}</td><td>${categoryOf(scene)}</td><td>${px(row.exact)}</td><td>${percent(row.exactPercent)}</td><td>${px(row.aa)}</td><td>${percent(row.aaPercent)}</td><td>${row.maxDelta}</td><td>${row.samples}</td></tr>`;
+      return `<tr><td>${scene}</td><td>${categoryOf(scene)}</td><td>${px(row.exact)}</td><td>${percent(row.exactPercent)}</td><td>${px(row.aa)}</td><td>${percent(row.aaPercent)}</td><td>${row.maxDelta}</td><td>${row.meanDelta.toFixed(2)}</td><td class="${row.highDelta === 0 ? 'ok' : 'bad'}">${px(row.highDelta)}</td><td>${row.flatHighDelta}</td><td>${row.samples}</td></tr>`;
     })
     .join('');
 
   const categoryTableRows = categoryRows
     .map(
       (row) =>
-        `<tr><td><code>${row.category}</code></td><td>${row.scenes}</td><td>${px(row.exact)}</td><td>${px(row.aa)}</td><td>${percent(row.maxAaPercent)}</td><td class="${row.gate === null ? '' : row.gate ? 'ok' : 'bad'}">${row.gate === null ? 'tracked — no threshold' : row.gate ? '0.05% met' : '0.05% exceeded'}</td></tr>`,
+        `<tr><td><code>${row.category}</code></td><td>${row.scenes}</td><td>${px(row.exact)}</td><td>${px(row.aa)}</td><td>${percent(row.maxAaPercent)}</td><td>${row.maxDelta}</td><td>${row.maxMeanDelta.toFixed(2)}</td><td class="${row.highDelta === 0 ? 'ok' : 'bad'}">${px(row.highDelta)}</td><td>${row.flatHighDelta}</td><td class="${row.gate === null ? '' : row.gate ? 'ok' : 'bad'}">${row.gate === null ? 'tracked — no threshold' : row.gate ? '0.05% met' : '0.05% exceeded'}</td></tr>`,
     )
     .join('');
 
@@ -293,7 +310,7 @@ export function renderReport(results, outDir) {
         .join('');
       return `<section>
   <h2>${scene}</h2>
-  <p><strong>${px(metrics.exactDiffPixels)}</strong> exact diff px (${percent(metrics.exactDiffPercent)}), <strong>${px(metrics.aaAwareDiffPixels)}</strong> AA-aware diff px (${percent(metrics.aaAwareDiffPercent)}), max channel delta <strong>${metrics.maxChannelDelta}</strong>.</p>
+  <p><strong>${px(metrics.exactDiffPixels)}</strong> exact diff px (${percent(metrics.exactDiffPercent)}), <strong>${px(metrics.aaAwareDiffPixels)}</strong> AA-aware diff px (${percent(metrics.aaAwareDiffPercent)}), max channel delta <strong>${metrics.maxChannelDelta}</strong>, mean channel delta over differing pixels <strong>${(metrics.meanChannelDeltaOverDiffPixels ?? 0).toFixed(2)}</strong>, delta &gt; 2 outside anti-aliased edges <strong>${px(metrics.highDeltaOutsideAaPixels ?? 0)}</strong>, flat fills &gt; 2 <strong>${px(metrics.flatFillHighDeltaPixels ?? 0)}</strong>.</p>
   <div class="shots">
     <figure><img src="${compose.path}" alt="Compose ${scene}"><figcaption>Compose</figcaption></figure>
     <figure><img src="${rn.path}" alt="React Native ${scene}"><figcaption>React Native</figcaption></figure>
@@ -362,17 +379,18 @@ export function renderReport(results, outDir) {
 
 <h2>Scene categories</h2>
 <table>
-  <thead><tr><th>Category</th><th>Scenes</th><th>Σ exact px (scene max)</th><th>Σ AA-aware px (scene max)</th><th>Max AA-aware %</th><th>Gate</th></tr></thead>
+  <thead><tr><th>Category</th><th>Scenes</th><th>Σ exact px (scene max)</th><th>Σ AA-aware px (scene max)</th><th>Max AA-aware %</th><th>Max channel Δ</th><th>Max mean Δ (diff px)</th><th>Δ &gt; 2 outside AA edges</th><th>Flat fills &gt; 2</th><th>Gate</th></tr></thead>
   <tbody>${categoryTableRows}</tbody>
 </table>
 <p class="note">Only the <code>core</code> category is the five-scene PLAYBOOK §7 gate. The <code>text</code> category contains the 30 typography roles (and, when included, the dense label/paragraph probes), tracked separately under U-25. Its numbers are a regression ceiling, not a pass/fail claim; ADR-010 is pending.</p>
 
 <h2>Noise split</h2>
+<p class="note"><strong>Threshold semantics.</strong> The AA-aware count uses pixelmatch 7.1.0 with <code>threshold: 0.1</code> and <code>includeAA: false</code>. Threshold 0.1 is a YIQ squared-colour-distance limit (<code>35215 × 0.1²</code>), not a per-channel delta; for a neutral grey difference it is roughly 26/255 per channel. Pixels below that limit are treated as matching even if their bytes differ. The raw columns beside it are threshold-independent: max channel Δ, mean channel Δ over differing pixels, count of pixels with Δ &gt; 2 outside anti-aliased edges, and count of those that are flat fills. An anti-aliased edge is a pixel with any 8-neighbour differing by more than 8/255 in either image; a flat fill has a uniform 3×3 neighbourhood in both images.</p>
 <table>
-  <thead><tr><th>Scene</th><th>Category</th><th>Exact diff px</th><th>Exact %</th><th>AA-aware px</th><th>AA-aware %</th><th>Max channel Δ</th><th>Boots</th></tr></thead>
+  <thead><tr><th>Scene</th><th>Category</th><th>Exact diff px</th><th>Exact %</th><th>AA-aware px</th><th>AA-aware %</th><th>Max channel Δ</th><th>Mean Δ (diff px)</th><th>Δ &gt; 2 outside AA edges</th><th>Flat fills &gt; 2</th><th>Boots</th></tr></thead>
   <tbody>${summaryRows}</tbody>
 </table>
-<p class="note">Solid background and the rounded rectangle are byte-identical. The elevated rectangle is byte-identical. All cross-stack difference is confined to the text region, where the two frameworks rasterize the same Roboto Flex file with subpixel placement differences. The AA-aware count is the number of pixels pixelmatch classifies as non-anti-aliased differences at threshold 0.1.</p>
+<p class="note">Exact counts are raw byte inequality. AA-aware counts are pixelmatch's non-anti-aliased differences at threshold 0.1; the threshold-independent columns are defined above. A zero AA-aware count therefore means "no pixel exceeded pixelmatch's perceptual threshold outside its AA heuristic", not "the crops are byte-identical".</p>
 
 <h2>Shadow measurement</h2>
 <table>
@@ -417,16 +435,16 @@ ${sceneSections}
 <h2>What this establishes</h2>
 <ul>
   <li>The capture, crop, compare, and report pipeline is deterministic across repeated launches and cold boots.</li>
-  <li>Compose and React Native agree exactly on solid fills, rounded-rectangle geometry, and elevation shadows on this profile.</li>
-  <li>Text from the same Roboto Flex file differs only in rasterization: ${layoutText} The difference is confined to the glyph edges.</li>
-  <li>No threshold is proposed here. This run is a measurement, not a gate change.</li>
+  <li>Compose and React Native agree within the reported per-scene deltas on this profile; exact-zero scenes are listed above.</li>
+  <li>${trivial ? `Text from the same Roboto Flex file differs only in rasterization: ${layoutText} The difference is confined to the glyph edges.` : 'The text scenes in this run are measured in the per-scene table; glyph-edge deltas are reported separately from flat fills.'}</li>
+  <li>No threshold is proposed or changed here. This run is a measurement; any gate change needs an ADR.</li>
 </ul>
 
 <h2>What this does not establish</h2>
 <ul>
-  <li>It does not establish component parity; no library components exist yet.</li>
+  <li>It does not establish component parity beyond the scenes listed.</li>
   <li>It does not establish iOS behavior.</li>
-  <li>It does not establish that the 4 non-AA text pixels are acceptable. That is a product decision.</li>
+  <li>${trivial ? 'It does not establish that the non-AA text pixels are acceptable. That is a product decision.' : 'It does not establish that the remaining edge deltas are acceptable. That is a product decision.'}</li>
 </ul>
 </main>
 </body>
@@ -447,7 +465,7 @@ ${sceneSections}
 - Within-harness determinism: **${deterministic ? 'zero exact diffs' : 'FAILED'}** across ${px(totalRenders)} renders; max exact diff per app/scene/boot combination: ${px(maxDeterminismExact)} px.
 - Exact-zero scenes in every sampled boot: **${exactGeometryScenes.length ? exactGeometryScenes.join(', ') : 'none'}**.
 
-The cross-stack difference is text-only. ${layoutText} The frameworks rasterize some glyph edges differently. This report does **not** tune the scene and does **not** propose a new threshold.
+See the per-scene table for the exact split. ${layoutText} This report does **not** tune the scene and does **not** propose or change a threshold. The threshold-independent columns (max channel Δ, mean Δ over differing pixels, Δ &gt; 2 outside AA edges, flat fills &gt; 2) are the evidence for deciding whether a future threshold ADR is needed.
 
 ## Measured noise split
 

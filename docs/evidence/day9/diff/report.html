@@ -46,17 +46,18 @@
 
 <h2>Scene categories</h2>
 <table>
-  <thead><tr><th>Category</th><th>Scenes</th><th>Σ exact px (scene max)</th><th>Σ AA-aware px (scene max)</th><th>Max AA-aware %</th><th>Gate</th></tr></thead>
-  <tbody><tr><td><code>interaction</code></td><td>5</td><td>389,856</td><td>0</td><td>0.0000%</td><td class="">tracked — no threshold</td></tr></tbody>
+  <thead><tr><th>Category</th><th>Scenes</th><th>Σ exact px (scene max)</th><th>Σ AA-aware px (scene max)</th><th>Max AA-aware %</th><th>Max channel Δ</th><th>Max mean Δ (diff px)</th><th>Δ &gt; 2 outside AA edges</th><th>Flat fills &gt; 2</th><th>Gate</th></tr></thead>
+  <tbody><tr><td><code>interaction</code></td><td>5</td><td>389,856</td><td>0</td><td>0.0000%</td><td>18</td><td>12.24</td><td class="ok">0</td><td>0</td><td class="">tracked — no threshold</td></tr></tbody>
 </table>
 <p class="note">Only the <code>core</code> category is the five-scene PLAYBOOK §7 gate. The <code>text</code> category contains the 30 typography roles (and, when included, the dense label/paragraph probes), tracked separately under U-25. Its numbers are a regression ceiling, not a pass/fail claim; ADR-010 is pending.</p>
 
 <h2>Noise split</h2>
+<p class="note"><strong>Threshold semantics.</strong> The AA-aware count uses pixelmatch 7.1.0 with <code>threshold: 0.1</code> and <code>includeAA: false</code>. Threshold 0.1 is a YIQ squared-colour-distance limit (<code>35215 × 0.1²</code>), not a per-channel delta; for a neutral grey difference it is roughly 26/255 per channel. Pixels below that limit are treated as matching even if their bytes differ. The raw columns beside it are threshold-independent: max channel Δ, mean channel Δ over differing pixels, count of pixels with Δ &gt; 2 outside anti-aliased edges, and count of those that are flat fills. An anti-aliased edge is a pixel with any 8-neighbour differing by more than 8/255 in either image; a flat fill has a uniform 3×3 neighbourhood in both images.</p>
 <table>
-  <thead><tr><th>Scene</th><th>Category</th><th>Exact diff px</th><th>Exact %</th><th>AA-aware px</th><th>AA-aware %</th><th>Max channel Δ</th><th>Boots</th></tr></thead>
-  <tbody><tr><td>interaction-states</td><td>interaction</td><td>97,787</td><td>22.1739%</td><td>0</td><td>0.0000%</td><td>9</td><td>1</td></tr><tr><td>state-layer-colors</td><td>interaction</td><td>187,908</td><td>42.6095%</td><td>0</td><td>0.0000%</td><td>9</td><td>1</td></tr><tr><td>focus-rings</td><td>interaction</td><td>2,254</td><td>0.5111%</td><td>0</td><td>0.0000%</td><td>18</td><td>1</td></tr><tr><td>elevation-levels</td><td>interaction</td><td>22,350</td><td>5.0680%</td><td>0</td><td>0.0000%</td><td>1</td><td>1</td></tr><tr><td>ripple-frames</td><td>interaction</td><td>79,557</td><td>18.0401%</td><td>0</td><td>0.0000%</td><td>11</td><td>1</td></tr></tbody>
+  <thead><tr><th>Scene</th><th>Category</th><th>Exact diff px</th><th>Exact %</th><th>AA-aware px</th><th>AA-aware %</th><th>Max channel Δ</th><th>Mean Δ (diff px)</th><th>Δ &gt; 2 outside AA edges</th><th>Flat fills &gt; 2</th><th>Boots</th></tr></thead>
+  <tbody><tr><td>interaction-states</td><td>interaction</td><td>97,787</td><td>22.1739%</td><td>0</td><td>0.0000%</td><td>9</td><td>1.02</td><td class="ok">0</td><td>0</td><td>1</td></tr><tr><td>state-layer-colors</td><td>interaction</td><td>187,908</td><td>42.6095%</td><td>0</td><td>0.0000%</td><td>9</td><td>1.02</td><td class="ok">0</td><td>0</td><td>1</td></tr><tr><td>focus-rings</td><td>interaction</td><td>2,254</td><td>0.5111%</td><td>0</td><td>0.0000%</td><td>18</td><td>12.24</td><td class="ok">0</td><td>0</td><td>1</td></tr><tr><td>elevation-levels</td><td>interaction</td><td>22,350</td><td>5.0680%</td><td>0</td><td>0.0000%</td><td>1</td><td>1.00</td><td class="ok">0</td><td>0</td><td>1</td></tr><tr><td>ripple-frames</td><td>interaction</td><td>79,557</td><td>18.0401%</td><td>0</td><td>0.0000%</td><td>11</td><td>1.02</td><td class="ok">0</td><td>0</td><td>1</td></tr></tbody>
 </table>
-<p class="note">Solid background and the rounded rectangle are byte-identical. The elevated rectangle is byte-identical. All cross-stack difference is confined to the text region, where the two frameworks rasterize the same Roboto Flex file with subpixel placement differences. The AA-aware count is the number of pixels pixelmatch classifies as non-anti-aliased differences at threshold 0.1.</p>
+<p class="note">Exact counts are raw byte inequality. AA-aware counts are pixelmatch's non-anti-aliased differences at threshold 0.1; the threshold-independent columns are defined above. A zero AA-aware count therefore means "no pixel exceeded pixelmatch's perceptual threshold outside its AA heuristic", not "the crops are byte-identical".</p>
 
 <h2>Shadow measurement</h2>
 <table>
@@ -98,7 +99,7 @@
 <h2>Scene captures</h2>
 <section>
   <h2>interaction-states</h2>
-  <p><strong>97,787</strong> exact diff px (22.1739%), <strong>0</strong> AA-aware diff px (0.0000%), max channel delta <strong>9</strong>.</p>
+  <p><strong>97,787</strong> exact diff px (22.1739%), <strong>0</strong> AA-aware diff px (0.0000%), max channel delta <strong>9</strong>, mean channel delta over differing pixels <strong>1.02</strong>, delta &gt; 2 outside anti-aliased edges <strong>0</strong>, flat fills &gt; 2 <strong>0</strong>.</p>
   <div class="shots">
     <figure><img src="captures/d9812980633e1cf175d8ff4fa69489c981d9c7586ffc82ad447fc09b783382af.png" alt="Compose interaction-states"><figcaption>Compose</figcaption></figure>
     <figure><img src="captures/f2fec74e4bbddba8a6c66be80c6bb20b8175e2e2d943de16b3cabf6dfbc18e2f.png" alt="React Native interaction-states"><figcaption>React Native</figcaption></figure>
@@ -108,7 +109,7 @@
 </section>
 <section>
   <h2>state-layer-colors</h2>
-  <p><strong>187,908</strong> exact diff px (42.6095%), <strong>0</strong> AA-aware diff px (0.0000%), max channel delta <strong>9</strong>.</p>
+  <p><strong>187,908</strong> exact diff px (42.6095%), <strong>0</strong> AA-aware diff px (0.0000%), max channel delta <strong>9</strong>, mean channel delta over differing pixels <strong>1.02</strong>, delta &gt; 2 outside anti-aliased edges <strong>0</strong>, flat fills &gt; 2 <strong>0</strong>.</p>
   <div class="shots">
     <figure><img src="captures/1dc32a2572aa401c0dc14d04f8e6aad7b194323c2b7cd39561dc3226fa7666fc.png" alt="Compose state-layer-colors"><figcaption>Compose</figcaption></figure>
     <figure><img src="captures/85a5d693ec113cb80f802b98e2be103025698240dbaf8909861797d7715922f1.png" alt="React Native state-layer-colors"><figcaption>React Native</figcaption></figure>
@@ -118,7 +119,7 @@
 </section>
 <section>
   <h2>focus-rings</h2>
-  <p><strong>2,254</strong> exact diff px (0.5111%), <strong>0</strong> AA-aware diff px (0.0000%), max channel delta <strong>18</strong>.</p>
+  <p><strong>2,254</strong> exact diff px (0.5111%), <strong>0</strong> AA-aware diff px (0.0000%), max channel delta <strong>18</strong>, mean channel delta over differing pixels <strong>12.24</strong>, delta &gt; 2 outside anti-aliased edges <strong>0</strong>, flat fills &gt; 2 <strong>0</strong>.</p>
   <div class="shots">
     <figure><img src="captures/38aa9f9ccdf5f71f722a021cd4f973da031fe64c13f3a1d5d39571877dbf56a4.png" alt="Compose focus-rings"><figcaption>Compose</figcaption></figure>
     <figure><img src="captures/e518dc7bfa84622fc5d409b11b23344bee4930b63756cf85d95c8c5b5ea15106.png" alt="React Native focus-rings"><figcaption>React Native</figcaption></figure>
@@ -128,7 +129,7 @@
 </section>
 <section>
   <h2>elevation-levels</h2>
-  <p><strong>22,350</strong> exact diff px (5.0680%), <strong>0</strong> AA-aware diff px (0.0000%), max channel delta <strong>1</strong>.</p>
+  <p><strong>22,350</strong> exact diff px (5.0680%), <strong>0</strong> AA-aware diff px (0.0000%), max channel delta <strong>1</strong>, mean channel delta over differing pixels <strong>1.00</strong>, delta &gt; 2 outside anti-aliased edges <strong>0</strong>, flat fills &gt; 2 <strong>0</strong>.</p>
   <div class="shots">
     <figure><img src="captures/b15d1fab3d4b21be557968a0fc0ff2fa0cf26374461fbcbd7819b8c7a5ee06dd.png" alt="Compose elevation-levels"><figcaption>Compose</figcaption></figure>
     <figure><img src="captures/09c6f002e1849da70b71410637ade07cc431e6d899323e64876b68999210ca3c.png" alt="React Native elevation-levels"><figcaption>React Native</figcaption></figure>
@@ -138,7 +139,7 @@
 </section>
 <section>
   <h2>ripple-frames</h2>
-  <p><strong>79,557</strong> exact diff px (18.0401%), <strong>0</strong> AA-aware diff px (0.0000%), max channel delta <strong>11</strong>.</p>
+  <p><strong>79,557</strong> exact diff px (18.0401%), <strong>0</strong> AA-aware diff px (0.0000%), max channel delta <strong>11</strong>, mean channel delta over differing pixels <strong>1.02</strong>, delta &gt; 2 outside anti-aliased edges <strong>0</strong>, flat fills &gt; 2 <strong>0</strong>.</p>
   <div class="shots">
     <figure><img src="captures/ad05d4aec1458adf19a5c2f620bdcb1f7ae963ca92b676f418415a1e27e5dc49.png" alt="Compose ripple-frames"><figcaption>Compose</figcaption></figure>
     <figure><img src="captures/2f125928aa5441bb036a091a7179bae1813fceef53a6ab26b055c10d479e3116.png" alt="React Native ripple-frames"><figcaption>React Native</figcaption></figure>
@@ -150,16 +151,16 @@
 <h2>What this establishes</h2>
 <ul>
   <li>The capture, crop, compare, and report pipeline is deterministic across repeated launches and cold boots.</li>
-  <li>Compose and React Native agree exactly on solid fills, rounded-rectangle geometry, and elevation shadows on this profile.</li>
-  <li>Text from the same Roboto Flex file differs only in rasterization: Text layout markers were not captured. The difference is confined to the glyph edges.</li>
-  <li>No threshold is proposed here. This run is a measurement, not a gate change.</li>
+  <li>Compose and React Native agree within the reported per-scene deltas on this profile; exact-zero scenes are listed above.</li>
+  <li>The text scenes in this run are measured in the per-scene table; glyph-edge deltas are reported separately from flat fills.</li>
+  <li>No threshold is proposed or changed here. This run is a measurement; any gate change needs an ADR.</li>
 </ul>
 
 <h2>What this does not establish</h2>
 <ul>
-  <li>It does not establish component parity; no library components exist yet.</li>
+  <li>It does not establish component parity beyond the scenes listed.</li>
   <li>It does not establish iOS behavior.</li>
-  <li>It does not establish that the 4 non-AA text pixels are acceptable. That is a product decision.</li>
+  <li>It does not establish that the remaining edge deltas are acceptable. That is a product decision.</li>
 </ul>
 </main>
 </body>

@@ -6,13 +6,13 @@
 
 ## Headline
 
-- Cross-stack exact zero on the trivial scene: **not met**.
+- Cross-stack exact zero: **not met**.
 - Trivial scene exact difference: **1,745 px (0.3957%)**.
 - Trivial scene AA-aware difference: **4 px (0.0009%)**.
 - Within-harness determinism: **zero exact diffs** across 14 renders; max exact diff per app/scene/boot combination: 0 px.
 - Exact-zero scenes in every sampled boot: **solid, rect, shadow**.
 
-The cross-stack difference is text-only. Measured text layout: Compose 402.0×73.0 px, React Native 402.0×73.0 px. The frameworks rasterize some glyph edges differently. This report does **not** tune the scene and does **not** propose a new threshold.
+See the per-scene table for the exact split. Measured text layout: Compose 402.0×73.0 px, React Native 402.0×73.0 px. This report does **not** tune the scene and does **not** propose or change a threshold. The threshold-independent columns (max channel Δ, mean Δ over differing pixels, Δ &gt; 2 outside AA edges, flat fills &gt; 2) are the evidence for deciding whether a future threshold ADR is needed.
 
 ## Measured noise split
 
@@ -43,17 +43,26 @@ The cross-stack diff for the shadow scene is **0 exact px** (0.0000%).
 
 Strict bounding box of pixels that are not exactly the scene background, including anti-aliased glyph edges and the shadow. No tolerance is applied.
 
+## Scene categories
+
+| Category | Scenes | Σ exact px (scene max) | Σ AA-aware px (scene max) | Max AA-aware % | Gate |
+|---|---:|---:|---:|---:|---|
+| `core` | 5 | 3,490 | 8 | 0.0009% | 0.05% met |
+| `text` | 2 | 69,932 | 23,311 | 4.0812% | tracked — no threshold |
+
+Only the `core` category is the five-scene PLAYBOOK §7 gate. The `text` category contains the 30 typography roles (and, when included, the dense label/paragraph probes), tracked separately under U-25; its numbers are a regression ceiling, not a pass/fail claim. ADR-010 is pending.
+
 ## Noise split by scene
 
-| Scene | Exact px | Exact % | AA-aware px | AA-aware % | Max Δ | Boots |
-|---|---:|---:|---:|---:|---:|---:|
-| solid | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
-| rect | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
-| text | 1,745 | 0.3957% | 4 | 0.0009% | 162 | 1 |
-| shadow | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
-| trivial | 1,745 | 0.3957% | 4 | 0.0009% | 162 | 1 |
-| paragraph | 52,139 | 11.8229% | 17,998 | 4.0812% | 226 | 1 |
-| labels | 17,793 | 4.0347% | 5,313 | 1.2048% | 226 | 1 |
+| Scene | Category | Exact px | Exact % | AA-aware px | AA-aware % | Max Δ | Boots |
+|---|---|---:|---:|---:|---:|---:|---:|
+| solid | core | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
+| rect | core | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
+| text | core | 1,745 | 0.3957% | 4 | 0.0009% | 162 | 1 |
+| shadow | core | 0 | 0.0000% | 0 | 0.0000% | 0 | 1 |
+| trivial | core | 1,745 | 0.3957% | 4 | 0.0009% | 162 | 1 |
+| paragraph | text | 52,139 | 11.8229% | 17,998 | 4.0812% | 226 | 1 |
+| labels | text | 17,793 | 4.0347% | 5,313 | 1.2048% | 226 | 1 |
 
 ## Non-AA text pixels (boot 1, trivial)
 
@@ -96,3 +105,17 @@ Every profile check passed: API 31, 1080×1920, 420dpi, font scale 1.0, locale e
 Frozen device, GPU, settings, and cold-boot procedure: `FROZEN_PROFILE.md`. Raw run log: `run.log`.
 
 See `report.html` for side-by-side captures and diff heatmaps, and `results.json` for every per-run hash.
+
+## Threshold-independent metrics (2026-11-28)
+
+The AA-aware count uses pixelmatch 0.1 / `includeAA: false`; threshold 0.1 is a YIQ distance, not a channel delta. These raw columns are threshold-independent. An anti-aliased edge is a pixel with any 8-neighbour differing by more than 8/255 in either image; a flat fill has a uniform 3×3 neighbourhood in both images.
+
+| Scene | Exact px | AA-aware px | Max Δ | Mean Δ (diff px) | Δ > 2 outside AA | Flat fills > 2 |
+|---|---:|---:|---:|---:|---:|---:|
+| `solid` | 0 | 0 | 0 | 0.00 | 0 | 0 |
+| `rect` | 0 | 0 | 0 | 0.00 | 0 | 0 |
+| `text` | 1745 | 4 | 162 | 36.33 | 0 | 0 |
+| `shadow` | 0 | 0 | 0 | 0.00 | 0 | 0 |
+| `trivial` | 1745 | 4 | 162 | 36.33 | 0 | 0 |
+| `paragraph` | 52139 | 17998 | 226 | 118.82 | 3353 | 3047 |
+| `labels` | 17793 | 5313 | 226 | 126.99 | 334 | 299 |

@@ -50,6 +50,39 @@ scenes are at **0.0000%**. The report's `aaGate` field is `null` because that
 field only evaluates `core` scenes; the interaction scenes are held to the
 same threshold manually.
 
+### Threshold-independent metrics (added 2026-11-28)
+
+The AA-aware number is pixelmatch 7.1.0 at `threshold: 0.1`, `includeAA: false`.
+Threshold 0.1 is a YIQ squared-colour-distance limit (`35215 × 0.1²`), not a
+per-channel delta; for neutral grey it is roughly 26/255 per channel. A pixel
+with channel Δ 9 or 18 is below that limit and is not counted even when it is
+not anti-aliasing. The report therefore also publishes raw metrics:
+
+| Scene | Max Δ | Mean Δ over differing px | Δ > 2 outside AA edges | Flat fills > 2 |
+|---|---:|---:|---:|---:|
+| `interaction-states` | 9 | 1.02 | **0** | **0** |
+| `state-layer-colors` | 9 | 1.02 | **0** | **0** |
+| `focus-rings` | 18 | 12.24 | **0** | **0** |
+| `elevation-levels` | 1 | 1.00 | **0** | **0** |
+| `ripple-frames` | 11 | 1.02 | **0** | **0** |
+
+An anti-aliased edge is a pixel with any 8-neighbour differing by more than
+8/255 in either image; a flat fill has a uniform 3×3 neighbourhood in both
+images. Every pixel above Δ 2 is on a rounded-rect, ring or ripple edge, within
+one pixel of a colour transition. Flat fills differ by at most **1/255**
+(`elevation-levels` is uniformly 1; the state layers are uniformly 1 on the
+large fills). The Δ 9/18 values are edge coverage differences, not flat-fill
+colour or alpha rounding, and they are not a colour-space or premultiplication
+mismatch: both stacks composite 8-bit sRGB, but RN applies layer `opacity` while
+Compose draws a `Color.copy(alpha)` into the canvas, so edge coverage and the
+final 8-bit rounding differ.
+
+The Day 4 diagnostic text scenes (`paragraph`, `labels`) do contain flat-fill
+pixels above Δ 2. That is the known text-layout/rasterization deviation D-001:
+glyph advances differ, so a flat stroke interior can land on a flat background
+patch. It is not a state-layer compositing issue and is tracked under D-001 /
+U-25 / ADR-010, not in the interaction scenes.
+
 Pairs (left Compose, right RN):
 
 - `diff/pairs/interaction-states-compose-vs-rn.png`

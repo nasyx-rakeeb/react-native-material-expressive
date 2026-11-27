@@ -591,7 +591,12 @@
           "aaAwareBbox": null,
           "aaAwareCoordinates": [],
           "regionCounts": {},
-          "diff": "diffs/boot-1-interaction-states.png"
+          "diff": "diffs/boot-1-interaction-states.png",
+          "meanChannelDeltaOverDiffPixels": 1.0245022344483419,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         },
         "state-layer-colors": {
           "width": 840,
@@ -612,7 +617,12 @@
           "aaAwareBbox": null,
           "aaAwareCoordinates": [],
           "regionCounts": {},
-          "diff": "diffs/boot-1-state-layer-colors.png"
+          "diff": "diffs/boot-1-state-layer-colors.png",
+          "meanChannelDeltaOverDiffPixels": 1.0188177193094492,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         },
         "focus-rings": {
           "width": 840,
@@ -633,7 +643,12 @@
           "aaAwareBbox": null,
           "aaAwareCoordinates": [],
           "regionCounts": {},
-          "diff": "diffs/boot-1-focus-rings.png"
+          "diff": "diffs/boot-1-focus-rings.png",
+          "meanChannelDeltaOverDiffPixels": 12.23868677905945,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         },
         "elevation-levels": {
           "width": 840,
@@ -654,7 +669,12 @@
           "aaAwareBbox": null,
           "aaAwareCoordinates": [],
           "regionCounts": {},
-          "diff": "diffs/boot-1-elevation-levels.png"
+          "diff": "diffs/boot-1-elevation-levels.png",
+          "meanChannelDeltaOverDiffPixels": 1,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         },
         "ripple-frames": {
           "width": 840,
@@ -675,7 +695,12 @@
           "aaAwareBbox": null,
           "aaAwareCoordinates": [],
           "regionCounts": {},
-          "diff": "diffs/boot-1-ripple-frames.png"
+          "diff": "diffs/boot-1-ripple-frames.png",
+          "meanChannelDeltaOverDiffPixels": 1.0188166974621968,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         }
       },
       "shadow": {},
@@ -698,6 +723,9 @@
         "aa": 0,
         "maxAaPercent": 0,
         "maxDelta": 18,
+        "maxMeanDelta": 12.23868677905945,
+        "highDelta": 0,
+        "flatHighDelta": 0,
         "gate": null
       }
     ],

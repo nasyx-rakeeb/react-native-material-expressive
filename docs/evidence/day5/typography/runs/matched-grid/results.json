@@ -2356,7 +2356,12 @@
           "aaAwareBbox": null,
           "aaAwareCoordinates": [],
           "regionCounts": {},
-          "diff": "diffs/boot-1-solid.png"
+          "diff": "diffs/boot-1-solid.png",
+          "meanChannelDeltaOverDiffPixels": 0,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         },
         "rect": {
           "width": 840,
@@ -2372,7 +2377,12 @@
           "aaAwareBbox": null,
           "aaAwareCoordinates": [],
           "regionCounts": {},
-          "diff": "diffs/boot-1-rect.png"
+          "diff": "diffs/boot-1-rect.png",
+          "meanChannelDeltaOverDiffPixels": 0,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         },
         "text": {
           "width": 840,
@@ -2387,10 +2397,13 @@
           "bbox": null,
           "aaAwareBbox": null,
           "aaAwareCoordinates": [],
-          "regionCounts": {
-            "text-0": 0
-          },
-          "diff": "diffs/boot-1-text.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-text.png",
+          "meanChannelDeltaOverDiffPixels": 0,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         },
         "shadow": {
           "width": 840,
@@ -2405,10 +2418,13 @@
           "bbox": null,
           "aaAwareBbox": null,
           "aaAwareCoordinates": [],
-          "regionCounts": {
-            "shadow-0": 0
-          },
-          "diff": "diffs/boot-1-shadow.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-shadow.png",
+          "meanChannelDeltaOverDiffPixels": 0,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         },
         "trivial": {
           "width": 840,
@@ -2423,10 +2439,13 @@
           "bbox": null,
           "aaAwareBbox": null,
           "aaAwareCoordinates": [],
-          "regionCounts": {
-            "text-1": 0
-          },
-          "diff": "diffs/boot-1-trivial.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-trivial.png",
+          "meanChannelDeltaOverDiffPixels": 0,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         },
         "type-body-large-emphasized": {
           "width": 840,
@@ -2441,10 +2460,13 @@
           "bbox": null,
           "aaAwareBbox": null,
           "aaAwareCoordinates": [],
-          "regionCounts": {
-            "text-0": 0
-          },
-          "diff": "diffs/boot-1-type-body-large-emphasized.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-type-body-large-emphasized.png",
+          "meanChannelDeltaOverDiffPixels": 0,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         },
         "type-body-large": {
           "width": 840,
@@ -2459,10 +2481,13 @@
           "bbox": null,
           "aaAwareBbox": null,
           "aaAwareCoordinates": [],
-          "regionCounts": {
-            "text-0": 0
-          },
-          "diff": "diffs/boot-1-type-body-large.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-type-body-large.png",
+          "meanChannelDeltaOverDiffPixels": 0,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         },
         "type-body-medium-emphasized": {
           "width": 840,
@@ -2477,10 +2502,13 @@
           "bbox": null,
           "aaAwareBbox": null,
           "aaAwareCoordinates": [],
-          "regionCounts": {
-            "text-0": 0
-          },
-          "diff": "diffs/boot-1-type-body-medium-emphasized.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-type-body-medium-emphasized.png",
+          "meanChannelDeltaOverDiffPixels": 0,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         },
         "type-body-medium": {
           "width": 840,
@@ -2495,10 +2523,13 @@
           "bbox": null,
           "aaAwareBbox": null,
           "aaAwareCoordinates": [],
-          "regionCounts": {
-            "text-0": 0
-          },
-          "diff": "diffs/boot-1-type-body-medium.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-type-body-medium.png",
+          "meanChannelDeltaOverDiffPixels": 0,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         },
         "type-body-small-emphasized": {
           "width": 840,
@@ -2513,10 +2544,13 @@
           "bbox": null,
           "aaAwareBbox": null,
           "aaAwareCoordinates": [],
-          "regionCounts": {
-            "text-0": 0
-          },
-          "diff": "diffs/boot-1-type-body-small-emphasized.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-type-body-small-emphasized.png",
+          "meanChannelDeltaOverDiffPixels": 0,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         },
         "type-body-small": {
           "width": 840,
@@ -2531,10 +2565,13 @@
           "bbox": null,
           "aaAwareBbox": null,
           "aaAwareCoordinates": [],
-          "regionCounts": {
-            "text-0": 0
-          },
-          "diff": "diffs/boot-1-type-body-small.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-type-body-small.png",
+          "meanChannelDeltaOverDiffPixels": 0,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         },
         "type-display-large-emphasized": {
           "width": 840,
@@ -2549,10 +2586,13 @@
           "bbox": null,
           "aaAwareBbox": null,
           "aaAwareCoordinates": [],
-          "regionCounts": {
-            "text-0": 0
-          },
-          "diff": "diffs/boot-1-type-display-large-emphasized.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-type-display-large-emphasized.png",
+          "meanChannelDeltaOverDiffPixels": 0,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         },
         "type-display-large": {
           "width": 840,
@@ -2567,10 +2607,13 @@
           "bbox": null,
           "aaAwareBbox": null,
           "aaAwareCoordinates": [],
-          "regionCounts": {
-            "text-0": 0
-          },
-          "diff": "diffs/boot-1-type-display-large.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-type-display-large.png",
+          "meanChannelDeltaOverDiffPixels": 0,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         },
         "type-display-medium-emphasized": {
           "width": 840,
@@ -2585,10 +2628,13 @@
           "bbox": null,
           "aaAwareBbox": null,
           "aaAwareCoordinates": [],
-          "regionCounts": {
-            "text-0": 0
-          },
-          "diff": "diffs/boot-1-type-display-medium-emphasized.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-type-display-medium-emphasized.png",
+          "meanChannelDeltaOverDiffPixels": 0,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         },
         "type-display-medium": {
           "width": 840,
@@ -2603,10 +2649,13 @@
           "bbox": null,
           "aaAwareBbox": null,
           "aaAwareCoordinates": [],
-          "regionCounts": {
-            "text-0": 0
-          },
-          "diff": "diffs/boot-1-type-display-medium.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-type-display-medium.png",
+          "meanChannelDeltaOverDiffPixels": 0,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         },
         "type-display-small-emphasized": {
           "width": 840,
@@ -2712,10 +2761,13 @@
               "y": 131
             }
           ],
-          "regionCounts": {
-            "text-0": 2340
-          },
-          "diff": "diffs/boot-1-type-display-small-emphasized.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-type-display-small-emphasized.png",
+          "meanChannelDeltaOverDiffPixels": 87.73119658119658,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         },
         "type-display-small": {
           "width": 840,
@@ -2821,10 +2873,13 @@
               "y": 153
             }
           ],
-          "regionCounts": {
-            "text-0": 2372
-          },
-          "diff": "diffs/boot-1-type-display-small.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-type-display-small.png",
+          "meanChannelDeltaOverDiffPixels": 85.19477234401349,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         },
         "type-headline-large-emphasized": {
           "width": 840,
@@ -2839,10 +2894,13 @@
           "bbox": null,
           "aaAwareBbox": null,
           "aaAwareCoordinates": [],
-          "regionCounts": {
-            "text-0": 0
-          },
-          "diff": "diffs/boot-1-type-headline-large-emphasized.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-type-headline-large-emphasized.png",
+          "meanChannelDeltaOverDiffPixels": 0,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         },
         "type-headline-large": {
           "width": 840,
@@ -2857,10 +2915,13 @@
           "bbox": null,
           "aaAwareBbox": null,
           "aaAwareCoordinates": [],
-          "regionCounts": {
-            "text-0": 0
-          },
-          "diff": "diffs/boot-1-type-headline-large.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-type-headline-large.png",
+          "meanChannelDeltaOverDiffPixels": 0,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         },
         "type-headline-medium-emphasized": {
           "width": 840,
@@ -2875,10 +2936,13 @@
           "bbox": null,
           "aaAwareBbox": null,
           "aaAwareCoordinates": [],
-          "regionCounts": {
-            "text-0": 0
-          },
-          "diff": "diffs/boot-1-type-headline-medium-emphasized.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-type-headline-medium-emphasized.png",
+          "meanChannelDeltaOverDiffPixels": 0,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         },
         "type-headline-medium": {
           "width": 840,
@@ -2893,10 +2957,13 @@
           "bbox": null,
           "aaAwareBbox": null,
           "aaAwareCoordinates": [],
-          "regionCounts": {
-            "text-0": 0
-          },
-          "diff": "diffs/boot-1-type-headline-medium.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-type-headline-medium.png",
+          "meanChannelDeltaOverDiffPixels": 0,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         },
         "type-headline-small-emphasized": {
           "width": 840,
@@ -3002,10 +3069,13 @@
               "y": 126
             }
           ],
-          "regionCounts": {
-            "text-0": 1592
-          },
-          "diff": "diffs/boot-1-type-headline-small-emphasized.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-type-headline-small-emphasized.png",
+          "meanChannelDeltaOverDiffPixels": 85.25188442211055,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         },
         "type-headline-small": {
           "width": 840,
@@ -3111,10 +3181,13 @@
               "y": 126
             }
           ],
-          "regionCounts": {
-            "text-0": 1574
-          },
-          "diff": "diffs/boot-1-type-headline-small.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-type-headline-small.png",
+          "meanChannelDeltaOverDiffPixels": 84.92566709021601,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         },
         "type-label-large-emphasized": {
           "width": 840,
@@ -3129,10 +3202,13 @@
           "bbox": null,
           "aaAwareBbox": null,
           "aaAwareCoordinates": [],
-          "regionCounts": {
-            "text-0": 0
-          },
-          "diff": "diffs/boot-1-type-label-large-emphasized.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-type-label-large-emphasized.png",
+          "meanChannelDeltaOverDiffPixels": 0,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         },
         "type-label-large": {
           "width": 840,
@@ -3147,10 +3223,13 @@
           "bbox": null,
           "aaAwareBbox": null,
           "aaAwareCoordinates": [],
-          "regionCounts": {
-            "text-0": 0
-          },
-          "diff": "diffs/boot-1-type-label-large.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-type-label-large.png",
+          "meanChannelDeltaOverDiffPixels": 0,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         },
         "type-label-medium-emphasized": {
           "width": 840,
@@ -3165,10 +3244,13 @@
           "bbox": null,
           "aaAwareBbox": null,
           "aaAwareCoordinates": [],
-          "regionCounts": {
-            "text-0": 0
-          },
-          "diff": "diffs/boot-1-type-label-medium-emphasized.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-type-label-medium-emphasized.png",
+          "meanChannelDeltaOverDiffPixels": 0,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         },
         "type-label-medium": {
           "width": 840,
@@ -3183,10 +3265,13 @@
           "bbox": null,
           "aaAwareBbox": null,
           "aaAwareCoordinates": [],
-          "regionCounts": {
-            "text-0": 0
-          },
-          "diff": "diffs/boot-1-type-label-medium.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-type-label-medium.png",
+          "meanChannelDeltaOverDiffPixels": 0,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         },
         "type-label-small-emphasized": {
           "width": 840,
@@ -3201,10 +3286,13 @@
           "bbox": null,
           "aaAwareBbox": null,
           "aaAwareCoordinates": [],
-          "regionCounts": {
-            "text-0": 0
-          },
-          "diff": "diffs/boot-1-type-label-small-emphasized.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-type-label-small-emphasized.png",
+          "meanChannelDeltaOverDiffPixels": 0,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         },
         "type-label-small": {
           "width": 840,
@@ -3219,10 +3307,13 @@
           "bbox": null,
           "aaAwareBbox": null,
           "aaAwareCoordinates": [],
-          "regionCounts": {
-            "text-0": 0
-          },
-          "diff": "diffs/boot-1-type-label-small.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-type-label-small.png",
+          "meanChannelDeltaOverDiffPixels": 0,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         },
         "type-title-large-emphasized": {
           "width": 840,
@@ -3237,10 +3328,13 @@
           "bbox": null,
           "aaAwareBbox": null,
           "aaAwareCoordinates": [],
-          "regionCounts": {
-            "text-0": 0
-          },
-          "diff": "diffs/boot-1-type-title-large-emphasized.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-type-title-large-emphasized.png",
+          "meanChannelDeltaOverDiffPixels": 0,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         },
         "type-title-large": {
           "width": 840,
@@ -3255,10 +3349,13 @@
           "bbox": null,
           "aaAwareBbox": null,
           "aaAwareCoordinates": [],
-          "regionCounts": {
-            "text-0": 0
-          },
-          "diff": "diffs/boot-1-type-title-large.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-type-title-large.png",
+          "meanChannelDeltaOverDiffPixels": 0,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         },
         "type-title-medium-emphasized": {
           "width": 840,
@@ -3273,10 +3370,13 @@
           "bbox": null,
           "aaAwareBbox": null,
           "aaAwareCoordinates": [],
-          "regionCounts": {
-            "text-0": 0
-          },
-          "diff": "diffs/boot-1-type-title-medium-emphasized.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-type-title-medium-emphasized.png",
+          "meanChannelDeltaOverDiffPixels": 0,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         },
         "type-title-medium": {
           "width": 840,
@@ -3291,10 +3391,13 @@
           "bbox": null,
           "aaAwareBbox": null,
           "aaAwareCoordinates": [],
-          "regionCounts": {
-            "text-0": 0
-          },
-          "diff": "diffs/boot-1-type-title-medium.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-type-title-medium.png",
+          "meanChannelDeltaOverDiffPixels": 0,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         },
         "type-title-small-emphasized": {
           "width": 840,
@@ -3309,10 +3412,13 @@
           "bbox": null,
           "aaAwareBbox": null,
           "aaAwareCoordinates": [],
-          "regionCounts": {
-            "text-0": 0
-          },
-          "diff": "diffs/boot-1-type-title-small-emphasized.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-type-title-small-emphasized.png",
+          "meanChannelDeltaOverDiffPixels": 0,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         },
         "type-title-small": {
           "width": 840,
@@ -3327,10 +3433,13 @@
           "bbox": null,
           "aaAwareBbox": null,
           "aaAwareCoordinates": [],
-          "regionCounts": {
-            "text-0": 0
-          },
-          "diff": "diffs/boot-1-type-title-small.png"
+          "regionCounts": {},
+          "diff": "diffs/boot-1-type-title-small.png",
+          "meanChannelDeltaOverDiffPixels": 0,
+          "highDeltaOutsideAaPixels": 0,
+          "highDeltaOutsideAaPercent": 0,
+          "highDeltaOutsideAaSamples": [],
+          "flatFillHighDeltaPixels": 0
         }
       },
       "shadow": {
@@ -3414,6 +3523,9 @@
         "aa": 0,
         "maxAaPercent": 0,
         "maxDelta": 0,
+        "maxMeanDelta": 0,
+        "highDelta": 0,
+        "flatHighDelta": 0,
         "gate": true
       },
       {
@@ -3423,6 +3535,9 @@
         "aa": 269,
         "maxAaPercent": 0.023809523809523808,
         "maxDelta": 226,
+        "maxMeanDelta": 87.73119658119658,
+        "highDelta": 0,
+        "flatHighDelta": 0,
         "gate": null
       }
     ]

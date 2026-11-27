@@ -12,7 +12,7 @@
 - Within-harness determinism: **zero exact diffs** across 168 renders; max exact diff per app/scene/boot combination: 0 px.
 - Exact-zero scenes in every sampled boot: **solid, rect, shadow**.
 
-The cross-stack difference is text-only. Measured text layout: Compose 402.0×73.0 px, React Native 402.0×73.0 px. The frameworks rasterize some glyph edges differently. This report does **not** tune the scene and does **not** propose a new threshold.
+See the per-scene table for the exact split. Measured text layout: Compose 402.0×73.0 px, React Native 402.0×73.0 px. This report does **not** tune the scene and does **not** propose or change a threshold. The threshold-independent columns (max channel Δ, mean Δ over differing pixels, Δ &gt; 2 outside AA edges, flat fills &gt; 2) are the evidence for deciding whether a future threshold ADR is needed.
 
 ## Measured noise split
 
@@ -135,3 +135,15 @@ Every profile check passed: API 31, 1080×1920, 420dpi, font scale 1.0, locale e
 Frozen device, GPU, settings, and cold-boot procedure: `FROZEN_PROFILE.md`. Raw run log: `run.log`.
 
 See `report.html` for side-by-side captures and diff heatmaps, and `results.json` for every per-run hash.
+
+## Threshold-independent metrics (2026-11-28)
+
+The AA-aware count uses pixelmatch 0.1 / `includeAA: false`; threshold 0.1 is a YIQ distance, not a channel delta. These raw columns are threshold-independent. An anti-aliased edge is a pixel with any 8-neighbour differing by more than 8/255 in either image; a flat fill has a uniform 3×3 neighbourhood in both images.
+
+| Scene | Exact px | AA-aware px | Max Δ | Mean Δ (diff px) | Δ > 2 outside AA | Flat fills > 2 |
+|---|---:|---:|---:|---:|---:|---:|
+| `solid` | 0 | 0 | 0 | 0.00 | 0 | 0 |
+| `rect` | 0 | 0 | 0 | 0.00 | 0 | 0 |
+| `text` | 1745 | 4 | 162 | 36.33 | 0 | 0 |
+| `shadow` | 0 | 0 | 0 | 0.00 | 0 | 0 |
+| `trivial` | 1745 | 4 | 162 | 36.33 | 0 | 0 |

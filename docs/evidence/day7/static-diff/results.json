@@ -34,6 +34,22 @@
       "width": 924,
       "height": 1302
     },
-    "aaAwareBbox": null
+    "aaAwareBbox": null,
+    "width": 924,
+    "height": 1302,
+    "pixels": 1203048,
+    "meanChannelDeltaOverDiffPixels": 2.399358394340709,
+    "highDeltaOutsideAaPixels": 0,
+    "highDeltaOutsideAaPercent": 0,
+    "highDeltaOutsideAaSamples": [],
+    "flatFillHighDeltaPixels": 0,
+    "bbox": {
+      "x": 0,
+      "y": 0,
+      "width": 924,
+      "height": 1302
+    },
+    "aaAwareCoordinates": [],
+    "regionCounts": {}
   }
 }
