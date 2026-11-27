@@ -7,11 +7,13 @@
 
 ## Method
 
-- Final U-29 spike APK:
-  `apps/gallery/android/app/build/outputs/apk/release/app-release.apk`,
-  **203,440,223 bytes**, SHA-256
-  `612c6921c6444fbd8fae58b1acd8b548b64896a05ebd6a6e593d7b34653d9a28`.
+- Emulator artifact: `app-release-universal.apk`, **203,440,223 bytes**,
+  SHA-256 `612c6921c6444fbd8fae58b1acd8b548b64896a05ebd6a6e593d7b34653d9a28`.
   Release build, Hermes, New Architecture, both renderers installed.
+- Phone artifact: `app-release.apk`, **58,369,090 bytes**, SHA-256
+  `7436712f45663084bd77558b10ff775052eecbd5107f6a51fe83ddcc26a82e2f`,
+  `arm64-v8a` only, built with `-PreactNativeArchitectures=arm64-v8a`. The
+  hand-off is `docs/evidence/day7/u29-device-steps.md`.
 - Each spike mode runs for 20 s after a cold start. `useFrameCallback` runs on the
   UI thread and logs every 60 frames (1 Hz) as
   `M3E_SPIKE_UI <mode>/<renderer> frames=… avg=… max=…`.
@@ -56,14 +58,16 @@ views, Skia cannot. Screenshots and the result are in
 
 ## Physical-device follow-up (`U-29`)
 
-On a connected phone (USB debugging enabled), install the final APK and read the
-on-screen card after ≥18 s per mode:
+The phone is the rooted Xiaomi 2201116SI; MIUI rejects plain `adb install`, so
+install the arm64 APK from a root shell. Full steps, device commands and the
+fill-in table: `docs/evidence/day7/u29-device-steps.md`. Short version:
 
 ```sh
 SERIAL=<device-serial>
 APK=apps/gallery/android/app/build/outputs/apk/release/app-release.apk
 
-adb -s "$SERIAL" install -r "$APK"
+adb -s "$SERIAL" push "$APK" /data/local/tmp/m3e-u29.apk
+adb -s "$SERIAL" shell "su -c 'pm install -r /data/local/tmp/m3e-u29.apk'"
 for renderer in svg skia; do
   for mode in cycle concurrent clip; do
     adb -s "$SERIAL" shell "am start -S -a android.intent.action.VIEW \
@@ -75,6 +79,9 @@ for renderer in svg skia; do
   done
 done
 ```
+
+`SERIAL=<serial> tools/device/u29-capture.sh` does the install and all six runs
+in one pass.
 
 The card shows FPS, average/max frame time, frame count, window size in dp,
 physical pixels, density and Android API. Record the **device model, SoC and

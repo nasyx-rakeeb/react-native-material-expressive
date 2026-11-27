@@ -492,3 +492,20 @@ A day closes only when its exit criteria are met with evidence and Nasyx approve
 - `docs/DECISIONS.md` ADR-017; `docs/UNVERIFIED.md` U-32; `docs/COMPONENT_MATRIX.md`; `docs/BACKLOG.md`.
 - `packages/react-native-material-expressive/src/shapes/ShapeContainer.tsx`, `PathCanvas.tsx`.
 - `src/shapes/__type_tests__/ShapeContainer.types.tsx` — `tsc` fails if the required `decorative` prop is removed.
+
+---
+
+## U-29 device hand-off | 2026-11-27 | arm64 APK and rooted install
+
+**Status:** Prepared; `U-29` stays open until the phone numbers are recorded. Hard blocker before Day 31/32.
+
+**Done**
+
+- Built an arm64-only release spike: **58,369,090 bytes**, SHA-256 `7436712f45663084bd77558b10ff775052eecbd5107f6a51fe83ddcc26a82e2f`, `lib/arm64-v8a` only. The universal emulator artifact is preserved as `app-release-universal.apk` (**203,440,223 bytes**, `612c6921…3d9a28`).
+- MIUI rejects plain `adb install`; the hand-off uses a root shell (`adb push` + `su -c 'pm install -r …'`). The phone was not attached during this session, so the install itself is still pending.
+- Added `docs/evidence/day7/u29-device-steps.md` with the root install, the six 20 s runs, device commands (`ro.product.model`, `ro.soc.model`/`ro.board.platform`, `dumpsys display` refresh), the fill-in table and troubleshooting.
+- Added `tools/device/u29-capture.sh`: picks the first non-emulator device, checks arm64, installs through root, runs all six modes, prints the last `M3E_SPIKE_UI` lines and the device facts.
+
+**Next step**
+
+- Connect the phone, run `SERIAL=<serial> tools/device/u29-capture.sh`, and record model/SoC/refresh plus the six rows in `docs/evidence/day7/frame-times.md`. Then `U-29` can close.
