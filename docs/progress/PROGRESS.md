@@ -1,7 +1,9 @@
 # Progress Log
 
 Append-only. One entry per work session. Format: `Day N | date | what was done | evidence | next step`.
-A day closes only when its exit criteria are met with evidence. Slippage is recorded here, not hidden.
+A day closes only when its exit criteria are met with evidence and Nasyx approves it. Slippage is recorded here, not hidden.
+
+**Status vocabulary:** `READY FOR APPROVAL` means the exit evidence is complete but Nasyx has not approved closure. `CLOSED` means Nasyx approved. `PASS` is not a day status.
 
 ---
 
@@ -187,7 +189,7 @@ A day closes only when its exit criteria are met with evidence. Slippage is reco
 
 ## Day 4 | 2026-11-26 | Colour system, native dynamic colour, text-rasterization closeout
 
-**Status:** PASS under **ADR-009**. Compose default schemes and the API-31 native dynamic path are exact; seed-generated variants are **MCU 2021 spec-verified**, not Compose-verified. The Day 3 text follow-up closes `U-23` with a measured root cause; no threshold or scene changed. API 34+ dynamic role resources remain `U-24`.
+**Status:** CLOSED under **ADR-009**. Compose default schemes and the API-31 native dynamic path are exact; seed-generated variants are **MCU 2021 spec-verified**, not Compose-verified. The Day 3 text follow-up closes `U-23` with a measured root cause; no threshold or scene changed. API 34+ dynamic role resources remain `U-24`.
 
 **Done**
 
@@ -244,7 +246,7 @@ A day closes only when its exit criteria are met with evidence. Slippage is reco
 
 ## Day 5 | 2026-11-26 | Typography: 30-role type scale, Roboto Flex axes, fallback, and text scenes
 
-**Status:** PASS on implementation and the standard five-scene gate. The 30 type scenes prove token/layout parity on a matched integer rendering grid: **30/30** inside the 0.05% AA-aware budget, **26/30** byte-identical. Faithful cross-stack rasterization remains the inherited `D-001` residual: **9/30** inside the budget, worst **2,745 px / 0.6224%**. The Day 5 “text scenes for all styles diff-pass” reading is flagged as **`U-25`** for Nasyx; no threshold, scene, or baseline was changed.
+**Status:** CLOSED on implementation and the standard five-scene gate. The 30 type scenes prove token/layout parity on a matched integer rendering grid: **30/30** inside the 0.05% AA-aware budget, **26/30** byte-identical. Faithful cross-stack rasterization remains the inherited `D-001` residual: **9/30** inside the budget, worst **2,745 px / 0.6224%**. The Day 5 “text scenes for all styles diff-pass” reading is flagged as **`U-25`** for Nasyx; no threshold, scene, or baseline was changed.
 
 **Done**
 
@@ -293,7 +295,7 @@ A day closes only when its exit criteria are met with evidence. Slippage is reco
 
 ## Day 6 | 2026-11-26 | Shapes core: 35 MaterialShapes, RoundedPolygon, Morph, and JVM golden
 
-**Status:** PASS. All **35** shapes and **50** morph pairs at five progress values match the Compose JVM golden within **1e-4**. Worst shape delta **1.329e-7** (`Oval`); worst morph delta **1.2678e-6** (`Gem -> Ghostish` @ 0). No rendering is claimed; `PathCanvas` and the shape gallery are Day 7.
+**Status:** CLOSED. All **35** shapes and **50** morph pairs at five progress values match the Compose JVM golden within **1e-4**. Worst shape delta **1.329e-7** (`Oval`); worst morph delta **1.2678e-6** (`Gem -> Ghostish` @ 0). No rendering is claimed; `PathCanvas` and the shape gallery are Day 7.
 
 **Done**
 
@@ -369,7 +371,7 @@ A day closes only when its exit criteria are met with evidence. Slippage is reco
 
 ## Day 7 | 2026-11-26 | Renderer decision, shape primitives, and static Compose shape diff
 
-**Status:** PASS. Day 7 exit is met: ADR-002 is accepted with measured binary-size, build/install-friction and RN-child-clipping data; ADR-003 is finalized; `Shape`, `MorphingShape` and `ShapeContainer` are implemented; the gallery shows all 35 shapes plus animated morphs; the static 35-shape grid diff has **0 AA-aware differing pixels**. Physical-device frame-time confirmation remains `U-29`; it does not reopen the functional renderer choice.
+**Status:** READY FOR APPROVAL. Day 7 exit is met: ADR-002 is accepted with measured binary-size, build/install-friction and RN-child-clipping data; ADR-003 is finalized; `Shape`, `MorphingShape` and `ShapeContainer` are implemented; the gallery shows all 35 shapes plus animated morphs; the static 35-shape grid diff has **0 AA-aware differing pixels**. Physical-device frame-time confirmation remains `U-29`; it does not reopen the functional renderer choice.
 
 **Done**
 
@@ -417,5 +419,28 @@ A day closes only when its exit criteria are met with evidence. Slippage is reco
 
 - Day 8: spring tokens → solver, Reanimated `withSpring` comparison, analytic fallback if deviation >1%, `MotionScheme` (expressive/standard), `useSpring`/`useSpatialSpring`/`useEffectsSpring`, and reduce-motion mapping.
 - Before Day 11: answer ADR-010 questions (a)–(d), run C2 at ≥2 density/font-scale combinations including font scale 1.3, and revise ADR-010.
+
+---
+
+## ADR-010 follow-up | 2026-11-27 | C2 profile matrix and revised text metric
+
+**Status:** Evidence complete; ADR-010 remains **proposed** and awaits Nasyx’s approval before Day 11.
+
+**Done**
+
+- Committed `ceb5bf6`, which was missing from this log. It adds the 420/1.0, 420/1.3, 320/1.0 and 320/1.3 C2/token-exact profile matrix under `docs/evidence/day5/typography/profile-matrix/`.
+- Answered ADR-010 questions (a)–(d): C2 is a per-role/per-sample width fit, fails at 320/1.0 and 1.3, and is rejected for shipping; C4 is rejected as strictly less general. The generic Compose `FontScaleConverter` is the proposed shipping layer and remains a Day 10 prerequisite.
+- Revised ADR-010 to the ink-normalized metric: faithful `≤450 AA / 1,000 ink` **and** `≤3.0 AA / glyph / font px`; compensated `≤250` and `≤1.5` only if a generic layer is approved; matched `≤15` and `≤0.2`. The flat `≤250 AA/glyph` draft is withdrawn.
+- No gate, scene, token or threshold changed. The standard five-scene gate remains in force; ADR-010 is not approved.
+
+**Evidence**
+
+- `docs/DECISIONS.md` ADR-010 (revised 2026-11-27).
+- `docs/evidence/day5/typography/profile-matrix/README.md`, `summary.md`, `summary.json`, `runs/`.
+- Commit `ceb5bf6` — `docs(typography): profile C2 at four density/scale combinations`.
+
+**Next step**
+
+- Day 10 gate: present the plain-language ADR-010 summary and recommendation; Nasyx decides before Day 11.
 
 ---
