@@ -1,6 +1,6 @@
 # Current status
 
-- Current day: Day 8 (paused; Day 7 formally closed 2026-11-27)
-- Status: AWAITING USER APPROVAL
+- Current day: Day 8 (approved to finish on `day8-wip`)
+- Status: IN PROGRESS
 - Last closed day: Day 7 (conditional closure approved by Nasyx, 2026-11-27)
-- Last commit hash: 20e0dd1
+- Last commit hash: f5fd662
