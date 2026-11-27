@@ -35,6 +35,7 @@ export function M3ThemeProvider({
   lightScheme,
   darkScheme,
   typography,
+  motionScheme,
 }: M3ThemeProviderProps) {
   const systemMode = useColorScheme();
   const [dynamic, setDynamic] = useState<DynamicState | null>(null);
@@ -54,8 +55,26 @@ export function M3ThemeProvider({
   }, [dynamicColor]);
 
   const options = useMemo(
-    () => ({ mode, seed, contrastLevel, dynamicColor, lightScheme, darkScheme, typography }),
-    [mode, seed, contrastLevel, dynamicColor, lightScheme, darkScheme, typography],
+    () => ({
+      mode,
+      seed,
+      contrastLevel,
+      dynamicColor,
+      lightScheme,
+      darkScheme,
+      typography,
+      motionScheme,
+    }),
+    [
+      mode,
+      seed,
+      contrastLevel,
+      dynamicColor,
+      lightScheme,
+      darkScheme,
+      typography,
+      motionScheme,
+    ],
   );
 
   const theme = useMemo(

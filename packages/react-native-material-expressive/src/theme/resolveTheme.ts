@@ -1,6 +1,7 @@
 import { expressiveLightColorScheme, standardDarkColorScheme } from '../color/defaultSchemes';
 import { createColorScheme, expressiveDarkColorScheme } from '../color/generate';
 import type { M3ColorScheme } from '../color/types';
+import { resolveMotionScheme } from '../motion/MotionScheme';
 import { defaultTypography } from '../typography/createTypography';
 import type { M3Typography } from '../typography/types';
 import type { M3ColorSchemeSource, M3Theme, M3ThemeOptions } from './types';
@@ -71,6 +72,7 @@ export function resolveM3Theme(
   return {
     colorScheme,
     typography,
+    motionScheme: resolveMotionScheme(options.motionScheme),
     isDark,
     resolvedMode,
     source,

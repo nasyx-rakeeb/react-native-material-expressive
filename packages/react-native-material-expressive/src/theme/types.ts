@@ -1,4 +1,5 @@
 import type { M3ColorScheme, M3ContrastLevel, M3SeedColor } from '../color/types';
+import type { MotionScheme, MotionSchemeName } from '../motion/MotionScheme';
 import type { M3Typography } from '../typography/types';
 
 /** How the provider chooses the scheme family. */
@@ -13,6 +14,8 @@ export interface M3Theme {
   colorScheme: M3ColorScheme;
   /** Complete 30-role type scale (baseline + emphasized). */
   typography: M3Typography;
+  /** Resolved spring scheme for component motion. */
+  motionScheme: MotionScheme;
   /** Resolved appearance. */
   isDark: boolean;
   /** Resolved light/dark appearance, even when `mode` was `system`/`expressive`. */
@@ -46,4 +49,9 @@ export interface M3ThemeOptions {
    * `robotoFlexTypography()` to build a complete branded scale.
    */
   typography?: Partial<M3Typography>;
+  /**
+   * Spring scheme for component motion. Defaults to `expressive`, matching
+   * Compose `MaterialExpressiveTheme`. Pass `standard` for utilitarian motion.
+   */
+  motionScheme?: MotionSchemeName | MotionScheme;
 }

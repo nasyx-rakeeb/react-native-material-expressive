@@ -9,6 +9,7 @@ import {
 } from 'react-native-material-expressive';
 
 import SceneHarness, { useHarnessScene } from './src/harness/SceneHarness';
+import MotionGallery from './src/motion/MotionGallery';
 import ClipProbeScreen from './src/shapes/ClipProbeScreen';
 import ShapeDiffScreen from './src/shapes/ShapeDiffScreen';
 import ShapeGallery from './src/shapes/ShapeGallery';
@@ -48,6 +49,10 @@ export default function App() {
 
   if (route.screen === 'shapes') {
     return <ShapeGallery />;
+  }
+
+  if (route.screen === 'motion') {
+    return <MotionGallery initialScheme={route.motionScheme} initialReduce={route.motionReduce} />;
   }
 
   if (route.spike !== null) {

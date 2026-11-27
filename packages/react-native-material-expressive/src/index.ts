@@ -1,6 +1,7 @@
 export const PACKAGE_NAME = 'react-native-material-expressive';
 
 export * from './color';
+export * from './motion';
 export * from './shapes';
 export * from './shapes/components';
 export * from './theme';

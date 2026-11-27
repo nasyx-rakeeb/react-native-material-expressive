@@ -15,6 +15,8 @@ type FontProbeState = 'pending' | 'ok' | 'fallback';
 
 export type SpikeMode = 'cycle' | 'concurrent' | 'clip' | 'clipchildren' | 'grid';
 export type SpikeRenderer = 'svg' | 'skia';
+export type MotionDemoScheme = 'standard' | 'expressive';
+export type MotionDemoReduce = 'system' | 'on' | 'off';
 
 export interface HarnessRoute {
   sceneId: SceneId | null;
@@ -22,7 +24,9 @@ export interface HarnessRoute {
   fontScaling: boolean;
   spike: SpikeMode | null;
   renderer: SpikeRenderer;
-  screen: 'shapes' | 'shapesdiff' | 'clipprobe' | null;
+  screen: 'shapes' | 'shapesdiff' | 'clipprobe' | 'motion' | null;
+  motionScheme: MotionDemoScheme;
+  motionReduce: MotionDemoReduce;
 }
 
 const FONT_FAMILY = 'RobotoFlex';
@@ -70,14 +74,33 @@ function parseRenderer(url: string | null | undefined): SpikeRenderer {
   return /[?&]renderer=skia(?:&|$)/.test(url ?? '') ? 'skia' : 'svg';
 }
 
-function parseScreen(url: string | null | undefined): 'shapes' | 'shapesdiff' | 'clipprobe' | null {
+function parseScreen(
+  url: string | null | undefined,
+): 'shapes' | 'shapesdiff' | 'clipprobe' | 'motion' | null {
   if (/[?&]screen=shapesdiff(?:&|$)/.test(url ?? '')) {
     return 'shapesdiff';
   }
   if (/[?&]screen=clipprobe(?:&|$)/.test(url ?? '')) {
     return 'clipprobe';
   }
+  if (/[?&]screen=motion(?:&|$)/.test(url ?? '')) {
+    return 'motion';
+  }
   return /[?&]screen=shapes(?:&|$)/.test(url ?? '') ? 'shapes' : null;
+}
+
+function parseMotionScheme(url: string | null | undefined): MotionDemoScheme {
+  return /[?&]scheme=standard(?:&|$)/.test(url ?? '') ? 'standard' : 'expressive';
+}
+
+function parseMotionReduce(url: string | null | undefined): MotionDemoReduce {
+  if (/[?&]reduce=on(?:&|$)/.test(url ?? '')) {
+    return 'on';
+  }
+  if (/[?&]reduce=off(?:&|$)/.test(url ?? '')) {
+    return 'off';
+  }
+  return 'system';
 }
 
 function RectView({ layer }: { layer: RectLayer }) {
@@ -309,6 +332,8 @@ export function useHarnessScene(): HarnessRoute | undefined {
           spike: parseSpike(url),
           renderer: parseRenderer(url),
           screen: parseScreen(url),
+          motionScheme: parseMotionScheme(url),
+          motionReduce: parseMotionReduce(url),
         });
       }
     });
