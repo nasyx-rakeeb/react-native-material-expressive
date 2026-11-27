@@ -210,7 +210,7 @@ These are **in Compose Material3 1.5.0 and/or the m3 catalog but missing or misn
 | XR components (`nav-bar`, `nav-rail`, XR app bars/dialogs/toolbars) | **Defer** | m3 foundations/xr | Out of 1.0 scope; not in §8. BACKLOG. |
 | Banner, Avatar, DataTable, Accordion | **Keep as Paper parity extras** | Paper only; no Compose reference | Spec-verified against m3/Paper measurements + self-regression baseline; never Compose-verified (ADR-005). |
 
-## Matrix counts (Day 7 in progress)
+## Matrix counts (Day 7 closed)
 
 - Foundations/primitives rows: 19
 - Component rows: 53 (actions 10, selection/input 14, containment 14, navigation 12, feedback 3)
@@ -219,7 +219,14 @@ These are **in Compose Material3 1.5.0 and/or the m3 catalog but missing or misn
 - m3 catalog families reconciled: **37** (excluding XR/index pages)
 - Compose 1.5.0 public functions inventoried: **194** (see `docs/research/DAY0_SOURCES.md`)
 
-**Status (Day 7):** Days 0–6 are complete for the foundations recorded above. Component
-work starts after the Day 7 renderer decision. `M3Provider`/theme, `Surface`, `Text`,
-`Icon`, motion, interaction, and overlay primitives remain open (Days 8–10); see
-`docs/progress/PROGRESS.md` for the current session.
+**Status (Day 7, closed 2026-11-27):** Days 0–6 are complete for the foundations recorded
+above. The Day 7 renderer exit is met: ADR-002/ADR-003 are final; `PathCanvas`, `Shape`,
+`MorphingShape` and `ShapeContainer` are implemented; the static 35-shape diff has **0
+AA-aware differing pixels**; the gallery renders all 35 shapes, animated morphs and clipped
+RN children. The three primitive rows are **not DONE**: `Shape` is missing tests/iOS/a11y,
+`MorphingShape` is missing animated-diff/iOS/a11y/tests, and `ShapeContainer` is missing
+spec/iOS/a11y/tests. `U-29` (physical-device frame times) is a hard blocker before Day 31
+(wavy progress) and Day 32 (loading indicator); `ForeignObject` behaviour is recorded in
+`docs/UNVERIFIED.md`. `M3Provider`/theme, `Surface`, `Text`, `Icon`, motion, interaction, and overlay
+primitives remain open (Days 8–10); see `docs/progress/PROGRESS.md` for the current
+session.
