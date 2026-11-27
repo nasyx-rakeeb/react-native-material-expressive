@@ -31,8 +31,9 @@ export interface PathCanvasProps {
   color?: string | null;
   style?: StyleProp<ViewStyle>;
   /**
-   * Content clipped to the path. Rendered through an SVG `foreignObject`, so it
-   * is visual clipping only: touches are not clipped to the path.
+   * Decorative content clipped to the path. Rendered through an SVG
+   * `foreignObject`: it is visual only and is hidden from assistive technology
+   * (ADR-017).
    */
   children?: ReactNode;
   testID?: string;
@@ -126,7 +127,19 @@ export function PathCanvas({
       )}
       <G clipPath={`url(#${clipId})`}>
         <ForeignObject x={0} y={0} width={width} height={height}>
-          <View collapsable={false} style={{ width, height }}>
+          {/*
+            The foreignObject subtree has zero layout and unusable a11y bounds
+            (U-32). Hide it from assistive technology and make it explicitly
+            non-interactive so it cannot hide meaningful content behind a
+            broken node (ADR-017).
+          */}
+          <View
+            accessibilityElementsHidden
+            collapsable={false}
+            importantForAccessibility="no-hide-descendants"
+            pointerEvents="none"
+            style={{ width, height }}
+          >
             {children}
           </View>
         </ForeignObject>

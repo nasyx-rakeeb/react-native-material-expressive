@@ -1,16 +1,27 @@
 /**
- * Clips arbitrary React Native content to a Material shape. This file is
+ * Clips decorative React Native content to a Material shape. This file is
  * original project code (MIT).
  *
  * The clip is rendered through an SVG `foreignObject`. It is visual clipping
  * only: react-native-svg does not lay out the native subtree inside
  * `foreignObject`, so touch and accessibility hit-testing do not work there.
- * Do not put interactive content in `ShapeContainer` until the fallback in
- * `U-32` is decided.
+ * `ShapeContainer` is therefore **decorative/non-interactive only** (ADR-017,
+ * `U-32`). Interactive content belongs in a `borderRadius`-based container.
  */
 
-import { useMemo, type ReactNode } from 'react';
-import type { StyleProp, ViewStyle } from 'react-native';
+import { isValidElement, useEffect, useMemo, type ReactNode } from 'react';
+import {
+  FlatList,
+  Pressable,
+  ScrollView,
+  SectionList,
+  TextInput,
+  TouchableHighlight,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+  type StyleProp,
+  type ViewStyle,
+} from 'react-native';
 import { isSharedValue, useDerivedValue, type SharedValue } from 'react-native-reanimated';
 
 import { PathCanvas } from './PathCanvas';
@@ -23,9 +34,22 @@ interface ShapeContainerBaseProps {
   /** Optional fill drawn behind the clipped content. */
   color?: string;
   style?: StyleProp<ViewStyle>;
+  /**
+   * Required acknowledgment that the clipped content is decorative. The
+   * `foreignObject` subtree is not reachable by touch or assistive technology
+   * (`U-32`, ADR-017). Use a `borderRadius`-based container for anything
+   * interactive.
+   */
+  decorative: true;
+  /**
+   * Decorative content only. Plain text and images are fine; buttons, links,
+   * inputs and other focusable content are not.
+   */
   children?: ReactNode;
   testID?: string;
 }
+
+type ShapeContainerLayoutProps = Omit<ShapeContainerBaseProps, 'decorative'>;
 
 export type ShapeContainerProps =
   | (ShapeContainerBaseProps & {
@@ -41,6 +65,76 @@ export type ShapeContainerProps =
       progress: number | SharedValue<number>;
     });
 
+const INTERACTIVE_COMPONENTS = new Set<unknown>([
+  FlatList,
+  Pressable,
+  ScrollView,
+  SectionList,
+  TextInput,
+  TouchableHighlight,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+]);
+
+function componentName(type: unknown): string {
+  if (typeof type === 'string') {
+    return type;
+  }
+  const named = type as { displayName?: string; name?: string } | null;
+  return named?.displayName ?? named?.name ?? 'element';
+}
+
+function findInteractive(node: ReactNode, depth = 0): string | null {
+  if (depth > 12 || node === null || node === undefined || typeof node === 'boolean') {
+    return null;
+  }
+  if (Array.isArray(node)) {
+    for (const child of node) {
+      const found = findInteractive(child, depth + 1);
+      if (found !== null) {
+        return found;
+      }
+    }
+    return null;
+  }
+  if (!isValidElement(node)) {
+    return null;
+  }
+  const props = node.props as Record<string, unknown>;
+  if (
+    typeof props.onPress === 'function' ||
+    typeof props.onLongPress === 'function' ||
+    typeof props.onPressIn === 'function' ||
+    typeof props.onPressOut === 'function' ||
+    typeof props.onAccessibilityTap === 'function' ||
+    props.accessible === true ||
+    typeof props.accessibilityRole === 'string' ||
+    INTERACTIVE_COMPONENTS.has(node.type)
+  ) {
+    return componentName(node.type);
+  }
+  return findInteractive(props.children as ReactNode, depth + 1);
+}
+
+let warnedAboutInteractiveChildren = false;
+
+function useDecorativeChildrenWarning(children: ReactNode) {
+  useEffect(() => {
+    if (!__DEV__ || warnedAboutInteractiveChildren) {
+      return;
+    }
+    const found = findInteractive(children);
+    if (found !== null) {
+      warnedAboutInteractiveChildren = true;
+      console.warn(
+        `[M3E] ShapeContainer is decorative-only: <${found}> inside it is not reachable by ` +
+          'touch or screen readers (U-32, ADR-017). Use a borderRadius-based container for ' +
+          'interactive content.',
+      );
+    }
+  }, [children]);
+}
+
 function StaticShapeContainer({
   shape,
   size,
@@ -48,7 +142,7 @@ function StaticShapeContainer({
   style,
   children,
   testID,
-}: ShapeContainerBaseProps & { shape: ShapeSource }) {
+}: ShapeContainerLayoutProps & { shape: ShapeSource }) {
   const geometry = useMemo(() => resolveShapeGeometry(shape), [shape]);
   return (
     <PathCanvas
@@ -72,7 +166,7 @@ function StaticMorphContainer({
   style,
   children,
   testID,
-}: ShapeContainerBaseProps & {
+}: ShapeContainerLayoutProps & {
   endpoints: ReturnType<typeof resolveMorphEndpoints>;
   progress: number;
 }) {
@@ -102,7 +196,7 @@ function AnimatedMorphContainer({
   style,
   children,
   testID,
-}: ShapeContainerBaseProps & {
+}: ShapeContainerLayoutProps & {
   endpoints: ReturnType<typeof resolveMorphEndpoints>;
   progress: SharedValue<number>;
 }) {
@@ -132,7 +226,7 @@ function MorphingShapeContainer({
   style,
   children,
   testID,
-}: ShapeContainerBaseProps & {
+}: ShapeContainerLayoutProps & {
   from: ShapeSource;
   to: ShapeSource;
   progress: number | SharedValue<number>;
@@ -168,8 +262,22 @@ function MorphingShapeContainer({
   );
 }
 
-/** Clips children to a static or morphing Material shape. */
+/**
+ * Clips decorative children to a static or morphing Material shape.
+ *
+ * Interactive content is unsupported: the `foreignObject` subtree has no
+ * layout, touch dispatch or accessibility bounds (`U-32`, ADR-017). The
+ * required `decorative` prop makes that contract explicit at the call site,
+ * and a development warning flags pressable/accessible children.
+ */
 export function ShapeContainer(props: ShapeContainerProps) {
+  useDecorativeChildrenWarning(props.children);
+  if (__DEV__ && props.decorative !== true) {
+    console.error(
+      '[M3E] ShapeContainer requires `decorative`. It is visual-only: interactive content ' +
+        'inside it is unreachable (U-32, ADR-017). Use a borderRadius-based container instead.',
+    );
+  }
   if ('shape' in props) {
     return <StaticShapeContainer {...props} />;
   }

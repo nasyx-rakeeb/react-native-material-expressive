@@ -81,10 +81,15 @@ Upstream source inspected in `apps/gallery/node_modules/react-native-svg`:
 3. **Skia only for `ShapeContainer`.** Rejected: Skia clips only Skia-drawn
    content, not RN children (ADR-002).
 
-**Recommendation:** keep `ShapeContainer` visual-only for 1.0.0 until option 2
-is verified. Do not put interactive content inside it. This is tracked as
-`U-32` in `docs/UNVERIFIED.md`; it does not reopen the Day 7 renderer decision,
-which rests on binary size, build/install friction and visual RN-child clipping.
+**Decision (2026-11-27, ADR-017):** the Compose 1.5.0 audit found no component
+that needs interactive or screen-reader-focusable children clipped to a
+non-rounded-rect MaterialShape. Interactive containers use RN `borderRadius` in
+1.0.0; `ShapeContainer` is decorative-only and requires the `decorative` prop.
+Its subtree is hidden from assistive technology and is `pointerEvents="none"`,
+so the broken 0×0 nodes cannot be reached or hide meaningful content. Option 2
+(the native mask spike) moves to `docs/BACKLOG.md` for after 1.0. This does not
+reopen the Day 7 renderer decision, which rests on binary size, build/install
+friction and visual RN-child clipping.
 
 ## Reproduce
 

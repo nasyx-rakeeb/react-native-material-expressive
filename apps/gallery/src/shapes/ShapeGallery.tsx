@@ -79,7 +79,7 @@ function ClippedDemo() {
 
   return (
     <View style={styles.clipDemo}>
-      <ShapeContainer from="Arch" to="Clover4Leaf" progress={progress} size={180}>
+      <ShapeContainer from="Arch" to="Clover4Leaf" progress={progress} size={180} decorative>
         <View style={styles.clipContent}>
           <View style={[styles.clipBand, { backgroundColor: '#6750A4' }]} />
           <View style={[styles.clipBand, { backgroundColor: '#B3261E' }]} />
@@ -88,7 +88,7 @@ function ClippedDemo() {
         </View>
       </ShapeContainer>
       <Text style={styles.clipMeta}>
-        ShapeContainer · ForeignObject clip{'\n'}visual clipping only; touches stay rectangular
+        ShapeContainer · decorative clip only{'\n'}interactive content uses borderRadius (ADR-017)
       </Text>
     </View>
   );

@@ -421,3 +421,39 @@ Every accepted decision has a date and evidence. Day 0 decisions are research-on
 - **Consequences:**
   - New generated spec domains must use a subdirectory, not a top-level file.
   - The token drift gate remains unchanged and green.
+
+## ADR-017 — Interactive containers use rounded rectangles; `ShapeContainer` is decorative-only
+
+- **Date:** 2026-11-27
+- **Status:** Accepted (U-32 decision; Nasyx, 2026-11-27)
+- **Context:**
+  - The Day 7 `foreignObject` probe showed that visual clipping and animated children work, but the clipped RN subtree is 0×0. This is a real accessibility defect, not a test artifact: `uiautomator` exposes the container as `[146,458][146,458]` and its children with negative width/height, so TalkBack cannot focus usable bounds (`U-32`).
+  - Nasyx chose `borderRadius` for interactive shape containers and visual-only `ShapeContainer` for complex polygons in 1.0.0, subject to an audit of the Compose 1.5.0 inventory.
+- **Audit (Compose Material3 1.5.0):**
+  - `MaterialShapes.*` appears only in `LoadingIndicator.kt`. `LoadingIndicator` and `ContainedLoadingIndicator` are leaf composables with no content or child slot.
+  - `RoundedPolygon` appears only in `LoadingIndicator.kt`, `internal/CircularWavyProgressModifiers.kt`, `internal/ShapeUtil.kt` and `MaterialShapes.kt`. Progress and loading indicators are non-interactive leaves.
+  - Every shape-typed `ContainerShape` token is a `ShapeKeyTokens.*` value or a `RoundedCornerShape` (rounded rectangle or corner-full circle). No component container token uses a polygon.
+  - The 37-family matrix was reviewed: actions, selection/input, containment, navigation, feedback and parity extras. Controls that morph (Button, IconButton, ButtonGroup, SplitButton, FAB, chips) morph between rounded-rectangle corner radii; their semantics are merged on the control, not on child nodes. Cards, dialogs, sheets and menus are rounded rectangles whose children are separate semantics nodes, not clipped to a polygon.
+  - **Result: the list is empty.** No stock Compose 1.5.0 component needs interactive or screen-reader-focusable children clipped to a non-rounded-rect MaterialShape.
+- **Decision:**
+  1. Interactive and accessibility-focusable containers in 1.0.0 use RN `borderRadius` (rounded rectangle or circle). No path-clipped interactive content ships.
+  2. `ShapeContainer` is **decorative/non-interactive only**. The required `decorative: true` prop makes the contract a type-level call-site requirement; a development-only traversal warns when pressable or accessible children are detected; and the `foreignObject` subtree is hidden from assistive technology (`importantForAccessibility="no-hide-descendants"`, `accessibilityElementsHidden`) with `pointerEvents="none"`, so it cannot expose broken nodes or swallow input.
+  3. Complex polygon clipping remains visual only, with no touch or accessibility claim.
+  4. A native mask spike (normal RN view plus a native `clipPath`/mask host) is post-1.0 backlog, not a 1.0 deliverable.
+- **Why:** The audit finds no 1.0 component that needs the capability, while the defect is silent and harmful when it is used. Rounded-rectangle containers keep native touch, scrolling, focus and TalkBack intact; complex shapes remain available for decoration.
+- **Alternatives rejected:**
+  - **Keep `foreignObject` interactive and document the bug.** Rejected: it hides content from assistive technology and swallows touches without a runtime signal.
+  - **Skia-only `ShapeContainer`.** Rejected: Skia cannot clip RN children (ADR-002).
+  - **Docs-only warning with unchanged types.** Rejected: the probe shows the failure is silent; a required prop and a dev warning are cheap and visible.
+  - **Wrap children in a branded element type.** Rejected after testing: React 19 types every JSX element as `JSX.Element` with `any` props, so the brand does not reject plain children. A required literal prop is enforceable.
+- **Consequences:**
+  - Interactive expressive shapes are limited to corner-radius morphs in 1.0.0.
+  - `ShapeContainer` call sites must pass `decorative`; omitting it is a TypeScript error and a development-time error for JS callers.
+  - TalkBack coverage for polygon-clipped interactive content is deferred to the post-1.0 mask spike.
+  - The compile-time guard lives in `src/shapes/__type_tests__/ShapeContainer.types.tsx`; removing the required prop fails `tsc`.
+- **Evidence:**
+  - `docs/evidence/day7/foreign-object/README.md` — probe method, results, root cause, decision.
+  - `docs/UNVERIFIED.md` `U-32` — resolved by this scope decision.
+  - `docs/COMPONENT_MATRIX.md` — `ShapeContainer` marked decorative-only.
+  - `docs/BACKLOG.md` — native mask spike.
+  - Audit commands: `grep -rl "MaterialShapes\." docs/research/raw/src/material3/commonMain/androidx/compose/material3/` → `LoadingIndicator.kt`; `grep -rln "RoundedPolygon" ...` → `LoadingIndicator.kt`, `internal/CircularWavyProgressModifiers.kt`, `internal/ShapeUtil.kt`, `MaterialShapes.kt`.

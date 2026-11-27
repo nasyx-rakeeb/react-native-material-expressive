@@ -69,7 +69,17 @@ export default function ClipProbeScreen() {
       </Text>
 
       <View style={styles.host} testID="clipprobe-container">
-        <ShapeContainer color="#FFF7E6" shape="Clover4Leaf" size={SIZE} testID="clipprobe-shape">
+        <ShapeContainer
+          color="#FFF7E6"
+          decorative
+          shape="Clover4Leaf"
+          size={SIZE}
+          testID="clipprobe-shape"
+        >
+          {/*
+            This probe deliberately violates the decorative contract to exercise
+            the dev warning and confirm that the subtree is hidden from a11y.
+          */}
           <View style={styles.child} testID="clipprobe-child">
             <TapZone zone="outside" style={{ left: 8, top: 8 }} />
             <TapZone zone="inside" style={{ left: 120, top: 120 }} />

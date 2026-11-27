@@ -4,6 +4,7 @@ Do not work on these until the current day's exit criteria are met. Add findings
 
 ## Scope candidates
 
+- **Native mask for interactive `ShapeContainer`** (post-1.0): render children as a normal RN view so layout, touch and accessibility stay intact, then clip them with a native masked-view host or a native `Canvas.clipPath` view. Spike Fabric/New Architecture, touch, TalkBack focus, animation, mask-edge quality and iOS. 1.0 uses `borderRadius` for interactive containers and decorative-only `ShapeContainer` (ADR-017); this unblocks interactive polygon clipping and the deferred TalkBack pass.
 - **XR components** (m3 foundations/xr: app bars, dialogs, nav-bar, nav-rail, toolbars). Not in §8; defer past 1.0 unless Nasyx asks.
 - **ReorderList / RevealList**: token files (`ReorderListTokens.kt`, `RevealListTokens.kt`, `ExpandedListTokens.kt`) exist in 1.5.0 but no public composable found. Re-check 1.6/1.7; do not invent an API from tokens.
 - **Expressive dark scheme**: generate via `material-color-utilities` only if Nasyx rejects ADR-006’s faithful default. Must be documented as non-reference.

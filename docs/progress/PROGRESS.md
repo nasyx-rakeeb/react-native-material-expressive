@@ -469,3 +469,26 @@ A day closes only when its exit criteria are met with evidence and Nasyx approve
 **Next step**
 
 - Post the Day 7 close report; Nasyx runs `U-29` on the phone and chooses the `U-32` fallback before interactive `ShapeContainer` use. Day 8 stays paused until the report is approved.
+
+---
+
+## U-32 decision | 2026-11-27 | Decorative-only ShapeContainer, borderRadius for interaction
+
+**Status:** Decided by Nasyx; recorded as **ADR-017**. `U-32` is resolved as a 1.0 scope decision; the native mask capability is post-1.0 backlog.
+
+**Audit**
+
+- Compose Material3 1.5.0 sources: `MaterialShapes.*` is used only by `LoadingIndicator.kt`, whose public composables have no child slot. `RoundedPolygon` is used only by loading/progress leaves. Every shape-typed container token is a rounded rectangle or corner-full circle.
+- Reviewed all 37 component families in `COMPONENT_MATRIX.md`. **No stock component needs interactive or screen-reader-focusable children clipped to a non-rounded-rect MaterialShape.** The list is empty, so the decision proceeds.
+
+**Decision**
+
+- Interactive containers (buttons, icon buttons, chips, split button, FABs, cards, anything pressable that morphs between rounded rectangles) use RN `borderRadius`. No path-clipped interactive content in 1.0.0.
+- `ShapeContainer` is decorative/non-interactive only. `decorative: true` is required by its type; a dev-only traversal warns on pressable/accessible children; the subtree is hidden from assistive technology and set to `pointerEvents="none"` so it cannot expose 0×0 nodes or swallow input.
+- Complex polygon clipping stays visual. The native mask spike is in `docs/BACKLOG.md` for after 1.0, together with the deferred TalkBack pass.
+
+**Evidence**
+
+- `docs/DECISIONS.md` ADR-017; `docs/UNVERIFIED.md` U-32; `docs/COMPONENT_MATRIX.md`; `docs/BACKLOG.md`.
+- `packages/react-native-material-expressive/src/shapes/ShapeContainer.tsx`, `PathCanvas.tsx`.
+- `src/shapes/__type_tests__/ShapeContainer.types.tsx` — `tsc` fails if the required `decorative` prop is removed.
