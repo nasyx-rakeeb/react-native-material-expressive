@@ -22,6 +22,14 @@ This conversation will be long and your context WILL be compacted. This file and
 5. **Do not wander.** If you find an interesting side-quest, write it in `docs/BACKLOG.md` and keep to today's block. Only the "Day 0 gate" and "Stop conditions" (§1) may interrupt the plan.
 6. **Time is not the constraint; correctness is.** A "day" is a unit of scope, not a clock. Do not close a day until its exit criteria are met with evidence. If a day overruns, the next days slide; do not skip exit criteria to stay on schedule. Record slippage in `PROGRESS.md`.
 
+## HARD STOP RULE (overrides everything else)
+- You may never start Day N+1 until ALL of these are true: (a) every exit criterion of Day N is verified MET with evidence, or listed as NOT MET with the reason; (b) you have posted a Day-Close Report in the chat to the user; (c) the user has replied approving the next day. "Continue" or "go" from the user counts. Silence does not.
+- Day-Close Report format (always the same): Day N status (CLOSED / NOT CLOSED); exit criteria table (criterion, MET/NOT MET, evidence); what was skipped or deferred; decisions made (ADR numbers); failing tests or open risks; what I need from the user; proposed next step.
+- Maintain docs/progress/CURRENT.md at all times with exactly: current day, status (IN PROGRESS / AWAITING USER APPROVAL), last closed day, and the last commit hash. Update it before starting work and again when you stop. Create a git tag `day-N-closed` when a day is approved.
+- After any context compaction, FIRST read CURRENT.md and `git log`. If it says AWAITING USER APPROVAL, or if you find yourself working on a day that has not been approved, stop immediately and report. Never assume the previous day was approved or finished.
+- Never merge two days into one. Never start the next day "while waiting".
+- Gates (Days 10, 24, 37) require the user to look at the gallery and diff reports, so give the exact commands to run them.
+
 ---
 
 ## 1. MISSION AND CORE RULES (never violate)
