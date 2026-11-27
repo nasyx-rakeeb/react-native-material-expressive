@@ -19,6 +19,7 @@ export type SpikeRenderer = 'svg' | 'skia';
 export interface HarnessRoute {
   sceneId: SceneId | null;
   textComp: TextCompStrategy;
+  fontScaling: boolean;
   spike: SpikeMode | null;
   renderer: SpikeRenderer;
   screen: 'shapes' | 'shapesdiff' | null;
@@ -47,6 +48,10 @@ function parseTextComp(url: string | null | undefined): TextCompStrategy {
   const match = /[?&]textComp=([^&]+)/.exec(url ?? '');
   const value = match?.[1];
   return value === 'c1' || value === 'c2' || value === 'c3' || value === 'c4' ? value : 'none';
+}
+
+function parseFontScaling(url: string | null | undefined): boolean {
+  return /[?&]fontScaling=1(?:&|$)/.test(url ?? '');
 }
 
 function parseSpike(url: string | null | undefined): SpikeMode | null {
@@ -89,7 +94,15 @@ function RectView({ layer }: { layer: RectLayer }) {
   );
 }
 
-function TextView({ layer, override }: { layer: TextLayer; override?: TextCompOverride }) {
+function TextView({
+  layer,
+  override,
+  fontScaling,
+}: {
+  layer: TextLayer;
+  override?: TextCompOverride;
+  fontScaling: boolean;
+}) {
   const sizeSp = override?.sizeSp ?? layer.sizeSp;
   const letterSpacingSp = override?.letterSpacingSp ?? layer.letterSpacingSp;
   const lineHeightSp = override?.lineHeightSp ?? layer.lineHeightSp;
@@ -113,7 +126,7 @@ function TextView({ layer, override }: { layer: TextLayer; override?: TextCompOv
   };
   return (
     <Text
-      allowFontScaling={false}
+      allowFontScaling={fontScaling}
       onTextLayout={(event) => {
         const lines = event.nativeEvent.lines;
         const width = lines.length ? Math.max(...lines.map((line) => line.width)) : -1;
@@ -181,7 +194,15 @@ function FontProbe({ onResult }: { onResult: (state: FontProbeState) => void }) 
   );
 }
 
-function SceneBody({ scene, textComp }: { scene: Scene; textComp: TextCompStrategy }) {
+function SceneBody({
+  scene,
+  textComp,
+  fontScaling,
+}: {
+  scene: Scene;
+  textComp: TextCompStrategy;
+  fontScaling: boolean;
+}) {
   const override = TEXT_COMPENSATIONS[textComp][scene.id];
   return (
     <View
@@ -198,7 +219,12 @@ function SceneBody({ scene, textComp }: { scene: Scene; textComp: TextCompStrate
         layer.type === 'rect' ? (
           <RectView key={`rect-${index}`} layer={layer} />
         ) : (
-          <TextView key={`text-${index}`} layer={layer} override={override} />
+          <TextView
+            key={`text-${index}`}
+            layer={layer}
+            override={override}
+            fontScaling={fontScaling}
+          />
         ),
       )}
     </View>
@@ -208,9 +234,11 @@ function SceneBody({ scene, textComp }: { scene: Scene; textComp: TextCompStrate
 export default function SceneHarness({
   sceneId,
   textComp = 'none',
+  fontScaling = false,
 }: {
   sceneId: SceneId;
   textComp?: TextCompStrategy;
+  fontScaling?: boolean;
 }) {
   const scene = scenes[sceneId] as Scene;
   const [fontState, setFontState] = useState<FontProbeState>('pending');
@@ -246,7 +274,12 @@ export default function SceneHarness({
     <View style={styles.root}>
       <StatusBar hidden />
       <FontProbe onResult={setFontState} />
-      <SceneBody key={`${sceneId}-${renderKey}`} scene={scene} textComp={textComp} />
+      <SceneBody
+        key={`${sceneId}-${renderKey}`}
+        scene={scene}
+        textComp={textComp}
+        fontScaling={fontScaling}
+      />
       <View style={[styles.band, { backgroundColor: bandColor }]} />
       <Pressable
         accessibilityRole="button"
@@ -269,6 +302,7 @@ export function useHarnessScene(): HarnessRoute | undefined {
         setRoute({
           sceneId: parseSceneId(url),
           textComp: parseTextComp(url),
+          fontScaling: parseFontScaling(url),
           spike: parseSpike(url),
           renderer: parseRenderer(url),
           screen: parseScreen(url),

@@ -50,7 +50,13 @@ export default function App() {
   }
 
   if (route.sceneId !== null) {
-    return <SceneHarness sceneId={route.sceneId} textComp={route.textComp} />;
+    return (
+      <SceneHarness
+        sceneId={route.sceneId}
+        textComp={route.textComp}
+        fontScaling={route.fontScaling}
+      />
+    );
   }
 
   return <Home />;

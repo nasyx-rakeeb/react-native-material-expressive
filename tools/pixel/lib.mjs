@@ -8,9 +8,32 @@ import pixelmatch from 'pixelmatch';
 import { PNG } from 'pngjs';
 
 export const ROOT = path.resolve(fileURLToPath(new URL('../..', import.meta.url)));
-export const PROFILE = JSON.parse(
+const BASE_PROFILE = JSON.parse(
   fs.readFileSync(path.join(ROOT, 'tools/pixel/profile.json'), 'utf8'),
 );
+
+/**
+ * Diagnostic profile overrides. The frozen profile is unchanged unless one of
+ * these env vars is set; the Day 5 text-metric probes use them to compare the
+ * same scenes at other density/font-scale combinations.
+ */
+function profileOverrides() {
+  const overrides = {};
+  if (process.env.M3E_DENSITY) {
+    overrides.density = Number(process.env.M3E_DENSITY);
+    overrides.densityScale = overrides.density / 160;
+  }
+  if (process.env.M3E_DENSITY_SCALE) {
+    overrides.densityScale = Number(process.env.M3E_DENSITY_SCALE);
+    overrides.density = Math.round(overrides.densityScale * 160);
+  }
+  if (process.env.M3E_FONT_SCALE) {
+    overrides.fontScale = String(process.env.M3E_FONT_SCALE);
+  }
+  return overrides;
+}
+
+export const PROFILE = { ...BASE_PROFILE, ...profileOverrides() };
 export const SCENES_DIR = path.join(ROOT, 'tools/scenes');
 
 export const APPS = {
@@ -303,7 +326,16 @@ export function verifyProfile() {
   const wmSize = shellText(['wm', 'size']);
   const wmDensity = shellText(['wm', 'density']);
   add('wmSize', `Physical size: ${PROFILE.width}x${PROFILE.height}`, wmSize);
-  add('wmDensity', `Physical density: ${PROFILE.density}`, wmDensity);
+  if (process.env.M3E_DENSITY || process.env.M3E_DENSITY_SCALE) {
+    checks.push({
+      name: 'wmDensity',
+      expected: `Override density: ${PROFILE.density}`,
+      actual: wmDensity,
+      ok: wmDensity.includes(`Override density: ${PROFILE.density}`),
+    });
+  } else {
+    add('wmDensity', `Physical density: ${PROFILE.density}`, wmDensity);
+  }
 
   const surfaceFlinger = shellText(['dumpsys', 'SurfaceFlinger']);
   const gpuLine =
@@ -394,7 +426,8 @@ export function launch(app, sceneId) {
     return adb(args).toString('utf8');
   }
   const comp = process.env.M3E_RN_TEXT_COMP;
-  const query = comp ? `name=${sceneId}&textComp=${comp}` : `name=${sceneId}`;
+  const fontScaling = process.env.M3E_RN_FONT_SCALING === '1' ? '&fontScaling=1' : '';
+  const query = `${comp ? `name=${sceneId}&textComp=${comp}` : `name=${sceneId}`}${fontScaling}`;
   return adb([
     'shell',
     'am',

@@ -1,0 +1,447 @@
+{
+  "generatedAt": "2026-11-26T16:42:16.359Z",
+  "source": "docs/evidence/day5/typography/runs/faithful/results.json",
+  "profile": {
+    "density": 420,
+    "densityScale": 2.625,
+    "fontScale": 1
+  },
+  "formula": "letterSpacingSp = tokenLetterSpacingSp + (composeWidthPx - rnWidthPxAtC1Size) / ((glyphs - 1) * densityScale * fontScale)",
+  "gatePercent": 0.05,
+  "roles": [
+    {
+      "id": "type-body-medium-emphasized",
+      "text": "Material",
+      "glyphs": 8,
+      "token": {
+        "sizeSp": 14,
+        "letterSpacingSp": 0.25
+      },
+      "composeWidthPx": 141,
+      "rnWidthPx": 142.83202743530273,
+      "c1": null,
+      "derived": {
+        "letterSpacingSp": 0.1503
+      },
+      "baselineAaPixels": 326,
+      "baselineAaPercent": 0.07392290249433106
+    },
+    {
+      "id": "type-body-medium",
+      "text": "Material",
+      "glyphs": 8,
+      "token": {
+        "sizeSp": 14,
+        "letterSpacingSp": 0.2
+      },
+      "composeWidthPx": 135,
+      "rnWidthPx": 138.56718349456787,
+      "c1": null,
+      "derived": {
+        "letterSpacingSp": 0.0059
+      },
+      "baselineAaPixels": 676,
+      "baselineAaPercent": 0.15328798185941045
+    },
+    {
+      "id": "type-body-small-emphasized",
+      "text": "Material",
+      "glyphs": 8,
+      "token": {
+        "sizeSp": 12,
+        "letterSpacingSp": 0.4
+      },
+      "composeWidthPx": 126,
+      "rnWidthPx": 127.40000867843628,
+      "c1": null,
+      "derived": {
+        "letterSpacingSp": 0.3238
+      },
+      "baselineAaPixels": 311,
+      "baselineAaPercent": 0.07052154195011338
+    },
+    {
+      "id": "type-body-small",
+      "text": "Material",
+      "glyphs": 8,
+      "token": {
+        "sizeSp": 12,
+        "letterSpacingSp": 0.4
+      },
+      "composeWidthPx": 124,
+      "rnWidthPx": 124.61875677108765,
+      "c1": null,
+      "derived": {
+        "letterSpacingSp": 0.3663
+      },
+      "baselineAaPixels": 334,
+      "baselineAaPercent": 0.07573696145124717
+    },
+    {
+      "id": "type-display-large-emphasized",
+      "text": "Material",
+      "glyphs": 8,
+      "token": {
+        "sizeSp": 57,
+        "letterSpacingSp": 0
+      },
+      "composeWidthPx": 555,
+      "rnWidthPx": 557.8046894073486,
+      "c1": null,
+      "derived": {
+        "letterSpacingSp": -0.1526
+      },
+      "baselineAaPixels": 1236,
+      "baselineAaPercent": 0.2802721088435374
+    },
+    {
+      "id": "type-display-large",
+      "text": "Material",
+      "glyphs": 8,
+      "token": {
+        "sizeSp": 57,
+        "letterSpacingSp": -0.2
+      },
+      "composeWidthPx": 536,
+      "rnWidthPx": 540.5656299591064,
+      "c1": null,
+      "derived": {
+        "letterSpacingSp": -0.4485
+      },
+      "baselineAaPixels": 2745,
+      "baselineAaPercent": 0.6224489795918368
+    },
+    {
+      "id": "type-display-medium-emphasized",
+      "text": "Material",
+      "glyphs": 8,
+      "token": {
+        "sizeSp": 45,
+        "letterSpacingSp": 0
+      },
+      "composeWidthPx": 438,
+      "rnWidthPx": 442.51954078674316,
+      "c1": {
+        "tokenInt": 119,
+        "nearestInt": 118,
+        "sizeSp": 44.952
+      },
+      "derived": {
+        "sizeSp": 44.952,
+        "letterSpacingSp": -0.0436
+      },
+      "baselineAaPixels": 1696,
+      "baselineAaPercent": 0.38458049886621315
+    },
+    {
+      "id": "type-display-medium",
+      "text": "Material",
+      "glyphs": 8,
+      "token": {
+        "sizeSp": 45,
+        "letterSpacingSp": 0
+      },
+      "composeWidthPx": 429,
+      "rnWidthPx": 432.17186737060547,
+      "c1": {
+        "tokenInt": 119,
+        "nearestInt": 118,
+        "sizeSp": 44.952
+      },
+      "derived": {
+        "sizeSp": 44.952,
+        "letterSpacingSp": 0.025
+      },
+      "baselineAaPixels": 1629,
+      "baselineAaPercent": 0.3693877551020408
+    },
+    {
+      "id": "type-display-small-emphasized",
+      "text": "Material",
+      "glyphs": 8,
+      "token": {
+        "sizeSp": 36,
+        "letterSpacingSp": 0
+      },
+      "composeWidthPx": 349,
+      "rnWidthPx": 353.26954078674316,
+      "c1": null,
+      "derived": {
+        "letterSpacingSp": -0.2324
+      },
+      "baselineAaPixels": 1839,
+      "baselineAaPercent": 0.4170068027210884
+    },
+    {
+      "id": "type-display-small",
+      "text": "Material",
+      "glyphs": 8,
+      "token": {
+        "sizeSp": 36,
+        "letterSpacingSp": 0
+      },
+      "composeWidthPx": 342,
+      "rnWidthPx": 345.00781631469727,
+      "c1": null,
+      "derived": {
+        "letterSpacingSp": -0.1637
+      },
+      "baselineAaPixels": 949,
+      "baselineAaPercent": 0.21519274376417233
+    },
+    {
+      "id": "type-headline-medium-emphasized",
+      "text": "Material",
+      "glyphs": 8,
+      "token": {
+        "sizeSp": 28,
+        "letterSpacingSp": 0
+      },
+      "composeWidthPx": 272,
+      "rnWidthPx": 275.17186546325684,
+      "c1": null,
+      "derived": {
+        "letterSpacingSp": -0.1726
+      },
+      "baselineAaPixels": 714,
+      "baselineAaPercent": 0.1619047619047619
+    },
+    {
+      "id": "type-headline-medium",
+      "text": "Material",
+      "glyphs": 8,
+      "token": {
+        "sizeSp": 28,
+        "letterSpacingSp": 0
+      },
+      "composeWidthPx": 265,
+      "rnWidthPx": 268.74609088897705,
+      "c1": null,
+      "derived": {
+        "letterSpacingSp": -0.2039
+      },
+      "baselineAaPixels": 993,
+      "baselineAaPercent": 0.22517006802721087
+    },
+    {
+      "id": "type-label-large-emphasized",
+      "text": "Material",
+      "glyphs": 8,
+      "token": {
+        "sizeSp": 14,
+        "letterSpacingSp": 0.1
+      },
+      "composeWidthPx": 144,
+      "rnWidthPx": 146.13124179840088,
+      "c1": null,
+      "derived": {
+        "letterSpacingSp": -0.016
+      },
+      "baselineAaPixels": 474,
+      "baselineAaPercent": 0.10748299319727891
+    },
+    {
+      "id": "type-label-large",
+      "text": "Material",
+      "glyphs": 8,
+      "token": {
+        "sizeSp": 14,
+        "letterSpacingSp": 0.1
+      },
+      "composeWidthPx": 138,
+      "rnWidthPx": 139.68202543258667,
+      "c1": null,
+      "derived": {
+        "letterSpacingSp": 0.0085
+      },
+      "baselineAaPixels": 397,
+      "baselineAaPercent": 0.09002267573696145
+    },
+    {
+      "id": "type-label-medium-emphasized",
+      "text": "Material",
+      "glyphs": 8,
+      "token": {
+        "sizeSp": 12,
+        "letterSpacingSp": 0.5
+      },
+      "composeWidthPx": 132,
+      "rnWidthPx": 135.0781216621399,
+      "c1": null,
+      "derived": {
+        "letterSpacingSp": 0.3325
+      },
+      "baselineAaPixels": 663,
+      "baselineAaPercent": 0.15034013605442176
+    },
+    {
+      "id": "type-label-medium",
+      "text": "Material",
+      "glyphs": 8,
+      "token": {
+        "sizeSp": 12,
+        "letterSpacingSp": 0.5
+      },
+      "composeWidthPx": 128,
+      "rnWidthPx": 129.4999966621399,
+      "c1": null,
+      "derived": {
+        "letterSpacingSp": 0.4184
+      },
+      "baselineAaPixels": 375,
+      "baselineAaPercent": 0.08503401360544217
+    },
+    {
+      "id": "type-label-small-emphasized",
+      "text": "Material",
+      "glyphs": 8,
+      "token": {
+        "sizeSp": 11,
+        "letterSpacingSp": 0.5
+      },
+      "composeWidthPx": 121,
+      "rnWidthPx": 123.38671588897705,
+      "c1": null,
+      "derived": {
+        "letterSpacingSp": 0.3701
+      },
+      "baselineAaPixels": 397,
+      "baselineAaPercent": 0.09002267573696145
+    },
+    {
+      "id": "type-title-large-emphasized",
+      "text": "Material",
+      "glyphs": 8,
+      "token": {
+        "sizeSp": 22,
+        "letterSpacingSp": 0
+      },
+      "composeWidthPx": 213,
+      "rnWidthPx": 215.67187213897705,
+      "c1": null,
+      "derived": {
+        "letterSpacingSp": -0.1454
+      },
+      "baselineAaPixels": 222,
+      "baselineAaPercent": 0.050340136054421766
+    },
+    {
+      "id": "type-title-large",
+      "text": "Material",
+      "glyphs": 8,
+      "token": {
+        "sizeSp": 22,
+        "letterSpacingSp": 0
+      },
+      "composeWidthPx": 207,
+      "rnWidthPx": 210.63672351837158,
+      "c1": null,
+      "derived": {
+        "letterSpacingSp": -0.1979
+      },
+      "baselineAaPixels": 598,
+      "baselineAaPercent": 0.13560090702947847
+    },
+    {
+      "id": "type-title-small-emphasized",
+      "text": "Material",
+      "glyphs": 8,
+      "token": {
+        "sizeSp": 14,
+        "letterSpacingSp": 0.1
+      },
+      "composeWidthPx": 144,
+      "rnWidthPx": 146.13124179840088,
+      "c1": null,
+      "derived": {
+        "letterSpacingSp": -0.016
+      },
+      "baselineAaPixels": 474,
+      "baselineAaPercent": 0.10748299319727891
+    },
+    {
+      "id": "type-title-small",
+      "text": "Material",
+      "glyphs": 8,
+      "token": {
+        "sizeSp": 14,
+        "letterSpacingSp": 0.1
+      },
+      "composeWidthPx": 138,
+      "rnWidthPx": 139.68202543258667,
+      "c1": null,
+      "derived": {
+        "letterSpacingSp": 0.0085
+      },
+      "baselineAaPixels": 397,
+      "baselineAaPercent": 0.09002267573696145
+    }
+  ],
+  "c2": {
+    "type-body-medium-emphasized": {
+      "letterSpacingSp": 0.1503
+    },
+    "type-body-medium": {
+      "letterSpacingSp": 0.0059
+    },
+    "type-body-small-emphasized": {
+      "letterSpacingSp": 0.3238
+    },
+    "type-body-small": {
+      "letterSpacingSp": 0.3663
+    },
+    "type-display-large-emphasized": {
+      "letterSpacingSp": -0.1526
+    },
+    "type-display-large": {
+      "letterSpacingSp": -0.4485
+    },
+    "type-display-medium-emphasized": {
+      "sizeSp": 44.952,
+      "letterSpacingSp": -0.0436
+    },
+    "type-display-medium": {
+      "sizeSp": 44.952,
+      "letterSpacingSp": 0.025
+    },
+    "type-display-small-emphasized": {
+      "letterSpacingSp": -0.2324
+    },
+    "type-display-small": {
+      "letterSpacingSp": -0.1637
+    },
+    "type-headline-medium-emphasized": {
+      "letterSpacingSp": -0.1726
+    },
+    "type-headline-medium": {
+      "letterSpacingSp": -0.2039
+    },
+    "type-label-large-emphasized": {
+      "letterSpacingSp": -0.016
+    },
+    "type-label-large": {
+      "letterSpacingSp": 0.0085
+    },
+    "type-label-medium-emphasized": {
+      "letterSpacingSp": 0.3325
+    },
+    "type-label-medium": {
+      "letterSpacingSp": 0.4184
+    },
+    "type-label-small-emphasized": {
+      "letterSpacingSp": 0.3701
+    },
+    "type-title-large-emphasized": {
+      "letterSpacingSp": -0.1454
+    },
+    "type-title-large": {
+      "letterSpacingSp": -0.1979
+    },
+    "type-title-small-emphasized": {
+      "letterSpacingSp": -0.016
+    },
+    "type-title-small": {
+      "letterSpacingSp": 0.0085
+    }
+  }
+}

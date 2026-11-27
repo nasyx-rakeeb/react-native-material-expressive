@@ -95,7 +95,10 @@ side is overridden. Compose always renders the token-exact values. Overrides are
 | **C4** | C3 + `letterSpacing` | Re-solve spacing against the **ink bbox width** instead of the measured advance width. |
 
 C2–C4 are per-role, per-string fits to one 8-glyph sample (`"Material"`). They are not a general
-typographic rule and must not ship as token values.
+typographic rule and must not ship as token values. `tools/typography/derive-c2.mjs` re-derives the
+committed C2 table from the faithful run and writes `derived-c2.json`; the worst difference against
+`compensation.json` is 0 after 4-decimal rounding. The fixed table was then tested at four
+density/font-scale profiles — see `../profile-matrix/` and ADR-010.
 
 ## 3. Results — the 21 faithful failures
 
