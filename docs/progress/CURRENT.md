@@ -1,6 +1,6 @@
 # Current status
 
-- Current day: Day 7 close verification (Day 8 paused)
+- Current day: Day 8 (paused; Day 7 formally closed 2026-11-27)
 - Status: AWAITING USER APPROVAL
-- Last closed day: Day 6 (accepted by Nasyx, 2026-11-26)
-- Last commit hash: ceb5bf6
+- Last closed day: Day 7 (conditional closure approved by Nasyx, 2026-11-27)
+- Last commit hash: 20e0dd1
