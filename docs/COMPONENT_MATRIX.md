@@ -234,8 +234,10 @@ spec/iOS/a11y/tests. `ShapeContainer` is **decorative-only** under ADR-017: the
 `foreignObject` subtree has no touch, scrolling or usable accessibility bounds, so it
 requires `decorative` and hides its children from assistive technology. Interactive
 containers use `borderRadius`; the native mask fallback is post-1.0 backlog. `U-29`
-(physical-device frame times) is a hard blocker before Day 31 (wavy progress) and Day 32
-(loading indicator); the on-screen FPS/frame-time card and the exact install/launch
-commands are in `docs/evidence/day7/frame-times.md`. `M3Provider`/theme, `Surface`, `Text`, `Icon`, motion, interaction, and overlay
+(physical-device frame times) is **resolved**: on the Xiaomi 2201116SI at 60 Hz, Skia
+holds 16.71 ms in all three spike modes; SVG averages 17.22/18.20/17.42 ms and drops
+frames with ten concurrent morphs (max 50.05 ms). ADR-002 is unchanged, but the 60 fps
+claim is scoped to single morphs and the clipped-gradient scene. Card, table and
+install/launch commands: `docs/evidence/day7/frame-times.md`. `M3Provider`/theme, `Surface`, `Text`, `Icon`, motion, interaction, and overlay
 primitives remain open (Days 8–10); see `docs/progress/PROGRESS.md` for the current
 session.

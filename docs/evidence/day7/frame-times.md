@@ -1,9 +1,13 @@
-# Day 7 — path-renderer frame times (emulator-only)
+# Day 7 — path-renderer frame times
 
-> **Emulator-only / SwiftShader. Not a production performance claim.**
-> The Android target is `emulator-5554`: API 31, 1080×1920, 420 dpi (2.625×),
-> software GPU (SwiftShader), 60 Hz, window/transition/animator scales 0, font
-> scale 1.0. Physical-device confirmation is tracked by `U-29`.
+Two datasets:
+
+- **Emulator / SwiftShader** — `emulator-5554`, API 31, 1080×1920, 420 dpi
+  (2.625×), software GPU, 60 Hz. Useful for the same-device A/B, **not** a
+  production performance claim.
+- **Physical device / `U-29`** — Xiaomi 2201116SI, SM6375, 1080×2400, 440 dpi
+  (2.750×), 60 Hz active mode, release arm64 APK. This is the production-relevant
+  dataset. Results in [Physical device](#physical-device-u-29).
 
 ## Method
 
@@ -56,7 +60,50 @@ load changes the numbers. Do not compare runs across host-load conditions.
 views, Skia cannot. Screenshots and the result are in
 `docs/evidence/day7/clipping/`.
 
-## Physical-device follow-up (`U-29`)
+## Physical device (`U-29`)
+
+**Device:** Xiaomi 2201116SI (Redmi Note 11), SoC **SM6375** (`holi`),
+Android **13 / API 33**, arm64-v8a, 1080×2400, **440 dpi (2.750×)**, active
+display mode **60.000004 Hz** (`mActiveModeId=2`; the panel also supports
+120 Hz). Rooted (Magisk); installed with the arm64 release APK through
+`su -c 'pm install -r …'`. Run over Wi-Fi adb; the transport does not affect
+frame times. Window on the card: 393×873 dp.
+
+**Artifact:** `app-release.apk`, 58,369,090 bytes, SHA-256
+`7436712f45663084bd77558b10ff775052eecbd5107f6a51fe83ddcc26a82e2f`.
+
+Each mode ran 20 s after a cold start; the last `M3E_SPIKE_UI` line is recorded.
+The 60 Hz frame budget is 16.67 ms.
+
+| Spike mode | Renderer | Frames | Avg (ms) | Max (ms) | Avg over budget |
+|---|---|---:|---:|---:|---:|
+| `cycle` — 35-shape morph cycle | SVG | 1080 | **17.22** | 33.54 | +3.3% |
+| `cycle` — 35-shape morph cycle | Skia | 1140 | **16.72** | 33.55 | +0.3% |
+| `concurrent` — 10 morphs | SVG | 1020 | **18.20** | 50.05 | +9.2% |
+| `concurrent` — 10 morphs | Skia | 1140 | **16.71** | 16.96 | +0.2% |
+| `clip` — gradient clipped to morphing path | SVG | 1080 | **17.42** | 33.53 | +4.5% |
+| `clip` — gradient clipped to morphing path | Skia | 1140 | **16.71** | 17.07 | +0.2% |
+
+**Reading**
+
+- Skia holds the 60 Hz ceiling in all three modes (16.71 ms average; maxima
+  16.96/17.07 ms for concurrent/clip).
+- SVG is 0.5–1.5 ms above the ceiling on average and drops frames. The worst
+  case is 10 concurrent morphs: 18.20 ms average, 50.05 ms maximum, 1020 frames
+  in 20 s (~51 fps). `cycle` and `clip` show occasional 33.5 ms frames.
+- This is a real mid-range device result, not SwiftShader noise. It **does not
+  change ADR-002**: SVG still wins on binary size (0.77 MB vs 29.78 MB per
+  arm64 ABI), build/install friction and RN-child clipping. It does mean the
+  1.0 frame-time claim must be scoped: **SVG holds 60 fps for a single morph
+  and the clipped-gradient scene, but not for ten concurrent morphs on this
+  device.** Skia is the smoother option if a screen needs many simultaneous
+  path animations.
+- The panel was in 60 Hz mode. 120 Hz (8.33 ms budget) was **not** tested; do
+  not claim 120 fps for either renderer.
+- Card capture: `docs/evidence/day7/frame-times-device.png` (clip/Skia,
+  59.9 FPS, avg 16.71 ms, max 17.07 ms).
+
+## Reproduce on the phone
 
 The phone is the rooted Xiaomi 2201116SI; MIUI rejects plain `adb install`, so
 install the arm64 APK from a root shell. Full steps, device commands and the
@@ -84,11 +131,10 @@ done
 in one pass.
 
 The card shows FPS, average/max frame time, frame count, window size in dp,
-physical pixels, density and Android API. Record the **device model, SoC and
-refresh rate** with the numbers. If the phone blocks the install, approve the
-“Install via USB” prompt (Xiaomi/Redmi devices also need “Install via USB” in
-Developer options). The card is the source of truth if release `console.log`
-output is stripped by a future build.
+physical pixels, density and Android API. If the phone blocks the install,
+approve the “Install via USB” prompt (Xiaomi/Redmi devices also need “Install
+via USB” in Developer options). The card is the source of truth if release
+`console.log` output is stripped by a future build.
 
 For a frame-timeline cross-check:
 
@@ -96,4 +142,5 @@ For a frame-timeline cross-check:
 adb -s "$SERIAL" shell dumpsys gfxinfo com.nasyxrakeeb.m3egallery framestats
 ```
 
-The emulator results above must not be mixed into the physical-device table.
+The emulator and physical-device tables are separate datasets; do not mix them.
+The physical-device run above is the `U-29` result.

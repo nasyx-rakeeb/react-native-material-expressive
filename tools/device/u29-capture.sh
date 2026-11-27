@@ -39,8 +39,18 @@ if [[ -z "$SOC" ]]; then
   SOC="$(adb_device shell getprop ro.board.platform | tr -d '\r')"
 fi
 ABI="$(adb_device shell getprop ro.product.cpu.abi | tr -d '\r')"
-REFRESH="$(adb_device shell dumpsys display 2>/dev/null | grep -m1 -oE 'fps=[0-9.]+' || true)"
-echo "model=$MODEL soc=$SOC abi=$ABI ${REFRESH:-refresh=unknown}"
+# Report the *active* mode, not the first supported mode. A 120 Hz panel often
+# lists 120 before the active 60 Hz mode, which made the first version print
+# the wrong refresh rate.
+ACTIVE_MODE="$(adb_device shell dumpsys display 2>/dev/null \
+  | grep -m1 -oE 'mActiveModeId=[0-9]+' | cut -d= -f2 || true)"
+if [[ -n "$ACTIVE_MODE" ]]; then
+  REFRESH="$(adb_device shell dumpsys display 2>/dev/null \
+    | grep -oE "id=${ACTIVE_MODE},[^}]*fps=[0-9.]+" | grep -m1 -oE 'fps=[0-9.]+' || true)"
+else
+  REFRESH="$(adb_device shell dumpsys display 2>/dev/null | grep -m1 -oE 'fps=[0-9.]+' || true)"
+fi
+echo "model=$MODEL soc=$SOC abi=$ABI mode=${ACTIVE_MODE:-unknown} ${REFRESH:-refresh=unknown}"
 
 if [[ "$ABI" != "arm64-v8a" ]]; then
   echo "This APK is arm64-v8a only; device ABI is $ABI." >&2

@@ -562,3 +562,37 @@ A day closes only when its exit criteria are met with evidence and Nasyx approve
 **Next step**
 
 - Post the Day 8 Day-Close Report and stop. Day 9 (interaction primitives) starts only after Nasyx approves.
+
+---
+
+## U-29 result | 2026-11-27 | Physical-device frame times (Xiaomi 2201116SI)
+
+**Status:** **RESOLVED.** The phone was attached over Wi-Fi adb, unlocked, and the arm64 release APK was installed through root (`su -c 'pm install -r …'`). All six 20 s captures ran on the real device.
+
+**Device:** Xiaomi 2201116SI (Redmi Note 11), SoC **SM6375** (`holi`), Android 13 / API 33, arm64-v8a, 1080×2400, 440 dpi (2.750×), **60 Hz active mode** (`mActiveModeId=2`; the panel supports 120 Hz, but 120 Hz was not tested). Window 393×873 dp.
+
+**Results (last `M3E_SPIKE_UI` line per 20 s run)**
+
+| Mode | Renderer | Frames | Avg (ms) | Max (ms) |
+|---|---|---:|---:|---:|
+| `cycle` | SVG | 1080 | 17.22 | 33.54 |
+| `cycle` | Skia | 1140 | 16.72 | 33.55 |
+| `concurrent` | SVG | 1020 | 18.20 | 50.05 |
+| `concurrent` | Skia | 1140 | 16.71 | 16.96 |
+| `clip` | SVG | 1080 | 17.42 | 33.53 |
+| `clip` | Skia | 1140 | 16.71 | 17.07 |
+
+**Reading**
+
+- Skia holds the 60 Hz ceiling (16.71 ms) in all three modes.
+- SVG is 0.5–1.5 ms above the ceiling on average and drops frames. The worst case is ten concurrent morphs: 18.20 ms average, 50.05 ms max, ~51 fps.
+- ADR-002 is unchanged: SVG wins on binary size (0.77 MB vs 29.78 MB per arm64 ABI), build/install friction and RN-child clipping. The 60 fps claim is now scoped: SVG holds 60 fps for a single morph and the clipped-gradient scene, not for ten concurrent morphs on this device. Skia is smoother for many simultaneous path animations.
+- 120 Hz was not tested; no 120 fps claim.
+
+**Evidence**
+
+- `docs/evidence/day7/frame-times.md#physical-device-u-29` — device facts, table, method, reading.
+- `docs/evidence/day7/frame-times-device.png` — on-screen card (clip/Skia, 59.9 FPS, avg 16.71 ms, max 17.07 ms).
+- `docs/evidence/day7/u29-device-steps.md` — completed hand-off with the result table and reproduction steps.
+- `docs/UNVERIFIED.md` U-29 — resolved.
+- `tools/device/u29-capture.sh` — now reports the active display mode (`mActiveModeId`), not the first supported mode.

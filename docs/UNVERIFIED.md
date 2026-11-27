@@ -216,12 +216,24 @@ Paper `6.0.0-alpha.4` (2026-11-23); 34 public component exports; signature-set s
 - **Resolution (2026-11-26):** The JVM golden now samples `-0.1, 0, 0.1, 0.25, 0.33, 0.5, 0.6, 0.75, 0.9, 1, 1.1` on all 50 morphs: **550 samples / 25,806 cubic comparisons**, max **1.3594e-6** (`Gem -> Ghostish` @ `-0.1`), **0 failures over 1e-4**. `Morph.asCubics` and `interpolateGeometry` extrapolate; they do not clamp. `LoadingIndicator` uses a damping-ratio-0.6 spring on an `Animatable(0f) -> 1f` and passes the overshooting value into `Morph`, so this is the behavior the primitive must preserve. The TS suite also checks `-0.5` and `1.5` against `Morph.asCubics`. Evidence: `docs/evidence/day6/shapes/README.md` §“Morph progress outside [0, 1]”, `ShapeGoldenTest.kt`, `shapes.test.ts`.
 - **Blocks:** Nothing. `MorphingShape` can pass spring progress straight through.
 
-### U-29 — Day 7 frame times are emulator-only until a physical device is measured
+### U-29 — Day 7 frame times are emulator-only until a physical device is measured — **RESOLVED (2026-11-27)**
 
 - **Evidence:** The only Android target is `emulator-5554`, API 31, 1080×1920, 420 dpi, SwiftShader software rendering. Day 7’s 35-shape cycle, 10 concurrent morphs, and clipped gradient ran there. The final readout build measured: cycle avg **16.76 ms SVG / 16.68 ms Skia**; concurrent **16.73 / 16.85**; clip **16.67 / 16.70**. All are pinned at the 60 Hz vsync ceiling; the six final-build averages stayed within 0.18 ms of each other and maxima ranged from 16.67 ms to 83.33 ms. An earlier 2026-11-27 pass ran at host load 10–15 and measured 28–73 ms; it is excluded because SwiftShader is host-CPU-bound. Full table and the host-load caveat: `docs/evidence/day7/frame-times.md`; the on-screen card is `docs/evidence/day7/frame-times-card.png`.
 - **Impact:** SwiftShader frame times are not representative of a mid-range phone GPU. They cannot justify a production performance claim or a hard frame-time budget, and they cannot separate the renderers.
-- **Resolution:** Two artifacts exist. The universal emulator APK is **203,440,223 bytes**, SHA-256 `612c6921c6444fbd8fae58b1acd8b548b64896a05ebd6a6e593d7b34653d9a28`. The phone APK is arm64-only, **58,369,090 bytes**, SHA-256 `7436712f45663084bd77558b10ff775052eecbd5107f6a51fe83ddcc26a82e2f`, built with `-PreactNativeArchitectures=arm64-v8a`. Both keep the on-screen FPS/frame-time card (FPS, avg/max, frame count, dp, physical px, density, Android API). The Xiaomi 2201116SI is rooted; MIUI rejects plain `adb install`, so install from a root shell (`adb push` + `su -c 'pm install -r …'`). Exact steps, device commands, a fill-in table and `tools/device/u29-capture.sh` are in `docs/evidence/day7/u29-device-steps.md`. Record the device model/SoC/active refresh rate with the six rows. Label every emulator number **emulator-only / SwiftShader**. ADR-002 is decided on binary size, build/install friction and RN-child clipping; the physical-device run confirms or reopens the frame-time claim, not the functional renderer choice.
-- **Blocks:** The production frame-time claim in ADR-002 only. Not the renderer decision, not Day 7 exit. **Hard blocker before Day 31 (wavy progress) and Day 32 (loading indicator).**
+- **Resolution:** Two artifacts exist. The universal emulator APK is **203,440,223 bytes**, SHA-256 `612c6921c6444fbd8fae58b1acd8b548b64896a05ebd6a6e593d7b34653d9a28`. The phone APK is arm64-only, **58,369,090 bytes**, SHA-256 `7436712f45663084bd77558b10ff775052eecbd5107f6a51fe83ddcc26a82e2f`, built with `-PreactNativeArchitectures=arm64-v8a`. Both keep the on-screen FPS/frame-time card. The Xiaomi 2201116SI is rooted; MIUI rejects plain `adb install`, so it was installed from a root shell (`adb push` + `su -c 'pm install -r …'`). Steps and the capture script: `docs/evidence/day7/u29-device-steps.md`.
+- **Result (2026-11-27):** Xiaomi 2201116SI, SoC **SM6375** (`holi`), Android 13 / API 33, 1080×2400, 440 dpi (2.750×), **60 Hz active mode** (`mActiveModeId=2`; 120 Hz panel, 120 Hz not tested). Last 20 s line per mode:
+
+  | Mode | Renderer | Frames | Avg (ms) | Max (ms) |
+  |---|---|---:|---:|---:|
+  | `cycle` | SVG | 1080 | 17.22 | 33.54 |
+  | `cycle` | Skia | 1140 | 16.72 | 33.55 |
+  | `concurrent` | SVG | 1020 | 18.20 | 50.05 |
+  | `concurrent` | Skia | 1140 | 16.71 | 16.96 |
+  | `clip` | SVG | 1080 | 17.42 | 33.53 |
+  | `clip` | Skia | 1140 | 16.71 | 17.07 |
+
+  Skia holds the 60 Hz ceiling (16.71 ms) in all three modes. SVG is 0.5–1.5 ms above it and drops frames in the 10-concurrent-morph case (18.20 ms average, 50.05 ms maximum, ~51 fps). **ADR-002 is unchanged** (SVG wins on binary size 0.77 MB vs 29.78 MB per arm64 ABI, build/install friction and RN-child clipping), but the frame-time claim is scoped: SVG holds 60 fps for a single morph and the clipped-gradient scene, not for ten concurrent morphs on this device. Skia is smoother if a screen needs many simultaneous path animations. Card: `docs/evidence/day7/frame-times-device.png`; full table and method: `docs/evidence/day7/frame-times.md#physical-device-u-29`.
+- **Blocks:** None. The production frame-time claim is recorded and scoped; Day 31/32 are no longer blocked by missing device data.
 
 ### U-30 — `react-native-skia` and `react-native-svg` are not runtime-verified with RN 0.88.1 — **RESOLVED**
 

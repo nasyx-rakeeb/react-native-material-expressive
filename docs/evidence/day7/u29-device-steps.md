@@ -1,8 +1,26 @@
 # U-29 — physical-device frame-time run (Xiaomi 2201116SI)
 
-This is the hand-off for the real-device half of `U-29`. The emulator table in
-`docs/evidence/day7/frame-times.md` is SwiftShader-only and is **not** a
-production claim. `U-29` stays open until the numbers below are recorded.
+**Status: completed 2026-11-27.** The run was executed on the attached phone.
+Device: Xiaomi 2201116SI, SoC **SM6375** (`holi`), Android 13 / API 33,
+1080×2400, 440 dpi (2.750×), **60 Hz active mode** (`mActiveModeId=2`; the panel
+also supports 120 Hz). Results are in
+[`docs/evidence/day7/frame-times.md`](frame-times.md#physical-device-u-29); the
+card capture is [`frame-times-device.png`](frame-times-device.png).
+
+| Mode | Renderer | Frames | Avg (ms) | Max (ms) |
+|---|---|---:|---:|---:|
+| `cycle` | SVG | 1080 | 17.22 | 33.54 |
+| `cycle` | Skia | 1140 | 16.72 | 33.55 |
+| `concurrent` | SVG | 1020 | 18.20 | 50.05 |
+| `concurrent` | Skia | 1140 | 16.71 | 16.96 |
+| `clip` | SVG | 1080 | 17.42 | 33.53 |
+| `clip` | Skia | 1140 | 16.71 | 17.07 |
+
+Skia holds the 60 Hz ceiling; SVG is 0.5–1.5 ms above it and drops frames in the
+10-concurrent-morph case. ADR-002 is unchanged (size/build/clipping), but the
+frame-time claim is scoped accordingly. The steps below remain for
+reproduction; `tools/device/u29-capture.sh` now reports the active display
+mode.
 
 ## Artifact
 
