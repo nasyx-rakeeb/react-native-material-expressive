@@ -38,7 +38,7 @@
 | `RoundedPolygon` / `Morph` engine | `graphics-shapes` sources | [x] | [x] | [x] | — | [ ] | — | [x] | [x] | [x] | [ ] |
 | `Shape` primitive | ADR-002; `MaterialShapes.kt` | [x] | [x] | [x] | — | [ ] | — | [ ] | [x] | [x] | [ ] |
 | `MorphingShape` primitive | ADR-011/012; `Morph.toPath` | [x] | [x] | [ ] | [x] | [ ] | — | [ ] | [x] | [x] | [ ] |
-| `ShapeContainer` (visual clip) | ADR-002; shaped-container design | [ ] | [x] | [x] | [x] | [ ] | [ ] | [ ] | [x] | [x] | [ ] |
+| `ShapeContainer` (visual clip only; U-32) | ADR-002; shaped-container design | [ ] | [x] | [x] | [x] | [ ] | [ ] | [ ] | [x] | [x] | [ ] |
 | Motion scheme & spring hooks | `MotionScheme.kt`, `StandardMotionTokens`, `ExpressiveMotionTokens` | [ ] | [ ] | — | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
 | Elevation & shadows | `Elevation.kt`, `ElevationTokens.kt` | [ ] | [ ] | [ ] | — | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
 | State layers | `StateTokens.kt` (hover .08, focus .10, pressed .10, dragged .16) | [ ] | [ ] | [ ] | — | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
@@ -58,6 +58,10 @@ renders all 35 shapes, animated morphs and a clipped RN-content container
 (`docs/evidence/day7/gallery/`). `Shape`, `MorphingShape` and `ShapeContainer` are
 implemented on the SVG `PathCanvas` (ADR-002); animated morphs run on the UI thread.
 Their iOS, a11y and RNTL boxes stay open, so the rows are not DONE yet.
+`ShapeContainer` is **visual-only**: the Day 7 `foreignObject` probe found that the clipped
+RN subtree is not laid out, so touch, scrolling and accessibility hit-testing do not work
+inside it (`U-32`, `docs/evidence/day7/foreign-object/`). Do not put interactive content
+in it until the fallback is decided.
 
 **Foundation evidence (Days 2–6):**
 
@@ -225,8 +229,10 @@ above. The Day 7 renderer exit is met: ADR-002/ADR-003 are final; `PathCanvas`, 
 AA-aware differing pixels**; the gallery renders all 35 shapes, animated morphs and clipped
 RN children. The three primitive rows are **not DONE**: `Shape` is missing tests/iOS/a11y,
 `MorphingShape` is missing animated-diff/iOS/a11y/tests, and `ShapeContainer` is missing
-spec/iOS/a11y/tests. `U-29` (physical-device frame times) is a hard blocker before Day 31
-(wavy progress) and Day 32 (loading indicator); `ForeignObject` behaviour is recorded in
-`docs/UNVERIFIED.md`. `M3Provider`/theme, `Surface`, `Text`, `Icon`, motion, interaction, and overlay
+spec/iOS/a11y/tests. `ShapeContainer` is **visual-only** until `U-32` is resolved: the
+`foreignObject` subtree has no touch, scrolling or usable accessibility bounds. `U-29`
+(physical-device frame times) is a hard blocker before Day 31 (wavy progress) and Day 32
+(loading indicator); the on-screen FPS/frame-time card and the exact install/launch
+commands are in `docs/evidence/day7/frame-times.md`. `M3Provider`/theme, `Surface`, `Text`, `Icon`, motion, interaction, and overlay
 primitives remain open (Days 8–10); see `docs/progress/PROGRESS.md` for the current
 session.

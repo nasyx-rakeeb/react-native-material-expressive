@@ -2,7 +2,7 @@
 
 **Device/build:** release gallery APK, RN 0.88.1, New Architecture, Hermes, built on
 2026-11-26. APK SHA-256 `03057091286a7ee68993aa99dd16c21f02edfb3de389e9fc31d500d91ed9c5ca`,
-**203,432,215 bytes** with both renderers installed. This is the final Day 7 artifact and the count paired with the hash above. An earlier build in the same session was **203,431,419 bytes** (1,796 B smaller); U-30 originally quoted that earlier artifact and has been corrected.
+**203,432,215 bytes** with both renderers installed. This is the renderer-evidence artifact (the build used for the Day 7 renderer decision) and the count paired with the hash above. An earlier build in the same session was **203,431,419 bytes** (1,796 B smaller); U-30 originally quoted that earlier artifact and has been corrected. The later U-29 spike artifact adds the on-screen FPS card and the clip probe: **203,440,223 bytes**, SHA-256 `612c6921c6444fbd8fae58b1acd8b548b64896a05ebd6a6e593d7b34653d9a28`; the 8,008 B delta is verification chrome, not renderer code.
 
 ## Per-ABI native libraries
 

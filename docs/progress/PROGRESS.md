@@ -371,7 +371,7 @@ A day closes only when its exit criteria are met with evidence and Nasyx approve
 
 ## Day 7 | 2026-11-26 | Renderer decision, shape primitives, and static Compose shape diff
 
-**Status:** READY FOR APPROVAL. Day 7 exit is met: ADR-002 is accepted with measured binary-size, build/install-friction and RN-child-clipping data; ADR-003 is finalized; `Shape`, `MorphingShape` and `ShapeContainer` are implemented; the gallery shows all 35 shapes plus animated morphs; the static 35-shape grid diff has **0 AA-aware differing pixels**. Physical-device frame-time confirmation remains `U-29`; it does not reopen the functional renderer choice.
+**Status:** CLOSED (conditional, Nasyx approved 2026-11-27). Day 7 exit is met: ADR-002 is accepted with measured binary-size, build/install-friction and RN-child-clipping data; ADR-003 is finalized; `Shape`, `MorphingShape` and `ShapeContainer` are implemented; the gallery shows all 35 shapes plus animated morphs; the static 35-shape grid diff has **0 AA-aware differing pixels**. Physical-device frame-time confirmation remains `U-29`; it does not reopen the functional renderer choice.
 
 **Done**
 
@@ -444,3 +444,28 @@ A day closes only when its exit criteria are met with evidence and Nasyx approve
 - Day 10 gate: present the plain-language ADR-010 summary and recommendation; Nasyx decides before Day 11.
 
 ---
+
+## Day 7 follow-up | 2026-11-27 | ForeignObject probe, U-29 readout, final APK
+
+**Status:** Day 7 close verification complete. `U-32` is open; `U-29` remains open until the physical-device run. The Day 7 renderer exit is unchanged.
+
+**Done**
+
+- Built a `clipprobe` route (`m3egallery://?screen=clipprobe`) around a 300 dp `Clover4Leaf` `ShapeContainer`. Visual clipping and animated children **pass**; touch, scrolling and accessibility hit-testing **fail** inside the SVG `foreignObject`. Root cause: `react-native-svg`’s `VirtualView.onLayout` does not lay out non-virtual children, so the RN wrapper is 0×0 and Android skips it for touch/a11y. Recorded as **U-32** with screenshots, the accessibility-tree dump and upstream issue references.
+- Added an on-screen FPS/frame-time card to `ShapeSpike` for `U-29`: FPS, average/max, frame count, window dp, physical px, density and Android API. The card is an isolated component with 1 Hz updates, so it does not re-render the spike tree; it logs the same `M3E_SPIKE_UI` line every 60 frames.
+- Re-ran the emulator frame table on the final build: cycle 16.76 ms SVG / 16.68 ms Skia; concurrent 16.73 / 16.85; clip 16.67 / 16.70. All at the 60 Hz ceiling. An earlier pass at host load 10–15 measured 28–73 ms and is excluded; SwiftShader is host-CPU-bound.
+- Final U-29 spike APK: `apps/gallery/android/app/build/outputs/apk/release/app-release.apk`, **203,440,223 bytes**, SHA-256 `612c6921c6444fbd8fae58b1acd8b548b64896a05ebd6a6e593d7b34653d9a28`. The renderer-evidence APK remains **203,432,215 bytes** (`0305709…c5ca`); the 8,008 B delta is the probe/readout chrome.
+- Housekeeping commits: `cc67a92` (PROGRESS statuses + missing `ceb5bf6`), `3c9a966` (U-25.3 revised ADR-010 thresholds), `c3906d7` (final APK byte reconciliation), `f54bb8b` (Day 7 matrix status).
+- A connected Xiaomi 2201116SI was detected for `U-29`, but the install prompt was canceled on the device; the install was not retried. The physical-device run remains Nasyx’s action.
+
+**Evidence**
+
+- `docs/evidence/day7/foreign-object/README.md`, `accessibility-tree.xml`, `01-clip-running.png` … `03-clip-paused.png`.
+- `docs/evidence/day7/frame-times.md`, `frame-times-card.png`.
+- `docs/UNVERIFIED.md` — `U-29` updated with the readout APK and final numbers; `U-32` added.
+- `docs/COMPONENT_MATRIX.md` — `ShapeContainer` marked visual-only.
+- `apps/gallery/src/shapes/ClipProbeScreen.tsx`, `apps/gallery/src/spike/ShapeSpike.tsx`.
+
+**Next step**
+
+- Post the Day 7 close report; Nasyx runs `U-29` on the phone and chooses the `U-32` fallback before interactive `ShapeContainer` use. Day 8 stays paused until the report is approved.
