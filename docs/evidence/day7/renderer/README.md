@@ -2,7 +2,7 @@
 
 **Device/build:** release gallery APK, RN 0.88.1, New Architecture, Hermes, built on
 2026-11-26. APK SHA-256 `03057091286a7ee68993aa99dd16c21f02edfb3de389e9fc31d500d91ed9c5ca`,
-**203,432,215 bytes** with both renderers installed.
+**203,432,215 bytes** with both renderers installed. This is the final Day 7 artifact and the count paired with the hash above. An earlier build in the same session was **203,431,419 bytes** (1,796 B smaller); U-30 originally quoted that earlier artifact and has been corrected.
 
 ## Per-ABI native libraries
 
