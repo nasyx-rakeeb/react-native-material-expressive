@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>M3E — converter-420-1.3</title>
+<style>
+  :root { color-scheme: light; }
+  body { font: 15px/1.5 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif; margin: 0; padding: 32px; color: #1c1b1f; background: #fffbfe; }
+  main { max-width: 1180px; margin: 0 auto; }
+  h1 { font-size: 30px; line-height: 1.15; margin: 0 0 4px; letter-spacing: -0.02em; }
+  h2 { font-size: 20px; margin: 36px 0 8px; }
+  .sub { color: #5f5b66; margin: 0 0 24px; }
+  .status { border: 1px solid #cac4d0; border-radius: 16px; padding: 16px 20px; margin: 20px 0; background: #f7f2fa; }
+  .status strong { font-size: 17px; }
+  .bad { color: #b3261e; font-weight: 700; }
+  .ok { color: #146c2e; font-weight: 700; }
+  table { border-collapse: collapse; width: 100%; margin: 10px 0 20px; font-size: 13px; }
+  th, td { border-bottom: 1px solid #e7e0ec; padding: 7px 9px; text-align: left; vertical-align: top; }
+  th { background: #f3edf7; font-weight: 600; }
+  code { font: 12px ui-monospace, SFMono-Regular, Menlo, monospace; }
+  .shots { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+  figure { margin: 0; border: 1px solid #e7e0ec; border-radius: 12px; overflow: hidden; background: #fff; }
+  figure img { display: block; width: 100%; height: auto; image-rendering: pixelated; }
+  figcaption { padding: 8px 10px; font-size: 12px; color: #5f5b66; border-top: 1px solid #e7e0ec; }
+  ul { margin: 6px 0 18px; }
+  .note { border-left: 4px solid #6750a4; padding: 8px 14px; background: #f7f2fa; }
+  @media (max-width: 760px) { .shots { grid-template-columns: 1fr; } body { padding: 18px; } }
+</style>
+</head>
+<body>
+<main>
+<h1>converter-420-1.3</h1>
+<p class="sub">2026-11-28T08:38:06.955Z · M3E_API31 · API 31 · 1080×1920 @ 420dpi · 1 cold boots · 1 repeats of the trivial scene per app per boot.</p>
+
+<div class="status">
+  <p><strong>Cross-stack exact zero across all scenes: <span class="bad">not met</span></strong></p>
+  <p>The trivial scene was not part of this run; see the per-scene table for the measured differences.</p>
+  <ul>
+    <li><strong>Determinism:</strong> 60 renders (60 app/scene/boot combinations), maximum exact difference between any repeat and its first run: <strong>0 px</strong>.</li>
+    <li><strong>Text anti-aliasing:</strong> trivial scene not included in this run.</li>
+    <li><strong>Shadows:</strong> shadow scene not included in this run.</li>
+  </ul>
+  <p>Existing PLAYBOOK §7 AA-aware 0.05% gate on the <strong>core</strong> scenes: not evaluated (no core scenes in this run). Text layout markers were not captured.</p>
+</div>
+
+<h2>Scene categories</h2>
+<table>
+  <thead><tr><th>Category</th><th>Scenes</th><th>Σ exact px (scene max)</th><th>Σ AA-aware px (scene max)</th><th>Max AA-aware %</th><th>Max channel Δ</th><th>Max mean Δ (diff px)</th><th>Δ &gt; 2 outside AA edges</th><th>Flat fills &gt; 2</th><th>Gate</th></tr></thead>
+  <tbody><tr><td><code>text</code></td><td>30</td><td>93,257</td><td>22,658</td><td>0.6503%</td><td>226</td><td>142.81</td><td class="bad">868</td><td>748</td><td class="">tracked — no threshold</td></tr></tbody>
+</table>
+<p class="note">Only the <code>core</code> category is the five-scene PLAYBOOK §7 gate. The <code>text</code> category contains the 30 typography roles (and, when included, the dense label/paragraph probes), tracked separately under U-25. Its numbers are a regression ceiling, not a pass/fail claim; ADR-010 is pending.</p>
+
+<h2>Noise split</h2>
+<p class="note"><strong>Threshold semantics.</strong> The AA-aware count uses pixelmatch 7.1.0 with <code>threshold: 0.1</code> and <code>includeAA: false</code>. Threshold 0.1 is a YIQ squared-colour-distance limit (<code>35215 × 0.1²</code>), not a per-channel delta; for a neutral grey difference it is roughly 26/255 per channel. Pixels below that limit are treated as matching even if their bytes differ. The raw columns beside it are threshold-independent: max channel Δ, mean channel Δ over differing pixels, count of pixels with Δ &gt; 2 outside anti-aliased edges, and count of those that are flat fills. An anti-aliased edge is a pixel with any 8-neighbour differing by more than 8/255 in either image; a flat fill has a uniform 3×3 neighbourhood in both images.</p>
+<table>
+  <thead><tr><th>Scene</th><th>Category</th><th>Exact diff px</th><th>Exact %</th><th>AA-aware px</th><th>AA-aware %</th><th>Max channel Δ</th><th>Mean Δ (diff px)</th><th>Δ &gt; 2 outside AA edges</th><th>Flat fills &gt; 2</th><th>Boots</th></tr></thead>
+  <tbody><tr><td>type-body-large-emphasized</td><td>text</td><td>3,066</td><td>0.6952%</td><td>937</td><td>0.2125%</td><td>226</td><td>137.01</td><td class="bad">152</td><td>150</td><td>1</td></tr><tr><td>type-body-large</td><td>text</td><td>2,669</td><td>0.6052%</td><td>645</td><td>0.1463%</td><td>226</td><td>122.52</td><td class="bad">39</td><td>38</td><td>1</td></tr><tr><td>type-body-medium-emphasized</td><td>text</td><td>2,489</td><td>0.5644%</td><td>533</td><td>0.1209%</td><td>226</td><td>119.65</td><td class="bad">69</td><td>69</td><td>1</td></tr><tr><td>type-body-medium</td><td>text</td><td>2,553</td><td>0.5789%</td><td>620</td><td>0.1406%</td><td>226</td><td>127.32</td><td class="bad">34</td><td>34</td><td>1</td></tr><tr><td>type-body-small-emphasized</td><td>text</td><td>1,969</td><td>0.4465%</td><td>438</td><td>0.0993%</td><td>226</td><td>116.81</td><td class="bad">28</td><td>28</td><td>1</td></tr><tr><td>type-body-small</td><td>text</td><td>1,889</td><td>0.4283%</td><td>380</td><td>0.0862%</td><td>226</td><td>111.41</td><td class="ok">0</td><td>0</td><td>1</td></tr><tr><td>type-display-large-emphasized</td><td>text</td><td>5,374</td><td>1.2186%</td><td>1,236</td><td>0.2803%</td><td>226</td><td>129.00</td><td class="ok">0</td><td>0</td><td>1</td></tr><tr><td>type-display-large</td><td>text</td><td>8,110</td><td>1.8390%</td><td>2,868</td><td>0.6503%</td><td>226</td><td>137.16</td><td class="bad">868</td><td>748</td><td>1</td></tr><tr><td>type-display-medium-emphasized</td><td>text</td><td>6,175</td><td>1.4002%</td><td>1,696</td><td>0.3846%</td><td>226</td><td>132.07</td><td class="bad">226</td><td>220</td><td>1</td></tr><tr><td>type-display-medium</td><td>text</td><td>6,180</td><td>1.4014%</td><td>1,629</td><td>0.3694%</td><td>226</td><td>121.93</td><td class="bad">222</td><td>217</td><td>1</td></tr><tr><td>type-display-small-emphasized</td><td>text</td><td>5,235</td><td>1.1871%</td><td>1,839</td><td>0.4170%</td><td>226</td><td>142.37</td><td class="bad">296</td><td>294</td><td>1</td></tr><tr><td>type-display-small</td><td>text</td><td>4,378</td><td>0.9927%</td><td>949</td><td>0.2152%</td><td>226</td><td>126.33</td><td class="ok">0</td><td>0</td><td>1</td></tr><tr><td>type-headline-large-emphasized</td><td>text</td><td>1,366</td><td>0.3098%</td><td>1</td><td>0.0002%</td><td>171</td><td>57.57</td><td class="ok">0</td><td>0</td><td>1</td></tr><tr><td>type-headline-large</td><td>text</td><td>1,646</td><td>0.3732%</td><td>3</td><td>0.0007%</td><td>184</td><td>55.72</td><td class="ok">0</td><td>0</td><td>1</td></tr><tr><td>type-headline-medium-emphasized</td><td>text</td><td>2,344</td><td>0.5315%</td><td>381</td><td>0.0864%</td><td>226</td><td>104.59</td><td class="ok">0</td><td>0</td><td>1</td></tr><tr><td>type-headline-medium</td><td>text</td><td>2,016</td><td>0.4571%</td><td>165</td><td>0.0374%</td><td>226</td><td>83.12</td><td class="ok">0</td><td>0</td><td>1</td></tr><tr><td>type-headline-small-emphasized</td><td>text</td><td>4,151</td><td>0.9413%</td><td>1,507</td><td>0.3417%</td><td>226</td><td>142.81</td><td class="bad">350</td><td>339</td><td>1</td></tr><tr><td>type-headline-small</td><td>text</td><td>3,644</td><td>0.8263%</td><td>868</td><td>0.1968%</td><td>226</td><td>129.38</td><td class="ok">0</td><td>0</td><td>1</td></tr><tr><td>type-label-large-emphasized</td><td>text</td><td>2,077</td><td>0.4710%</td><td>262</td><td>0.0594%</td><td>226</td><td>113.91</td><td class="ok">0</td><td>0</td><td>1</td></tr><tr><td>type-label-large</td><td>text</td><td>2,374</td><td>0.5383%</td><td>448</td><td>0.1016%</td><td>226</td><td>114.34</td><td class="bad">12</td><td>11</td><td>1</td></tr><tr><td>type-label-medium-emphasized</td><td>text</td><td>2,221</td><td>0.5036%</td><td>675</td><td>0.1531%</td><td>226</td><td>131.66</td><td class="bad">97</td><td>97</td><td>1</td></tr><tr><td>type-label-medium</td><td>text</td><td>1,899</td><td>0.4306%</td><td>391</td><td>0.0887%</td><td>226</td><td>113.45</td><td class="ok">0</td><td>0</td><td>1</td></tr><tr><td>type-label-small-emphasized</td><td>text</td><td>1,886</td><td>0.4277%</td><td>522</td><td>0.1184%</td><td>226</td><td>124.88</td><td class="bad">57</td><td>52</td><td>1</td></tr><tr><td>type-label-small</td><td>text</td><td>1,771</td><td>0.4016%</td><td>375</td><td>0.0850%</td><td>226</td><td>108.55</td><td class="ok">0</td><td>0</td><td>1</td></tr><tr><td>type-title-large-emphasized</td><td>text</td><td>2,975</td><td>0.6746%</td><td>677</td><td>0.1535%</td><td>226</td><td>119.15</td><td class="ok">0</td><td>0</td><td>1</td></tr><tr><td>type-title-large</td><td>text</td><td>2,760</td><td>0.6259%</td><td>421</td><td>0.0955%</td><td>226</td><td>120.38</td><td class="ok">0</td><td>0</td><td>1</td></tr><tr><td>type-title-medium-emphasized</td><td>text</td><td>2,404</td><td>0.5451%</td><td>416</td><td>0.0943%</td><td>226</td><td>118.81</td><td class="ok">0</td><td>0</td><td>1</td></tr><tr><td>type-title-medium</td><td>text</td><td>3,185</td><td>0.7222%</td><td>1,066</td><td>0.2417%</td><td>226</td><td>133.74</td><td class="bad">226</td><td>223</td><td>1</td></tr><tr><td>type-title-small-emphasized</td><td>text</td><td>2,077</td><td>0.4710%</td><td>262</td><td>0.0594%</td><td>226</td><td>113.91</td><td class="ok">0</td><td>0</td><td>1</td></tr><tr><td>type-title-small</td><td>text</td><td>2,374</td><td>0.5383%</td><td>448</td><td>0.1016%</td><td>226</td><td>114.34</td><td class="bad">12</td><td>11</td><td>1</td></tr></tbody>
+</table>
+<p class="note">Exact counts are raw byte inequality. AA-aware counts are pixelmatch's non-anti-aliased differences at threshold 0.1; the threshold-independent columns are defined above. A zero AA-aware count therefore means "no pixel exceeded pixelmatch's perceptual threshold outside its AA heuristic", not "the crops are byte-identical".</p>
+
+<h2>Shadow measurement</h2>
+<table>
+  <thead><tr><th>App</th><th>Non-background px outside rect</th><th>Max Δ from background</th><th>Min Δ from background</th></tr></thead>
+  <tbody></tbody>
+</table>
+<p class="note">The shadow scene was not included in this run.</p>
+
+<h2>Layout edges</h2>
+<table>
+  <thead><tr><th>Scene</th><th>Compose content bbox</th><th>React Native content bbox</th><th>Max edge delta (px)</th></tr></thead>
+  <tbody><tr><td>type-body-large-emphasized</td><td><code>46,81 193×41</code></td><td><code>46,81 197×42</code></td><td class="bad">4</td></tr><tr><td>type-body-large</td><td><code>47,81 197×41</code></td><td><code>47,81 200×42</code></td><td class="bad">3</td></tr><tr><td>type-body-medium-emphasized</td><td><code>45,78 182×38</code></td><td><code>46,78 185×39</code></td><td class="bad">4</td></tr><tr><td>type-body-medium</td><td><code>46,78 176×38</code></td><td><code>46,78 179×39</code></td><td class="bad">3</td></tr><tr><td>type-body-small-emphasized</td><td><code>46,73 153×32</code></td><td><code>46,74 156×32</code></td><td class="bad">3</td></tr><tr><td>type-body-small</td><td><code>46,73 150×32</code></td><td><code>46,74 153×32</code></td><td class="bad">3</td></tr><tr><td>type-display-large-emphasized</td><td><code>54,89 533×116</code></td><td><code>54,89 535×116</code></td><td class="bad">2</td></tr><tr><td>type-display-large</td><td><code>54,89 512×116</code></td><td><code>54,89 517×116</code></td><td class="bad">5</td></tr><tr><td>type-display-medium-emphasized</td><td><code>51,84 421×91</code></td><td><code>51,83 425×92</code></td><td class="bad">4</td></tr><tr><td>type-display-medium</td><td><code>51,84 411×91</code></td><td><code>51,83 415×92</code></td><td class="bad">4</td></tr><tr><td>type-display-small-emphasized</td><td><code>49,81 336×74</code></td><td><code>49,82 340×74</code></td><td class="bad">4</td></tr><tr><td>type-display-small</td><td><code>49,81 328×74</code></td><td><code>49,82 331×74</code></td><td class="bad">3</td></tr><tr><td>type-headline-large-emphasized</td><td><code>48,81 301×65</code></td><td><code>48,81 301×65</code></td><td class="ok">0</td></tr><tr><td>type-headline-large</td><td><code>48,81 294×65</code></td><td><code>48,81 293×65</code></td><td class="bad">1</td></tr><tr><td>type-headline-medium-emphasized</td><td><code>48,81 269×59</code></td><td><code>48,81 272×59</code></td><td class="bad">3</td></tr><tr><td>type-headline-medium</td><td><code>48,81 263×59</code></td><td><code>48,81 265×59</code></td><td class="bad">2</td></tr><tr><td>type-headline-small-emphasized</td><td><code>47,81 246×54</code></td><td><code>47,81 251×55</code></td><td class="bad">5</td></tr><tr><td>type-headline-small</td><td><code>47,81 241×54</code></td><td><code>47,81 244×55</code></td><td class="bad">3</td></tr><tr><td>type-label-large-emphasized</td><td><code>45,78 190×38</code></td><td><code>46,78 190×39</code></td><td class="bad">1</td></tr><tr><td>type-label-large</td><td><code>45,78 179×38</code></td><td><code>46,78 181×39</code></td><td class="bad">3</td></tr><tr><td>type-label-medium-emphasized</td><td><code>46,73 162×32</code></td><td><code>45,74 167×32</code></td><td class="bad">4</td></tr><tr><td>type-label-medium</td><td><code>46,73 156×32</code></td><td><code>46,74 159×32</code></td><td class="bad">3</td></tr><tr><td>type-label-small-emphasized</td><td><code>45,74 152×30</code></td><td><code>45,75 156×30</code></td><td class="bad">4</td></tr><tr><td>type-label-small</td><td><code>46,74 145×30</code></td><td><code>45,75 149×30</code></td><td class="bad">3</td></tr><tr><td>type-title-large-emphasized</td><td><code>47,77 233×51</code></td><td><code>47,78 236×51</code></td><td class="bad">3</td></tr><tr><td>type-title-large</td><td><code>47,77 228×51</code></td><td><code>47,78 230×51</code></td><td class="bad">2</td></tr><tr><td>type-title-medium-emphasized</td><td><code>46,81 205×41</code></td><td><code>46,81 207×42</code></td><td class="bad">2</td></tr><tr><td>type-title-medium</td><td><code>46,81 194×41</code></td><td><code>46,81 199×42</code></td><td class="bad">5</td></tr><tr><td>type-title-small-emphasized</td><td><code>45,78 190×38</code></td><td><code>46,78 190×39</code></td><td class="bad">1</td></tr><tr><td>type-title-small</td><td><code>45,78 179×38</code></td><td><code>46,78 181×39</code></td><td class="bad">3</td></tr></tbody>
+</table>
+<p class="note">Strict bounding box of pixels that are not exactly the scene background. It includes anti-aliased glyph edges and the shadow. No tolerance is added; the number is recorded as measured.</p>
+
+<h2>Non-AA text pixels (boot 1, trivial)</h2>
+<p>None.</p>
+
+<h2>Determinism</h2>
+<table>
+  <thead><tr><th>Boot</th><th>App</th><th>Scene</th><th>Runs</th><th>Max exact diff</th><th>Max AA-aware diff</th><th>Status</th></tr></thead>
+  <tbody><tr><td>0</td><td>compose</td><td>type-body-large-emphasized</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>compose</td><td>type-body-large</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>compose</td><td>type-body-medium-emphasized</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>compose</td><td>type-body-medium</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>compose</td><td>type-body-small-emphasized</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>compose</td><td>type-body-small</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>compose</td><td>type-display-large-emphasized</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>compose</td><td>type-display-large</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>compose</td><td>type-display-medium-emphasized</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>compose</td><td>type-display-medium</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>compose</td><td>type-display-small-emphasized</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>compose</td><td>type-display-small</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>compose</td><td>type-headline-large-emphasized</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>compose</td><td>type-headline-large</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>compose</td><td>type-headline-medium-emphasized</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>compose</td><td>type-headline-medium</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>compose</td><td>type-headline-small-emphasized</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>compose</td><td>type-headline-small</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>compose</td><td>type-label-large-emphasized</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>compose</td><td>type-label-large</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>compose</td><td>type-label-medium-emphasized</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>compose</td><td>type-label-medium</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>compose</td><td>type-label-small-emphasized</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>compose</td><td>type-label-small</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>compose</td><td>type-title-large-emphasized</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>compose</td><td>type-title-large</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>compose</td><td>type-title-medium-emphasized</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>compose</td><td>type-title-medium</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>compose</td><td>type-title-small-emphasized</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>compose</td><td>type-title-small</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>type-body-large-emphasized</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>type-body-large</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>type-body-medium-emphasized</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>type-body-medium</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>type-body-small-emphasized</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>type-body-small</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>type-display-large-emphasized</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>type-display-large</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>type-display-medium-emphasized</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>type-display-medium</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>type-display-small-emphasized</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>type-display-small</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>type-headline-large-emphasized</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>type-headline-large</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>type-headline-medium-emphasized</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>type-headline-medium</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>type-headline-small-emphasized</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>type-headline-small</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>type-label-large-emphasized</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>type-label-large</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>type-label-medium-emphasized</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>type-label-medium</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>type-label-small-emphasized</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>type-label-small</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>type-title-large-emphasized</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>type-title-large</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>type-title-medium-emphasized</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>type-title-medium</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>type-title-small-emphasized</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>type-title-small</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr></tbody>
+</table>
+
+<h2>Cross-boot repeatability (each boot run 0 vs boot 1 run 0)</h2>
+<table>
+  <thead><tr><th>Boot</th><th>App</th><th>Scene</th><th>Exact diff px</th><th>AA-aware px</th><th>Max channel Δ</th></tr></thead>
+  <tbody><tr><td colspan="6">Single-boot run.</td></tr></tbody>
+</table>
+
+<h2>Emulator profile (verified)</h2>
+<table>
+  <thead><tr><th>Check</th><th>Observed</th><th>Status</th></tr></thead>
+  <tbody><tr><td>avd</td><td><code>M3E_API31</code></td><td class="ok">match</td></tr><tr><td>api</td><td><code>31</code></td><td class="ok">match</td></tr><tr><td>locale</td><td><code>en-US</code></td><td class="ok">match</td></tr><tr><td>fontScale</td><td><code>1.3</code></td><td class="ok">match</td></tr><tr><td>animatorDurationScale</td><td><code>0</code></td><td class="ok">match</td></tr><tr><td>transitionAnimationScale</td><td><code>0</code></td><td class="ok">match</td></tr><tr><td>windowAnimationScale</td><td><code>0</code></td><td class="ok">match</td></tr><tr><td>userRotation</td><td><code>0</code></td><td class="ok">match</td></tr><tr><td>immersiveConfirmation</td><td><code>confirmed</code></td><td class="ok">match</td></tr><tr><td>nightMode</td><td><code>Night mode: no</code></td><td class="ok">match</td></tr><tr><td>wmSize</td><td><code>Physical size: 1080x1920</code></td><td class="ok">match</td></tr><tr><td>wmDensity</td><td><code>Physical density: 420</code></td><td class="ok">match</td></tr><tr><td>gpu</td><td><code>GLES: Google (Google Inc. (Google)), Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver-5.0.0)), OpenGL ES 3.1 (OpenGL ES 3.1.0 (ANGLE 2.1.2 git hash: 1f0534893540))</code></td><td class="ok">match</td></tr></tbody>
+</table>
+<p>Font files: Roboto Flex <code>9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281</code>; Material Symbols <code>3b29bd1ca84d209f68cc7ae4127e00d07ba9b8199edcd37ed5e2511e87836c03</code>. Both hashes match in the source tree, the gallery assets and both APKs. Runtime probes: Compose <code></code>; React Native <code></code>.</p>
+<p>Frozen device, GPU, settings, and cold-boot procedure: <code>FROZEN_PROFILE.md</code>. Raw run log: <code>run.log</code>.</p>
+
+<h2>Scene captures</h2>
+<section>
+  <h2>type-body-large-emphasized</h2>
+  <p><strong>3,066</strong> exact diff px (0.6952%), <strong>937</strong> AA-aware diff px (0.2125%), max channel delta <strong>226</strong>, mean channel delta over differing pixels <strong>137.01</strong>, delta &gt; 2 outside anti-aliased edges <strong>152</strong>, flat fills &gt; 2 <strong>150</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/eb2e5d0e9c12a6bbc9fadf61c8b31612e2385a3388bc0f7c47ce991a8d9d63f2.png" alt="Compose type-body-large-emphasized"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/8ece97cc710e5140ba764c37748e7dcffc225736e43c617c84f165de015a996e.png" alt="React Native type-body-large-emphasized"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-type-body-large-emphasized.png" alt="Diff type-body-large-emphasized"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  <ul><li><code>text-0</code>: 3,066 exact diff px</li></ul>
+</section>
+<section>
+  <h2>type-body-large</h2>
+  <p><strong>2,669</strong> exact diff px (0.6052%), <strong>645</strong> AA-aware diff px (0.1463%), max channel delta <strong>226</strong>, mean channel delta over differing pixels <strong>122.52</strong>, delta &gt; 2 outside anti-aliased edges <strong>39</strong>, flat fills &gt; 2 <strong>38</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/9efb2e9b2eee43a6e1a9c03dd6cd16171a25f7b438e187eb09a86427f25c2228.png" alt="Compose type-body-large"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/6c6f7373108a8b3a77f6ea8fa1ac205f2fe4c2736ee739923d80e623a033808c.png" alt="React Native type-body-large"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-type-body-large.png" alt="Diff type-body-large"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  <ul><li><code>text-0</code>: 2,669 exact diff px</li></ul>
+</section>
+<section>
+  <h2>type-body-medium-emphasized</h2>
+  <p><strong>2,489</strong> exact diff px (0.5644%), <strong>533</strong> AA-aware diff px (0.1209%), max channel delta <strong>226</strong>, mean channel delta over differing pixels <strong>119.65</strong>, delta &gt; 2 outside anti-aliased edges <strong>69</strong>, flat fills &gt; 2 <strong>69</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/fa165d727dc569dbb28850a34532414f7a2929fb925902b7d501ab16a845fc13.png" alt="Compose type-body-medium-emphasized"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/530d6ec55ecf57c01ce13e4046cd5f835c14f23c9cc25822846a2abe9ef3d8ca.png" alt="React Native type-body-medium-emphasized"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-type-body-medium-emphasized.png" alt="Diff type-body-medium-emphasized"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  <ul><li><code>text-0</code>: 2,489 exact diff px</li></ul>
+</section>
+<section>
+  <h2>type-body-medium</h2>
+  <p><strong>2,553</strong> exact diff px (0.5789%), <strong>620</strong> AA-aware diff px (0.1406%), max channel delta <strong>226</strong>, mean channel delta over differing pixels <strong>127.32</strong>, delta &gt; 2 outside anti-aliased edges <strong>34</strong>, flat fills &gt; 2 <strong>34</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/f7596e758ecc0ce06772f9bf8e51c978a0139ab554e86e52e3898f7ffd1a8733.png" alt="Compose type-body-medium"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/d2c697aad8228384b43506454c9e0ece135ef3270db73e72d9facccdd283e0bf.png" alt="React Native type-body-medium"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-type-body-medium.png" alt="Diff type-body-medium"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  <ul><li><code>text-0</code>: 2,553 exact diff px</li></ul>
+</section>
+<section>
+  <h2>type-body-small-emphasized</h2>
+  <p><strong>1,969</strong> exact diff px (0.4465%), <strong>438</strong> AA-aware diff px (0.0993%), max channel delta <strong>226</strong>, mean channel delta over differing pixels <strong>116.81</strong>, delta &gt; 2 outside anti-aliased edges <strong>28</strong>, flat fills &gt; 2 <strong>28</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/888eeac58b8b534cedb21afe8652f49fe0e3b03bd31c3fee1ef07840db13f875.png" alt="Compose type-body-small-emphasized"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/fd6c6e00587d1d71c3e7ff04c7c9a5dc125c0183c0dd0ff83cce29a5fac129c3.png" alt="React Native type-body-small-emphasized"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-type-body-small-emphasized.png" alt="Diff type-body-small-emphasized"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  <ul><li><code>text-0</code>: 1,969 exact diff px</li></ul>
+</section>
+<section>
+  <h2>type-body-small</h2>
+  <p><strong>1,889</strong> exact diff px (0.4283%), <strong>380</strong> AA-aware diff px (0.0862%), max channel delta <strong>226</strong>, mean channel delta over differing pixels <strong>111.41</strong>, delta &gt; 2 outside anti-aliased edges <strong>0</strong>, flat fills &gt; 2 <strong>0</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/7eb768e414f24325a18daa32155aed22e52c8e207ef18b21e888710b67a800ee.png" alt="Compose type-body-small"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/411eec8600d8b89ef2d8bd468e7ddc033ecc52d479501091b5a95cd0fee942ae.png" alt="React Native type-body-small"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-type-body-small.png" alt="Diff type-body-small"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  <ul><li><code>text-0</code>: 1,889 exact diff px</li></ul>
+</section>
+<section>
+  <h2>type-display-large-emphasized</h2>
+  <p><strong>5,374</strong> exact diff px (1.2186%), <strong>1,236</strong> AA-aware diff px (0.2803%), max channel delta <strong>226</strong>, mean channel delta over differing pixels <strong>129.00</strong>, delta &gt; 2 outside anti-aliased edges <strong>0</strong>, flat fills &gt; 2 <strong>0</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/2df0a0e232a787242afd7ee2b58f0b31558e4c804865638e8a3f99a3c6046695.png" alt="Compose type-display-large-emphasized"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/84af442cda439c223f1906947b5182525ed4d9480162449847a6e13209730e5f.png" alt="React Native type-display-large-emphasized"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-type-display-large-emphasized.png" alt="Diff type-display-large-emphasized"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  <ul><li><code>text-0</code>: 5,374 exact diff px</li></ul>
+</section>
+<section>
+  <h2>type-display-large</h2>
+  <p><strong>8,110</strong> exact diff px (1.8390%), <strong>2,868</strong> AA-aware diff px (0.6503%), max channel delta <strong>226</strong>, mean channel delta over differing pixels <strong>137.16</strong>, delta &gt; 2 outside anti-aliased edges <strong>868</strong>, flat fills &gt; 2 <strong>748</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/cfa836062a97f978c9c7b03f2c39f7fe63211440462b6ec5b60504eb09ab53e3.png" alt="Compose type-display-large"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/89bba96555bd061321306c5f556183d99c3ae9fa5915f1111ef81dbcb1513f65.png" alt="React Native type-display-large"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-type-display-large.png" alt="Diff type-display-large"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  <ul><li><code>text-0</code>: 8,110 exact diff px</li></ul>
+</section>
+<section>
+  <h2>type-display-medium-emphasized</h2>
+  <p><strong>6,175</strong> exact diff px (1.4002%), <strong>1,696</strong> AA-aware diff px (0.3846%), max channel delta <strong>226</strong>, mean channel delta over differing pixels <strong>132.07</strong>, delta &gt; 2 outside anti-aliased edges <strong>226</strong>, flat fills &gt; 2 <strong>220</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/b27066424b1888f3f434e6428653a0bc4fce852b11f823ecf97c2cc06d63dbbb.png" alt="Compose type-display-medium-emphasized"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/74e6182a85c6ebe0f2cd155c35df905bc2caaf6d0932bebe30a78d0ca18fe24e.png" alt="React Native type-display-medium-emphasized"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-type-display-medium-emphasized.png" alt="Diff type-display-medium-emphasized"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  <ul><li><code>text-0</code>: 6,175 exact diff px</li></ul>
+</section>
+<section>
+  <h2>type-display-medium</h2>
+  <p><strong>6,180</strong> exact diff px (1.4014%), <strong>1,629</strong> AA-aware diff px (0.3694%), max channel delta <strong>226</strong>, mean channel delta over differing pixels <strong>121.93</strong>, delta &gt; 2 outside anti-aliased edges <strong>222</strong>, flat fills &gt; 2 <strong>217</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/353deeeffd6269c07eff54be498c45cd7de4a5e012a51167cae53fe366d1c93d.png" alt="Compose type-display-medium"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/509ab28e6dc72d84d903b5766ce4f7daba2ba88d4844c83bcffcf9e65265f363.png" alt="React Native type-display-medium"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-type-display-medium.png" alt="Diff type-display-medium"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  <ul><li><code>text-0</code>: 6,180 exact diff px</li></ul>
+</section>
+<section>
+  <h2>type-display-small-emphasized</h2>
+  <p><strong>5,235</strong> exact diff px (1.1871%), <strong>1,839</strong> AA-aware diff px (0.4170%), max channel delta <strong>226</strong>, mean channel delta over differing pixels <strong>142.37</strong>, delta &gt; 2 outside anti-aliased edges <strong>296</strong>, flat fills &gt; 2 <strong>294</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/cc17408832fdd5a65b012773c390539ff750581b0e32e9469aa1895a219a031b.png" alt="Compose type-display-small-emphasized"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/cb107fa5b61c68f5d4d3c964870bda554aa98a54e030a2e5a91825feecf9cfe4.png" alt="React Native type-display-small-emphasized"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-type-display-small-emphasized.png" alt="Diff type-display-small-emphasized"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  <ul><li><code>text-0</code>: 5,235 exact diff px</li></ul>
+</section>
+<section>
+  <h2>type-display-small</h2>
+  <p><strong>4,378</strong> exact diff px (0.9927%), <strong>949</strong> AA-aware diff px (0.2152%), max channel delta <strong>226</strong>, mean channel delta over differing pixels <strong>126.33</strong>, delta &gt; 2 outside anti-aliased edges <strong>0</strong>, flat fills &gt; 2 <strong>0</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/cecf42e417e8a44ee90421b49dcafac14ee533e68381cd1a7d6085e8919f33a3.png" alt="Compose type-display-small"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/95fb2fdca31d99425d152f8811b9d2f0af6ef71502e98d56c9d92b6ffb8986ea.png" alt="React Native type-display-small"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-type-display-small.png" alt="Diff type-display-small"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  <ul><li><code>text-0</code>: 4,378 exact diff px</li></ul>
+</section>
+<section>
+  <h2>type-headline-large-emphasized</h2>
+  <p><strong>1,366</strong> exact diff px (0.3098%), <strong>1</strong> AA-aware diff px (0.0002%), max channel delta <strong>171</strong>, mean channel delta over differing pixels <strong>57.57</strong>, delta &gt; 2 outside anti-aliased edges <strong>0</strong>, flat fills &gt; 2 <strong>0</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/e91b7e16808203a18aa4a736ce73f5da1f1221bb04bfb5464a17552e608ef9e7.png" alt="Compose type-headline-large-emphasized"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/5c47a39f1272ea01fb75467cc83a8f394d82aeba29468ecfb35fbcb827471728.png" alt="React Native type-headline-large-emphasized"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-type-headline-large-emphasized.png" alt="Diff type-headline-large-emphasized"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  <ul><li><code>text-0</code>: 1,366 exact diff px</li></ul>
+</section>
+<section>
+  <h2>type-headline-large</h2>
+  <p><strong>1,646</strong> exact diff px (0.3732%), <strong>3</strong> AA-aware diff px (0.0007%), max channel delta <strong>184</strong>, mean channel delta over differing pixels <strong>55.72</strong>, delta &gt; 2 outside anti-aliased edges <strong>0</strong>, flat fills &gt; 2 <strong>0</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/900312628c30ffcac5acd0736c4563f8c253952373b41affa3ae6b5c96d46303.png" alt="Compose type-headline-large"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/b86e9ae15eaf064eb3e62a9c5aedc5ad210c8551bba102571fb768cdca2d705c.png" alt="React Native type-headline-large"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-type-headline-large.png" alt="Diff type-headline-large"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  <ul><li><code>text-0</code>: 1,646 exact diff px</li></ul>
+</section>
+<section>
+  <h2>type-headline-medium-emphasized</h2>
+  <p><strong>2,344</strong> exact diff px (0.5315%), <strong>381</strong> AA-aware diff px (0.0864%), max channel delta <strong>226</strong>, mean channel delta over differing pixels <strong>104.59</strong>, delta &gt; 2 outside anti-aliased edges <strong>0</strong>, flat fills &gt; 2 <strong>0</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/ee799669217a37072b3746c8a62c67d794146973e9156131ab3afd548b508f6e.png" alt="Compose type-headline-medium-emphasized"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/ee4a49908cf8f3306e162afb9503b07d2b63d06966714df600ec35cede0159dd.png" alt="React Native type-headline-medium-emphasized"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-type-headline-medium-emphasized.png" alt="Diff type-headline-medium-emphasized"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  <ul><li><code>text-0</code>: 2,344 exact diff px</li></ul>
+</section>
+<section>
+  <h2>type-headline-medium</h2>
+  <p><strong>2,016</strong> exact diff px (0.4571%), <strong>165</strong> AA-aware diff px (0.0374%), max channel delta <strong>226</strong>, mean channel delta over differing pixels <strong>83.12</strong>, delta &gt; 2 outside anti-aliased edges <strong>0</strong>, flat fills &gt; 2 <strong>0</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/aa1bfee6cbbf6cf895b181d2fe4db5f07812a537882cc29208a9aed29018c401.png" alt="Compose type-headline-medium"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/c3ff9bb6b120168c93d23d62788bd307fd9c09aaaa97a319ae553d91f0b6b5b8.png" alt="React Native type-headline-medium"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-type-headline-medium.png" alt="Diff type-headline-medium"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  <ul><li><code>text-0</code>: 2,016 exact diff px</li></ul>
+</section>
+<section>
+  <h2>type-headline-small-emphasized</h2>
+  <p><strong>4,151</strong> exact diff px (0.9413%), <strong>1,507</strong> AA-aware diff px (0.3417%), max channel delta <strong>226</strong>, mean channel delta over differing pixels <strong>142.81</strong>, delta &gt; 2 outside anti-aliased edges <strong>350</strong>, flat fills &gt; 2 <strong>339</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/690a2fd7ffb312121bcf51cf3a27e366f5cfebe65a84ffe01358a1190ae9a553.png" alt="Compose type-headline-small-emphasized"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/1d6b12d0714a51e03d205bdccb9c6fd167b182ff0638e7fc8d9961006b157624.png" alt="React Native type-headline-small-emphasized"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-type-headline-small-emphasized.png" alt="Diff type-headline-small-emphasized"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  <ul><li><code>text-0</code>: 4,151 exact diff px</li></ul>
+</section>
+<section>
+  <h2>type-headline-small</h2>
+  <p><strong>3,644</strong> exact diff px (0.8263%), <strong>868</strong> AA-aware diff px (0.1968%), max channel delta <strong>226</strong>, mean channel delta over differing pixels <strong>129.38</strong>, delta &gt; 2 outside anti-aliased edges <strong>0</strong>, flat fills &gt; 2 <strong>0</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/63501eb5c8be62303d5e8b618c0f7e2e418726d9eab5662051279992c91d36ca.png" alt="Compose type-headline-small"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/7a082a4d43d2d143a31330372f4b1298a0150739293711442a0cafa28da8c142.png" alt="React Native type-headline-small"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-type-headline-small.png" alt="Diff type-headline-small"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  <ul><li><code>text-0</code>: 3,644 exact diff px</li></ul>
+</section>
+<section>
+  <h2>type-label-large-emphasized</h2>
+  <p><strong>2,077</strong> exact diff px (0.4710%), <strong>262</strong> AA-aware diff px (0.0594%), max channel delta <strong>226</strong>, mean channel delta over differing pixels <strong>113.91</strong>, delta &gt; 2 outside anti-aliased edges <strong>0</strong>, flat fills &gt; 2 <strong>0</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/bfc20eafb8bf3ea92ecd784ddb81111af1715e649b658af3793d32c53483f4f4.png" alt="Compose type-label-large-emphasized"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/13341838f06e4e92563f34897fdf95ee4aa0383eb9d9551f35632199b5e713b2.png" alt="React Native type-label-large-emphasized"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-type-label-large-emphasized.png" alt="Diff type-label-large-emphasized"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  <ul><li><code>text-0</code>: 2,077 exact diff px</li></ul>
+</section>
+<section>
+  <h2>type-label-large</h2>
+  <p><strong>2,374</strong> exact diff px (0.5383%), <strong>448</strong> AA-aware diff px (0.1016%), max channel delta <strong>226</strong>, mean channel delta over differing pixels <strong>114.34</strong>, delta &gt; 2 outside anti-aliased edges <strong>12</strong>, flat fills &gt; 2 <strong>11</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/976b8c01765e0ed63dfd0b65c69c96fc5123b95c934b58a9b7565d2014490308.png" alt="Compose type-label-large"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/4271a8fa925e69d272c17274e0d0df4a934a4a89864df969beaec2b2872d0296.png" alt="React Native type-label-large"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-type-label-large.png" alt="Diff type-label-large"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  <ul><li><code>text-0</code>: 2,374 exact diff px</li></ul>
+</section>
+<section>
+  <h2>type-label-medium-emphasized</h2>
+  <p><strong>2,221</strong> exact diff px (0.5036%), <strong>675</strong> AA-aware diff px (0.1531%), max channel delta <strong>226</strong>, mean channel delta over differing pixels <strong>131.66</strong>, delta &gt; 2 outside anti-aliased edges <strong>97</strong>, flat fills &gt; 2 <strong>97</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/18c4a231f064f5e386cf74f5de5221e3e0d5d7d02168c854f13207777aab24bd.png" alt="Compose type-label-medium-emphasized"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/a6e808a14311c5bf7e8783245f7365c91ffd80182a0f2ac3be3541db4471c9ed.png" alt="React Native type-label-medium-emphasized"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-type-label-medium-emphasized.png" alt="Diff type-label-medium-emphasized"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  <ul><li><code>text-0</code>: 2,221 exact diff px</li></ul>
+</section>
+<section>
+  <h2>type-label-medium</h2>
+  <p><strong>1,899</strong> exact diff px (0.4306%), <strong>391</strong> AA-aware diff px (0.0887%), max channel delta <strong>226</strong>, mean channel delta over differing pixels <strong>113.45</strong>, delta &gt; 2 outside anti-aliased edges <strong>0</strong>, flat fills &gt; 2 <strong>0</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/199ca648d78306ddfeef66fabf05aa4cc7b9092663cddfcf16f17025b874e265.png" alt="Compose type-label-medium"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/4bc94ea0ba61b03f221a400c4de00fc4f9b7d911fc6d665620efd914ba1e133a.png" alt="React Native type-label-medium"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-type-label-medium.png" alt="Diff type-label-medium"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  <ul><li><code>text-0</code>: 1,899 exact diff px</li></ul>
+</section>
+<section>
+  <h2>type-label-small-emphasized</h2>
+  <p><strong>1,886</strong> exact diff px (0.4277%), <strong>522</strong> AA-aware diff px (0.1184%), max channel delta <strong>226</strong>, mean channel delta over differing pixels <strong>124.88</strong>, delta &gt; 2 outside anti-aliased edges <strong>57</strong>, flat fills &gt; 2 <strong>52</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/db6a5a1c7ebf4520007247cb4bdfc33f927854d7d61b67636fc6a95808ffbf1d.png" alt="Compose type-label-small-emphasized"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/93a54970f1e582086c010f5a87955d6cfbddff3bc9de61ea5545e145c4445c69.png" alt="React Native type-label-small-emphasized"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-type-label-small-emphasized.png" alt="Diff type-label-small-emphasized"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  <ul><li><code>text-0</code>: 1,886 exact diff px</li></ul>
+</section>
+<section>
+  <h2>type-label-small</h2>
+  <p><strong>1,771</strong> exact diff px (0.4016%), <strong>375</strong> AA-aware diff px (0.0850%), max channel delta <strong>226</strong>, mean channel delta over differing pixels <strong>108.55</strong>, delta &gt; 2 outside anti-aliased edges <strong>0</strong>, flat fills &gt; 2 <strong>0</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/e114b50314320413f0ddb6a23169198e497c0dcb0ae3c3eed4130ab7f8c29ee7.png" alt="Compose type-label-small"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/7f629893873a2ab80a1ce9d95a600275f633e0faa1f63b60ace74409c4f7e694.png" alt="React Native type-label-small"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-type-label-small.png" alt="Diff type-label-small"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  <ul><li><code>text-0</code>: 1,771 exact diff px</li></ul>
+</section>
+<section>
+  <h2>type-title-large-emphasized</h2>
+  <p><strong>2,975</strong> exact diff px (0.6746%), <strong>677</strong> AA-aware diff px (0.1535%), max channel delta <strong>226</strong>, mean channel delta over differing pixels <strong>119.15</strong>, delta &gt; 2 outside anti-aliased edges <strong>0</strong>, flat fills &gt; 2 <strong>0</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/a6dfa69d663e4d04b08c125c23bb128ad63692861d7326968c2c2c9f7c0813c8.png" alt="Compose type-title-large-emphasized"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/82fb3c6f1155473dabd044ffd058d03f4832f0dd3d55ee180899da9632d1158e.png" alt="React Native type-title-large-emphasized"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-type-title-large-emphasized.png" alt="Diff type-title-large-emphasized"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  <ul><li><code>text-0</code>: 2,975 exact diff px</li></ul>
+</section>
+<section>
+  <h2>type-title-large</h2>
+  <p><strong>2,760</strong> exact diff px (0.6259%), <strong>421</strong> AA-aware diff px (0.0955%), max channel delta <strong>226</strong>, mean channel delta over differing pixels <strong>120.38</strong>, delta &gt; 2 outside anti-aliased edges <strong>0</strong>, flat fills &gt; 2 <strong>0</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/74a764008e2e334df320c5aeec0b3842e6f154fc311523387f5311e6e252726c.png" alt="Compose type-title-large"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/22ecb0bca975b7a9833edf0a58fb390dc65e060cd15e72ed6fdb12af0013faa1.png" alt="React Native type-title-large"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-type-title-large.png" alt="Diff type-title-large"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  <ul><li><code>text-0</code>: 2,760 exact diff px</li></ul>
+</section>
+<section>
+  <h2>type-title-medium-emphasized</h2>
+  <p><strong>2,404</strong> exact diff px (0.5451%), <strong>416</strong> AA-aware diff px (0.0943%), max channel delta <strong>226</strong>, mean channel delta over differing pixels <strong>118.81</strong>, delta &gt; 2 outside anti-aliased edges <strong>0</strong>, flat fills &gt; 2 <strong>0</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/87eef47ae6097b0e9a51542d201960ffbe61671f029dde93752d337f6ab63284.png" alt="Compose type-title-medium-emphasized"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/65e5dbff1009131c5df1df1e7053b6a6db72059f2580bd41826a7291545a5447.png" alt="React Native type-title-medium-emphasized"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-type-title-medium-emphasized.png" alt="Diff type-title-medium-emphasized"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  <ul><li><code>text-0</code>: 2,404 exact diff px</li></ul>
+</section>
+<section>
+  <h2>type-title-medium</h2>
+  <p><strong>3,185</strong> exact diff px (0.7222%), <strong>1,066</strong> AA-aware diff px (0.2417%), max channel delta <strong>226</strong>, mean channel delta over differing pixels <strong>133.74</strong>, delta &gt; 2 outside anti-aliased edges <strong>226</strong>, flat fills &gt; 2 <strong>223</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/9749f8f2ea4b3f17f0a29ded4f97bbb70eed8641a8ee7e229798508039bb3887.png" alt="Compose type-title-medium"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/134e788152e895375a783c159cf68766a37dd92d3cb21cf7402137920b900d2e.png" alt="React Native type-title-medium"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-type-title-medium.png" alt="Diff type-title-medium"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  <ul><li><code>text-0</code>: 3,185 exact diff px</li></ul>
+</section>
+<section>
+  <h2>type-title-small-emphasized</h2>
+  <p><strong>2,077</strong> exact diff px (0.4710%), <strong>262</strong> AA-aware diff px (0.0594%), max channel delta <strong>226</strong>, mean channel delta over differing pixels <strong>113.91</strong>, delta &gt; 2 outside anti-aliased edges <strong>0</strong>, flat fills &gt; 2 <strong>0</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/bfc20eafb8bf3ea92ecd784ddb81111af1715e649b658af3793d32c53483f4f4.png" alt="Compose type-title-small-emphasized"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/13341838f06e4e92563f34897fdf95ee4aa0383eb9d9551f35632199b5e713b2.png" alt="React Native type-title-small-emphasized"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-type-title-small-emphasized.png" alt="Diff type-title-small-emphasized"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  <ul><li><code>text-0</code>: 2,077 exact diff px</li></ul>
+</section>
+<section>
+  <h2>type-title-small</h2>
+  <p><strong>2,374</strong> exact diff px (0.5383%), <strong>448</strong> AA-aware diff px (0.1016%), max channel delta <strong>226</strong>, mean channel delta over differing pixels <strong>114.34</strong>, delta &gt; 2 outside anti-aliased edges <strong>12</strong>, flat fills &gt; 2 <strong>11</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/976b8c01765e0ed63dfd0b65c69c96fc5123b95c934b58a9b7565d2014490308.png" alt="Compose type-title-small"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/4271a8fa925e69d272c17274e0d0df4a934a4a89864df969beaec2b2872d0296.png" alt="React Native type-title-small"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-type-title-small.png" alt="Diff type-title-small"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  <ul><li><code>text-0</code>: 2,374 exact diff px</li></ul>
+</section>
+
+<h2>What this establishes</h2>
+<ul>
+  <li>The capture, crop, compare, and report pipeline is deterministic across repeated launches and cold boots.</li>
+  <li>Compose and React Native agree within the reported per-scene deltas on this profile; exact-zero scenes are listed above.</li>
+  <li>The text scenes in this run are measured in the per-scene table; glyph-edge deltas are reported separately from flat fills.</li>
+  <li>No threshold is proposed or changed here. This run is a measurement; any gate change needs an ADR.</li>
+</ul>
+
+<h2>What this does not establish</h2>
+<ul>
+  <li>It does not establish component parity beyond the scenes listed.</li>
+  <li>It does not establish iOS behavior.</li>
+  <li>It does not establish that the remaining edge deltas are acceptable. That is a product decision.</li>
+</ul>
+</main>
+</body>
+</html>

@@ -22,14 +22,25 @@ Do not work on these until the current day's exit criteria are met. Add findings
 - **Accessibility scanner automation**: Accessibility Scanner/TalkBack scripted checks in CI (Day 40).
 - **Release provenance/SBOM**: automate npm provenance + CycloneDX SBOM (Day 55).
 
-## Day 30 blockers — U-29 follow-ups (Nasyx, 2026-11-27)
+## Day 20 blockers — U-29 follow-ups (Nasyx, 2026-11-27; re-baselined 2026-11-28)
 
-ADR-002 stays for now. These do not block Day 9, but all four must be closed before Day 30.
+ADR-002 stays for now. **Items 2 and 3 block Day 20 (Slider motion/gesture work), not Day 30.**
+The Day 10 120 Hz capture run closes item 1; the ADR amendment (item 4) can follow the
+Day 20 measurements.
 
-1. **120 Hz device re-run.** Repeat the six 20 s captures on Nasyx's Xiaomi 2201116SI with the display set to 120 Hz. Report the same table (mode × renderer, frames, avg, max) plus the active mode id. **Remind Nasyx at the Day 10 gate** so the phone can be plugged in.
-2. **SVG time profile.** Break down where the SVG time goes in `cycle` and `concurrent` (path-string generation, native parse, UI-thread commit). Try cheap optimizations and report numbers: reduced decimal precision in the path string, fewer cubic segments where visually identical, caching, and for wave animation a translate-based approach instead of regenerating the path each frame.
-3. **Skia size verification.** Confirm whether 29.78 MB per ABI is the real APK-size increase after compression and stripping, or the uncompressed library size. Compare with Skia's documented size impact. Amend ADR-002 if the figure was misleading.
+1. **120 Hz device re-run.** Repeat the six 20 s captures on Nasyx's Xiaomi 2201116SI with the display set to 120 Hz. Report the same table (mode × renderer, frames, avg, max) plus the active mode id. **Day 10 status:** six captures executed; numbers in `docs/evidence/day10/device/`. If the active mode reports 120 Hz, this item is closed; if not, record the offered mode and keep it open.
+2. **SVG time profile (blocks Day 20).** Break down where the SVG time goes in `cycle` and `concurrent` (path-string generation, native parse, UI-thread commit). Try cheap optimizations and report numbers: reduced decimal precision in the path string, fewer cubic segments where visually identical, caching, and for wave animation a translate-based approach instead of regenerating the path each frame.
+3. **Skia size verification (blocks Day 20).** Confirm whether 29.78 MB per ABI is the real APK-size increase after compression and stripping, or the uncompressed library size. Compare with Skia's documented size impact. Amend ADR-002 if the figure was misleading.
 4. **ADR amendment by Day 30.** Decide one of: (a) SVG is enough for the loading indicator and wavy progress, with 60 Hz and 120 Hz numbers; (b) those two components use Skia as an optional peer with a documented fallback; or (c) a hybrid. `PathCanvas` must remain the only file importing a renderer.
+
+## Day 45 blocker — icon subset CLI
+
+- **Material Symbols subset CLI.** Today the package ships a fixed 90-glyph subset; an app
+  that uses a name outside it gets a missing-glyph tofu box at runtime. Before Day 45
+  (API review & bundle), ship a small CLI that reads the app's used `MaterialSymbol` names
+  (static scan or a generated manifest) and subsets the variable font from the upstream
+  source, preserving all four axes. Until then, `MaterialSymbol` must warn in development
+  when the requested name is not in the bundled registry. Tracked as `U-14`.
 
 ## Research notes to revisit
 

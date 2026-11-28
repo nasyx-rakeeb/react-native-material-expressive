@@ -1,9 +1,9 @@
 # Current status
 
-- Current day: Day 10 (foundation gate; approved by Nasyx, 2026-11-28)
-- Status: AWAITING USER APPROVAL (Day 10 gate report posted)
+- Current day: Day 10 (foundation gate; extended 2026-11-28 with `M3Provider` + `Text`)
+- Status: AWAITING USER APPROVAL (Day 10 extended scope complete; close report posted. 17/22 foundation rows Android-DONE; Typography and Text are `[~] T` pending the ADR-010 threshold decision; three token-only rows need a scope decision)
 - Last closed day: Day 9 (approved by Nasyx, 2026-11-28; tag `day-9-closed` at `e9f73ca`)
-- Last commit hash: 167b9aa
+- Last commit hash: 167b9aa (updated after the Day 10 commit)
 
 ## Day 10 required scope (from Nasyx, 2026-11-28)
 
@@ -31,27 +31,54 @@
   AA edges, and flat fills > 2. Only the Day 4 diagnostic text probes have flat fills
   > 2 (D-001, inherent glyph-advance difference). ADR-020 is proposed, not applied.
 
-## U-29 follow-ups (ADR-002 stays for now; blockers before Day 30)
+## U-29 follow-ups (ADR-002 stays for now; items 2–3 block Day 20)
 
-1. Re-run the six captures at 120 Hz on Nasyx's Xiaomi when the phone is next plugged in. **Remind Nasyx at the Day 10 gate.**
-2. Profile SVG time in cycle + concurrent modes (path string generation, native parse, UI-thread commit). Try reduced decimal precision, fewer cubic segments where visually identical, caching, and a translate-based wave animation instead of per-frame path regeneration. Report numbers.
-3. Verify whether 29.78 MB per ABI is the real compressed/stripped APK-size delta or the uncompressed library size. Compare with Skia's documented size impact; amend ADR-002 if misleading.
+1. Re-run the six captures at 120 Hz on Nasyx's Xiaomi. **Day 10: closed.** The active display mode is `mActiveModeId=1` at `fps=120.00001`; six captures are in `docs/evidence/day10/device/` and summarised in `docs/evidence/day7/frame-times.md`.
+2. **Blocker before Day 20:** profile SVG time in cycle + concurrent modes (path string generation, native parse, UI-thread commit). Try reduced decimal precision, fewer cubic segments where visually identical, caching, and a translate-based wave animation instead of per-frame path regeneration. Report numbers.
+3. **Blocker before Day 20:** verify whether 29.78 MB per ABI is the real compressed/stripped APK-size delta or the uncompressed library size. Compare with Skia's documented size impact; amend ADR-002 if misleading.
 4. By Day 30, write an ADR amendment: SVG is enough for loading indicator + wavy progress (with 60/120 Hz numbers), or those components use Skia (optional peer + documented fallback), or a hybrid. `PathCanvas` must remain the only file importing a renderer.
 
-## Day 10 gate reminder
+## Icon subset CLI (blocker before Day 45)
 
-- Show Nasyx the gallery + diff report commands.
-- Ask Nasyx to plug in the Xiaomi for the 120 Hz U-29 re-run.
+The package ships a fixed 90-glyph subset. Before Day 45 (API review & bundle), add a CLI
+that subsets the upstream variable font from the app-used `MaterialSymbol` names and keeps
+all four axes; until then, warn in development when a requested name is not in the bundled
+registry (`U-14`). Tracked in `BACKLOG.md`.
 
-## Day 10 result (2026-11-28, commit be68ad9)
+## Day 10 result (2026-11-28)
+
+### Original scope (commit `be68ad9`)
 
 - Icon diff: exact 0 / AA-aware 0 / max Δ 0 across 3 cold boots; font bytes
   verified in source, gallery, Compose APK and RN APK.
-- All gates pass: format, lint, typecheck, 27 suites / 201 tests, 43 scenes.
 - Emulator evidence: overlay stack/back ordering, keyboard avoidance, RTL
   preview, window classes 411×731 compact/medium and 720×1280 medium/expanded.
 - Xiaomi: installed from `/sdcard/Download/m3egallery.apk` (203,624,632 B;
   MIUI blocked `pm install` with `INSTALL_FAILED_USER_RESTRICTED`). Verified
   cold launch, API 33 variable-font support, all four axes + path icons, overlay
   stack depth 2, and the Day 9 `interaction-states` scene.
-- Remaining: post the Day 10 gate report and stop. Do not start Day 11.
+
+### Extended scope (2026-11-28)
+
+- `M3Provider`: theme + reduce-motion + window size class + layout direction,
+  with `useM3Theme`, `useM3ReduceMotion`, `useWindowSize`/`useWindowSizeClass`,
+  `useM3LayoutDirection`, `useM3ContentColor`.
+- `Text`: 30 roles, emphasized opt-in, content-colour inheritance, RTL align,
+  sp overrides, and the Compose 1.12.0 non-linear `FontScaleConverter`
+  (`composeFontScale` + `composeLineHeight`).
+- Gallery: provider demo and all-role text grid; `SceneHarness` renders `type-*`
+  scenes through the library `Text`. Screenshots: `provider-default.png`,
+  `provider.png` (reduceMotion on / rtl), `text-roles.png`,
+  `text-roles-emphasized.png`.
+- Converter measurements: 30 roles × 4 profiles (420/1.0, 420/1.3, 320/1.0,
+  320/1.3) in `docs/evidence/day10/typography/`; **119/120** pass the faithful
+  budget. One miss: `type-label-medium-emphasized` at 320/1.3, 453.7 per 1,000
+  ink vs 450 (per-glyph 2.845 ≤ 3.0).
+- Xiaomi: extended APK (203,638,852 B, SHA-256 `fefd29f7…3699f2dc`) installed
+  with `adb install -r`; the phone was asleep and MIUI denied wake injection, so
+  no new phone screenshot. Emulator screenshots cover the new sections.
+- Gates: format, lint, typecheck pass; **31 suites / 237 tests**; 43 scenes.
+- Remaining: Nasyx's decisions on (a) the ADR-010 threshold (keep 450 + D-001,
+  or accept 500) and (b) the three token-only foundation rows (accept
+  value-golden evidence or schedule per-role scene diffs). Day 10 is not closed
+  and Day 11 must not start.

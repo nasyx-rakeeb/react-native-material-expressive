@@ -2,6 +2,7 @@ import { Platform, View, type StyleProp, type ViewStyle } from 'react-native';
 import type { ReactNode } from 'react';
 
 import { useM3Theme } from '../theme';
+import { ContentColorProvider, contentColorFor, useContentColor } from '../typography/ContentColor';
 import {
   elevationLevelToDp,
   elevationToIosShadow,
@@ -24,6 +25,11 @@ export interface SurfaceProps {
   shadowElevation?: number;
   /** Container colour. Defaults to the theme `surface` role. */
   color?: string;
+  /**
+   * Content colour for children. Defaults to the matching `on*` role for
+   * `color`, then to the nearest content colour (Compose `Surface` behaviour).
+   */
+  contentColor?: string;
   /** Corner radius in dp. */
   shape?: number;
   border?: SurfaceBorder;
@@ -50,12 +56,14 @@ export function Surface({
   tonalElevation,
   shadowElevation,
   color,
+  contentColor,
   shape = 0,
   border,
   style,
   testID,
 }: SurfaceProps) {
   const theme = useM3Theme();
+  const parentContentColor = useContentColor();
   const baseColor = color ?? theme.colorScheme.surface;
   const tonal = tonalElevation ?? (level === undefined ? 0 : elevationLevelToDp(level));
   const shadow = shadowElevation ?? (level === undefined ? 0 : elevationLevelToDp(level));
@@ -66,6 +74,8 @@ export function Surface({
     theme.colorScheme.surfaceTint,
     tonal,
   );
+  const resolvedContentColor =
+    contentColor ?? contentColorFor(theme.colorScheme, baseColor) ?? parentContentColor;
 
   const shadowStyle: ViewStyle =
     shadow <= 0
@@ -88,17 +98,19 @@ export function Surface({
       ]}
       testID={testID}
     >
-      <View
-        style={{
-          flexGrow: 1,
-          borderRadius: shape,
-          borderWidth: border?.width ?? 0,
-          borderColor: border?.color,
-          overflow: 'hidden',
-        }}
-      >
-        {children}
-      </View>
+      <ContentColorProvider color={resolvedContentColor}>
+        <View
+          style={{
+            flexGrow: 1,
+            borderRadius: shape,
+            borderWidth: border?.width ?? 0,
+            borderColor: border?.color,
+            overflow: 'hidden',
+          }}
+        >
+          {children}
+        </View>
+      </ContentColorProvider>
     </View>
   );
 }

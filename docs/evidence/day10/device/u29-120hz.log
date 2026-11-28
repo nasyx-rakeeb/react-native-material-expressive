@@ -1,0 +1,25 @@
+
+== Device ==
+List of devices attached
+10.231.239.101:5555    device product:peux_in model:2201116SI device:peux transport_id:2
+model=2201116SI soc=SM6375 abi=arm64-v8a mode=1 fps=120.00001
+
+== Launch and capture (20 s per mode) ==
+
+| Mode | Renderer | Last M3E_SPIKE_UI line |
+|---|---|---|
+| cycle | svg | 11-28 14:15:41.601 20635 20721 I ReactNativeJS: M3E_SPIKE_UI cycle/svg frames=2160 avg=8.47 max=16.78 |
+| concurrent | svg | 11-28 14:16:01.709 20965 21042 I ReactNativeJS: M3E_SPIKE_UI concurrent/svg frames=1080 avg=16.79 max=41.90 |
+| clip | svg | 11-28 14:16:23.108 21355 21426 I ReactNativeJS: M3E_SPIKE_UI clip/svg frames=2160 avg=8.71 max=25.08 |
+| cycle | skia | 11-28 14:16:43.532 21678 21754 I ReactNativeJS: M3E_SPIKE_UI cycle/skia frames=2220 avg=8.35 max=8.67 |
+| concurrent | skia | 11-28 14:17:04.247 21998 22070 I ReactNativeJS: M3E_SPIKE_UI concurrent/skia frames=2220 avg=8.36 max=25.05 |
+| clip | skia | 11-28 14:17:24.939 22331 22401 I ReactNativeJS: M3E_SPIKE_UI clip/skia frames=2220 avg=8.35 max=8.57 |
+
+== Done ==
+Record these with the table above and send them back:
+- model: 2201116SI
+- SoC: SM6375
+- active refresh: fps=120.00001
+- the six frame lines (frames / avg / max) or the card values
+
+U-29 stays open until the numbers are recorded in docs/evidence/day7/frame-times.md.

@@ -14,6 +14,21 @@ export {
   resolveVariableFontSupport,
   supportsVariableFontSettings,
 } from './support';
+export {
+  ContentColorProvider,
+  contentColorFor,
+  useContentColor,
+  type ContentColorProviderProps,
+} from './ContentColor';
+export {
+  COMPOSE_LINE_HEIGHT_MULTIPLIER_MIN_SCALE,
+  COMPOSE_NON_LINEAR_MIN_SCALE,
+  composeFontScale,
+  composeFontScaleRatio,
+  composeLineHeight,
+  isNonLinearFontScalingActive,
+} from './fontScale';
+export { Text, type TextAlign, type TextFontScaleMode, type TextProps } from './Text';
 export type {
   M3FontWeight,
   M3FontWeightValue,

@@ -1,6 +1,7 @@
-import { useMemo } from 'react';
+import { useContext, useMemo } from 'react';
 import { I18nManager } from 'react-native';
 
+import { LayoutDirectionContext } from './context';
 import {
   directionValue,
   mirrorIconTransform,
@@ -30,10 +31,12 @@ export interface UseLayoutDirectionResult {
  *
  * `I18nManager.isRTL` is process-wide, so the hook does not subscribe to a
  * change event; toggling RTL at runtime requires `forceRTL` and an app
- * restart, exactly as RN documents.
+ * restart, exactly as RN documents. An `M3Provider` may supply a direction
+ * for previews, tests, or a scoped subtree.
  */
 export function useLayoutDirection(): UseLayoutDirectionResult {
-  const direction = resolveLayoutDirection(I18nManager.isRTL);
+  const provided = useContext(LayoutDirectionContext);
+  const direction = provided ?? resolveLayoutDirection(I18nManager.isRTL);
 
   return useMemo(() => {
     const current = direction;

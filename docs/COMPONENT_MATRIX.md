@@ -27,30 +27,30 @@
 
 ## Foundations & primitives
 
-| Component | Authority / source | spec | impl | diff | motion | iOS | a11y | tests | docs | gallery | DONE |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| `M3Provider` / theme | `MaterialTheme.kt`, `MaterialExpressiveTheme` | [ ] | [ ] | — | — | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
-| Color schemes & roles | `ColorScheme.kt`, `ColorLightTokens`, `ColorDarkTokens`, `PaletteTokens` | [x] | [x] | [ ] | — | [ ] | [ ] | [x] | [x] | [ ] | [ ] |
-| Dynamic color (Android 12+) | Native module + fallback; `@material/material-color-utilities` 0.4.0 | [x] | [x] | [ ] | — | n/a | [ ] | [x] | [x] | [ ] | [ ] |
-| Typography (baseline + emphasized) | `Typography.kt`, `TypeScaleTokens.kt`, `TypefaceTokens.kt` | [x] | [x] | [ ] | — | [ ] | [ ] | [x] | [x] | [ ] | [ ] |
-| Shape tokens | `ShapeTokens.kt`, `Shapes.kt` | [x] | [x] | [ ] | — | [ ] | [ ] | [x] | [x] | [ ] | [ ] |
-| `MaterialShapes` (35 shapes) | `MaterialShapes.kt`, `graphics-shapes` 1.1.0 | [x] | [x] | [x] | — | [ ] | — | [x] | [x] | [x] | [ ] |
-| `RoundedPolygon` / `Morph` engine | `graphics-shapes` sources | [x] | [x] | [x] | — | [ ] | — | [x] | [x] | [x] | [ ] |
-| `Shape` primitive | ADR-002; `MaterialShapes.kt` | [x] | [x] | [x] | — | [ ] | — | [ ] | [x] | [x] | [ ] |
-| `MorphingShape` primitive | ADR-011/012; `Morph.toPath` | [x] | [x] | [ ] | [x] | [ ] | — | [ ] | [x] | [x] | [ ] |
-| `ShapeContainer` (decorative clip only; ADR-017) | ADR-002; shaped-container design | [ ] | [x] | [x] | [x] | [ ] | [ ] | [ ] | [x] | [x] | [ ] |
-| Motion scheme & spring hooks | `MotionScheme.kt`, `StandardMotionTokens`, `ExpressiveMotionTokens` | [x] | [x] | — | [x] | [ ] | [ ] | [x] | [x] | [x] | [ ] |
-| Elevation & shadows | `Elevation.kt`, `ElevationTokens.kt` | [x] | [x] | [x] | — | [x] | [ ] | [x] | [x] | [x] | [ ] |
-| State layers | `StateTokens.kt` (hover .08, focus .10, pressed .10, dragged .16) | [x] | [x] | [x] | — | [ ] | [ ] | [x] | [x] | [x] | [ ] |
-| Ripple + inset focus ring | `material3-ripple` 1.5.0, `Ripple.kt` | [x] | [x] | [x] | [x] | [ ] | [ ] | [x] | [x] | [x] | [ ] |
-| `Interactive` pressable primitive | `InteractiveComponentSize.kt`, state machine design | [x] | [x] | [x] | — | [ ] | [ ] | [x] | [x] | [x] | [ ] |
-| `Surface` | `Surface.kt` | [x] | [x] | [x] | — | [x] | [ ] | [x] | [x] | [x] | [ ] |
-| `Text` | `Text.kt`, `ProvideContentColorTextStyle.kt` | [ ] | [ ] | [ ] | — | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
-| `Icon` | `Icon.kt`; Material Symbols variable font + internal paths | [x] | [x] | [x] | — | [ ] | [ ] | [x] | [x] | [x] | [ ] |
-| `OverlayHost` / `Portal` | Architecture §5.2; Compose `BasicEdgeToEdgeDialog`, `Menu`, `SnackbarHost` | [x] | [x] | [ ] | — | [ ] | [ ] | [x] | [x] | [x] | [ ] |
-| Window size classes | `material3-window-size-class` 1.5.0; 8dp spacing | [x] | [x] | — | — | [ ] | [ ] | [x] | [x] | [x] | [ ] |
-| Haptics adapter | Injectable adapter (no hard dependency) | [x] | [x] | — | — | [ ] | [ ] | [x] | [x] | [ ] | [ ] |
-| RTL / layout utilities | Compose layout semantics; m3 guidelines | [x] | [x] | [ ] | — | [ ] | [ ] | [x] | [x] | [x] | [ ] |
+| Component | Authority / source | spec | impl | diff | motion | iOS | a11y | tests | docs | gallery | Android-DONE | Release-DONE |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| `M3Provider` / theme | `MaterialTheme.kt`, `MaterialExpressiveTheme` | [x] | [x] | — | — | [ ] | [ ] | [x] | [x] | [x] | [x] | [ ] |
+| Color schemes & roles | `ColorScheme.kt`, `ColorLightTokens`, `ColorDarkTokens`, `PaletteTokens` | [x] | [x] | [ ] | — | [ ] | [ ] | [x] | [x] | [ ] | [ ] | [ ] |
+| Dynamic color (Android 12+) | Native module + fallback; `@material/material-color-utilities` 0.4.0 | [x] | [x] | [ ] | — | n/a | [ ] | [x] | [x] | [ ] | [ ] | [ ] |
+| Typography (baseline + emphasized) | `Typography.kt`, `TypeScaleTokens.kt`, `TypefaceTokens.kt` | [x] | [x] | [~] T | — | [ ] | [ ] | [x] | [x] | [x] | [ ] | [ ] |
+| Shape tokens | `ShapeTokens.kt`, `Shapes.kt` | [x] | [x] | [ ] | — | [ ] | [ ] | [x] | [x] | [ ] | [ ] | [ ] |
+| `MaterialShapes` (35 shapes) | `MaterialShapes.kt`, `graphics-shapes` 1.1.0 | [x] | [x] | [x] | — | [ ] | — | [x] | [x] | [x] | [x] | [ ] |
+| `RoundedPolygon` / `Morph` engine | `graphics-shapes` sources | [x] | [x] | [x] | — | [ ] | — | [x] | [x] | [x] | [x] | [ ] |
+| `Shape` primitive | ADR-002; `MaterialShapes.kt` | [x] | [x] | [x] | — | [ ] | — | [x] | [x] | [x] | [x] | [ ] |
+| `MorphingShape` primitive | ADR-011/012; `Morph.toPath` | [x] | [x] | [x] M | [x] | [ ] | — | [x] | [x] | [x] | [x] | [ ] |
+| `ShapeContainer` (decorative clip only; ADR-017) | ADR-002; shaped-container design | [x] | [x] | [x] | [x] | [ ] | n/a | [x] | [x] | [x] | [x] | [ ] |
+| Motion scheme & spring hooks | `MotionScheme.kt`, `StandardMotionTokens`, `ExpressiveMotionTokens` | [x] | [x] | — | [x] | [ ] | [ ] | [x] | [x] | [x] | [x] | [ ] |
+| Elevation & shadows | `Elevation.kt`, `ElevationTokens.kt` | [x] | [x] | [x] | — | [x] | [ ] | [x] | [x] | [x] | [x] | [ ] |
+| State layers | `StateTokens.kt` (hover .08, focus .10, pressed .10, dragged .16) | [x] | [x] | [x] | — | [ ] | [ ] | [x] | [x] | [x] | [x] | [ ] |
+| Ripple + inset focus ring | `material3-ripple` 1.5.0, `Ripple.kt` | [x] | [x] | [x] | [x] | [ ] | [ ] | [x] | [x] | [x] | [x] | [ ] |
+| `Interactive` pressable primitive | `InteractiveComponentSize.kt`, state machine design | [x] | [x] | [x] | — | [ ] | [ ] | [x] | [x] | [x] | [x] | [ ] |
+| `Surface` | `Surface.kt` | [x] | [x] | [x] | — | [x] | [ ] | [x] | [x] | [x] | [x] | [ ] |
+| `Text` | `Text.kt`, `ProvideContentColorTextStyle.kt` | [x] | [x] | [~] T | — | [ ] | [ ] | [x] | [x] | [x] | [ ] | [ ] |
+| `Icon` | `Icon.kt`; Material Symbols variable font + internal paths | [x] | [x] | [x] | — | [ ] | [ ] | [x] | [x] | [x] | [x] | [ ] |
+| `OverlayHost` / `Portal` | Architecture §5.2; Compose `BasicEdgeToEdgeDialog`, `Menu`, `SnackbarHost` | [x] | [x] | [x] B | — | [ ] | [ ] | [x] | [x] | [x] | [x] | [ ] |
+| Window size classes | `material3-window-size-class` 1.5.0; 8dp spacing | [x] | [x] | — | — | [ ] | [ ] | [x] | [x] | [x] | [x] | [ ] |
+| Haptics adapter | Injectable adapter (no hard dependency) | [x] | [x] | — | — | [ ] | [ ] | [x] | [x] | n/a | [x] | [ ] |
+| RTL / layout utilities | Compose layout semantics; m3 guidelines | [x] | [x] | [x] B | — | [ ] | [ ] | [x] | [x] | [x] | [x] | [ ] |
 
 Day 7 note: the static 35-shape grid now diff-passes against Compose with **0 AA-aware
 differing pixels** (`docs/evidence/day7/static-diff/README.md`), and the shape gallery
@@ -75,14 +75,31 @@ the visible 24 dp box does not grow. Haptics is an injectable adapter with a
 no-op default, so the gallery has no visual demo. The iOS, a11y and DONE boxes
 stay open for the Day 40–41 passes.
 
-Day 10 note: Icon, Overlay/Portal, window size classes and RTL utilities are
-implemented and tested (`docs/evidence/day10/README.md`). The icon scene is diffed
-against Compose with all four variable axes (`docs/evidence/day10/diff/`). The
-overlay, window and RTL rows have **no screenshot diff** (they are behavioural, not
-static scenes); their evidence is Jest/RNTL plus a manual gallery run on the
-emulator. iOS and a11y boxes stay open (`U-33`–`U-35`). `Text` and `M3Provider`
-were explicitly outside the approved Day 10 scope and remain NOT DONE; `Text`
-blocks Day 11 labels (`U-36`). The DONE column is therefore empty for these rows.
+Day 10 note (extended scope, 2026-11-28): the gate uses two levels. **Android-DONE**
+is the phase-gate level (Days 10/24/37); **Release-DONE** adds iOS and accessibility
+and is required by Release Gate #2. The column values are:
+
+- `[x]` — evidence exists and is linked from `docs/evidence/day10/README.md`.
+- `[x] B` — behavioural evidence (Jest/RNTL + a recorded gallery run) replaces a
+  static screenshot diff, as allowed by PLAYBOOK §8.1 for behavioural-only surfaces.
+- `[x] M` — motion evidence (numeric spring/frame checks) replaces a static diff.
+- `[x] T` — text-category evidence under ADR-010 (ink- and glyph-normalized AA),
+  not the image-area 0.05% gate.
+- `[~] T` — text-category evidence measured, but the ADR-010 acceptance threshold is
+  not finalized. The box is not DONE until Nasyx approves the threshold.
+- `n/a` — the check does not apply (decorative shapes, no visual haptics surface).
+
+Icon, Overlay/Portal, window size classes, RTL, `M3Provider` and `Text` are now
+implemented and tested. The icon scene is diffed against Compose with all four
+variable axes (`docs/evidence/day10/diff/`). `Text` is diffed across the 30 roles at
+420/1.0, 420/1.3, 320/1.0 and 320/1.3 with the Compose non-linear converter
+(`docs/evidence/day10/typography/`); ADR-010's thresholds are applied as reported
+there. Overlay, window and RTL remain behavioural rows. iOS and a11y stay open for
+all rows (`U-33`–`U-35`), so no row is Release-DONE yet. Color schemes, dynamic
+color and shape tokens remain **not Android-DONE**: their values are golden-verified
+against Compose tokens, but they have no per-role gallery page or per-role scene
+diff. That is called out in the Day 10 close report for Nasyx to decide (accept
+value-golden evidence for token-only rows, or schedule the scene work).
 
 **Foundation evidence (Days 2–6):**
 
@@ -106,103 +123,103 @@ blocks Day 11 labels (`U-36`). The DONE column is therefore empty for these rows
 
 ## Actions
 
-| Component | Authority / source | spec | impl | diff | motion | iOS | a11y | tests | docs | gallery | DONE |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| Button (5 types × XS–XL × round/square × toggle) | `Button.kt`, `ButtonDefaults`, `Button*Tokens`, `ToggleButton.kt` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
-| IconButton (types × sizes × widths × toggle) | `IconButton.kt`, `IconButtonDefaults.kt`, `*IconButtonTokens` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
-| ButtonGroup (standard + connected) | `ButtonGroup.kt`, `ButtonGroupSmallTokens`, `ConnectedButtonGroupSmallTokens` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
-| SplitButton | `SplitButton.kt`, `SplitButton*Tokens` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
-| FAB (S/R/M/L) | `FloatingActionButton.kt`, `Fab*Tokens` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
-| ExtendedFAB | `FloatingActionButton.kt`, `ExtendedFab*Tokens` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
-| ToggleFAB | `FloatingActionButtonMenu.kt` (`ToggleFloatingActionButton`) | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
-| FAB Menu | `FloatingActionButtonMenu.kt`, `FabMenuBaselineTokens` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
-| ToggleButton (legacy / migration) | `ToggleButton.kt`; m3 segmented/button-group guidance | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
-| SegmentedButton (legacy, deprecated by m3) | `SegmentedButton.kt`, `*SegmentedButtonTokens` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
+| Component | Authority / source | spec | impl | diff | motion | iOS | a11y | tests | docs | gallery | Android-DONE | Release-DONE |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Button (5 types × XS–XL × round/square × toggle) | `Button.kt`, `ButtonDefaults`, `Button*Tokens`, `ToggleButton.kt` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| IconButton (types × sizes × widths × toggle) | `IconButton.kt`, `IconButtonDefaults.kt`, `*IconButtonTokens` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| ButtonGroup (standard + connected) | `ButtonGroup.kt`, `ButtonGroupSmallTokens`, `ConnectedButtonGroupSmallTokens` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| SplitButton | `SplitButton.kt`, `SplitButton*Tokens` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| FAB (S/R/M/L) | `FloatingActionButton.kt`, `Fab*Tokens` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| ExtendedFAB | `FloatingActionButton.kt`, `ExtendedFab*Tokens` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| ToggleFAB | `FloatingActionButtonMenu.kt` (`ToggleFloatingActionButton`) | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| FAB Menu | `FloatingActionButtonMenu.kt`, `FabMenuBaselineTokens` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| ToggleButton (legacy / migration) | `ToggleButton.kt`; m3 segmented/button-group guidance | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| SegmentedButton (legacy, deprecated by m3) | `SegmentedButton.kt`, `*SegmentedButtonTokens` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
 
 ## Selection & input
 
-| Component | Authority / source | spec | impl | diff | motion | iOS | a11y | tests | docs | gallery | DONE |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| Checkbox + tri-state | `Checkbox.kt`, `CheckboxTokens` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
-| RadioButton | `RadioButton.kt`, `RadioButtonTokens` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
-| Switch | `Switch.kt`, `SwitchTokens` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
-| Chips (assist/filter/input/suggestion, elevated) | `Chip.kt`, `ChipShapes`, `*ChipTokens` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
-| Slider (standard/centered, XS–XL) | `Slider.kt`, `SliderTokens` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
-| RangeSlider | `Slider.kt`, `RangeSlider` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
-| VerticalSlider | `Slider.kt`, `VerticalSlider`, `VerticalDragHandle` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
-| TextField (filled/outlined) | `TextField.kt`, `OutlinedTextField.kt`, `TextFieldDefaults.kt` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
-| SecureTextField / OutlinedSecureTextField | `SecureTextField.kt` (missing from §8) | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
-| Search (SearchBar, SearchView, TopSearchBar, docked/expanded) | `SearchBar.kt`, `SearchViewTokens`; m3 search | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
-| DatePicker / DateRangePicker (modal, docked, input) | `DatePicker.kt`, `DateRangePicker.kt`, `DateInput.kt` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
-| TimePicker / TimeInput / **TimeScroll** | `TimePicker.kt`, `TimePickerDialog.kt`; m3 time-pickers | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
-| ScrollField (new Expressive component) | `ScrollField.kt`; m3 scroll-fields | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
-| PullToRefresh | `pulltorefresh/PullToRefresh.kt` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
+| Component | Authority / source | spec | impl | diff | motion | iOS | a11y | tests | docs | gallery | Android-DONE | Release-DONE |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Checkbox + tri-state | `Checkbox.kt`, `CheckboxTokens` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| RadioButton | `RadioButton.kt`, `RadioButtonTokens` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| Switch | `Switch.kt`, `SwitchTokens` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| Chips (assist/filter/input/suggestion, elevated) | `Chip.kt`, `ChipShapes`, `*ChipTokens` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| Slider (standard/centered, XS–XL) | `Slider.kt`, `SliderTokens` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| RangeSlider | `Slider.kt`, `RangeSlider` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| VerticalSlider | `Slider.kt`, `VerticalSlider`, `VerticalDragHandle` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| TextField (filled/outlined) | `TextField.kt`, `OutlinedTextField.kt`, `TextFieldDefaults.kt` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| SecureTextField / OutlinedSecureTextField | `SecureTextField.kt` (missing from §8) | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| Search (SearchBar, SearchView, TopSearchBar, docked/expanded) | `SearchBar.kt`, `SearchViewTokens`; m3 search | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| DatePicker / DateRangePicker (modal, docked, input) | `DatePicker.kt`, `DateRangePicker.kt`, `DateInput.kt` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| TimePicker / TimeInput / **TimeScroll** | `TimePicker.kt`, `TimePickerDialog.kt`; m3 time-pickers | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| ScrollField (new Expressive component) | `ScrollField.kt`; m3 scroll-fields | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| PullToRefresh | `pulltorefresh/PullToRefresh.kt` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
 
 ## Containment
 
-| Component | Authority / source | spec | impl | diff | motion | iOS | a11y | tests | docs | gallery | DONE |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| Card (elevated/filled/outlined, clickable) | `Card.kt`, `*CardTokens` | [ ] | [ ] | [ ] | — | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
-| Carousel (multi-browse, uncontained, hero, center-hero) | `Carousel.kt`, `CarouselState.kt`, `CarouselItemScope.kt` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
-| Dialog (basic, alert, full-screen) | `AlertDialog.kt`, `BasicEdgeToEdgeDialog.kt`, `DialogTokens` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
-| BottomSheet (standard + modal) | `BottomSheet.kt`, `ModalBottomSheet.kt`, `BottomSheetScaffold.kt` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
-| SideSheet | **m3 spec only; no public Compose 1.5.0 API** | [ ] | [ ] | n/a spec | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
-| ListItem (standard) | `ListItem.kt`, `ListItemDefaults.kt`, `ListTokens` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
-| SegmentedListItem | `ListItem.kt` (`SegmentedListItem`), `ListTokens` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
-| SwipeToDismissBox | `SwipeToDismissBox.kt` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
-| Divider / HorizontalDivider / VerticalDivider | `Divider.kt`, `DividerTokens` | [ ] | [ ] | [ ] | — | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
-| Menu (dropdown, exposed, nested/grouped) | `Menu.kt`, `MenuDefaults.kt`, `DropdownMenuGroup`; m3 menus | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
-| Tooltip (plain/rich) | `Tooltip.kt`, `BasicTooltip.kt`, `*TooltipTokens` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
-| Badge / BadgedBox | `Badge.kt`, `BadgeTokens` | [ ] | [ ] | [ ] | — | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
-| Snackbar + host/queue | `Snackbar.kt`, `SnackbarHost.kt`, `SnackbarTokens` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
-| Banner (Paper parity extra) | **No Compose M3 API**; Paper v6 alpha.4 as cross-check | [ ] | [ ] | n/a spec | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| Component | Authority / source | spec | impl | diff | motion | iOS | a11y | tests | docs | gallery | Android-DONE | Release-DONE |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Card (elevated/filled/outlined, clickable) | `Card.kt`, `*CardTokens` | [ ] | [ ] | [ ] | — | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| Carousel (multi-browse, uncontained, hero, center-hero) | `Carousel.kt`, `CarouselState.kt`, `CarouselItemScope.kt` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| Dialog (basic, alert, full-screen) | `AlertDialog.kt`, `BasicEdgeToEdgeDialog.kt`, `DialogTokens` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| BottomSheet (standard + modal) | `BottomSheet.kt`, `ModalBottomSheet.kt`, `BottomSheetScaffold.kt` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| SideSheet | **m3 spec only; no public Compose 1.5.0 API** | [ ] | [ ] | n/a spec | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| ListItem (standard) | `ListItem.kt`, `ListItemDefaults.kt`, `ListTokens` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| SegmentedListItem | `ListItem.kt` (`SegmentedListItem`), `ListTokens` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| SwipeToDismissBox | `SwipeToDismissBox.kt` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| Divider / HorizontalDivider / VerticalDivider | `Divider.kt`, `DividerTokens` | [ ] | [ ] | [ ] | — | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| Menu (dropdown, exposed, nested/grouped) | `Menu.kt`, `MenuDefaults.kt`, `DropdownMenuGroup`; m3 menus | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| Tooltip (plain/rich) | `Tooltip.kt`, `BasicTooltip.kt`, `*TooltipTokens` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| Badge / BadgedBox | `Badge.kt`, `BadgeTokens` | [ ] | [ ] | [ ] | — | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| Snackbar + host/queue | `Snackbar.kt`, `SnackbarHost.kt`, `SnackbarTokens` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| Banner (Paper parity extra) | **No Compose M3 API**; Paper v6 alpha.4 as cross-check | [ ] | [ ] | n/a spec | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
 
 ## Navigation & structure
 
-| Component | Authority / source | spec | impl | diff | motion | iOS | a11y | tests | docs | gallery | DONE |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| NavigationBar | `NavigationBar.kt`, `NavigationItem.kt`, `NavigationBar*Tokens` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
-| ShortNavigationBar (+ item) | `ShortNavigationBar.kt` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
-| NavigationRail (collapsed/expanded) | `NavigationRail.kt`, `NavigationRail*Tokens` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
-| WideNavigationRail / ModalWideNavigationRail | `WideNavigationRail.kt`, `WideNavigationRailState.kt` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
-| NavigationDrawer (standard/modal/permanent) | `NavigationDrawer.kt`, `NavigationDrawerTokens` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
-| Tabs (primary/secondary, scrollable) | `Tab.kt`, `TabRow.kt`, `*NavigationTabTokens` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
-| Top app bars (small/center/medium/large/flexible/search) | `AppBar.kt`, `AppBarColumn/Row.kt`, `AppBarWithSearch`; `*AppBar*Tokens` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
-| BottomAppBar / FlexibleBottomAppBar (docked toolbar) | `AppBar.kt`, `DockedToolbarTokens` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
-| FloatingToolbar (horizontal/vertical) | `FloatingToolbar.kt`, `FloatingToolbarTokens` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
-| Scaffold | `Scaffold.kt` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
-| NavigationSuiteScaffold | `material3-adaptive-navigation-suite` 1.5.0 | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
-| Adaptive scaffolds (list-detail, supporting pane) | `material3.adaptive` 1.3.0 | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
+| Component | Authority / source | spec | impl | diff | motion | iOS | a11y | tests | docs | gallery | Android-DONE | Release-DONE |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| NavigationBar | `NavigationBar.kt`, `NavigationItem.kt`, `NavigationBar*Tokens` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| ShortNavigationBar (+ item) | `ShortNavigationBar.kt` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| NavigationRail (collapsed/expanded) | `NavigationRail.kt`, `NavigationRail*Tokens` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| WideNavigationRail / ModalWideNavigationRail | `WideNavigationRail.kt`, `WideNavigationRailState.kt` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| NavigationDrawer (standard/modal/permanent) | `NavigationDrawer.kt`, `NavigationDrawerTokens` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| Tabs (primary/secondary, scrollable) | `Tab.kt`, `TabRow.kt`, `*NavigationTabTokens` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| Top app bars (small/center/medium/large/flexible/search) | `AppBar.kt`, `AppBarColumn/Row.kt`, `AppBarWithSearch`; `*AppBar*Tokens` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| BottomAppBar / FlexibleBottomAppBar (docked toolbar) | `AppBar.kt`, `DockedToolbarTokens` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| FloatingToolbar (horizontal/vertical) | `FloatingToolbar.kt`, `FloatingToolbarTokens` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| Scaffold | `Scaffold.kt` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| NavigationSuiteScaffold | `material3-adaptive-navigation-suite` 1.5.0 | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| Adaptive scaffolds (list-detail, supporting pane) | `material3.adaptive` 1.3.0 | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
 
 ## Feedback
 
-| Component | Authority / source | spec | impl | diff | motion | iOS | a11y | tests | docs | gallery | DONE |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| Linear progress (determinate/indeterminate, flat + wavy) | `ProgressIndicator.kt`, `WavyProgressIndicator.kt`, `Linear*Tokens` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
-| Circular progress (determinate/indeterminate, flat + wavy) | `ProgressIndicator.kt`, `WavyProgressIndicator.kt`, `Circular*Tokens` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
-| LoadingIndicator (contained/uncontained) | `LoadingIndicator.kt`, `LoadingIndicatorTokens` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
+| Component | Authority / source | spec | impl | diff | motion | iOS | a11y | tests | docs | gallery | Android-DONE | Release-DONE |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Linear progress (determinate/indeterminate, flat + wavy) | `ProgressIndicator.kt`, `WavyProgressIndicator.kt`, `Linear*Tokens` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| Circular progress (determinate/indeterminate, flat + wavy) | `ProgressIndicator.kt`, `WavyProgressIndicator.kt`, `Circular*Tokens` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| LoadingIndicator (contained/uncontained) | `LoadingIndicator.kt`, `LoadingIndicatorTokens` | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
 
 ## Parity extras (Paper compatibility)
 
-| Component | Authority / source | spec | impl | diff | motion | iOS | a11y | tests | docs | gallery | DONE |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| Avatar | **No Compose M3 API**; Paper v6 cross-check | [ ] | [ ] | n/a spec | — | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
-| Portal API | Internal `OverlayHost`; Paper API shape | [ ] | [ ] | — | — | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
-| DataTable (expressive styling) | **No Compose M3 API**; Paper v6 cross-check | [ ] | [ ] | n/a spec | — | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
-| HelperText | TextField supporting-text semantics; no distinct Compose component | [ ] | [ ] | [ ] | — | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
-| Drawer sections | M3 Drawer + Paper section API shape | [ ] | [ ] | [ ] | — | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
-| Accordion / expandable list | **No Compose M3 API**; Paper v6 cross-check | [ ] | [ ] | n/a spec | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
-| Appbar legacy wrappers | Maps to TopAppBar / AppBar API | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
-| Text variants | Maps to `Text` + typography scale | [ ] | [ ] | [ ] | — | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
-| Surface elevation API | Maps to `Surface` | [ ] | [ ] | [ ] | — | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] |
+| Component | Authority / source | spec | impl | diff | motion | iOS | a11y | tests | docs | gallery | Android-DONE | Release-DONE |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Avatar | **No Compose M3 API**; Paper v6 cross-check | [ ] | [ ] | n/a spec | — | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| Portal API | Internal `OverlayHost`; Paper API shape | [ ] | [ ] | — | — | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| DataTable (expressive styling) | **No Compose M3 API**; Paper v6 cross-check | [ ] | [ ] | n/a spec | — | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| HelperText | TextField supporting-text semantics; no distinct Compose component | [ ] | [ ] | [ ] | — | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| Drawer sections | M3 Drawer + Paper section API shape | [ ] | [ ] | [ ] | — | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| Accordion / expandable list | **No Compose M3 API**; Paper v6 cross-check | [ ] | [ ] | n/a spec | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| Appbar legacy wrappers | Maps to TopAppBar / AppBar API | [ ] | [ ] | [ ] | [ ] | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| Text variants | Maps to `Text` + typography scale | [ ] | [ ] | [ ] | — | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| Surface elevation API | Maps to `Surface` | [ ] | [ ] | [ ] | — | [ ] REF | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
 
 ## Integrations
 
-| Integration | Authority / source | spec | impl | diff | motion | iOS | a11y | tests | docs | gallery | DONE |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| React Navigation adapters (tabs, stack header, drawer) | React Navigation 7.x docs; M3 components | [ ] | [ ] | — | — | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
-| Expo Router example | Expo SDK 58 docs | [ ] | [ ] | — | — | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
-| Paper theme bridge (`fromPaperTheme`) | Paper v6 theme types; M3 role mapping | [ ] | [ ] | — | — | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| Integration | Authority / source | spec | impl | diff | motion | iOS | a11y | tests | docs | gallery | Android-DONE | Release-DONE |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| React Navigation adapters (tabs, stack header, drawer) | React Navigation 7.x docs; M3 components | [ ] | [ ] | — | — | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| Expo Router example | Expo SDK 58 docs | [ ] | [ ] | — | — | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| Paper theme bridge (`fromPaperTheme`) | Paper v6 theme types; M3 role mapping | [ ] | [ ] | — | — | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
 
 ---
 

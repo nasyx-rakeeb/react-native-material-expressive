@@ -98,10 +98,54 @@ The 60 Hz frame budget is 16.67 ms.
   and the clipped-gradient scene, but not for ten concurrent morphs on this
   device.** Skia is the smoother option if a screen needs many simultaneous
   path animations.
-- The panel was in 60 Hz mode. 120 Hz (8.33 ms budget) was **not** tested; do
-  not claim 120 fps for either renderer.
+- The panel was in 60 Hz mode for this 2026-11-27 pass. The 120 Hz re-run is
+  below; do not mix the two tables.
 - Card capture: `docs/evidence/day7/frame-times-device.png` (clip/Skia,
   59.9 FPS, avg 16.71 ms, max 17.07 ms).
+
+## Physical device — 120 Hz re-run (2026-11-28, Day 10 U-29)
+
+**Device:** same Xiaomi 2201116SI, SM6375, Android 13 / API 33, arm64-v8a,
+1080×2400, 440 dpi (2.750×). `dumpsys display` reports
+**`mActiveModeId=1`, `fps=120.00001`**; mode 2 is 60.000004 Hz. The panel was
+already in its 120 Hz mode, so no settings change was needed.
+
+**Artifact:** the installed Day 10 universal release APK,
+**203,624,632 bytes**, SHA-256
+`8be59299c1a2cb2e4fa0a8dc241242811f4f0a564f998e76f80936cdc32d59bc`
+(pulled from `/data/app/.../base.apk`). This is **not** the Day 7 arm64-only
+artifact; the renderer code and spike screen are the same, but do not compare
+sizes across the two runs.
+
+Each mode ran 20 s after a cold start; the last `M3E_SPIKE_UI` line is recorded.
+The 120 Hz frame budget is 8.33 ms.
+
+| Spike mode | Renderer | Frames | Avg (ms) | Max (ms) | FPS | Avg over 8.33 ms |
+|---|---|---:|---:|---:|---:|---:|
+| `cycle` — 35-shape morph cycle | SVG | 2160 | **8.47** | 16.78 | 108 | +1.7% |
+| `concurrent` — 10 morphs | SVG | 1080 | **16.79** | 41.90 | 54 | +101.6% |
+| `clip` — gradient clipped to morphing path | SVG | 2160 | **8.71** | 25.08 | 108 | +4.6% |
+| `cycle` — 35-shape morph cycle | Skia | 2220 | **8.35** | 8.67 | 111 | +0.2% |
+| `concurrent` — 10 morphs | Skia | 2220 | **8.36** | 25.05 | 111 | +0.4% |
+| `clip` — gradient clipped to morphing path | Skia | 2220 | **8.35** | 8.57 | 111 | +0.2% |
+
+**Reading**
+
+- At 120 Hz the two renderers separate cleanly. Skia holds ~111 fps in all three
+  modes (2220 frames / 20 s) with averages within 0.03 ms of the 8.33 ms budget.
+- SVG holds ~108 fps for a single morph and the clipped gradient, but **10
+  concurrent morphs stay at ~54 fps** (1080 frames / 20 s, 16.79 ms average,
+  41.90 ms max). This is the same ~51–54 fps ceiling measured at 60 Hz, so the
+  concurrent case is CPU/path-work bound, not vsync bound.
+- This **does not change ADR-002** on its own: SVG still wins on binary size,
+  build/install friction and RN-child clipping. It does mean the 120 fps claim
+  must be scoped: **SVG is enough for one morph and the clipped gradient at
+  120 Hz, not for ten concurrent morphs.** The Day 20 SVG profiling follow-up
+  (path-string cost, caching, translate-based wave) must show whether the
+  concurrent case can be recovered; otherwise a screen with many simultaneous
+  path animations needs Skia (optional peer) or fewer concurrent paths.
+- The active mode was verified with `dumpsys display`, not inferred from the
+  panel spec. Raw output: `docs/evidence/day10/device/u29-120hz.log`.
 
 ## Reproduce on the phone
 

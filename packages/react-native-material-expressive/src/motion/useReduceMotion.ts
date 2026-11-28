@@ -1,5 +1,6 @@
-import { useMemo, useSyncExternalStore } from 'react';
+import { useContext, useMemo, useSyncExternalStore } from 'react';
 
+import { ReduceMotionOverrideContext } from './ReduceMotionContext';
 import {
   getReduceMotionServerSnapshot,
   getReduceMotionSnapshot,
@@ -19,14 +20,16 @@ export type ReduceMotionState = ReduceMotionSnapshot;
  * animation instead of running one frame of full motion.
  */
 export function useReduceMotionState(override?: boolean): ReduceMotionState {
+  const providerOverride = useContext(ReduceMotionOverrideContext);
   const snapshot = useSyncExternalStore(
     subscribeReduceMotion,
     getReduceMotionSnapshot,
     getReduceMotionServerSnapshot,
   );
+  const effective = override ?? providerOverride;
   const forced = useMemo(
-    () => (override === undefined ? null : { enabled: override, ready: true }),
-    [override],
+    () => (effective === undefined ? null : { enabled: effective, ready: true }),
+    [effective],
   );
   return forced ?? snapshot;
 }

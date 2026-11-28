@@ -1,7 +1,7 @@
 import { PixelRatio, Text, View, type StyleProp, type ViewStyle } from 'react-native';
 
 import { useLayoutDirection } from '../layout';
-import { useM3Theme } from '../theme';
+import { useContentColor } from '../typography/ContentColor';
 import {
   MATERIAL_SYMBOLS_FONT_FAMILY,
   materialSymbolCodepoints,
@@ -14,7 +14,7 @@ export interface MaterialSymbolProps extends MaterialSymbolAxes {
   name: MaterialSymbolName;
   /** Square size in dp. Default 24. Does not scale with font scale. */
   size?: number;
-  /** Tint. Defaults to the theme `onSurface` role. */
+  /** Tint. Defaults to the nearest content colour (`onSurface` at the root). */
   color?: string;
   /**
    * Mirror directional glyphs (arrows, chevrons, back/forward) in RTL.
@@ -57,10 +57,10 @@ export function MaterialSymbol({
   testID,
   accessibilityLabel,
 }: MaterialSymbolProps) {
-  const theme = useM3Theme();
+  const contentColor = useContentColor();
   const { direction } = useLayoutDirection();
   const axes = resolveMaterialSymbolAxes({ fill, weight, grade, opticalSize });
-  const tint = color ?? theme.colorScheme.onSurface;
+  const tint = color ?? contentColor;
   // The font's ascent/descent are 1.1em/0.1em (upm 960, hhea 1056/-96).
   // Compose centres that 1.2em line box inside the 1em `lineHeight`, which puts
   // the baseline at 1.0em. RN aligns the baseline at `lineHeight - descent`

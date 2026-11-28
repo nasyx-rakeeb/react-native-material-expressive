@@ -31,6 +31,7 @@ export {
 } from './MotionScheme';
 export { useMotionScheme } from './useMotionScheme';
 export { useReduceMotion, useReduceMotionState, type ReduceMotionState } from './useReduceMotion';
+export { ReduceMotionOverrideContext, ReduceMotionOverrideProvider } from './ReduceMotionContext';
 export {
   useEffectsSpring,
   useSpatialSpring,

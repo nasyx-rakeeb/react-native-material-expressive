@@ -3,9 +3,11 @@ import { useEffect } from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import {
+  M3Provider,
   PACKAGE_NAME,
   getDynamicColorSchemes,
   isDynamicColorAvailable,
+  robotoFlexTypography,
 } from 'react-native-material-expressive';
 
 import SceneHarness, { useHarnessScene } from './src/harness/SceneHarness';
@@ -72,11 +74,13 @@ export default function App() {
 
   if (route.sceneId !== null) {
     return (
-      <SceneHarness
-        sceneId={route.sceneId}
-        textComp={route.textComp}
-        fontScaling={route.fontScaling}
-      />
+      <M3Provider typography={robotoFlexTypography({ variableFonts: true })}>
+        <SceneHarness
+          sceneId={route.sceneId}
+          textComp={route.textComp}
+          fontScaling={route.fontScaling}
+        />
+      </M3Provider>
     );
   }
 

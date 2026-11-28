@@ -3,12 +3,23 @@
  *
  * Each run directory must contain results.json and its captures. The run
  * directory name is used as the label and is expected to start with the
- * strategy (`none-...` or `c2-...`).
+ * strategy (`none-...` or `c2-...`) for the Day 5 matrix, or the profile
+ * (`420-1.0`) for the Day 10 Compose-converter matrix.
+ *
+ * Reports four pass counts per run:
+ *   - original:    AA-aware pixels <= 0.05% of the scene
+ *   - faithful:    AA <= 450 per 1,000 ink AND <= 3.0 per glyph per font px
+ *   - matched:     AA <= 15 per 1,000 ink AND <= 0.2 per glyph per font px
+ *   - compensated: AA <= 250 per 1,000 ink AND <= 1.5 per glyph per font px
+ *
+ * It also reports threshold-independent evidence: max channel delta, mean
+ * channel delta over differing pixels, deltas > 2 outside anti-aliased edges,
+ * and flat fills > 2.
  *
  * Usage:
  *   node tools/typography/analyze-profile-matrix.mjs \
- *     --root docs/evidence/day5/typography/profile-matrix/runs \
- *     --out docs/evidence/day5/typography/profile-matrix/summary.json
+ *     --root docs/evidence/day10/typography/runs \
+ *     --out docs/evidence/day10/typography/summary.json
  */
 
 import fs from 'node:fs';
@@ -37,6 +48,22 @@ const outPath = path.resolve(
   ROOT,
   arg('out', 'docs/evidence/day5/typography/profile-matrix/summary.json'),
 );
+
+// ADR-010 proposed budgets, expressed per scene. The original 0.05% image gate
+// is measured in scene pixels; the other three are ink/glyph-normalised so a
+// large display role and a small label role are judged on the same edge area.
+const THRESHOLDS = {
+  faithful: { aaPer1000Ink: 450, aaPerGlyphPerFontPx: 3.0 },
+  matched: { aaPer1000Ink: 15, aaPerGlyphPerFontPx: 0.2 },
+  compensated: { aaPer1000Ink: 250, aaPerGlyphPerFontPx: 1.5 },
+};
+
+function passesNormalised(scene, threshold) {
+  return (
+    scene.aaPer1000Ink <= threshold.aaPer1000Ink &&
+    scene.aaPerGlyphPerFontPx <= threshold.aaPerGlyphPerFontPx
+  );
+}
 
 function readScene(id) {
   return JSON.parse(fs.readFileSync(path.join(ROOT, 'tools/scenes', `${id}.json`), 'utf8'));
@@ -103,7 +130,7 @@ for (const label of runDirs) {
     const effectiveSp = composeFontScale(textLayer.sizeSp, Number(profile.fontScale ?? 1));
     const fontPx = effectiveSp * profile.densityScale;
     const budget = metrics.width * metrics.height * 0.0005;
-    scenes.push({
+    const entry = {
       id: sceneId,
       text: textLayer.text,
       glyphs,
@@ -117,6 +144,9 @@ for (const label of runDirs) {
       aaPercent: metrics.aaAwareDiffPercent,
       exactPixels: metrics.exactDiffPixels,
       maxChannelDelta: metrics.maxChannelDelta,
+      meanChannelDeltaOverDiffPixels: metrics.meanChannelDeltaOverDiffPixels ?? 0,
+      highDeltaOutsideAaPixels: metrics.highDeltaOutsideAaPixels ?? 0,
+      flatFillHighDeltaPixels: metrics.flatFillHighDeltaPixels ?? 0,
       budget,
       passesImageGate: metrics.aaAwareDiffPixels <= budget,
       overBudgetPixels: Math.max(0, metrics.aaAwareDiffPixels - budget),
@@ -124,7 +154,11 @@ for (const label of runDirs) {
       aaPer1000Ink: (metrics.aaAwareDiffPixels / ink) * 1000,
       aaPerGlyph: metrics.aaAwareDiffPixels / glyphs,
       aaPerGlyphPerFontPx: metrics.aaAwareDiffPixels / glyphs / fontPx,
-    });
+    };
+    entry.passesFaithful = passesNormalised(entry, THRESHOLDS.faithful);
+    entry.passesMatched = passesNormalised(entry, THRESHOLDS.matched);
+    entry.passesCompensated = passesNormalised(entry, THRESHOLDS.compensated);
+    scenes.push(entry);
   }
 
   const failing = scenes.filter((scene) => !scene.passesImageGate);
@@ -140,6 +174,14 @@ for (const label of runDirs) {
   const worstAaPerGlyphPerFontPx = scenes.reduce((worst, scene) =>
     scene.aaPerGlyphPerFontPx > worst.aaPerGlyphPerFontPx ? scene : worst,
   );
+  const worstMaxChannelDelta = scenes.reduce((worst, scene) =>
+    scene.maxChannelDelta > worst.maxChannelDelta ? scene : worst,
+  );
+  const worstMeanChannelDelta = scenes.reduce((worst, scene) =>
+    scene.meanChannelDeltaOverDiffPixels > worst.meanChannelDeltaOverDiffPixels ? scene : worst,
+  );
+  const failingIds = (predicate) =>
+    scenes.filter((scene) => !predicate(scene)).map((scene) => scene.id);
   runs.push({
     label,
     strategy: strategyOf(label),
@@ -164,6 +206,26 @@ for (const label of runDirs) {
       worstAaPerGlyphId: worstAaPerGlyph.id,
       worstAaPerGlyphPerFontPx: worstAaPerGlyphPerFontPx.aaPerGlyphPerFontPx,
       worstAaPerGlyphPerFontPxId: worstAaPerGlyphPerFontPx.id,
+      passesOriginalScenes: scenes.length - failing.length,
+      passesFaithfulScenes: scenes.length - failingIds((scene) => scene.passesFaithful).length,
+      passesMatchedScenes: scenes.length - failingIds((scene) => scene.passesMatched).length,
+      passesCompensatedScenes:
+        scenes.length - failingIds((scene) => scene.passesCompensated).length,
+      failsFaithfulIds: failingIds((scene) => scene.passesFaithful),
+      failsMatchedIds: failingIds((scene) => scene.passesMatched),
+      failsCompensatedIds: failingIds((scene) => scene.passesCompensated),
+      worstMaxChannelDelta: worstMaxChannelDelta.maxChannelDelta,
+      worstMaxChannelDeltaId: worstMaxChannelDelta.id,
+      worstMeanChannelDelta: worstMeanChannelDelta.meanChannelDeltaOverDiffPixels,
+      worstMeanChannelDeltaId: worstMeanChannelDelta.id,
+      totalHighDeltaOutsideAaPixels: scenes.reduce(
+        (sum, scene) => sum + scene.highDeltaOutsideAaPixels,
+        0,
+      ),
+      totalFlatFillHighDeltaPixels: scenes.reduce(
+        (sum, scene) => sum + scene.flatFillHighDeltaPixels,
+        0,
+      ),
     },
   });
 }
@@ -235,81 +297,125 @@ markdown.push(
 );
 markdown.push('## Runs', '');
 markdown.push(
-  '| Profile | Strategy | Scenes | Total AA px | Failing 0.05% | Worst AA % | Worst AA/1,000 ink | Worst AA/glyph | Worst AA/glyph/font px |',
+  '| Profile | Strategy | Scenes | Total AA px | 0.05% pass | Faithful pass | Matched pass | ' +
+    'Compensated pass | Worst AA % | Worst AA/1,000 ink | Worst AA/glyph/font px |',
 );
-markdown.push('|---|---|---:|---:|---:|---:|---:|---:|---:|');
+markdown.push('|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|');
+for (const run of sortedRuns) {
+  const { summary, profile } = run;
+  const pass = (count) => `${count}/${summary.scenes}`;
+  markdown.push(
+    `| ${profile.density}dpi/${profile.fontScale} | ${run.strategy} | ${summary.scenes} | ` +
+      `${summary.totalAaPixels} | ${pass(summary.passesOriginalScenes)} | ` +
+      `${pass(summary.passesFaithfulScenes)} | ${pass(summary.passesMatchedScenes)} | ` +
+      `${pass(summary.passesCompensatedScenes)} | ${f(summary.worstAaPercent, 4)}% | ` +
+      `${f(summary.worstAaPer1000Ink)} | ${f(summary.worstAaPerGlyphPerFontPx, 2)} |`,
+  );
+}
+markdown.push('');
+
+markdown.push('## Threshold-independent metrics', '');
+markdown.push(
+  '| Profile | Strategy | Max Δ | Role | Mean Δ over differing | Role | Δ>2 outside AA | Flat fills >2 |',
+);
+markdown.push('|---|---|---:|---|---:|---|---:|---:|');
 for (const run of sortedRuns) {
   const { summary, profile } = run;
   markdown.push(
-    `| ${profile.density}dpi/${profile.fontScale} | ${run.strategy} | ${summary.scenes} | ` +
-      `${summary.totalAaPixels} | ${summary.failingScenes} | ${f(summary.worstAaPercent, 4)}% | ` +
-      `${f(summary.worstAaPer1000Ink)} | ${f(summary.worstAaPerGlyph)} | ` +
-      `${f(summary.worstAaPerGlyphPerFontPx, 2)} |`,
+    `| ${profile.density}dpi/${profile.fontScale} | ${run.strategy} | ` +
+      `${summary.worstMaxChannelDelta} | ${summary.worstMaxChannelDeltaId} | ` +
+      `${f(summary.worstMeanChannelDelta, 2)} | ${summary.worstMeanChannelDeltaId} | ` +
+      `${summary.totalHighDeltaOutsideAaPixels} | ${summary.totalFlatFillHighDeltaPixels} |`,
   );
 }
 markdown.push('');
 
-markdown.push('## C2 versus token-exact', '');
+markdown.push('## Roles failing the faithful budget', '');
 markdown.push(
-  '| Profile | Improved | Regressed | Net AA px | C2 failures | Token-exact failures |',
+  `Faithful = AA <= ${THRESHOLDS.faithful.aaPer1000Ink} per 1,000 ink **and** <= ` +
+    `${THRESHOLDS.faithful.aaPerGlyphPerFontPx} per glyph per font px.`,
 );
-markdown.push('|---|---:|---:|---:|---:|---:|');
-for (const comparison of comparisons) {
-  const improved = comparison.scenes.filter((scene) => scene.delta < 0).length;
-  const regressed = comparison.scenes.filter((scene) => scene.delta > 0).length;
-  const net = comparison.scenes.reduce((sum, scene) => sum + scene.delta, 0);
-  const c2Run = runs.find(
-    (run) =>
-      `${run.profile.density}/${run.profile.fontScale}` === comparison.profile &&
-      run.strategy === 'c2',
-  );
-  const noneRun = runs.find(
-    (run) =>
-      `${run.profile.density}/${run.profile.fontScale}` === comparison.profile &&
-      run.strategy === 'none',
-  );
+markdown.push('');
+markdown.push('| Profile | Strategy | Role | AA/1,000 ink | AA/glyph/font px | AA px | Ink px |');
+markdown.push('|---|---|---|---:|---:|---:|---:|');
+const faithfulFailures = sortedRuns.flatMap((run) =>
+  run.scenes.filter((scene) => !scene.passesFaithful).map((scene) => ({ run, scene })),
+);
+for (const { run, scene } of faithfulFailures) {
   markdown.push(
-    `| ${comparison.profile} | ${improved} | ${regressed} | ${net} | ` +
-      `${c2Run?.summary.failingScenes ?? '—'} | ${noneRun?.summary.failingScenes ?? '—'} |`,
+    `| ${run.profile.density}dpi/${run.profile.fontScale} | ${run.strategy} | ${scene.id} | ` +
+      `${f(scene.aaPer1000Ink)} | ${f(scene.aaPerGlyphPerFontPx, 2)} | ` +
+      `${scene.aaPixels} | ${scene.ink} |`,
   );
+}
+if (faithfulFailures.length === 0) {
+  markdown.push('| — | — | none | — | — | — | — |');
 }
 markdown.push('');
 
-markdown.push('## Roles failing the original 0.05% image gate under C2', '');
-markdown.push('| Profile | Role | AA px | AA % | Budget px | Over px | Ratio |');
-markdown.push('|---|---|---:|---:|---:|---:|---:|');
-const c2Failures = sortedRuns
-  .filter((run) => run.strategy === 'c2')
-  .flatMap((run) =>
-    run.scenes.filter((scene) => !scene.passesImageGate).map((scene) => ({ run, scene })),
-  )
-  .sort(
-    (a, b) =>
-      b.run.profile.density - a.run.profile.density ||
-      Number(b.run.profile.fontScale) - Number(a.run.profile.fontScale) ||
-      b.scene.overBudgetRatio - a.scene.overBudgetRatio,
-  );
-for (const { run, scene } of c2Failures) {
+if (comparisons.length > 0) {
+  markdown.push('## C2 versus token-exact', '');
   markdown.push(
-    `| ${run.profile.density}dpi/${run.profile.fontScale} | ${scene.id} | ${scene.aaPixels} | ` +
-      `${f(scene.aaPercent, 4)}% | ${f(scene.budget)} | ${f(scene.overBudgetPixels)} | ` +
-      `${f(scene.overBudgetRatio, 2)}× |`,
+    '| Profile | Improved | Regressed | Net AA px | C2 failures | Token-exact failures |',
   );
-}
-markdown.push('');
+  markdown.push('|---|---:|---:|---:|---:|---:|');
+  for (const comparison of comparisons) {
+    const improved = comparison.scenes.filter((scene) => scene.delta < 0).length;
+    const regressed = comparison.scenes.filter((scene) => scene.delta > 0).length;
+    const net = comparison.scenes.reduce((sum, scene) => sum + scene.delta, 0);
+    const c2Run = runs.find(
+      (run) =>
+        `${run.profile.density}/${run.profile.fontScale}` === comparison.profile &&
+        run.strategy === 'c2',
+    );
+    const noneRun = runs.find(
+      (run) =>
+        `${run.profile.density}/${run.profile.fontScale}` === comparison.profile &&
+        run.strategy === 'none',
+    );
+    markdown.push(
+      `| ${comparison.profile} | ${improved} | ${regressed} | ${net} | ` +
+        `${c2Run?.summary.failingScenes ?? '—'} | ${noneRun?.summary.failingScenes ?? '—'} |`,
+    );
+  }
+  markdown.push('');
 
-markdown.push('## Token-exact maxima (threshold calibration)', '');
+  markdown.push('## Roles failing the original 0.05% image gate under C2', '');
+  markdown.push('| Profile | Role | AA px | AA % | Budget px | Over px | Ratio |');
+  markdown.push('|---|---|---:|---:|---:|---:|---:|');
+  const c2Failures = sortedRuns
+    .filter((run) => run.strategy === 'c2')
+    .flatMap((run) =>
+      run.scenes.filter((scene) => !scene.passesImageGate).map((scene) => ({ run, scene })),
+    )
+    .sort(
+      (a, b) =>
+        b.run.profile.density - a.run.profile.density ||
+        Number(b.run.profile.fontScale) - Number(a.run.profile.fontScale) ||
+        b.scene.overBudgetRatio - a.scene.overBudgetRatio,
+    );
+  for (const { run, scene } of c2Failures) {
+    markdown.push(
+      `| ${run.profile.density}dpi/${run.profile.fontScale} | ${scene.id} | ${scene.aaPixels} | ` +
+        `${f(scene.aaPercent, 4)}% | ${f(scene.budget)} | ${f(scene.overBudgetPixels)} | ` +
+        `${f(scene.overBudgetRatio, 2)}× |`,
+    );
+  }
+  markdown.push('');
+}
+
+markdown.push('## Maxima (threshold calibration)', '');
 markdown.push(
-  '| Profile | Max AA/1,000 ink | Role | Max AA/glyph | Role | Max AA/glyph/font px | Role |',
+  '| Profile | Strategy | Max AA/1,000 ink | Role | Max AA/glyph | Role | Max AA/glyph/font px | Role |',
 );
-markdown.push('|---|---:|---|---:|---|---:|---|');
-for (const run of sortedRuns.filter((item) => item.strategy === 'none')) {
+markdown.push('|---|---|---:|---|---:|---|---:|---|');
+for (const run of sortedRuns) {
   const { summary, profile } = run;
   markdown.push(
-    `| ${profile.density}dpi/${profile.fontScale} | ${f(summary.worstAaPer1000Ink)} | ` +
-      `${summary.worstAaPer1000InkId} | ${f(summary.worstAaPerGlyph)} | ` +
-      `${summary.worstAaPerGlyphId} | ${f(summary.worstAaPerGlyphPerFontPx, 2)} | ` +
-      `${summary.worstAaPerGlyphPerFontPxId} |`,
+    `| ${profile.density}dpi/${profile.fontScale} | ${run.strategy} | ` +
+      `${f(summary.worstAaPer1000Ink)} | ${summary.worstAaPer1000InkId} | ` +
+      `${f(summary.worstAaPerGlyph)} | ${summary.worstAaPerGlyphId} | ` +
+      `${f(summary.worstAaPerGlyphPerFontPx, 2)} | ${summary.worstAaPerGlyphPerFontPxId} |`,
   );
 }
 markdown.push('');
@@ -320,8 +426,11 @@ for (const run of runs) {
   const { summary, profile } = run;
   console.log(
     `${run.label}: ${profile.density}dpi/${profile.fontScale} ` +
-      `${summary.totalAaPixels} AA px, ${summary.failingScenes}/${summary.scenes} fail, ` +
-      `worst ${summary.worstAaPercent.toFixed(4)}%`,
+      `${summary.totalAaPixels} AA px, 0.05% ${summary.passesOriginalScenes}/${summary.scenes}, ` +
+      `faithful ${summary.passesFaithfulScenes}/${summary.scenes}, ` +
+      `matched ${summary.passesMatchedScenes}/${summary.scenes}, ` +
+      `compensated ${summary.passesCompensatedScenes}/${summary.scenes}, ` +
+      `worst ${summary.worstAaPercent.toFixed(4)}%, max Δ ${summary.worstMaxChannelDelta}`,
   );
 }
 for (const comparison of comparisons) {

@@ -1,34 +1,43 @@
-# Day 10 — Icon, Overlay/Portal, window size classes, RTL (foundation gate)
+# Day 10 — Provider, Text, Icon, Overlay/Portal, window size classes, RTL (foundation gate)
 
-Day 10 adds the four foundations the PLAYBOOK scheduled for the gate: the
-Material Symbols `Icon`, the shared `OverlayProvider`/`OverlayHost` stack with a
-declarative portal, pure window-size-class helpers, and RTL layout utilities.
-All four are implemented, unit/RNTL tested and exercised in the gallery on
-`emulator-5554`; the icon scene is pixel-diffed against Compose Material3 1.5.0.
-`Text` and `M3Provider` were **not** in the approved Day 10 scope and remain
-NOT DONE (see the gate report and `U-36`).
+Day 10 adds the foundations the PLAYBOOK scheduled for the gate: `M3Provider`
+(theme + reduce-motion + window size class + layout direction), `Text` (30
+roles, content colour, Compose non-linear font scaling), the Material Symbols
+`Icon`, the shared `OverlayProvider`/`OverlayHost` stack with a declarative
+portal, pure window-size-class helpers, and RTL layout utilities. All are
+implemented, unit/RNTL tested and exercised in the gallery on `emulator-5554`.
+The icon scene is pixel-diffed against Compose Material3 1.5.0 with all four
+variable axes; `Text` is measured across 30 roles at four density/font-scale
+profiles with the Compose `FontScaleConverter` active.
 
-- **Status:** work complete; Day 10 gate report posted, awaiting approval.
+- **Status:** extended scope complete; Day 10 close report posted, awaiting
+  approval. Day 10 is **not closed**: 17/22 foundation rows are Android-DONE,
+  the two text rows are `[~] T` pending the ADR-010 threshold decision, and
+  three token-only rows need a scope decision.
 - **Decisions:** ADR-021 (icon font subset + path icons), ADR-022 (single overlay
   stack), ADR-023 (pure window-size classes), ADR-024 (RTL helper boundary).
 - **Gate:** the existing PLAYBOOK §7 gate is unchanged (`pixelmatch` threshold
   0.1, `includeAA: false`, 0.05% AA-aware, core five scenes). ADR-020 is
   **proposed only**. The icon scene is an additional tracked category with no
-  new pass/fail threshold.
+  new pass/fail threshold. Text is reported against the ADR-010 proposed
+  ink/glyph budgets; those thresholds are not final and do not change the
+  PLAYBOOK gate.
 
 ## What shipped
 
 | Area | Files |
 |---|---|
+| Provider | `src/theme/M3Provider.tsx`, `src/layout/context.tsx`, `src/motion/ReduceMotionContext.tsx` |
+| Text | `src/typography/Text.tsx`, `ContentColor.tsx`, `fontScale.ts`, `useFontScale.ts` |
 | Material Symbols font | `assets/fonts/MaterialSymbolsOutlined.ttf` (90 glyphs, 116,368 B), `assets/icons/LICENSE`, `assets/icons/NOTICE` |
 | Icon | `src/icon/MaterialSymbol.tsx`, `variationSettings.ts`, `paths.ts`, `Icon.tsx`, generated `materialSymbols.ts` |
 | Overlay / Portal | `src/overlay/OverlayProvider.tsx`, `OverlayHost.tsx`, `FocusTrap.tsx`, `platform.ts`, `types.ts` |
 | Window size classes | `src/layout/windowSizeClass.ts`, `useWindowSizeClass.ts` |
 | RTL | `src/layout/rtl.ts`, `useLayoutDirection.ts`, `index.ts` |
-| Gallery | `apps/gallery/src/foundation/FoundationGallery.tsx`, `screen=foundation` route |
-| Scene | `tools/scenes/icon-symbols.json`, `icon` category in `tools/scenes/build.mjs` |
-| Compose reference | `apps/reference-compose/.../MainActivity.kt` icon layer + font asset |
-| Tests | 7 suites / **48 tests** under `src/icon/__tests__`, `src/layout/__tests__`, `src/overlay/__tests__` |
+| Gallery | `apps/gallery/src/foundation/FoundationGallery.tsx` (provider + all-role text sections), `screen=foundation` route |
+| Scene | `tools/scenes/icon-symbols.json`, `icon` category in `tools/scenes/build.mjs`; 30 `type-*` scenes |
+| Compose reference | `apps/reference-compose/.../MainActivity.kt` icon layer + font asset; text scenes at four profiles |
+| Tests | 11 suites / **93 tests** under `src/typography/__tests__`, `src/theme/__tests__`, `src/icon/__tests__`, `src/layout/__tests__`, `src/overlay/__tests__` |
 
 ## Icon
 
@@ -180,6 +189,39 @@ arrows swap sides and mirror, the row order flips, padding becomes
 because the preview is local; a full process RTL restart was not performed
 (`U-35`).
 
+## Text and Typography
+
+`Text` implements the 30 M3 roles (15 baseline + 15 emphasized, opt-in per
+ADR-006), content-colour inheritance through `Surface`/`ContentColorProvider`,
+RTL-aware `align="start"|"end"`, sp overrides, and three font-scale modes:
+`compose` (default), `linear` and `none`.
+
+The `compose` mode ports Compose UI 1.12.0's non-linear `FontScaleConverter`
+(`src/typography/fontScale.ts`) and applies it to `fontSize`, `letterSpacing`
+and `lineHeight`; `allowFontScaling` is disabled in that mode. The line-height
+rule matches the measured Compose behaviour: `<1.03` linear, `1.03–1.05` the
+global converter, `>1.05` preserve the `lineHeight / fontSize` multiplier.
+Unit tests compare every converter table entry.
+
+The converter is measured across 30 `type-*` scenes at four profiles:
+
+| Profile | Total AA px | 0.05% pass | Faithful pass | Worst AA / 1,000 ink | Worst AA / glyph / font px |
+|---|---:|---:|---:|---:|---:|
+| 420 dpi / 1.0 | 17,798 | 9/30 | 30/30 | 410.0 | 2.63 |
+| 420 dpi / 1.3 | 22,658 | 3/30 | 30/30 | 309.6 | 2.72 |
+| 320 dpi / 1.0 | 3,174 | 20/30 | 30/30 | 398.6 | 1.63 |
+| 320 dpi / 1.3 | 9,480 | 8/30 | 29/30 | 453.7 | 2.84 |
+
+The 1.3 profiles fall from 214,694 / 118,751 AA px (Day 5, linear scaling) to
+22,658 / 9,480 with the converter (−89.4% / −92.0%); 420/1.0 is unchanged at
+17,798. **119/120** role-profile combinations pass the ADR-010 faithful budget.
+The single miss is `type-label-medium-emphasized` at 320/1.3: 453.7 per 1,000
+ink against the 450 cap (0.8% over) while its per-glyph value 2.845 passes the
+3.0 cap. ADR-010's thresholds are still pending final approval, so the
+`Typography` and `Text` rows are `[~] T`, not Android-DONE. Full per-role table,
+threshold-independent metrics and reproduction commands:
+`docs/evidence/day10/typography/README.md`.
+
 ## Gallery
 
 `FoundationGallery.tsx` is reachable at `screen=foundation`. It renders:
@@ -189,20 +231,29 @@ because the preview is local; a full process RTL restart was not performed
 - the 12 path icons with names;
 - the live window size readout;
 - the RTL preview toggle;
+- the `M3Provider` demo: nested `reduceMotion` and `layoutDirection` controls
+  with the values read back through the public hooks;
+- the all-role `Text` grid: 15 baseline roles with an emphasized opt-in switch,
+  plus content-colour inheritance from a `Surface`;
 - the overlay stack with dialog, sheet, declarative portal and stacked demos;
 - logcat markers `overlay_open`, `overlay_stack`, `overlay_dismiss` for
   automated checks.
 
-`gallery/foundation-top.png` shows the icon and path-icon sections;
-`gallery/foundation-launch.log` shows the launch markers.
+`gallery/foundation-top.png` shows the header and icon sections;
+`gallery/provider-default.png` and `gallery/provider.png` show the nested
+provider in its default and `reduceMotion=on` / `layoutDirection=rtl` states;
+`gallery/text-roles.png` and `gallery/text-roles-emphasized.png` show the
+baseline and emphasized grids; `gallery/foundation-launch.log` shows the launch
+markers.
 
 ### Xiaomi install check
 
 The release APK was installed on the Xiaomi 2201116SI (Android 13 / API 33,
-1080×2400, 440 dpi) and launched. MIUI rejected `pm install` with
-`INSTALL_FAILED_USER_RESTRICTED`, so the APK was copied to
-`/sdcard/Download/m3egallery.apk` and installed from the phone. On-device
-evidence:
+1080×2400, 440 dpi) and launched. The first build needed the MIUI workaround
+(`INSTALL_FAILED_USER_RESTRICTED`, then a manual install from
+`/sdcard/Download/m3egallery.apk`); the extended build
+(203,638,852 B, SHA-256 `fefd29f7…3699f2dc`) installed directly with
+`adb install -r` at 15:00. On-device evidence:
 
 - `xiaomi/foundation.png` — capability detection reports "supported, API 33";
   all four axes and the 12 path icons render in dark theme.
@@ -213,14 +264,17 @@ evidence:
 
 MIUI denies `adb shell input` (`INJECT_EVENTS`), so back ordering, scrolling,
 keyboard avoidance and the RTL toggle could not be exercised on the phone; they
-are covered by RNTL and the emulator evidence above. See `xiaomi/README.md`.
+are covered by RNTL and the emulator evidence above. At the extended-build
+install the phone was asleep and MIUI denied wake injection, so no new phone
+screenshot was taken; `dumpsys window` showed the gallery activity focused and
+logcat had no crash. See `xiaomi/README.md`.
 
 ## Tests and gates (final run, 2026-11-28)
 
 - `format:check` **PASS**
 - `lint` **PASS** (3/3 packages + tools + motion-kind)
 - `typecheck` **PASS** (4/4)
-- `test` **PASS** — 27 suites / **201 tests**; Day 10 adds 7 suites / 48 tests
+- `test` **PASS** — 31 suites / **237 tests**; Day 10 adds 11 suites / 93 tests
 - `scenes:check` **PASS** — 43 scenes (core 5 / text 32 / interaction 5 / icon 1)
 - Icon diff **PASS** — exact 0, AA-aware 0, max Δ 0, deterministic across 3 boots
 - Core five-scene gate **unchanged** and still passing from Day 9
@@ -277,10 +331,11 @@ adb shell wm density reset # 411×731 dp → compact / medium
 
 ## Limitations
 
-- **Text is not shipped.** `Text` and `M3Provider` were outside the approved
-  Day 10 scope; both foundation rows remain NOT DONE. `Text` blocks Day 11
-  labels (`U-36`). ADR-010 §4's non-linear `FontScaleConverter` is still
-  unimplemented.
+- **Text thresholds are not final.** `Text` and `M3Provider` are implemented,
+  tested and measured (119/120 faithful), but ADR-010's numeric thresholds are
+  pending Nasyx's decision; the `Typography` and `Text` rows are `[~] T`, not
+  Android-DONE. The converter itself is implemented and is the default
+  `fontScaleMode`.
 - **iOS** for Icon/overlay/window/RTL is unverified; the boxes stay open for
   Days 41–42 (`U-34`).
 - **Accessibility** is unit-level. No TalkBack traversal, hardware-keyboard Tab

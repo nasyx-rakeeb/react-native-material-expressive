@@ -213,8 +213,8 @@ Every accepted decision has a date and evidence. Day 0 decisions are research-on
 
 ## ADR-010 — Text-category metric: ink-normalized AA plus a documented baseline rule
 
-- **Date:** 2026-11-26; **revised 2026-11-27** after the profile matrix.
-- **Status:** **Proposed — do not apply until Nasyx approves.** No gate, threshold, scene, or token is changed by this ADR.
+- **Date:** 2026-11-26; **revised 2026-11-27** after the profile matrix; **measured 2026-11-28** with the converter.
+- **Status:** **Conditionally approved (2026-11-28).** Nasyx approved the text category and the Compose non-linear `FontScaleConverter`, and rejected C2/C4 for shipping. The numeric thresholds remain **proposed** until the Day 10 converter matrix is reviewed; no gate, threshold, scene, or token is changed by this ADR yet.
 - **Context:**
   - The PLAYBOOK §7 gate is `≤0.05%` AA-aware differing pixels of the **whole image** plus **zero** differing content-bbox edges. That is appropriate for solid/rect/shadow scenes, where the content fills a large part of the image.
   - For text it is the wrong denominator. On the 30 one-line type scenes (`840×525 = 441,000 px`, budget `220.5 px`), the faithful run has **17,798 AA px** — **10.64% of the text ink** but only **0.040% of the image**. The 0.05% image budget is smaller than the AA difference of a single 14sp label (`labelLarge` alone is 397 AA px), so any Day 11 component with a text label would fail even when its geometry is exact.
@@ -233,7 +233,7 @@ Every accepted decision has a date and evidence. Day 0 decisions are research-on
      - Text layout box: **height Δ = 0 px**; **width Δ ≤ 5 px faithful / ≤ 1 px matched**. Measured: faithful max **4.57 px** (24/30 > 1 px, 18/30 > 2 px, 0/30 > 5 px); matched max **1.97 px** (17/30 > 1 px, 0/30 > 2 px); height max **0.00001 px**.
      - Ink bbox: vertical edges **±1 px** (the documented baseline rule; cause and arithmetic in U-25.2). Horizontal edges are reported and bounded by the layout-width rule above. A strict ±0 px ink bbox is not achievable in faithful mode without per-role compensation; if Nasyx requires it, the only path is the C4-style lookup table, which this ADR does **not** recommend.
   3. **AA budget, normalized by text ink and by glyph × font size.** `AA_px` is the AA-aware differing pixel count inside the union of text ink (pixels that are not exactly the scene background). The budget is the **tighter** of an ink ratio and a scale-invariant per-glyph ratio:
-     - **Faithful (shipped default):** `AA_px ≤ 450 per 1,000 ink px` **and** `AA_px ≤ 3.0 per glyph per font px` (`AA_px ÷ glyphs ÷ fontPx`). Measured maxima across the 420/1.0 and 320/1.0 token-exact runs: **410 per 1,000** (`labelMediumEmphasized`) and **2.63 per glyph per font px** (`labelMediumEmphasized`). The flat `≤250 per glyph` cap in the 2026-11-26 draft is **withdrawn**: `displayLarge` has **343.1 AA/glyph** at 420/1.0 while its ink ratio is only 12.79%, so a flat cap fails it even though its normalized residual is 2.29. The `glyph × font px` denominator is invariant across density and font scale.
+     - **Faithful (proposed default):** `AA_px ≤ 450 per 1,000 ink px` **and** `AA_px ≤ 3.0 per glyph per font px` (`AA_px ÷ glyphs ÷ fontPx`). Measured maxima across the 420/1.0 and 320/1.0 token-exact runs: **410 per 1,000** (`labelMediumEmphasized`) and **2.63 per glyph per font px** (`labelMediumEmphasized`). The flat `≤250 per glyph` cap in the 2026-11-26 draft is **withdrawn**: `displayLarge` has **343.1 AA/glyph** at 420/1.0 while its ink ratio is only 12.79%, so a flat cap fails it even though its normalized residual is 2.29. The `glyph × font px` denominator is invariant across density and font scale.
      - **Compensated (only if a generic compensation layer is approved):** `AA_px ≤ 250 per 1,000 ink px` **and** `AA_px ≤ 1.5 per glyph per font px`. C2's fitted-profile run at 420/1.0 is **2,043 AA px**, maxima **243.3 per 1,000** and **1.22 per glyph per font px**, so it would meet this tier at that one profile. It does not meet it at 320/1.0 or 420/1.3 (§ profile matrix below), which is why C2 itself is rejected for shipping.
      - **Matched (diagnostic parity reference):** `AA_px ≤ 15 per 1,000 ink px` **and** `AA_px ≤ 0.2 per glyph per font px`. Measured maxima: **12.7 per 1,000** (`headlineSmall`, 1.27%) and **13.1 per glyph**; the per-font-px form is well under 0.2. This tier is a diagnostic reference, not a shipping claim.
   4. **Generic font-scale emulation is the shipping path.** Compose UI 1.12.0 applies its non-linear `FontScaleConverter` for **fontScale ≥ 1.03**; RN 0.88.1 `allowFontScaling` is linear. At 1.3, Compose renders `bodyLarge` at 20.2sp and `displayLarge` at 57sp, while RN renders 20.8sp and 74.1sp. This is a generic cross-stack mismatch, not a C2 width error. The library must map `fontSize`, `lineHeight`, and `letterSpacing` through the Compose table and set `allowFontScaling={false}` before claiming 1.3 parity. The converter is generic across roles, strings, densities, and scales; it is a Day 10 prerequisite (the Text foundation), not a text-threshold exemption.
@@ -252,7 +252,38 @@ Every accepted decision has a date and evidence. Day 0 decisions are research-on
 | 320dpi / 1.3 | token-exact | 118,751 | 24/30 | 1,482.5 | 23.58 |
 | 320dpi / 1.3 | C2 | 117,608 | 27/30 | 1,446.3 | 23.05 |
 
-  The 1.3 rows are dominated by the Compose-vs-RN font-scale mismatch (§4); they are **not** evidence that C2 can compensate for it. C2 versus token-exact: 420/1.0 **21 improved / 0 regressed / −15,755 px**; 320/1.0 **3 / 18 / +6,157 px**; 420/1.3 **10 / 11 / −1,337 px**; 320/1.3 **11 / 10 / −1,143 px** (image-gate failures 24 → 27, so the total-pixel reduction does not make it safer). The C2 failure at the original image gate at 420/1.0 is `type-body-small` **308 px / 0.0698%** (budget 220.5 px; over 87.5 px, **1.40×**). At 320/1.0 C2's worst is `type-display-large` **2,353 px / 0.9191%** (budget 128 px; over 2,225 px, **18.38×**) — a regression, not a residual. Evidence: `docs/evidence/day5/typography/profile-matrix/`.
+  This table predates the converter: the 1.3 rows are dominated by the Compose-vs-RN font-scale mismatch (§4); they are **not** evidence that C2 can compensate for it. The post-converter measurement is the Day 10 result below. C2 versus token-exact: 420/1.0 **21 improved / 0 regressed / −15,755 px**; 320/1.0 **3 / 18 / +6,157 px**; 420/1.3 **10 / 11 / −1,337 px**; 320/1.3 **11 / 10 / −1,143 px** (image-gate failures 24 → 27, so the total-pixel reduction does not make it safer). The C2 failure at the original image gate at 420/1.0 is `type-body-small` **308 px / 0.0698%** (budget 220.5 px; over 87.5 px, **1.40×**). At 320/1.0 C2's worst is `type-display-large` **2,353 px / 0.9191%** (budget 128 px; over 2,225 px, **18.38×**) — a regression, not a residual. Evidence: `docs/evidence/day5/typography/profile-matrix/`.
+- **Day 10 converter result (2026-11-28; 30 `type-*` scenes × 4 profiles, one capture per scene):**
+  `Text` now maps `fontSize`, `lineHeight` and `letterSpacing` through the Compose UI 1.12.0
+  `FontScaleConverter` and sets `allowFontScaling={false}`; the 1.3 profiles therefore no longer
+  carry the linear-scale mismatch that dominated the 2026-11-27 matrix.
+
+| Profile | Strategy | Total AA px | 0.05% pass | Faithful pass | Matched pass | Compensated pass | Worst AA / 1,000 ink | Worst AA / glyph / font px |
+|---|---|---:|---:|---:|---:|---:|---:|---:|
+| 420dpi / 1.0 | converter | 17,798 | 9/30 | **30/30** | 8/30 | 18/30 | 410.0 | 2.63 |
+| 420dpi / 1.3 | converter | 22,658 | 3/30 | **30/30** | 2/30 | 18/30 | 309.6 | 2.72 |
+| 320dpi / 1.0 | converter | 3,174 | 20/30 | **30/30** | 13/30 | 29/30 | 398.6 | 1.63 |
+| 320dpi / 1.3 | converter | 9,480 | 8/30 | **29/30** | 8/30 | 25/30 | 453.7 | 2.84 |
+
+  The converter removes the 1.3 blow-up: 420/1.3 falls from **214,694** to **22,658** AA px
+  (**−89.4%**) and 320/1.3 from **118,751** to **9,480** (**−92.0%**). At 420/1.0 the faithful
+  count is unchanged at 17,798, so the converter does not regress the token-exact profile.
+
+  **One role misses the faithful ink cap.** `type-label-medium-emphasized` at 320/1.3 is
+  **710 AA px / 1,565 ink = 453.7 per 1,000** (cap 450; **0.8% over**) while its per-glyph value is
+  **2.845** (cap 3.0, passing). The two caps disagree because the sample is only 8 glyphs at
+  12sp×1.3; the ink denominator is harsh for short strings, and the scale-invariant per-glyph
+  denominator is the one that tracks rasterization error. All other 119 role-profile combinations
+  pass both conditions.
+
+  **Recommendation:** keep the 450 cap and record this single combination in `D-001`, rather than
+  loosening the gate to 500 for one marginal case. The alternative — accept 500 per 1,000 — is a
+  threshold decision for Nasyx, not a code change. Threshold-independent metrics are in
+  `docs/evidence/day10/typography/summary.md`: max channel Δ is **226** in all four profiles (glyph
+  edge pixels), and the non-zero Δ > 2 / flat-fill counts are glyph interiors where the stroke
+  rasterizes at a different subpixel offset — the known D-001 advance difference, not a colour
+  error. Evidence: `docs/evidence/day10/typography/`.
+
 - **Measured roles (all 30, 8-glyph `"Material"` sample; 2026-11-26 faithful/matched table, retained as historical context):**
 
 | Role | sp / line / weight | Faithful AA px | Faithful AA / ink | Faithful AA / glyph | Matched AA px | Matched AA / ink | Matched AA / glyph |

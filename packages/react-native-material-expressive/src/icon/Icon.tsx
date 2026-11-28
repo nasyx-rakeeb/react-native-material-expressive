@@ -1,14 +1,14 @@
 import { View, type StyleProp, type ViewStyle } from 'react-native';
 
 import { useLayoutDirection } from '../layout';
-import { useM3Theme } from '../theme';
+import { useContentColor } from '../typography/ContentColor';
 import { PathIconCanvas } from '../shapes/PathCanvas';
 import { INTERNAL_ICON_PATHS, type InternalIconName } from './paths';
 
 interface IconBaseProps {
   /** Square size in dp. Default 24. Does not scale with font scale. */
   size?: number;
-  /** Tint. Defaults to the theme `onSurface` role. */
+  /** Tint. Defaults to the nearest content colour (`onSurface` at the root). */
   color?: string;
   /**
    * Mirror directional glyphs (arrows, chevrons, back/forward) in RTL.
@@ -60,9 +60,9 @@ export function Icon({
   testID,
   accessibilityLabel,
 }: IconProps) {
-  const theme = useM3Theme();
+  const contentColor = useContentColor();
   const { direction } = useLayoutDirection();
-  const tint = color ?? theme.colorScheme.onSurface;
+  const tint = color ?? contentColor;
   const paths = path === undefined ? INTERNAL_ICON_PATHS[name as InternalIconName] : path;
   const pathList = typeof paths === 'string' ? [paths] : paths;
   const mirrorStyle =

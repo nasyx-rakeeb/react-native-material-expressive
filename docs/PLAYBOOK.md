@@ -13,7 +13,7 @@ This conversation will be long and your context WILL be compacted. This file and
 1. **Copy this file into the repo** as `docs/PLAYBOOK.md` on Day 1. Never edit §1 (Core Rules) or §10 (Day plan) except to tick progress or when Nasyx approves a plan change; log any approved change in `docs/DECISIONS.md`.
 2. **Maintain these files in the repo, always up to date:**
    - `docs/progress/PROGRESS.md` — append-only log. One entry per work session: `Day N | date | what was done | evidence (commit hash, screenshot-diff report path) | next step`.
-   - `docs/COMPONENT_MATRIX.md` — one row per component, columns: `spec extracted | implemented | android diff pass | ios checked | a11y | docs | gallery | DONE`. A cell is only ticked with evidence.
+   - `docs/COMPONENT_MATRIX.md` — one row per component, columns: `spec extracted | implemented | android diff pass | motion | ios checked | a11y | tests | docs | gallery | Android-DONE | Release-DONE`. A cell is only ticked with evidence.
    - `docs/DECISIONS.md` — ADR log (numbered). Every architectural choice, with the reason and the alternatives rejected.
    - `docs/KNOWN_DEVIATIONS.md` — any place we intentionally or unavoidably differ from the Compose reference, with a screenshot and a reason. Empty is the goal.
    - `docs/UNVERIFIED.md` — every spec value or claim you could not source. These block "DONE".
@@ -232,19 +232,28 @@ Everything below is **in scope for 1.0**. Names are indicative; the Compose publ
 
 **Integrations:** React Navigation adapters (bottom tabs, native stack header, drawer), Expo Router example, optional Paper-theme bridge.
 
-### 8.1 Per-component Definition of Done (all boxes, with evidence)
+### 8.1 Two-level Definition of Done (all boxes, with evidence)
+
+**Android-DONE** is the Android phase-gate level. Days 10, 24 and 37 check this level.
+
 - [ ] Spec JSON extracted + Compose implementation read; open questions logged in `UNVERIFIED.md` (must be empty to finish).
 - [ ] All variants/sizes/states implemented from tokens (no hardcoded values).
-- [ ] Android pixel-diff pass for the full scene matrix (§7) — report linked in `COMPONENT_MATRIX.md`.
+- [ ] Android pixel-diff pass for the full scene matrix (§7) — report linked in `COMPONENT_MATRIX.md`. Behavioural-only surfaces (overlay ordering, window classes, RTL helpers) use the approved behavioural evidence: Jest/RNTL tests plus a recorded gallery run.
 - [ ] Motion verified (numeric + frame-sampled where applicable).
-- [ ] iOS checked (screenshots + behavior), shadows/fonts/safe areas verified.
-- [ ] Accessibility: roles/states/labels/hints, 48dp targets, focus ring + keyboard/D-pad, screen-reader traversal order, font scale 200% no clipping, reduce-motion fallback, RTL, high-contrast sanity.
 - [ ] Types: strict, documented props (TSDoc), no `any`, exported.
 - [ ] Unit tests (logic, state machines) + render tests (RNTL) + a11y tests; coverage ≥ 90% for logic files.
 - [ ] Gallery page with every variant/state + playground controls.
 - [ ] Docs page (usage, props table auto-generated, a11y notes, differences from Paper).
 - [ ] Perf check: no dropped frames in the gallery stress scene on the reference mid-range device (§11).
 - [ ] No new `KNOWN_DEVIATIONS.md` entry without approval.
+
+**Release-DONE** is the release level. It requires Android-DONE plus:
+
+- [ ] iOS checked (screenshots + behavior), shadows/fonts/safe areas verified.
+- [ ] Accessibility: roles/states/labels/hints, 48dp targets, focus ring + keyboard/D-pad, screen-reader traversal order, font scale 200% no clipping, reduce-motion fallback, RTL, high-contrast sanity.
+- [ ] Cross-platform compatibility recorded (Android API 24+, iOS minimum, RN version matrix).
+
+Phase gates (Days 10, 24, 37) check **Android-DONE**. Release Gate #2 (Completeness) requires **Release-DONE** for every row.
 
 ---
 
@@ -308,7 +317,7 @@ label, release note, and report follows these rules:
 
 **Day 9 — Interaction primitives.** `Interactive` primitive (state machine: enabled/disabled, hovered, focused, pressed, dragged, long-press), state-layer opacities, ripple + inset focus ring matching `material3-ripple`, 48dp hit targets, elevation levels + tonal surfaces, Android elevation vs iOS shadow emulation, haptics adapter. **Exit:** state-layer + focus-ring + elevation scenes diff-pass on Android; iOS shadow screenshots reviewed.
 
-**Day 10 — Provider, Surface, Text, Icon, layout, overlay. Foundation gate.** `M3Provider`, hooks, `Surface`, `Text`, `Icon` (Material Symbols axes + internal path icons), `OverlayHost/Portal` (stacking, back/Escape, focus trap/restore, insets, keyboard), window size classes, RTL utilities. **Exit (GATE):** every foundation item has docs + tests + diff evidence; `COMPONENT_MATRIX.md` foundations all DONE; Nasyx gets a progress summary.
+**Day 10 — Provider, Surface, Text, Icon, layout, overlay. Foundation gate.** `M3Provider`, hooks, `Surface`, `Text`, `Icon` (Material Symbols axes + internal path icons), `OverlayHost/Portal` (stacking, back/Escape, focus trap/restore, insets, keyboard), window size classes, RTL utilities. **Exit (GATE):** every foundation item has docs + tests + diff evidence; `COMPONENT_MATRIX.md` foundations all **Android-DONE**; Nasyx gets a progress summary.
 
 ### PHASE B — ACTIONS, SELECTION, INPUT (Days 11–24)
 
@@ -325,7 +334,7 @@ label, release note, and report follows these rules:
 **Day 21 — TextField.** Filled/outlined, animated label, supporting/counter/prefix/suffix, leading/trailing icons, error, disabled, multiline, secure; IME/keyboard; RTL; a11y labelling. **Exit:** DoD.
 **Day 22 — Search.** SearchBar, SearchView (expand/collapse transitions), search app bar; suggestions list integration. **Exit:** DoD.
 **Day 23 — DatePicker.** Modal, docked, input, range; calendar layout/animation; locale/first-day-of-week; a11y. **Exit:** DoD.
-**Day 24 — TimePicker. Phase B gate.** Dial, input, expressive scroll variant, 12/24h. **Exit (GATE):** Phase B components all DONE per §8.1; Android diff dashboard published; summary to Nasyx.
+**Day 24 — TimePicker. Phase B gate.** Dial, input, expressive scroll variant, 12/24h. **Exit (GATE):** Phase B components all **Android-DONE** per §8.1; Android diff dashboard published; summary to Nasyx.
 
 ### PHASE C — CONTAINMENT, NAVIGATION, FEEDBACK (Days 25–37)
 
@@ -341,7 +350,7 @@ label, release note, and report follows these rules:
 **Day 34 — NavigationRail & Drawer.** Collapsed/expanded/modal rail; standard/modal drawer; item states; adaptive behavior. **Exit:** DoD.
 **Day 35 — App bars.** Small, center-aligned, medium-flexible, large-flexible, search; scroll behaviors (pinned, enterAlways, exitUntilCollapsed), bottom app bar. **Exit:** DoD.
 **Day 36 — Toolbars.** Docked, floating horizontal/vertical, with FAB, overflow, expand/collapse on scroll. **Exit:** DoD.
-**Day 37 — Scaffolds & adaptive layout. Phase C gate.** Scaffold, NavigationSuiteScaffold, list-detail, supporting pane, edge-to-edge insets, window-size-class switching. **Exit (GATE):** all Phase C components DONE; adaptive demo works on phone, tablet emulator, foldable emulator.
+**Day 37 — Scaffolds & adaptive layout. Phase C gate.** Scaffold, NavigationSuiteScaffold, list-detail, supporting pane, edge-to-edge insets, window-size-class switching. **Exit (GATE):** all Phase C components **Android-DONE**; adaptive demo works on phone, tablet emulator, foldable emulator.
 
 ### PHASE D — PARITY, INTEGRATION, PLATFORMS, DOCS (Days 38–50)
 
@@ -377,7 +386,7 @@ label, release note, and report follows these rules:
 ## 11. RELEASE GATES (all must be true on the release commit)
 
 1. **Fidelity:** 100% of Compose-backed scenes pass the Android diff gate (§7); 100% of spec-verified scenes pass their measured m3.material.io spec assertions and have a frozen self-regression baseline; `KNOWN_DEVIATIONS.md` empty or Nasyx-signed.
-2. **Completeness:** every row of `COMPONENT_MATRIX.md` is DONE; every Paper v6 component has an equivalent or documented omission.
+2. **Completeness:** every row of `COMPONENT_MATRIX.md` is **Release-DONE**; every Paper v6 component has an equivalent or documented omission.
 3. **Accessibility:** `A11Y_REPORT.md` zero P0/P1; keyboard + screen reader + 200% font + reduce-motion + RTL verified.
 4. **Performance (targets; adjust only via ADR with measured evidence):** gallery stress scenes hold 60fps (120fps on capable devices) on the reference mid-range Android; no JS-thread animation work; button press → visual response within 1 frame; bundle cost per-component tree-shaken and published in docs.
 5. **Quality:** strict TS, lint clean, test coverage ≥90% on logic, API snapshot committed, CI green including emulator diffs.
@@ -410,9 +419,9 @@ Compose spring: `stiffness k`, `dampingRatio ζ`, mass fixed at 1. Reanimated ph
 
 ### B. Template: `COMPONENT_MATRIX.md`
 ```
-| Component | spec | impl | android diff | motion | ios | a11y | tests | docs | gallery | DONE |
-|-----------|------|------|--------------|--------|-----|------|-------|------|---------|------|
-| Button    | [ ]  | [ ]  | [ ] report#  | [ ]    | [ ] | [ ]  | [ ]   | [ ]  | [ ]     | [ ]  |
+| Component | spec | impl | android diff | motion | ios | a11y | tests | docs | gallery | Android-DONE | Release-DONE |
+|-----------|------|------|--------------|--------|-----|------|-------|------|---------|--------------|--------------|
+| Button    | [ ]  | [ ]  | [ ] report#  | [ ]    | [ ] | [ ]  | [ ]   | [ ]  | [ ]     | [ ]          | [ ]          |
 ```
 
 ### C. Template: `PROGRESS.md` entry

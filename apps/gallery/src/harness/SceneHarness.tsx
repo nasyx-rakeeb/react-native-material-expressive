@@ -4,7 +4,7 @@ import {
   PixelRatio,
   Pressable,
   StyleSheet,
-  Text,
+  Text as RNText,
   View,
   type TextStyle,
 } from 'react-native';
@@ -16,6 +16,8 @@ import {
   ROBOTO_FLEX_NATURAL_LINE_HEIGHT_RATIO,
   StateLayer,
   Surface,
+  Text,
+  type M3BaselineRole,
   type MaterialSymbolName,
 } from 'react-native-material-expressive';
 
@@ -151,14 +153,29 @@ function RectView({ layer }: { layer: RectLayer }) {
   );
 }
 
+function typeRole(sceneId: string): { variant: M3BaselineRole; emphasized: boolean } | null {
+  if (!sceneId.startsWith('type-')) {
+    return null;
+  }
+  const parts = sceneId.slice('type-'.length).split('-');
+  const emphasized = parts[parts.length - 1] === 'emphasized';
+  const base = emphasized ? parts.slice(0, -1) : parts;
+  const variant = base
+    .map((part, index) => (index === 0 ? part : part.charAt(0).toUpperCase() + part.slice(1)))
+    .join('') as M3BaselineRole;
+  return { variant, emphasized };
+}
+
 function TextView({
   layer,
   override,
   fontScaling,
+  role,
 }: {
   layer: TextLayer;
   override?: TextCompOverride;
   fontScaling: boolean;
+  role: { variant: M3BaselineRole; emphasized: boolean } | null;
 }) {
   const sizeSp = override?.sizeSp ?? layer.sizeSp;
   const letterSpacingSp = override?.letterSpacingSp ?? layer.letterSpacingSp;
@@ -167,23 +184,29 @@ function TextView({
     position: 'absolute',
     left: layer.x,
     top: layer.y,
-    color: layer.color,
-    fontSize: sizeSp,
-    letterSpacing: letterSpacingSp,
-    fontFamily: FONT_FAMILY,
-    fontVariationSettings: `'wght' ${layer.weight}`,
-    includeFontPadding: false,
-    textAlign: 'left',
-    ...(lineHeightSp !== undefined
+    ...(role === null
       ? {
-          lineHeight: Math.max(lineHeightSp, sizeSp * LINE_HEIGHT_RATIO),
+          fontFamily: FONT_FAMILY,
+          fontVariationSettings: `'wght' ${layer.weight}`,
         }
       : null),
     ...(layer.widthDp !== undefined ? { width: layer.widthDp } : null),
   };
   return (
     <Text
-      allowFontScaling={fontScaling}
+      align="left"
+      color={layer.color}
+      emphasized={role?.emphasized}
+      fontScaleMode={fontScaling ? 'linear' : 'compose'}
+      fontSize={role === null ? sizeSp : undefined}
+      letterSpacing={role === null ? letterSpacingSp : undefined}
+      lineHeight={
+        role === null
+          ? lineHeightSp !== undefined
+            ? Math.max(lineHeightSp, sizeSp * LINE_HEIGHT_RATIO)
+            : undefined
+          : undefined
+      }
       onTextLayout={(event) => {
         const lines = event.nativeEvent.lines;
         const width = lines.length ? Math.max(...lines.map((line) => line.width)) : -1;
@@ -194,6 +217,7 @@ function TextView({
       }}
       style={style}
       testID={`scene-text-${layer.text}`}
+      variant={role?.variant}
     >
       {layer.text}
     </Text>
@@ -271,7 +295,7 @@ function IconView({ layer }: { layer: IconLayer }) {
 
 function ProbeText({ width, onWidth }: { width: number; onWidth: (value: number) => void }) {
   return (
-    <Text
+    <RNText
       allowFontScaling={false}
       numberOfLines={1}
       onLayout={(event) => onWidth(event.nativeEvent.layout.width)}
@@ -286,7 +310,7 @@ function ProbeText({ width, onWidth }: { width: number; onWidth: (value: number)
       }}
     >
       {PROBE_TEXT}
-    </Text>
+    </RNText>
   );
 }
 
@@ -352,6 +376,7 @@ function SceneBody({
               layer={layer}
               override={override}
               fontScaling={fontScaling}
+              role={typeRole(scene.id)}
             />
           );
         }
@@ -419,7 +444,7 @@ export default function SceneHarness({
         onPress={() => setRenderKey((value) => value + 1)}
         style={styles.button}
       >
-        <Text style={styles.buttonText}>Rerender</Text>
+        <RNText style={styles.buttonText}>Rerender</RNText>
       </Pressable>
     </View>
   );

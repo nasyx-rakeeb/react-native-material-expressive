@@ -15,19 +15,27 @@ import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context';
 import {
   Icon,
+  M3Provider,
+  M3_BASELINE_ROLES,
   MaterialSymbol,
   M3ThemeProvider,
   OverlayProvider,
   Portal,
   Surface,
+  Text as M3Text,
   getVariableFontSupport,
   mirrorIconTransform,
   resolveRowDirection,
   resolveStartEnd,
   resolveTextAlign,
+  useM3ContentColor,
+  useM3LayoutDirection,
+  useM3ReduceMotion,
   useM3Theme,
   useOverlay,
+  useWindowSize,
   useWindowSizeClass,
+  type LayoutDirection,
   type MaterialSymbolAxes,
   type MaterialSymbolName,
 } from 'react-native-material-expressive';
@@ -179,12 +187,13 @@ function FoundationContent({ topInset }: { topInset: number }) {
         DAY 10 · FOUNDATION GATE
       </Text>
       <Text style={[styles.title, { color: theme.colorScheme.onSurface }]}>
-        Icon, overlay, window and RTL
+        Provider, Text, icon, overlay, window and RTL
       </Text>
       <Text style={[styles.body, { color: theme.colorScheme.onSurfaceVariant }]}>
-        The four foundations added for Day 10. Every control below is real: the overlays share one
-        stack, the size classes recompute with the window, and the RTL preview uses the exported
-        helpers rather than a second copy of the logic.
+        The foundations added for Day 10. Every control below is real: one provider composes the
+        theme, motion and window contexts; the overlays share one stack; the size classes recompute
+        with the window; and the RTL preview uses the exported helpers rather than a second copy of
+        the logic.
       </Text>
 
       <Section title="Material Symbols axes" theme={theme}>
@@ -284,6 +293,24 @@ function FoundationContent({ topInset }: { topInset: number }) {
         </View>
       </Section>
 
+      <Section title="Provider" theme={theme}>
+        <Text style={[styles.note, { color: theme.colorScheme.onSurfaceVariant }]}>
+          One `M3Provider` composes the theme, reduce-motion override, window size class and layout
+          direction. The controls below update a nested provider; the values are read through the
+          public hooks.
+        </Text>
+        <ProviderDemo />
+      </Section>
+
+      <Section title="Text roles" theme={theme}>
+        <Text style={[styles.note, { color: theme.colorScheme.onSurfaceVariant }]}>
+          All 15 baseline roles, with an opt-in switch for the 15 emphasized roles (ADR-006). The
+          samples use the library `Text`, the Compose font-scale converter, and content-colour
+          inheritance.
+        </Text>
+        <TextRoleGrid />
+      </Section>
+
       <Section title="Overlay stack" theme={theme}>
         <Text style={[styles.body, { color: theme.colorScheme.onSurfaceVariant }]}>
           Stack depth: {overlay.stack.length}
@@ -340,6 +367,103 @@ function FoundationContent({ topInset }: { topInset: number }) {
         {String(reactNativeVersion?.minor ?? '?')}
       </Text>
     </ScrollView>
+  );
+}
+
+function ProviderDemo() {
+  const [reduced, setReduced] = useState(false);
+  const [direction, setDirection] = useState<LayoutDirection>('ltr');
+
+  return (
+    <View style={styles.providerDemo}>
+      <View style={styles.providerControls}>
+        <Pressable
+          accessibilityRole="switch"
+          accessibilityState={{ checked: reduced }}
+          onPress={() => setReduced((value) => !value)}
+          style={[styles.chip, { borderColor: '#79747E' }]}
+        >
+          <Text style={styles.chipText}>reduceMotion {reduced ? 'on' : 'off'}</Text>
+        </Pressable>
+        <Pressable
+          accessibilityRole="button"
+          onPress={() => setDirection((value) => (value === 'ltr' ? 'rtl' : 'ltr'))}
+          style={[styles.chip, { borderColor: '#79747E' }]}
+        >
+          <Text style={styles.chipText}>layoutDirection {direction}</Text>
+        </Pressable>
+      </View>
+      <M3Provider reduceMotion={reduced} layoutDirection={direction}>
+        <ProviderReadout />
+      </M3Provider>
+    </View>
+  );
+}
+
+function ProviderReadout() {
+  const theme = useM3Theme();
+  const reduceMotion = useM3ReduceMotion();
+  const { direction } = useM3LayoutDirection();
+  const size = useWindowSize();
+  const { widthSizeClass, heightSizeClass } = useWindowSizeClass();
+  const contentColor = useM3ContentColor();
+
+  return (
+    <Surface color={theme.colorScheme.secondaryContainer} shape={16} style={styles.providerReadout}>
+      <Text style={[styles.metric, { color: contentColor }]}>
+        reduceMotion: {String(reduceMotion)}
+      </Text>
+      <Text style={[styles.body, { color: contentColor }]}>
+        {direction} · {Math.round(size.width)}×{Math.round(size.height)} dp · {widthSizeClass}/
+        {heightSizeClass}
+      </Text>
+      <Text style={[styles.note, { color: contentColor }]}>useM3ContentColor → {contentColor}</Text>
+    </Surface>
+  );
+}
+
+function TextRoleGrid() {
+  const theme = useM3Theme();
+  const [emphasized, setEmphasized] = useState(false);
+
+  return (
+    <View style={styles.textGrid}>
+      <Pressable
+        accessibilityRole="switch"
+        accessibilityState={{ checked: emphasized }}
+        onPress={() => setEmphasized((value) => !value)}
+        style={[styles.chip, { borderColor: theme.colorScheme.outline }]}
+      >
+        <Text style={[styles.chipText, { color: theme.colorScheme.onSurface }]}>
+          {emphasized ? 'Emphasized roles (opt-in)' : 'Baseline roles'}
+        </Text>
+      </Pressable>
+      <Surface
+        color={theme.colorScheme.primaryContainer}
+        shape={16}
+        style={styles.contentColorSample}
+      >
+        <M3Text variant="titleSmall">Content colour inherited from Surface</M3Text>
+        <M3Text variant="bodySmall" color={theme.colorScheme.onPrimaryContainer}>
+          Explicit colour override
+        </M3Text>
+      </Surface>
+      {M3_BASELINE_ROLES.map((role) => (
+        <View key={role} style={styles.textRow}>
+          <Text style={[styles.roleLabel, { color: theme.colorScheme.onSurfaceVariant }]}>
+            {role}
+          </Text>
+          <M3Text
+            variant={role}
+            emphasized={emphasized}
+            numberOfLines={1}
+            style={[styles.roleSample, { color: theme.colorScheme.onSurface }]}
+          >
+            Material
+          </M3Text>
+        </View>
+      ))}
+    </View>
   );
 }
 
@@ -575,6 +699,49 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 28,
     borderTopRightRadius: 28,
     gap: 14,
+  },
+  providerDemo: {
+    gap: 12,
+  },
+  providerControls: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 8,
+  },
+  chip: {
+    minHeight: 40,
+    paddingHorizontal: 14,
+    borderRadius: 20,
+    borderWidth: 1,
+    justifyContent: 'center',
+  },
+  chipText: {
+    fontSize: 13,
+    fontWeight: '600',
+  },
+  providerReadout: {
+    padding: 16,
+    gap: 6,
+  },
+  textGrid: {
+    gap: 10,
+  },
+  contentColorSample: {
+    padding: 16,
+    gap: 4,
+  },
+  textRow: {
+    flexDirection: 'row',
+    alignItems: 'baseline',
+    gap: 12,
+  },
+  roleLabel: {
+    width: 132,
+    fontSize: 11,
+    fontVariant: ['tabular-nums'],
+  },
+  roleSample: {
+    flexShrink: 1,
   },
   footer: {
     marginTop: 36,

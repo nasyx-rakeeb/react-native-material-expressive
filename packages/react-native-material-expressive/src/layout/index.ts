@@ -12,7 +12,20 @@ export {
   type WindowSizeClass,
   type WindowWidthSizeClass,
 } from './windowSizeClass';
-export { useWindowSizeClass, type UseWindowSizeClassOptions } from './useWindowSizeClass';
+export {
+  useWindowSize,
+  useWindowSizeClass,
+  type UseWindowSizeClassOptions,
+} from './useWindowSizeClass';
+export {
+  LayoutDirectionContext,
+  M3LayoutDirectionProvider,
+  M3WindowSizeClassProvider,
+  M3WindowSizeProvider,
+  WindowSizeClassContext,
+  WindowSizeContext,
+  type M3LayoutProviderProps,
+} from './context';
 export {
   directionValue,
   getLayoutDirection,

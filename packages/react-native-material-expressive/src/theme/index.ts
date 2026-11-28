@@ -6,5 +6,14 @@ export {
 } from './dynamicColor';
 export { M3ThemeProvider, useM3ColorScheme, useM3Theme, useM3Typography } from './M3ThemeProvider';
 export type { M3ThemeProviderProps } from './M3ThemeProvider';
+export {
+  M3Provider,
+  useM3ContentColor,
+  useM3LayoutDirection,
+  useM3MotionScheme,
+  useM3ReduceMotion,
+  useM3WindowSizeClass,
+  type M3ProviderProps,
+} from './M3Provider';
 export { resolveM3Theme } from './resolveTheme';
 export type { M3ColorSchemeSource, M3Theme, M3ThemeMode, M3ThemeOptions } from './types';
