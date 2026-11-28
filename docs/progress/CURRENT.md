@@ -1,9 +1,9 @@
 # Current status
 
 - Current day: Day 10 (foundation gate; approved by Nasyx, 2026-11-28)
-- Status: IN PROGRESS
+- Status: IN PROGRESS (gate report pending; Xiaomi install awaiting user)
 - Last closed day: Day 9 (approved by Nasyx, 2026-11-28; tag `day-9-closed` at `e9f73ca`)
-- Last commit hash: 9e3907a
+- Last commit hash: be68ad9
 
 ## Day 10 required scope (from Nasyx, 2026-11-28)
 
@@ -42,3 +42,16 @@
 
 - Show Nasyx the gallery + diff report commands.
 - Ask Nasyx to plug in the Xiaomi for the 120 Hz U-29 re-run.
+
+## Day 10 result (2026-11-28, commit be68ad9)
+
+- Icon diff: exact 0 / AA-aware 0 / max Δ 0 across 3 cold boots; font bytes
+  verified in source, gallery, Compose APK and RN APK.
+- All gates pass: format, lint, typecheck, 27 suites / 201 tests, 43 scenes.
+- Emulator evidence: overlay stack/back ordering, keyboard avoidance, RTL
+  preview, window classes 411×731 compact/medium and 720×1280 medium/expanded.
+- Xiaomi: APK copied to `/sdcard/Download/m3egallery.apk` (203,624,632 B);
+  direct `pm install` was blocked by MIUI (`INSTALL_FAILED_USER_RESTRICTED`),
+  so Nasyx installs it from the phone.
+- Remaining: verify the Xiaomi launch, update status to AWAITING USER APPROVAL,
+  post the Day 10 gate report, stop.
