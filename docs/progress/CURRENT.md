@@ -3,7 +3,7 @@
 - Current day: Day 10 (foundation gate; extended 2026-11-28 with `M3Provider` + `Text`)
 - Status: AWAITING USER APPROVAL (Day 10 extended scope complete; close report posted. 17/22 foundation rows Android-DONE; Typography and Text are `[~] T` pending the ADR-010 threshold decision; three token-only rows need a scope decision)
 - Last closed day: Day 9 (approved by Nasyx, 2026-11-28; tag `day-9-closed` at `e9f73ca`)
-- Last commit hash: 258bd5d (Day 10 extended scope; no Day 10 tag until approval)
+- Last commit hash: 03edebe (Day 10 extended scope + core-gate harness fix; no Day 10 tag until approval)
 
 ## Day 10 required scope (from Nasyx, 2026-11-28)
 
