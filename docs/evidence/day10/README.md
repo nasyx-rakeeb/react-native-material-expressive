@@ -196,6 +196,25 @@ because the preview is local; a full process RTL restart was not performed
 `gallery/foundation-top.png` shows the icon and path-icon sections;
 `gallery/foundation-launch.log` shows the launch markers.
 
+### Xiaomi install check
+
+The release APK was installed on the Xiaomi 2201116SI (Android 13 / API 33,
+1080×2400, 440 dpi) and launched. MIUI rejected `pm install` with
+`INSTALL_FAILED_USER_RESTRICTED`, so the APK was copied to
+`/sdcard/Download/m3egallery.apk` and installed from the phone. On-device
+evidence:
+
+- `xiaomi/foundation.png` — capability detection reports "supported, API 33";
+  all four axes and the 12 path icons render in dark theme.
+- `xiaomi/overlay-stack.png` + `.log` — dialog and bottom sheet stack to depth
+  2 (`overlay-1,overlay-2`).
+- `xiaomi/day9-interaction-states.png` + `.log` — a Day 9 scene ships in the
+  same APK and renders (`scene_ready scene=interaction-states`).
+
+MIUI denies `adb shell input` (`INJECT_EVENTS`), so back ordering, scrolling,
+keyboard avoidance and the RTL toggle could not be exercised on the phone; they
+are covered by RNTL and the emulator evidence above. See `xiaomi/README.md`.
+
 ## Tests and gates (final run, 2026-11-28)
 
 - `format:check` **PASS**
@@ -238,6 +257,17 @@ adb shell "am start -W -a android.intent.action.VIEW \
 Overlay variants: append `&overlay=dialog`, `&overlay=stack`, `&overlay=sheet`
 or `&overlay=portal`.
 
+Xiaomi (MIUI blocks `pm install`; install from the phone):
+
+```bash
+adb -s 10.231.239.101:5555 push \
+  apps/gallery/android/app/build/outputs/apk/release/app-release.apk \
+  /sdcard/Download/m3egallery.apk
+# Open Files > Download on the phone and tap m3egallery.apk.
+adb -s 10.231.239.101:5555 shell "am start -W -a android.intent.action.VIEW \
+  -d 'm3egallery://scene?screen=foundation' com.nasyxrakeeb.m3egallery"
+```
+
 Window-size recompute:
 
 ```bash
@@ -265,3 +295,6 @@ adb shell wm density reset # 411×731 dp → compact / medium
   boots, not continuous CI (Day 46 hardening).
 - `wm size` letterboxes this portrait-locked activity; the second window row
   uses a density override rather than a true multi-window resize.
+- MIUI denies `adb shell input` on the Xiaomi, so the on-device check covers
+  launch, rendering and overlay stacking only; back/scroll/keyboard/RTL remain
+  emulator + RNTL evidence.

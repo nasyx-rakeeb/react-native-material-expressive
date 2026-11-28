@@ -1,0 +1,4 @@
+11-28 13:01:17.745 23863 23888 I ReactNativeJS: [M3E] overlay_stack empty
+11-28 13:01:17.746 23863 23888 I ReactNativeJS: [M3E] overlay_open overlay-1 placement=center
+11-28 13:01:17.747 23863 23888 I ReactNativeJS: [M3E] overlay_open overlay-2 placement=bottom
+11-28 13:01:17.809 23863 23888 I ReactNativeJS: [M3E] overlay_stack overlay-1,overlay-2
