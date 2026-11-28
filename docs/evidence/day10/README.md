@@ -108,6 +108,30 @@ The pre-fix run had 188 AA-aware px (0.0426%) isolated to the bottom edges of
 at the 32 dp line box; RN overflowed by 2–4 px. Adding `numberOfLines={1}` and
 the clipping wrapper removed the residual completely.
 
+## Core five-scene gate
+
+The `SceneHarness` change initially routed every text layer through the library
+`Text`. For the core `text` and `trivial` scenes (no `type-*` role), that
+supplied `bodyLarge`'s 24 sp token line height where the old raw RN path used
+Roboto Flex's natural line box. The ink box moved up 5 px and the gate read
+**3,810 AA-aware px (0.8639%)**, a harness regression, not a component or font
+change. Non-role scenes now use raw RN `Text` again and only the `type-*`
+scenes use the library `Text`. Re-run on the final APK:
+
+| Scene | Exact px | AA-aware px | Max Δ |
+|---|---:|---:|---:|
+| `solid` | 0 | 0 (0.0000%) | 0 |
+| `rect` | 0 | 0 (0.0000%) | 0 |
+| `text` | 1,745 (0.3957%) | **4 (0.0009%)** | 162 |
+| `shadow` | 0 | 0 (0.0000%) | 0 |
+| `trivial` | 1,745 (0.3957%) | **4 (0.0009%)** | 162 |
+
+The 0.05% budget is 220.5 px; the maximum is 4 px. This is the same result as
+Day 3. The exact-different pixels are the known text rasterization residual
+(D-001), not a new layout difference: the content bbox is `68,75 395×59` on
+both stacks. The `RESULT: cross-stack exact zero is NOT met` line is expected;
+the PLAYBOOK gate is AA-aware, not exact zero.
+
 ## Overlay / Portal
 
 One `OverlayProvider` owns the stack. `OverlayHost` renders every entry into a
@@ -251,9 +275,9 @@ markers.
 The release APK was installed on the Xiaomi 2201116SI (Android 13 / API 33,
 1080×2400, 440 dpi) and launched. The first build needed the MIUI workaround
 (`INSTALL_FAILED_USER_RESTRICTED`, then a manual install from
-`/sdcard/Download/m3egallery.apk`); the extended build
-(203,638,852 B, SHA-256 `fefd29f7…3699f2dc`) installed directly with
-`adb install -r` at 15:00. On-device evidence:
+`/sdcard/Download/m3egallery.apk`); the final build
+(203,638,944 B, SHA-256 `7697f925…c9e7a42`) installed directly with
+`adb install -r` at 16:09. On-device evidence:
 
 - `xiaomi/foundation.png` — capability detection reports "supported, API 33";
   all four axes and the 12 path icons render in dark theme.
@@ -277,7 +301,9 @@ logcat had no crash. See `xiaomi/README.md`.
 - `test` **PASS** — 31 suites / **237 tests**; Day 10 adds 11 suites / 93 tests
 - `scenes:check` **PASS** — 43 scenes (core 5 / text 32 / interaction 5 / icon 1)
 - Icon diff **PASS** — exact 0, AA-aware 0, max Δ 0, deterministic across 3 boots
-- Core five-scene gate **unchanged** and still passing from Day 9
+- Core five-scene gate **PASS** — `text`/`trivial` 4 AA px (0.0009%), max Δ 162;
+  `solid`/`rect`/`shadow` exact 0. Same numbers as Day 3 after the harness fix
+  above.
 
 ## Reproduce
 
@@ -295,6 +321,15 @@ Resume from boot 2 (the run used for this report):
 node tools/pixel/run.mjs --skip-boot 1 \
   --scenes icon-symbols --repeats 1 --scene-repeats 1 \
   --out docs/evidence/day10/diff --label day10
+```
+
+Core five-scene gate (one boot, one repeat per stack):
+
+```bash
+ANDROID_SERIAL=emulator-5554 M3E_SKIP_BOOT=1 M3E_BOOTS=1 M3E_REPEATS=1 \
+  M3E_SCENE_REPEATS=1 M3E_SCENES=solid,rect,text,shadow,trivial \
+  M3E_OUT=docs/evidence/day10/core-gate M3E_LABEL=day10-core-gate \
+  node tools/pixel/run.mjs
 ```
 
 Gallery on the emulator:

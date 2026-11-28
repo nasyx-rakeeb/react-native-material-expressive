@@ -1,12 +1,15 @@
 # Day 10 — Xiaomi install check
 
 - **Device:** 2201116SI, Android 13 / API 33, 1080×2400, 440 dpi, MIUI.
-- **APK (extended build):** release
+- **APK (final build):** release
   `apps/gallery/android/app/build/outputs/apk/release/app-release.apk`
-  (203,638,852 B, SHA-256
-  `fefd29f7b2076465dfb78ac5bdb4ee842daa7b7cbf1c7a8778c31fd63699f2dc`),
-  installed 2026-11-28 15:00 with `adb install -r` (MIUI accepted it this time;
-  the earlier 203,624,632 B build needed the file-manager workaround).
+  (203,638,944 B, SHA-256
+  `7697f9257acbd8a97c39e50ba326ebc5afdbb60f02c4d3751591aff57c9e7a42`),
+  installed 2026-11-28 16:09 with `adb install -r` (MIUI accepted it; the
+  earlier 203,624,632 B build needed the file-manager workaround). The final
+  build differs from the 15:00 build only in the scene harness: non-role text
+  scenes use the raw RN `Text` path again, so the foundation route is
+  unchanged.
 - **Install method:** the first install was blocked by MIUI with
   `INSTALL_FAILED_USER_RESTRICTED`, so the APK was copied to
   `/sdcard/Download/m3egallery.apk` and installed from the phone. The extended

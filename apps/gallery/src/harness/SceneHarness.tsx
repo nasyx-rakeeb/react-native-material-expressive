@@ -6,6 +6,7 @@ import {
   StyleSheet,
   Text as RNText,
   View,
+  type TextProps,
   type TextStyle,
 } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
@@ -184,40 +185,52 @@ function TextView({
     position: 'absolute',
     left: layer.x,
     top: layer.y,
-    ...(role === null
-      ? {
-          fontFamily: FONT_FAMILY,
-          fontVariationSettings: `'wght' ${layer.weight}`,
-        }
-      : null),
     ...(layer.widthDp !== undefined ? { width: layer.widthDp } : null),
   };
+  const onTextLayout: TextProps['onTextLayout'] = (event) => {
+    const lines = event.nativeEvent.lines;
+    const width = lines.length ? Math.max(...lines.map((line) => line.width)) : -1;
+    const height = lines.reduce((sum, line) => sum + line.height, 0);
+    console.log(
+      `[M3E] scene_text_layout text=${JSON.stringify(layer.text)} width=${width} height=${height} lines=${lines.length}`,
+    );
+  };
+  if (role === null) {
+    return (
+      <RNText
+        allowFontScaling={fontScaling}
+        onTextLayout={onTextLayout}
+        style={[
+          style,
+          {
+            color: layer.color,
+            fontFamily: FONT_FAMILY,
+            fontVariationSettings: `'wght' ${layer.weight}`,
+            fontSize: sizeSp,
+            includeFontPadding: false,
+            letterSpacing: letterSpacingSp,
+            textAlign: 'left',
+            ...(lineHeightSp !== undefined
+              ? { lineHeight: Math.max(lineHeightSp, sizeSp * LINE_HEIGHT_RATIO) }
+              : null),
+          },
+        ]}
+        testID={`scene-text-${layer.text}`}
+      >
+        {layer.text}
+      </RNText>
+    );
+  }
   return (
     <Text
       align="left"
       color={layer.color}
-      emphasized={role?.emphasized}
+      emphasized={role.emphasized}
       fontScaleMode={fontScaling ? 'linear' : 'compose'}
-      fontSize={role === null ? sizeSp : undefined}
-      letterSpacing={role === null ? letterSpacingSp : undefined}
-      lineHeight={
-        role === null
-          ? lineHeightSp !== undefined
-            ? Math.max(lineHeightSp, sizeSp * LINE_HEIGHT_RATIO)
-            : undefined
-          : undefined
-      }
-      onTextLayout={(event) => {
-        const lines = event.nativeEvent.lines;
-        const width = lines.length ? Math.max(...lines.map((line) => line.width)) : -1;
-        const height = lines.reduce((sum, line) => sum + line.height, 0);
-        console.log(
-          `[M3E] scene_text_layout text=${JSON.stringify(layer.text)} width=${width} height=${height} lines=${lines.length}`,
-        );
-      }}
+      onTextLayout={onTextLayout}
       style={style}
       testID={`scene-text-${layer.text}`}
-      variant={role?.variant}
+      variant={role.variant}
     >
       {layer.text}
     </Text>

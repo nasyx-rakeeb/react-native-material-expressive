@@ -74,9 +74,15 @@ registry (`U-14`). Tracked in `BACKLOG.md`.
   320/1.3) in `docs/evidence/day10/typography/`; **119/120** pass the faithful
   budget. One miss: `type-label-medium-emphasized` at 320/1.3, 453.7 per 1,000
   ink vs 450 (per-glyph 2.845 ≤ 3.0).
-- Xiaomi: extended APK (203,638,852 B, SHA-256 `fefd29f7…3699f2dc`) installed
-  with `adb install -r`; the phone was asleep and MIUI denied wake injection, so
-  no new phone screenshot. Emulator screenshots cover the new sections.
+- Xiaomi: final APK (203,638,944 B, SHA-256 `7697f925…c9e7a42`) installed
+  with `adb install -r` at 16:09; the phone was asleep and MIUI denied wake
+  injection, so no new phone screenshot. Emulator screenshots cover the new
+  sections.
+- Core five-scene gate: **PASS**. `text`/`trivial` are 4 AA px (0.0009%, max
+  Δ 162); `solid`/`rect`/`shadow` are exact 0. The first harness build routed
+  non-role text through the library `Text` and regressed to 3,810 AA px
+  (0.8639%); non-role scenes now use raw RN `Text`, and the re-run matches
+  Day 3. Evidence: `docs/evidence/day10/core-gate/`.
 - Gates: format, lint, typecheck pass; **31 suites / 237 tests**; 43 scenes.
 - Remaining: Nasyx's decisions on (a) the ADR-010 threshold (keep 450 + D-001,
   or accept 500) and (b) the three token-only foundation rows (accept

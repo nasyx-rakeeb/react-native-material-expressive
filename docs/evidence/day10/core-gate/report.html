@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>M3E — day10-core-gate</title>
+<style>
+  :root { color-scheme: light; }
+  body { font: 15px/1.5 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif; margin: 0; padding: 32px; color: #1c1b1f; background: #fffbfe; }
+  main { max-width: 1180px; margin: 0 auto; }
+  h1 { font-size: 30px; line-height: 1.15; margin: 0 0 4px; letter-spacing: -0.02em; }
+  h2 { font-size: 20px; margin: 36px 0 8px; }
+  .sub { color: #5f5b66; margin: 0 0 24px; }
+  .status { border: 1px solid #cac4d0; border-radius: 16px; padding: 16px 20px; margin: 20px 0; background: #f7f2fa; }
+  .status strong { font-size: 17px; }
+  .bad { color: #b3261e; font-weight: 700; }
+  .ok { color: #146c2e; font-weight: 700; }
+  table { border-collapse: collapse; width: 100%; margin: 10px 0 20px; font-size: 13px; }
+  th, td { border-bottom: 1px solid #e7e0ec; padding: 7px 9px; text-align: left; vertical-align: top; }
+  th { background: #f3edf7; font-weight: 600; }
+  code { font: 12px ui-monospace, SFMono-Regular, Menlo, monospace; }
+  .shots { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+  figure { margin: 0; border: 1px solid #e7e0ec; border-radius: 12px; overflow: hidden; background: #fff; }
+  figure img { display: block; width: 100%; height: auto; image-rendering: pixelated; }
+  figcaption { padding: 8px 10px; font-size: 12px; color: #5f5b66; border-top: 1px solid #e7e0ec; }
+  ul { margin: 6px 0 18px; }
+  .note { border-left: 4px solid #6750a4; padding: 8px 14px; background: #f7f2fa; }
+  @media (max-width: 760px) { .shots { grid-template-columns: 1fr; } body { padding: 18px; } }
+</style>
+</head>
+<body>
+<main>
+<h1>day10-core-gate</h1>
+<p class="sub">2026-11-28T10:41:07.831Z · M3E_API31 · API 31 · 1080×1920 @ 420dpi · 1 cold boots · 1 repeats of the trivial scene per app per boot.</p>
+
+<div class="status">
+  <p><strong>Cross-stack exact zero across all scenes: <span class="bad">not met</span></strong></p>
+  <p>The remaining difference is text-only: <strong>1,745</strong> exact pixels (0.3957%), and <strong>4</strong> pixels after pixelmatch anti-aliasing detection (0.0009%). Geometry and shadow scenes are byte-identical. This report does not tune the scene or propose a new threshold.</p>
+  <ul>
+    <li><strong>Determinism:</strong> 10 renders (10 app/scene/boot combinations), maximum exact difference between any repeat and its first run: <strong>0 px</strong>.</li>
+    <li><strong>Text anti-aliasing:</strong> <strong>1,745 px</strong> exact (0.3957%), <strong>4 px</strong> AA-aware (0.0009%), max channel Δ <strong>162</strong>, confined to the text bbox.</li>
+    <li><strong>Shadows:</strong> cross-stack exact <strong>0 px</strong>; Compose and React Native both render 46,050 non-background shadow pixels outside the rectangle.</li>
+  </ul>
+  <p>Existing PLAYBOOK §7 AA-aware 0.05% gate on the <strong>core</strong> scenes: below the gate. Measured text layout: Compose 402.0×73.0 px, React Native 402.0×73.0 px.</p>
+</div>
+
+<h2>Scene categories</h2>
+<table>
+  <thead><tr><th>Category</th><th>Scenes</th><th>Σ exact px (scene max)</th><th>Σ AA-aware px (scene max)</th><th>Max AA-aware %</th><th>Max channel Δ</th><th>Max mean Δ (diff px)</th><th>Δ &gt; 2 outside AA edges</th><th>Flat fills &gt; 2</th><th>Gate</th></tr></thead>
+  <tbody><tr><td><code>core</code></td><td>5</td><td>3,490</td><td>8</td><td>0.0009%</td><td>162</td><td>36.33</td><td class="ok">0</td><td>0</td><td class="ok">0.05% met</td></tr></tbody>
+</table>
+<p class="note">Only the <code>core</code> category is the five-scene PLAYBOOK §7 gate. The <code>text</code> category contains the 30 typography roles (and, when included, the dense label/paragraph probes), tracked separately under U-25. Its numbers are a regression ceiling, not a pass/fail claim; ADR-010 is pending.</p>
+
+<h2>Noise split</h2>
+<p class="note"><strong>Threshold semantics.</strong> The AA-aware count uses pixelmatch 7.1.0 with <code>threshold: 0.1</code> and <code>includeAA: false</code>. Threshold 0.1 is a YIQ squared-colour-distance limit (<code>35215 × 0.1²</code>), not a per-channel delta; for a neutral grey difference it is roughly 26/255 per channel. Pixels below that limit are treated as matching even if their bytes differ. The raw columns beside it are threshold-independent: max channel Δ, mean channel Δ over differing pixels, count of pixels with Δ &gt; 2 outside anti-aliased edges, and count of those that are flat fills. An anti-aliased edge is a pixel with any 8-neighbour differing by more than 8/255 in either image; a flat fill has a uniform 3×3 neighbourhood in both images.</p>
+<table>
+  <thead><tr><th>Scene</th><th>Category</th><th>Exact diff px</th><th>Exact %</th><th>AA-aware px</th><th>AA-aware %</th><th>Max channel Δ</th><th>Mean Δ (diff px)</th><th>Δ &gt; 2 outside AA edges</th><th>Flat fills &gt; 2</th><th>Boots</th></tr></thead>
+  <tbody><tr><td>solid</td><td>core</td><td>0</td><td>0.0000%</td><td>0</td><td>0.0000%</td><td>0</td><td>0.00</td><td class="ok">0</td><td>0</td><td>1</td></tr><tr><td>rect</td><td>core</td><td>0</td><td>0.0000%</td><td>0</td><td>0.0000%</td><td>0</td><td>0.00</td><td class="ok">0</td><td>0</td><td>1</td></tr><tr><td>text</td><td>core</td><td>1,745</td><td>0.3957%</td><td>4</td><td>0.0009%</td><td>162</td><td>36.33</td><td class="ok">0</td><td>0</td><td>1</td></tr><tr><td>shadow</td><td>core</td><td>0</td><td>0.0000%</td><td>0</td><td>0.0000%</td><td>0</td><td>0.00</td><td class="ok">0</td><td>0</td><td>1</td></tr><tr><td>trivial</td><td>core</td><td>1,745</td><td>0.3957%</td><td>4</td><td>0.0009%</td><td>162</td><td>36.33</td><td class="ok">0</td><td>0</td><td>1</td></tr></tbody>
+</table>
+<p class="note">Exact counts are raw byte inequality. AA-aware counts are pixelmatch's non-anti-aliased differences at threshold 0.1; the threshold-independent columns are defined above. A zero AA-aware count therefore means "no pixel exceeded pixelmatch's perceptual threshold outside its AA heuristic", not "the crops are byte-identical".</p>
+
+<h2>Shadow measurement</h2>
+<table>
+  <thead><tr><th>App</th><th>Non-background px outside rect</th><th>Max Δ from background</th><th>Min Δ from background</th></tr></thead>
+  <tbody><tr><td>Compose</td><td>46,050</td><td>31</td><td>1</td></tr><tr><td>React Native</td><td>46,050</td><td>31</td><td>1</td></tr></tbody>
+</table>
+<p class="note">The shadow is present in both renders (pixels outside the rectangle differ from the flat background), and the cross-stack diff for the whole shadow scene is 0 exact px. This is the shadow measurement, not an inference from an empty scene.</p>
+
+<h2>Layout edges</h2>
+<table>
+  <thead><tr><th>Scene</th><th>Compose content bbox</th><th>React Native content bbox</th><th>Max edge delta (px)</th></tr></thead>
+  <tbody><tr><td>solid</td><td><code>none</code></td><td><code>none</code></td><td class="ok">0</td></tr><tr><td>rect</td><td><code>63,63 420×252</code></td><td><code>63,63 420×252</code></td><td class="ok">0</td></tr><tr><td>text</td><td><code>68,75 395×59</code></td><td><code>68,75 395×59</code></td><td class="ok">0</td></tr><tr><td>shadow</td><td><code>74,81 582×370</code></td><td><code>74,81 582×370</code></td><td class="ok">0</td></tr><tr><td>trivial</td><td><code>63,63 420×365</code></td><td><code>63,63 420×365</code></td><td class="ok">0</td></tr></tbody>
+</table>
+<p class="note">Strict bounding box of pixels that are not exactly the scene background. It includes anti-aliased glyph edges and the shadow. No tolerance is added; the number is recorded as measured.</p>
+
+<h2>Non-AA text pixels (boot 1, trivial)</h2>
+<table><thead><tr><th>Coordinate</th><th>Compose</th><th>React Native</th></tr></thead><tbody><tr><td>416, 405</td><td><code>rgb(255,251,254)</code></td><td><code>rgb(170,167,170)</code></td></tr><tr><td>417, 405</td><td><code>rgb(148,145,149)</code></td><td><code>rgb(255,251,254)</code></td></tr><tr><td>417, 407</td><td><code>rgb(29,27,32)</code></td><td><code>rgb(170,167,170)</code></td></tr><tr><td>417, 408</td><td><code>rgb(29,27,32)</code></td><td><code>rgb(57,55,60)</code></td></tr></tbody></table>
+
+<h2>Determinism</h2>
+<table>
+  <thead><tr><th>Boot</th><th>App</th><th>Scene</th><th>Runs</th><th>Max exact diff</th><th>Max AA-aware diff</th><th>Status</th></tr></thead>
+  <tbody><tr><td>0</td><td>compose</td><td>solid</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>compose</td><td>rect</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>compose</td><td>text</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>compose</td><td>shadow</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>compose</td><td>trivial</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>solid</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>rect</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>text</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>shadow</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr><tr><td>0</td><td>rn</td><td>trivial</td><td>1</td><td>0</td><td>0</td><td class="ok">zero</td></tr></tbody>
+</table>
+
+<h2>Cross-boot repeatability (each boot run 0 vs boot 1 run 0)</h2>
+<table>
+  <thead><tr><th>Boot</th><th>App</th><th>Scene</th><th>Exact diff px</th><th>AA-aware px</th><th>Max channel Δ</th></tr></thead>
+  <tbody><tr><td colspan="6">Single-boot run.</td></tr></tbody>
+</table>
+
+<h2>Emulator profile (verified)</h2>
+<table>
+  <thead><tr><th>Check</th><th>Observed</th><th>Status</th></tr></thead>
+  <tbody><tr><td>avd</td><td><code>M3E_API31</code></td><td class="ok">match</td></tr><tr><td>api</td><td><code>31</code></td><td class="ok">match</td></tr><tr><td>locale</td><td><code>en-US</code></td><td class="ok">match</td></tr><tr><td>fontScale</td><td><code>1.0</code></td><td class="ok">match</td></tr><tr><td>animatorDurationScale</td><td><code>0</code></td><td class="ok">match</td></tr><tr><td>transitionAnimationScale</td><td><code>0</code></td><td class="ok">match</td></tr><tr><td>windowAnimationScale</td><td><code>0</code></td><td class="ok">match</td></tr><tr><td>userRotation</td><td><code>0</code></td><td class="ok">match</td></tr><tr><td>immersiveConfirmation</td><td><code>confirmed</code></td><td class="ok">match</td></tr><tr><td>nightMode</td><td><code>Night mode: no</code></td><td class="ok">match</td></tr><tr><td>wmSize</td><td><code>Physical size: 1080x1920</code></td><td class="ok">match</td></tr><tr><td>wmDensity</td><td><code>Physical density: 420</code></td><td class="ok">match</td></tr><tr><td>gpu</td><td><code>GLES: Google (Google Inc. (Google)), Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver-5.0.0)), OpenGL ES 3.1 (OpenGL ES 3.1.0 (ANGLE 2.1.2 git hash: 1f0534893540))</code></td><td class="ok">match</td></tr></tbody>
+</table>
+<p>Font files: Roboto Flex <code>9b523f7d82593df0107173849ebb8c817471a1df4b4fb2c3cbf40cfd810c8281</code>; Material Symbols <code>3b29bd1ca84d209f68cc7ae4127e00d07ba9b8199edcd37ed5e2511e87836c03</code>. Both hashes match in the source tree, the gallery assets and both APKs. Runtime probes: Compose <code>M3E_FONT_PROBE wdth25=356 wdth100=402 ok=true</code>; React Native <code>[M3E] font_probe narrow=376.00 wide=411.43 ok=true</code>.</p>
+<p>Frozen device, GPU, settings, and cold-boot procedure: <code>FROZEN_PROFILE.md</code>. Raw run log: <code>run.log</code>.</p>
+
+<h2>Scene captures</h2>
+<section>
+  <h2>solid</h2>
+  <p><strong>0</strong> exact diff px (0.0000%), <strong>0</strong> AA-aware diff px (0.0000%), max channel delta <strong>0</strong>, mean channel delta over differing pixels <strong>0.00</strong>, delta &gt; 2 outside anti-aliased edges <strong>0</strong>, flat fills &gt; 2 <strong>0</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/769c75f7390f26c2c0a16ed770f3582dbfc2bd615753e5892a1f9d00e64fc639.png" alt="Compose solid"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/769c75f7390f26c2c0a16ed770f3582dbfc2bd615753e5892a1f9d00e64fc639.png" alt="React Native solid"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-solid.png" alt="Diff solid"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  
+</section>
+<section>
+  <h2>rect</h2>
+  <p><strong>0</strong> exact diff px (0.0000%), <strong>0</strong> AA-aware diff px (0.0000%), max channel delta <strong>0</strong>, mean channel delta over differing pixels <strong>0.00</strong>, delta &gt; 2 outside anti-aliased edges <strong>0</strong>, flat fills &gt; 2 <strong>0</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/62e8d31bac18416ce19bb20fcf052985b770560167df7cbd0091fb74b76f5a59.png" alt="Compose rect"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/62e8d31bac18416ce19bb20fcf052985b770560167df7cbd0091fb74b76f5a59.png" alt="React Native rect"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-rect.png" alt="Diff rect"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  
+</section>
+<section>
+  <h2>text</h2>
+  <p><strong>1,745</strong> exact diff px (0.3957%), <strong>4</strong> AA-aware diff px (0.0009%), max channel delta <strong>162</strong>, mean channel delta over differing pixels <strong>36.33</strong>, delta &gt; 2 outside anti-aliased edges <strong>0</strong>, flat fills &gt; 2 <strong>0</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/102c974b9576f7304a7a22e518fc8a2901a6679aa2562fdf8e3a651d3d8d8bd6.png" alt="Compose text"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/88fdb5439ab2fec365a6924ee894fcd0c2112a0faa5bae5c1d82a2f9651e6893.png" alt="React Native text"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-text.png" alt="Diff text"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  <ul><li><code>text-0</code>: 1,745 exact diff px</li></ul>
+</section>
+<section>
+  <h2>shadow</h2>
+  <p><strong>0</strong> exact diff px (0.0000%), <strong>0</strong> AA-aware diff px (0.0000%), max channel delta <strong>0</strong>, mean channel delta over differing pixels <strong>0.00</strong>, delta &gt; 2 outside anti-aliased edges <strong>0</strong>, flat fills &gt; 2 <strong>0</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/517d03a32a001dc104371bbe58430336afd4eb92bc04439676d4eca245e32ef6.png" alt="Compose shadow"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/517d03a32a001dc104371bbe58430336afd4eb92bc04439676d4eca245e32ef6.png" alt="React Native shadow"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-shadow.png" alt="Diff shadow"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  <ul><li><code>shadow-0</code>: 0 exact diff px</li></ul>
+</section>
+<section>
+  <h2>trivial</h2>
+  <p><strong>1,745</strong> exact diff px (0.3957%), <strong>4</strong> AA-aware diff px (0.0009%), max channel delta <strong>162</strong>, mean channel delta over differing pixels <strong>36.33</strong>, delta &gt; 2 outside anti-aliased edges <strong>0</strong>, flat fills &gt; 2 <strong>0</strong>.</p>
+  <div class="shots">
+    <figure><img src="captures/e422235ed157500b0daa9a82436d93ea928f582c7193758185b1664b93a55d2a.png" alt="Compose trivial"><figcaption>Compose</figcaption></figure>
+    <figure><img src="captures/aa3f158f178d7a23c8f6313727821deca76deeade8810dc24b31a583a59b90ec.png" alt="React Native trivial"><figcaption>React Native</figcaption></figure>
+    <figure><img src="diffs/boot-1-trivial.png" alt="Diff trivial"><figcaption>pixelmatch diff (red = non-AA, yellow = AA)</figcaption></figure>
+  </div>
+  <ul><li><code>text-1</code>: 1,745 exact diff px</li></ul>
+</section>
+
+<h2>What this establishes</h2>
+<ul>
+  <li>The capture, crop, compare, and report pipeline is deterministic across repeated launches and cold boots.</li>
+  <li>Compose and React Native agree within the reported per-scene deltas on this profile; exact-zero scenes are listed above.</li>
+  <li>Text from the same Roboto Flex file differs only in rasterization: Measured text layout: Compose 402.0×73.0 px, React Native 402.0×73.0 px. The difference is confined to the glyph edges.</li>
+  <li>No threshold is proposed or changed here. This run is a measurement; any gate change needs an ADR.</li>
+</ul>
+
+<h2>What this does not establish</h2>
+<ul>
+  <li>It does not establish component parity beyond the scenes listed.</li>
+  <li>It does not establish iOS behavior.</li>
+  <li>It does not establish that the non-AA text pixels are acceptable. That is a product decision.</li>
+</ul>
+</main>
+</body>
+</html>
