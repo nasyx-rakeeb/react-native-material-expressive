@@ -11,14 +11,16 @@ import {
 import { StatusBar } from 'expo-status-bar';
 import {
   FocusRing,
+  MaterialSymbol,
   Ripple,
   ROBOTO_FLEX_NATURAL_LINE_HEIGHT_RATIO,
   StateLayer,
   Surface,
+  type MaterialSymbolName,
 } from 'react-native-material-expressive';
 
 import { scenes, type SceneId } from '../scenes.generated';
-import type { InteractionLayer, RectLayer, Scene, TextLayer } from '../scene-types';
+import type { IconLayer, InteractionLayer, RectLayer, Scene, TextLayer } from '../scene-types';
 import {
   TEXT_COMPENSATIONS,
   type TextCompOverride,
@@ -38,7 +40,7 @@ export interface HarnessRoute {
   fontScaling: boolean;
   spike: SpikeMode | null;
   renderer: SpikeRenderer;
-  screen: 'shapes' | 'shapesdiff' | 'clipprobe' | 'motion' | null;
+  screen: 'shapes' | 'shapesdiff' | 'clipprobe' | 'motion' | 'foundation' | null;
   motionScheme: MotionDemoScheme;
   motionReduce: MotionDemoReduce;
 }
@@ -102,7 +104,10 @@ function parseRenderer(url: string | null | undefined): SpikeRenderer {
 
 function parseScreen(
   url: string | null | undefined,
-): 'shapes' | 'shapesdiff' | 'clipprobe' | 'motion' | null {
+): 'shapes' | 'shapesdiff' | 'clipprobe' | 'motion' | 'foundation' | null {
+  if (/[?&]screen=foundation(?:&|$)/.test(url ?? '')) {
+    return 'foundation';
+  }
   if (/[?&]screen=shapesdiff(?:&|$)/.test(url ?? '')) {
     return 'shapesdiff';
   }
@@ -245,6 +250,25 @@ function InteractionView({ layer }: { layer: InteractionLayer }) {
   );
 }
 
+function IconView({ layer }: { layer: IconLayer }) {
+  return (
+    <MaterialSymbol
+      color={layer.color}
+      fill={layer.fill}
+      grade={layer.grade}
+      name={layer.name as MaterialSymbolName}
+      opticalSize={layer.opticalSize}
+      size={layer.size}
+      style={{
+        position: 'absolute',
+        left: snapDp(layer.x),
+        top: snapDp(layer.y),
+      }}
+      weight={layer.weight}
+    />
+  );
+}
+
 function ProbeText({ width, onWidth }: { width: number; onWidth: (value: number) => void }) {
   return (
     <Text
@@ -330,6 +354,9 @@ function SceneBody({
               fontScaling={fontScaling}
             />
           );
+        }
+        if (layer.type === 'icon') {
+          return <IconView key={`icon-${index}`} layer={layer} />;
         }
         return <InteractionView key={`interaction-${index}`} layer={layer} />;
       })}

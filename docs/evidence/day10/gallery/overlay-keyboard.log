@@ -1,0 +1,5 @@
+  mShowRequested=true mShowExplicitlyRequested=true mShowForced=false mInputShown=true
+  mIsInputViewShown=true mStatusIcon=0
+11-28 12:50:00.311 11310 11334 I ReactNativeJS: [M3E] overlay_stack empty
+11-28 12:50:00.312 11310 11334 I ReactNativeJS: [M3E] overlay_open overlay-1 placement=center
+11-28 12:50:00.364 11310 11334 I ReactNativeJS: [M3E] overlay_stack overlay-1

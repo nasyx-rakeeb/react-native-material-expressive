@@ -55,15 +55,9 @@ function aggregate(results) {
       row.aa = Math.max(row.aa, metrics.aaAwareDiffPixels);
       row.aaPercent = Math.max(row.aaPercent, metrics.aaAwareDiffPercent);
       row.maxDelta = Math.max(row.maxDelta, metrics.maxChannelDelta);
-      row.meanDelta = Math.max(
-        row.meanDelta,
-        metrics.meanChannelDeltaOverDiffPixels ?? 0,
-      );
+      row.meanDelta = Math.max(row.meanDelta, metrics.meanChannelDeltaOverDiffPixels ?? 0);
       row.highDelta = Math.max(row.highDelta, metrics.highDeltaOutsideAaPixels ?? 0);
-      row.highDeltaPercent = Math.max(
-        row.highDeltaPercent,
-        metrics.highDeltaOutsideAaPercent ?? 0,
-      );
+      row.highDeltaPercent = Math.max(row.highDeltaPercent, metrics.highDeltaOutsideAaPercent ?? 0);
       row.flatHighDelta = Math.max(row.flatHighDelta, metrics.flatFillHighDeltaPixels ?? 0);
     }
   }
@@ -426,7 +420,7 @@ ${pixels.length ? `<table><thead><tr><th>Coordinate</th><th>Compose</th><th>Reac
   <thead><tr><th>Check</th><th>Observed</th><th>Status</th></tr></thead>
   <tbody>${profileRows}</tbody>
 </table>
-<p>Font file: <code>${esc(results.fonts.sourceHash)}</code> in both APKs and in the source tree. Runtime probes: Compose <code>${esc(results.boots[0]?.captures.compose.trivial?.[0]?.marker.probe ?? '')}</code>; React Native <code>${esc(results.boots[0]?.captures.rn.trivial?.[0]?.marker.probe ?? '')}</code>.</p>
+<p>Font files: Roboto Flex <code>${esc(results.fonts['roboto-flex']?.sourceHash ?? '')}</code>; Material Symbols <code>${esc(results.fonts['material-symbols']?.sourceHash ?? '')}</code>. Both hashes match in the source tree, the gallery assets and both APKs. Runtime probes: Compose <code>${esc(results.boots[0]?.captures.compose.trivial?.[0]?.marker.probe ?? '')}</code>; React Native <code>${esc(results.boots[0]?.captures.rn.trivial?.[0]?.marker.probe ?? '')}</code>.</p>
 <p>Frozen device, GPU, settings, and cold-boot procedure: <code>FROZEN_PROFILE.md</code>. Raw run log: <code>run.log</code>.</p>
 
 <h2>Scene captures</h2>
@@ -522,7 +516,7 @@ ${crossBoot.map((row) => `| ${row.boot} | ${row.app} | ${row.scene} | ${row.exac
 
 ## Profile and fonts
 
-Every profile check passed: API ${results.profile.api}, ${results.profile.width}×${results.profile.height}, ${results.profile.density}dpi, font scale ${results.profile.fontScale}, locale ${results.profile.locale}, animations ${results.profile.animations}, rotation 0, night mode off, SwiftShader GPU. The Roboto Flex SHA-256 is \`${results.fonts.sourceHash}\` in both APKs and in the source tree; both runtime probes applied the \`wdth\` axis.
+Every profile check passed: API ${results.profile.api}, ${results.profile.width}×${results.profile.height}, ${results.profile.density}dpi, font scale ${results.profile.fontScale}, locale ${results.profile.locale}, animations ${results.profile.animations}, rotation 0, night mode off, SwiftShader GPU. Roboto Flex SHA-256 \`${results.fonts['roboto-flex']?.sourceHash ?? ''}\` and Material Symbols SHA-256 \`${results.fonts['material-symbols']?.sourceHash ?? ''}\` match in the source tree, the gallery assets and both APKs; both runtime probes applied the \`wdth\` axis.
 
 Frozen device, GPU, settings, and cold-boot procedure: \`FROZEN_PROFILE.md\`. Raw run log: \`run.log\`.
 

@@ -46,11 +46,11 @@
 | `Interactive` pressable primitive | `InteractiveComponentSize.kt`, state machine design | [x] | [x] | [x] | — | [ ] | [ ] | [x] | [x] | [x] | [ ] |
 | `Surface` | `Surface.kt` | [x] | [x] | [x] | — | [x] | [ ] | [x] | [x] | [x] | [ ] |
 | `Text` | `Text.kt`, `ProvideContentColorTextStyle.kt` | [ ] | [ ] | [ ] | — | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
-| `Icon` | `Icon.kt`; Material Symbols variable font + internal paths | [ ] | [ ] | [ ] | — | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
-| `OverlayHost` / `Portal` | Architecture §5.2; Compose `BasicEdgeToEdgeDialog`, `Menu`, `SnackbarHost` | [ ] | [ ] | [ ] | — | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
-| Window size classes | `material3-window-size-class` 1.5.0; 8dp spacing | [ ] | [ ] | — | — | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| `Icon` | `Icon.kt`; Material Symbols variable font + internal paths | [x] | [x] | [x] | — | [ ] | [ ] | [x] | [x] | [x] | [ ] |
+| `OverlayHost` / `Portal` | Architecture §5.2; Compose `BasicEdgeToEdgeDialog`, `Menu`, `SnackbarHost` | [x] | [x] | [ ] | — | [ ] | [ ] | [x] | [x] | [x] | [ ] |
+| Window size classes | `material3-window-size-class` 1.5.0; 8dp spacing | [x] | [x] | — | — | [ ] | [ ] | [x] | [x] | [x] | [ ] |
 | Haptics adapter | Injectable adapter (no hard dependency) | [x] | [x] | — | — | [ ] | [ ] | [x] | [x] | [ ] | [ ] |
-| RTL / layout utilities | Compose layout semantics; m3 guidelines | [ ] | [ ] | [ ] | — | [ ] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| RTL / layout utilities | Compose layout semantics; m3 guidelines | [x] | [x] | [ ] | — | [ ] | [ ] | [x] | [x] | [x] | [ ] |
 
 Day 7 note: the static 35-shape grid now diff-passes against Compose with **0 AA-aware
 differing pixels** (`docs/evidence/day7/static-diff/README.md`), and the shape gallery
@@ -74,6 +74,15 @@ minimum is a `hitSlop` target, not a layout size (ADR-018); a render test proves
 the visible 24 dp box does not grow. Haptics is an injectable adapter with a
 no-op default, so the gallery has no visual demo. The iOS, a11y and DONE boxes
 stay open for the Day 40–41 passes.
+
+Day 10 note: Icon, Overlay/Portal, window size classes and RTL utilities are
+implemented and tested (`docs/evidence/day10/README.md`). The icon scene is diffed
+against Compose with all four variable axes (`docs/evidence/day10/diff/`). The
+overlay, window and RTL rows have **no screenshot diff** (they are behavioural, not
+static scenes); their evidence is Jest/RNTL plus a manual gallery run on the
+emulator. iOS and a11y boxes stay open (`U-33`–`U-35`). `Text` and `M3Provider`
+were explicitly outside the approved Day 10 scope and remain NOT DONE; `Text`
+blocks Day 11 labels (`U-36`). The DONE column is therefore empty for these rows.
 
 **Foundation evidence (Days 2–6):**
 

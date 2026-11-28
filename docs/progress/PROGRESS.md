@@ -660,3 +660,61 @@ A day closes only when its exit criteria are met with evidence and Nasyx approve
 **Next step**
 
 - Post the Day 9 Day-Close Report and stop. Day 10 (foundation gate) starts only after Nasyx approves and reviews the gallery/diff reports.
+
+## Day 10 | 2026-11-28 | Icon, Overlay/Portal, window size classes, RTL (foundation gate)
+
+**Status:** READY FOR APPROVAL (gate report posted).
+
+**Done**
+
+- Shipped `MaterialSymbol` with all four Material Symbols axes (`FILL` 0–1, `wght` 100–700, `GRAD` -50–200, `opsz` 20–48), clamped to the upstream `fvar` ranges, with runtime capability detection. Unsupported platforms omit `fontVariationSettings` and report `applied: false` instead of silently faking the axes. **ADR-021.**
+- Bundled a **90-glyph subset** of `MaterialSymbolsOutlined[FILL,GRAD,opsz,wght].ttf`: **116,368 B** vs 10,744,832 B full (1.08%), all four axes preserved, SHA-256 `3b29bd1c…`. Shipped the Apache-2.0 `LICENSE` and `NOTICE`; the diff run verifies identical font bytes in source, gallery assets, Compose APK and RN APK.
+- Added `Icon` with **12 internal path glyphs** (`check`, `close`, `menu`, `search`, `arrow_back`, `arrow_forward`, `chevron_right`, `expand_more`, `add`, `remove`, `more_vert`, `star`), optional RTL mirroring, and fixed sizing independent of font scale.
+- Fixed icon paint alignment: shifted paint down by `roundToNearestPixel(size × 0.1)` to match Compose's centred 1.2em line box, added `numberOfLines={1}` and a `size × size` clipping wrapper. This removed the final 188 AA-aware pixels caused by heavy/GRAD glyphs overflowing the 32 dp line box.
+- Implemented one `OverlayProvider` owning the whole stack, with `OverlayHost` and a declarative `Portal`. Back/Escape dismiss **only the topmost** layer; non-dismissible layers consume the request; each layer owns its scrim; modal layers capture/restore accessibility focus and hide the app subtree; insets are app-provided and merged per layer; keyboard avoidance is configurable per layer. **ADR-022.** 16 RNTL tests.
+- Added pure window-size-class helpers and `useWindowSizeClass` (Compose 1.5.0 breakpoints, inclusive lower bounds: width 600/840, height 480/900), subscribing only while mounted. **ADR-023.** Unit tests cover every boundary.
+- Added RTL utilities: direction resolution, numeric start/end, text alignment, row direction, writing direction and icon mirroring. RN logical props stay first; helpers cover the gaps. **ADR-024.** Unit tests plus a live gallery preview.
+- Added the `icon` scene category and `icon-symbols` (320×200 dp, 16 glyphs covering all axes) to the scene pipeline; Compose renders the same font with the same axis string. The gallery gains `screen=foundation` with axes, path icons, window readout, RTL preview and overlay demos, plus logcat markers.
+- Installed the release gallery on the Xiaomi (`10.231.239.101:5555`) via `/data/local/tmp` and launched the foundation screen.
+
+**Numbers**
+
+- Icon diff, 3 cold boots, one capture per stack per boot: **exact 0 (0.0000%), AA-aware 0 (0.0000%), max channel Δ 0**; content bbox identical (`102,47 641×445`); cross-boot and within-harness determinism **0/0** for both stacks.
+- Font: 90 glyphs / 116,368 B / 1.08% of the full 10,744,832 B asset; all four axes retained; licence and NOTICE in all four APK/source locations.
+- Window readout on the emulator: 411×731 dp → **compact / medium**; density override 240 dpi → 720×1280 dp → **medium / expanded**, proving live recompute.
+- Overlay emulator run: stack depth 2 → first back leaves `overlay-1` → second back leaves the stack empty; keyboard shown (`mInputShown=true`) with the dialog fully above the IME.
+- Tests: **27 suites / 201 tests**; Day 10 adds 7 suites / 48 tests. Scenes: **43 (core 5 / text 32 / interaction 5 / icon 1)**.
+
+**Evidence**
+
+- `docs/evidence/day10/README.md` — icon font/licence/size, diff table, overlay test matrix + emulator-only list, window and RTL results, commands, limitations.
+- `docs/evidence/day10/diff/` — `report.html`, `results.json`, captures, diffs.
+- `docs/evidence/day10/gallery/` — foundation, window, RTL, overlay stack/back/dialog/keyboard screenshots and logcat.
+- `docs/DECISIONS.md` — ADR-021–024; ADR-020 remains proposed.
+- `docs/UNVERIFIED.md` — U-33–U-36.
+
+**Gates (final run, 2026-11-28)**
+
+- `format:check` **PASS**; `lint` **PASS** (3/3 packages + tools + motion-kind); `typecheck` **PASS** (4/4); `test` **PASS** (27 suites / 201 tests); `scenes:check` **PASS** (43 scenes).
+- Icon diff **PASS** (exact 0 / AA 0 / max Δ 0). Core five-scene gate unchanged and still passing from Day 9.
+
+**Deviations**
+
+- `Text` and `M3Provider` were explicitly outside the approved Day 10 scope and remain **NOT DONE**. `Text` blocks Day 11 labels (`U-36`); ADR-010 §4's non-linear `FontScaleConverter` is still unimplemented.
+- The icon category is tracked with **no new threshold**. ADR-020 (threshold-independent reporting) is proposed only; the PLAYBOOK §7 gate (`pixelmatch` 0.1, `includeAA: false`, 0.05% AA-aware, core five scenes) is unchanged.
+- Overlay, window-size and RTL rows have no screenshot diff: they are behavioural, evidenced by Jest/RNTL plus the emulator gallery run.
+- iOS is unverified for all four foundations; a11y is unit-level only (no TalkBack on the AVD). U-33–U-35 stay open.
+- `wm size` letterboxes the portrait-locked activity on this AVD, so the second window-size row uses a density override rather than a true multi-window resize.
+- The U-29 120 Hz re-run is still outstanding; the Xiaomi is connected now, but the captures were not re-run in this session.
+
+**Risks**
+
+- Day 11 Button labels need the missing `Text` primitive; starting Day 11 without it would either block or force an ad-hoc text component.
+- Adding a Material Symbols name without regenerating the 90-glyph subset renders tofu; the registry/assets tests catch drift, but the failure mode is easy to miss in review.
+- Variable axes on Android < 26 and on iOS are untested on device; those users see the default instance.
+- The overlay "focus trap" is `accessibilityViewIsModal` + `no-hide-descendants`, not a hardware-keyboard Tab trap.
+- Window classes respond to `Dimensions`; a true multi-window/split-screen resize has not been exercised.
+
+**Next step**
+
+- Post the Day 10 gate report and stop. Day 11 starts only after Nasyx approves.

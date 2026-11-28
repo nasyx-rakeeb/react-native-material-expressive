@@ -255,3 +255,31 @@ Paper `6.0.0-alpha.4` (2026-11-23); 34 public component exports; signature-set s
 - **Decision (2026-11-27, ADR-017):** The Compose 1.5.0 audit found no component that needs interactive or screen-reader-focusable children clipped to a non-rounded-rect MaterialShape (only `LoadingIndicator` uses `MaterialShapes`, and it has no child slot). Interactive containers therefore use RN `borderRadius` in 1.0.0. `ShapeContainer` is decorative-only: the required `decorative` prop is a type-level guard, a dev-only traversal warns on pressable/accessible children, and the subtree is hidden from assistive technology with `pointerEvents="none"` so it cannot expose broken nodes or swallow input.
 - **Remaining (post-1.0):** A native mask spike (normal RN view plus a native `clipPath`/mask host) is in `docs/BACKLOG.md`; the live TalkBack pass for polygon-clipped interactive content ships with it. This does not block 1.0.
 - **Blocks:** Nothing in 1.0. The native mask capability and its TalkBack pass are post-1.0 backlog.
+
+### U-33 — Overlay focus containment, insets and keyboard avoidance are emulator-verified, not screen-reader-audited
+
+- **Evidence:** The overlay stack is covered by 16 Jest/RNTL tests (topmost-only back/Escape, non-dismissible consumption, scrim ownership, focus capture/restore, modal inertness, inset merge, keyboard behaviour). The Day 10 gallery exercises the same paths on `emulator-5554` (API 31). The emulator image has no TalkBack package, so a live screen-reader traversal of a stacked dialog/sheet was not possible.
+- **Impact:** Native “focus trap” means `accessibilityViewIsModal` plus `importantForAccessibility="no-hide-descendants"` on the app subtree. It does not move hardware-keyboard focus, and the web Tab trap has no browser-level test (only the pure index-wrap helper is unit-tested).
+- **Resolution:** Day 40 accessibility audit (TalkBack + VoiceOver + keyboard/D-pad) and the Day 43 web pass. Until then, do not claim a full native focus trap.
+- **Blocks:** The Overlay foundation row stays not DONE on the a11y/iOS boxes.
+
+### U-34 — Material Symbols variable axes are not verified on iOS or Android below API 26
+
+- **Evidence:** `fontVariationSettings` is applied by RN 0.88 on Android and iOS. The Day 10 icon scene diffs all four axes on API 31 (emulator). Android < 26 is handled by capability detection: the component omits the axis string and reports `applied: false`. That fallback has unit coverage but no old-device render.
+- **Impact:** On Android 24–25 the glyph renders at the font's default instance (FILL 0, wght 400, GRAD 0, opsz 24). A caller that requires a filled or bold glyph must use `Icon` path data or a static asset.
+- **Resolution:** Day 42 Android compatibility matrix (API 24 emulator) and Day 41 iOS fidelity pass.
+- **Blocks:** The Icon foundation row stays not DONE on iOS/a11y.
+
+### U-35 — RTL is unit-tested and previewed, not audited on a device
+
+- **Evidence:** The pure helpers cover direction resolution, start/end mapping, text alignment, row direction and icon mirroring. The gallery renders an LTR/RTL preview using those helpers. `I18nManager.isRTL` is process-wide, so the preview is local and does not restart the app.
+- **Impact:** TalkBack traversal order, mixed-direction text, and Android system RTL have not been exercised on a device. No claim of full RTL parity is made.
+- **Resolution:** Day 40 accessibility audit (RTL section) and the Day 37 adaptive/scaffold pass.
+- **Blocks:** The RTL foundation row stays not DONE on iOS/a11y.
+
+### U-36 — The Text foundation (M3 `Text` + Compose font-scale converter) is not shipped
+
+- **Evidence:** Day 10 shipped Icon, overlay, window size classes and RTL. The foundation table still lists `Text` as unimplemented. ADR-010 §4 makes Compose's non-linear `FontScaleConverter` a Day 10 prerequisite for font-scale parity, and no `Text` component exists to host it. The Day 5 typography tokens and the `useM3TextStyle` helper exist, but there is no public `Text` primitive with content-colour inheritance.
+- **Impact:** Day 11 Button and every later component with a label will need a text primitive. The faithful text residual (D-001) remains unchanged; no text threshold is claimed. The Day 10 “all foundations DONE” exit cannot be met until this lands.
+- **Resolution:** Add `Text` (content colour inheritance, Compose font-scale mapping, `allowFontScaling={false}` after conversion, truncation/alignment props) and its diff evidence before Day 11, or explicitly descope it in writing. This is the main open foundation item in the Day 10 gate report.
+- **Blocks:** Day 11 start until Nasyx decides: implement now, or approve a documented deferral.

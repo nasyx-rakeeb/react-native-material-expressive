@@ -61,12 +61,33 @@ export interface InteractionLayer {
 }
 
 /**
+ * A Material Symbols glyph rendered through the variable font. The scene stores
+ * both the registry name (used by the RN gallery) and the codepoint (used by
+ * the Compose reference); the build validates they agree.
+ */
+export interface IconLayer {
+  type: 'icon';
+  x: number;
+  y: number;
+  /** Square glyph size in dp. */
+  size: number;
+  color: string;
+  name: string;
+  codepoint: string;
+  fill: 0 | 1;
+  weight: number;
+  grade: number;
+  opticalSize: number;
+}
+
+/**
  * `core` scenes are the five-scene pixel gate. `text` scenes are the 30
  * typography roles, tracked separately under the U-25 resolution; they are not
  * part of the five-scene gate. `interaction` scenes cover the Day 9 state
- * layers, ripple, focus ring and elevation matrix.
+ * layers, ripple, focus ring and elevation matrix. `icon` scenes cover the
+ * Material Symbols variable axes.
  */
-export type SceneCategory = 'core' | 'text' | 'interaction';
+export type SceneCategory = 'core' | 'text' | 'interaction' | 'icon';
 
 export interface Scene {
   schema: 1;
@@ -76,5 +97,5 @@ export interface Scene {
   widthDp: number;
   heightDp: number;
   background: string;
-  layers: Array<RectLayer | TextLayer | InteractionLayer>;
+  layers: Array<RectLayer | TextLayer | InteractionLayer | IconLayer>;
 }

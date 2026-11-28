@@ -1,0 +1,18 @@
+Material Symbols Outlined and Material Icons path data
+Copyright 2020 Google LLC
+
+The bundled `MaterialSymbolsOutlined.ttf` is a subset of
+`MaterialSymbolsOutlined[FILL,GRAD,opsz,wght].ttf` from
+https://github.com/google/material-design-icons, licensed under the
+Apache License, Version 2.0. The subset contains the 90 glyphs listed in
+`src/icon/materialSymbols.ts`; all four variable axes are preserved.
+
+The internal icon path data in `src/icon/paths.ts` is derived from the
+Material Icons repository at the same URL and carries the same license.
+
+Source font SHA-256:
+f7837ba8573d9a7a74931618ced8307bc81f96d49af296bf6c8052c772ed5282
+Subset SHA-256:
+3b29bd1ca84d209f68cc7ae4127e00d07ba9b8199edcd37ed5e2511e87836c03
+
+Not affiliated with or endorsed by Google.

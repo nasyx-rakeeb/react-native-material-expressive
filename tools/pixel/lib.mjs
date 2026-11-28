@@ -438,32 +438,69 @@ export function verifyProfile() {
   return checks;
 }
 
+function apkEntry(apk, entry) {
+  const result = spawnSync('unzip', ['-p', apk, entry], { maxBuffer: 16 * 1024 * 1024 });
+  if (result.status !== 0 || result.stdout.length === 0) {
+    throw new Error(`APK ${apk} does not contain ${entry}`);
+  }
+  return result.stdout;
+}
+
 export function verifyFonts() {
-  const source = path.join(ROOT, 'apps/reference-compose/app/src/main/assets/fonts/RobotoFlex.ttf');
-  const gallery = path.join(ROOT, 'apps/gallery/assets/fonts/RobotoFlex.ttf');
-  const sourceHash = sha256(fs.readFileSync(source));
-  const galleryHash = sha256(fs.readFileSync(gallery));
-  if (sourceHash !== galleryHash) {
-    throw new Error(`source font mismatch: ${sourceHash} vs ${galleryHash}`);
+  const fonts = [
+    {
+      id: 'roboto-flex',
+      source: path.join(ROOT, 'apps/reference-compose/app/src/main/assets/fonts/RobotoFlex.ttf'),
+      gallery: path.join(ROOT, 'apps/gallery/assets/fonts/RobotoFlex.ttf'),
+      entries: {
+        compose: 'assets/fonts/RobotoFlex.ttf',
+        rn: 'assets/fonts/RobotoFlex.ttf',
+      },
+    },
+    {
+      id: 'material-symbols',
+      source: path.join(
+        ROOT,
+        'packages/react-native-material-expressive/assets/fonts/MaterialSymbolsOutlined.ttf',
+      ),
+      gallery: path.join(ROOT, 'apps/gallery/assets/fonts/MaterialSymbolsOutlined.ttf'),
+      entries: {
+        compose: 'assets/MaterialSymbolsOutlined.ttf',
+        rn: 'assets/fonts/MaterialSymbolsOutlined.ttf',
+      },
+    },
+  ];
+  const result = {};
+  for (const font of fonts) {
+    const sourceHash = sha256(fs.readFileSync(font.source));
+    const galleryHash = sha256(fs.readFileSync(font.gallery));
+    if (sourceHash !== galleryHash) {
+      throw new Error(`${font.id} source mismatch: ${sourceHash} vs ${galleryHash}`);
+    }
+    const apks = {};
+    for (const app of Object.values(APPS)) {
+      if (!fs.existsSync(app.apk)) {
+        throw new Error(`missing APK: ${app.apk}`);
+      }
+      const hash = sha256(apkEntry(app.apk, font.entries[app.id]));
+      apks[app.id] = hash;
+      if (hash !== sourceHash) {
+        throw new Error(`${font.id} APK mismatch for ${app.id}: ${hash} != ${sourceHash}`);
+      }
+    }
+    result[font.id] = { sourceHash, galleryHash, apks };
   }
-  const apks = {};
-  for (const app of Object.values(APPS)) {
-    if (!fs.existsSync(app.apk)) {
-      throw new Error(`missing APK: ${app.apk}`);
-    }
-    const result = spawnSync('unzip', ['-p', app.apk, 'assets/fonts/RobotoFlex.ttf'], {
-      maxBuffer: 16 * 1024 * 1024,
-    });
-    if (result.status !== 0 || result.stdout.length === 0) {
-      throw new Error(`APK ${app.apk} does not contain assets/fonts/RobotoFlex.ttf`);
-    }
-    const hash = sha256(result.stdout);
-    apks[app.id] = hash;
-    if (hash !== sourceHash) {
-      throw new Error(`APK font mismatch for ${app.id}: ${hash} != ${sourceHash}`);
-    }
+  const license = apkEntry(APPS.rn.apk, 'assets/fonts/MaterialSymbols-LICENSE.txt').toString(
+    'utf8',
+  );
+  if (!license.includes('Apache License')) {
+    throw new Error('RN APK does not contain the Apache-2.0 license text');
   }
-  return { sourceHash, galleryHash, apks };
+  const composeLicense = apkEntry(APPS.compose.apk, 'assets/LICENSE').toString('utf8');
+  if (!composeLicense.includes('Apache License')) {
+    throw new Error('Compose APK does not contain the Apache-2.0 license text');
+  }
+  return result;
 }
 
 export function installApps() {

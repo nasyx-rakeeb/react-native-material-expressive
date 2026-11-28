@@ -33,6 +33,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.withFrameNanos
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
@@ -77,6 +78,7 @@ import kotlin.math.sqrt
 private const val TAG = "M3E"
 private const val ACTION_RERENDER = "com.nasyxrakeeb.m3ereference.RERENDER"
 private const val FONT_ASSET = "fonts/RobotoFlex.ttf"
+private const val SYMBOL_FONT_ASSET = "MaterialSymbolsOutlined.ttf"
 private const val SCENE_ASSET_DIR = ""
 
 private enum class FontState { PENDING, OK, FALLBACK }
@@ -130,6 +132,18 @@ data class InteractionLayer(
     val ripple: RippleLayerSpec?,
 )
 
+data class IconLayer(
+    val x: Int,
+    val y: Int,
+    val size: Float,
+    val color: String,
+    val codepoint: String,
+    val fill: Float,
+    val weight: Float,
+    val grade: Float,
+    val opticalSize: Float,
+)
+
 data class Scene(
     val id: String,
     val widthDp: Int,
@@ -138,6 +152,7 @@ data class Scene(
     val rects: List<RectLayer>,
     val texts: List<TextLayer>,
     val interactions: List<InteractionLayer>,
+    val icons: List<IconLayer>,
 )
 
 private fun loadScene(context: Context, id: String): Scene {
@@ -149,6 +164,7 @@ private fun loadScene(context: Context, id: String): Scene {
     val rects = mutableListOf<RectLayer>()
     val texts = mutableListOf<TextLayer>()
     val interactions = mutableListOf<InteractionLayer>()
+    val icons = mutableListOf<IconLayer>()
     val layers = json.getJSONArray("layers")
     for (index in 0 until layers.length()) {
         val layer = layers.getJSONObject(index)
@@ -211,6 +227,17 @@ private fun loadScene(context: Context, id: String): Scene {
                     ripple = ripple,
                 )
             }
+            "icon" -> icons += IconLayer(
+                x = layer.getInt("x"),
+                y = layer.getInt("y"),
+                size = layer.getDouble("size").toFloat(),
+                color = layer.getString("color"),
+                codepoint = layer.getString("codepoint"),
+                fill = layer.getDouble("fill").toFloat(),
+                weight = layer.getDouble("weight").toFloat(),
+                grade = layer.getDouble("grade").toFloat(),
+                opticalSize = layer.getDouble("opticalSize").toFloat(),
+            )
             else -> error("unsupported layer type ${layer.getString("type")}")
         }
     }
@@ -222,6 +249,7 @@ private fun loadScene(context: Context, id: String): Scene {
         rects = rects,
         texts = texts,
         interactions = interactions,
+        icons = icons,
     )
 }
 
@@ -455,6 +483,49 @@ private fun Harness(
                 }
                 scene.interactions.forEach { interaction ->
                     InteractionSample(interaction)
+                }
+                scene.icons.forEach { icon ->
+                    val symbolFamily = FontFamily(
+                        Font(
+                            path = SYMBOL_FONT_ASSET,
+                            assetManager = context.assets,
+                            weight = FontWeight(icon.weight.toInt()),
+                            style = FontStyle.Normal,
+                            variationSettings = FontVariation.Settings(
+                                FontVariation.Setting("FILL", icon.fill),
+                                FontVariation.Setting("GRAD", icon.grade),
+                                FontVariation.Setting("opsz", icon.opticalSize),
+                                FontVariation.Setting("wght", icon.weight),
+                            ),
+                        ),
+                    )
+                    Box(
+                        modifier = Modifier
+                            .offset(icon.x.dp, icon.y.dp)
+                            .size(icon.size.dp),
+                        contentAlignment = Alignment.Center,
+                    ) {
+                        Text(
+                            text = icon.codepoint,
+                            color = parseColor(icon.color),
+                            fontSize = icon.size.sp,
+                            lineHeight = icon.size.sp,
+                            fontFamily = symbolFamily,
+                            fontWeight = FontWeight(icon.weight.toInt()),
+                            textAlign = TextAlign.Center,
+                            maxLines = 1,
+                            softWrap = false,
+                            style = TextStyle(
+                                fontSynthesis = FontSynthesis.None,
+                                platformStyle = PlatformTextStyle(includeFontPadding = false),
+                                lineHeightStyle = LineHeightStyle(
+                                    LineHeightStyle.Alignment.Center,
+                                    LineHeightStyle.Trim.None,
+                                ),
+                                textMotion = TextMotion.Static,
+                            ),
+                        )
+                    }
                 }
             }
         } else {

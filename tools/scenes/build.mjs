@@ -10,8 +10,19 @@ const indexJson = path.join(scenesDir, 'index.json');
 const check = process.argv.includes('--check');
 
 const colorPattern = /^#[0-9A-Fa-f]{6}$/;
-const SCENE_CATEGORIES = ['core', 'text', 'interaction'];
+const SCENE_CATEGORIES = ['core', 'text', 'interaction', 'icon'];
 const INTERACTION_STATES = ['default', 'hover', 'focus', 'pressed', 'dragged', 'disabled'];
+
+// The scene stores the codepoint so the Compose reference does not need a
+// second registry; the build proves the codepoint matches the RN registry.
+const symbolSource = await readFile(
+  path.join(root, 'packages/react-native-material-expressive/src/icon/materialSymbols.ts'),
+  'utf8',
+);
+const SYMBOL_CODEPOINTS = new Map();
+for (const match of symbolSource.matchAll(/^ {2}([a-z0-9_]+): '\\u\{([0-9a-f]+)\}',$/gm)) {
+  SYMBOL_CODEPOINTS.set(match[1], String.fromCodePoint(parseInt(match[2], 16)));
+}
 
 function fail(file, message) {
   throw new Error(`${path.relative(root, file)}: ${message}`);
@@ -122,8 +133,31 @@ function validateScene(file, scene) {
           fail(file, `${label}.ripple.bounded must be a boolean`);
         }
       }
+    } else if (layer.type === 'icon') {
+      requireNumber(file, layer.x, `${label}.x`, { integer: true });
+      requireNumber(file, layer.y, `${label}.y`, { integer: true });
+      requireNumber(file, layer.size, `${label}.size`, { min: 1 });
+      requireColor(file, layer.color, `${label}.color`);
+      if (typeof layer.name !== 'string' || !SYMBOL_CODEPOINTS.has(layer.name)) {
+        fail(file, `${label}.name must be a name in materialSymbols.ts`);
+      }
+      if (layer.codepoint !== SYMBOL_CODEPOINTS.get(layer.name)) {
+        fail(file, `${label}.codepoint must match ${layer.name} in materialSymbols.ts`);
+      }
+      if (layer.fill !== 0 && layer.fill !== 1) {
+        fail(file, `${label}.fill must be 0 or 1`);
+      }
+      requireNumber(file, layer.weight, `${label}.weight`, { min: 100 });
+      requireNumber(file, layer.grade, `${label}.grade`, { min: -50 });
+      requireNumber(file, layer.opticalSize, `${label}.opticalSize`, { min: 20 });
+      if (layer.weight > 700 || layer.grade > 200 || layer.opticalSize > 48) {
+        fail(
+          file,
+          `${label} axes must stay inside FILL 0–1, wght 100–700, GRAD -50–200, opsz 20–48`,
+        );
+      }
     } else {
-      fail(file, `${label}.type must be rect, text or interaction`);
+      fail(file, `${label}.type must be rect, text, interaction or icon`);
     }
   }
   return scene;

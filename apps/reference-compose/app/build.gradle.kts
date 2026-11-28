@@ -26,6 +26,10 @@ android {
 
     sourceSets["main"].assets.srcDir("../../../tools/scenes")
     sourceSets["main"].assets.srcDir("../../../docs/evidence/day4/color")
+    // Material Symbols subset and its Apache-2.0 license, shared byte-for-byte
+    // with the RN gallery.
+    sourceSets["main"].assets.srcDir("../../../packages/react-native-material-expressive/assets/fonts")
+    sourceSets["main"].assets.srcDir("../../../packages/react-native-material-expressive/assets/icons")
 }
 
 kotlin {

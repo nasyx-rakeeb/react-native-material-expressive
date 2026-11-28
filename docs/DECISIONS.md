@@ -606,3 +606,89 @@ The original consequence — "components start in the full-motion state for one 
   - `tools/pixel/report.mjs`; `tools/pixel/backfill-metrics.mjs`.
   - `docs/evidence/day9/README.md#threshold-independent-metrics-added-2026-11-28`.
   - `docs/KNOWN_DEVIATIONS.md` D-001 audit paragraph.
+
+## ADR-021 — Material Symbols ships as a 90-glyph variable subset; internal paths are the no-font fallback
+
+- **Date:** 2026-11-28
+- **Status:** Accepted for Day 10.
+- **Context:**
+  - The upstream `MaterialSymbolsOutlined[FILL,GRAD,opsz,wght].ttf` is 10,744,832 B. Shipping it whole would add ~10.7 MB to every app for a component that usually uses a few dozen glyphs.
+  - React Native 0.88 forwards `fontVariationSettings` to Android `Paint` and iOS; Android below API 26 accepts the prop but does not apply variable axes reliably.
+  - The Compose reference app needs byte-identical glyphs to diff the RN output.
+- **Decision:**
+  1. Bundle a **90-glyph subset** with all four axes preserved (`FILL` 0–1, `wght` 100–700, `GRAD` -50–200, `opsz` 20–48). The subset is **116,368 B**, 1.08% of the full font.
+  2. `MaterialSymbol` passes all four axes in one `fontVariationSettings` string; values are rounded and clamped to the font's `fvar` ranges.
+  3. Capability detection uses `getVariableFontSupport()`. When unsupported, the component omits `fontVariationSettings` and reports `applied: false`; it never claims the axes were applied.
+  4. `Icon` draws a small core set of **12 glyphs from SVG path data** for consumers who do not bundle the font. It is not a replacement for the full symbol set.
+  5. Names and codepoints are generated from the upstream `.codepoints` file. Adding a name without regenerating the subset fails the asset test (glyph count / codepoint set).
+  6. The Apache-2.0 license and a NOTICE with source/subset SHA-256 ship beside the font. The gallery and Compose APKs are checked for byte-identical fonts and license text by `verifyFonts()`.
+- **Why:** 98.9% smaller than the full font, no per-icon image assets, all axes available, and a deterministic fallback that does not pretend to support old runtimes.
+- **Alternatives rejected:**
+  - Ship the full font: 10.7 MB for no fidelity gain.
+  - Rasterise each icon: loses axes and density independence.
+  - Silent fallback to the default instance while still claiming `FILL`/`wght`: misleading and untestable.
+- **Consequences:**
+  - Consumers must register `MaterialSymbolsOutlined` (the gallery plugin copies it to Android assets).
+  - Adding a glyph is a subset-regeneration step, not just a TypeScript edit.
+  - Android < API 26 renders the default instance; docs and gallery state this.
+  - The 12 internal paths cover navigation/status affordances only.
+
+## ADR-022 — One overlay provider owns stacking, dismissal, focus and insets
+
+- **Date:** 2026-11-28
+- **Status:** Accepted for Day 10.
+- **Context:** Dialogs, sheets, menus and snackbars all need to stack. Independent `Modal`s create competing Android back handlers, leak accessibility focus, and make “close only the top” impossible to guarantee.
+- **Decision:**
+  1. A single `OverlayProvider` owns an ordered stack. `Portal` is the declarative entry point; `useOverlay()` is the imperative one.
+  2. The last entry is topmost. Android back and Escape dismiss **only** the topmost entry. A non-dismissible entry consumes back without closing.
+  3. A scrim belongs to its own layer and calls that layer's dismiss. Modal layers below the top are inert and hidden from assistive technology.
+  4. Focus is captured before the first overlay opens and restored when the stack empties. Web traps Tab/Shift+Tab; native uses `accessibilityViewIsModal` plus `importantForAccessibility="no-hide-descendants"` on the app subtree, because RN core cannot move native keyboard focus between arbitrary views.
+  5. Keyboard avoidance is `padding` on iOS and `height` on Android; the top inset is passed as `keyboardVerticalOffset`.
+  6. Insets are injected by the app (`useSafeAreaInsets()`), not read by the library. The default only knows the Android status bar height.
+  7. `onClose` makes the owner responsible for closing; without it the provider removes the entry immediately.
+- **Why:** one back handler, deterministic topmost semantics, and no hidden dependency on `react-native-safe-area-context`.
+- **Alternatives rejected:**
+  - One `Modal` per overlay: competing back handlers and focus restore races.
+  - Read safe-area insets inside the library: adds a peer dependency and breaks apps that do not use it.
+  - Close the whole stack on back: violates platform expectations and the Day 10 requirement.
+- **Consequences:**
+  - Changing an entry's id/options while visible requires closing and reopening; children update live.
+  - Native “focus trap” means accessibility focus, not hardware-keyboard focus.
+  - Keyboard avoidance and TalkBack containment need device verification (listed in the Day 10 evidence).
+
+## ADR-023 — Window size classes are pure dp helpers, not a global listener
+
+- **Date:** 2026-11-28
+- **Status:** Accepted for Day 10.
+- **Context:** Compose exposes `WindowSizeClass` from `material3-window-size-class` 1.5.0 with width breakpoints 600/840 dp and height 480/900 dp. RN has no equivalent, and a global singleton would drift between windows and tests.
+- **Decision:**
+  1. `windowWidthSizeClass`, `windowHeightSizeClass` and `calculateWindowSizeClass` are pure functions over dp.
+  2. Breakpoints are inclusive lower bounds, matching Compose. A restricted supported set returns the smallest supported class, matching Compose's fallback.
+  3. `useWindowSizeClass()` recomputes from `useWindowDimensions()`; there is no module-level state.
+  4. `snapTo8Dp()` exposes the expressive 8 dp rhythm as a separate helper.
+- **Why:** testable at every boundary without a device, safe on web/SSR, and no subscription to clean up.
+- **Alternatives rejected:**
+  - A native module mirroring `WindowMetricsCalculator`: unnecessary; RN already reports dp.
+  - A context provider: more API surface for no behaviour gain.
+- **Consequences:**
+  - Callers that support a restricted set must pass it explicitly.
+  - Desktop/web use the viewport, matching Compose's window model.
+  - The Day 37 adaptive scaffold can build on these helpers without changing them.
+
+## ADR-024 — RTL uses RN's logical props first; helpers cover the gaps
+
+- **Date:** 2026-11-28
+- **Status:** Accepted for Day 10.
+- **Context:** React Native already resolves `start`/`end`, `marginStart`, `paddingEnd` and `row` direction from `I18nManager.isRTL`. A second layout engine would duplicate that logic and diverge.
+- **Decision:**
+  1. Layout uses RN logical props wherever they exist.
+  2. Pure helpers cover what RN does not: numeric start/end offsets, `textAlign`, `flexDirection` on web, writing direction, and mirroring transforms.
+  3. `mirror` is **opt-in per icon**. Directional glyphs (arrows, chevrons, back/forward) mirror; logos, media controls, checkmarks and stars do not.
+  4. The direction is read from `I18nManager.isRTL`. A runtime toggle requires `forceRTL` and an app restart, as RN documents.
+- **Why:** no parallel layout system, predictable icon semantics, and helpers that are trivially unit-tested.
+- **Alternatives rejected:**
+  - Force `row-reverse` everywhere: double-flips on Android/iOS where `row` already follows the writing direction.
+  - Mirror every icon automatically: wrong for media controls, logos and checks.
+- **Consequences:**
+  - The gallery's RTL preview is local; it does not restart the app.
+  - A device RTL audit (TalkBack order, mixed-direction text) remains in the Day 40 pass.

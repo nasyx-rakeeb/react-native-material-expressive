@@ -10,6 +10,7 @@ import {
 
 import SceneHarness, { useHarnessScene } from './src/harness/SceneHarness';
 import MotionGallery from './src/motion/MotionGallery';
+import FoundationGallery from './src/foundation/FoundationGallery';
 import ClipProbeScreen from './src/shapes/ClipProbeScreen';
 import ShapeDiffScreen from './src/shapes/ShapeDiffScreen';
 import ShapeGallery from './src/shapes/ShapeGallery';
@@ -37,6 +38,10 @@ export default function App() {
 
   if (route === undefined) {
     return <View style={styles.boot} />;
+  }
+
+  if (route.screen === 'foundation') {
+    return <FoundationGallery />;
   }
 
   if (route.screen === 'clipprobe') {

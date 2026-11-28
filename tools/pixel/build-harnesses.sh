@@ -17,9 +17,11 @@ fi
 node --input-type=module -e "
 import { verifyFonts } from './tools/pixel/lib.mjs';
 const result = verifyFonts();
-console.log('font source', result.sourceHash);
-console.log('compose apk', result.apks.compose);
-console.log('rn apk     ', result.apks.rn);
+for (const [name, font] of Object.entries(result)) {
+  console.log(name, 'source ', font.sourceHash);
+  console.log(name, 'compose', font.apks.compose);
+  console.log(name, 'rn     ', font.apks.rn);
+}
 "
 
 adb install -r apps/reference-compose/app/build/outputs/apk/debug/app-debug.apk

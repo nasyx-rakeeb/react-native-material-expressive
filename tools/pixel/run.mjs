@@ -153,7 +153,11 @@ log(
   `plan: ${config.boots} cold boots, ${config.repeats} trivial repeats, ${config.sceneRepeats} repeats of ${config.scenes.join('/')} per app`,
 );
 const fonts = verifyFonts();
-log(`fonts verified: ${fonts.sourceHash}`);
+log(
+  `fonts verified: ${Object.entries(fonts)
+    .map(([name, font]) => `${name}=${font.sourceHash.slice(0, 12)}`)
+    .join(' ')}`,
+);
 
 const results = {
   generatedAt: new Date().toISOString(),

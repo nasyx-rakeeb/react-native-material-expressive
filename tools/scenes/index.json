@@ -19,6 +19,14 @@
       "heightDp": 200
     },
     {
+      "id": "icon-symbols",
+      "category": "icon",
+      "source": "tools/scenes/icon-symbols.json",
+      "sourceSha256": "8bc88a47d7f8ec6c5f7577e927d7ea9aa3f66e4109dc34f1d5a0c1b703b19295",
+      "widthDp": 320,
+      "heightDp": 200
+    },
+    {
       "id": "interaction-states",
       "category": "interaction",
       "source": "tools/scenes/interaction-states.json",

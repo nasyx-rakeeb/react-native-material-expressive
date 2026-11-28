@@ -95,6 +95,41 @@ function PathLayer({
  * This is the only file allowed to import a path renderer (ADR-003). The
  * renderer decision lives in ADR-002.
  */
+export interface PathIconCanvasProps {
+  /** One or more SVG path strings in the `viewBox` coordinate space. */
+  paths: readonly string[];
+  /** Rendered square size in dp. */
+  size: number;
+  color: string;
+  viewBox?: string;
+  fillRule?: 'nonzero' | 'evenodd';
+  style?: StyleProp<ViewStyle>;
+  testID?: string;
+}
+
+/**
+ * Renders raw SVG path data (internal icons) without leaking the renderer
+ * import outside this file. `Icon` uses this; consumers never import
+ * `react-native-svg` directly.
+ */
+export function PathIconCanvas({
+  paths,
+  size,
+  color,
+  viewBox = '0 0 24 24',
+  fillRule = 'nonzero',
+  style,
+  testID,
+}: PathIconCanvasProps) {
+  return (
+    <Svg width={size} height={size} viewBox={viewBox} style={style} testID={testID}>
+      {paths.map((d, index) => (
+        <Path key={`${index}-${d.slice(0, 12)}`} d={d} fill={color} fillRule={fillRule} />
+      ))}
+    </Svg>
+  );
+}
+
 export function PathCanvas({
   geometry,
   width,
