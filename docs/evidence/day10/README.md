@@ -10,18 +10,21 @@ The icon scene is pixel-diffed against Compose Material3 1.5.0 with all four
 variable axes; `Text` is measured across 30 roles at four density/font-scale
 profiles with the Compose `FontScaleConverter` active.
 
-- **Status:** extended scope complete; Day 10 close report posted, awaiting
-  approval. Day 10 is **not closed**: 17/22 foundation rows are Android-DONE,
-  the two text rows are `[~] T` pending the ADR-010 threshold decision, and
-  three token-only rows need a scope decision.
-- **Decisions:** ADR-021 (icon font subset + path icons), ADR-022 (single overlay
-  stack), ADR-023 (pure window-size classes), ADR-024 (RTL helper boundary).
+- **Status:** **CLOSED (approved by Nasyx, 2026-11-28).** The foundation is
+  **22/22 Android-DONE and 0/22 Release-DONE**. Typography and `Text` use the
+  approved ADR-010 `[x] T` evidence; colour schemes, dynamic colour and shape
+  tokens use accepted value-golden `[x] V` evidence. Their per-role gallery
+  pages are in the Day 47 plan (`BACKLOG.md`).
+- **Decisions:** ADR-009 (colour verification boundary), ADR-010 (text
+  category and thresholds), ADR-020 (reporting only), ADR-021 (icon font subset
+  + path icons), ADR-022 (single overlay stack), ADR-023 (pure window-size
+  classes), ADR-024 (RTL helper boundary).
 - **Gate:** the existing PLAYBOOK §7 gate is unchanged (`pixelmatch` threshold
   0.1, `includeAA: false`, 0.05% AA-aware, core five scenes). ADR-020 is
-  **proposed only**. The icon scene is an additional tracked category with no
-  new pass/fail threshold. Text is reported against the ADR-010 proposed
-  ink/glyph budgets; those thresholds are not final and do not change the
-  PLAYBOOK gate.
+  **accepted as reporting only** and does not change the gate. The icon scene is
+  an additional tracked category with no new pass/fail threshold. Text uses the
+  ADR-010 approved ink/glyph budgets; those budgets do not change the PLAYBOOK
+  five-scene gate.
 
 ## What shipped
 
@@ -241,9 +244,9 @@ The 1.3 profiles fall from 214,694 / 118,751 AA px (Day 5, linear scaling) to
 17,798. **119/120** role-profile combinations pass the ADR-010 faithful budget.
 The single miss is `type-label-medium-emphasized` at 320/1.3: 453.7 per 1,000
 ink against the 450 cap (0.8% over) while its per-glyph value 2.845 passes the
-3.0 cap. ADR-010's thresholds are still pending final approval, so the
-`Typography` and `Text` rows are `[~] T`, not Android-DONE. Full per-role table,
-threshold-independent metrics and reproduction commands:
+3.0 cap. ADR-010 was approved on 2026-11-28; the miss is recorded in `D-001`
+and the `Typography` and `Text` rows are `[x] T`, Android-DONE. Full per-role
+table, threshold-independent metrics and reproduction commands:
 `docs/evidence/day10/typography/README.md`.
 
 ## Gallery
@@ -366,11 +369,12 @@ adb shell wm density reset # 411×731 dp → compact / medium
 
 ## Limitations
 
-- **Text thresholds are not final.** `Text` and `M3Provider` are implemented,
-  tested and measured (119/120 faithful), but ADR-010's numeric thresholds are
-  pending Nasyx's decision; the `Typography` and `Text` rows are `[~] T`, not
-  Android-DONE. The converter itself is implemented and is the default
-  `fontScaleMode`.
+- **Text thresholds are approved; one combination is over the ink cap.**
+  `Text` and `M3Provider` are implemented, tested and measured (119/120
+  faithful). ADR-010 was approved on 2026-11-28, and the single
+  `type-label-medium-emphasized` 320/1.3 miss is recorded in `D-001`. The
+  converter is implemented and is the default `fontScaleMode`. Re-run the
+  matrix whenever text code or fonts change.
 - **iOS** for Icon/overlay/window/RTL is unverified; the boxes stay open for
   Days 41–42 (`U-34`).
 - **Accessibility** is unit-level. No TalkBack traversal, hardware-keyboard Tab
@@ -380,7 +384,8 @@ adb shell wm density reset # 411×731 dp → compact / medium
 - **Insets** are exercised by unit tests; the AVD has no cutout, so a real
   notch/gesture-inset difference was not captured.
 - The `icon` diff category is tracked, **not** gated. Only the five `core`
-  scenes are the PLAYBOOK §7 gate; ADR-020 remains proposed.
+  scenes are the PLAYBOOK §7 gate; ADR-020 is accepted as reporting only and
+  does not add a gate.
 - One capture per stack per boot; cross-boot determinism is sampled at three
   boots, not continuous CI (Day 46 hardening).
 - `wm size` letterboxes this portrait-locked activity; the second window row

@@ -1,90 +1,73 @@
 # Current status
 
-- Current day: Day 10 (foundation gate; extended 2026-11-28 with `M3Provider` + `Text`)
-- Status: AWAITING USER APPROVAL (Day 10 extended scope complete; close report posted. 17/22 foundation rows Android-DONE; Typography and Text are `[~] T` pending the ADR-010 threshold decision; three token-only rows need a scope decision)
-- Last closed day: Day 9 (approved by Nasyx, 2026-11-28; tag `day-9-closed` at `e9f73ca`)
-- Last commit hash: 03edebe (Day 10 extended scope + core-gate harness fix; no Day 10 tag until approval)
+- Current day: Day 11 (Button 1/2 — static scene matrix)
+- Status: IN PROGRESS
+- Last closed day: Day 10 (approved by Nasyx, 2026-11-28; tag `day-10-closed`)
+- Last commit hash: 1c49ed2 (Day 10 closure commit follows)
 
-## Day 10 required scope (from Nasyx, 2026-11-28)
+## Day 10 closure (2026-11-28)
 
-- Overlay/Portal: stacking, back/Escape close only the topmost overlay, focus trap
-  and restore, keyboard avoidance, insets. Tests; state which behaviours were only
-  verified on the emulator.
-- Icon: Material Symbols via `fontVariationSettings` (FILL, wght, GRAD, opsz) with
-  capability detection; internal icons as path data. Verify bundled license text and
-  report size impact; subset the font if needed.
-- Window size classes and RTL utilities with tests.
-- Install the gallery with Day 9 + Day 10 scenes on the Xiaomi at the end; give
-  exact commands.
-- Gate report must include: every foundation row in `COMPONENT_MATRIX.md` with
-  evidence and DONE/not; 10-line plain-language summaries of ADR-009 and ADR-010
-  with a recommendation; re-baselined calendar by phase with schedule risks; the
-  U-29 follow-ups; exact gallery/diff commands. Then stop; do not start Day 11.
+- **Foundation: 22/22 Android-DONE, 0/22 Release-DONE.** Typography and `Text`
+  are `[x] T`; colour schemes, dynamic colour and shape tokens are `[x] V`
+  (value-golden). Per-role gallery pages for the token rows are in the Day 47
+  gallery/playground plan (`BACKLOG.md`).
+- **ADR-010 approved:** faithful text budget `≤450 AA per 1,000 ink px` and
+  `≤3.0 per glyph per font px`. The single miss
+  (`type-label-medium-emphasized`, 320/1.3: 453.7 vs 450; per-glyph 2.845) is
+  recorded in `D-001`. Re-run the matrix whenever text code or fonts change.
+- **ADR-009 accepted**; **ADR-020 accepted as reporting only** (no gate change).
+- **Core five-scene gate PASS:** `text`/`trivial` 4 AA px (0.0009%, max Δ 162);
+  `solid`/`rect`/`shadow` exact 0. Evidence: `docs/evidence/day10/core-gate/`.
+- **Icon diff PASS:** exact 0 / AA 0 / max Δ 0 across 3 cold boots.
+- **Tests:** 31 suites / 237 tests; Day 10 adds 11 suites / 93 tests. 43 scenes.
+- **Final APK:** 203,638,944 B, SHA-256
+  `7697f9257acbd8a97c39e50ba326ebc5afdbb60f02c4d3751591aff57c9e7a42`,
+  installed on the Xiaomi with `adb install -r` at 16:09.
+- **Calendar:** best-case and realistic columns in `docs/progress/CALENDAR.md`.
+  Realistic assumes Phase B and C take 1.5× their planned days.
 
-## Pre-Day-10 threshold audit (2026-11-28)
+## Day 11 approved scope
 
-- `pixelmatch` gate: `threshold: 0.1`, `includeAA: false`. Threshold 0.1 is a YIQ
-  squared-colour distance, not a channel delta (≈26/255 neutral grey).
-- Day 9 scenes: flat fills differ by ≤1/255; max Δ 9/18 is anti-aliased clip/ripple/
-  ring edges, below pixelmatch's threshold. No RN fix needed.
-- Every stored report now publishes max Δ, mean Δ over differing pixels, Δ > 2 outside
-  AA edges, and flat fills > 2. Only the Day 4 diagnostic text probes have flat fills
-  > 2 (D-001, inherent glyph-advance difference). ADR-020 is proposed, not applied.
+- Extract Button behavior from Compose 1.5.0 sources: `Button.kt`,
+  `ButtonDefaults`, and the XSmall/Small/Medium/Large/XLarge token files.
+  Container heights, content-padding formulas, icon size/spacing per height,
+  shapes per size, pressed/hovered/focused/disabled colours, toggle (selected)
+  shape/colours, and elevated/filled/tonal/outlined/text colour mapping. Cite
+  files; put gaps in `UNVERIFIED.md`.
+- Scene matrix: 5 types × 5 sizes × round/square × content (text only, leading
+  icon, trailing icon, icon+text) × states (default, pressed, focused, hovered,
+  disabled, selected) × light/dark × font scale 1.0 and 1.3. Full matrix at
+  font scale 1.0; reduced matrix at 1.3 and RTL.
+- Use the Day 10 `Text` and `Icon` components; use the Day 9 `Interactive`,
+  state layers and focus ring. Do not re-implement them.
+- Diff against Compose with the core gate for non-text pixels and the text
+  category for labels. Report max Δ and Δ > 2 outside AA edges (ADR-020).
+- Static only. Press morph and toggle morph are Day 12; declare motion kinds
+  for anything animated, but do not implement the morph.
+- Public API sketch in docs: props, defaults, ref forwarding, `testID`, a11y
+  props, `hitSlop` honored. Do not freeze before Day 12.
+- Do **not** mark Button Android-DONE on Day 11; that is Day 12.
+- End with the Day 11 close report, then stop; Day 12 needs separate approval.
 
-## U-29 follow-ups (ADR-002 stays for now; items 2–3 block Day 20)
+## Open blockers and reminders
 
-1. Re-run the six captures at 120 Hz on Nasyx's Xiaomi. **Day 10: closed.** The active display mode is `mActiveModeId=1` at `fps=120.00001`; six captures are in `docs/evidence/day10/device/` and summarised in `docs/evidence/day7/frame-times.md`.
-2. **Blocker before Day 20:** profile SVG time in cycle + concurrent modes (path string generation, native parse, UI-thread commit). Try reduced decimal precision, fewer cubic segments where visually identical, caching, and a translate-based wave animation instead of per-frame path regeneration. Report numbers.
-3. **Blocker before Day 20:** verify whether 29.78 MB per ABI is the real compressed/stripped APK-size delta or the uncompressed library size. Compare with Skia's documented size impact; amend ADR-002 if misleading.
-4. By Day 30, write an ADR amendment: SVG is enough for loading indicator + wavy progress (with 60/120 Hz numbers), or those components use Skia (optional peer + documented fallback), or a hybrid. `PathCanvas` must remain the only file importing a renderer.
+1. **Day 20 blocker — SVG time profile.** Break down cycle/concurrent SVG time
+   (path-string generation, native parse, UI-thread commit). Try reduced
+   precision, fewer cubic segments, caching, and a translate-based wave.
+2. **Day 20 blocker — Skia size check.** Confirm whether 29.78 MB per ABI is
+   the compressed/stripped APK delta or the uncompressed library size; amend
+   ADR-002 if misleading.
+3. **Day 30 ADR amendment — loading indicator / wavy progress.** Use the
+   120 Hz numbers: SVG concurrent 54 fps vs Skia ~111 fps. Decide SVG, Skia
+   optional peer, or hybrid; `PathCanvas` stays the only renderer import.
+4. **Day 45 blocker — icon subset CLI.** Build the app-used-name subset from
+   the upstream variable font, preserving all four axes (`U-14`).
+5. **Day 47 — per-role token gallery pages.** Colour schemes, dynamic colour
+   and shape tokens; accepted as Android-DONE on value-golden evidence, not a
+   Release Gate #2 blocker.
+6. **Phase D — iOS and accessibility.** No row can be Release-DONE before
+   Days 40–42.
 
-## Icon subset CLI (blocker before Day 45)
+## Day 11 progress
 
-The package ships a fixed 90-glyph subset. Before Day 45 (API review & bundle), add a CLI
-that subsets the upstream variable font from the app-used `MaterialSymbol` names and keeps
-all four axes; until then, warn in development when a requested name is not in the bundled
-registry (`U-14`). Tracked in `BACKLOG.md`.
-
-## Day 10 result (2026-11-28)
-
-### Original scope (commit `be68ad9`)
-
-- Icon diff: exact 0 / AA-aware 0 / max Δ 0 across 3 cold boots; font bytes
-  verified in source, gallery, Compose APK and RN APK.
-- Emulator evidence: overlay stack/back ordering, keyboard avoidance, RTL
-  preview, window classes 411×731 compact/medium and 720×1280 medium/expanded.
-- Xiaomi: installed from `/sdcard/Download/m3egallery.apk` (203,624,632 B;
-  MIUI blocked `pm install` with `INSTALL_FAILED_USER_RESTRICTED`). Verified
-  cold launch, API 33 variable-font support, all four axes + path icons, overlay
-  stack depth 2, and the Day 9 `interaction-states` scene.
-
-### Extended scope (2026-11-28)
-
-- `M3Provider`: theme + reduce-motion + window size class + layout direction,
-  with `useM3Theme`, `useM3ReduceMotion`, `useWindowSize`/`useWindowSizeClass`,
-  `useM3LayoutDirection`, `useM3ContentColor`.
-- `Text`: 30 roles, emphasized opt-in, content-colour inheritance, RTL align,
-  sp overrides, and the Compose 1.12.0 non-linear `FontScaleConverter`
-  (`composeFontScale` + `composeLineHeight`).
-- Gallery: provider demo and all-role text grid; `SceneHarness` renders `type-*`
-  scenes through the library `Text`. Screenshots: `provider-default.png`,
-  `provider.png` (reduceMotion on / rtl), `text-roles.png`,
-  `text-roles-emphasized.png`.
-- Converter measurements: 30 roles × 4 profiles (420/1.0, 420/1.3, 320/1.0,
-  320/1.3) in `docs/evidence/day10/typography/`; **119/120** pass the faithful
-  budget. One miss: `type-label-medium-emphasized` at 320/1.3, 453.7 per 1,000
-  ink vs 450 (per-glyph 2.845 ≤ 3.0).
-- Xiaomi: final APK (203,638,944 B, SHA-256 `7697f925…c9e7a42`) installed
-  with `adb install -r` at 16:09; the phone was asleep and MIUI denied wake
-  injection, so no new phone screenshot. Emulator screenshots cover the new
-  sections.
-- Core five-scene gate: **PASS**. `text`/`trivial` are 4 AA px (0.0009%, max
-  Δ 162); `solid`/`rect`/`shadow` are exact 0. The first harness build routed
-  non-role text through the library `Text` and regressed to 3,810 AA px
-  (0.8639%); non-role scenes now use raw RN `Text`, and the re-run matches
-  Day 3. Evidence: `docs/evidence/day10/core-gate/`.
-- Gates: format, lint, typecheck pass; **31 suites / 237 tests**; 43 scenes.
-- Remaining: Nasyx's decisions on (a) the ADR-010 threshold (keep 450 + D-001,
-  or accept 500) and (b) the three token-only foundation rows (accept
-  value-golden evidence or schedule per-role scene diffs). Day 10 is not closed
-  and Day 11 must not start.
+- Started 2026-11-28. Source extraction and implementation in progress.

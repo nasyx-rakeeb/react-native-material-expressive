@@ -718,3 +718,52 @@ A day closes only when its exit criteria are met with evidence and Nasyx approve
 **Next step**
 
 - Post the Day 10 gate report and stop. Day 11 starts only after Nasyx approves.
+
+## Day 10 closure addendum | 2026-11-28 | Provider, Text, thresholds approved
+
+**Status:** CLOSED (Nasyx approved 2026-11-28; tag `day-10-closed`). This
+addendum supersedes the Day 10 entry above, which described the original scope
+before the extended `M3Provider`/`Text` work.
+
+**Done**
+
+- `M3Provider`: theme, reduce-motion, window size class and layout direction
+  contexts, with `useM3Theme`, `useM3ReduceMotion`, `useWindowSize`/
+  `useWindowSizeClass`, `useM3LayoutDirection` and `useM3ContentColor`.
+- `Text`: 30 roles, emphasized opt-in, content-colour inheritance, RTL align,
+  sp overrides, and the Compose UI 1.12.0 non-linear `FontScaleConverter`
+  (`composeFontScale` + `composeLineHeight`).
+- Gallery: provider demo and all-role text grids; `SceneHarness` uses raw RN
+  `Text` for non-role core scenes and the library `Text` only for `type-*`.
+- Core gate regression found and fixed: the first harness build routed
+  non-role text through the library `Text`, supplied `bodyLarge`'s 24 sp line
+  height, moved the ink box by 5 px and measured 3,810 AA px (0.8639%). The
+  final harness matches Day 3: `text`/`trivial` 4 AA px (0.0009%, max Δ 162);
+  `solid`/`rect`/`shadow` exact 0.
+- Final APK 203,638,944 B, SHA-256 `7697f925…c9e7a42`; installed on the Xiaomi
+  with `adb install -r` at 16:09.
+
+**Numbers**
+
+- Typography converter, 30 roles × 4 profiles: 17,798 / 22,658 / 3,174 / 9,480
+  AA px at 420/1.0, 420/1.3, 320/1.0, 320/1.3; 119/120 pass the approved
+  faithful budget. One miss: `type-label-medium-emphasized` at 320/1.3,
+  453.7 per 1,000 ink vs 450 (per-glyph 2.845 ≤ 3.0), recorded in `D-001`.
+- Tests: **31 suites / 237 tests**; Day 10 adds 11 suites / 93 tests. Scenes:
+  43. Icon diff exact 0 / AA 0 / max Δ 0 across 3 cold boots.
+- Foundation: **22/22 Android-DONE, 0/22 Release-DONE**. Typography/Text are
+  `[x] T`; colour schemes, dynamic colour and shape tokens are `[x] V`
+  (value-golden), with per-role gallery pages in the Day 47 plan.
+
+**Decisions**
+
+- ADR-009 accepted. ADR-010 numeric thresholds approved (450/1,000 ink and
+  3.0/glyph/font px). ADR-020 accepted as reporting only, no gate change.
+  ADR-021–024 accepted.
+- Calendar now has best-case and realistic columns; realistic assumes Phase B
+  and C take 1.5× planned days.
+
+**Next step**
+
+- Day 11 approved: Button (1/2), static scene matrix. Day 12 needs separate
+  approval.

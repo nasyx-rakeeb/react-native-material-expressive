@@ -181,7 +181,7 @@ Every accepted decision has a date and evidence. Day 0 decisions are research-on
 ## ADR-009 — Colour verification boundary: Compose-exact defaults/dynamic, MCU-spec-verified generated schemes
 
 - **Date:** 2026-11-26
-- **Status:** Accepted for Day 4 implementation; **flagged to Nasyx for confirmation** (no threshold or fidelity gate is changed)
+- **Status:** **Accepted (2026-11-28).** Confirmed by Nasyx; no threshold or fidelity gate is changed.
 - **Context:**
   - The Day 4 plan asks for Compose goldens for **N seeds × variants × light/dark**. Compose Material3 **1.5.0 has no public seed-to-scheme or variant-to-scheme API**. The public dynamic functions take a `Context`; the internal API-31/34 helpers take a `TonalPalette`, not a seed, and expose no variant or contrast parameter.
   - `@material/material-color-utilities@0.4.0` is the current reference implementation for seed → tonal palettes → 48-role schemes. It supports 9 variants, contrast `-1..1`, light/dark, and spec versions `2021`/`2025`.
@@ -214,7 +214,7 @@ Every accepted decision has a date and evidence. Day 0 decisions are research-on
 ## ADR-010 — Text-category metric: ink-normalized AA plus a documented baseline rule
 
 - **Date:** 2026-11-26; **revised 2026-11-27** after the profile matrix; **measured 2026-11-28** with the converter.
-- **Status:** **Conditionally approved (2026-11-28).** Nasyx approved the text category and the Compose non-linear `FontScaleConverter`, and rejected C2/C4 for shipping. The numeric thresholds remain **proposed** until the Day 10 converter matrix is reviewed; no gate, threshold, scene, or token is changed by this ADR yet.
+- **Status:** **Accepted (2026-11-28).** Nasyx approved the text category, the Compose non-linear `FontScaleConverter`, and the numeric faithful tier (`≤450 AA per 1,000 ink px` and `≤3.0 per glyph per font px`). C2/C4 remain rejected for shipping. The single 320/1.3 miss is recorded in `D-001`; no scene or token is changed.
 - **Context:**
   - The PLAYBOOK §7 gate is `≤0.05%` AA-aware differing pixels of the **whole image** plus **zero** differing content-bbox edges. That is appropriate for solid/rect/shadow scenes, where the content fills a large part of the image.
   - For text it is the wrong denominator. On the 30 one-line type scenes (`840×525 = 441,000 px`, budget `220.5 px`), the faithful run has **17,798 AA px** — **10.64% of the text ink** but only **0.040% of the image**. The 0.05% image budget is smaller than the AA difference of a single 14sp label (`labelLarge` alone is 397 AA px), so any Day 11 component with a text label would fail even when its geometry is exact.
@@ -226,14 +226,14 @@ Every accepted decision has a date and evidence. Day 0 decisions are research-on
   - **(b) Does C2 hold at two other density/scale combinations, including 1.3?** No. It fails both required tests: 320/1.0 regresses 18/30 (net +6,157 AA px; image-gate failures 10 → 19), and 420/1.3 improves 10/regresses 11 while all 25 remaining failures are dominated by the font-scale mismatch. The fourth profile, 320/1.3, improves 11/regresses 10 but raises image-gate failures 24 → 27. C2 therefore does **not** become the shipping text renderer.
   - **(c) Which roles still fail the original 0.05% gate under C2, and by how much?** At 420/1.0, one role: `bodySmall` **308 px vs 220.5** (1.40×). At 320/1.0, 19 roles; worst `displayLarge` **2,353 vs 128** (18.38×). At 420/1.3, 25 roles; worst `displayLargeEmphasized` **35,606 vs 220.5** (161.48×). At 320/1.3, 27 roles; worst `displayLargeEmphasized` **21,022 vs 128** (164.23×). Complete per-role tables are in `docs/evidence/day5/typography/profile-matrix/`.
   - **(d) Reject C4-style per-string/per-density tuning.** Accepted. C4 is a lookup table keyed by sample and profile; it cannot be derived from RN's pre-layout API, would require a post-layout reflow, and the matrix shows a fixed C2 table already regresses at a second density. No per-string or per-density table ships. The only acceptable generic layer is Compose's published `FontScaleConverter` plus a width fit measured at ≥2 profiles.
-- **Decision (revised 2026-11-27, proposed):**
+- **Decision (approved 2026-11-28):**
   1. **Separate category.** Text scenes and components with text are gated in a **text category** with the metric below. Non-text pixels in the same render keep the existing `≤0.05%` image-area gate. The standard five-scene gate is unchanged.
   2. **Geometry.**
      - Component layout box: **±0 px**, unchanged.
      - Text layout box: **height Δ = 0 px**; **width Δ ≤ 5 px faithful / ≤ 1 px matched**. Measured: faithful max **4.57 px** (24/30 > 1 px, 18/30 > 2 px, 0/30 > 5 px); matched max **1.97 px** (17/30 > 1 px, 0/30 > 2 px); height max **0.00001 px**.
      - Ink bbox: vertical edges **±1 px** (the documented baseline rule; cause and arithmetic in U-25.2). Horizontal edges are reported and bounded by the layout-width rule above. A strict ±0 px ink bbox is not achievable in faithful mode without per-role compensation; if Nasyx requires it, the only path is the C4-style lookup table, which this ADR does **not** recommend.
   3. **AA budget, normalized by text ink and by glyph × font size.** `AA_px` is the AA-aware differing pixel count inside the union of text ink (pixels that are not exactly the scene background). The budget is the **tighter** of an ink ratio and a scale-invariant per-glyph ratio:
-     - **Faithful (proposed default):** `AA_px ≤ 450 per 1,000 ink px` **and** `AA_px ≤ 3.0 per glyph per font px` (`AA_px ÷ glyphs ÷ fontPx`). Measured maxima across the 420/1.0 and 320/1.0 token-exact runs: **410 per 1,000** (`labelMediumEmphasized`) and **2.63 per glyph per font px** (`labelMediumEmphasized`). The flat `≤250 per glyph` cap in the 2026-11-26 draft is **withdrawn**: `displayLarge` has **343.1 AA/glyph** at 420/1.0 while its ink ratio is only 12.79%, so a flat cap fails it even though its normalized residual is 2.29. The `glyph × font px` denominator is invariant across density and font scale.
+     - **Faithful (approved default):** `AA_px ≤ 450 per 1,000 ink px` **and** `AA_px ≤ 3.0 per glyph per font px` (`AA_px ÷ glyphs ÷ fontPx`). Measured maxima across the 420/1.0 and 320/1.0 token-exact runs: **410 per 1,000** (`labelMediumEmphasized`) and **2.63 per glyph per font px** (`labelMediumEmphasized`). The flat `≤250 per glyph` cap in the 2026-11-26 draft is **withdrawn**: `displayLarge` has **343.1 AA/glyph** at 420/1.0 while its ink ratio is only 12.79%, so a flat cap fails it even though its normalized residual is 2.29. The `glyph × font px` denominator is invariant across density and font scale.
      - **Compensated (only if a generic compensation layer is approved):** `AA_px ≤ 250 per 1,000 ink px` **and** `AA_px ≤ 1.5 per glyph per font px`. C2's fitted-profile run at 420/1.0 is **2,043 AA px**, maxima **243.3 per 1,000** and **1.22 per glyph per font px**, so it would meet this tier at that one profile. It does not meet it at 320/1.0 or 420/1.3 (§ profile matrix below), which is why C2 itself is rejected for shipping.
      - **Matched (diagnostic parity reference):** `AA_px ≤ 15 per 1,000 ink px` **and** `AA_px ≤ 0.2 per glyph per font px`. Measured maxima: **12.7 per 1,000** (`headlineSmall`, 1.27%) and **13.1 per glyph**; the per-font-px form is well under 0.2. This tier is a diagnostic reference, not a shipping claim.
   4. **Generic font-scale emulation is the shipping path.** Compose UI 1.12.0 applies its non-linear `FontScaleConverter` for **fontScale ≥ 1.03**; RN 0.88.1 `allowFontScaling` is linear. At 1.3, Compose renders `bodyLarge` at 20.2sp and `displayLarge` at 57sp, while RN renders 20.8sp and 74.1sp. This is a generic cross-stack mismatch, not a C2 width error. The library must map `fontSize`, `lineHeight`, and `letterSpacing` through the Compose table and set `allowFontScaling={false}` before claiming 1.3 parity. The converter is generic across roles, strings, densities, and scales; it is a Day 10 prerequisite (the Text foundation), not a text-threshold exemption.
@@ -276,9 +276,9 @@ Every accepted decision has a date and evidence. Day 0 decisions are research-on
   denominator is the one that tracks rasterization error. All other 119 role-profile combinations
   pass both conditions.
 
-  **Recommendation:** keep the 450 cap and record this single combination in `D-001`, rather than
-  loosening the gate to 500 for one marginal case. The alternative — accept 500 per 1,000 — is a
-  threshold decision for Nasyx, not a code change. Threshold-independent metrics are in
+  **Approved decision (2026-11-28):** keep the 450 cap and record this single combination in
+  `D-001`; the gate is not loosened to 500. Re-run this matrix whenever text code or fonts change.
+  Threshold-independent metrics are in
   `docs/evidence/day10/typography/summary.md`: max channel Δ is **226** in all four profiles (glyph
   edge pixels), and the non-zero Δ > 2 / flat-fill counts are glyph interiors where the stroke
   rasterizes at a different subpixel offset — the known D-001 advance difference, not a colour
@@ -338,11 +338,11 @@ Every accepted decision has a date and evidence. Day 0 decisions are research-on
   - **Keep C2 only at 420/1.0 and re-fit per profile.** A per-density table is still per-string and per-profile; it cannot be derived from RN's pre-layout API and would need a visible post-layout reflow. Rejected for the same reason as C2 itself.
   - **Waive font scale 1.3 because Compose is non-linear.** The mismatch is a real shipping behavior; the generic converter is implementable and is the correct fix. A waiver would make the library diverge from Compose at every accessibility font scale.
   - **Gate on exact pixels only.** Ignores the AA residual that the product actually ships; contradicts the existing AA-aware pipeline.
-- **Consequences if approved:**
+- **Consequences (approved):**
   - Day 11 components with text can be diffed with a meaningful budget; non-text geometry stays at ±0 px.
   - Reports and docs must use the wording rule in PLAYBOOK §9.1: never "pixel-perfect text"; state the mode, ink, glyphs, font px, and measured AA ratios.
   - The faithful budget is a **regression ceiling**, not a parity claim. The matched grid remains the parity reference.
-  - **Font scale ≥1.03 is not claimable until the Compose converter is implemented.** The 1.3 profile matrix is a failing measurement, not a waiver; the converter is a Day 10 prerequisite.
+  - **Font scale ≥1.03 is claimable with the Compose converter.** The 1.3 profiles measure 22,658 AA px (420/1.3) and 9,480 (320/1.3); the pre-converter 214,694 / 118,751 figures are historical, not the shipping behavior.
   - The compensated tier stays unused unless a **generic** compensation layer is separately approved; if approved, the budget is 250/1,000 ink and 1.5/glyph/font px, re-measured at ≥2 profiles.
 - **Evidence:** `docs/evidence/day5/typography/compensation/README.md` (D-001 pipeline + C1–C4), `docs/evidence/day5/typography/baseline/README.md` (+1 px baseline arithmetic), `docs/evidence/day5/typography/README.md` (30-role faithful/matched tables), `docs/evidence/day5/typography/compensation.json`, `runs/{faithful,matched-grid}/results.json`, `docs/evidence/day5/typography/profile-matrix/` (420/1.0, 420/1.3, 320/1.0, 320/1.3 C2 matrix + converter table).
 
@@ -610,15 +610,15 @@ The original consequence — "components start in the full-motion state for one 
   - `src/elevation/elevation.ts` (`elevationToIosShadow`), `src/elevation/Surface.tsx`.
   - `docs/evidence/day9/ios/` — side-by-side captures and the approximation note.
 
-## ADR-020 — Diff reports publish threshold-independent deltas (proposed)
+## ADR-020 — Diff reports publish threshold-independent deltas (reporting only)
 
 - **Date:** 2026-11-28
-- **Status:** **Proposed** — awaiting Nasyx. The gate is unchanged until approved.
+- **Status:** **Accepted (2026-11-28) — reporting only. No gate change.**
 - **Context:**
   - The PLAYBOOK §7 gate counts pixelmatch pixels at `threshold: 0.1`, `includeAA: false`. Threshold 0.1 is a YIQ squared-colour-distance limit (`35215 × 0.1²`), not a per-channel delta; for neutral grey it is roughly 26/255 per channel.
   - The Day 9 interaction scenes therefore report 22.2% and 42.6% exact-different pixels with max channel Δ 9 while the AA-aware count is 0. That is correct for the current gate but easy to misread as "byte-identical" or "only 1/255".
   - The audit found no flat fill above Δ 2 in any non-text scene, and all Δ > 2 pixels sit within one pixel of a colour transition. The only flat-fill misses are the Day 4 diagnostic text probes, already D-001.
-- **Proposed decision:**
+- **Decision (approved 2026-11-28):**
   1. Keep the existing 0.05% AA-aware gate unchanged.
   2. Every diff report must publish, per scene: max channel Δ, mean channel Δ over differing pixels, count of pixels with Δ > 2 outside anti-aliased edges, and count of flat fills with Δ > 2.
   3. For non-text scenes, a non-zero flat-fill count above Δ 2 is a failure; a non-zero Δ > 2 outside AA edges count is a failure. Text scenes remain under ADR-010/D-001.
@@ -631,7 +631,7 @@ The original consequence — "components start in the full-motion state for one 
 - **Consequences:**
   - Reports grow by four columns; the backfill script recomputes stored runs.
   - Future scenes cannot pass by staying below pixelmatch's perceptual threshold if they have a real flat-fill shift.
-  - Approval is required before any CI gate uses the new counts.
+  - The new counts are reporting guardrails, not CI gates; using them as a gate requires a separate approved ADR.
 - **Evidence:**
   - `tools/pixel/lib.mjs` (`meanChannelDeltaOverDiffPixels`, `highDeltaOutsideAaPixels`, `flatFillHighDeltaPixels`).
   - `tools/pixel/report.mjs`; `tools/pixel/backfill-metrics.mjs`.

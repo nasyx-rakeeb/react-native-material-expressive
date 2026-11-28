@@ -18,9 +18,9 @@ the 1.3 profiles carried a generic 1.3× vs ~1.24× size mismatch.
   scale 1.0 and does not regress the token-exact profile.
 - The single miss is `type-label-medium-emphasized` at 320/1.3: **453.7 per
   1,000 ink** vs the 450 cap (0.8% over), while its per-glyph value **2.845**
-  passes the 3.0 cap. Because the ADR-010 thresholds are still pending final
-  approval, `Typography` and `Text` are `[~] T` in `COMPONENT_MATRIX.md`, not
-  Android-DONE.
+  passes the 3.0 cap. ADR-010 was approved on 2026-11-28; the miss is recorded
+  in `D-001`, and `Typography` and `Text` are `[x] T` / Android-DONE in
+  `COMPONENT_MATRIX.md`.
 
 ## Method
 
@@ -188,5 +188,6 @@ The stored run directories are `runs/<profile>/` with `captures/`, `diffs/`,
   gallery. A physical device with a different font/scale may rasterize
   differently; the Xiaomi run covers the icon and overlay surfaces, not this
   matrix.
-- Thresholds are **proposed** (ADR-010); the matrix reports pass counts against
-  them, it does not change the PLAYBOOK gate.
+- Thresholds are **approved** (ADR-010, 2026-11-28); the matrix reports pass
+  counts against them, it does not change the PLAYBOOK five-scene gate. Re-run
+  the matrix whenever text code or fonts change.

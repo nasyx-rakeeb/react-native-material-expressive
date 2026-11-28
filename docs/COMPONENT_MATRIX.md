@@ -30,10 +30,10 @@
 | Component | Authority / source | spec | impl | diff | motion | iOS | a11y | tests | docs | gallery | Android-DONE | Release-DONE |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
 | `M3Provider` / theme | `MaterialTheme.kt`, `MaterialExpressiveTheme` | [x] | [x] | — | — | [ ] | [ ] | [x] | [x] | [x] | [x] | [ ] |
-| Color schemes & roles | `ColorScheme.kt`, `ColorLightTokens`, `ColorDarkTokens`, `PaletteTokens` | [x] | [x] | [ ] | — | [ ] | [ ] | [x] | [x] | [ ] | [ ] | [ ] |
-| Dynamic color (Android 12+) | Native module + fallback; `@material/material-color-utilities` 0.4.0 | [x] | [x] | [ ] | — | n/a | [ ] | [x] | [x] | [ ] | [ ] | [ ] |
-| Typography (baseline + emphasized) | `Typography.kt`, `TypeScaleTokens.kt`, `TypefaceTokens.kt` | [x] | [x] | [~] T | — | [ ] | [ ] | [x] | [x] | [x] | [ ] | [ ] |
-| Shape tokens | `ShapeTokens.kt`, `Shapes.kt` | [x] | [x] | [ ] | — | [ ] | [ ] | [x] | [x] | [ ] | [ ] | [ ] |
+| Color schemes & roles | `ColorScheme.kt`, `ColorLightTokens`, `ColorDarkTokens`, `PaletteTokens` | [x] | [x] | [x] V | — | [ ] | [ ] | [x] | [x] | [ ] | [x] V | [ ] |
+| Dynamic color (Android 12+) | Native module + fallback; `@material/material-color-utilities` 0.4.0 | [x] | [x] | [x] V | — | n/a | [ ] | [x] | [x] | [ ] | [x] V | [ ] |
+| Typography (baseline + emphasized) | `Typography.kt`, `TypeScaleTokens.kt`, `TypefaceTokens.kt` | [x] | [x] | [x] T | — | [ ] | [ ] | [x] | [x] | [x] | [x] T | [ ] |
+| Shape tokens | `ShapeTokens.kt`, `Shapes.kt` | [x] | [x] | [x] V | — | [ ] | [ ] | [x] | [x] | [ ] | [x] V | [ ] |
 | `MaterialShapes` (35 shapes) | `MaterialShapes.kt`, `graphics-shapes` 1.1.0 | [x] | [x] | [x] | — | [ ] | — | [x] | [x] | [x] | [x] | [ ] |
 | `RoundedPolygon` / `Morph` engine | `graphics-shapes` sources | [x] | [x] | [x] | — | [ ] | — | [x] | [x] | [x] | [x] | [ ] |
 | `Shape` primitive | ADR-002; `MaterialShapes.kt` | [x] | [x] | [x] | — | [ ] | — | [x] | [x] | [x] | [x] | [ ] |
@@ -45,7 +45,7 @@
 | Ripple + inset focus ring | `material3-ripple` 1.5.0, `Ripple.kt` | [x] | [x] | [x] | [x] | [ ] | [ ] | [x] | [x] | [x] | [x] | [ ] |
 | `Interactive` pressable primitive | `InteractiveComponentSize.kt`, state machine design | [x] | [x] | [x] | — | [ ] | [ ] | [x] | [x] | [x] | [x] | [ ] |
 | `Surface` | `Surface.kt` | [x] | [x] | [x] | — | [x] | [ ] | [x] | [x] | [x] | [x] | [ ] |
-| `Text` | `Text.kt`, `ProvideContentColorTextStyle.kt` | [x] | [x] | [~] T | — | [ ] | [ ] | [x] | [x] | [x] | [ ] | [ ] |
+| `Text` | `Text.kt`, `ProvideContentColorTextStyle.kt` | [x] | [x] | [x] T | — | [ ] | [ ] | [x] | [x] | [x] | [x] T | [ ] |
 | `Icon` | `Icon.kt`; Material Symbols variable font + internal paths | [x] | [x] | [x] | — | [ ] | [ ] | [x] | [x] | [x] | [x] | [ ] |
 | `OverlayHost` / `Portal` | Architecture §5.2; Compose `BasicEdgeToEdgeDialog`, `Menu`, `SnackbarHost` | [x] | [x] | [x] B | — | [ ] | [ ] | [x] | [x] | [x] | [x] | [ ] |
 | Window size classes | `material3-window-size-class` 1.5.0; 8dp spacing | [x] | [x] | — | — | [ ] | [ ] | [x] | [x] | [x] | [x] | [ ] |
@@ -83,43 +83,47 @@ and is required by Release Gate #2. The column values are:
 - `[x] B` — behavioural evidence (Jest/RNTL + a recorded gallery run) replaces a
   static screenshot diff, as allowed by PLAYBOOK §8.1 for behavioural-only surfaces.
 - `[x] M` — motion evidence (numeric spring/frame checks) replaces a static diff.
-- `[x] T` — text-category evidence under ADR-010 (ink- and glyph-normalized AA),
-  not the image-area 0.05% gate.
-- `[~] T` — text-category evidence measured, but the ADR-010 acceptance threshold is
-  not finalized. The box is not DONE until Nasyx approves the threshold.
+- `[x] T` — text-category evidence under the **approved** ADR-010 thresholds
+  (ink- and glyph-normalized AA), not the image-area 0.05% gate.
+- `[x] V` — value-golden evidence: token values are verified against Compose
+  tokens/MCU goldens, and the per-role gallery page is deferred to the Day 47
+  gallery/playground plan (`BACKLOG.md`). This is the accepted evidence level for
+  token-only rows.
 - `n/a` — the check does not apply (decorative shapes, no visual haptics surface).
 
 Icon, Overlay/Portal, window size classes, RTL, `M3Provider` and `Text` are now
 implemented and tested. The icon scene is diffed against Compose with all four
 variable axes (`docs/evidence/day10/diff/`). `Text` is diffed across the 30 roles at
 420/1.0, 420/1.3, 320/1.0 and 320/1.3 with the Compose non-linear converter
-(`docs/evidence/day10/typography/`); ADR-010's thresholds are applied as reported
-there. Overlay, window and RTL remain behavioural rows. iOS and a11y stay open for
-all rows (`U-33`–`U-35`), so no row is Release-DONE yet. Color schemes, dynamic
-color and shape tokens remain **not Android-DONE**: their values are golden-verified
-against Compose tokens, but they have no per-role gallery page or per-role scene
-diff. That is called out in the Day 10 close report for Nasyx to decide (accept
-value-golden evidence for token-only rows, or schedule the scene work).
+(`docs/evidence/day10/typography/`); ADR-010's thresholds were approved on
+2026-11-28. Overlay, window and RTL remain behavioural rows. iOS and a11y stay open
+for all rows (`U-33`–`U-35`), so no row is Release-DONE yet. Color schemes, dynamic
+color and shape tokens are **Android-DONE on value-golden evidence**; their
+per-role gallery pages are in the Day 47 plan and are not Release Gate #2 blockers.
+The foundation is **22/22 Android-DONE and 0/22 Release-DONE**.
 
 **Foundation evidence (Days 2–6):**
 
 - **Color schemes & roles** — `docs/specs/tokens.json` (48 light + 48 dark roles, 91 palette
   roles); `packages/react-native-material-expressive/src/color/`; 432 MCU schemes / 20,736
   values and 108 Compose-mapped schemes / 5,184 values at **0 differences**; defaults 144/144
-  exact. Evidence: `docs/evidence/day4/color/README.md`, commit `86e5dba`. The `diff` box stays
-  open because only scene fills are screenshot-diffed (Day 3 gate); the scheme itself is
-  value-golden verified.
+  exact. Evidence: `docs/evidence/day4/color/README.md`, commit `86e5dba`. The `diff` box is
+  `[x] V` on value-golden evidence; the per-role gallery page is deferred to Day 47
+  (`BACKLOG.md`).
 - **Dynamic color** — Android `M3EDynamicColor` TurboModule; API 31 `tones` payload 96/96
   exact, unsupported fallback verified; API 34+ role resources are source-derived (`U-24`).
-  Evidence: `docs/evidence/day4/color/README.md`, commit `86e5dba`.
+  Evidence: `docs/evidence/day4/color/README.md`, commit `86e5dba`. Android-DONE on
+  value-golden evidence; the per-role gallery page is deferred to Day 47.
 - **Typography** — `docs/specs/typography.json` (30 roles); `src/typography/`; layout height
   exact for all 30 roles; matched-grid 30/30 inside the 0.05% AA gate, faithful 9/30 with
   `D-001`. Evidence: `docs/evidence/day5/typography/README.md`, commit `0122873`. The `diff`
-  box stays open until ADR-010 is approved; no text is called pixel-perfect.
+  box is `[x] T` under the ADR-010 thresholds approved on 2026-11-28; the single
+  320/1.3 miss is recorded in `D-001`; no text is called pixel-perfect.
 - **Shape tokens** — `docs/specs/tokens.json` (`ShapeTokens` 24, `ShapeKeyTokens` 15);
   generated `shapes` object with all 15 shape values; corner-radius scale evidence in
   `docs/evidence/day2/m3/shape-corner-radius-scale.txt`; extractor drift gate in CI. Commit
-  `191a3a1`.
+  `191a3a1`. Android-DONE on value-golden evidence; the per-role gallery page is
+  deferred to Day 47.
 
 ## Actions
 

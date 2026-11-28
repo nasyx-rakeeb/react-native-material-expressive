@@ -28,7 +28,10 @@ ADR-002 stays for now. **Items 2 and 3 block Day 20 (Slider motion/gesture work)
 The Day 10 120 Hz capture run closes item 1; the ADR amendment (item 4) can follow the
 Day 20 measurements.
 
-1. **120 Hz device re-run.** Repeat the six 20 s captures on Nasyx's Xiaomi 2201116SI with the display set to 120 Hz. Report the same table (mode × renderer, frames, avg, max) plus the active mode id. **Day 10 status:** six captures executed; numbers in `docs/evidence/day10/device/`. If the active mode reports 120 Hz, this item is closed; if not, record the offered mode and keep it open.
+1. **120 Hz device re-run — CLOSED 2026-11-28.** Six 20 s captures executed on
+   the Xiaomi 2201116SI; active mode `mActiveModeId=1` at `fps=120.00001`.
+   Numbers in `docs/evidence/day10/device/` and
+   `docs/evidence/day7/frame-times.md`.
 2. **SVG time profile (blocks Day 20).** Break down where the SVG time goes in `cycle` and `concurrent` (path-string generation, native parse, UI-thread commit). Try cheap optimizations and report numbers: reduced decimal precision in the path string, fewer cubic segments where visually identical, caching, and for wave animation a translate-based approach instead of regenerating the path each frame.
 3. **Skia size verification (blocks Day 20).** Confirm whether 29.78 MB per ABI is the real APK-size increase after compression and stripping, or the uncompressed library size. Compare with Skia's documented size impact. Amend ADR-002 if the figure was misleading.
 4. **ADR amendment by Day 30.** Decide one of: (a) SVG is enough for the loading indicator and wavy progress, with 60 Hz and 120 Hz numbers; (b) those two components use Skia as an optional peer with a documented fallback; or (c) a hybrid. `PathCanvas` must remain the only file importing a renderer.
@@ -41,6 +44,22 @@ Day 20 measurements.
   (static scan or a generated manifest) and subsets the variable font from the upstream
   source, preserving all four axes. Until then, `MaterialSymbol` must warn in development
   when the requested name is not in the bundled registry. Tracked as `U-14`.
+
+## Day 47 gallery/playground — per-role token pages
+
+The Day 10 foundation accepted colour schemes, dynamic colour and shape tokens
+as Android-DONE on value-golden evidence. Their per-role gallery pages are
+deferred to the Day 47 gallery/playground pass:
+
+- Colour schemes: all 48 roles in light and dark, with a role-name/hex table and
+  a seed/variant playground.
+- Dynamic colour: API 31 device scheme, unsupported-platform fallback, and the
+  API 34+ source-mapped roles (`U-24`).
+- Shape tokens: all 15 shape values and the 24 `ShapeTokens` entries, with a
+  corner-radius scale preview.
+
+These pages are documentation/QA surfaces, **not** Release Gate #2 blockers.
+They must ship before the Day 47 gate.
 
 ## Research notes to revisit
 
